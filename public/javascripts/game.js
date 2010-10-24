@@ -1,13 +1,14 @@
-function Game(url) {
-  this.url = url;
-  this.connected = false;
+function Game(url, infobox) {
+    this.url = url;
+    this.connected = false;
+    this.infobox = $('#infobox');
 }
 
 Game.prototype.connect = function() {
   this.socket = new WebSocket(this.url);
   
   this.socket.onopen = function() {
-    alert('connected');
+    this.message('Online');
     this.connected = true;
   }
 
@@ -16,10 +17,11 @@ Game.prototype.connect = function() {
   };
 
   this.socket.onerror = function() {
-      alert('pruser');
+    this.message('Error!');
   };
   
   this.socket.onclose = function() {
+    this.message('Disconnected');
     this.connected = false;
   };
 };
@@ -40,6 +42,10 @@ Game.prototype.tap = function(card) {
     'card' : card
   });
 };
+
+Game.prototype.message = function(msg) {
+    this.infobox.replaceWith('<div id="infobox">' + msg + '</div>');
+}
 
 
 

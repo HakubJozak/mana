@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-    game = new Game();
-    game.connect();
+    //game = new Game('ws://connect');
+    //game.connect();
       
 
 
@@ -13,6 +13,14 @@ $(document).ready(function() {
       event.preventDefault();
   });
 
+  $(".card").tooltip({ 
+      delay: 1000,
+      showURL: false,
+      bodyHandler: function() { 
+          image = $("<img/>").attr("src", this.src)
+          return image; 
+      }, 
+});
 
   $('.card').each(function(i) {
     img = $(this);

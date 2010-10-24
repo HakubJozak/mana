@@ -4,13 +4,20 @@
 <html lang="en">
   <head>
     <title>Mana</title>
+
+    <link rel="stylesheet" href="javascripts/vendor/jquery-tooltip/jquery.tooltip.css" /> 
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="javascripts/game.js"></script>
+
+    <script type="text/javascript" src="javascripts/vendor/dimensions-1.1.2/jquery.dimensions.js"></script>
+    <script type="text/javascript" src="javascripts/vendor/jquery-tooltip/jquery.tooltip.pack.js"></script>
+ 
+   <script type="text/javascript" src="javascripts/game.js"></script>
     <script type="text/javascript" src="javascripts/init.js"></script>
     <style>
-      .small  { height: 200px;  }
+      .small  { height: 210px;  }
       .normal { height: auto;  }
       
       .tapped { 
@@ -21,11 +28,9 @@
   </head>
 
   <body>
-    <h1>Try the console!</h1>
-      <img src="http://magiccards.info/scans/en/som/21.jpg" data-card-id="42" class="card"/>
-      <img src="http://magiccards.info/scans/en/som/25.jpg" data-card-id="42" class="card"/>
-      <img src="http://magiccards.info/scans/en/som/26.jpg" data-card-id="42" class="card"/>
+    <div id="infobox"></div>
+    <img src="http://magiccards.info/scans/en/som/21.jpg" data-card-id="42" class="card"/>
+    <img src="http://magiccards.info/scans/en/som/25.jpg" data-card-id="42" class="card"/>
+    <img src="http://magiccards.info/scans/en/som/26.jpg" data-card-id="42" class="card"/>
   </body>
 </html>
-
-
