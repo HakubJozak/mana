@@ -6,34 +6,49 @@
     <title>Mana</title>
 
     <link rel="stylesheet" href="javascripts/vendor/jquery-tooltip/jquery.tooltip.css" /> 
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/base/jquery.ui.all.css" /> 
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
 
-    <script type="text/javascript" src="javascripts/vendor/dimensions-1.1.2/jquery.dimensions.js"></script>
-    <script type="text/javascript" src="javascripts/vendor/jquery-tooltip/jquery.tooltip.pack.js"></script>
- 
-   <script type="text/javascript" src="javascripts/game.js"></script>
-   <script type="text/javascript" src="javascripts/init.js"></script>
-   <script type="text/javascript" src="javascripts/vendor/mousehold.js"></script>
-   <script type="text/javascript" src="javascripts/vendor/zoomi.js"></script>
+    <script type="text/javascript" src="javascripts/game.js"></script>
+    <script type="text/javascript" src="javascripts/init.js"></script>
+    <script type="text/javascript" src="javascripts/vendor/mousehold.js"></script>
+
+
 
     <style>
       .small  { height: 200px;  }
       .normal { height: auto;  }
-      
+
       .tapped { 
-        rotation: 90deg; 
-        -webkit-transform: rotate(90deg);
+         rotation: 90deg;
+         -webkit-transform: rotate(90deg);
+      }
+
+      #graveyard {
+        height: 200px;
+        width: 200px;
+        border: 1px solid black;
+      }
+
+      #graveyard.selected { 
+        background-color: red; 
       }
     </style>
   </head>
 
   <body>
-    <div id="infobox"></div>
-    <img src="http://magiccards.info/scans/en/som/21.jpg" data-card-id="42" class="card"/>
-    <img src="http://magiccards.info/scans/en/som/25.jpg" data-card-id="42" class="card"/>
-    <img src="http://magiccards.info/scans/en/som/26.jpg" data-card-id="42" class="card"/>
+    <div id="infobox">INFO</div>
+    <div id="table">
+      <div id="graveyard">
+        Graveyard
+      </div>
+      <img src="http://magiccards.info/scans/en/som/21.jpg" data-card-id="42" class="card small"/>
+      <img src="http://magiccards.info/scans/en/som/25.jpg" data-card-id="42" class="card small"/>
+      <img src="http://magiccards.info/scans/en/som/26.jpg" data-card-id="42" class="card small"/>
+      <img src="images/back-side.jpg" data-card-id="42" id="deck" class="small"/>
+    </div>
   </body>
 </html>
