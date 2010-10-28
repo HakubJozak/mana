@@ -6,6 +6,7 @@ function _(method) {
     }
 }
 
+
 Utils.setObjectToDom = function(element, data) {
     $(element).data('game-object', data);
     return data;
@@ -16,15 +17,3 @@ Utils.getObjectFromDom = function(element) {
 }
 
 
-Utils.preventDefaultEvents = function() {
-
-    labels = 'img, #deck';
-
-    $(labels).click(function(event) {
-        event.preventDefault();
-    });
-
-    $(labels).mousedown(function(event) {
-        event.preventDefault();
-    });
-}

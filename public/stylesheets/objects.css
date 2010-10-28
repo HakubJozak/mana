@@ -1,6 +1,15 @@
 .card  { height: 20px;  }
 .normal { height: auto;  }
 
+.card.dragged {
+    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 15px 15px 0px;
+}
+
+.card-size {
+  height: 171px;
+  width: 120px;
+}
+
 .tapped { 
     rotation: 90deg;
     -webkit-transform: rotate(90deg);

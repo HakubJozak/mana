@@ -36,11 +36,15 @@ Card.prototype.initDOM = function() {
 
   this.element.addClass('card-size');
 
+  toggleDragged = function() { $(this).toggleClass('dragged'); }
+
     this.element.draggable( { 
-        snap: true, 
-        snapMode: 'inner',
-        stack: '#table > *',
-        zIndex: 9999
+      snap: true,
+      start: toggleDragged,
+      stop: toggleDragged,
+      snapMode: 'inner',
+      stack: '#table > *',
+      zIndex: 9999
     });
 
     this.element.click(_('tap'));
