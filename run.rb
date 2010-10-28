@@ -11,5 +11,8 @@ require 'app/controllers/commands_controller'
 require './config/routes'
 
 Cramp::Controller::Websocket.backend = :thin
-Thin::Logging.trace = true
+
+# Thin::Logging.trace = true
+Thin::Logging.debug = true
+
 Rack::Handler::Thin.run(app_routes, :Port => 3000)
