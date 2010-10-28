@@ -11,9 +11,9 @@ Utils.setObjectToDom = function(element, data) {
     return data;
 }
 
-// Utils.getObjectFromDom = function(element) {
-//     return $(element).data('game-object');
-// }
+Utils.getObjectFromDom = function(element) {
+    return $(element).data('game-object');
+}
 
 
 Utils.preventDefaultEvents = function() {

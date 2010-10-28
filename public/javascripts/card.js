@@ -1,54 +1,54 @@
 Card = function(image) {
-    this.img = image;
+    this.element = image;
     this.picture = image.attr('src');
     console.log(this.picture);
     this.initDOM();
 }
 
+Card.initialize = function() {
+    $('.card').each(function(i) {
+        card = new Card($(this));
+    });
+}
+
 Card.prototype.tap = function() {
-    this.img.toggleClass('tapped');
+    this.element.toggleClass('tapped');
 }
 
 Card.prototype.turn = function() {
     
     if (this.isCovered()) {
-        this.img.removeClass('covered')
+        this.element.removeClass('covered')
                 .attr('src', this.picture);
     } else {
-        this.img.addClass('covered')
+        this.element.addClass('covered')
                 .attr('src', "/images/back-side.jpg");
     }
 }
 
 Card.prototype.isCovered = function() {
-    return this.img.hasClass('covered');
+    return this.element.hasClass('covered');
 }
 
 
 Card.prototype.initDOM = function() {
-    Utils.setObjectToDom(this.img, this);
+  Utils.setObjectToDom(this.element, this);
 
-    this.img.draggable( { 
+  this.element.addClass('card-size');
+
+    this.element.draggable( { 
         snap: true, 
         snapMode: 'inner',
         stack: '#table > *',
         zIndex: 9999
     });
 
-    this.img.click(_('tap'));
-    this.img.rightClick(_('turn'));
+    this.element.click(_('tap'));
+    this.element.rightClick(_('turn'));
 
     // img.mousewheel(function(event, delta) {
     //   //$(this).toggleClass('small');
     //   console.log(delta);
     // });
-}
-
-
-
-Card.initialize = function() {
-    $('.card').each(function(i) {
-        card = new Card($(this));
-    });
 }
 

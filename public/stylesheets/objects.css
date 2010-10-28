@@ -1,0 +1,15 @@
+.card  { height: 20px;  }
+.normal { height: auto;  }
+
+.tapped { 
+    rotation: 90deg;
+    -webkit-transform: rotate(90deg);
+}
+
+.rounded-borders {
+    border-bottom-left-radius: 4px 4px;
+    border-bottom-right-radius: 4px 4px;
+    border-top-left-radius: 4px 4px;
+    border-top-right-radius: 4px 4px;
+}
+
