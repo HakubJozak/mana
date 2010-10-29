@@ -30,11 +30,20 @@ Boot.preventDefaultEvents = function() {
     });
 }
 
+Boot.zoomInit = function() {
+  $('#battlefield').mousewheel(function(event, delta) {
+    //$(this).toggleClass('small');
+    console.log(delta);
+  });
+}
+
+
 Boot.specialEffects = function() {
-  $('#graveyard, #deck, #exile').each(function() {
+
+  $('#graveyard, #deck, #exile, .card').each(function() {
       $(this).addClass('rounded-borders');
       $(this).addClass('card-size');
-    });
+    })
 
   $('.area').each(function() {
     $(this).addClass('rounded-borders');

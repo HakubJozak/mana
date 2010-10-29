@@ -33,9 +33,6 @@ Card.prototype.isCovered = function() {
 
 Card.prototype.initDOM = function() {
   Utils.setObjectToDom(this.element, this);
-
-  this.element.addClass('card-size');
-
   toggleDragged = function() { $(this).toggleClass('dragged'); }
 
     this.element.draggable( { 
@@ -49,10 +46,5 @@ Card.prototype.initDOM = function() {
 
     this.element.click(_('tap'));
     this.element.rightClick(_('turn'));
-
-    // img.mousewheel(function(event, delta) {
-    //   //$(this).toggleClass('small');
-    //   console.log(delta);
-    // });
 }
 

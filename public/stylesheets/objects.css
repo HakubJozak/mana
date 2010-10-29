@@ -1,12 +1,24 @@
-.card  { height: 20px;  }
-.normal { height: auto;  }
+#graveyard, #exile, #deck {
+    left: 10px;
+    margin: 5px;
+    padding: 5px;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(20, 0, 0, 0.2)), to(rgba(60, 0, 0, 0.4)));
+}
+
+#graveyard { top: 10px; }
+#exile { top: 200px; }
+#deck { top: 390px; }
+
+
+.card  { 
+}
 
 .card.dragged {
-    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 15px 15px 0px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 10px 10px 0px;
 }
 
 .card-size {
-  height: 171px;
+  height: 170px;
   width: 120px;
 }
 
