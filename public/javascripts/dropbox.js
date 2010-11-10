@@ -11,8 +11,10 @@ Dropbox.initialize = function() {
 }
 
 Dropbox.prototype.dropped = function(card) {
-    card.element.detach();
-    card.element.appendTo(this.element);
+  e = card.element;
+  e.detach();
+  e.appendTo(this.element);
+  e.offset( this.element.offset() );
 }
 
 Dropbox.prototype.initDOM = function() {

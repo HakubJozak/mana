@@ -4,19 +4,30 @@ body {
   background: #61461C url('../images/brown-texture.png');
 }
 
+#desk {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+
 #side-panel {
-    -webkit-box-shadow: black 0px 0px 3px;
-    background: #61461C url('../images/medium-texture.png');
-    border-left: 1px dotted #C8B472;
     position: absolute;
     bottom: 0px;
     right: 0px;
     top: 0px;
     width: 160px;
+
+    background: #61461C url('../images/medium-texture.png');
+    border-left: 1px dotted #C8B472;
+
+    -webkit-box-shadow: black 0px 0px 3px;
 }
 
 
 #battlefield {
+  position: absolute;
   top: 10px;
   bottom: 10px;
   left: 10px;
@@ -25,7 +36,6 @@ body {
 
 
 .area {
-  position: absolute;
   border: 1px dashed #9D7C41;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(22, 0, 0, 0.246094)), to(rgba(22, 0, 0, 0.347656)));
 /*  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(22, 0, 0, 0.246094)), to(rgba(48, 0, 0, 0.496094))); */

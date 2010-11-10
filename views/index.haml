@@ -17,15 +17,16 @@
     %script{:src => "javascripts/boot.js", :type => "text/javascript"}
     %script{:src => "javascripts/vendor/mousehold.js", :type => "text/javascript"}
   %body
-    #side-panel
-      #graveyard.dropbox.area Graveyard
-      #exile.dropbox.area Exile
-      #deck.area Deck
-      /  <img src="images/back-side.jpg" id="deck" class="card-size" />
-    #battlefield.area
-      %img#card_42.card{:src => "http://magiccards.info/scans/en/som/21.jpg"}/
-      %img#card_43.card{:src => "http://magiccards.info/scans/en/som/25.jpg"}/
-      %img#card_44.card{:src => "http://magiccards.info/scans/en/som/26.jpg"}/
+    #desk
+      #side-panel
+        #graveyard.dropbox.area Graveyard
+        #exile.dropbox.area Exile
+        #deck.area Deck
+        /  <img src="images/back-side.jpg" id="deck" class="card-size" />
+      #battlefield.area
+        %img#card_42.card{ :src => "http://magiccards.info/scans/en/som/21.jpg"}
+        %img#card_43.card{ :src => "http://magiccards.info/scans/en/som/25.jpg"}
+        %img#card_44.card{ :src => "http://magiccards.info/scans/en/som/26.jpg"}
     #footnote{:style => "display: none"}
       %p
         Textures and design idea shamelessly stolen from

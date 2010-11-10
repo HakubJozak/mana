@@ -39,6 +39,8 @@ Card.prototype.initDOM = function() {
       snap: true,
       start: toggleDragged,
       stop: toggleDragged,
+      scroll: false,
+      containment: '#desk',
       snapMode: 'inner',
       stack: '#table > *',
       zIndex: 9999

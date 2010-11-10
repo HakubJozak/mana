@@ -1,4 +1,5 @@
-#graveyard, #exile, #deck {
+/* #graveyard, #exile, #deck { */
+.dropbox, #deck {
     left: 10px;
     margin: 5px;
     padding: 5px;
@@ -23,8 +24,8 @@
 }
 
 .tapped { 
-    rotation: 90deg;
-    -webkit-transform: rotate(90deg);
+  rotation: 90deg;
+  -webkit-transform: rotate(90deg);
 }
 
 .rounded-borders {
