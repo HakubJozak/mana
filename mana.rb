@@ -6,13 +6,35 @@ require 'bundler'
 Bundler.require
 
 require 'cramp/controller'
-
+require 'erb'
+require 'sinatra/base'
 require 'app/controllers/commands_controller'
-require './config/routes'
+# require './config/routes'
 
 Cramp::Controller::Websocket.backend = :thin
 
 # Thin::Logging.trace = true
 Thin::Logging.debug = true
 
-Rack::Handler::Thin.run(app_routes, :Port => 3000)
+class Mana < Sinatra::Base
+  set :sessions, true
+  set :public, File.dirname(__FILE__) + '/public'
+
+  get '/' do
+    haml :index
+  end
+end
+
+
+routes =  Rack::Builder.new do
+  use Rack::Session::Cookie
+  
+  # routes = Usher::Interface.for(:rack) do
+  #   get('/connect').to(CommandsController)
+  # end
+
+  run Rack::Cascade.new( [ Mana ] )
+end
+
+
+Rack::Handler::Thin.run(routes, :Port => 3000)
