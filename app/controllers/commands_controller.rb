@@ -10,6 +10,15 @@ class Command
   end
 end
 
+class StaticController < Sinatra::Base
+  enable :static, :show_exceptions
+
+  get '/' do
+    erb :index
+  end
+  
+end
+
 
 class CommandsController < Cramp::Controller::Websocket
   periodic_timer :send_commands, :every => 2
