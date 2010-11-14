@@ -12,6 +12,7 @@
 
 
 .card  { 
+ position: absolute;
 }
 
 .card.dragged {

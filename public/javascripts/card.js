@@ -1,8 +1,10 @@
 Card = function(image) {
-    this.element = image;
-    this.picture = image.attr('src');
-    console.log(this.picture);
-    this.initDOM();
+  this.covered = false;
+  this.tappable = true;
+  this.element = image;
+  this.picture = image.attr('src');
+  console.log(this.picture);
+  this.initDOM();
 }
 
 Card.initialize = function() {
@@ -11,23 +13,28 @@ Card.initialize = function() {
     });
 }
 
-Card.prototype.tap = function() {
-    this.element.toggleClass('tapped');
+Card.prototype.container = function() {
+  return Utils.getObjectFromDom(this.element.parent());
 }
 
-Card.prototype.turn = function() {
-    
-    if (this.isCovered()) {
-        this.element.removeClass('covered')
-                .attr('src', this.picture);
-    } else {
-        this.element.addClass('covered')
-                .attr('src', "/images/back-side.jpg");
-    }
+Card.prototype.tap = function() {
+  if (this.container().tappingAllowed()) {
+    this.element.toggleClass('tapped');
+  }
+}
+
+Card.prototype.turnOver = function(cover) {
+  this.covered = (cover != null) ? cover : !this.covered;
+  this.element.attr('src', this.covered ?  "/images/back-side.jpg" : this.picture);
 }
 
 Card.prototype.isCovered = function() {
-    return this.element.hasClass('covered');
+  return this.element.hasClass('covered');
+}
+
+Card.prototype.dropped = function() {
+  this.tappable = false;
+  this.element.removeClass('tapped');  
 }
 
 
@@ -40,6 +47,7 @@ Card.prototype.initDOM = function() {
       start: toggleDragged,
       stop: toggleDragged,
       scroll: false,
+      revert: 'invalid',
       containment: '#desk',
       snapMode: 'inner',
       stack: '#table > *',
@@ -47,6 +55,6 @@ Card.prototype.initDOM = function() {
     });
 
     this.element.click(_('tap'));
-    this.element.rightClick(_('turn'));
+    this.element.rightClick(_('turnOver'));
 }
 

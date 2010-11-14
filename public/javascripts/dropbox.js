@@ -10,7 +10,12 @@ Dropbox.initialize = function() {
     });
 }
 
-Dropbox.prototype.dropped = function(card) {
+Dropbox.prototype.tappingAllowed = function() {
+  return false;
+}
+
+Dropbox.prototype.dropped = function(card,event,ui) {
+  card.dropped();
   e = card.element;
   e.detach();
   e.appendTo(this.element);
@@ -24,7 +29,7 @@ Dropbox.prototype.initDOM = function() {
       drop: function(event,ui) {
           box = Utils.getObjectFromDom(this);
           card = Utils.getObjectFromDom(ui.draggable);
-          box.dropped(card);
+          box.dropped(card,event,ui);
       }
     });
 }
