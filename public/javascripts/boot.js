@@ -6,6 +6,14 @@ $(document).ready(function() {
   Card.initialize();
   Dropbox.initialize();
 
+  // $('#hand').sortable({
+  //   placeholder: 'card-size',
+  //   revert: true,
+  //   zIndex: 100001
+  // });
+
+  $('#hand').disableSelection();
+
     //game = new Game('ws://connect');
     //game.connect();
       
@@ -28,13 +36,6 @@ Boot.preventDefaultEvents = function() {
     $(labels).mousedown(function(event) {
         event.preventDefault();
     });
-}
-
-Boot.zoomInit = function() {
-  $('#battlefield').mousewheel(function(event, delta) {
-    //$(this).toggleClass('small');
-    console.log(delta);
-  });
 }
 
 

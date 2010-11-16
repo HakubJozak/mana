@@ -27,9 +27,9 @@ Dropbox.prototype.initDOM = function() {
     this.element.droppable({
       hoverClass: 'selected',
       drop: function(event,ui) {
-          box = Utils.getObjectFromDom(this);
-          card = Utils.getObjectFromDom(ui.draggable);
-          box.dropped(card,event,ui);
+        box = Utils.getObjectFromDom(this);
+        card = Utils.getObjectFromDom(ui.draggable);
+        box.dropped(card,event,ui);
       }
     });
 }
