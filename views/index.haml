@@ -31,22 +31,16 @@
       #side-panel
         #graveyard.dropbox.area Graveyard
         #exile.dropbox.area Exile
-        #deck.dropbox.area Deck
+
+        #deck.area
+          %img.card-size{ :src => "images/back.jpg"}
 
       #battlefield.area
         %img.card{ :src => "images/cards/1.jpg"}
         %img.card{ :src => "images/cards/2.jpg"}
         %img.card{ :src => "images/cards/3.jpg"}
 
-      %ul#hand
-        %li
-          %img.card{ :src => "images/cards/4.jpg"}
-        %li
-          %img.card{ :src => "images/cards/5.jpg"}
-        %li
-          %img.card{ :src => "images/cards/1.jpg"}
-        %li
-          %img.card{ :src => "images/cards/3.jpg"}
+        #hand
 
   #footnote{:style => "display: none"}
     %p

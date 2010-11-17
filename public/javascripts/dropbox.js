@@ -25,7 +25,7 @@ Dropbox.prototype.dropped = function(card,event,ui) {
 Dropbox.prototype.initDOM = function() {
 
     this.element.droppable({
-      hoverClass: 'selected',
+      hoverClass: 'card-over',
       drop: function(event,ui) {
         box = Utils.getObjectFromDom(this);
         card = Utils.getObjectFromDom(ui.draggable);
