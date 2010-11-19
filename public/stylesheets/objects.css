@@ -51,10 +51,14 @@ body {
 
 #graveyard.card-over,
 #exile.card-over,
-#hand.card-over,
-#battlefield.card-over
+#hand.card-over
 {
-    border-color: red;
+  background: rgba(48, 0, 0, 0.5); 
+  border-color: #9d7c41;
+}
+
+#battlefield.card-over {
+  border-style: dotted;
 }
 
 #library {

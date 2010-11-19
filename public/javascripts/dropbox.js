@@ -19,7 +19,12 @@ Dropbox.prototype.dropped = function(card,event,ui) {
   e = card.element;
   e.detach();
   e.appendTo(this.element);
-  e.offset( this.element.offset() );
+
+  position = this.element.offset()
+  position.top += 5;
+  position.left += 5;
+
+  e.offset( position );
 }
 
 Dropbox.prototype.initDOM = function() {

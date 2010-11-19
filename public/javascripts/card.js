@@ -2,7 +2,7 @@
 
 Card = function(image) {
   if (typeof(image) == 'string') {
-    image = $('<img src="' + image + '" class="card-size" />');
+    image = $('<img src="' + image + '" class="card card-size" />');
   }
 
   this.covered = false;
@@ -75,7 +75,7 @@ Card.prototype.initDOM = function() {
       revert: 'invalid',
       containment: '#desk',
       snapMode: 'inner',
-      stack: '#table > *',
+      stack: '.card',
       zIndex: 9999
     });
 
