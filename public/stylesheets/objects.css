@@ -4,6 +4,11 @@ body {
   background: #61461C url('../images/brown-texture.png');
 }
 
+#hand-toggle {
+ position: absolute;
+ bottom: 10px;
+ left: 20px;
+}
 
 #desk {
   position: absolute;
@@ -52,9 +57,13 @@ body {
     border-color: red;
 }
 
+#library {
+  position: absolute;
+  left: 10px;
+}
 
-/* #graveyard, #exile, #deck { */
-.dropbox, #deck {
+/* #graveyard, #exile, #library { */
+.dropbox {
     left: 10px;
     margin: 5px;
     padding: 5px;
@@ -63,7 +72,7 @@ body {
 
 #graveyard { top: 10px; }
 #exile { top: 200px; }
-#deck { top: 390px; }
+#library { top: 390px; }
 
 #hand {
   border: 1px dotted black;
@@ -78,17 +87,46 @@ body {
 }
 
 
+a.button:hover {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#C8B472), to(#693E1B));
+  border-top-color: white;
+  color: white;
+}
+
+.button {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.746094) 0px 0px 3px;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#9D7C41), to(#693E1B));
+  border: 1px solid #C8B472;
+  border-bottom-left-radius: 4px 4px;
+  border-bottom-right-radius: 4px 4px;
+  border-top-color: #C8B472;
+  border-top-left-radius: 4px 4px;
+  border-top-right-radius: 4px 4px;
+  color: #FAFEB2;
+  padding: 2px 4px 2px 2px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: black 1px 1px 1px;
+
+}
+
+
 .card  { 
- position: absolute;
+  position: absolute;
 }
 
 .card.dragged {
-    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 10px 10px 0px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 10px 10px 0px;
 }
 
 .card-size {
   height: 170px;
   width: 120px;
+}
+
+.hidden {
+  position: absolute;
+  display: none;
 }
 
 .tapped { 

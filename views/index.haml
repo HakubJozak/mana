@@ -2,7 +2,7 @@
 %html{:lang => "en"}
   %head
     %title Mana
-    %link{:href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/base/jquery.ui.all.css", :rel => "stylesheet"}/
+    -# %link{:href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/base/jquery.ui.all.css", :rel => "stylesheet"}/
     %link{:href => "stylesheets/objects.css", :rel => "stylesheet"}/
 
     -# %script{:src => "https://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js", :type => "text/javascript"}
@@ -22,7 +22,7 @@
     %script{:src => "javascripts/dropbox.js", :type => "text/javascript"}
     %script{:src => "javascripts/battlefield.js", :type => "text/javascript"}
     %script{:src => "javascripts/hand.js", :type => "text/javascript"}
-    %script{:src => "javascripts/deck.js", :type => "text/javascript"}
+    %script{:src => "javascripts/library.js", :type => "text/javascript"}
     -# %script{:src => "javascripts/hand.js", :type => "text/javascript"}
     %script{:src => "javascripts/boot.js", :type => "text/javascript"}
     %script{:src => "javascripts/vendor/mousehold.js", :type => "text/javascript"}
@@ -32,14 +32,12 @@
         #graveyard.dropbox.area Graveyard
         #exile.dropbox.area Exile
 
-        #deck.area
+        #library
           %img.card-size{ :src => "images/back.jpg"}
 
-      #battlefield.area
-        %img.card{ :src => "images/cards/1.jpg"}
-        %img.card{ :src => "images/cards/2.jpg"}
-        %img.card{ :src => "images/cards/3.jpg"}
+        %a#hand-toggle.button Hand Toggle
 
+      #battlefield.area
         #hand
 
   #footnote{:style => "display: none"}

@@ -1,11 +1,17 @@
+// -*- mode: javascript; tab-width: 2; -*-
+
 Card = function(image) {
+  if (typeof(image) == 'string') {
+    image = $('<img src="' + image + '" class="card-size" />');
+  }
+
   this.covered = false;
   this.tappable = true;
   this.element = image;
   this.picture = image.attr('src');
-  console.log(this.picture);
   this.initDOM();
 }
+
 
 Card.initialize = function() {
     $('.card').each(function(i) {
@@ -25,7 +31,7 @@ Card.prototype.tap = function() {
 
 Card.prototype.turnOver = function(cover) {
   this.covered = (cover != null) ? cover : !this.covered;
-  this.element.attr('src', this.covered ?  "/images/back-side.jpg" : this.picture);
+  this.element.attr('src', this.covered ?  "/images/back.jpg" : this.picture);
 }
 
 Card.prototype.isCovered = function() {
@@ -35,6 +41,25 @@ Card.prototype.isCovered = function() {
 Card.prototype.dropped = function() {
   this.tappable = false;
   this.element.removeClass('tapped');  
+}
+
+Card.prototype.showDetail = function() {
+   detail = this.element.clone();
+    $('body').append(detail);
+    
+    position = this.element.offset();
+    position.left -= 60;
+    position.top -= 85;
+
+    detail.removeClass('card-size')
+        .css('z-index',10000)
+        .css('height','340px')
+        .css('width','240px')
+        .offset(position);
+
+    detail.click(function() {
+        $(this).remove();
+    });
 }
 
 
@@ -54,7 +79,7 @@ Card.prototype.initDOM = function() {
       zIndex: 9999
     });
 
-    this.element.click(_('tap'));
-    this.element.rightClick(_('turnOver'));
+  this.element.click(_('showDetail'));
+  this.element.rightClick(_('tap'));
 }
 
