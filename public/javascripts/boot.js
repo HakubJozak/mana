@@ -1,31 +1,28 @@
+var game;
+
 $(document).ready(function() {
 
   Boot.preventDefaultEvents();
   Boot.specialEffects();
 
-  Card.initialize();
   Dropbox.initialize();
 
   Object.prototype.object = function() {
     return Utils.getObjectFromDom(this);
   }
 
-  $('#hand').disableSelection();
-
-    //game = new Game('ws://connect');
-    //game.connect();
-      
+  game = new Game('ws://localhost:8080');
+  game.connect();
   // $('img.card').mousewheel(function(event) {
   //     event.preventDefault();
   // });
-
 });
 
 Boot = function() {};
 
 Boot.preventDefaultEvents = function() {
 
-    labels = 'img, #deck';
+    labels = 'img, #library';
 
     $(labels).click(function(event) {
         event.preventDefault();

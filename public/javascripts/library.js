@@ -5,18 +5,18 @@ $(document).ready(function() {
   })
 
   var library = new Library();
-
+  library.drawCard();
+  library.drawCard();
 });
 
 
 Library = function() {
-  this.cards_urls = [ 'http://localhost:3000/images/cards/1.jpg',
-                      'http://localhost:3000/images/cards/2.jpg',
-                      'http://localhost:3000/images/cards/4.jpg',
-                      'http://localhost:3000/images/cards/5.jpg',
-                      'http://localhost:3000/images/cards/6.jpg',
-                      'http://localhost:3000/images/cards/3.jpg'  ];
-
+  this.cards_urls = [ 
+    { url: 'http://localhost:3000/images/cards/1.jpg', id: 42 },
+    { url: 'http://localhost:3000/images/cards/2.jpg', id: 43 },
+    { url: 'http://localhost:3000/images/cards/3.jpg', id: 44 },
+    { url: 'http://localhost:3000/images/cards/4.jpg', id: 45 }
+  ];
 }
 
 Library.prototype.drawCard = function() {
@@ -24,7 +24,10 @@ Library.prototype.drawCard = function() {
 
   if (this.cards_urls.length > 0) {
     hand.showHand();
-    card = new Card(this.cards_urls.pop());
+
+    params = this.cards_urls.pop()
+    card = new Card( params.url, params.id);
+
     hand.addCard(card);
   } else {
     // TODO: make it better

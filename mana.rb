@@ -9,6 +9,7 @@ require 'cramp/controller'
 require 'erb'
 require 'sinatra/base'
 require 'app/controllers/commands_controller'
+require 'app/controllers/static_controller'
 # require './config/routes'
 
 Cramp::Controller::Websocket.backend = :thin
@@ -16,29 +17,16 @@ Cramp::Controller::Websocket.backend = :thin
 # Thin::Logging.trace = true
 Thin::Logging.debug = true
 
-class Mana < Sinatra::Base
-  set :sessions, true
-  set :public, File.dirname(__FILE__) + '/public'
 
-  get '/:name.css' do
-    scss "#{params[:name]}".to_sym
-  end
-  
-  get '/' do
-    haml :index
-  end
-end
-
-
-routes =  Rack::Builder.new do
+rack_app =  Rack::Builder.new do
   use Rack::Session::Cookie
   
-  # routes = Usher::Interface.for(:rack) do
-  #   get('/connect').to(CommandsController)
-  # end
+  command_routes = Usher::Interface.for(:rack) do
+    get('/connect').to(Mana::CommandsController)
+  end
 
-  run Rack::Cascade.new( [ Mana ] )
+  run Rack::Cascade.new( [ Mana::StaticController ] )
 end
 
 
-Rack::Handler::Thin.run(routes, :Port => 3000)
+Rack::Handler::Thin.run(rack_app, :Port => 3000)

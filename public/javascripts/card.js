@@ -1,22 +1,14 @@
 // -*- mode: javascript; tab-width: 2; -*-
 
-Card = function(image) {
-  if (typeof(image) == 'string') {
-    image = $('<img src="' + image + '" class="card card-size" />');
-  }
+Card = function(image_url, id) {
+  image = $('<img src="' + image_url + '" class="card card-size" id=card-"' + id + '" />');
 
+  this.id = id;
   this.covered = false;
   this.tappable = true;
   this.element = image;
   this.picture = image.attr('src');
   this.initDOM();
-}
-
-
-Card.initialize = function() {
-    $('.card').each(function(i) {
-        card = new Card($(this));
-    });
 }
 
 Card.prototype.container = function() {
@@ -26,6 +18,7 @@ Card.prototype.container = function() {
 Card.prototype.tap = function(event) {
   if (this.container().tappingAllowed()) {
     this.element.toggleClass('tapped');
+      game.tapped(this);
   }
 }
 

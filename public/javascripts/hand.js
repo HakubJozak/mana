@@ -1,6 +1,8 @@
 $(document).ready(function() {
   var hand = new Dropbox($($('#hand')[0]));
 
+  hand.element.disableSelection();
+
   hand.element.droppable( "option", "greedy", true );
 
     hand.element.draggable({ axis: 'y',
@@ -53,5 +55,4 @@ $(document).ready(function() {
     this.addCard(card);
   }
 
-  hand.fixPositions();
 });

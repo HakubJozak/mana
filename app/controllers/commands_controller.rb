@@ -10,48 +10,40 @@ class Command
   end
 end
 
-class StaticController < Sinatra::Base
-  enable :static, :show_exceptions
+module Mana
+  class CommandsController < Cramp::Controller::Websocket
+    periodic_timer :send_commands, :every => 2
+    on_data :receive_command
+    on_start :go
 
-  get '/' do
-    erb :index
-  end
-  
-end
-
-
-class CommandsController < Cramp::Controller::Websocket
-  periodic_timer :send_commands, :every => 2
-  on_data :receive_command
-  on_start :go
-
-  @@storage = []
-  
-  def go
-    puts 'connection detected'
-  end
-  
-  def receive_command(data)
-    params = Rack::Utils.parse_query(data)
-    store(Command.new(params))
-    render 'Prdel'
-  end
-
-  def send_commands
-    @@storage.each do |command|
-      render command.to_json
-    end
-  end
-
-  def respond_with
-    [200, {'Content-Type' => 'application/json'}]
-  end
-
-  private
-
-  def store(number)
-    puts number
-    @@storage << Command.new(params)
-  end
+    @@storage = []
     
+    def go
+      puts 'connection detected...'
+    end
+    
+    def receive_command(data)
+      params = Rack::Utils.parse_query(data)
+      # store(Command.new(params))
+      render 'Prdel'
+    end
+
+    def send_commands
+      @@storage.each do |command|
+        render command.to_json
+      end
+    end
+
+    def respond_with
+      [200, {'Content-Type' => 'application/json'}]
+    end
+
+    private
+
+    def store(number)
+      puts number
+      @@storage << Command.new(params)
+    end
+    
+  end
 end

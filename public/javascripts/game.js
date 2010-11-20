@@ -1,32 +1,58 @@
-function Game(url, infobox) {
+function Game(url) {
     this.url = url;
     this.connected = false;
-    this.infobox = $('#infobox');
+    this.infobox = $('#infobox label:first');
+}
+
+Game.prototype.onopen = function() {
+  this.game.message('Connected!');
+}
+
+Game.prototype.onmessage = function(msg) {
+  console.info(msg);
+
+    try {  
+      command = JSON.parse(msg.data);
+
+  switch (command.action) {
+    case 'TAP':
+        this.game.message('Player X tapped ' + command.card_id);
+        break;
+  
+    case 'MESSAGE':
+        this.game.message(command.text);
+        break;
+    }
+  } catch (e) {
+     this.game.message('Malformated command received from the server.');
+  }
+}
+
+Game.prototype.onerror = function() {
+  alert('Error!');
+}
+
+Game.prototype.onclose = function() {
+  this.game.message('Connection closed.');
 }
 
 Game.prototype.connect = function() {
   this.socket = new WebSocket(this.url);
-  
-  this.socket.onopen = function() {
-    this.message('Online');
-    this.connected = true;
-  }
+  this.socket.onopen = this.onopen;
+  this.socket.onmessage = this.onmessage;
+  this.socket.onerror = this.onerror;
+  this.socket.onclose = this.onclose;
+  this.socket.game = this;
+};
 
-  this.socket.onmessage = function(e) {
-    // TODO: accept commands and messages
-  };
-
-  this.socket.onerror = function() {
-    this.message('Error!');
-  };
-  
-  this.socket.onclose = function() {
-    this.message('Disconnected');
-    this.connected = false;
-  };
+Game.prototype.tapped = function(card) {
+  command = { action : 'TAP', card_id : card.id };
+  this.socket.send(JSON.stringify(command));
 };
 
 
+
+/*
 Game.prototype.move_card = function(card,x,y) {
   this.socket.send({
     'command' : 'MOVE',
@@ -35,19 +61,9 @@ Game.prototype.move_card = function(card,x,y) {
     'y' : y
   });
 };
+*/
 
-Game.prototype.tap = function(card) {
-  this.socket.send({
-    'command' : 'TAP',
-    'card' : card
-  });
-};
 
 Game.prototype.message = function(msg) {
-    this.infobox.replaceWith('<div id="infobox">' + msg + '</div>');
+  this.infobox.text(msg);
 }
-
-
-
-
-

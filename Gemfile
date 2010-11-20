@@ -10,6 +10,14 @@ gem 'sinatra'
 gem 'activesupport'
 gem 'usher'
 
+gem 'em-websocket'
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano_colors'
+end
+
+
 group :test do
   gem 'jasmine'
   gem 'shoulda'
