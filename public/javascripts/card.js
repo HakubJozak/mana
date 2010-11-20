@@ -78,6 +78,7 @@ Card.prototype.initDOM = function() {
   toggleDragged = function() { $(this).toggleClass('dragged'); }
 
     this.element.draggable( { 
+      scope: 'cards',
       snap: true,
       start: toggleDragged,
       stop: toggleDragged,
