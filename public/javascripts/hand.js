@@ -1,10 +1,30 @@
 $(document).ready(function() {
   var hand = new Dropbox($($('#hand')[0]));
+
   hand.element.droppable( "option", "greedy", true );
 
-  $('#hand-toggle').click(function() {
-    $('#hand').fadeToggle();
+    hand.element.draggable({ axis: 'y',
+                             containment: '#battlefield'
+                           });
+
+
+  $('#battlefield').click(function(event) {
+      $('#hand').object().toggleShow(event);
+      event.stopPropagation();
   });
+
+  hand.toggleShow = function() {
+    h = this.element;
+
+    if (h.is(':visible')) {
+      h.fadeOut(400, 'swing', function() {
+        $(this).detach().appendTo('#coffin');
+      });
+    } else {
+      h.detach().appendTo('#battlefield');
+      h.fadeIn(400, 'swing');
+    }
+  }
 
   hand.addCard = function(card) {
     card.element.appendTo(this.element);
@@ -12,7 +32,9 @@ $(document).ready(function() {
   }
 
   hand.showHand = function(card) {
-    hand.element.fadeIn();
+    if (hand.element.is(':hidden')) {
+        hand.toggleShow();
+    }
   }
 
     hand.fixPositions = function() {
@@ -29,4 +51,7 @@ $(document).ready(function() {
   hand.dropped = function(card, event, ui) {
     card.element.detach();
     this.addCard(card);
-  }});
+  }
+
+  hand.fixPositions();
+});

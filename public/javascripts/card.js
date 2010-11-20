@@ -23,7 +23,7 @@ Card.prototype.container = function() {
   return Utils.getObjectFromDom(this.element.parent());
 }
 
-Card.prototype.tap = function() {
+Card.prototype.tap = function(event) {
   if (this.container().tappingAllowed()) {
     this.element.toggleClass('tapped');
   }
@@ -43,26 +43,35 @@ Card.prototype.dropped = function() {
   this.element.removeClass('tapped');  
 }
 
-Card.prototype.showDetail = function() {
+Card.prototype.showDetail = function(event) {
    detail = this.element.clone();
     $('body').append(detail);
     
     detail.css('z-index',10000)
         .offset(this.element.offset())
-        .css('z-index',10000)
         .removeClass('card')
-        .animate({
-             left: '-=60',
-             top: '-=85',
-             height: '+=170',
-             width: '+=120'
-          }, 200);
+        .animate(Card.detailAnimation('+'), 200);
 
     detail.click(function() {
-        $(this).remove();
+        $(this).unbind('click')
+               .animate(Card.detailAnimation('-'), 200, function() {
+                 $(this).remove();
+               });
     });
+
+    event.stopPropagation();
 }
 
+Card.detailAnimation = function(resize) {
+    reposition = (resize == '+') ? '-' : '+';
+
+    return {
+             left: reposition + '=60',
+             top: reposition + '=85',
+             height: resize + '=170',
+             width: resize + '=120'
+          }
+}
 
 Card.prototype.initDOM = function() {
   Utils.setObjectToDom(this.element, this);

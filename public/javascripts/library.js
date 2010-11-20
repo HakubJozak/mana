@@ -23,8 +23,8 @@ Library.prototype.drawCard = function() {
   hand = Utils.getObjectFromDom($('#hand'));
 
   if (this.cards_urls.length > 0) {
-    card = new Card(this.cards_urls.pop());
     hand.showHand();
+    card = new Card(this.cards_urls.pop());
     hand.addCard(card);
   } else {
     // TODO: make it better

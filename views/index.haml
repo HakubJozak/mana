@@ -48,7 +48,11 @@
         %a#hand-toggle.button{ :href => "#" } Hand Toggle
 
       #battlefield.area
-        #hand
+        #hand.area
+          %img.card{ :src => "http://localhost:3000/images/cards/1.jpg" }
+          %img.card{ :src => "http://localhost:3000/images/cards/2.jpg" }
+          %img.card{ :src => "http://localhost:3000/images/cards/3.jpg" }
+
 
   #footnote{:style => "display: none"}
     %p
@@ -56,3 +60,5 @@
       = succeed "." do
         %a{:href => "http://tappedout.net/"} Tapped Out
       Sorry guys, it was just for the sake of quick development. If it is a problem let me know and I will replace it right away.
+
+  #coffin{:style => "display: none"}

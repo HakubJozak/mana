@@ -1,8 +1,8 @@
 Utils = function() {}
 
 function _(method) {
-    return function() {
-        return eval("$(this).data('game-object')." + method + '()');
+    return function(event) {
+        return eval("$(this).data('game-object')." + method + '(event)');
     }
 }
 

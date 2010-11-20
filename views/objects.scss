@@ -51,11 +51,14 @@ body {
   /*  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(22, 0, 0, 0.246094)), to(rgba(48, 0, 0, 0.496094))); */
   -webkit-box-shadow: rgba(0, 0, 0, 0.746) 0px 0px 3px; }
 
-#graveyard.card-over, #exile.card-over, #hand.card-over {
+#graveyard.card-over, #exile.card-over {
   background: rgba(48, 0, 0, 0.5);
   border-color: #9d7c41; }
 
-#battlefield.card-over {
+#battlefield.card-over,
+#hand.card-over
+{
+
   border-style: dotted; 
 }
 
@@ -80,15 +83,17 @@ body {
 
 
 #hand {
-  border: 1px dotted black;
   position: absolute;
-  bottom: 20px;
+
+  border: 1px dotted black;
+  bottom: 70px;
   height: 170px;
   left: 20px;
   right: 20px;
   padding: 15px;
   background-color: rgba(0, 0, 0, 0.2);
-  z-index: 2000; }
+  z-index: 2000; 
+}
 
 a.button:hover {
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c8b472), to(#693e1b));
@@ -99,11 +104,13 @@ a.button:hover {
   -webkit-box-shadow: rgba(0, 0, 0, 0.746) 0px 0px 3px;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#9d7c41), to(#693e1b));
   border: 1px solid #C8B472;
+
   border-bottom-left-radius: 4px 4px;
   border-bottom-right-radius: 4px 4px;
-  border-top-color: #C8B472;
   border-top-left-radius: 4px 4px;
   border-top-right-radius: 4px 4px;
+
+  border-top-color: #C8B472;
   color: #FAFEB2;
   padding: 2px 4px 2px 2px;
   text-align: center;
@@ -135,10 +142,6 @@ a.button:hover {
   width: 240px;
   z-index: 10000;
 }
-
-.hidden {
-  position: absolute;
-  display: none; }
 
 .tapped {
   rotation: 90deg;

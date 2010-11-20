@@ -6,11 +6,9 @@ $(document).ready(function() {
   Card.initialize();
   Dropbox.initialize();
 
-  // $('#hand').sortable({
-  //   placeholder: 'card-size',
-  //   revert: true,
-  //   zIndex: 100001
-  // });
+  Object.prototype.object = function() {
+    return Utils.getObjectFromDom(this);
+  }
 
   $('#hand').disableSelection();
 
