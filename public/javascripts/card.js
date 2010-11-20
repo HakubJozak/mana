@@ -47,15 +47,16 @@ Card.prototype.showDetail = function() {
    detail = this.element.clone();
     $('body').append(detail);
     
-    position = this.element.offset();
-    position.left -= 60;
-    position.top -= 85;
-
-    detail.removeClass('card-size')
+    detail.css('z-index',10000)
+        .offset(this.element.offset())
         .css('z-index',10000)
-        .css('height','340px')
-        .css('width','240px')
-        .offset(position);
+        .removeClass('card')
+        .animate({
+             left: '-=60',
+             top: '-=85',
+             height: '+=170',
+             width: '+=120'
+          }, 200);
 
     detail.click(function() {
         $(this).remove();

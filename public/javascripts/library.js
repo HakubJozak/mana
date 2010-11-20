@@ -12,6 +12,9 @@ $(document).ready(function() {
 Library = function() {
   this.cards_urls = [ 'http://localhost:3000/images/cards/1.jpg',
                       'http://localhost:3000/images/cards/2.jpg',
+                      'http://localhost:3000/images/cards/4.jpg',
+                      'http://localhost:3000/images/cards/5.jpg',
+                      'http://localhost:3000/images/cards/6.jpg',
                       'http://localhost:3000/images/cards/3.jpg'  ];
 
 }

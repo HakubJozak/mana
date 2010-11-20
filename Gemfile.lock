@@ -44,9 +44,11 @@ GEM
     rspec-mocks (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
+    sass (3.1.0.alpha.34)
     selenium-client (1.2.18)
     selenium-rc (2.2.4)
       selenium-client (>= 1.2.18)
+    shoulda (2.11.3)
     sinatra (1.1.0)
       rack (~> 1.1)
       tilt (~> 1.1)
@@ -67,6 +69,8 @@ DEPENDENCIES
   haml
   jasmine
   mysql
+  sass
+  shoulda
   sinatra
   thin
   usher

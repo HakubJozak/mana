@@ -19,7 +19,7 @@ $(document).ready(function() {
       $('#hand').children().each(function(i) {
           position = $('#hand').offset();
           position.top += 20;
-          position.left += 20 + 80 * i;
+          position.left += 20 + 100 * i;
           $(this).css('position', 'absolute');
           $(this).offset(position);
           $(this).css('z-index', $(this).prev().css('z-index') + 1);
