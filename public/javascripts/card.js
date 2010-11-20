@@ -1,7 +1,7 @@
 // -*- mode: javascript; tab-width: 2; -*-
 
 Card = function(image_url, id) {
-  image = $('<img src="' + image_url + '" class="card card-size" id=card-"' + id + '" />');
+  image = $('<img src="' + image_url + '" class="card card-size" id="card-' + id + '" />');
 
   this.id = id;
   this.covered = false;
@@ -11,16 +11,32 @@ Card = function(image_url, id) {
   this.initDOM();
 }
 
+
+Card.find = function(id) {
+  return $('#card-' + id).object();
+}
+
+
 Card.prototype.container = function() {
   return Utils.getObjectFromDom(this.element.parent());
 }
 
-Card.prototype.tap = function(event) {
+Card.prototype.toggleTapped = function(event) {
   if (this.container().tappingAllowed()) {
-    this.element.toggleClass('tapped');
-      game.tapped(this);
+    state = !this.element.hasClass('tapped')
+    this.tap(state);
+    game.tapped(this, state);
   }
 }
+
+Card.prototype.tap = function(tapped) {
+    if (tapped) {
+      this.element.addClass('tapped');
+    } else {
+      this.element.removeClass('tapped');
+    }
+}
+
 
 Card.prototype.turnOver = function(cover) {
   this.covered = (cover != null) ? cover : !this.covered;
@@ -84,6 +100,6 @@ Card.prototype.initDOM = function() {
     });
 
   this.element.click(_('showDetail'));
-  this.element.rightClick(_('tap'));
+  this.element.rightClick(_('toggleTapped'));
 }
 

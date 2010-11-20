@@ -16,15 +16,17 @@ Game.prototype.onmessage = function(msg) {
 
   switch (command.action) {
     case 'TAP':
-        this.game.message('Player X tapped ' + command.card_id);
-        break;
+      this.game.message('Player X tapped ' + command.card_id + command.state);
+      Card.find(command.card_id).tap(command.state);
+      break;
   
     case 'MESSAGE':
-        this.game.message(command.text);
-        break;
+      this.game.message(command.text);
+      break;
     }
   } catch (e) {
-     this.game.message('Malformated command received from the server.');
+     console.info(e);
+     this.game.message('Error:' + e);
   }
 }
 
@@ -45,8 +47,13 @@ Game.prototype.connect = function() {
   this.socket.game = this;
 };
 
-Game.prototype.tapped = function(card) {
-  command = { action : 'TAP', card_id : card.id };
+Game.prototype.tapped = function(card,state) {
+  command = { 
+      action : 'TAP', 
+      card_id : card.id,
+      state: state
+  };
+
   this.socket.send(JSON.stringify(command));
 };
 
