@@ -5,16 +5,10 @@ require 'bundler'
 
 Bundler.require
 
-require 'cramp/controller'
-require 'erb'
 require 'sinatra/base'
-require 'app/controllers/commands_controller'
 require 'app/controllers/static_controller'
-# require './config/routes'
 
-Cramp::Controller::Websocket.backend = :thin
 
-# Thin::Logging.trace = true
 Thin::Logging.debug = true
 
 
