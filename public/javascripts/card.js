@@ -21,11 +21,15 @@ Card.prototype.container = function() {
   return Utils.getObjectFromDom(this.element.parent());
 }
 
+Card.prototype.isTapped = function() {
+  return this.element.hasClass('tapped');
+}
+
 Card.prototype.toggleTapped = function(event) {
   if (this.container().tappingAllowed()) {
-    state = !this.element.hasClass('tapped')
+    state = !this.isTapped();
     this.tap(state);
-    game.tapped(this, state);
+    game.tapped(this);
   }
 }
 
@@ -37,6 +41,9 @@ Card.prototype.tap = function(tapped) {
     }
 }
 
+Card.prototype.move = function(position) {
+  this.element.offset(position);
+}
 
 Card.prototype.turnOver = function(cover) {
   this.covered = (cover != null) ? cover : !this.covered;

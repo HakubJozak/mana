@@ -10,6 +10,7 @@ $(document).ready(function() {
     c.detach();
     c.appendTo(this.element);
     c.offset( ui.offset );
+    game.moved(card);
   }
 
 

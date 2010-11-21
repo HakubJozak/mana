@@ -19,9 +19,17 @@ Game.prototype.onmessage = function(msg) {
       this.game.message('Player X tapped ' + command.card_id + command.state);
       Card.find(command.card_id).tap(command.state);
       break;
+
+    case 'MOVE':
+      Card.find(command.card_id).move(command.position);
+      break;
   
     case 'MESSAGE':
       this.game.message(command.text);
+      break;
+
+    default:
+      this.game.message('Unknown command');
       break;
     }
   } catch (e) {
@@ -47,29 +55,26 @@ Game.prototype.connect = function() {
   this.socket.game = this;
 };
 
-Game.prototype.tapped = function(card,state) {
+Game.prototype.tapped = function(card) {
   command = { 
       action : 'TAP', 
       card_id : card.id,
-      state: state
+      state: card.isTapped()
   };
 
   this.socket.send(JSON.stringify(command));
 };
 
 
+Game.prototype.moved = function(card) {
+  command = { 
+      action : 'MOVE', 
+      card_id : card.id,
+      position: card.element.offset()
+  };
 
-/*
-Game.prototype.move_card = function(card,x,y) {
-  this.socket.send({
-    'command' : 'MOVE',
-    'card' : card,
-    'x' : x,
-    'y' : y
-  });
+  this.socket.send(JSON.stringify(command));
 };
-*/
-
 
 Game.prototype.message = function(msg) {
   this.infobox.text(msg);
