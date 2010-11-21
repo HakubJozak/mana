@@ -2,10 +2,13 @@
 
 require 'rubygems'
 require 'bundler'
-
 Bundler.require
+require 'app/commander'
 
 EventMachine.run do
+
+  include Mana::Commander
+  
   @commands = EM::Channel.new
 
   def command(action, params)

@@ -20,11 +20,6 @@ Thin::Logging.debug = true
 
 rack_app =  Rack::Builder.new do
   use Rack::Session::Cookie
-  
-  command_routes = Usher::Interface.for(:rack) do
-    get('/connect').to(Mana::CommandsController)
-  end
-
   run Rack::Cascade.new( [ Mana::StaticController ] )
 end
 
