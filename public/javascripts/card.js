@@ -1,7 +1,7 @@
 // -*- mode: javascript; tab-width: 2; -*-
 
 Card = function(image_url, id) {
-  image = $('<img src="' + image_url + '" class="card card-size" id="card-' + id + '" />');
+  var image = $('<img src="' + image_url + '" class="card card-size" id="card-' + id + '" />');
 
   this.id = id;
   this.covered = false;
@@ -27,9 +27,9 @@ Card.prototype.isTapped = function() {
 
 Card.prototype.toggleTapped = function(event) {
   if (this.container().tappingAllowed()) {
-    state = !this.isTapped();
+    var state = !this.isTapped();
     this.tap(state);
-    game.tapped(this);
+    game.sendCommand(new TapCommand(this));
   }
 }
 
@@ -60,7 +60,8 @@ Card.prototype.dropped = function() {
 }
 
 Card.prototype.showDetail = function(event) {
-   detail = this.element.clone();
+    var detail = this.element.clone();
+
     $('body').append(detail);
     
     detail.css('z-index',10000)
@@ -79,7 +80,7 @@ Card.prototype.showDetail = function(event) {
 }
 
 Card.detailAnimation = function(resize) {
-    reposition = (resize == '+') ? '-' : '+';
+    var reposition = (resize == '+') ? '-' : '+';
 
     return {
              left: reposition + '=60',
@@ -91,7 +92,7 @@ Card.detailAnimation = function(resize) {
 
 Card.prototype.initDOM = function() {
   Utils.setObjectToDom(this.element, this);
-  toggleDragged = function() { $(this).toggleClass('dragged'); }
+  var toggleDragged = function() { $(this).toggleClass('dragged'); }
 
     this.element.draggable( { 
       scope: 'cards',

@@ -21,8 +21,7 @@ $(document).ready(function() {
 Boot = function() {};
 
 Boot.preventDefaultEvents = function() {
-
-    labels = 'img, #library';
+    var labels = 'img, #library';
 
     $(labels).click(function(event) {
         event.preventDefault();

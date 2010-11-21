@@ -11,30 +11,14 @@ Game.prototype.onopen = function() {
 Game.prototype.onmessage = function(msg) {
   console.info(msg);
 
-    try {  
-      command = JSON.parse(msg.data);
-
-  switch (command.action) {
-    case 'TAP':
-      this.game.message('Player X tapped ' + command.card_id + command.state);
-      Card.find(command.card_id).tap(command.state);
-      break;
-
-    case 'MOVE':
-      Card.find(command.card_id).move(command.position);
-      break;
-  
-    case 'MESSAGE':
-      this.game.message(command.text);
-      break;
-
-    default:
-      this.game.message('Unknown command');
-      break;
-    }
+  try {  
+   var command = JSON.parse(msg.data);
+   // find a better way of making a command
+   command.run = eval(command.action + 'Command').prototype.run;
+   command.run();
   } catch (e) {
-     console.info(e);
-     this.game.message('Error:' + e);
+    console.info(e);
+    this.game.message('Error:' + e);
   }
 }
 
@@ -55,26 +39,10 @@ Game.prototype.connect = function() {
   this.socket.game = this;
 };
 
-Game.prototype.tapped = function(card) {
-  command = { 
-      action : 'TAP', 
-      card_id : card.id,
-      state: card.isTapped()
-  };
 
+Game.prototype.sendCommand = function(command) {
   this.socket.send(JSON.stringify(command));
-};
-
-
-Game.prototype.moved = function(card) {
-  command = { 
-      action : 'MOVE', 
-      card_id : card.id,
-      position: card.element.offset()
-  };
-
-  this.socket.send(JSON.stringify(command));
-};
+}
 
 Game.prototype.message = function(msg) {
   this.infobox.text(msg);

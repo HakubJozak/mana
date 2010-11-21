@@ -1,14 +1,14 @@
 module Mana
   module Commander
     
-    def command(action, params)
-      data = { :action => action.to_s.upcase }.merge(params)
+    def encode_command(action, params)
+      data = { :action => ActiveSupport::Inflector.camelize(action.to_s) }.merge(params)
       ActiveSupport::JSON.encode(data)
     end
 
     # Returns command in form of Hash (TODO: make a subclass?)
     # 
-    def decode(msg)
+    def decode_command(msg)
       ActiveSupport::JSON.decode(msg)
     end
 

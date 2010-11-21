@@ -5,8 +5,7 @@ gem 'thin'
 gem 'haml'
 gem 'sass'
 gem 'sinatra'
-gem 'activesupport'
-
+gem 'activesupport', :require => 'active_support'
 gem 'em-websocket'
 
 group :development do
