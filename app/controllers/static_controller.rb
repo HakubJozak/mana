@@ -3,11 +3,12 @@ module Mana
     set :sessions, true
     set :public, File.dirname(__FILE__) + '/../../public'
 
-    get '/:name.css' do
+    get '/stylesheets/:name.css' do
       scss "#{params[:name]}".to_sym
     end
-    
-    get '/' do
+
+    get '/games/:name' do
+      @game_id = params[:name]
       haml :index
     end
   end

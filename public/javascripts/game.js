@@ -1,11 +1,13 @@
-function Game(url) {
+function Game(url, game_id) {
     this.url = url;
-    this.connected = false;
+    this.game_id = game_id;
     this.infobox = $('#infobox label:first');
 }
 
 Game.prototype.onopen = function() {
-  this.game.message('Connected!');
+    g = this.game;
+    g.message('Connection opened...');
+    g.sendCommand({ action: 'Connect', game: g.game_id });
 }
 
 Game.prototype.onmessage = function(msg) {
@@ -30,7 +32,7 @@ Game.prototype.onclose = function() {
   this.game.message('Connection closed.');
 }
 
-Game.prototype.connect = function() {
+Game.prototype.connect = function(id) {
   this.socket = new WebSocket(this.url);
   this.socket.onopen = this.onopen;
   this.socket.onmessage = this.onmessage;

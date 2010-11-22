@@ -11,8 +11,6 @@ $(document).ready(function() {
     return Utils.getObjectFromDom(this);
   }
 
-  game = new Game('ws://localhost:8080');
-  game.connect();
   // $('img.card').mousewheel(function(event) {
   //     event.preventDefault();
   // });

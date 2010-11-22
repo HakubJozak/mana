@@ -7,6 +7,11 @@ gem 'sass'
 gem 'sinatra'
 gem 'activesupport', :require => 'active_support'
 gem 'em-websocket'
+gem 'redis'
+
+gem 'awesome_print'
+#gem 'ruby-debug19'
+gem 'ruby-debug'
 
 group :development do
   gem 'capistrano'

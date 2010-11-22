@@ -2,11 +2,12 @@
 
 require 'rubygems'
 require 'bundler'
-
 Bundler.require
 
-require 'sinatra/base'
+$:.unshift(File.expand_path('.'))
+
 require 'app/controllers/static_controller'
+
 
 
 Thin::Logging.debug = true
