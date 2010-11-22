@@ -10,10 +10,15 @@ require 'app/commander'
 require 'app/models/user'
 require 'app/models/game'
 
+# HACK
+class EventMachine::WebSocket::Connection
+  attr_accessor :game
+  attr_accessor :user
+end
+
 
 
 EventMachine.run do
-
   EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080, :debug => true) do |ws|
 
     include Mana::Commander
@@ -31,15 +36,15 @@ EventMachine.run do
 
       if command['action'].downcase.to_sym == :connect
         id = command['game']
-        @game = Mana::Game.find_or_create(id)
-        @user = Mana::User.new('X', ws)
-        @game.connect(@user)
+        ws.game = Mana::Game.find_or_create(id)
+        ws.user = Mana::User.new('X', ws)
+        ws.game.connect(ws.user)
       else
         # adds autohor to the command
-        @game.received(command.merge(:sid => @user.sid))
+        ws.game.received(command.merge(:sid => ws.user.sid))
       end
 
-      ws.onclose { @game.disconnect(@user) }
+      ws.onclose { ws.game.disconnect(ws.user) }
     end
   end
 
