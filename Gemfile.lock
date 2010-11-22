@@ -4,6 +4,7 @@ GEM
     activesupport (3.0.1)
     addressable (2.2.2)
     awesome_print (0.3.1)
+    backports (1.18.2)
     capistrano (2.5.19)
       highline
       net-scp (>= 1.0.0)
@@ -12,6 +13,8 @@ GEM
       net-ssh-gateway (>= 1.0.0)
     capistrano_colors (0.5.2)
     columnize (0.3.2)
+    compass (0.10.6)
+      haml (>= 3.0.4)
     daemons (1.1.0)
     diff-lcs (1.1.2)
     em-websocket (0.1.4)
@@ -29,6 +32,8 @@ GEM
       selenium-rc (>= 2.1.0)
     json_pure (1.4.6)
     linecache (0.43)
+    monkey-lib (0.5.4)
+      backports
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -62,6 +67,16 @@ GEM
     sinatra (1.1.0)
       rack (~> 1.1)
       tilt (~> 1.1)
+    sinatra-advanced-routes (0.5.1)
+      monkey-lib (~> 0.5.0)
+      sinatra (~> 1.0)
+      sinatra-sugar (~> 0.5.0)
+    sinatra-reloader (0.5.0)
+      sinatra (~> 1.0)
+      sinatra-advanced-routes (~> 0.5.0)
+    sinatra-sugar (0.5.0)
+      monkey-lib (~> 0.5.0)
+      sinatra (~> 1.0)
     thin (1.2.7)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -76,6 +91,7 @@ DEPENDENCIES
   awesome_print
   capistrano
   capistrano_colors
+  compass
   em-websocket
   haml
   jasmine
@@ -84,4 +100,5 @@ DEPENDENCIES
   sass
   shoulda
   sinatra
+  sinatra-reloader
   thin

@@ -3,7 +3,6 @@ var game;
 $(document).ready(function() {
 
   Boot.preventDefaultEvents();
-  Boot.specialEffects();
 
   Dropbox.initialize();
 
@@ -28,18 +27,4 @@ Boot.preventDefaultEvents = function() {
     $(labels).mousedown(function(event) {
         event.preventDefault();
     });
-}
-
-
-Boot.specialEffects = function() {
-
-  $('#graveyard, #deck, #exile, .card').each(function() {
-      $(this).addClass('rounded-borders');
-      $(this).addClass('card-size');
-    })
-
-  $('.area').each(function() {
-    $(this).addClass('rounded-borders');
-  });
-
 }

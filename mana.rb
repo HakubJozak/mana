@@ -2,20 +2,20 @@
 
 require 'rubygems'
 require 'bundler'
-Bundler.require
+
+Bundler.require(:default, :development)
+
 
 $:.unshift(File.expand_path('.'))
 
-require 'app/controllers/static_controller'
-
-
+require 'static_server'
 
 Thin::Logging.debug = true
 
 
 rack_app =  Rack::Builder.new do
   use Rack::Session::Cookie
-  run Rack::Cascade.new( [ Mana::StaticController ] )
+  run Rack::Cascade.new( [ Mana::StaticServer ] )
 end
 
 

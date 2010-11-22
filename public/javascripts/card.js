@@ -1,7 +1,7 @@
 // -*- mode: javascript; tab-width: 2; -*-
 
 Card = function(image_url, id) {
-  var image = $('<img src="' + image_url + '" class="card card-size" id="card-' + id + '" />');
+  var image = $('<img src="' + image_url + '" class="card" id="card-' + id + '" />');
 
   this.id = id;
   this.covered = false;
@@ -96,7 +96,7 @@ Card.prototype.initDOM = function() {
 
     this.element.draggable( { 
       scope: 'cards',
-      snap: true,
+      snap: '.card',
       start: toggleDragged,
       stop: toggleDragged,
       scroll: false,

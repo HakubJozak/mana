@@ -4,16 +4,21 @@ source "http://rubygems.org"
 gem 'thin'
 gem 'haml'
 gem 'sass'
+gem 'compass'
 gem 'sinatra'
 gem 'activesupport', :require => 'active_support'
 gem 'em-websocket'
 gem 'redis'
 
-gem 'awesome_print'
-#gem 'ruby-debug19'
-gem 'ruby-debug'
 
 group :development do
+  gem 'sinatra-reloader', :require => 'sinatra/reloader'
+  gem 'awesome_print'
+  #gem 'ruby-debug19'
+  gem 'ruby-debug'
+end
+
+group :tools do
   gem 'capistrano'
   gem 'capistrano_colors'
 end
