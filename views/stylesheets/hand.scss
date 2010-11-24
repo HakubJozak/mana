@@ -1,0 +1,19 @@
+// -*- mode: css; tab-width: 2; -*-
+
+#hand {
+  position: absolute;
+
+  border: 1px dotted black;
+  bottom: 70px;
+  height: 170px;
+  left: 20px;
+  right: 20px;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 2000; 
+
+
+  .card-over {
+      border-style: dotted; 
+  }
+}

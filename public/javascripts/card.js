@@ -67,6 +67,7 @@ Card.prototype.showDetail = function(event) {
     detail.css('z-index',10000)
         .offset(this.element.offset())
         .removeClass('card')
+        .addClass('card-detail')
         .animate(Card.detailAnimation('+'), 200);
 
     detail.click(function() {

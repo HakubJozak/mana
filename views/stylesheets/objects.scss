@@ -11,7 +11,10 @@ $default-border-radius: 5px;
 
 @import "compass/reset";
 @import "compass/css3";  
-// @import "compass/css3/border-radius"
+@import "compass/css3/transition";
+
+@import "buttons";
+@import "hand";
 
 
 @mixin card-size {
@@ -91,20 +94,13 @@ body {
   border-color: $normal-text;
 }
 
-#battlefield.card-over,
-#hand.card-over
-{
-
-  border-style: dotted; 
-}
-
 #library {
   position: absolute;
   left: 10px; 
   bottom: 45px;
 
   img {
-      @include card-size;
+    @include card-size;
   }
 }
 
@@ -122,43 +118,16 @@ body {
   top: 10px; }
 
 #exile {
-  top: 200px; }
-
-
-#hand {
-  position: absolute;
-
-  border: 1px dotted black;
-  bottom: 70px;
-  height: 170px;
-  left: 20px;
-  right: 20px;
-  padding: 15px;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 2000; 
+  top: 200px; 
 }
 
-a.button:hover {
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c8b472), to(#693e1b));
-  border-top-color: white;
-  color: white; }
-
-.button {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.746) 0px 0px 3px;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#9d7c41), to(#693e1b));
-  border: 1px solid #C8B472;
-
-  border-top-color: #C8B472;
-  color: #FAFEB2;
-  padding: 2px 4px 2px 2px;
-  text-align: center;
-  text-decoration: none;
-  text-shadow: black 1px 1px 1px; 
+img.card-detail {
+  @include card-size;
+  @include box-shadow( rgba(0,0,0,0.5), 20px, 20px, 20px);
 }
 
 .card {
   @include card-size;
-
   border: 2px solid black;
   position: absolute;
 
@@ -168,13 +137,13 @@ a.button:hover {
   }
 
   &.dragged {
-      @include box-shadow( #000000, 10px, 10px, 10px);
+    @include box-shadow( rgba(0,0,0,0.5), 10px, 10px, 10px);
   } 
 
+  &.tapped {
+    @include rotate(90deg);
+  }
+
 }
 
-.tapped {
-  rotation: 90deg;
-  -webkit-transform: rotate(90deg); 
-}
 
