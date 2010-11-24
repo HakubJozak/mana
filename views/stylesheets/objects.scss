@@ -1,9 +1,9 @@
 // -*- mode: css; tab-width: 2; -*-
 
-$normal-text: #9d7c41;
-$highlight: #fafeb2;
-$page-heigth: 0%;
+$normal-text-color: #9d7c41;
 $highlight-color: #fafeb2;
+
+$page-heigth: 0%;
 $top-z-index: 10000;
 
 $default-border-radius: 5px;
@@ -48,7 +48,7 @@ body {
     height: 30px;
     padding-left: 10px;
     padding-top: 5px;
-    color: $normal-text;
+    color: $normal-text-color;
 
     label {
         color: $highlight-color;
@@ -91,7 +91,7 @@ body {
 
 #graveyard.card-over, #exile.card-over {
   background: rgba(48, 0, 0, 0.5);
-  border-color: $normal-text;
+  border-color: $normal-text-color;
 }
 
 #library {

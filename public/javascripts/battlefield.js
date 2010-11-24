@@ -6,12 +6,10 @@ $(document).ready(function() {
   }
 
   battlefield.dropped = function(card,event,ui) {
-    c = card.element;
-    c.detach();
-    c.appendTo(this.element);
-    c.offset( ui.offset );
-    game.sendCommand(new MoveCommand(card));
+//    card.moveTo(ui.offset, this.element);
+    mc = new MoveCommand(card, this.element.attr('id'));
+    mc.run();
+    game.sendCommand(mc);
   }
-
 
 }); 

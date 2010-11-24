@@ -41,10 +41,6 @@ Card.prototype.tap = function(tapped) {
     }
 }
 
-Card.prototype.move = function(position) {
-  this.element.offset(position);
-}
-
 Card.prototype.turnOver = function(cover) {
   this.covered = (cover != null) ? cover : !this.covered;
   this.element.attr('src', this.covered ?  "/images/back.jpg" : this.picture);
@@ -54,10 +50,6 @@ Card.prototype.isCovered = function() {
   return this.element.hasClass('covered');
 }
 
-Card.prototype.dropped = function() {
-  this.tappable = false;
-  this.element.removeClass('tapped');  
-}
 
 Card.prototype.showDetail = function(event) {
     var detail = this.element.clone();
@@ -79,6 +71,24 @@ Card.prototype.showDetail = function(event) {
 
     event.stopPropagation();
 }
+
+// TODO - also resize?
+Card.prototype.moveTo = function(position, parent, animate) {
+    var c = this.element;
+
+    if (c.parent().attr('id') != parent.attr('id')) {
+      c.detach();
+        console.info(parent);
+      c.appendTo(parent);
+    }
+
+    if (animate) {
+      c.animate({ "top": position.top, "left": position.left }, animate);
+    } else {
+      c.offset(position);
+    }
+}
+
 
 Card.detailAnimation = function(resize) {
     var reposition = (resize == '+') ? '-' : '+';

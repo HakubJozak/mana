@@ -40,8 +40,8 @@ EventMachine.run do
         ws.user = Mana::User.new('X', ws)
         ws.game.connect(ws.user)
       else
-        # adds autohor to the command
-        ws.game.received(command.merge(:sid => ws.user.sid))
+        # adds author to the command
+        ws.game.received(command.merge(:sid => ws.user.sid, :remote => true))
       end
 
       ws.onclose { ws.game.disconnect(ws.user) }
