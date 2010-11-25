@@ -26,13 +26,14 @@ $default-border-radius: 5px;
 body {
   font-family: Georgia;
   color: white;
-  background: #61461c url('../images/brown-texture.png'); }
+  background: #61461c url('../images/brown-texture.png'); 
+}
 
-   #hand-toggle {
+#hand-toggle {
     position: absolute;
     bottom: 10px;
     left: 20px; 
-   }
+}
 
    #desk {
      position: absolute;
@@ -57,7 +58,6 @@ body {
 
    #battlefield {
      @include border-radius;
-
      position: absolute;
      top: 30px;
      bottom: $page-heigth;
@@ -87,7 +87,8 @@ body {
   border: 1px dashed #9D7C41;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(22, 0, 0, 0.246)), to(rgba(22, 0, 0, 0.348)));
   /*  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(22, 0, 0, 0.246094)), to(rgba(48, 0, 0, 0.496094))); */
-  -webkit-box-shadow: rgba(0, 0, 0, 0.746) 0px 0px 3px; }
+  -webkit-box-shadow: rgba(0, 0, 0, 0.746) 0px 0px 3px; 
+}
 
 #graveyard.card-over, #exile.card-over {
   background: rgba(48, 0, 0, 0.5);
@@ -109,16 +110,21 @@ body {
   @include card-size;
   @include border-radius;
 
-  left: 10px;
   margin: 5px;
   padding: 5px;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(20, 0, 0, 0.2)), to(rgba(60, 0, 0, 0.4))); }
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(20, 0, 0, 0.2)), to(rgba(60, 0, 0, 0.4))); 
+}
 
-#graveyard {
-  top: 10px; }
+#side-panel #graveyard {
+  position: absolute;
+  top: 10px; 
+  left: 10px;
+}
 
 #exile {
-  top: 200px; 
+  position: absolute;
+  top: 200px;
+  left: 10px;
 }
 
 img.card-detail {
@@ -127,9 +133,9 @@ img.card-detail {
 }
 
 .card {
+  position: absolute;
   @include card-size;
   border: 2px solid black;
-  position: absolute;
 
   &:hover {
     z-index: $top-z-index;
@@ -145,5 +151,3 @@ img.card-detail {
   }
 
 }
-
-

@@ -27,9 +27,9 @@ Card.prototype.isTapped = function() {
 
 Card.prototype.toggleTapped = function(event) {
   if (this.container().tappingAllowed()) {
-    var state = !this.isTapped();
-    this.tap(state);
-    game.sendCommand(new TapCommand(this));
+      tc = new TapCommand(this);
+      tc.run();
+      game.sendCommand(tc);
   }
 }
 
@@ -78,11 +78,11 @@ Card.prototype.moveTo = function(position, parent, animate) {
 
     if (c.parent().attr('id') != parent.attr('id')) {
       c.detach();
-        console.info(parent);
       c.appendTo(parent);
     }
 
-    if (animate) {
+    if (false) {
+      var origin = c.offsetParent().offset();
       c.animate({ "top": position.top, "left": position.left }, animate);
     } else {
       c.offset(position);

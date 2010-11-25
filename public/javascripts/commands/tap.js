@@ -1,7 +1,7 @@
-TapCommand = function(card) {
+TapCommand = function(card,state) {
   this.action = 'Tap';
   this.card_id = card.id;
-  this.state = card.isTapped();
+  this.state = !card.isTapped();
 }
 
 TapCommand.prototype.run = function() {

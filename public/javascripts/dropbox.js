@@ -15,16 +15,16 @@ Dropbox.prototype.tappingAllowed = function() {
 }
 
 Dropbox.prototype.dropped = function(card,event,ui) {
-  card.dropped();
-  e = card.element;
-  e.detach();
-  e.appendTo(this.element);
+  mc = new MoveCommand(card, this.element.attr('id'));
+  mc.run();
+  game.sendCommand(mc);
+}
 
-  position = this.element.offset()
-  position.top += 5;
-  position.left += 5;
-
-  e.offset( position );
+Dropbox.prototype.fixPosition = function(card) {
+  p = this.element.offset();
+  p.top += 5;
+  p.left += 5;
+  card.element.offset(p);
 }
 
 Dropbox.prototype.initDOM = function() {

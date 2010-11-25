@@ -3,7 +3,7 @@
 require 'rubygems'
 require 'bundler'
 
-Bundler.require(:default, :development)
+Bundler.require(:default)
 
 
 $:.unshift(File.expand_path('.'))
