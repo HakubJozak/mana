@@ -77,13 +77,20 @@ Card.prototype.moveTo = function(position, parent, animate) {
     var c = this.element;
 
     if (c.parent().attr('id') != parent.attr('id')) {
+        old = c.offset();
       c.detach();
       c.appendTo(parent);
+        c.offset(old);
     }
 
-    if (false) {
-      var origin = c.offsetParent().offset();
-      c.animate({ "top": position.top, "left": position.left }, animate);
+    if (animate) {
+        o = parent.offset()
+        var top = position.top - o.top;
+        var left = position.left - o.left;
+      //var top = position.top + c.offset().top  - parseInt(c.css('top'));
+      //var left = position.left + c.offset().left  - parseInt(c.css('left'));
+
+        c.animate({ "top": top, "left": left }, animate);
     } else {
       c.offset(position);
     }

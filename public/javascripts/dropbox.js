@@ -15,6 +15,7 @@ Dropbox.prototype.tappingAllowed = function() {
 }
 
 Dropbox.prototype.dropped = function(card,event,ui) {
+  this.fixPosition(card);
   mc = new MoveCommand(card, this.element.attr('id'));
   mc.run();
   game.sendCommand(mc);

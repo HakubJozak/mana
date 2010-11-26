@@ -8,9 +8,7 @@ MoveCommand = function(card, new_parent, animate) {
 MoveCommand.prototype.run = function() {
   var parent = $('#' + this.new_parent);
   var card = Card.find(this.card_id);
-
-  card.moveTo(this.position, parent, this.remote);
-  parent.object().fixPosition(card);
+  card.moveTo( this.position, parent, this.remote);
 }
 
 
