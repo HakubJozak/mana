@@ -8,6 +8,11 @@ module Mana
     def initialize(name, ws)
       @name = name
       @ws = ws
+      # @library = Library.new(File.read('decks/eldrazi'))
+    end
+
+    def update_library(options)
+      @library = Library.new(options['cards'])
     end
 
     # Scope: :opponents or :all

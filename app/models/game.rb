@@ -27,7 +27,7 @@ module Mana
       broadcast_to :all, message("User #{user.sid} connected to game #{@id}")
     end
 
-    def received(command)
+    def send_to_opponents(command)
       broadcast_to :opponents, command
     end
 

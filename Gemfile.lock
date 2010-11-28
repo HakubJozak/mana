@@ -3,8 +3,10 @@ GEM
   specs:
     activesupport (3.0.1)
     addressable (2.2.2)
+    archive-tar-minitar (0.5.2)
     awesome_print (0.3.1)
     backports (1.18.2)
+    bson (1.1.2)
     capistrano (2.5.19)
       highline
       net-scp (>= 1.0.0)
@@ -17,6 +19,9 @@ GEM
       haml (>= 3.0.4)
     daemons (1.1.0)
     diff-lcs (1.1.2)
+    em-mongo (0.2.13)
+      bson (>= 0.20.1)
+      eventmachine (>= 0.12.10)
     em-websocket (0.1.4)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
@@ -31,7 +36,12 @@ GEM
       selenium-client (>= 1.2.17)
       selenium-rc (>= 2.1.0)
     json_pure (1.4.6)
-    linecache (0.43)
+    linecache19 (0.5.11)
+      ruby_core_source (>= 0.1.4)
+    mocha (0.9.10)
+      rake
+    mongo (1.1.2)
+      bson (>= 1.1.1)
     monkey-lib (0.5.4)
       backports
     net-scp (1.0.4)
@@ -43,7 +53,7 @@ GEM
       net-ssh (>= 1.99.1)
     rack (1.1.0)
     rake (0.8.7)
-    redis (2.1.1)
+    require_all (1.2.0)
     rspec (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
@@ -54,11 +64,16 @@ GEM
     rspec-mocks (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
-    ruby-debug (0.10.4)
-      columnize (>= 0.1)
-      ruby-debug-base (~> 0.10.4.0)
-    ruby-debug-base (0.10.4)
-      linecache (>= 0.3)
+    ruby-debug-base19 (0.11.24)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.4)
+      archive-tar-minitar (>= 0.5.2)
     sass (3.1.0.alpha.34)
     selenium-client (1.2.18)
     selenium-rc (2.2.4)
@@ -92,11 +107,14 @@ DEPENDENCIES
   capistrano
   capistrano_colors
   compass
+  em-mongo
   em-websocket
   haml
   jasmine
-  redis
-  ruby-debug
+  mocha
+  mongo
+  require_all
+  ruby-debug19
   sass
   shoulda
   sinatra

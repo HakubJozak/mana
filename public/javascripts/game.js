@@ -5,9 +5,9 @@ function Game(url, game_id) {
 }
 
 Game.prototype.onopen = function() {
-    g = this.game;
-    g.message('Connection opened...');
-    g.sendCommand({ action: 'Connect', game: g.game_id });
+  var g = this.game;
+  g.message('Connection opened...');
+  g.sendCommand({ action: 'Connect', game_id: g.game_id });
 }
 
 Game.prototype.onmessage = function(msg) {
@@ -19,7 +19,7 @@ Game.prototype.onmessage = function(msg) {
    command.run = eval(command.action + 'Command').prototype.run;
    command.run();
   } catch (e) {
-    console.info(e);
+    console.error(e);
     this.game.message('Error:' + e);
   }
 }
@@ -32,7 +32,7 @@ Game.prototype.onclose = function() {
   this.game.message('Connection closed.');
 }
 
-Game.prototype.connect = function(id) {
+Game.prototype.connect = function() {
   this.socket = new WebSocket(this.url);
   this.socket.onopen = this.onopen;
   this.socket.onmessage = this.onmessage;
@@ -45,6 +45,8 @@ Game.prototype.connect = function(id) {
 Game.prototype.sendCommand = function(command) {
   this.socket.send(JSON.stringify(command));
 }
+
+
 
 Game.prototype.message = function(msg) {
   this.infobox.text(msg);

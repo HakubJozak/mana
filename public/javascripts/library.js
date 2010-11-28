@@ -5,8 +5,6 @@ $(document).ready(function() {
   })
 
   var library = new Library();
-  library.drawCard();
-  library.drawCard();
 });
 
 
