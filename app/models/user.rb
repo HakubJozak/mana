@@ -11,13 +11,16 @@ module Mana
       # @library = Library.new(File.read('decks/eldrazi'))
     end
 
-    def update_library(options)
-      @library = Library.new(options['cards'])
+    def update_library(cards_list)
+      @library = Library.new(cards_list)
+      @ws.send(encode(command(:server,
+                              :operation => :update_library,
+                              :args => { :library => @library })))
     end
 
     def draw_a_card
       card = @library.draw_a_card
-      @ws.send(encode(command(:server, card)))
+      # @ws.send(encode(command(:server, card)))
     end
 
     # Scope: :opponents or :all

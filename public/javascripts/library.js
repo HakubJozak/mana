@@ -2,7 +2,7 @@ $(document).ready(function() {
   $('#library').click(function() {
     hand = Utils.getObjectFromDom($('#hand'));
     library.drawCard();
-  })
+  });
 
   var library = new Library();
 });
@@ -16,6 +16,11 @@ Library = function() {
     { url: 'http://localhost:3000/images/cards/4.jpg', id: 45 }
   ];
 }
+
+Library.prototype.update = function(cards) {
+  alert(cards);
+}
+
 
 Library.prototype.drawCard = function() {
   hand = Utils.getObjectFromDom($('#hand'));

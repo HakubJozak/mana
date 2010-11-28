@@ -21,6 +21,7 @@ class MagicCardsInfo
   end
   
   def find_or_create_card(name)
+    raise ArgumentError.new('Card name must not be nil') unless name
     find_card(name) || create_card(name)
   end
 
