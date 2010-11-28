@@ -8,7 +8,8 @@ gem 'compass'
 gem 'sinatra'
 gem 'activesupport', :require => 'active_support'
 gem 'em-websocket'
-gem 'em-mongo'
+# gem 'em-mongo'
+gem 'mongo'
 gem 'require_all'
 
 
@@ -29,6 +30,6 @@ group :test do
   gem 'jasmine'
 #  gem 'turn'
   gem 'shoulda'
-  gem 'mongo'
+#  gem 'mongo'
   gem 'mocha'
 end

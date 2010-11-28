@@ -15,6 +15,11 @@ module Mana
       @library = Library.new(options['cards'])
     end
 
+    def draw_a_card
+      card = @library.draw_a_card
+      @ws.send(encode(command(:server, card)))
+    end
+
     # Scope: :opponents or :all
     #
     def message_to_client(scope, command)

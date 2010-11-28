@@ -1,0 +1,14 @@
+#lobby{:title => "Lobby" }
+  #lobby-message.ui-widget{ :style => 'display: none' }
+    .ui-state-highlight.ui-corner-all{ :style => 'padding: 0.7em' }
+      %p
+        %span.ui-icon.ui-icon-info{ :style => 'float:left; margin-right: 0.3em' }
+        %strong
+
+  %form
+    %fieldset
+      %label{:for => "user"} Player
+      %input#name.text.ui-widget-content.ui-corner-all{:name => "name", :type => "text"}/
+
+      %label{:for => "user"} Library
+      %textarea#cards.text.ui-widget-content.ui-corner-all{:name => "cards", :rows => 10 }

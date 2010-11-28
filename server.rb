@@ -16,9 +16,9 @@ end
 
 EventMachine.run do
 
-  redis = EM::Protocols::Redis.connect
-  redis.select(0)
-  MagicCardsInfo.redis = redis
+  @mongo = Mongo::Connection.new.db('mana')
+  MagicCardsInfo.instance = MagicCardsInfo.new(@mongo)
+  
   
   EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080, :debug => true) do |ws|
 
@@ -43,9 +43,15 @@ EventMachine.run do
         ws.user = Mana::User.new('X', ws)
         ws.game.connect(ws.user)
       when :server
-        if command['operation'].downcase.to_sym == :update_library
-          ws.user.update_library(command['operation']['args'])
+        operation = command['operation'].downcase.to_sym
+        
+        case operation
+        when :update_library
+          ws.user.update_library(command['args']['cards'])
+        when :draw_a_card
+          ws.user.draw_a_card
         end
+          
       else
         # adds author to the command
         ws.game.send_to_opponents(command.merge(:sid => ws.user.sid, :remote => true))
