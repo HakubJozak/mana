@@ -7,10 +7,19 @@ class Card < OpenStruct
   # TODO: is the ID unique this way?
   def initialize(params)
     raise ArgumentError unless params
-    super(params.merge(:id => @@counter))
-    @@counter += 1
+    super(params.merge(:id => Card.new_id))
   end
 
+  def self.copy(original)
+    card = original.clone
+    card.id = Card.new_id
+    card
+  end
+
+  def self.new_id
+    @@counter += 1
+  end
+  
   def to_hash
     { :id => id,
       :name => name, 

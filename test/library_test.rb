@@ -8,10 +8,16 @@ class LibraryTest < ActiveSupport::TestCase
       MagicCardsInfo.stubs(:instance).returns(@mci)
     end
 
-    should "handle tabs and ; as separators" do
-      lib = Library.new("1\tMountain\n 2;Forest")
-      assert_equal 3, lib.cards.count
+    context "with valid card list" do
+      should "handle tabs and ; as separators" do
+        lib = Library.new("1\tMountain\n 2;Forest")
+        assert_equal 3, lib.cards.count
+      end
+
+      should "have unique cards ID" do
+      end    
     end
+    
 
     should "handle bad lines" do
       lib = Library.new("1\tMountain\naslkdasForest\n111111")
@@ -23,5 +29,6 @@ class LibraryTest < ActiveSupport::TestCase
       lib = Library.new("1\tMountainnnn")
       assert_equal 0, lib.cards.size
     end
+
   end
 end

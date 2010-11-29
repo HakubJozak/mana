@@ -5,7 +5,7 @@ ServerCommand = function(operation, args) {
 }
 
 ServerCommand.prototype.run = function() {
-  if (this.operation == 'update') {
-    $('#library').object().update(this.args.cards);
+  if (this.operation == 'update_library') {
+    library.update(this.args.cards);
   }
 }

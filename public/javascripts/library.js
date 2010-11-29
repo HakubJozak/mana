@@ -4,32 +4,27 @@ $(document).ready(function() {
     library.drawCard();
   });
 
-  var library = new Library();
+  library = new Library();
 });
 
 
 Library = function() {
-  this.cards_urls = [ 
-    { url: 'http://localhost:3000/images/cards/1.jpg', id: 42 },
-    { url: 'http://localhost:3000/images/cards/2.jpg', id: 43 },
-    { url: 'http://localhost:3000/images/cards/3.jpg', id: 44 },
-    { url: 'http://localhost:3000/images/cards/4.jpg', id: 45 }
-  ];
+  this.cards = [];
 }
 
 Library.prototype.update = function(cards) {
-  alert(cards);
+  this.cards = cards;
 }
 
 
 Library.prototype.drawCard = function() {
   hand = Utils.getObjectFromDom($('#hand'));
 
-  if (this.cards_urls.length > 0) {
+  if (this.cards.length > 0) {
     hand.showHand();
 
-    params = this.cards_urls.pop()
-    card = new Card( params.url, params.id);
+    params = this.cards.pop()
+    card = new Card( params.image_url, params.id);
 
     hand.addCard(card);
   } else {

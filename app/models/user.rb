@@ -15,7 +15,7 @@ module Mana
       @library = Library.new(cards_list)
       @ws.send(encode(command(:server,
                               :operation => :update_library,
-                              :args => { :library => @library })))
+                              :args => @library )))
     end
 
     def draw_a_card

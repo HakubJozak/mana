@@ -7,9 +7,9 @@
     -# %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js", :type => "text/javascript"}/
     -# %script{:src => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js", :type => "text/javascript"}/
 
-    %link{:href => "/stylesheets/humanity/jquery-ui-1.8.6.custom.css", :rel => "stylesheet"}
     %script{:src => "/javascripts/vendor/jquery-1.4.4.js", :type => "text/javascript"}
     %script{:src => "/javascripts/vendor/jquery-ui-1.8.6.custom.min.js", :type => "text/javascript"}
+    %link{:href => "/stylesheets/humanity/jquery-ui-1.8.6.custom.css", :rel => "stylesheet"}
 
     %script{:src => "/javascripts/vendor/jquery.rightClick.js", :type => "text/javascript"}
     %script{:src => "/javascripts/vendor/mousehold.js", :type => "text/javascript"}
@@ -41,32 +41,21 @@
 
   #desk
     #side-panel
-      %label{:for => "graveyard"}
-        Graveyard:
-        %strong 0
+      = haml(:_side_component, { :layout => false }, :name => "graveyard")
+      = haml(:_side_component, { :layout => false }, :name => 'exile')
+      = haml(:_side_component, { :layout => false }, :name => 'library')
 
-      #graveyard.dropbox.area 
-
-      %label{:for => "exile"} 
-        Exile:
-        %strong 0
-
-      #exile.dropbox.area 
-
-      #library
-        %label{:for => "library"}
-          Library:
-          %strong 0
-        %img.card-size{ :src => "/images/back.jpg"}
-
-      %a#hand-toggle.button{ :href => "#" } Hand Toggle
+      %ul
+        %li
+          %a#untap-button.button{ :href => "#" } Untap
+        %li
+          %a#shuffle-button.button{ :href => "#" } Shuffle
 
     #infobox 
       Message:
       %label
 
-    #battlefield.area
-      #hand.area
-
+    #battlefield
+      #hand
 
   #coffin{:style => "display: none"}

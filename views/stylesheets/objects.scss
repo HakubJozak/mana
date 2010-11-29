@@ -13,15 +13,31 @@ $default-border-radius: 5px;
 @import "compass/css3";  
 @import "compass/css3/transition";
 
-@import "buttons";
-@import "hand";
-@import "lobby";
-
-
 @mixin card-size {
   height: 170px;
   width: 120px; 
 }
+
+@mixin focused {
+  background: rgba(48, 0, 0, 0.5);
+  border-color: $normal-text-color;
+}
+
+@mixin area {
+  border: 1px dashed #9D7C41;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(22, 0, 0, 0.246)), to(rgba(22, 0, 0, 0.348)));
+  /*  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(22, 0, 0, 0.246094)), to(rgba(48, 0, 0, 0.496094))); */
+  -webkit-box-shadow: rgba(0, 0, 0, 0.746) 0px 0px 3px; 
+}
+
+
+
+@import "buttons";
+@import "hand";
+@import "lobby";
+@import "side_panel";
+@import "card";
+
 
 
 body {
@@ -30,11 +46,6 @@ body {
   background: #61461c url('../images/brown-texture.png'); 
 }
 
-#hand-toggle {
-    position: absolute;
-    bottom: 10px;
-    left: 20px; 
-}
 
    #desk {
      position: absolute;
@@ -58,7 +69,9 @@ body {
   }
 
    #battlefield {
+     @include area;
      @include border-radius;
+
      position: absolute;
      top: 30px;
      bottom: $page-heigth;
@@ -67,88 +80,4 @@ body {
      z-index: 1; 
     }
  
-#side-panel {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  top: 0px;
-  bottom: $page-heigth;
-  width: 160px;
-  background: #61461c url('../images/medium-texture.png');
-  border-left: 1px dotted #C8B472;
-  -webkit-box-shadow: black 0px 0px 3px; 
 
-  label {
-    margin-left: 5px;
-    font-size: smaller;
-  }
-}
-
-.area {
-  border: 1px dashed #9D7C41;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(22, 0, 0, 0.246)), to(rgba(22, 0, 0, 0.348)));
-  /*  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(22, 0, 0, 0.246094)), to(rgba(48, 0, 0, 0.496094))); */
-  -webkit-box-shadow: rgba(0, 0, 0, 0.746) 0px 0px 3px; 
-}
-
-#graveyard.card-over, #exile.card-over {
-  background: rgba(48, 0, 0, 0.5);
-  border-color: $normal-text-color;
-}
-
-#library {
-  position: absolute;
-  left: 10px; 
-  bottom: 45px;
-
-  img {
-    @include card-size;
-  }
-}
-
-
-.dropbox {
-  @include card-size;
-  @include border-radius;
-
-  margin: 5px;
-  padding: 5px;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(20, 0, 0, 0.2)), to(rgba(60, 0, 0, 0.4))); 
-}
-
-#side-panel #graveyard {
-  position: absolute;
-  top: 10px; 
-  left: 10px;
-}
-
-#exile {
-  position: absolute;
-  top: 200px;
-  left: 10px;
-}
-
-img.card-detail {
-  @include card-size;
-  @include box-shadow( rgba(0,0,0,0.5), 20px, 20px, 20px);
-}
-
-.card {
-  position: absolute;
-  @include card-size;
-  border: 2px solid black;
-
-  &:hover {
-    z-index: $top-z-index;
-    @include box-shadow($highlight-color, 0px, 0px, 10px);
-  }
-
-  &.dragged {
-    @include box-shadow( rgba(0,0,0,0.5), 10px, 10px, 10px);
-  } 
-
-  &.tapped {
-    @include rotate(90deg);
-  }
-
-}
