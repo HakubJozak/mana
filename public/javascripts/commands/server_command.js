@@ -5,7 +5,16 @@ ServerCommand = function(operation, args) {
 }
 
 ServerCommand.prototype.run = function() {
-  if (this.operation == 'update_library') {
+  switch (this.operation) {
+  case 'update_library': 
     library.update(this.args.cards);
+    break;
+
+  case 'add_user':
+    this.user;
+    break;
+  }
+  if (this.operation == 'update_library') {
+    ;
   }
 }

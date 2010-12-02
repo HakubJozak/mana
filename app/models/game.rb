@@ -19,11 +19,13 @@ module Mana
 
     def connect(user)
       @users << user
+
       user.sid = @channel.subscribe do |pack|
         # TODO: subclass EM::Channel to do this
         user.message_to_client(pack[:scope], pack[:command])
       end
-
+      
+      broadcast_to :opponents, add_user_command(user)
       broadcast_to :all, message("User #{user.sid} connected to game #{@id}")
     end
 
@@ -38,6 +40,10 @@ module Mana
 
     private
 
+    def add_user_command(user)
+      { :action => 'Server', :operation => 'add_user', :user => user.to_hash }
+    end
+    
     # TODO: subclass EM::Channel to do this
     def broadcast_to(scope, command)
       @channel.push(:scope => scope, :command => command)

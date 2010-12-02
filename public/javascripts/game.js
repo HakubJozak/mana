@@ -1,7 +1,6 @@
 function Game(url, game_id) {
     this.url = url;
     this.game_id = game_id;
-    this.infobox = $('#infobox label:first');
 }
 
 Game.prototype.onopen = function() {
@@ -49,5 +48,11 @@ Game.prototype.sendCommand = function(command) {
 
 
 Game.prototype.message = function(msg) {
-  this.infobox.text(msg);
+  var box = $('#infobox');
+  $('#infobox label:first').text(msg);
+
+
+  if (!box.is(':visible')) {
+    box.show('fade').delay(5000).hide('fade');
+  }
 }

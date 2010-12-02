@@ -1,5 +1,5 @@
 function closeLobby() {
-  $('#lobby').dialog('close')
+  $('#lobby').dialog('close');
 }
 
 function lobby_input(name) {
@@ -9,8 +9,8 @@ function lobby_input(name) {
 function lobby_submit() {
     cmd = new ServerCommand('update_library', { cards: lobby_input('cards') })
     game.sendCommand(cmd);
-      // $('#lobby-message p strong').text('JO!');
-      // $('#lobby-message').fadeIn();
+    // $('#lobby-message p strong').text('JO!');
+    // $('#lobby-message').fadeIn();
     closeLobby();
     return false;
 }
@@ -26,12 +26,12 @@ $(document).ready(function() {
     modal: true,
 
     open: function(event, ui) { 
-        //hide close button.
-        $(this).parent().find('.ui-dialog-titlebar-close').hide();
+      //hide close button.
+      $(this).parent().find('.ui-dialog-titlebar-close').hide();
     },
 
     buttons: [ 
-        { text: 'Start', click: function() { return lobby_submit(); } },
+        { text: 'Play', click: function() { return lobby_submit(); } },
    ]
   });
 });

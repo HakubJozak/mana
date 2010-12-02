@@ -39,21 +39,31 @@
 %body
   = haml(:_lobby, :layout => false)
 
+  #infobox{ :style => 'display:none' }
+    %label
+
   #desk
     #side-panel
-      = haml(:_side_component, { :layout => false }, :name => "graveyard")
-      = haml(:_side_component, { :layout => false }, :name => 'exile')
-      = haml(:_side_component, { :layout => false }, :name => 'library')
+      #users
+        %h3 Local
+        #user-local
+          - box 'graveyard'
+          - box 'exile'
+          - box('library') do
+            %img{ :src => '/images/back.jpg' }/
 
-      %ul
-        %li
-          %a#untap-button.button{ :href => "#" } Untap
-        %li
-          %a#shuffle-button.button{ :href => "#" } Shuffle
+        %h3 Remote
+        #user-remote
+          - box 'graveyard-33'
+          - box 'exile-33'
+          - box('library') do
+            %img{ :src => '/images/back.jpg' }/
 
-    #infobox 
-      Message:
-      %label
+        -# %ul
+        -# %li
+        -#   %a#untap-button.button{ :href => "#" } Untap
+        -# %li
+        -#  %a#shuffle-button.button{ :href => "#" } Shuffle
 
     #battlefield
       #hand

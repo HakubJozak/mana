@@ -3,40 +3,26 @@
 $normal-text-color: #9d7c41;
 $highlight-color: #fafeb2;
 
-$page-heigth: 0%;
-$top-z-index: 10000;
-
+$top-bar-height: 0px;
+$page-height: 0%;
 $default-border-radius: 5px;
+
+$top-z-index: 10000;
+$hand-z-index: 2000;
+$infobox-z-index: 3000;
 
 
 @import "compass/reset";
 @import "compass/css3";  
 @import "compass/css3/transition";
 
-@mixin card-size {
-  height: 170px;
-  width: 120px; 
-}
-
-@mixin focused {
-  background: rgba(48, 0, 0, 0.5);
-  border-color: $normal-text-color;
-}
-
-@mixin area {
-  border: 1px dashed #9D7C41;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(22, 0, 0, 0.246)), to(rgba(22, 0, 0, 0.348)));
-  /*  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(22, 0, 0, 0.246094)), to(rgba(48, 0, 0, 0.496094))); */
-  -webkit-box-shadow: rgba(0, 0, 0, 0.746) 0px 0px 3px; 
-}
-
-
-
+@import "modules";
 @import "buttons";
 @import "hand";
 @import "lobby";
 @import "side_panel";
 @import "card";
+@import "infobox";
 
 
 
@@ -55,26 +41,13 @@ body {
      right: 0px; 
    }
 
-   #infobox {
-    position: absolute;
-    top: 0px;
-    height: 30px;
-    padding-left: 10px;
-    padding-top: 5px;
-    color: $normal-text-color;
-
-    label {
-        color: $highlight-color;
-    }
-  }
-
    #battlefield {
      @include area;
      @include border-radius;
 
      position: absolute;
-     top: 30px;
-     bottom: $page-heigth;
+     top: $top-bar-height;
+     bottom: $page-height;
      left: 10px;
      right: 170px;
      z-index: 1; 

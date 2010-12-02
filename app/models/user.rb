@@ -18,6 +18,10 @@ module Mana
                               :args => @library )))
     end
 
+    def to_hash
+      { :name => @name, :sid => @sid }
+    end
+    
     def draw_a_card
       card = @library.draw_a_card
       # @ws.send(encode(command(:server, card)))

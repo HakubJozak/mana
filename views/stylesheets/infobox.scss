@@ -1,0 +1,17 @@
+#infobox {
+ position: fixed;
+ top: 0px;
+ heigth: 30px;
+ width: 100%;
+ padding: 10px;
+
+ background-color: rgba(80, 80, 80, 0.2);
+ color: $normal-text-color;
+
+ label {
+   color: $highlight-color;
+ }
+
+  z-index: $infobox-z-index; 
+}
+
