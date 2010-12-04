@@ -7,12 +7,17 @@ function lobby_input(name) {
 }
 
 function lobby_submit() {
-    cmd = new ServerCommand('update_library', { cards: lobby_input('cards') })
-    game.sendCommand(cmd);
-    // $('#lobby-message p strong').text('JO!');
-    // $('#lobby-message').fadeIn();
-    closeLobby();
-    return false;
+  var lobby = {
+    onRemoteMessage: function(data) {
+      game.message('You joined the game.');
+      game.removeListener();
+      closeLobby();
+    } 
+  };
+      
+  game.setListener(lobby);
+  game.connect( lobby_input('name'), lobby_input('cards'));
+  return false;
 }
 
 $(document).ready(function() {

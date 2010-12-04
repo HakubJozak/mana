@@ -10,9 +10,9 @@ $(document).ready(function() {
     return Utils.getObjectFromDom(this);
   }
 
-  $( "#users" ).accordion({
-    icons: ''
-  });
+//  $( "#users" ).accordion({
+//    icons: ''
+//  });
   // $('img.card').mousewheel(function(event) {
   //     event.preventDefault();
   // });

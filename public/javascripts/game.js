@@ -1,12 +1,7 @@
 function Game(url, game_id) {
     this.url = url;
     this.game_id = game_id;
-}
-
-Game.prototype.onopen = function() {
-  var g = this.game;
-  g.message('Connection opened...');
-  g.sendCommand({ action: 'Connect', game_id: g.game_id });
+    this.listener = null;
 }
 
 Game.prototype.onmessage = function(msg) {
@@ -14,30 +9,53 @@ Game.prototype.onmessage = function(msg) {
 
   try {  
    var command = JSON.parse(msg.data);
-   // find a better way of making a command
+   this.game.notifyAll(msg.data);
    command.run = eval(command.action + 'Command').prototype.run;
    command.run();
   } catch (e) {
-    console.error(e);
+    console.error('Mana Error:' + e);
     this.game.message('Error:' + e);
   }
 }
 
 Game.prototype.onerror = function() {
-  alert('Error!');
+  this.game.message('Connection error!');
+}
+
+Game.prototype.notifyAll = function(msg) {
+ // find a better way of making a command
+ if (this.listener != null) {
+   this.listener.onRemoteMessage(msg);
+ }
 }
 
 Game.prototype.onclose = function() {
-  this.game.message('Connection closed.');
+  this.game.message('Disconnected.');
 }
 
-Game.prototype.connect = function() {
+Game.prototype.setListener = function(l) {
+  this.listener = l;
+}
+
+Game.prototype.removeListener = function() {
+  this.listener = null;
+}
+
+Game.prototype.connect = function(username,deck) {
   this.socket = new WebSocket(this.url);
-  this.socket.onopen = this.onopen;
+  this.socket.game = this;
   this.socket.onmessage = this.onmessage;
   this.socket.onerror = this.onerror;
   this.socket.onclose = this.onclose;
-  this.socket.game = this;
+  this.socket.onopen = function() {
+      var g = this.game;
+      g.message('Connection opened...');
+      g.sendCommand({ action: 'connect', 
+                      game_id: g.game_id, 
+                      cards: deck, 
+                      username: username });
+  }
+
 };
 
 
@@ -49,10 +67,19 @@ Game.prototype.sendCommand = function(command) {
 
 Game.prototype.message = function(msg) {
   var box = $('#infobox');
-  $('#infobox label:first').text(msg);
+  var output = $('#infobox p:first');
 
+  output.html( output.html() + "<br/>" + msg);
 
   if (!box.is(':visible')) {
-    box.show('fade').delay(5000).hide('fade');
+    box.show('fade').delay(5000).hide('fade', function() {
+        $('#infobox p:first').html('');
+    });
   }
+}
+
+
+Game.user_dom_id = function(user) {
+console.info(user)
+  return 'user-' + user.id;
 }

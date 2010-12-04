@@ -33,31 +33,22 @@
     :javascript
       $(document).ready(function() {
         game = new Game('ws://localhost:8080','#{@game_id}');
-        game.connect();
        });
 
 %body
   = haml(:_lobby, :layout => false)
 
   #infobox{ :style => 'display:none' }
-    %label
+    %p
 
-  #desk
-    #side-panel
-      #users
+  #side-panel
+    #users
+      #user-local
         %h3 Local
-        #user-local
-          - box 'graveyard'
-          - box 'exile'
-          - box('library') do
-            %img{ :src => '/images/back.jpg' }/
-
-        %h3 Remote
-        #user-remote
-          - box 'graveyard-33'
-          - box 'exile-33'
-          - box('library') do
-            %img{ :src => '/images/back.jpg' }/
+        - box 'graveyard'
+        - box 'exile'
+        - box('library') do
+          %img{ :src => '/images/back.jpg' }/
 
         -# %ul
         -# %li
@@ -65,7 +56,13 @@
         -# %li
         -#  %a#shuffle-button.button{ :href => "#" } Shuffle
 
-    #battlefield
-      #hand
+  #battlefield
+    #hand
 
   #coffin{:style => "display: none"}
+    #user-remote-template
+      %h3 $USERNAME
+      - box 'graveyard-remote'
+      - box 'exile-remote'
+      - box('library-remote') do
+        %img{ :src => '/images/back.jpg' }/

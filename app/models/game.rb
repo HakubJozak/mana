@@ -18,6 +18,10 @@ module Mana
     end
 
     def connect(user)
+      @users.each do |remote_user|
+        user.message_to_client(:me, server_command(:add_user,remote_user))
+      end
+
       @users << user
 
       user.sid = @channel.subscribe do |pack|
@@ -25,8 +29,7 @@ module Mana
         user.message_to_client(pack[:scope], pack[:command])
       end
       
-      broadcast_to :opponents, add_user_command(user)
-      broadcast_to :all, message("User #{user.sid} connected to game #{@id}")
+      broadcast_to :opponents, server_command(:add_user, user)
     end
 
     def send_to_opponents(command)
@@ -36,13 +39,10 @@ module Mana
     def disconnect(user)
       @users.delete(user)
       @channel.unsubscribe(user.sid)
+      broadcast_to :opponents, server_command(:remove_user, user)
     end
 
     private
-
-    def add_user_command(user)
-      { :action => 'Server', :operation => 'add_user', :user => user.to_hash }
-    end
     
     # TODO: subclass EM::Channel to do this
     def broadcast_to(scope, command)
@@ -53,5 +53,12 @@ module Mana
       @@games[id] = Game.new(id)
     end
 
+    def server_command(operation, user)
+      { :action => 'Server',
+        :operation => operation.to_s,
+        :sid => user.sid,
+        :user => user.to_hash }
+    end
+    
   end
 end

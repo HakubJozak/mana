@@ -29,7 +29,7 @@ EventMachine.run do
     end
     
     ws.onopen do
-      ws.send(encode(message('Connected to Websocket')))
+      ws.send(encode(message('Connected to server')))
     end
     
     ws.onmessage do |msg|
@@ -38,20 +38,17 @@ EventMachine.run do
 
       case action
       when :connect
-        game_id = command['game']
-        ws.game = Mana::Game.find_or_create(game_id)
-        ws.user = Mana::User.new('X', ws)
+        ws.game = Mana::Game.find_or_create(command['game_id'])
+        ws.user = Mana::User.new(command['username'], ws)
+        ws.user.update_library(command['cards'])
         ws.game.connect(ws.user)
       when :server
         operation = command['operation'].downcase.to_sym
-        
+
         case operation
-        when :update_library
-          ws.user.update_library(command['args']['cards'])
         when :draw_a_card
           ws.user.draw_a_card
-        end
-          
+        end          
       else
         # adds author to the command
         ws.game.send_to_opponents(command.merge(:sid => ws.user.sid, :remote => true))

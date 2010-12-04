@@ -19,7 +19,7 @@ module Mana
     end
 
     def to_hash
-      { :name => @name, :sid => @sid }
+      { :name => @name, :id => @sid }
     end
     
     def draw_a_card
@@ -31,7 +31,7 @@ module Mana
     #
     def message_to_client(scope, command)
       case scope
-      when :all
+      when :all, :me
         @ws.send(encode(command))
       when :opponents
         @ws.send(encode(command)) unless command[:sid] == @sid

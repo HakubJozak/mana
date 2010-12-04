@@ -11,10 +11,19 @@ ServerCommand.prototype.run = function() {
     break;
 
   case 'add_user':
-    this.user;
+    var id = Game.user_dom_id(this.user);
+    var template = $('#user-remote-template').html().replace('$USERNAME', this.user.name);
+
+    game.message('User ' + this.user.name + ' connected.');
+
+      $("#users").append('<div id="' + id + '" class="' + id +'">' + template + '</div>');
     break;
-  }
-  if (this.operation == 'update_library') {
-    ;
+
+  case 'remove_user':
+    game.message('User ' + this.user.name + ' disconnected.');
+      console.info(this.user)
+    $('.' + Game.user_dom_id(this.user)).remove();
   }
 }
+
+

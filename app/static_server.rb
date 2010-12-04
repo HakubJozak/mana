@@ -18,7 +18,7 @@ module Mana
           #   haml_tag :strong, 0
           # end
 
-          haml_tag :div, :id => id, :class => 'box' do
+          haml_tag :div, :id => id, :class => "box" do
             yield if block_given?
           end        
         end
