@@ -6,17 +6,35 @@ function lobby_input(name) {
   return $('#lobby form *[name="' + name + '"]').val();
 }
 
+function lobby_valid() {
+  if (lobby_input('name') == '') {
+    game.message('Please enter your name.');
+    return false;
+  }
+
+
+  return true;
+}
+
+
 function lobby_submit() {
-  var lobby = {
-    onRemoteMessage: function(data) {
-      game.message('You joined the game.');
-      game.removeListener();
-      closeLobby();
-    } 
-  };
-      
-  game.setListener(lobby);
-  game.connect( lobby_input('name'), lobby_input('cards'));
+  if (lobby_valid()) {
+    var lobby = {
+      onRemoteMessage: function(data) {
+        name = lobby_input('name');
+        game.message('You joined the game as ' + name + '.');
+        $('#user-local h3').text(name);
+        game.removeListener();
+        closeLobby();
+        $('button').attr('disabled',false);
+      }
+    };
+    
+    $('button').attr('disabled',true);
+    game.setListener(lobby);
+    game.connect( lobby_input('name'), lobby_input('cards'));
+  }
+
   return false;
 }
 

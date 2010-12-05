@@ -11,6 +11,10 @@
     @include box-shadow($highlight-color, 0px, 0px, 10px);
   }
 
+  &:hover.opponent {
+    @include box-shadow($opponent-color, 0px, 0px, 10px);
+  }
+
   &.dragged {  @include box-shadow( rgba(0,0,0,0.5), 10px, 10px, 10px);   } 
   &.tapped { @include rotate(90deg);  }
 }

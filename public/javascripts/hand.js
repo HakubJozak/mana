@@ -30,7 +30,7 @@ $(document).ready(function() {
 
   hand.addCard = function(card) {
     card.element.appendTo(this.element);
-    this.fixPositions();
+    this.fixPosition();
   }
 
   hand.showHand = function(card) {
@@ -39,15 +39,15 @@ $(document).ready(function() {
     }
   }
 
-    hand.fixPositions = function() {
-      $('#hand').children().each(function(i) {
-          position = $('#hand').offset();
-          position.top += 20;
-          position.left += 20 + 100 * i;
-          $(this).css('position', 'absolute');
-          $(this).offset(position);
-          $(this).css('z-index', $(this).prev().css('z-index') + 1);
-      });      
+  hand.fixPosition = function() {
+    $('#hand').children().each(function(i) {
+        position = $('#hand').offset();
+        position.top += 20;
+        position.left += 20 + 100 * i;
+        $(this).css('position', 'absolute');
+        $(this).offset(position);
+        $(this).css('z-index', $(this).prev().css('z-index') + 1);
+    });      
   }
 
   hand.dropped = function(card, event, ui) {

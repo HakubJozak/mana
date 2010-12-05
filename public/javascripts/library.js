@@ -29,6 +29,6 @@ Library.prototype.drawCard = function() {
     hand.addCard(card);
   } else {
     // TODO: make it better
-    alert('Out of cards');
+    game.message('No more cards in the library.');
   }
 }

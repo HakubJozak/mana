@@ -42,6 +42,7 @@ EventMachine.run do
         ws.user = Mana::User.new(command['username'], ws)
         ws.user.update_library(command['cards'])
         ws.game.connect(ws.user)
+
       when :server
         operation = command['operation'].downcase.to_sym
 
@@ -51,7 +52,7 @@ EventMachine.run do
         end          
       else
         # adds author to the command
-        ws.game.send_to_opponents(command.merge(:sid => ws.user.sid, :remote => true))
+        ws.game.send_to_opponents(command.merge(:sid => ws.user.sid))
       end
 
       ws.onclose { ws.game.disconnect(ws.user) }

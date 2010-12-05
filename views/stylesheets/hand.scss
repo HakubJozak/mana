@@ -1,13 +1,13 @@
 // -*- mode: css; tab-width: 2; -*-
 
 #hand {
-  position: absolute;
+  position: fixed;
 
   border: 1px dotted black;
-  top: 70px;
+  bottom: 70px;
   height: 170px;
   left: 20px;
-  width: 95%;
+  right: $side-panel-width + 20px;
   padding: 15px;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: $hand-z-index; 

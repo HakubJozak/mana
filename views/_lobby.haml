@@ -7,10 +7,16 @@
 
   %form
     %fieldset
+
       %label{:for => "user"} Player
-      %input#name.text.ui-widget-content.ui-corner-all{:name => "name", :type => "text"}/
+      %input#name.text.ui-widget-content.ui-corner-all{:name => "name", :type => "text", :value => 'Name'}/
 
       %label{:for => "user"} Library
+
+      %p
+        Please use the same format that you can see below. Number of cards and card name
+        can be delimited either by ';' or tabulator.
+
       %textarea#cards.text.ui-widget-content.ui-corner-all{:name => "cards", :rows => 10 }
         :preserve
           1;Forest

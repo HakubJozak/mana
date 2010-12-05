@@ -11,6 +11,7 @@ Game.prototype.onmessage = function(msg) {
    var command = JSON.parse(msg.data);
    this.game.notifyAll(msg.data);
    command.run = eval(command.action + 'Command').prototype.run;
+   command.remote = true;
    command.run();
   } catch (e) {
     console.error('Mana Error:' + e);
@@ -69,7 +70,7 @@ Game.prototype.message = function(msg) {
   var box = $('#infobox');
   var output = $('#infobox p:first');
 
-  output.html( output.html() + "<br/>" + msg);
+  output.append(msg + "<br/>");
 
   if (!box.is(':visible')) {
     box.show('fade').delay(5000).hide('fade', function() {
@@ -80,6 +81,5 @@ Game.prototype.message = function(msg) {
 
 
 Game.user_dom_id = function(user) {
-console.info(user)
   return 'user-' + user.id;
 }

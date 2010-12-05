@@ -22,7 +22,9 @@ ServerCommand.prototype.run = function() {
   case 'remove_user':
     game.message('User ' + this.user.name + ' disconnected.');
       console.info(this.user)
-    $('.' + Game.user_dom_id(this.user)).remove();
+    $('.' + Game.user_dom_id(this.user)).fadeOut(function() {
+      $(this).remove();
+    });
   }
 }
 

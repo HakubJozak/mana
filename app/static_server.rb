@@ -13,11 +13,12 @@ module Mana
       def box(id)
         haml_tag ".box-container" do
           # TODO: tooltip
-          # haml_tag :label, :for => id do
-          #   haml_concat id.capitalize + ':'
-          #   haml_tag :strong, 0
-          # end
-
+          haml_tag :h4 do
+            name = id.split('-').first
+            haml_concat name.capitalize + ':'
+            haml_tag :strong, 0
+          end
+          
           haml_tag :div, :id => id, :class => "box" do
             yield if block_given?
           end        

@@ -13,12 +13,26 @@ Card = function(image_url, id) {
 
 
 Card.find = function(id) {
-  return $('#card-' + id).object();
+  var element = $('#card-' + id);
+  return (element == null) ? null : element.object();
+}
+
+Card.find_or_create_opponent_card = function(params,owner_id) {
+  var card = Card.find(params.id);
+
+  if (card == null) {
+    // test existence and fetch if card not supplied?
+    card = new Card(params.image_url, params.id);
+    card.element.addClass(owner_id)
+                .addClass('opponent');
+  }
+
+  return card;
 }
 
 
 Card.prototype.container = function() {
-  return Utils.getObjectFromDom(this.element.parent());
+  return this.element.parent().object();
 }
 
 Card.prototype.isTapped = function() {
@@ -72,30 +86,6 @@ Card.prototype.showDetail = function(event) {
     event.stopPropagation();
 }
 
-// TODO - also resize?
-Card.prototype.moveTo = function(position, parent, animate) {
-    var c = this.element;
-
-    if (c.parent().attr('id') != parent.attr('id')) {
-        old = c.offset();
-      c.detach();
-      c.appendTo(parent);
-        c.offset(old);
-    }
-
-    if (animate) {
-        o = parent.offset()
-        var top = position.top - o.top;
-        var left = position.left - o.left;
-      //var top = position.top + c.offset().top  - parseInt(c.css('top'));
-      //var left = position.left + c.offset().left  - parseInt(c.css('left'));
-
-        c.animate({ "top": top, "left": left }, animate);
-    } else {
-      c.offset(position);
-    }
-}
-
 
 Card.detailAnimation = function(resize) {
     var reposition = (resize == '+') ? '-' : '+';
@@ -117,7 +107,7 @@ Card.prototype.initDOM = function() {
       snap: '.card',
       start: toggleDragged,
       stop: toggleDragged,
-      scroll: false,
+      scroll: true,
       revert: 'invalid',
       containment: '#desk',
       snapMode: 'inner',

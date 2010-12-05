@@ -33,7 +33,8 @@
     :javascript
       $(document).ready(function() {
         game = new Game('ws://localhost:8080','#{@game_id}');
-       });
+        lobby_submit();
+      });
 
 %body
   = haml(:_lobby, :layout => false)
