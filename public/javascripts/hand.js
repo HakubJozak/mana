@@ -49,10 +49,10 @@ $(document).ready(function() {
         $(this).css('z-index', $(this).prev().css('z-index') + 1);
     });      
   }
-
+/*
   hand.dropped = function(card, event, ui) {
     card.element.detach();
     this.addCard(card);
   }
-
+    */
 });

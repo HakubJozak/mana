@@ -63,7 +63,7 @@
   #coffin{:style => "display: none"}
     #user-remote-template
       %h3 $USERNAME
-      - box 'graveyard-remote'
-      - box 'exile-remote'
-      - box('library-remote') do
+      - box 'graveyard-remote', false
+      - box 'exile-remote', false
+      - box('library-remote', false) do
         %img{ :src => '/images/back.jpg' }/

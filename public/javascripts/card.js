@@ -24,7 +24,8 @@ Card.find_or_create_opponent_card = function(params,owner_id) {
     // test existence and fetch if card not supplied?
     card = new Card(params.image_url, params.id);
     card.element.addClass(owner_id)
-                .addClass('opponent');
+                .addClass('opponent')
+                .attr('style','position: absolute');
   }
 
   return card;

@@ -10,16 +10,22 @@ module Mana
     helpers do
       include Haml::Helpers
 
-      def box(id)
+      def box(id, has_id = true)
         haml_tag ".box-container" do
           # TODO: tooltip
           haml_tag :h4 do
             name = id.split('-').first
-            haml_concat name.capitalize + ':'
-            haml_tag :strong, 0
+            haml_concat name.capitalize
+            # haml_tag :strong, 0
           end
+
+          params = if has_id
+                     { :id => id, :class => "box" }
+                   else
+                     { :class => "box #{id}" }
+                   end
           
-          haml_tag :div, :id => id, :class => "box" do
+          haml_tag :div, params do
             yield if block_given?
           end        
         end
