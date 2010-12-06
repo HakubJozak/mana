@@ -5,7 +5,7 @@ require 'bundler'
 Bundler.require(:default) #, :development)
 
 require_all 'app'
-# Debugger.start
+Debugger.start rescue nil
 
 # HACK
 class EventMachine::WebSocket::Connection

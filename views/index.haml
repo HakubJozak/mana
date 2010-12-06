@@ -32,8 +32,8 @@
       
     :javascript
       $(document).ready(function() {
-        game = new Game('ws://localhost:8080','#{@game_id}');
-        lobby_submit();
+        game = new Game('ws://#{@host}:8080','#{@game_id}');
+        // lobby_submit();
       });
 
 %body
