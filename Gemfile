@@ -15,7 +15,6 @@ gem 'em-websocket'
 gem 'mongo'
 gem 'require_all'
 
-
 group :development do
   gem 'sinatra-reloader', :require => 'sinatra/reloader'
   gem 'awesome_print'

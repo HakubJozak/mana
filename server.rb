@@ -2,10 +2,10 @@
 
 require 'rubygems'
 require 'bundler'
-Bundler.require(:default, :development)
+Bundler.require(:default) #, :development)
 
 require_all 'app'
-Debugger.start
+# Debugger.start
 
 # HACK
 class EventMachine::WebSocket::Connection

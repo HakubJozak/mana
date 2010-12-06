@@ -2,7 +2,6 @@
 
 Card = function(image_url, id) {
   var image = $('<img src="' + image_url + '" class="card" id="card-' + id + '" />');
-
   this.id = id;
   this.covered = false;
   this.tappable = true;
@@ -46,14 +45,6 @@ Card.prototype.toggleTapped = function(event) {
       tc.run();
       game.sendCommand(tc);
   }
-}
-
-Card.prototype.tap = function(tapped) {
-    if (tapped) {
-      this.element.addClass('tapped');
-    } else {
-      this.element.removeClass('tapped');
-    }
 }
 
 Card.prototype.turnOver = function(cover) {

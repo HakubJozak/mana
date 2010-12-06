@@ -32,10 +32,10 @@ module Mana
       end
     end
     
-    configure(:development) do
-      register Sinatra::Reloader
-      also_reload "app/**/*.rb"
-    end
+    # configure(:development) do
+    #   register Sinatra::Reloader
+    #   also_reload "app/**/*.rb"
+    # end
 
     # configure do
     #   Compass.add_project_configuration(File.join(Mana::StaticServer.root, 'config', 'compass.config'))

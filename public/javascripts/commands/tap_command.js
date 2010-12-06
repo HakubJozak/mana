@@ -5,8 +5,13 @@ TapCommand = function(card,state) {
 }
 
 TapCommand.prototype.run = function() {
-  game.message('Player X tapped ' + this.card_id + this.state);
-  Card.find(this.card_id).tap(this.state);
+  var card = Card.find(this.card_id);
+
+  if (this.state) {
+    card.element.addClass('tapped');
+  } else {
+    card.element.removeClass('tapped');
+  }
 }
 
 
