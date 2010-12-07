@@ -5,8 +5,11 @@ class Library
   # TODO: handle bad lines
   # TODO: handle wrong names
   def initialize(card_list = '')
+    progress = 100 / card_list.lines.count
+
     @cards = card_list.lines.map do |line|
       count, name = line.strip.split(/\t|\;/)
+      yield(name, progress) if block_given?
       mono_card_array(count, name)
     end
     

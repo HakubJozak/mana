@@ -12,10 +12,16 @@ module Mana
     end
 
     def update_library(cards_list)
-      @library = Library.new(cards_list)
-      @ws.send(encode(command(:server,
-                              :operation => :update_library,
-                              :args => @library )))
+      @library = Library.new(cards_list) do |card,progress|
+        message_to_client(:me, command(:server, 
+                                       :operation => :progress, 
+                                       :card => card,
+                                       :value => progress ))
+      end
+      
+      message_to_client(:me, command(:server,
+                                     :operation => :update_library,
+                                     :args => @library ))
     end
 
     def to_hash
@@ -37,6 +43,5 @@ module Mana
         @ws.send(encode(command)) unless command[:sid] == @sid
       end
     end
-    
   end
 end

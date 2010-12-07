@@ -9,7 +9,7 @@ Game.prototype.onmessage = function(msg) {
 
   try {  
    var command = JSON.parse(msg.data);
-   this.game.notifyAll(msg.data);
+   this.game.notifyAll(command);
    command.run = eval(command.action + 'Command').prototype.run;
    command.remote = true;
    command.run();

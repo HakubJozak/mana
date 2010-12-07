@@ -20,17 +20,25 @@ function lobby_valid() {
 function lobby_submit() {
   if (lobby_valid()) {
     var lobby = {
-      onRemoteMessage: function(data) {
-        name = lobby_input('name');
-        game.message('You joined the game as ' + name + '.');
-        $('#user-local h3').text(name);
-        game.removeListener();
-        closeLobby();
-        $('button').attr('disabled',false);
+      onRemoteMessage: function(command) {
+        if (command.operation == 'update_library') {
+          name = lobby_input('name');
+          $('#user-local h3').text(name);
+          game.message('You joined the game as ' + name + '.');
+          game.removeListener();
+          closeLobby();
+          $('button').attr('disabled',false);
+        } else if (command.operation == 'progress') {
+          // TODO: 
+          console.info(command);
+          $( "#lobby-progress-message" ).text(command.card);
+          $( "#lobby-progress-bar" ).progressbar( "option", "value", command.value );
+        }
       }
     };
     
     $('button').attr('disabled',true);
+    $( "#lobby-progress-message" ).text('Loading cards, please wait...');
     game.setListener(lobby);
     game.connect( lobby_input('name'), lobby_input('cards'));
   }
@@ -51,6 +59,7 @@ $(document).ready(function() {
     open: function(event, ui) { 
       //hide close button.
       $(this).parent().find('.ui-dialog-titlebar-close').hide();
+      $("#lobby-progress-bar").progressbar();
     },
 
     buttons: [ 

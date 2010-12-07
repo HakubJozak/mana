@@ -39,15 +39,6 @@
 */
 
 #side-panel {
-  @include panel;
-  position: absolute;
-
-  right: 0px;
-  top: 0px;
-  height: $page-height;
-  min-height: $page-height;
-  width: $side-panel-width;
-
 
   border-left: 1px dotted #C8B472;
 

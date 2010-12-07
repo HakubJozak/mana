@@ -6,7 +6,7 @@ ServerCommand = function(operation, args) {
 
 ServerCommand.prototype.run = function() {
   switch (this.operation) {
-  case 'update_library': 
+  case 'update_library':
     library.update(this.args.cards);
     break;
 
