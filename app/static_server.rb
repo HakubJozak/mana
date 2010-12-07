@@ -1,5 +1,5 @@
 module Mana
-  class StaticServer < Sinatra::Base
+  class Server < Sinatra::Base
 
     set :app_file, __FILE__
     set :root, File.dirname(__FILE__)
@@ -58,4 +58,5 @@ module Mana
     # end
     
   end
+  
 end
