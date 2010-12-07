@@ -6,6 +6,7 @@ $opponent-color: #ff0000;
 
 $top-bar-height: 0px;
 $page-height: 1400px;
+$battlefield-width: 1100px;
 $side-panel-width: 160px;
 $default-border-radius: 5px;
 
@@ -38,12 +39,18 @@ body {
      @include border-radius;
 
      position: absolute;
+  
+     padding: 10px;
      top: $top-bar-height;
-     left: 0px;
-     right: $side-panel-width;
      height: $page-height;
-     bottom: 0px;
-     min-height: $page-height;
+     width: $battlefield-width;
+     margin: auto;
+
+//     left: 0px;
+//     right: $side-panel-width;
+
+//     bottom: 0px;
+//     min-height: $page-height;
 
 
      z-index: 1; 
