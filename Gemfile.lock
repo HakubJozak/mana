@@ -49,6 +49,7 @@ GEM
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
     rack (1.1.0)
+    railsless-deploy (1.0.2)
     rake (0.8.7)
     require_all (1.2.0)
     rspec (2.0.1)
@@ -109,6 +110,7 @@ DEPENDENCIES
   jasmine
   mocha
   mongo
+  railsless-deploy
   require_all
   ruby-debug19
   sass

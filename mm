@@ -1,3 +1,3 @@
 #!/bin/bash
 
-thin start -R ./config.ru
+thin start -R ./config/config.ru

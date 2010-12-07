@@ -16,6 +16,7 @@ gem 'mongo'
 gem 'require_all'
 
 group :development do
+  gem 'railsless-deploy', :require => false
   gem 'sinatra-reloader', :require => 'sinatra/reloader'
   gem 'awesome_print'
   gem 'ruby-debug19', :require => 'ruby-debug'
