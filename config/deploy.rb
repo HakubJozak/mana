@@ -1,15 +1,22 @@
+# Add RVM's lib directory to the load path.
+$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) 
+
+require "rvm/capistrano"                  
 require 'bundler/capistrano'
 
 set :application, "mana"
 set :repository, "git@github.com:HakubJozak/mana.git"
+set :use_sudo, false
+set :user, 'root'
+
+# set :rvm_type, :user
 
 set :scm, :git
-set :deploy_to, "/home/root/#{application}"
+set :deploy_to, "/root/#{application}_production"
 
-role :web, "mana-edge"
+
 role :app, "mana-edge"
-role :db,  "mana-edge", :primary => true
-role :db,  "mana-edge"
+
 
 # namespace :deploy do
 #   task :start do ; end
