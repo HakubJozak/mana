@@ -4,8 +4,20 @@ require 'rubygems'
 require 'bundler'
 require 'thin'
 
-Bundler.require(:default)
-Debugger.start rescue nil
+# Config
+PORT = 8080
+
+if ENV['RACK_ENV'] == 'development'
+  Bundler.require(:default, :development)
+  Debugger.start
+  ADDRESS = "0.0.0.0"
+  STATIC_PORT = 3000
+else
+  Bundler.require(:default)
+  ADDRESS = "83.167.232.160"
+  STATIC_PORT = 80
+end
+
 
 $:.unshift(File.expand_path('.'))
 
@@ -14,14 +26,16 @@ require_all 'app'
 Thin::Logging.debug = true
 
 
+
 # HACK
 class EventMachine::WebSocket::Connection
   attr_accessor :game, :user
 end
 
-class Object
+class Rack::Builder
   include Mana::Commander
 end
+
 
 
 EM.run do
@@ -29,7 +43,7 @@ EM.run do
   @mongo = Mongo::Connection.new.db('mana')
   MagicCardsInfo.instance = MagicCardsInfo.new(@mongo)
   
-  EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080, :debug => true) do |ws|
+  EventMachine::WebSocket.start(:host => ADDRESS, :port => PORT, :debug => true) do |ws|
 
     ws.onerror do |error|
       puts error.backtrace
@@ -67,7 +81,7 @@ EM.run do
   end
   
 
-  Thin::Server.start Mana::Server, '0.0.0.0', 3000
+  Thin::Server.start Mana::Server, ADDRESS, STATIC_PORT
 
   puts "Mana server started"  
 end
