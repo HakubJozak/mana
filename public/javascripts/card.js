@@ -57,16 +57,17 @@ Card.prototype.isCovered = function() {
 }
 
 
-Card.prototype.showDetail = function(event) {
+Card.prototype.showDetail = function() {
     var detail = this.element.clone();
 
     $('body').append(detail);
     
     detail.css('z-index',10000)
+        .attr('src', this.picture)
         .offset(this.element.offset())
         .removeClass('card')
         .addClass('card-detail')
-        .animate(Card.detailAnimation('+'), 200);
+        .animate(Card.detailAnimation('+'), 200)
 
     detail.click(function() {
         $(this).unbind('click')
@@ -74,8 +75,6 @@ Card.prototype.showDetail = function(event) {
                  $(this).remove();
                });
     });
-
-    event.stopPropagation();
 }
 
 
@@ -107,7 +106,29 @@ Card.prototype.initDOM = function() {
       zIndex: 9999
     });
 
-  this.element.click(_('showDetail'));
   this.element.rightClick(_('toggleTapped'));
+
+  this.element.click(function(event) {
+      card = $(this).object();
+
+      if (controlKeyDown) {
+        card.turnOver();
+      } else {
+        card.showDetail();
+      }
+
+    event.stopPropagation();
+  });
+
+
+    // this.element.hover(function() {
+    //     card = $(this);
+    //     controls = card.append('<p>PRDEL</p>');
+    //     controls.offset(card.offset());
+    //     // window.clearTimeout(c.timeout);
+    //     // cardControls = function () {
+    //     // }
+    //     // window.setTimeout(2000, cardControls)
+    // });
 }
 

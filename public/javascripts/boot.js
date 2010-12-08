@@ -1,4 +1,4 @@
-var game;
+controlKeyDown = false;
 
 $(document).ready(function() {
 
@@ -9,6 +9,18 @@ $(document).ready(function() {
   Object.prototype.object = function() {
     return Utils.getObjectFromDom(this);
   }
+
+  $(document).keydown(function(e) {
+    if (e.keyCode == 17) {
+      controlKeyDown = true;
+    }
+  });
+
+  $(document).keyup(function(e) {
+    if (e.keyCode == 17) {
+      controlKeyDown = false;
+    }
+  });
 
 //  $( "#users" ).accordion({
 //    icons: ''

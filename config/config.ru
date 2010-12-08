@@ -19,13 +19,12 @@ class EventMachine::WebSocket::Connection
   attr_accessor :game, :user
 end
 
-class Rack::Builder
+class Object
   include Mana::Commander
 end
 
 
 EM.run do
-  Mana::Server
 
   @mongo = Mongo::Connection.new.db('mana')
   MagicCardsInfo.instance = MagicCardsInfo.new(@mongo)

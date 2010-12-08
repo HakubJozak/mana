@@ -40,13 +40,16 @@ $(document).ready(function() {
   }
 
   hand.fixPosition = function() {
-    $('#hand').children().each(function(i) {
-        position = $('#hand').offset();
-        position.top += 20;
-        position.left += 20 + 100 * i;
-        $(this).css('position', 'absolute');
-        $(this).offset(position);
-        $(this).css('z-index', $(this).prev().css('z-index') + 1);
+    var padding =  parseInt($('#hand').css('padding-left'));
+    var top_padding =  parseInt($('#hand').css('padding-top'));
+
+    $('#hand').children('img').each(function(i) {
+      position = $('#hand').offset();
+      position.top += 25;
+      position.left += padding + 100 * i;
+      $(this).css('position', 'absolute');
+      $(this).offset(position);
+      $(this).css('z-index', $(this).prev().css('z-index') + 1);
     });      
   }
 /*

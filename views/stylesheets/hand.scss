@@ -5,12 +5,20 @@
 
   border: 1px dotted black;
   bottom: 70px;
-  height: 170px;
+  height: 180px;
   left: 20px;
   right: $side-panel-width + 20px;
   padding: 15px;
+  padding-left: 10px;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: $hand-z-index; 
+
+  h2 {
+      position: absolute;
+      top: 2px;
+      left: 4px;
+      color: transparentize($highlight-color, 0.3);
+  }
 
   .card-over {
       border-style: dotted; 

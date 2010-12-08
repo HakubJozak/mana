@@ -27,9 +27,6 @@ MoveCommand.prototype.run = function() {
     }
   }
 
-
-
-
   // TODO: function switch_parent
     if (c.parent().attr('id') != parent.attr('id')) {
       old = c.offset();
@@ -48,4 +45,3 @@ MoveCommand.prototype.run = function() {
     }
 
 }
-

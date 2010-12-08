@@ -11,6 +11,7 @@ $default-border-radius: 5px;
 
 $top-z-index: 10000;
 $hand-z-index: 2000;
+$desk-z-index: 1;
 $infobox-z-index: 3000;
 
 
@@ -34,13 +35,17 @@ body {
   height: $page-height;
 }
 
+@mixin layout-element {
+     position: absolute;
+     top: 0px;
+     height: $page-height;
+}
+
 #battlefield {
      @include area;
      @include border-radius;
-
-     position: absolute;
+     @include layout-element;
   
-     top: 0px;
      width: $battlefield-width;
      margin: auto;
      margin-top: 20px;
@@ -49,15 +54,15 @@ body {
      right: $side-panel-width;
      min-height: $page-height;
 
-     z-index: 1; 
+     z-index: $desk-z-index;
 }
  
 #side-panel {
   @include panel;
-  position: absolute;
+  @include layout-element;
 
+  padding-bottom: 20px;
   right: 0px;
-  top: 0px;
-  height: 100%;
   width: $side-panel-width;
+  z-index: $desk-z-index;
 }
