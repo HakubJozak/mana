@@ -4,7 +4,6 @@ Card = function(image_url, id) {
   var image = $('<img src="' + image_url + '" class="card" id="card-' + id + '" />');
   this.id = id;
   this.covered = false;
-  this.tappable = true;
   this.element = image;
   this.picture = image.attr('src');
   this.initDOM();
@@ -48,12 +47,13 @@ Card.prototype.toggleTapped = function(event) {
 }
 
 Card.prototype.turnOver = function(cover) {
-  this.covered = (cover != null) ? cover : !this.covered;
-  this.element.attr('src', this.covered ?  "/images/back.jpg" : this.picture);
+    tc = new TurnCommand(this);
+    tc.run();
+    game.sendCommand(tc);
 }
 
 Card.prototype.isCovered = function() {
-  return this.element.hasClass('covered');
+   return this.covered;
 }
 
 
@@ -109,13 +109,13 @@ Card.prototype.initDOM = function() {
   this.element.rightClick(_('toggleTapped'));
 
   this.element.click(function(event) {
-      card = $(this).object();
+    card = $(this).object();
 
-      if (controlKeyDown) {
-        card.turnOver();
-      } else {
-        card.showDetail();
-      }
+    if (controlKeyDown) {
+      card.turnOver();
+    } else {
+      card.showDetail();
+    }
 
     event.stopPropagation();
   });
