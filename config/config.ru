@@ -5,17 +5,19 @@ require 'bundler'
 require 'thin'
 
 # Config
-PORT = 8080
+
 
 if ENV['RACK_ENV'] == 'development'
   Bundler.require(:default, :development)
   Debugger.start
   ADDRESS = "0.0.0.0"
   STATIC_PORT = 3000
+  PORT = 8080
 else
   Bundler.require(:default)
   ADDRESS = "83.167.232.160"
   STATIC_PORT = 80
+  PORT = 90
 end
 
 
