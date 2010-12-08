@@ -1,27 +1,12 @@
 #!/usr/bin/env ruby
 
+$:.unshift(File.expand_path('.'))
+
 require 'rubygems'
 require 'bundler'
-require 'thin'
-
-# Config
+require 'config/environments'
 
 
-if ENV['RACK_ENV'] == 'development'
-  Bundler.require(:default, :development)
-  Debugger.start
-  ADDRESS = "0.0.0.0"
-  STATIC_PORT = 3000
-  PORT = 8080
-else
-  Bundler.require(:default)
-  ADDRESS = "83.167.232.160"
-  STATIC_PORT = 80
-  PORT = 90
-end
-
-
-$:.unshift(File.expand_path('.'))
 
 require_all 'app'
 
@@ -45,7 +30,7 @@ EM.run do
   @mongo = Mongo::Connection.new.db('mana')
   MagicCardsInfo.instance = MagicCardsInfo.new(@mongo)
   
-  EventMachine::WebSocket.start(:host => ADDRESS, :port => PORT, :debug => true) do |ws|
+  EventMachine::WebSocket.start(:host => ADDRESS, :port => WEBSOCKET_PORT, :debug => true) do |ws|
 
     ws.onerror do |error|
       puts error.backtrace

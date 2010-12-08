@@ -48,7 +48,6 @@ module Mana
     
     get '/games/:name' do
       @game_id = params[:name]
-      @host = request.host
       haml :index
     end
 
