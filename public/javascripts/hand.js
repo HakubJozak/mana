@@ -40,17 +40,7 @@ $(document).ready(function() {
   }
 
   hand.fixPosition = function() {
-    var padding =  parseInt($('#hand').css('padding-left'));
-    var top_padding =  parseInt($('#hand').css('padding-top'));
-
-    $('#hand').children('img').each(function(i) {
-      position = $('#hand').offset();
-      position.top += 25;
-      position.left += padding + 100 * i;
-      $(this).css('position', 'absolute');
-      $(this).offset(position);
-      $(this).css('z-index', $(this).prev().css('z-index') + 1);
-    });      
+      spread_cards('#hand', 25, 0);
   }
 /*
   hand.dropped = function(card, event, ui) {
@@ -59,3 +49,19 @@ $(document).ready(function() {
   }
     */
 });
+
+
+function spread_cards(container, top, zbonus) {
+    var padding =  parseInt($(container).css('padding-left'));
+    var top_padding =  parseInt($(container).css('padding-top'));
+
+    $(container).children('img').each(function(i) {
+      position = $(container).offset();
+      position.top += top;
+      position.left += padding + 100 * i;
+      $(this).css('position', 'absolute');
+      $(this).offset(position);
+      //$(this).css('z-index', $(this).prev().css('z-index') + 1 + zbonus);
+    });      
+
+}

@@ -51,6 +51,10 @@ module Mana
       haml :index
     end
 
+    get '/flow' do
+      haml :test
+    end
+
     # get '/cards/:name.:format' do
     #   card = MagicCardsInfo.create_card(params[:name])
     #   redirect(params[:format] == 'html' ? card.url : card.image_url)

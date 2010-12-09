@@ -5,13 +5,7 @@ $:.unshift(File.expand_path('.'))
 require 'rubygems'
 require 'bundler'
 require 'config/environments'
-
-
-
 require_all 'app'
-
-Thin::Logging.debug = true
-
 
 
 # HACK

@@ -1,3 +1,6 @@
+Thin::Logging.debug = true
+
+
 if ENV['RACK_ENV'] == 'production'
   Bundler.require(:default)
 
