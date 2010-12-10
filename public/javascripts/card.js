@@ -89,6 +89,8 @@ Card.detailAnimation = function(resize) {
           }
 }
 
+carrier = null;
+
 Card.prototype.initDOM = function() {
   Utils.setObjectToDom(this.element, this);
   var toggleDragged = function() { $(this).toggleClass('dragged'); }
@@ -96,8 +98,8 @@ Card.prototype.initDOM = function() {
     this.element.draggable( { 
       scope: 'cards',
       snap: '.card',
-      start: toggleDragged,
-      stop: toggleDragged,
+      start: toggleDragged(),
+	    stop: toggleDragged(),
       scroll: true,
       revert: 'invalid',
       containment: '#desk',

@@ -1,13 +1,7 @@
 // -*- mode: css; tab-width: 2; -*-
 
-@mixin card-mini {
-  height: 51px;
-  width: 36px; 
-}
-
-@mixin card-size {
-  height: 170px;
-  width: 120px; 
+@mixin transparent {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 @mixin focused {

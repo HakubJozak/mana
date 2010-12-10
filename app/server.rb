@@ -17,6 +17,7 @@ module Mana
             name = id.split('-').first
             haml_concat name.capitalize
             # haml_tag :strong, 0
+            haml_tag 'a#show-graveyard-button.button', 'Show' # -button.button{ :href => "#" } Show
           end
 
           params = if has_id

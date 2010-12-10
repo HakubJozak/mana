@@ -2,12 +2,11 @@ $(document).ready(function() {
   var hand = new Dropbox($($('#hand')[0]));
 
   hand.element.disableSelection();
-
   hand.element.droppable( "option", "greedy", true );
 
-    hand.element.draggable({ axis: 'y',
-                             containment: '#battlefield'
-                           });
+  hand.element.draggable({ axis: 'y',
+                           containment: '#battlefield'
+                         });
 
 
   $('#battlefield').click(function(event) {
@@ -50,18 +49,3 @@ $(document).ready(function() {
     */
 });
 
-
-function spread_cards(container, top, zbonus) {
-    var padding =  parseInt($(container).css('padding-left'));
-    var top_padding =  parseInt($(container).css('padding-top'));
-
-    $(container).children('img').each(function(i) {
-      position = $(container).offset();
-      position.top += top;
-      position.left += padding + 100 * i;
-      $(this).css('position', 'absolute');
-      $(this).offset(position);
-      //$(this).css('z-index', $(this).prev().css('z-index') + 1 + zbonus);
-    });      
-
-}

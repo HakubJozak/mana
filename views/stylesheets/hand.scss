@@ -1,6 +1,8 @@
 // -*- mode: css; tab-width: 2; -*-
 
 #hand {
+  @include transparent;
+
   position: fixed;
 
   border: 1px dotted black;
@@ -10,7 +12,6 @@
   right: $side-panel-width + 20px;
   padding: 15px;
   padding-left: 10px;
-  background-color: rgba(0, 0, 0, 0.2);
   z-index: $hand-z-index; 
 
   h2 {

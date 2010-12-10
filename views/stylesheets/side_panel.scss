@@ -17,12 +17,14 @@
   background: #61461c url('../images/medium-texture.png');
 }
 
+@mixin gradient {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(20, 0, 0, 0.2)), to(rgba(60, 0, 0, 0.4)));
+}
+
 @mixin dropbox {
   @include card-size;
   @include border-radius;
-
   padding: 5px;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(20, 0, 0, 0.2)), to(rgba(60, 0, 0, 0.4))); 
 }
 
 
@@ -45,7 +47,7 @@
   #users {
     * { margin-bottom: 5px; }
     h3 {
-        background-color: rgba(0, 0, 0, 0.2);
+        @include transparent;
         padding: 3px;
     }
 
@@ -53,14 +55,32 @@
         @include side-panel-component;
         margin-bottom: 3px;
         font-size: 80%;
+        width: 70%;
+        padding: 5px;
+
+        a {
+            position: absolute;
+            right: 0px;
+        }
     }
   }
 
-  .box {
-      @include area;
-      @include dropbox;
-      @include side-panel-component; 
-      &.card-over { @include focused; }
-      img { @include card-size; }
-  }
 }
+
+.box {
+    @include area;
+    @include dropbox;
+    @include gradient;
+    @include side-panel-component; 
+    &.card-over { @include focused; }
+    img { @include card-size; }
+}
+
+
+/* .box { */
+/*     @include transparent; */
+/*     @include area; */
+/*     @include dropbox; */
+/*     @include side-panel-component;  */
+/*     img { @include card-size; } */
+/* } */

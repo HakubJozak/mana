@@ -15,6 +15,15 @@ $desk-z-index: 1;
 $infobox-z-index: 3000;
 
 
+$card-w : 120px;
+$card-h : 170px;
+
+@mixin card-size {
+  height: $card-h;
+  width: $card-w;
+}
+
+
 @import "compass/reset";
 @import "compass/css3";  
 @import "compass/css3/transition";

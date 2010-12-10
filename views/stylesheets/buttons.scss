@@ -1,11 +1,9 @@
 // -*- mode: css; tab-width: 2; -*-
 
-a.button:hover {
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c8b472), to(#693e1b));
-  border-top-color: white;
-  color: white; }
 
 .button {
+  @include border-radius;
+
   -webkit-box-shadow: rgba(0, 0, 0, 0.746) 0px 0px 3px;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#9d7c41), to(#693e1b));
   border: 1px solid #C8B472;
@@ -16,4 +14,11 @@ a.button:hover {
   text-align: center;
   text-decoration: none;
   text-shadow: black 1px 1px 1px; 
+
+  &:hover {
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c8b472), to(#693e1b));
+    border-top-color: white;
+    color: white; 
+  }
+
 }
