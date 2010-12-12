@@ -4,6 +4,7 @@
 .button {
   @include border-radius;
 
+  cursor: pointer;
   -webkit-box-shadow: rgba(0, 0, 0, 0.746) 0px 0px 3px;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#9d7c41), to(#693e1b));
   border: 1px solid #C8B472;

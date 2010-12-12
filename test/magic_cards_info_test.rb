@@ -30,7 +30,14 @@ class MagicCardsInfoTest < ActiveSupport::TestCase
         assert_equal card.url, 'url'
         assert_equal card.image_url, 'image'
       end
+
+      should "fail gratiously if no card found" do
+        card = @mci.find_or_create_card('NO_SUCH_CARD_EXISTS')
+	assert_nil card
+      end
     end
+
+
 
   end
 end

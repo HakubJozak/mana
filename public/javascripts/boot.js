@@ -1,6 +1,6 @@
 CARD_W = 120;
 CARD_H = 170; 
-SPACING = 3;
+SPACING = 6;
 
 $.fn.reverse = [].reverse;
 
@@ -24,17 +24,21 @@ function pack_cards(container) {
 }
 
 
-function spread_cards(container, top, zbonus) {
-    var padding =  parseInt($(container).css('padding-left'));
-    var top_padding =  parseInt($(container).css('padding-top'));
+function spread_cards(container, top, width) {
+  var padding =  parseInt($(container).css('padding-left'));
+  var top_padding =  parseInt($(container).css('padding-top'));
+  var count = $(container).children('img').length;
+  var w = (width != null) ? width : $(container).width();
+    
+  var per_card = (w - padding) / count;
 
     $(container).children('img').each(function(i) {
-        position = $(container).offset();
-        position.top += top;
-        position.left += padding + 100 * i;
-        $(this).css('position', 'absolute')
+      position = $(container).offset();
+      position.top += top;
+      position.left += padding + per_card * i;
+      $(this).css('position', 'absolute')
             .offset(position)
-            .css('z-index', $(this).prev().css('z-index') + 1 + zbonus);
+            .css('z-index', $(this).prev().css('z-index') + 1);
     });      
 }
 
@@ -50,7 +54,7 @@ function pack_unpack() {
   if (!mutex) {
     mutex = true;
     var box = $('#graveyard');
-    var unpacked = (box.parent().get(0).tagName == 'BODY');
+    var unpacked = ($('#placeholder').length != 0);
     var offset = box.offset();
     var width = unpacked_length(box);
     var effect;
@@ -59,8 +63,7 @@ function pack_unpack() {
     $(this).text(unpacked ? 'Show' : 'Hide');
 
     if (unpacked) {
-      //      var diff = box.width() - (CARD_W + 10);
-      effect = { left: old_position.left  , width: old_offset.width }
+      effect = { left: old_position.left  , width: old_position.width }
 
       var parent = $('#placeholder').parent();
       $('#placeholder').remove();
@@ -73,19 +76,16 @@ function pack_unpack() {
     } else {
       var effect = { left: '-=' + width, width: '+=' + width }
 
-      old_offset = box.offset();
-      old_offset.width = box.width();
       old_position = box.position();
+      old_position.width = box.width();
 
       $('<div id="placeholder" class="box"></div>').insertBefore(box);
-      box.prependTo('body');
+      box.prependTo('#battlefield');
       box.offset(offset);
-      spread_cards(box,5,0)
+      spread_cards(box,5,width + box.width());
     }
 
-    box.animate(effect, function () {
-      mutex = false;
-    });
+    box.animate(effect, function () { mutex = false; });
   }
 }
 

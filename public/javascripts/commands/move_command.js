@@ -2,9 +2,14 @@ MoveCommand = function(card, new_parent, animate) {
   this.position = card.element.offset();
   this.action = 'Move';
   this.new_parent = new_parent;
+
+  // TODO: don't send so much info by default
   this.card = { 
     id: card.id,
-    image_url : card.element.attr('src')
+    tapped: card.isTapped,
+    covered: card.isCovered,
+    image_url : card.element.attr('src'),
+    picture : card.picture
   };
 }
 
@@ -28,18 +33,17 @@ MoveCommand.prototype.run = function() {
     }
   }
 
-  // TODO: function switch_parent
-    if (c.parent().attr('id') != parent.attr('id')) {
-      switch_parent(c, parent);
-    }
+  if (c.parent().attr('id') != parent.attr('id')) {
+    switch_parent(c, parent);
+  }
 
-    if (animate) {
-      o = parent.offset()
-      var top = position.top - o.top;
-      var left = position.left - o.left;
-      c.animate({ "top": top, "left": left }, animate);
-    } else {
-      c.offset(position);
-    }
+  if (animate) {
+    o = parent.offset()
+    var top = position.top - o.top;
+    var left = position.left - o.left;
+    c.animate({ "top": top, "left": left }, animate);
+  } else {
+    c.offset(position);
+  }
 
 }

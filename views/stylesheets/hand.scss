@@ -8,8 +8,9 @@
   border: 1px dotted black;
   bottom: 70px;
   height: 180px;
-  left: 20px;
-  right: $side-panel-width + 20px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: $card-w + 20;
   padding: 15px;
   padding-left: 10px;
   z-index: $hand-z-index; 

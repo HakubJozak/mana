@@ -4,9 +4,10 @@ $(document).ready(function() {
   hand.element.disableSelection();
   hand.element.droppable( "option", "greedy", true );
 
-  hand.element.draggable({ axis: 'y',
-                           containment: '#battlefield'
-                         });
+  hand.element.draggable({ 
+  //  axis: 'y',
+  //  containment: '#battlefield'
+  });
 
 
   $('#battlefield').click(function(event) {
@@ -39,7 +40,9 @@ $(document).ready(function() {
   }
 
   hand.fixPosition = function() {
-      spread_cards('#hand', 25, 0);
+    var count = this.element.children('img').length
+    this.element.css('width', (SPACING + CARD_W) * count + 2*SPACING)
+    spread_cards('#hand', 25);
   }
 /*
   hand.dropped = function(card, event, ui) {

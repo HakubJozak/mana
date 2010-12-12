@@ -1,6 +1,6 @@
 // -*- mode: css; tab-width: 2; -*-
 
-.card {
+@mixin card-like {
   position: absolute;
   @include card-size;
   border: 2px solid black;
@@ -17,6 +17,27 @@
 
   &.dragged {  @include box-shadow( rgba(0,0,0,0.5), 10px, 10px, 10px);   } 
   &.tapped { @include rotate(90deg);  }
+}
+
+.card  { 
+  @include card-like;
+}
+
+.token { 
+  @include card-like;
+  // @include linear-gradient(color-stops(black, green ), bottom);
+  background-image: url('/images/medium-texture.png');
+
+  h1 {
+    color: gray;
+    overflow: hidden;
+    position: relative;
+    top: 10px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: $card-h / 2;
+  }
 }
 
 img.card-detail {

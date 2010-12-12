@@ -19,11 +19,14 @@ Card.find_or_create_opponent_card = function(params,owner_id) {
   var card = Card.find(params.id);
 
   if (card == null) {
-    // test existence and fetch if card not supplied?
     card = new Card(params.image_url, params.id);
-    card.element.addClass(owner_id)
+    card.covered = params.covered;
+    card.picture = params.picture;
+    card.element.addClass(params.owner_id)
                 .addClass('opponent')
                 .attr('style','position: absolute');
+
+    if (params.tapped) card.addClass('tapped');
   }
 
   return card;
@@ -89,7 +92,6 @@ Card.detailAnimation = function(resize) {
           }
 }
 
-carrier = null;
 
 Card.prototype.initDOM = function() {
   Utils.setObjectToDom(this.element, this);

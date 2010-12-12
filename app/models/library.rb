@@ -25,12 +25,8 @@ class Library
   private
 
   def mono_card_array(count, name)
-      if count && name
-        card = MagicCardsInfo.instance.find_or_create_card(name)
-        (1..count.to_i).to_a.fill { Card.copy(card) }
-      else
-        nil
-      end
+    card = MagicCardsInfo.instance.find_or_create_card(name) if name && count
+    card ? (1..count.to_i).to_a.fill { Card.copy(card) } : nil
   end
 
 end

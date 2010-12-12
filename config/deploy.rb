@@ -13,6 +13,10 @@ role :app, "mana-edge"
 
 
 namespace :deploy do
+  task :shared_symlink do
+    run "ln -s #{shared_path}/config/production.rb #{release_path}/config/production.rb"
+  end
+
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
@@ -29,3 +33,5 @@ namespace :thin do
     end
   end
 end
+
+after "deploy:finalize_update", "deploy:shared_symlink"

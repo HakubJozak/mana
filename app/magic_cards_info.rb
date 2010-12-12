@@ -31,13 +31,22 @@ class MagicCardsInfo
     hash = @db.find_one(:name => name)
     hash.nil? ? nil : Card.new(hash)
   end
-  
+
+
+  # TODO: create card with non-existing URLs
+  #
   def create_card(name)
     card = Card.new(:name => name)
     card.url, page = goto_url(card_url(name))
-    card.image_url = "http://magiccards.info" + page.scan(IMAGE_REGEXP)[0][0]
-    @db.insert(card.to_hash)
-    card
+    uri = page.scan(IMAGE_REGEXP)[0]
+
+    if page && uri
+      card.image_url = "http://magiccards.info" + uri[0]
+      @db.insert(card.to_hash)
+      card
+    else
+      nil
+    end
   end
 
   # TODO - limit number of redirects
