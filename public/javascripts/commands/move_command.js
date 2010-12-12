@@ -17,6 +17,7 @@ MoveCommand.prototype.run = function() {
   var parent = $('#' + this.new_parent);
   var c = card.element;
 
+  // TODO: refactor this hard-coded ultra ad-hoc code
   if (this.remote) {
     if (this.new_parent == 'hand') {
       c.fadeOut(function() { $(this).remove() });
@@ -29,10 +30,7 @@ MoveCommand.prototype.run = function() {
 
   // TODO: function switch_parent
     if (c.parent().attr('id') != parent.attr('id')) {
-      old = c.offset();
-      c.detach();
-      c.appendTo(parent);
-      c.offset(old);
+      switch_parent(c, parent);
     }
 
     if (animate) {
