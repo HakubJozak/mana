@@ -14,7 +14,9 @@ role :app, "mana-edge"
 
 namespace :deploy do
   task :shared_symlink do
-    run "ln -s #{shared_path}/config/production.rb #{release_path}/config/production.rb"
+    [ 'config/production.rb', 'log', 'pids' ].each do |path|
+      run "ln -s #{shared_path}/#{path} #{release_path}/#{path}"
+    end
   end
 
   task :start do ; end
