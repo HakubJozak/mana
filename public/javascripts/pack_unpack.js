@@ -61,11 +61,8 @@ function pack_unpack(box_id, placeholder_id) {
 
       var parent = placeholder.parent();
       placeholder.remove();
+      switch_parent(box, parent);
 
-      var old = box.offset();
-      box.detach();
-      box.appendTo(parent);
-      box.offset(old);
       pack_cards(box,5,0)
     } else {
       var effect = { left: '-=' + width, width: '+=' + width }
