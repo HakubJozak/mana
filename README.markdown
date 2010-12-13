@@ -1,6 +1,6 @@
 # Mana
 
-Mana is a proof-of-concept in-browser implementation of Magic the Gathering(tm) card game using EventMachine, Sinatra, Compass and Websockets.
+Mana is a proof-of-concept in-browser implementation of Magic the Gathering(tm) card game using jQuery, EventMachine, Sinatra, Compass and Websockets.
 
 
 ## Demo
@@ -16,16 +16,15 @@ and replace 'any-name' by a name of your choice. Send the URL to your friend(s) 
  - CTRL + left click covers/uncovers a card
  - right click taps/untaps the card
 
-![alt text](screenshots/1.png)
-
+![Screenshot](https://github.com/HakubJozak/mana/raw/master/screenshots/1.png)
 
 ## Contributions
 
-All contributions are welcomed. The graphics needs rework (right now it is in-fact "borrowed" from http://tappedout.net), Tests has to be written and a lot of features are easy to implement but they are not there yet. Just for the repository and send the pull-requests or write me a message on Github.
+All contributions are welcome! The graphics needs rework (right now it is in-fact "borrowed" from http://tappedout.net), tests have to be written and a lot of features that are easy to implement but not so critical plea for attention. Just for the repository and send the pull-requests or write me a message on Github. If you don't know where to start, check the TODO list.
 
 ## Requirements
 
-Webkit-based browser (developed in Chrome).
+Webkit-based browser (developed in Chrome) - for now. It is quite easy to make it cross-browser but right now the focus is on core features.
 
 ## TODO
 
