@@ -40,7 +40,7 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
  - simple chat
  - each user has its own color
  - security
-
+ - Gravatar - http://railscasts.com/episodes/244-gravatar
 
 
 
