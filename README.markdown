@@ -34,6 +34,8 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
  - shuffle trigger
  - counters
  - tokens
+ - variable width and height of the battleground
+ - zooming
  - simple chat
  - each user has its own color
  - security
