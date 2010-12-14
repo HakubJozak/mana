@@ -28,11 +28,6 @@ $(document).ready(function() {
     }
   }
 
-  hand.addCard = function(card) {
-    card.element.appendTo(this.element);
-    this.fixPosition();
-  }
-
   hand.showHand = function(card) {
     if (hand.element.is(':hidden')) {
         hand.toggleShow();
@@ -44,11 +39,14 @@ $(document).ready(function() {
     this.element.css('width', (SPACING + CARD_W) * count + 2*SPACING)
     spread_cards('#hand', 25);
   }
-/*
+
   hand.dropped = function(card, event, ui) {
-    card.element.detach();
-    this.addCard(card);
+    // replace by super() call
+    this.old_drop = Dropbox.prototype.dropped;
+    this.old_drop(card, event, ui);
+    console.info('sss')
+    card.turnOverLocally(false);
   }
-    */
+
 });
 

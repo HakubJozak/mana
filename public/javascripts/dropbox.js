@@ -34,9 +34,8 @@ Dropbox.prototype.initDOM = function() {
       scope: 'cards',
       hoverClass: 'card-over',
       drop: function(event,ui) {
-        box = Utils.getObjectFromDom(this);
-        card = Utils.getObjectFromDom(ui.draggable);
-        box.dropped(card,event,ui);
+        card = ui.draggable.object();
+        this.object().dropped(card,event,ui);
       }
     });
 }

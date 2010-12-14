@@ -60,6 +60,7 @@ Card.prototype.turnOver = function(cover) {
 
 Card.prototype.turnOverLocally = function(cover) {
   this.covered = cover;
+    console.info('TuRNED!')
   this.element.attr('src', this.covered ?  "/images/back.jpg" : this.picture);
 }
 
