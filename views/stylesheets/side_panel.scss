@@ -76,16 +76,9 @@
     img { @include card-size; }
 }
 
-
-/* .box { */
-/*     @include transparent; */
-/*     @include area; */
-/*     @include dropbox; */
-/*     @include side-panel-component;  */
-/*     img { @include card-size; } */
-/* } */
-
 #battlefield {
+
+  // when unpacked
  .box {
    position: absolute;
  }

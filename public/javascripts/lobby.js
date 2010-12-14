@@ -2,16 +2,17 @@ function closeLobby() {
   $('#lobby').dialog('close');
 }
 
+
 function lobby_input(name) {
   return $('#lobby form *[name="' + name + '"]').val();
 }
+
 
 function lobby_valid() {
   if (lobby_input('name') == '') {
     game.message('Please enter your name.');
     return false;
   }
-
 
   return true;
 }

@@ -1,19 +1,19 @@
-$(document).ready(function() {
-  $('#library').click(function() {
-    hand = Utils.getObjectFromDom($('#hand'));
-    library.drawCard();
-  });
-
-  library = new Library();
-});
+$(document).ready(function() {});
 
 
 Library = function() {
-  this.cards = [];
+  this.element = $('#library')
 }
 
 Library.prototype.update = function(cards) {
-  this.cards = cards;
+  var lib = this.element;
+
+  $(cards).each(function(i,params) {
+    card = new Card(params);
+    card.turnOverLocally(true);
+    card.element.css('position', 'absolute')
+    $('#library').object().dropLocally(card);
+  });
 }
 
 
@@ -24,7 +24,7 @@ Library.prototype.drawCard = function() {
     hand.showHand();
 
     params = this.cards.pop()
-    card = new Card( params.image_url, params.id);
+    card = new Card(params);
 
     hand.addCard(card);
   } else {

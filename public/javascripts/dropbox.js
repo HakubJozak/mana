@@ -4,11 +4,6 @@ Dropbox = function(element) {
   this.initDOM();
 }
 
-Dropbox.initialize = function() {
-    $('#graveyard, #exile').each(function(i) {
-        new Dropbox($(this));
-    });
-}
 
 Dropbox.prototype.tappingAllowed = function() {
   return false;
@@ -19,6 +14,11 @@ Dropbox.prototype.dropped = function(card,event,ui) {
   mc.run();
   this.fixPosition(card);
   game.sendCommand(mc);
+}
+
+Dropbox.prototype.dropLocally = function(card) {
+  card.element.appendTo(this.element);
+  this.fixPosition(card);
 }
 
 Dropbox.prototype.fixPosition = function(card) {

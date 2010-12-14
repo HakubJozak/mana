@@ -3,18 +3,19 @@ CARD_H = 170;
 SPACING = 6;
 
 $.fn.reverse = [].reverse;
-
-
-
-
-
 controlKeyDown = false;
+
+
 
 $(document).ready(function() {
 
   preventDefaults();
 
-  Dropbox.initialize();
+  $('#graveyard, #exile, #library').each(function(i) {
+    new Dropbox($(this));
+  });
+
+  library = new Library();
 
   Object.prototype.object = function() {
     return Utils.getObjectFromDom(this);
@@ -36,13 +37,7 @@ $(document).ready(function() {
 
 
 function preventDefaults() {
-    var labels = 'img, #library';
-
-    $(labels).click(function(event) {
-        event.preventDefault();
-    });
-
-    $(labels).mousedown(function(event) {
-        event.preventDefault();
-    });
+    $('img, #library')
+        .click(function(event) { event.preventDefault(); })
+        .mousedown(function(event) { event.preventDefault(); });
 }

@@ -34,7 +34,7 @@
     :javascript
       $(document).ready(function() {
         game = new Game('ws://#{ADDRESS}:#{WEBSOCKET_PORT}','#{@game_id}');
-        #{ENV['RACK_ENV'] == 'development' ?  'lobby_submit();' : ''}
+        // #{ENV['RACK_ENV'] == 'development' ?  'lobby_submit();' : ''}
       });
 
 %body
@@ -50,8 +50,7 @@
         %h3 Local
         - box 'graveyard'
         - box 'exile'
-        - box('library') do
-          %img{ :src => '/images/back.jpg' }/
+        - box 'library'
 
         -# %ul
         -#   %li

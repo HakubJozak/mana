@@ -91,5 +91,9 @@ $(document).ready(function() {
    pack_unpack('exile','exile-placeholder');
  });
 
+ $('#show-library-button').click(function() {
+   pack_unpack('library','library-placeholder');
+ });
+
 });
 
