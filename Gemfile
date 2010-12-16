@@ -8,12 +8,12 @@ gem 'compass'
 gem 'sinatra'
 # gem 'sinatra_more'
 gem 'activesupport', :require => 'active_support'
-#gem 'json' #, :require => 'json/pure'
 
 gem 'em-websocket'
 # gem 'em-mongo'
 gem 'mongo'
 gem 'require_all'
+gem 'coffee-script'
 
 group :development do
   gem 'railsless-deploy', :require => false

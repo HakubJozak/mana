@@ -1,6 +1,3 @@
-$(document).ready(function() {});
-
-
 Library = function() {
   this.element = $('#library')
 }
