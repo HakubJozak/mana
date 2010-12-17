@@ -6,18 +6,23 @@ function switch_parent(box, parent) {
 }
 
 
-function pack_cards(container) {
+function pack_cards(container, uncovered) {
   var pos = container.offset();
   pos.top += 5;
   pos.left += 5;
     
   $(container).children('img').each(function(i) {
-    $(this).offset(pos).css('z-index', 1000 - i);
+    var card = $(this);
+    card.offset(pos).css('z-index', 'auto');
+
+    if (uncovered) {
+      card.object().turnOverLocally(true);
+    }
   });
 }
 
 
-function spread_cards(container, top, width) {
+function spread_cards(container, top, width, uncover) {
   var padding =  parseInt($(container).css('padding-left'));
   var top_padding =  parseInt($(container).css('padding-top'));
   var count = $(container).children('img').length;
@@ -29,9 +34,15 @@ function spread_cards(container, top, width) {
       position = $(container).offset();
       position.top += top;
       position.left += padding + per_card * i;
-      $(this).css('position', 'absolute')
-            .offset(position)
-            .css('z-index', $(this).prev().css('z-index') + 1);
+
+      var card = $(this);
+      card.css('position', 'absolute')
+          .offset(position)
+          .css('z-index', $(this).prev().css('z-index') + 1);
+
+      if (uncover) {
+        card.object().turnOverLocally(false);
+      }
     });      
 }
 
@@ -43,15 +54,17 @@ function unpacked_length(box) {
 
 mutex = false;
 
-function pack_unpack(box_id, placeholder_id) {
+function pack_unpack(box_id, placeholder_id, uncover) {
   if (!mutex) {
     mutex = true;
+
     var box = $('#' + box_id);
     var placeholder = $('#' + placeholder_id);
     var unpacked = (placeholder.length != 0);
     var offset = box.offset();
     var width = unpacked_length(box);
     var effect;
+    uncover = uncover != null;
 
     //$(this).text(unpacked ? 'Show' : 'Hide');
 
@@ -63,7 +76,7 @@ function pack_unpack(box_id, placeholder_id) {
       placeholder.remove();
       switch_parent(box, parent);
 
-      pack_cards(box,5,0)
+      pack_cards(box, uncover)
     } else {
       var effect = { left: '-=' + width, width: '+=' + width }
 
@@ -74,7 +87,7 @@ function pack_unpack(box_id, placeholder_id) {
       $('<div id="' + placeholder_id + '" class="box"></div>').insertBefore(box);
       box.prependTo('#battlefield');
       box.offset(offset);
-      spread_cards(box,5,width + box.width());
+      spread_cards(box,5,width + box.width(), uncover);
     }
 
     box.animate(effect, function () { mutex = false; });
@@ -89,6 +102,10 @@ $(document).ready(function() {
 
  $('#show-exile-button').click(function() {
    pack_unpack('exile','exile-placeholder');
+ });
+
+ $('#show-library-button').click(function() {
+   pack_unpack('library','library-placeholder', true);
  });
 
 });

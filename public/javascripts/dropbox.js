@@ -4,11 +4,6 @@ Dropbox = function(element) {
   this.initDOM();
 }
 
-Dropbox.initialize = function() {
-    $('#graveyard, #exile').each(function(i) {
-        new Dropbox($(this));
-    });
-}
 
 Dropbox.prototype.tappingAllowed = function() {
   return false;
@@ -19,6 +14,11 @@ Dropbox.prototype.dropped = function(card,event,ui) {
   mc.run();
   this.fixPosition(card);
   game.sendCommand(mc);
+}
+
+Dropbox.prototype.dropLocally = function(card) {
+  card.element.appendTo(this.element);
+  this.fixPosition(card);
 }
 
 Dropbox.prototype.fixPosition = function(card) {
@@ -34,9 +34,8 @@ Dropbox.prototype.initDOM = function() {
       scope: 'cards',
       hoverClass: 'card-over',
       drop: function(event,ui) {
-        box = Utils.getObjectFromDom(this);
-        card = Utils.getObjectFromDom(ui.draggable);
-        box.dropped(card,event,ui);
+        card = ui.draggable.object();
+        this.object().dropped(card,event,ui);
       }
     });
 }

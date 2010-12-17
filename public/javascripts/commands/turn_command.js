@@ -12,9 +12,7 @@ TurnCommand.prototype.run = function() {
   var card = Card.find(this.card_id);
 
   if (card) {
-    card.picture = this.picture ? this.picture : card.picture;
-    card.element.attr('src', this.covered ?  "/images/back.jpg" : card.picture);
-    card.covered = this.covered;
+    card.turnOverLocally(this.covered)
   }
 }
 

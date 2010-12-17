@@ -1,11 +1,16 @@
 // -*- mode: javascript; tab-width: 2; -*-
 
-Card = function(image_url, id) {
-  var image = $('<img src="' + image_url + '" class="card" id="card-' + id + '" />');
-  this.id = id;
-  this.covered = false;
+Card = function(params) {
+  var image = $('<img src="' + params.image_url + '" class="card" id="card-' + params.id + '" />');
+
+  // TODO: do it better way
+  this.id = params.id;
+  this.url = params.url;
+  this.name = params.name;
+  this.covered = params.covered;
+  this.picture = params.picture;
+
   this.element = image;
-  this.picture = image.attr('src');
   this.initDOM();
 }
 
@@ -19,9 +24,7 @@ Card.find_or_create_opponent_card = function(params,owner_id) {
   var card = Card.find(params.id);
 
   if (card == null) {
-    card = new Card(params.image_url, params.id);
-    card.covered = params.covered;
-    card.picture = params.picture;
+    card = new Card(params);
     card.element.addClass(params.owner_id)
                 .addClass('opponent')
                 .attr('style','position: absolute');
@@ -55,6 +58,13 @@ Card.prototype.turnOver = function(cover) {
     game.sendCommand(tc);
 }
 
+Card.prototype.turnOverLocally = function(cover) {
+  this.covered = cover;
+    console.info('TuRNED!')
+  this.element.attr('src', this.covered ?  "/images/back.jpg" : this.picture);
+}
+
+// TODO: remove
 Card.prototype.isCovered = function() {
    return this.covered;
 }

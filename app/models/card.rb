@@ -23,7 +23,8 @@ class Card < OpenStruct
   def to_hash
     { :id => id,
       :name => name, 
-      :image_url => image_url, 
+      :image_url => image_url,
+      :picture => image_url, 
       :url => url }
   end
 

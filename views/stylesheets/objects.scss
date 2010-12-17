@@ -9,8 +9,9 @@ $battlefield-width: 1000px;
 $side-panel-width: 160px;
 $default-border-radius: 5px;
 
-$top-z-index: 10000;
+$top-z-index: 100000;
 $hand-z-index: 2000;
+$card-z-index: 500;
 $desk-z-index: 1;
 $infobox-z-index: 3000;
 
@@ -51,19 +52,19 @@ body {
 }
 
 #battlefield {
-     @include area;
-     @include border-radius;
-     @include layout-element;
+  @include area;
+  @include border-radius;
+  @include layout-element;
   
-     width: $battlefield-width;
-     margin: auto;
-     margin-top: 20px;
+  width: $battlefield-width;
+  margin: auto;
+  margin-top: 20px;
 
-     left: 0px;
-     right: $side-panel-width;
-     min-height: $page-height;
+  left: 0px;
+  right: $side-panel-width;
+  min-height: $page-height;
 
-     z-index: $desk-z-index;
+  z-index: $desk-z-index;
 }
  
 #side-panel {

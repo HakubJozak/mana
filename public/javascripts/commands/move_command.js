@@ -6,8 +6,9 @@ MoveCommand = function(card, new_parent, animate) {
   // TODO: don't send so much info by default
   this.card = { 
     id: card.id,
-    tapped: card.isTapped,
-    covered: card.isCovered,
+    tapped: card.tapped,
+    name: card.name,
+    covered: card.covered,
     image_url : card.element.attr('src'),
     picture : card.picture
   };
