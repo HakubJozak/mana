@@ -2,6 +2,7 @@ Library = function() {
   this.element = $('#library')
 }
 
+
 Library.prototype.update = function(cards) {
   var lib = this.element;
 
@@ -11,6 +12,10 @@ Library.prototype.update = function(cards) {
     card.element.css('position', 'absolute')
     $('#library').object().dropLocally(card);
   });
+}
+
+Library.prototype.shuffle = function() {
+  var lib = this.element;
 }
 
 

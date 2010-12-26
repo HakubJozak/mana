@@ -33,6 +33,24 @@ $(document).ready(function() {
     }
   });
 
+ $('#show-graveyard-button').click(function() {
+   pack_unpack('graveyard','graveyard-placeholder');
+ });
+
+ $('#show-exile-button').click(function() {
+   pack_unpack('exile','exile-placeholder');
+ });
+
+ $('#show-library-button').click(function() {
+   pack_unpack('library','library-placeholder', true);
+ });
+
+  $('#shuffle-button').click(function(event) {
+          // pack_cards($('#library'));
+     $('#library').shuffle();
+     MessageCommand.createAndRun('Library shuffled');
+     event.preventDefault();
+  });
 });
 
 

@@ -28,7 +28,7 @@ function spread_cards(container, top, width, uncover) {
   var count = $(container).children('img').length;
   var w = (width != null) ? width : $(container).width();
     
-  var per_card = (w - padding) / count;
+  var per_card = (w - CARD_W) / count;
 
     $(container).children('img').each(function(i) {
       position = $(container).offset();
@@ -38,7 +38,7 @@ function spread_cards(container, top, width, uncover) {
       var card = $(this);
       card.css('position', 'absolute')
           .offset(position)
-          .css('z-index', $(this).prev().css('z-index') + 1);
+          .css('z-index', i);
 
       if (uncover) {
         card.object().turnOverLocally(false);
@@ -93,20 +93,4 @@ function pack_unpack(box_id, placeholder_id, uncover) {
     box.animate(effect, function () { mutex = false; });
   }
 }
-
-
-$(document).ready(function() {
- $('#show-graveyard-button').click(function() {
-   pack_unpack('graveyard','graveyard-placeholder');
- });
-
- $('#show-exile-button').click(function() {
-   pack_unpack('exile','exile-placeholder');
- });
-
- $('#show-library-button').click(function() {
-   pack_unpack('library','library-placeholder', true);
- });
-
-});
 
