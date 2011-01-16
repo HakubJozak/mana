@@ -21,6 +21,14 @@ $(document).ready(function() {
     return Utils.getObjectFromDom(this);
   }
 
+
+  $('#battlefield').rightClick(function(event,ui) {
+    console.info(event);
+    var token = Card.createToken( event.offsetX, event.offsetY);
+    token.element.appendTo('#battlefield');
+    event.preventDefault();
+  });
+
   $(document).keydown(function(e) {
     if (e.keyCode == 17) {
       controlKeyDown = true;

@@ -25,6 +25,7 @@ module Mana
                    else
                      { :class => "box #{id}" }
                    end
+
           
           haml_tag :div, params do
             yield if block_given?
