@@ -19,6 +19,8 @@ Library.prototype.shuffle = function() {
 }
 
 
+
+
 Library.prototype.drawCard = function() {
   hand = Utils.getObjectFromDom($('#hand'));
 

@@ -5,6 +5,14 @@ SPACING = 6;
 $.fn.reverse = [].reverse;
 controlKeyDown = false;
 
+function run_exclusively(code) {
+  if (!mutex) {
+    mutex = true;
+    code(this);
+    mutex = false;
+  }
+}
+
 
 
 $(document).ready(function() {
@@ -50,13 +58,20 @@ $(document).ready(function() {
  });
 
  $('#show-library-button').click(function() {
-   pack_unpack('library','library-placeholder', true);
+   pack_unpack('library','library-placeholder');
  });
+
 
   $('#shuffle-button').click(function(event) {
           // pack_cards($('#library'));
-     $('#library').shuffle();
-     MessageCommand.createAndRun('Library shuffled');
+     $('#library').object().shuffle();
+     event.preventDefault();
+  });
+
+  $('#uncover-button').click(function(event) {
+    // pack_cards($('#library'));
+      console.info(     $('#library').object());
+     $('#library').object().uncoverAll();
      event.preventDefault();
   });
 });

@@ -1,4 +1,6 @@
 (function($){
+  $.fn.reverse = [].reverse;
+
   $.fn.shuffle = function() {
     var items = $(this).children();
     var max = items.length;
@@ -6,7 +8,7 @@
     for (var i = 0; i < max; i++) {
       var j = parseInt(Math.random() * i);
       $(items[i]).swap(items[j]);
-    }    
+    }
   }
 
 jQuery.fn.swap = function(b){ 

@@ -70,8 +70,12 @@ Card.prototype.turnOver = function(cover) {
 }
 
 Card.prototype.turnOverLocally = function(cover) {
-  this.covered = cover;
-    console.info('TuRNED!')
+  if (cover != null) {
+    this.covered = cover;
+  } else {
+    this.covered = !this.covered;
+  }
+
   this.element.attr('src', this.covered ?  "/images/back.jpg" : this.picture);
 }
 

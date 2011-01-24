@@ -8,7 +8,7 @@ MessageCommand.prototype.run = function() {
 }
 
 MessageCommand.createAndRun = function(msg) {
-  cmd = MessageCommand.new(msg);
+  cmd = new MessageCommand(msg);
   cmd.run();
-  game.send(cmd);
+  game.sendCommand(cmd);
 }
