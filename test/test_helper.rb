@@ -2,7 +2,6 @@ require 'rubygems'
 require 'bundler'
 
 Bundler.require(:default, :test, :development)
-Debugger.start
 
 require_all 'app'
 

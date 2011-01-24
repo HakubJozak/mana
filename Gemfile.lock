@@ -5,7 +5,6 @@ GEM
     addressable (2.2.2)
     archive-tar-minitar (0.5.2)
     awesome_print (0.3.1)
-    backports (1.18.2)
     bson (1.1.2)
     capistrano (2.5.19)
       highline
@@ -42,8 +41,6 @@ GEM
       rake
     mongo (1.1.2)
       bson (>= 1.1.1)
-    monkey-lib (0.5.4)
-      backports
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -51,7 +48,7 @@ GEM
     net-ssh (2.0.23)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
-    rack (1.1.0)
+    rack (1.2.1)
     railsless-deploy (1.0.2)
     rake (0.8.7)
     require_all (1.2.0)
@@ -69,10 +66,6 @@ GEM
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
       ruby_core_source (>= 0.1.4)
-    ruby-debug19 (0.11.6)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby-debug-base19 (>= 0.11.19)
     ruby_core_source (0.1.4)
       archive-tar-minitar (>= 0.5.2)
     sass (3.1.0.alpha.34)
@@ -83,16 +76,6 @@ GEM
     sinatra (1.1.0)
       rack (~> 1.1)
       tilt (~> 1.1)
-    sinatra-advanced-routes (0.5.1)
-      monkey-lib (~> 0.5.0)
-      sinatra (~> 1.0)
-      sinatra-sugar (~> 0.5.0)
-    sinatra-reloader (0.5.0)
-      sinatra (~> 1.0)
-      sinatra-advanced-routes (~> 0.5.0)
-    sinatra-sugar (0.5.0)
-      monkey-lib (~> 0.5.0)
-      sinatra (~> 1.0)
     thin (1.2.7)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -114,11 +97,11 @@ DEPENDENCIES
   jasmine
   mocha
   mongo
+  rack (~> 1.2.1)
   railsless-deploy
   require_all
-  ruby-debug19
+  ruby-debug-base19
   sass
   shoulda
   sinatra
-  sinatra-reloader
   thin

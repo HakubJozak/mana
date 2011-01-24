@@ -1,6 +1,7 @@
 # A sample Gemfile
 source "http://rubygems.org"
 
+gem 'rack', '~> 1.2.1'
 gem 'thin'
 gem 'haml'
 gem 'sass'
@@ -17,9 +18,9 @@ gem 'coffee-script'
 
 group :development do
   gem 'railsless-deploy', :require => false
-  gem 'sinatra-reloader', :require => 'sinatra/reloader'
+#  gem 'sinatra-reloader', :require => 'sinatra/reloader'
   gem 'awesome_print'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'ruby-debug-base19'
   #gem 'ruby-debug'
 end
 
