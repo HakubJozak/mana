@@ -20,7 +20,7 @@ Dropbox.prototype.shuffle = function() {
   var box = this;
   run_exclusively(function() {
     box.element.shuffle();
-    spread_cards(box.element, 5, box.element.width());
+    box.spread_cards(5, box.element.width());
     MessageCommand.createAndRun('Shuffled the library');
 //      box.element.children('.card').each(function () { box.fixPosition(this.object()); });
   });

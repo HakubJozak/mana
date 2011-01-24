@@ -9,7 +9,9 @@ function switch_parent(box, parent) {
 }
 
 
-function pack_cards(container) {
+Dropbox.prototype.pack_cards = function () {
+  container = this.element;
+
   var pos = container.offset();
   pos.top += 5;
   pos.left += 5;
@@ -21,7 +23,9 @@ function pack_cards(container) {
 }
 
 
-function spread_cards(container, top, width) {
+Dropbox.prototype.spread_cards = function(top, width) {
+  container = this.element;
+
   var padding =  parseInt($(container).css('padding-left'));
   var top_padding =  parseInt($(container).css('padding-top'));
   var count = $(container).children('.card').length;
@@ -44,7 +48,8 @@ function spread_cards(container, top, width) {
 function unpacked_length(box) {
     var max = 1000;
     var needed = (box.children('.card').length - 1) * (SPACING + CARD_W);
-    return Math.max(Math.min(max,needed), 0)}
+    return Math.max(Math.min(max,needed), 0)
+}
 
 
 
@@ -62,14 +67,16 @@ function pack_unpack(box_id, placeholder_id) {
     //$(this).text(unpacked ? 'Show' : 'Hide');
 
     if (unpacked) {
-      effect = { left: box.object().old_position.left, 
-                 width: box.object().old_position.width }
+      effect = { 
+        left: box.object().old_position.left, 
+        width: box.object().old_position.width 
+      }
 
       var parent = placeholder.parent();
       placeholder.remove();
       switch_parent(box, parent);
 
-      pack_cards(box)
+      box.object().pack_cards();
     } else {
       var effect = { left: '-=' + width, width: '+=' + width }
 
@@ -80,7 +87,7 @@ function pack_unpack(box_id, placeholder_id) {
       $('<div id="' + placeholder_id + '" class="box"></div>').insertBefore(box);
       box.prependTo('#battlefield');
       box.offset(offset);
-      spread_cards(box,5,width + box.width());
+      box.object().spread_cards(5,width + box.width());
     }
 
     box.animate(effect, function () { mutex = false; });
