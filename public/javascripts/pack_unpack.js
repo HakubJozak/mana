@@ -31,7 +31,7 @@ Dropbox.prototype.spread_cards = function(top, width) {
   var count = $(container).children('.card').length;
   var w = (width != null) ? width : $(container).width();
     
-  var per_card = (w - CARD_W) / count;
+  var per_card = (w) / count;
 
     $(container).children('.card').reverse().each(function(i) {
       position = $(container).offset();

@@ -37,7 +37,7 @@ $(document).ready(function() {
   hand.fixPosition = function() {
     var count = this.element.children('img').length
     this.element.css('width', (SPACING + CARD_W) * count + 2*SPACING)
-    spread_cards('#hand', 25);
+    this.spread_cards(25);
   }
 
   hand.dropped = function(card, event, ui) {

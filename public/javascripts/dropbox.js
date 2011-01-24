@@ -20,12 +20,12 @@ Dropbox.prototype.shuffle = function() {
   var box = this;
   run_exclusively(function() {
     box.element.shuffle();
+    // TODO: if (unpacked)
     box.spread_cards(5, box.element.width());
     MessageCommand.createAndRun('Shuffled the library');
 //      box.element.children('.card').each(function () { box.fixPosition(this.object()); });
   });
 }
-
 
 Dropbox.prototype.uncoverAll = function() {
   var that = this.element;
