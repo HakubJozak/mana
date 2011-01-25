@@ -45,27 +45,55 @@ body {
   height: $page-height;
 }
 
+
 @mixin layout-element {
-     position: absolute;
-     top: 0px;
-     height: $page-height;
+ position: absolute;
+}
+
+@mixin left-column {
+  width: $battlefield-width;
+  margin: auto;
+  right: $side-panel-width + 20px;
 }
 
 #battlefield {
   @include area;
   @include border-radius;
   @include layout-element;
+  @include left-column;
   
-  width: $battlefield-width;
-  margin: auto;
   margin-top: 20px;
-
-  left: 0px;
-  right: $side-panel-width;
-  min-height: $page-height;
+  height: $page-height - 60px;
 
   z-index: $desk-z-index;
 }
+
+.highlight { color: $highlight-color }
+.warning   { color: red }
+
+#footer {
+ @include layout-element;
+ @include left-column;
+
+ top: $page-height - 50px;
+ margin-top: 20px;
+ color: gray;
+ text-align: center;
+ font-size: small;
+
+ width: $battlefield-width - 40px;
+ right: $side-panel-width + 40px;
+
+ hr { 
+  background-color: black;
+  height: 1px;
+  border: none;
+ }
+
+ a { color: #bdbdbd; text-decoration: none }
+ a:hover { color: $highlight-color }
+}
+
  
 #side-panel {
   @include panel;
