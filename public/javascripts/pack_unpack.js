@@ -26,23 +26,26 @@ Dropbox.prototype.pack_cards = function () {
 Dropbox.prototype.spread_cards = function(top, width) {
   container = this.element;
 
-  var padding =  parseInt($(container).css('padding-left'));
-  var top_padding =  parseInt($(container).css('padding-top'));
+  var padding = 10;
   var count = $(container).children('.card').length;
   var w = (width != null) ? width : $(container).width();
-    
-  var per_card = (w) / count;
+  var w_per_card = CARD_W + padding;
+  var h_per_card = CARD_H + padding;
+  var columns = Math.floor(w / w_per_card) - 1;
+  var x, y, position;
 
-    $(container).children('.card').reverse().each(function(i) {
-      position = $(container).offset();
-      position.top += top;
-      position.left += padding + per_card * i;
+  $(container).children('.card').reverse().each(function(i) {
+    x = i % columns;
+    y = Math.floor(i / columns);
+    position = $(container).offset();
 
-      var card = $(this);
-      card.css('position', 'absolute')
-          .offset(position)
-          .css('z-index', i);
-    });      
+    position.top += padding + y * h_per_card;
+    position.left += padding + w_per_card * x;
+
+    $(this).offset(position).css('z-index', i);
+  });
+
+  container.css('height', (y+1) * h_per_card);
 }
 
 function unpacked_length(box) {
@@ -51,6 +54,48 @@ function unpacked_length(box) {
     return Math.max(Math.min(max,needed), 0)
 }
 
+function pack(box, placeholder_id) {
+  var placeholder = $('#' + placeholder_id);
+  
+  old = box.object().old_position;
+
+  var parent = placeholder.parent();
+  placeholder.remove();
+
+  switch_parent(box, parent);
+
+  box.css('position', 'left');
+  box.css('top', 'auto');
+  box.css('left', old.left + 'px');
+  box.css('width', 110);
+  box.css('height', 170);
+  // box.animate(effect, function () { mutex = false; });
+  box.object().pack_cards();
+  mutex = false;
+}
+
+function unpack(box, placeholder_id) {
+  var offset = box.offset();
+  var width = 920; // unpacked_length(box);
+  var old = box.position();
+
+  var effect = { 
+    top: 20,
+    left: 20,
+    width: width
+  }
+
+  // old.width = box.width();
+  //old.height = box.height();
+  box.object().old_position = old;
+
+  $('<div id="' + placeholder_id + '" class="box"></div>').insertBefore(box);
+  box.prependTo('#battlefield');
+  box.offset(offset);
+  box.object().spread_cards(5,width + box.width());
+
+  box.animate(effect, function () { mutex = false; });
+}
 
 
 function pack_unpack(box_id, placeholder_id) {
@@ -58,39 +103,15 @@ function pack_unpack(box_id, placeholder_id) {
     mutex = true;
 
     var box = $('#' + box_id);
-    var placeholder = $('#' + placeholder_id);
-    var unpacked = (placeholder.length != 0);
-    var offset = box.offset();
-    var width = unpacked_length(box);
-    var effect;
-
-    //$(this).text(unpacked ? 'Show' : 'Hide');
+    var unpacked = ($('#' + placeholder_id).length != 0);
 
     if (unpacked) {
-      effect = { 
-        left: box.object().old_position.left, 
-        width: box.object().old_position.width 
-      }
-
-      var parent = placeholder.parent();
-      placeholder.remove();
-      switch_parent(box, parent);
-
-      box.object().pack_cards();
+      pack(box, placeholder_id);
     } else {
-      var effect = { left: '-=' + width, width: '+=' + width }
-
-      var old_position = box.position();
-      old_position.width = box.width();
-      box.object().old_position = old_position;
-
-      $('<div id="' + placeholder_id + '" class="box"></div>').insertBefore(box);
-      box.prependTo('#battlefield');
-      box.offset(offset);
-      box.object().spread_cards(5,width + box.width());
+      unpack(box, placeholder_id);
     }
-
-    box.animate(effect, function () { mutex = false; });
   }
 }
+
+     
 
