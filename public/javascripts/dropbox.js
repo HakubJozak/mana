@@ -50,6 +50,7 @@ Dropbox.prototype.fixPosition = function(card) {
   p = this.element.offset();
   p.top += 5;
   p.left += 5;
+  card.element.css('z-index','auto');
   card.element.offset(p);
 }
 

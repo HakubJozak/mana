@@ -64,7 +64,7 @@ body {
   @include left-column;
   
   position: absolute;   
-  z-index: $battlefield-z-index;
+  
 
   border-color: rgba(255, 255, 255, 0.14);
   margin-top: 20px;
@@ -113,5 +113,5 @@ body {
   padding-bottom: 20px;
   right: 0px;
   width: $side-panel-width;
-  z-index: $desk-z-index;
+  
 }

@@ -34,7 +34,7 @@ Dropbox.prototype.spread_cards = function(top, width) {
     position.top += h_start + padding + y * h_per_card;
     position.left += padding + w_per_card * x;
 
-    $(this).offset(position).css('z-index', i);
+    $(this).offset(position); //.css('z-index', i);
   });
 
   container.css('height', h_start + (y+1) * h_per_card);
@@ -46,7 +46,6 @@ Dropbox.prototype.pack_unpack = function() {
     mutex = true;
 
     var box = this.element;
-
     var placeholder_id = box.attr('id') + '-placeholder';
     var unpacked = ($('#' + placeholder_id).length != 0);
 

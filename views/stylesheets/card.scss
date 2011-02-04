@@ -5,10 +5,10 @@
 
   @include card-size;
   border: 2px solid black;
-  z-index: $card-z-index;
+  
 
   &:hover {   
-    z-index: $top-z-index;
+    
     @include box-shadow($highlight-color, 0px, 0px, 10px);
   }
 
