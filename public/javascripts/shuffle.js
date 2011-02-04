@@ -1,8 +1,8 @@
 (function($){
   $.fn.reverse = [].reverse;
 
-  $.fn.shuffle = function() {
-    var items = $(this).children();
+  $.fn.shuffle = function(selector) {
+    var items = $(this).children(selector);
     var max = items.length;
     
     for (var i = 0; i < max; i++) {

@@ -17,7 +17,7 @@ module Mana
             name = id.split('-').first
             haml_concat name.capitalize
             # haml_tag :strong, 0
-            haml_tag "a#show-#{id}-button.button", 'Toggle' if has_id
+            haml_tag "a.browse-button.button", 'Browse' if has_id
           end
 
           params = if has_id
@@ -25,7 +25,6 @@ module Mana
                    else
                      { :class => "box #{id}" }
                    end
-
           
           haml_tag :div, params do
             yield if block_given?

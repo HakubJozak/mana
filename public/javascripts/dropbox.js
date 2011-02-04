@@ -19,7 +19,7 @@ Dropbox.prototype.dropped = function(card,event,ui) {
 Dropbox.prototype.shuffle = function() {
   var box = this;
   run_exclusively(function() {
-    box.element.shuffle();
+    box.element.shuffle('.card');
     // TODO: if (unpacked)
     box.spread_cards(5, box.element.width());
     MessageCommand.createAndRun('Shuffled the library');

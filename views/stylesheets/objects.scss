@@ -45,7 +45,6 @@ body {
   height: $page-height;
 }
 
-
 @mixin layout-element {
  position: absolute;
 }
@@ -67,6 +66,13 @@ body {
   height: $page-height - 60px;
 
   z-index: $desk-z-index;
+}
+
+.button-bar {
+  margin: 10px;
+  font-size: 80%;
+
+  a { margin-right: 5px; }
 }
 
 .highlight { color: $highlight-color }

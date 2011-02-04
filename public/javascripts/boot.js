@@ -13,6 +13,11 @@ function run_exclusively(code) {
   }
 }
 
+function preventDefaults() {
+    $('img, #library')
+        .click(function(event) { event.preventDefault(); })
+        .mousedown(function(event) { event.preventDefault(); });
+}
 
 
 $(document).ready(function() {
@@ -49,36 +54,4 @@ $(document).ready(function() {
     }
   });
 
- $('#show-graveyard-button').click(function() {
-   pack_unpack('graveyard','graveyard-placeholder');
- });
-
- $('#show-exile-button').click(function() {
-   pack_unpack('exile','exile-placeholder');
- });
-
- $('#show-library-button').click(function() {
-   pack_unpack('library','library-placeholder');
- });
-
-
-  $('#shuffle-button').click(function(event) {
-          // pack_cards($('#library'));
-     $('#library').object().shuffle();
-     event.preventDefault();
-  });
-
-  $('#uncover-button').click(function(event) {
-    // pack_cards($('#library'));
-      console.info(     $('#library').object());
-     $('#library').object().uncoverAll();
-     event.preventDefault();
-  });
 });
-
-
-function preventDefaults() {
-    $('img, #library')
-        .click(function(event) { event.preventDefault(); })
-        .mousedown(function(event) { event.preventDefault(); });
-}
