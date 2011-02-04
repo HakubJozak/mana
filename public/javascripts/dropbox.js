@@ -41,7 +41,7 @@ Dropbox.prototype.uncoverAll = function() {
 
 
 Dropbox.prototype.dropLocally = function(card) {
-  card.element.appendTo(this.element);
+  card.element.prependTo(this.element);
   this.fixPosition(card);
 }
 

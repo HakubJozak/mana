@@ -12,7 +12,9 @@ $default-border-radius: 5px;
 $top-z-index: 100000;
 $hand-z-index: 2000;
 $card-z-index: 500;
-$desk-z-index: 1;
+$panel-z-index: 300;
+$desk-z-index: -1;
+$battlefield-z-index: -10;
 $infobox-z-index: 3000;
 
 
@@ -61,11 +63,12 @@ body {
   @include layout-element;
   @include left-column;
   
+  position: absolute;   
+  z-index: $battlefield-z-index;
+
   border-color: rgba(255, 255, 255, 0.14);
   margin-top: 20px;
   height: $page-height - 60px;
-
-  z-index: $desk-z-index;
 }
 
 .button-bar {

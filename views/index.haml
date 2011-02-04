@@ -42,11 +42,10 @@
 %body
   = haml(:_lobby, :layout => false)
 
-  #infobox{ :style => 'display:none' }
-    %p
-
-
   #side-panel
+    #hand
+      %h2 Hand
+
     #users
       #user-local
         %h3 Local
@@ -64,8 +63,9 @@
     -# #token.token 
     -#   %h1 1/1
 
-    #hand
-      %h2 Hand
+  #infobox{ :style => 'display:none' }
+    %p
+
 
   = haml(:_footer, :layout => false)
 
