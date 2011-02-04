@@ -50,23 +50,9 @@
     #users
       #user-local
         %h3 Local
-        - box 'graveyard' do
-          .button-bar
-            %a.close-button.button Close
-            %a.shuffle-button.button Shuffle
-            %a.uncover-button.button Turn All
-
-        - box 'exile' do
-          .button-bar
-            %a.close-button.button Close
-            %a.shuffle-button.button Shuffle
-            %a.uncover-button.button Turn All
-
-        - box 'library' do
-          .button-bar
-            %a.close-button.button Close
-            %a.shuffle-button.button Shuffle
-            %a.uncover-button.button Turn All
+        - box 'graveyard'
+        - box 'exile'
+        - box 'library'
 
         -# %ul
         -#   %li

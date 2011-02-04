@@ -20,6 +20,7 @@ Dropbox.prototype.spread_cards = function(top, width) {
 
   var padding = 10;
   var count = $(container).children('.card').length;
+  var h_start = 35;
   var w_per_card = CARD_W + padding;
   var h_per_card = CARD_H + padding;
   var columns = Math.floor(width / w_per_card);
@@ -30,14 +31,15 @@ Dropbox.prototype.spread_cards = function(top, width) {
     y = Math.floor(i / columns);
     position = $(container).offset();
 
-    position.top += 35 + padding + y * h_per_card;
+    position.top += h_start + padding + y * h_per_card;
     position.left += padding + w_per_card * x;
 
     $(this).offset(position).css('z-index', i);
   });
 
-  container.css('height', (y+1) * h_per_card);
+  container.css('height', h_start + (y+1) * h_per_card);
 }
+
 
 Dropbox.prototype.pack_unpack = function() {
   if (!mutex) {
@@ -49,8 +51,10 @@ Dropbox.prototype.pack_unpack = function() {
     var unpacked = ($('#' + placeholder_id).length != 0);
 
     if (unpacked) {
+      box.find('.button-bar').hide();
       pack(box, placeholder_id);
     } else {
+      box.find('.button-bar').show();
       unpack(box, placeholder_id);
     }
   }
@@ -63,8 +67,6 @@ function switch_parent(box, parent) {
   box.appendTo(parent);
   box.offset(old);
 }
-
-
 
 function unpacked_length(box) {
     var max = 1000;

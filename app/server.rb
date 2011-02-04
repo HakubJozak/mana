@@ -27,7 +27,15 @@ module Mana
                    end
           
           haml_tag :div, params do
-            yield if block_given?
+            if block_given?
+              yield
+            else
+              haml_tag '.button-bar' do
+                haml_tag 'a.close-button.button', 'Close'
+                haml_tag 'a.shuffle-button.button', 'Shuffle'
+                haml_tag 'a.uncover-button.button', 'Turn All'
+              end
+            end
           end        
         end
       end

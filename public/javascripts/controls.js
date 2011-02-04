@@ -10,6 +10,26 @@ $(document).ready(function() {
 });
 
 
+  // $('#battlefield').rightClick(function(event,ui) {
+  //   console.info(event);
+  //   var token = Card.createToken( event.offsetX, event.offsetY);
+  //   token.element.appendTo('#battlefield');
+  //   event.preventDefault();
+  // });
+
+$(document).keydown(function(e) {
+    if (e.keyCode == 17) {
+      controlKeyDown = true;
+    }
+});
+
+$(document).keyup(function(e) {
+    if (e.keyCode == 17) {
+      controlKeyDown = false;
+    }
+});
+
+
 function bind_control(name, action) {
  $(name).click(function(event) {
     action($(this).closest('.box').object());
