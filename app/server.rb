@@ -30,7 +30,7 @@ module Mana
               yield
             else
               haml_tag '.button-bar' do
-                haml_tag 'h4', 'Library'
+                haml_tag 'h4', name
                 haml_tag 'a.shuffle-button.button', 'Shuffle'
                 haml_tag 'a.uncover-button.button', 'Turn All'
                 haml_tag 'a.close-button.button', 'Close'

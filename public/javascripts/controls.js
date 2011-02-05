@@ -1,3 +1,6 @@
+//
+// BUTTONS
+//
 $(document).ready(function() {
   bind_control('.uncover-button',function(box) { box.uncoverAll(); });
   bind_control('.shuffle-button',function(box) { box.shuffle(); });
@@ -16,16 +19,10 @@ $(document).ready(function() {
 });
 
 
-  // $('#battlefield').rightClick(function(event,ui) {
-  //   console.info(event);
-  //   var token = Card.createToken( event.offsetX, event.offsetY);
-  //   token.element.appendTo('#battlefield');
-  //   event.preventDefault();
-  // });
 
-
-
-
+//
+// KEYS
+//
 $(document).keypress(function(e) {
   switch (String.fromCharCode(e.keyCode)) {
 
@@ -44,6 +41,9 @@ $(document).keypress(function(e) {
 });
 
 
+//
+// HELPERS
+//
 function bind_control(name, action) {
  $(name).click(function(event) {
     action($(this).closest('.box').object());

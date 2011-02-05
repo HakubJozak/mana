@@ -45,6 +45,7 @@ Dropbox.prototype.pack = function () {
   box.width(old.width);
   box.height(old.height);
   box.draggable("destroy");
+  box.removeClass('card-over');
 
   mutex = false;
 }
