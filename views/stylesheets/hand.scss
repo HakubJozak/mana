@@ -24,6 +24,6 @@
   }
 
   .card-over {
-      border-style: dotted; 
+   @include focused; 
   }
 }

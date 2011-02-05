@@ -69,21 +69,4 @@
 
 }
 
-.box {
-    @include area;
-    @include dropbox;
-    @include gradient;
-    @include side-panel-component; 
-    &.card-over { @include focused; }
-    img { @include card-size; }
-}
-
-#battlefield {
-  // when unpacked
- .box {
-   position: absolute;
-   border: 1px solid gray;
-   background: #61461c url('../images/medium-texture.png');
- }
-}
 

@@ -9,12 +9,6 @@ $(document).ready(function() {
   //  containment: '#battlefield'
   });
 
-
-  $('#battlefield').click(function(event) {
-      $('#hand').object().toggleShow(event);
-      event.stopPropagation();
-  });
-
   hand.toggleShow = function() {
     h = this.element;
 
@@ -35,16 +29,23 @@ $(document).ready(function() {
   }
 
   hand.fixPosition = function() {
-    var count = this.element.children('img').length
-    this.element.css('width', (SPACING + CARD_W) * count + 2*SPACING)
-    this.spread_cards(25);
+    var h = this.element;
+    var count = h.children('.card').length;
+    var padding = 10;
+
+    h.css('width', (padding + CARD_W) * count + 2*padding)
+    h.children('.card').offset(function(i,coords) {
+      return { 
+        top: h.offset().top + 30,
+        left: padding + h.offset().left + i * (padding + CARD_W),
+      }
+    });
   }
 
   hand.dropped = function(card, event, ui) {
     // replace by super() call
     this.old_drop = Dropbox.prototype.dropped;
     this.old_drop(card, event, ui);
-    console.info('sss')
     card.turnOverLocally(false);
   }
 

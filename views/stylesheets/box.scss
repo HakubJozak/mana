@@ -1,0 +1,19 @@
+.box {
+    @include area;
+    @include dropbox;
+    @include gradient;
+    @include side-panel-component; 
+    &.card-over { @include focused; }
+    img { @include card-size; }
+
+    z-index: auto;
+   .button-bar { display: none; }
+}
+
+.box.unpacked {
+   border: 1px solid gray;
+   background: #61461c url('../images/medium-texture.png');
+   .button-bar { display: block; }
+
+   &.card-over { background-color: green; }
+}

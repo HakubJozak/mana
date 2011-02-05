@@ -1,12 +1,18 @@
 $(document).ready(function() {
   bind_control('.uncover-button',function(box) { box.uncoverAll(); });
   bind_control('.shuffle-button',function(box) { box.shuffle(); });
+  bind_control('.close-button',function(box) { box.pack_unpack(this); });
 
-  // TODO: can be done smarter - check again when online
+
   $('.browse-button').click(function() { 
+    // TODO: can be done smarter - check again when online
       $(this).parent().next().object().pack_unpack();
    });
-  bind_control('.close-button',function(box) { box.pack_unpack(this); });
+
+  $('#battlefield').click(function(event) {
+      $('#hand').object().toggleShow(event);
+      event.stopPropagation();
+  });
 });
 
 

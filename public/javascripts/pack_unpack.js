@@ -44,18 +44,15 @@ Dropbox.prototype.spread_cards = function(top, width) {
 Dropbox.prototype.pack_unpack = function() {
   if (!mutex) {
     mutex = true;
-
     var box = this.element;
-    var placeholder_id = box.attr('id') + '-placeholder';
-    var unpacked = ($('#' + placeholder_id).length != 0);
 
-    if (unpacked) {
-      box.find('.button-bar').hide();
-      pack(box, placeholder_id);
+    if (box.hasClass('unpacked')) {
+      pack(box);
     } else {
-      box.find('.button-bar').show();
-      unpack(box, placeholder_id);
+      unpack(box);
     }
+
+    box.toggleClass('unpacked');
   }
 }
 
@@ -70,49 +67,33 @@ function switch_parent(box, parent) {
 function unpacked_length(box) {
     var max = 1000;
     var needed = (box.children('.card').length - 1) * (SPACING + CARD_W);
-    return Math.max(Math.min(max,needed), 0)
+//    return Math.max(Math.min(max,needed), 0)
+  return 200;
 }
 
-function pack(box, placeholder_id) {
-  var placeholder = $('#' + placeholder_id);
-  
-  old = box.object().old_position;
-
-  var parent = placeholder.parent();
-  placeholder.remove();
-
-  switch_parent(box, parent);
-
-  box.css('position', 'left');
-  box.css('top', 'auto');
-  box.css('left', old.left + 'px');
-  box.css('width', 110);
-  box.css('height', 170);
-  // box.animate(effect, function () { mutex = false; });
+function pack(box) {
   box.object().pack_cards();
+
+  var old = box.object().old_position;
+  box.offset(old);
+  box.width(old.width);
+  box.height(old.height);
+
   mutex = false;
 }
 
-function unpack(box, placeholder_id) {
-//  var box = $('#' + box_id);
+function unpack(box) {
   var offset = box.offset();
-  var width = 920; // unpacked_length(box);
-  var old = box.position();
+  var width = 920;
 
-  var effect = { 
-    top: 200,
-    left: 20,
-    width: width
-  }
-
+  var old = box.offset();
+  old.width = box.width();
+  old.height = box.height();
   box.object().old_position = old;
 
-  $('<div id="' + placeholder_id + '" class="box"></div>').insertBefore(box);
-  box.prependTo('#battlefield');
-  box.offset(offset);
+  box.offset({ top: 20, left: 100 });
+  box.css('width',width);
   box.object().spread_cards(5, width);
-  box.animate(effect, function () {
-    mutex = false; 
-  });
+  mutex = false;
 }
 

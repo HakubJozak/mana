@@ -1,7 +1,16 @@
 Dropbox = function(element) {
   this.element = element;
   Utils.setObjectToDom(this.element, this);
-  this.initDOM();
+
+  this.element.droppable({
+      scope: 'cards',
+      greedy: true,
+      hoverClass: 'card-over',
+      drop: function(event,ui) {
+        card = ui.draggable.object();
+        this.object().dropped(card,event,ui);
+      }
+  });
 }
 
 
@@ -47,22 +56,14 @@ Dropbox.prototype.dropLocally = function(card) {
 
 
 Dropbox.prototype.fixPosition = function(card) {
-  p = this.element.offset();
-  p.top += 5;
-  p.left += 5;
+  if (this.element.hasClass('unpacked')) {
+    this.spread_cards(5, this.element.width());
+  } else {
+    p = this.element.offset();
+    p.top += 5;
+    p.left += 5;
+    card.element.offset(p);
+  }
+
   card.element.css('z-index','auto');
-  card.element.offset(p);
-}
-
-
-Dropbox.prototype.initDOM = function() {
-
-    this.element.droppable({
-      scope: 'cards',
-      hoverClass: 'card-over',
-      drop: function(event,ui) {
-        card = ui.draggable.object();
-        this.object().dropped(card,event,ui);
-      }
-    });
 }

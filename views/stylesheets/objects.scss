@@ -9,14 +9,15 @@ $battlefield-width: 1000px;
 $side-panel-width: 160px;
 $default-border-radius: 5px;
 
-$top-z-index: 100000;
-$hand-z-index: 2000;
-$card-z-index: 500;
-$panel-z-index: 300;
-$desk-z-index: -1;
-$battlefield-z-index: -10;
-$infobox-z-index: 3000;
+/* $top-z-index: 100000; */
+/* $card-z-index: 500; */
+/* $panel-z-index: 300; */
+/* $desk-z-index: -1; */
+/* $battlefield-z-index: -10; */
+/* $infobox-z-index: 3000; */
 
+$top-z-index: 500;
+$hand-z-index: 1000;
 
 $card-w : 120px;
 $card-h : 170px;
@@ -38,6 +39,7 @@ $card-h : 170px;
 @import "side_panel";
 @import "card";
 @import "infobox";
+@import "box";
 
 
 body {
