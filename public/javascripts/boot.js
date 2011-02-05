@@ -14,7 +14,7 @@ function run_exclusively(code) {
 }
 
 function preventDefaults() {
-    $('img, #library')
+    $('img, .box')
         .click(function(event) { event.preventDefault(); })
         .mousedown(function(event) { event.preventDefault(); });
 }

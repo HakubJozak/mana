@@ -13,7 +13,7 @@ and replace 'any-name' by a name of your choice. Send the URL to your friend(s) 
 
  - drag & drop does most of the actions
  - left click shows the detail
- - CTRL + left click covers/uncovers a card
+ - pressing 't' turns over the highlighted card
  - right click taps/untaps the card
 
 ![Screenshot](https://github.com/HakubJozak/mana/raw/master/screenshots/1.png)
@@ -28,23 +28,25 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 
 ## TODO
 
-### Essential
+### Essential - Alfa
  - counters
- - tokens
  - simple chat
+ - tokens
+
+### Beta
  - lobby synchronization
+ - welcome site in Rails3
 
 ### Convenience
+ - life counter
  - inform all users about other users' actions
  - history recording & match replays
  - variable width and height of the battleground
  - advanced shortcuts
+ - select more cards + save selection (C&C style)
  - untap all / selected cards
  - zooming
  - each user has its own color
  - Gravatar - http://railscasts.com/episodes/244-gravatar
  - http://headjs.com/
  - cheating prevention
-
-
-

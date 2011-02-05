@@ -2,7 +2,8 @@ Utils = function() {}
 
 function _(method) {
     return function(event) {
-        return eval("$(this).data('game-object')." + method + '(event)');
+      event.stopPropagation();
+      return eval("$(this).data('game-object')." + method + '(event)');
     }
 }
 

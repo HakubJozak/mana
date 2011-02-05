@@ -52,7 +52,9 @@
   #side-panel
     #users
       #user-local
-        %h3 Local
+        %h3 
+          Local
+        -# %input.life-counter { :value => 20 }
         - box 'graveyard'
         - box 'exile'
         - box 'library'
@@ -72,7 +74,7 @@
     #user-remote-template
       %h3 
         $USERNAME 
-        %input{ :value => 20 }
+      -# %input{ :value => 20 }
       - box 'graveyard-remote', false
       - box 'exile-remote', false
       - box('library-remote', false) do

@@ -135,20 +135,8 @@ Card.prototype.initDOM = function() {
       zIndex: 9999
     });
 
-  this.element.rightClick(_('toggleTapped'));
-
-  this.element.click(function(event) {
-    card = $(this).object();
-
-    if (controlKeyDown) {
-      card.turnOver();
-    } else {
-      card.showDetail();
-    }
-
-    event.stopPropagation();
-  });
-
+    this.element.rightClick(_('toggleTapped'));
+    this.element.click(_('showDetail'));
 
     // this.element.hover(function() {
     //     card = $(this);

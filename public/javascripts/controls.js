@@ -23,16 +23,16 @@ $(document).ready(function() {
   //   event.preventDefault();
   // });
 
-$(document).keydown(function(e) {
-    if (e.keyCode == 17) {
-      controlKeyDown = true;
-    }
-});
+$(document).keypress(function(e) {
+  switch (String.fromCharCode(e.keyCode)) {
 
-$(document).keyup(function(e) {
-    if (e.keyCode == 17) {
-      controlKeyDown = false;
-    }
+  case 't':
+    cards = $('.card:hover');
+    if (cards.length > 0) cards.object().turnOver();
+    break;
+  }
+
+  e.preventDefault();
 });
 
 

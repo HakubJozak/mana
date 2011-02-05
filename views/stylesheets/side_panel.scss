@@ -31,10 +31,14 @@
   border-left: 1px dotted #C8B472;
 
   #users {
-    * { margin-bottom: 5px; }
+
     h3 {
         @include transparent;
         padding: 3px;
+
+        input {
+            color: red;
+        }
     }
 
     .box-container > h4 {
