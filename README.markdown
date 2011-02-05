@@ -28,20 +28,23 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 
 ## TODO
 
- - searching library
- - putting cards to library
- - lobby synchronization
- - shuffle trigger
+### Essential
  - counters
  - tokens
+ - simple chat
+ - lobby synchronization
+
+### Convenience
+ - inform all users about other users' actions
  - history recording & match replays
  - variable width and height of the battleground
+ - advanced shortcuts
+ - untap all / selected cards
  - zooming
- - simple chat
  - each user has its own color
- - security
  - Gravatar - http://railscasts.com/episodes/244-gravatar
  - http://headjs.com/
+ - cheating prevention
 
 
 

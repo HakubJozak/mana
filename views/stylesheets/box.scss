@@ -1,25 +1,34 @@
 // -*- mode: css; tab-width: 2; -*-
 
 .box {
-    @include area;
     @include dropbox;
     @include gradient;
     @include side-panel-component; 
     &.card-over { @include focused; }
     img { @include card-size; }
 
+    @include gradient;
+  border: 1px dashed #9D7C41;
+
 //    z-index: auto;
-   .button-bar { display: none; }
+
+  .button-bar {
+      display: none;
+      margin: 10px;
+      font-size: 80%;
+      a { margin-right: 5px; }
+  }
 }
 
+
 .box.unpacked {
-   border: 1px solid gray;
+   border: 1px solid black;
    background: #61461c url('../images/medium-texture.png');
 
    .button-bar { 
      display: block;
      h4 { display: inline; font-size: 14px; }
    }
-}
 
-.card-over { @include focused; }
+   @include shadow;
+}

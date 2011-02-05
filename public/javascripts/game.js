@@ -79,7 +79,6 @@ Game.prototype.message = function(msg) {
   }
 }
 
-
 Game.user_dom_id = function(user) {
   return 'user-' + user.id;
 }

@@ -66,12 +66,13 @@
   #hand
     %h2 Hand
 
-
   = haml(:_footer, :layout => false)
 
   #coffin{:style => "display: none"}
     #user-remote-template
-      %h3 $USERNAME
+      %h3 
+        $USERNAME 
+        %input{ :value => 20 }
       - box 'graveyard-remote', false
       - box 'exile-remote', false
       - box('library-remote', false) do

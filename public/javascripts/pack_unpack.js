@@ -48,8 +48,10 @@ Dropbox.prototype.pack_unpack = function() {
 
     if (box.hasClass('unpacked')) {
       pack(box);
+
     } else {
       unpack(box);
+      box.draggable();
     }
 
     box.toggleClass('unpacked');
@@ -62,13 +64,6 @@ function switch_parent(box, parent) {
   box.detach();
   box.appendTo(parent);
   box.offset(old);
-}
-
-function unpacked_length(box) {
-    var max = 1000;
-    var needed = (box.children('.card').length - 1) * (SPACING + CARD_W);
-//    return Math.max(Math.min(max,needed), 0)
-  return 200;
 }
 
 function pack(box) {

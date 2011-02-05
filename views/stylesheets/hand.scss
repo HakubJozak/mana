@@ -4,9 +4,8 @@
   position: fixed;
   z-index: $hand-z-index;
 
+  border: 1px dashed $hand-border-color;
   background-color: rgba(255, 255, 255, 0.1);
-
-  border: 1px dotted black;
   bottom: 70px;
   height: 180px;
   margin-left: auto;
@@ -25,4 +24,6 @@
   &.card-over {
      @include focused; 
   }
+
+  @include shadow;
 }

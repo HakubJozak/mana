@@ -4,11 +4,10 @@
   position: absolute;
 
   @include card-size;
-  border: 2px solid black;
+//  border: 2px solid black;
   
 
   &:hover {   
-    
     @include box-shadow($highlight-color, 0px, 0px, 10px);
   }
 
@@ -16,7 +15,11 @@
     @include box-shadow($opponent-color, 0px, 0px, 10px);
   }
 
-  &.dragged {  @include box-shadow( rgba(0,0,0,0.5), 10px, 10px, 10px);   } 
+  &.dragged {  
+    @include box-shadow( rgba(0,0,0,0.5), 10px, 10px, 10px);   
+    @include shadow;
+  } 
+
   &.tapped { @include rotate(90deg);  }
 }
 
@@ -26,7 +29,6 @@
 
 .token { 
   @include card-like;
-  // @include linear-gradient(color-stops(black, green ), bottom);
   background-image: url('/images/medium-texture.png');
 
   h1 {

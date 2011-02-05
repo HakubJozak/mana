@@ -1,36 +1,10 @@
 // -*- mode: css; tab-width: 2; -*-
 
-$normal-text-color: #9d7c41;
-$highlight-color: #fafeb2;
-$opponent-color: #ff0000;
-
-$page-height: 1400px;
-$battlefield-width: 1000px;
-$side-panel-width: 160px;
-$default-border-radius: 5px;
-
-/* $top-z-index: 100000; */
-/* $card-z-index: 500; */
-/* $panel-z-index: 300; */
-/* $desk-z-index: -1; */
-/* $battlefield-z-index: -10; */
-/* $infobox-z-index: 3000; */
-
-$top-z-index: 500;
-$hand-z-index: 1000;
-
-$card-w : 120px;
-$card-h : 170px;
-
-@mixin card-size {
-  height: $card-h;
-  width: $card-w;
-}
-
 @import "compass/reset";
 @import "compass/css3";  
 @import "compass/css3/transition";
 
+@import "constants";
 @import "modules";
 @import "buttons";
 @import "hand";
@@ -52,41 +26,32 @@ body {
  position: absolute;
 }
 
-@mixin left-column {
+
+#battlefield {
+  position: absolute;
+
+  @include border-radius;
+  @include layout-element;
+
+  @include gradient;
+
   width: $battlefield-width;
   margin: auto;
   right: $side-panel-width + 20px;
-}
 
-#battlefield {
-  @include area;
-  @include border-radius;
-  @include layout-element;
-  @include left-column;
   
-  position: absolute;
-  border-color: rgba(255, 255, 255, 0.14);
+  border: 1px dashed rgba(255, 255, 255, 0.14);
   margin-top: 20px;
   height: $page-height - 60px;
-}
-
-.button-bar {
-  display: none;
-  margin: 10px;
-  font-size: 80%;
-
-  a { margin-right: 5px; }
 }
 
 .highlight { color: $highlight-color }
 .warning   { color: red }
 
 #footer {
- z-index: -1;
-
  @include layout-element;
- @include left-column;
 
+ z-index: -1;
  top: $page-height - 50px;
  margin-top: 20px;
  color: gray;
@@ -114,5 +79,4 @@ body {
   padding-bottom: 20px;
   right: 0px;
   width: $side-panel-width;
-  
 }

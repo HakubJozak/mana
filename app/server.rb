@@ -11,12 +11,11 @@ module Mana
       include Haml::Helpers
 
       def box(id, has_id = true)
+        name = id.split('-').first.capitalize
+
         haml_tag ".box-container" do
-          # TODO: tooltip
           haml_tag :h4 do
-            name = id.split('-').first
-            haml_concat name.capitalize
-            # haml_tag :strong, 0
+            haml_concat name
             haml_tag "a.browse-button.button", 'Browse' if has_id
           end
 
