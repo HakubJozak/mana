@@ -6,6 +6,13 @@ function _(method) {
     }
 }
 
+function switch_parent(box, parent) {
+  var old = box.offset();
+  box.detach();
+  box.appendTo(parent);
+  box.offset(old);
+}
+
 
 Utils.setObjectToDom = function(element, data) {
   $(element).data('game-object', data);

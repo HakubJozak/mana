@@ -15,6 +15,41 @@ Dropbox.prototype.pack_cards = function () {
 }
 
 
+Dropbox.prototype.unpack = function () {
+  var box = this.element;
+  var offset = box.offset();
+  var width = 920;
+
+  // TODO - method save_position
+  var old = box.offset();
+  old.width = box.width();
+  old.height = box.height();
+  this.old_position = old;
+
+  box.offset({ top: 200, left: 100 });
+  box.css('width',width);
+  box.draggable();
+
+  this.spread_cards(5, width);
+  mutex = false;
+}
+
+
+Dropbox.prototype.pack = function () {
+  var old = this.old_position;
+  var box = this.element;
+
+  this.pack_cards();
+  // TODO - method load_position
+  box.offset(old);
+  box.width(old.width);
+  box.height(old.height);
+  box.draggable("destroy");
+
+  mutex = false;
+}
+
+
 Dropbox.prototype.spread_cards = function(top, width) {
   container = this.element;
 
@@ -44,51 +79,13 @@ Dropbox.prototype.spread_cards = function(top, width) {
 Dropbox.prototype.pack_unpack = function() {
   if (!mutex) {
     mutex = true;
-    var box = this.element;
 
-    if (box.hasClass('unpacked')) {
-      pack(box);
-
+    if (this.unpacked()) {
+      this.pack();
     } else {
-      unpack(box);
-      box.draggable();
+      this.unpack();
     }
 
-    box.toggleClass('unpacked');
+    this.element.toggleClass('unpacked');
   }
 }
-
-
-function switch_parent(box, parent) {
-  var old = box.offset();
-  box.detach();
-  box.appendTo(parent);
-  box.offset(old);
-}
-
-function pack(box) {
-  box.object().pack_cards();
-
-  var old = box.object().old_position;
-  box.offset(old);
-  box.width(old.width);
-  box.height(old.height);
-
-  mutex = false;
-}
-
-function unpack(box) {
-  var offset = box.offset();
-  var width = 920;
-
-  var old = box.offset();
-  old.width = box.width();
-  old.height = box.height();
-  box.object().old_position = old;
-
-  box.offset({ top: 200, left: 100 });
-  box.css('width',width);
-  box.object().spread_cards(5, width);
-  mutex = false;
-}
-
