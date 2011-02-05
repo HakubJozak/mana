@@ -3,11 +3,7 @@ $(document).ready(function() {
 
   hand.element.disableSelection();
   hand.element.droppable( "option", "greedy", true );
-
-  hand.element.draggable({ 
-  //  axis: 'y',
-  //  containment: '#battlefield'
-  });
+  hand.element.draggable();
 
   hand.toggleShow = function() {
     h = this.element;

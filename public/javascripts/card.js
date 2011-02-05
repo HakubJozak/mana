@@ -11,18 +11,26 @@ Card = function(params) {
   this.picture = params.picture;
 
   this.element = image;
-  this.initDOM();
-}
+  Utils.setObjectToDom(this.element, this);
 
-Card.createToken = function(x,y) {
-  var token = new Card({
-      name: 'Token',
-     id: 'token-' + 'USER_ID' + '-',
-     picture: '/images/token.jpg'
-  });
+  var toggleDragged = function() { $(this).toggleClass('dragged'); }
 
-    token.element.offset({ top: x, left: y });
-  return token;
+    this.element.draggable( { 
+      scope: 'cards',
+      snap: '.card',
+      start: toggleDragged(),
+	    stop: toggleDragged(),
+      scroll: true,
+      revert: 'invalid',
+      containment: '#desk',
+      snapMode: 'inner',
+      // TODO: simulate this - removed because of z-index mess
+      // stack: '.card',
+      zIndex: 9999
+    });
+
+  this.element.rightClick(_('toggleTapped'));
+  this.element.click(_('showDetail'));
 }
 
 
@@ -116,36 +124,3 @@ Card.detailAnimation = function(resize) {
              width: resize + '=120'
           }
 }
-
-
-Card.prototype.initDOM = function() {
-  Utils.setObjectToDom(this.element, this);
-  var toggleDragged = function() { $(this).toggleClass('dragged'); }
-
-    this.element.draggable( { 
-      scope: 'cards',
-      snap: '.card',
-      start: toggleDragged(),
-	    stop: toggleDragged(),
-      scroll: true,
-      revert: 'invalid',
-      containment: '#desk',
-      snapMode: 'inner',
-//      stack: '.card',
-      zIndex: 9999
-    });
-
-    this.element.rightClick(_('toggleTapped'));
-    this.element.click(_('showDetail'));
-
-    // this.element.hover(function() {
-    //     card = $(this);
-    //     controls = card.append('<p>PRDEL</p>');
-    //     controls.offset(card.offset());
-    //     // window.clearTimeout(c.timeout);
-    //     // cardControls = function () {
-    //     // }
-    //     // window.setTimeout(2000, cardControls)
-    // });
-}
-

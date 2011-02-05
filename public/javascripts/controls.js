@@ -23,6 +23,9 @@ $(document).ready(function() {
   //   event.preventDefault();
   // });
 
+
+
+
 $(document).keypress(function(e) {
   switch (String.fromCharCode(e.keyCode)) {
 
@@ -30,9 +33,14 @@ $(document).keypress(function(e) {
     cards = $('.card:hover');
     if (cards.length > 0) cards.object().turnOver();
     break;
+
+  case ' ':
+    $('#hand').object().toggleShow();
+    break;
   }
 
   e.preventDefault();
+  e.stopPropagation();
 });
 
 

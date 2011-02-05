@@ -11,12 +11,17 @@ Try it yourself! (__WARNING: the server has very limited resources and might go 
 
 and replace 'any-name' by a name of your choice. Send the URL to your friend(s) and play! The controls are very simple:
 
+![Screenshot](https://github.com/HakubJozak/mana/raw/master/screenshots/1.png)
+
+##Controls
+### Mouse
  - drag & drop does most of the actions
  - left click shows the detail
- - pressing 't' turns over the highlighted card
  - right click taps/untaps the card
 
-![Screenshot](https://github.com/HakubJozak/mana/raw/master/screenshots/1.png)
+### Keyboard
+ <t> - turns over the highlighted card
+ <spacebar> - show/hide hand
 
 ## Contributions
 
