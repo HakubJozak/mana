@@ -18,21 +18,13 @@ Dropbox.prototype.tappingAllowed = function() {
   return false;
 }
 
-Dropbox.prototype.dropped = function(card,event,ui) {
-  mc = new MoveCommand(card, this.element.attr('id'));
-  mc.run();
-  this.fixPosition(card);
-  game.sendCommand(mc);
-}
 
 Dropbox.prototype.shuffle = function() {
   var box = this;
   run_exclusively(function() {
     box.element.shuffle('.card');
-    // TODO: if (unpacked)
     box.spread_cards(5, box.element.width());
     MessageCommand.createAndRun('Shuffled the library');
-//      box.element.children('.card').each(function () { box.fixPosition(this.object()); });
   });
 }
 
@@ -48,15 +40,31 @@ Dropbox.prototype.uncoverAll = function() {
   });
 }
 
+Dropbox.prototype.unpacked = function() {
+  return this.element.hasClass('unpacked');
+}
+
 
 Dropbox.prototype.dropLocally = function(card) {
-  card.element.prependTo(this.element);
+  if (this.unpacked()) {
+    card.element.appendTo(this.element);
+  } else {
+    card.element.prependTo(this.element);
+  }
+
   this.fixPosition(card);
+}
+
+Dropbox.prototype.dropped = function(card,event,ui) {
+  mc = new MoveCommand(card, this.element.attr('id'));
+  mc.run();
+  this.fixPosition(card);
+  game.sendCommand(mc);
 }
 
 
 Dropbox.prototype.fixPosition = function(card) {
-  if (this.element.hasClass('unpacked')) {
+  if (this.unpacked()) {
     this.spread_cards(5, this.element.width());
   } else {
     p = this.element.offset();
@@ -64,6 +72,4 @@ Dropbox.prototype.fixPosition = function(card) {
     p.left += 5;
     card.element.offset(p);
   }
-
-  card.element.css('z-index','auto');
 }

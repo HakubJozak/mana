@@ -15,7 +15,6 @@
   padding: 15px;
   padding-left: 10px;
 
-
   h2 {
       position: absolute;
       top: 2px;
@@ -23,7 +22,7 @@
       color: transparentize($highlight-color, 0.3);
   }
 
-  .card-over {
-   @include focused; 
+  &.card-over {
+     @include focused; 
   }
 }

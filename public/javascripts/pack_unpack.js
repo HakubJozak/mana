@@ -91,7 +91,7 @@ function unpack(box) {
   old.height = box.height();
   box.object().old_position = old;
 
-  box.offset({ top: 20, left: 100 });
+  box.offset({ top: 200, left: 100 });
   box.css('width',width);
   box.object().spread_cards(5, width);
   mutex = false;

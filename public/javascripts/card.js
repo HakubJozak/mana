@@ -131,7 +131,7 @@ Card.prototype.initDOM = function() {
       revert: 'invalid',
       containment: '#desk',
       snapMode: 'inner',
-      stack: '.card',
+//      stack: '.card',
       zIndex: 9999
     });
 

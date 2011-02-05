@@ -20,7 +20,7 @@
 }
 
 @mixin gradient {
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(20, 0, 0, 0.2)), to(rgba(60, 0, 0, 0.4)));
+  @include linear-gradient(color-stops(rgba(20, 0, 0, 0.2), rgba(60, 0, 0, 0.4) ));
 }
 
 @mixin dropbox {
@@ -29,18 +29,6 @@
   padding: 5px;
 }
 
-
-/*
-.ui-accordion .ui-accordion-content {
-    @include panel;
-    padding: 5px;
-}
-
-.ui-accordion .ui-accordion-header {
-  @include panel;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(20, 0, 0, 0.2)), to(rgba(60, 0, 0, 0.4))); 
-}
-*/
 
 #side-panel {
 
@@ -53,10 +41,10 @@
         padding: 3px;
     }
 
-    h4 {
+    .box-container > h4 {
         @include side-panel-component;
         margin-bottom: 3px;
-        font-size: 80%;
+        font-size: 14px;
         width: 70%;
         padding: 5px;
 

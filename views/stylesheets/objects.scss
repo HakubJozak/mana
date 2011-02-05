@@ -27,7 +27,6 @@ $card-h : 170px;
   width: $card-w;
 }
 
-
 @import "compass/reset";
 @import "compass/css3";  
 @import "compass/css3/transition";
@@ -65,9 +64,7 @@ body {
   @include layout-element;
   @include left-column;
   
-  position: absolute;   
-  
-
+  position: absolute;
   border-color: rgba(255, 255, 255, 0.14);
   margin-top: 20px;
   height: $page-height - 60px;
@@ -85,6 +82,8 @@ body {
 .warning   { color: red }
 
 #footer {
+ z-index: -1;
+
  @include layout-element;
  @include left-column;
 

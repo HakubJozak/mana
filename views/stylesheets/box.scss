@@ -1,3 +1,5 @@
+// -*- mode: css; tab-width: 2; -*-
+
 .box {
     @include area;
     @include dropbox;
@@ -6,14 +8,18 @@
     &.card-over { @include focused; }
     img { @include card-size; }
 
-    z-index: auto;
+//    z-index: auto;
    .button-bar { display: none; }
 }
 
 .box.unpacked {
    border: 1px solid gray;
    background: #61461c url('../images/medium-texture.png');
-   .button-bar { display: block; }
 
-   &.card-over { background-color: green; }
+   .button-bar { 
+     display: block;
+     h4 { display: inline; font-size: 14px; }
+   }
 }
+
+.card-over { @include focused; }

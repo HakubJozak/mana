@@ -1,11 +1,25 @@
 $(document).ready(function() {
-  battlefield = new Dropbox($($('#battlefield')[0]));
-  battlefield.tappingAllowed = function() { return true; }
-  battlefield.fixPosition = function() {}
+  battlefield = $('#battlefield');
 
-  // HACK - otherwise battlefield eats all the events
-  battlefield.element.droppable( "option", "accept", function(draggable) {
-    return ($('.unpacked' ).length == 0) && draggable.hasClass('card');
-  } );
+  Utils.setObjectToDom( battlefield, {
+    tappingAllowed: function() { return true; },
+    fixPosition: function() {},
+    dropped: Dropbox.prototype.dropped
+  });
 
-}); 
+  battlefield.droppable({
+    scope: 'cards',
+    greedy: false,
+    hoverClass: 'card-over',
+    
+    // HACK - otherwise battlefield eats all the events
+    accept: function(draggable) {
+      return ($('.card-over' ).length < 2) && draggable.hasClass('card');
+    },
+
+    drop: function(event,ui) {
+      card = ui.draggable.object();
+      this.object().dropped(card,event,ui);
+    }
+  });
+});

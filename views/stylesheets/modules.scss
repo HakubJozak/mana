@@ -9,6 +9,7 @@
 }
 
 @mixin focused {
+background-color: green;
   background: rgba(48, 0, 0, 0.5);
   border-color: $normal-text-color;
 }

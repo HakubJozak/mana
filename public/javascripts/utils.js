@@ -8,8 +8,9 @@ function _(method) {
 
 
 Utils.setObjectToDom = function(element, data) {
-    $(element).data('game-object', data);
-    return data;
+  $(element).data('game-object', data);
+  data.element = element;
+  return data;
 }
 
 Utils.getObjectFromDom = function(element) {
