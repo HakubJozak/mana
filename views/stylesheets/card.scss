@@ -16,7 +16,6 @@
   }
 
   &.dragged {  
-    @include box-shadow( rgba(0,0,0,0.5), 10px, 10px, 10px);   
     @include shadow;
   } 
 
@@ -45,5 +44,5 @@
 
 img.card-detail {
   @include card-size;
-  @include box-shadow( rgba(0,0,0,0.5), 20px, 20px, 20px);
+  @include shadow;
 }

@@ -4,6 +4,8 @@ source "http://rubygems.org"
 gem 'rack', '~> 1.2.1'
 gem 'thin'
 gem 'haml'
+# gem 'haml-more', '~> 0.5.1.beta' # Coffee script on-fly translator
+# gem 'escape_utils' # HAML speed-up
 gem 'sass'
 gem 'compass'
 gem 'sinatra'

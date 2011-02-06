@@ -47,6 +47,7 @@ Dropbox.prototype.unpacked = function() {
 
 Dropbox.prototype.dropLocally = function(card) {
   if (this.unpacked()) {
+    alert('prdel');
     card.element.appendTo(this.element);
   } else {
     card.element.prependTo(this.element);

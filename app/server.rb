@@ -50,6 +50,11 @@ module Mana
     #   Compass.add_project_configuration(File.join(Mana::StaticServer.root, 'config', 'compass.config'))
     # end
 
+    get '/javascripts/user.js' do
+      coffee :'coffee/user'
+    end
+    
+    
     get '/stylesheets/:name.css' do
       content_type 'text/css', :charset => 'utf-8'
       scss :"stylesheets/#{params[:name]}", Compass.sass_engine_options

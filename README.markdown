@@ -3,7 +3,7 @@
 Mana is a proof-of-concept in-browser implementation of Magic the Gathering(tm) card game using jQuery, EventMachine, Sinatra, Compass and Websockets. Pre-pre-alpha stage.
 
 
-## Demo
+## Live Server
 
 Try it yourself! (__WARNING: the server has very limited resources and might go offline unexpectedly.__).
 
@@ -13,7 +13,7 @@ and replace 'any-name' by a name of your choice. Send the URL to your friend(s) 
 
 ![Screenshot](https://github.com/HakubJozak/mana/raw/master/screenshots/1.png)
 
-##Controls
+## Controls
 ### Mouse
  - drag & drop does most of the actions
  - left click shows the detail
@@ -23,13 +23,22 @@ and replace 'any-name' by a name of your choice. Send the URL to your friend(s) 
  <t> - turns over the highlighted card
  <spacebar> - show/hide hand
 
+
 ## Contributions
 
 All contributions are welcome! The graphics needs rework (right now it is in-fact "borrowed" from http://tappedout.net), tests have to be written and a lot of features that are easy to implement but not so critical plea for attention. Just fork the repository and send me the pull request or write me a message on Github. If you don't know where to start, see the TODO list.
 
-## Requirements
+## Requirements 
+
+### Client
 
 Webkit-based browser (developed in Chrome) - for now. It is quite easy to make it cross-browser but right now the focus is on core features.
+
+### Server
+
+   - Ruby 1.9
+   - Bundler
+   - Node.js (for coffe script)
 
 ## TODO
 
