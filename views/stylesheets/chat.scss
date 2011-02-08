@@ -1,0 +1,32 @@
+#chat-bar {
+  display: none;
+  position: fixed;
+  z-index: $hand-z-index;
+
+  @include textured;
+
+  width: $battlefield-width + 20px;
+  padding-top: 5px;
+  padding-left: 15px;
+  height: $top_bar_height;
+
+  left: 30px;
+  bottom: 30px;
+  right: $side-panel-width;
+
+  input { 
+      width: $battlefield-width - 50px;
+      background: rgba(48, 0, 0, 0.5);
+      border: 1px solid #693e1b; 
+      color: #c8b472;
+      font-family: Georgia;
+      font-size: 20px;
+      @include border-radius;
+  }
+
+  @include shadow;
+  @include border-radius;
+}
+
+
+

@@ -15,6 +15,7 @@ gem 'activesupport', :require => 'active_support'
 gem 'em-websocket'
 # gem 'em-mongo'
 gem 'mongo'
+gem 'sinatra-mongo'
 gem 'require_all'
 gem 'coffee-script'
 

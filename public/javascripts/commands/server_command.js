@@ -14,10 +14,13 @@ ServerCommand.prototype.run = function() {
   case 'add_user':
     var id = Game.user_dom_id(this.user);
     var template = $('#user-remote-template').html().replace('$USERNAME', this.user.name);
+    var user = new User(this.user.name, '#ffffff')
 
     game.message('User ' + this.user.name + ' connected.');
+    user_html = $('<div id="' + id + '" class="' + id +'">' + template + '</div>');
+    Utils.setObjectToDom( user_html, user);
+    $("#users").append(user_html);
 
-      $("#users").append('<div id="' + id + '" class="' + id +'">' + template + '</div>');
     break;
 
   case 'remove_user':

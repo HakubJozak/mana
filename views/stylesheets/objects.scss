@@ -12,6 +12,7 @@
 @import "side_panel";
 @import "card";
 @import "infobox";
+@import "chat";
 @import "box";
 
 
@@ -38,10 +39,8 @@ body {
   width: $battlefield-width;
   margin: auto;
   right: $side-panel-width + 20px;
-
   
   border: 1px dashed rgba(255, 255, 255, 0.14);
-  margin-top: 20px;
   height: $page-height - 60px;
 }
 

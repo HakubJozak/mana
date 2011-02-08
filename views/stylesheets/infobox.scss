@@ -2,7 +2,7 @@
 
 #infobox {
  position: fixed;
- top: 0px;
+ top: $top_bar_height;
  heigth: 30px;
  width: 100%;
  padding: 10px;
@@ -10,10 +10,6 @@
  background-color: rgba(80, 80, 80, 0.2);
  color: $highlight-color;
 
- label {
-   color: $highlight-color;
- }
-
-   
+ label { color: $highlight-color; }
 }
 

@@ -28,6 +28,7 @@ class MagicCardsInfo
   private
 
   def find_card(name)
+    # add CARD parameter!
     hash = @db.find_one(:name => name)
     hash.nil? ? nil : Card.new(hash)
   end

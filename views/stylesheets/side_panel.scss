@@ -6,6 +6,8 @@
 }
 
 @mixin panel {
+  @include textured;
+
   position: relative;
 
   label {
@@ -15,8 +17,6 @@
   }
 
   border: 0px solid #9D7C41;
-  color: $highlight-color;
-  background: #61461c url('../images/medium-texture.png');
 }
 
 @mixin dropbox {
@@ -27,18 +27,19 @@
 
 
 #side-panel {
+  position: absolute;
+  top: 0px;
+  right: 0px;
 
   border-left: 1px dotted #C8B472;
+//  @include box-shadow( rgba(0,0,0,0.3), -5px, 0px, 5px);
 
   #users {
 
     h3 {
         @include transparent;
         padding: 3px;
-
-        input {
-            color: red;
-        }
+        input { color: red; }
     }
 
     .box-container > h4 {

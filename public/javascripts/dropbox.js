@@ -28,12 +28,12 @@ Dropbox.prototype.shuffle = function() {
   });
 }
 
-Dropbox.prototype.uncoverAll = function() {
+Dropbox.prototype.coverAll = function(mode) {
   var that = this.element;
 
   run_exclusively(function() {
     that.children('.card').each(function() {
-      this.object().turnOverLocally();
+      this.object().turnOverLocally(mode);
     });
 
     MessageCommand.createAndRun('Browsing the library');

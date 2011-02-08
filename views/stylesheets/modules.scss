@@ -4,6 +4,11 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+@mixin textured {
+  color: $highlight-color;
+  background: #61461c url('../images/medium-texture.png');
+}
+
 @mixin transparent-white {
   background-color: rgba(1, 1, 1, 0.2);
 }
@@ -26,4 +31,3 @@
   height: $card-h;
   width: $card-w;
 }
-

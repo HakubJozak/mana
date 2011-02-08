@@ -24,14 +24,16 @@ function lobby_submit() {
       onRemoteMessage: function(command) {
         if (command.operation == 'update_library') {
           name = lobby_input('name');
+          
+          // TODO: move somewhere else / rewrite
           $('#user-local h3').text(name);
+          game.user = { name: name, color: '#ff0000' };
+         
           game.message('You joined the game as ' + name + '.');
           game.removeListener();
           closeLobby();
           $('button').attr('disabled',false);
         } else if (command.operation == 'progress') {
-          // TODO: 
-          console.info(command);
           $( "#lobby-progress-message" ).text(command.card);
           $( "#lobby-progress-bar" ).progressbar( "option", "value", command.value );
         }

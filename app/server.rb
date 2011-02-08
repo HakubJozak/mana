@@ -6,39 +6,12 @@ module Mana
     set :views, "views"
     set :public, 'public'
     set :sessions, true
+    set :mongo, 'mongo://localhost:27017/mana'
+
 
     helpers do
       include Haml::Helpers
-
-      def box(id, has_id = true)
-        name = id.split('-').first.capitalize
-
-        haml_tag ".box-container" do
-          haml_tag :h4 do
-            haml_concat name
-            haml_tag "a.browse-button.button", 'Browse' if has_id
-          end
-
-          params = if has_id
-                     { :id => id, :class => "box" }
-                   else
-                     { :class => "box #{id}" }
-                   end
-          
-          haml_tag :div, params do
-            if block_given?
-              yield
-            else
-              haml_tag '.button-bar' do
-                haml_tag 'h4', name
-                haml_tag 'a.shuffle-button.button', 'Shuffle'
-                haml_tag 'a.uncover-button.button', 'Turn All'
-                haml_tag 'a.close-button.button', 'Close'
-              end
-            end
-          end        
-        end
-      end
+      include BoxHelper
     end
     
     # configure(:development) do
@@ -53,13 +26,24 @@ module Mana
     get '/javascripts/user.js' do
       coffee :'coffee/user'
     end
+
+    #
+    # TODO: replace by SCSS (when the issue with locals is resolved)
+    #
+    # let it actually do something!
+    #
+    get '/stylesheets/users/:user_id.css' do
+      content_type 'text/css', :charset => 'utf-8'
+      @color = 'red'
+      erb :'stylesheets/user.css'
+    end
     
     
     get '/stylesheets/:name.css' do
       content_type 'text/css', :charset => 'utf-8'
       scss :"stylesheets/#{params[:name]}", Compass.sass_engine_options
     end
-    
+
     get '/games/:name' do
       @game_id = params[:name]
       haml :index
