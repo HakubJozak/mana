@@ -45,13 +45,10 @@ EM.run do
         ws.user.update_library(command['cards'])
         ws.game.connect(ws.user)
 
-      when :server
-        operation = command['operation'].downcase.to_sym
-
-        case operation
-        when :draw_a_card
-          ws.user.draw_a_card
-        end          
+      # when :server
+      #   # TODO: too many 'layers'
+      #   operation = command['operation'].downcase.to_sym
+      #   ws.user.add_card_to_library(command['args']['image_url']) if operation == 'create_card'
       else
         # adds author to the command
         ws.game.send_to_opponents(command.merge(:sid => ws.user.sid))

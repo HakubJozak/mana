@@ -1,4 +1,5 @@
 function Game(url, game_id) {
+    this.id_sequence = 0;
     this.url = url;
     this.game_id = game_id;
     this.listener = null;
@@ -7,6 +8,15 @@ function Game(url, game_id) {
 Game.prototype.sendCommand = function(command) {
   this.socket.send(JSON.stringify(command));
 }
+
+Game.prototype.create_card = function(image_url) {
+  var id = 'custom-card-by-USER_ID-' + this.id_sequence++;
+  var card = new Card({  id: id,  image_url: image_url });
+
+  card.turnOverLocally(false);
+  $('#hand').object().dropLocally(card);
+}
+
 
 Game.prototype.message = function(msg) {
   var box = $('#infobox');
@@ -60,7 +70,6 @@ Game.prototype.connect = function(username,deck, color) {
   }
 
   this.socket.onmessage = function(msg) {
-    console.info(msg);
 
     try {  
       var command = JSON.parse(msg.data);
@@ -73,5 +82,4 @@ Game.prototype.connect = function(username,deck, color) {
       this.game.message('Error:' + e);
     }
   }
-                             
 };

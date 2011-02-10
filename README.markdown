@@ -39,20 +39,22 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 ## TODO
 
 ### Essential - Alfa
+ - add any card (by URL) 
+   - tokens http://magiccards.info/extras.html
+   - make script to get all the URL's
  - counters
- - simple chat
- - tokens
 
 ### Beta
  - lobby synchronization
  - welcome site in Rails3
 
-### Convenience
+### More Features Convenience - Versions 1+
+ 
  - life counter
  - inform all users about other users' actions
  - history recording & match replays
  - variable width and height of the battleground
- - advanced shortcuts
+ - advanced keyboard shortcuts
  - select more cards + save selection (C&C style)
  - untap all / selected cards
  - zooming

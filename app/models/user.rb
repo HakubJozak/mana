@@ -12,13 +12,7 @@ module Mana
     end
 
     def update_library(cards_list)
-      @library = Library.new(cards_list) do |card,progress|
-        message_to_client(:me, command(:server, 
-                                       :operation => :progress, 
-                                       :card => card,
-                                       :value => progress ))
-      end
-      
+      @library = Library.new(cards_list)
       message_to_client(:me, command(:server,
                                      :operation => :update_library,
                                      :args => @library ))

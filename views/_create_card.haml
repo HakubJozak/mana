@@ -1,0 +1,33 @@
+#create-card-dialog{:title => "Create Card" }
+  %form
+    %fieldset
+      %p
+        Create new card by either selecting one from the token list
+        or pasting any image URL to the box.
+
+      %br/
+      %label{:for => "image_url"} Image URL
+      %input.text.ui-widget-content.ui-corner-all{:name => "image_url", :type => "text", :value => "http://magiccards.info/scans/en/som/246.jpg" }/
+
+      -# http://magiccards.info/scans/en/som/246.jpg
+      -# http://magiccards.info/scans/en/som/221.jpg
+
+:javascript
+  $(document).ready(function() {
+
+    $("#create-card-dialog").dialog({
+      autoOpen: false,
+      width: 350,
+      modal: false,
+
+      buttons: [ 
+          { 
+           text: 'Create', 
+           click: function() { 
+                    $('#create-card-dialog').dialog('close'); 
+                    var url = $('#create-card-dialog form input').val();
+                    game.create_card(url);
+                }},
+          { text: 'Cancel', click: function() { $('#create-card-dialog').dialog('close'); } }
+      ]});
+    });

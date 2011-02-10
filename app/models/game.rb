@@ -28,7 +28,7 @@ module Mana
         # TODO: subclass EM::Channel to do this
         user.message_to_client(pack[:scope], pack[:command])
       end
-      
+
       broadcast_to :opponents, server_command(:add_user, user)
     end
 

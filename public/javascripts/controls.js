@@ -17,39 +17,41 @@ $(document).ready(function() {
       $('#hand').object().toggleShow(event);
       event.stopPropagation();
   });
+
+  $('#battlefield').rightClick(function(event) {
+    $('#create-card-dialog').dialog('open');
+  });
+
+  //
+  // KEYS
+  //
+  $(document).keypress(function(e) {
+    // ignore keypresses on valid inputs
+    if ($(e.target)[0].nodeName == 'INPUT')
+      return;
+
+    switch (String.fromCharCode(e.keyCode)) {
+    case 't':
+      cards = $('.card:hover');
+      if (cards.length > 0) cards.object().turnOver();
+      break;
+
+    case 'm':
+      $('#chat-bar').toggle()
+      $('#chat-bar input').focus();
+      break;
+
+    case ' ':
+      $('#hand').object().toggleShow();
+      break;
+    }
+
+    e.stopPropagation();
+    e.preventDefault();
+
+  });
 });
 
-
-
-//
-// KEYS
-//
-$(document).keypress(function(e) {
-
-  // ignore keypresses on valid inputs
-  if ($(e.target)[0].nodeName == 'INPUT')
-    return;
-
-  switch (String.fromCharCode(e.keyCode)) {
-  case 't':
-    cards = $('.card:hover');
-    if (cards.length > 0) cards.object().turnOver();
-    break;
-
-  case 'm':
-    $('#chat-bar').toggle()
-    $('#chat-bar input').focus();
-    break;
-
-  case ' ':
-    $('#hand').object().toggleShow();
-    break;
-  }
-
-  e.stopPropagation();
-  e.preventDefault();
-
-});
 
 
 //

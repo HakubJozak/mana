@@ -1,4 +1,4 @@
-MoveCommand = function(card, new_parent, animate) { 
+MoveCommand = function(card, new_parent) { 
   this.position = card.element.offset();
   this.action = 'Move';
   this.new_parent = new_parent;
@@ -23,12 +23,15 @@ MoveCommand.prototype.run = function() {
   var parent = $('#' + this.new_parent);
   var c = card.element;
 
+  console.info(card);
+
   // TODO: refactor this hard-coded ultra ad-hoc code
   if (this.remote) {
     if (this.new_parent == 'hand') {
       c.fadeOut(function() { $(this).remove() });
       return;
     } else if (this.new_parent != 'battlefield') {
+      // TODO: should be processed on server
       parent = $('#' + owner_id + ' .' + this.new_parent + '-remote') ;
       position = parent.offset();
     }

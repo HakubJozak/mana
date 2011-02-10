@@ -1,8 +1,3 @@
-function closeLobby() {
-  $('#lobby').dialog('close');
-}
-
-
 function lobby_input(name) {
   return $('#lobby form *[name="' + name + '"]').val();
 }
@@ -31,7 +26,8 @@ function lobby_submit() {
          
           game.message('You joined the game as ' + name + '.');
           game.removeListener();
-          closeLobby();
+
+          $('#lobby').dialog('close');
           $('button').attr('disabled',false);
         } else if (command.operation == 'progress') {
           $( "#lobby-progress-message" ).text(command.card);
@@ -67,6 +63,6 @@ $(document).ready(function() {
 
     buttons: [ 
         { text: 'Play', click: function() { return lobby_submit(); } },
-   ]
+    ]
   });
 });
