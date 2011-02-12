@@ -47,11 +47,13 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 ### Beta
  - lobby synchronization
  - welcome site in Rails3
+ - security (escape custom card links and check they are images)
 
 ### More Features Convenience - Versions 1+
  
+ - link the cards to MagicCardsInfo (to see errata and stuff in a new window)
  - life counter
- - inform all users about other users' actions
+ - inform all users about (all) other users' actions
  - history recording & match replays
  - variable width and height of the battleground
  - advanced keyboard shortcuts
