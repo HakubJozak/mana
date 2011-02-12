@@ -2,20 +2,18 @@ module Mana
   class User
     include Mana::Commander
     
-    attr_accessor :sid
+    attr_accessor :sid, :library
     attr_reader :ws, :name
 
-    def initialize(name, ws)
-      @name = name
+    def initialize(ws, options)
       @ws = ws
-      # @library = Library.new(File.read('decks/eldrazi'))
+      @name = options['name']
+      @color = options['color']
+      update_library(options['cards'])
     end
 
     def update_library(cards_list)
       @library = Library.new(cards_list)
-      message_to_client(:me, command(:server,
-                                     :operation => :update_library,
-                                     :args => @library ))
     end
 
     def to_hash

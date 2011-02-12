@@ -40,9 +40,9 @@ EM.run do
 
       case action
       when :connect
-        ws.game = Mana::Game.find_or_create(command['game_id'])
-        ws.user = Mana::User.new(command['username'], ws)
-        ws.user.update_library(command['cards'])
+        game_id = command.delete('game_id')
+        ws.game = Mana::Game.find_or_create(game_id)
+        ws.user = Mana::User.new(ws, command)
         ws.game.connect(ws.user)
 
       # when :server

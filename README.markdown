@@ -16,8 +16,9 @@ and replace 'any-name' by a name of your choice. Send the URL to your friend(s) 
 ## Controls
 ### Mouse
  - drag & drop does most of the actions
- - left click shows the detail
- - right click taps/untaps the card
+ - left click on card: shows the detail
+ - right click on card: taps/untaps the card
+ - right click on battlefield: add tokens/custom cards
 
 ### Keyboard
  <t> - turns over the highlighted card
@@ -44,10 +45,11 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
    - make script to get all the URL's
  - counters
 
-### Beta
+### Early Beta +
  - lobby synchronization
  - welcome site in Rails3
  - security (escape custom card links and check they are images)
+ - help
 
 ### More Features Convenience - Versions 1+
  

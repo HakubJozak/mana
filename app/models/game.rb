@@ -29,6 +29,8 @@ module Mana
         user.message_to_client(pack[:scope], pack[:command])
       end
 
+      broadcast_to(:me, server_command(:update_library, user, :args => user.library ))
+
       broadcast_to :opponents, server_command(:add_user, user)
     end
 
@@ -53,11 +55,11 @@ module Mana
       @@games[id] = Game.new(id)
     end
 
-    def server_command(operation, user)
+    def server_command(operation, user, args = {})
       { :action => 'Server',
         :operation => operation.to_s,
         :sid => user.sid,
-        :user => user.to_hash }
+        :user => user.to_hash }.merge(args)
     end
     
   end
