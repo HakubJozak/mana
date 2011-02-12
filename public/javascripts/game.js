@@ -12,9 +12,7 @@ Game.prototype.sendCommand = function(command) {
 Game.prototype.create_card = function(image_url) {
   var id = 'custom-card-by-USER_ID-' + this.id_sequence++;
   var card = new Card({  id: id,  image_url: image_url });
-
-  card.turnOverLocally(false);
-  $('#hand').object().dropLocally(card);
+  $('#battlefield').object().dropped(card);
 }
 
 

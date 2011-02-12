@@ -38,6 +38,10 @@ $(document).ready(function() {
     });
   }
 
+  hand.add_card = function (card) {
+    hand.dropped(card);
+  }
+
   hand.dropped = function(card, event, ui) {
     // replace by super() call
     this.old_drop = Dropbox.prototype.dropped;

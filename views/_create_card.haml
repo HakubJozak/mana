@@ -1,16 +1,18 @@
 #create-card-dialog{:title => "Create Card" }
-  %form
-    %fieldset
-      %p
-        Create new card by either selecting one from the token list
-        or pasting any image URL to the box.
+  %fieldset
+    %p
+      Create new card by either selecting one from the token list
+      or pasting any image URL to the box.
 
-      %br/
-      %label{:for => "image_url"} Image URL
-      %input.text.ui-widget-content.ui-corner-all{:name => "image_url", :type => "text", :value => "http://magiccards.info/scans/en/som/246.jpg" }/
+    %br/
+    %label{:for => "custom_image_url"} Custom Image URL
+    %input.text.ui-widget-content.ui-corner-all{:name => "custom_image_url", :type => "text", :value => "http://magiccards.info/scans/en/som/246.jpg" }/
 
-      -# http://magiccards.info/scans/en/som/246.jpg
-      -# http://magiccards.info/scans/en/som/221.jpg
+    %label{:for => "image_url"} Tokens
+    %select{ :name => 'image_url' }
+      - { 'Forest' => 'http://magiccards.info/scans/en/som/246.jpg', 'Else' => 'http://magiccards.info/scans/en/som/221' }.each do |key,value|
+        %option{ :value => value } #{key}
+
 
 :javascript
   $(document).ready(function() {
@@ -25,7 +27,7 @@
            text: 'Create', 
            click: function() { 
                     $('#create-card-dialog').dialog('close'); 
-                    var url = $('#create-card-dialog form input').val();
+                    var url = $('#create-card-dialog input').val();
                     game.create_card(url);
                 }},
           { text: 'Cancel', click: function() { $('#create-card-dialog').dialog('close'); } }

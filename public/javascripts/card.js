@@ -8,7 +8,7 @@ Card = function(params) {
   this.url = params.url;
   this.name = params.name;
   this.covered = params.covered;
-  this.picture = params.picture;
+  this.picture = params.picture || params.image_url;
 
   this.element = image;
   Utils.setObjectToDom(this.element, this);
@@ -45,7 +45,6 @@ Card.find_or_create_opponent_card = function(params,owner_id) {
   if (card == null) {
     card = new Card(params);
     card.element.addClass(params.owner_id)
-                .addClass('opponent')
                 .attr('style','position: absolute');
 
     if (params.tapped) card.addClass('tapped');
