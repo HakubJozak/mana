@@ -4,8 +4,7 @@ require 'nokogiri'
 require 'open-uri'
 
 
-doc = Nokogiri::HTML(File.new('extras.html'))
-
+doc = Nokogiri::HTML(open('http://magiccards.info/extras.html'))
 
 tokens = []
 
