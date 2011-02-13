@@ -93,8 +93,10 @@ Card.prototype.isCovered = function() {
 
 
 Card.prototype.showDetail = function() {
-    var detail = this.element.clone();
+    if (this.covered)
+        return;
 
+    var detail = this.element.clone();
     $('body').append(detail);
     
     detail.css('z-index',10000)

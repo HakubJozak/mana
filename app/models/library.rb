@@ -18,10 +18,10 @@ class Library
     @cards.shuffle!
   end
 
-  def draw_a_card
-    @cards.shift
+  def to_hash
+    { :cards => @cards }
   end
-
+  
   private
 
   def mono_card_array(count, name)

@@ -7,16 +7,21 @@ ServerCommand = function(operation, args) {
 ServerCommand.prototype.run = function() {
   switch (this.operation) {
 
-  case 'update_library':
-    library.update(this.args.cards);
+  case 'start_game':
+    var user = this.args.user;
+    library.update(user.cards);
+
+    $('#user-local h3').text(user.name);
+    Utils.setObjectToDom('#user-local', new User(user))
+    game.message('You joined the game as ' + user.name + '.');
     break;
 
   case 'add_user':
-    var id = Game.user_dom_id(this.user);
-    var template = $('#user-remote-template').html().replace('$USERNAME', this.user.name);
-    var user = new User(this.user.name, '#ffffff')
+    var user = new User(this.user);
+    var id = user.to_dom_id();
+    var template = $('#user-remote-template').html().replace('$USERNAME', user.name);
 
-    game.message('User ' + this.user.name + ' connected.');
+    game.message('User ' + user.name + ' connected.');
     user_html = $('<div id="' + id + '" class="' + id +'">' + template + '</div>');
     Utils.setObjectToDom( user_html, user);
     $("#users").append(user_html);
@@ -24,11 +29,14 @@ ServerCommand.prototype.run = function() {
     break;
 
   case 'remove_user':
+    var user = User.find(this.user.id)
     game.message('User ' + this.user.name + ' disconnected.');
-    $('.' + Game.user_dom_id(this.user)).fadeOut(function() {
+    $('.' + user.to_dom_id).fadeOut(function() {
       $(this).remove();
     });
   }
 }
 
 
+function add_user() {
+}

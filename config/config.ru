@@ -42,6 +42,7 @@ EM.run do
       when :connect
         game_id = command.delete('game_id')
         ws.game = Mana::Game.find_or_create(game_id)
+        puts command
         ws.user = Mana::User.new(ws, command)
         ws.game.connect(ws.user)
 

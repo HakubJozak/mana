@@ -16,7 +16,8 @@ MoveCommand = function(card, new_parent) {
 
 
 MoveCommand.prototype.run = function() {
-  var owner_id = Game.user_dom_id({ id: this.sid })
+  // TODO: remove
+  var owner_id = 'user-' + this.sid;
   var card = Card.find_or_create_opponent_card(this.card, owner_id);
   var position = this.position;
   var animate = this.remote;

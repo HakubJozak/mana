@@ -50,25 +50,24 @@ Game.prototype.removeListener = function() {
   this.listener = null;
 }
 
-Game.prototype.connect = function(username,deck, color) {
+Game.prototype.connect = function(name,cards, color) {
   this.socket = new WebSocket(this.url);
   this.socket.game = this;
 
   this.socket.onerror = function() { game.message('Connection error!'); }
-    this.socket.onclose =  function() { game.message('Disconnected.'); }
+  this.socket.onclose = function() { game.message('Disconnected.'); }
 
   this.socket.onopen = function() {
       var g = this.game;
       g.message('Connection opened...');
       g.sendCommand({ action: 'connect', 
                       game_id: g.game_id, 
-                      cards: deck,
+                      cards: cards,
                       color: color,
-                      username: username });
+                      name: name });
   }
 
   this.socket.onmessage = function(msg) {
-
     try {  
       var command = JSON.parse(msg.data);
       this.game.notifyAll(command);

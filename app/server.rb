@@ -24,7 +24,7 @@ module Mana
     # end
 
     get '/javascripts/user.js' do
-      coffee :'coffee/user'
+      coffee :'coffee/user', :no_wrap => true
     end
 
     #

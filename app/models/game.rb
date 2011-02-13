@@ -4,8 +4,6 @@ module Mana
     @@games = {}
 
     attr_reader :users
-    
-    # @@redis = Redis.new(:thread_safe=>true)
 
     def self.find_or_create(id)
       @@games[id] || create(id)
@@ -29,7 +27,9 @@ module Mana
         user.message_to_client(pack[:scope], pack[:command])
       end
 
-      broadcast_to(:me, server_command(:update_library, user, :args => user.library ))
+      args = { :user => user.to_hash(:include_library => true) }
+      user.message_to_client(:me, server_command(:start_game, user,
+                                                 :args => args))
 
       broadcast_to :opponents, server_command(:add_user, user)
     end

@@ -27,7 +27,9 @@ $(document).ready(function() {
   //
   $(document).keypress(function(e) {
     // ignore keypresses on valid inputs
-    if ($(e.target)[0].nodeName == 'INPUT')
+    var name = $(e.target)[0].nodeName;
+
+    if (name == 'INPUT' || name == 'TEXTAREA')
       return;
 
     switch (String.fromCharCode(e.keyCode)) {

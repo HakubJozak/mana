@@ -17,16 +17,8 @@ function lobby_submit() {
   if (lobby_valid()) {
     var lobby = {
       onRemoteMessage: function(command) {
-        if (command.operation == 'update_library') {
-          name = lobby_input('name');
-          
-          // TODO: move somewhere else / rewrite
-          $('#user-local h3').text(name);
-          game.user = { name: name, color: '#ff0000' };
-         
-          game.message('You joined the game as ' + name + '.');
+        if (command.operation == 'start_game') {
           game.removeListener();
-
           $('#lobby').dialog('close');
           $('button').attr('disabled',false);
         } else if (command.operation == 'progress') {
