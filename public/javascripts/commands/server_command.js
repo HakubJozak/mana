@@ -23,10 +23,9 @@ ServerCommand.prototype.run = function() {
 
     game.message('User ' + user.name + ' connected.');
     user_html = $('<div id="' + id + '" class="' + id +'">' + template + '</div>');
-    Utils.setObjectToDom( user_html, user);
     $('html > head').append("<link href='/stylesheets/users/" + user.id + ".css' rel='stylesheet' />");
     $("#users").append(user_html);
-
+    // TODO: Utils.setObjectToDom( user_html, user);
     break;
 
   case 'remove_user':
