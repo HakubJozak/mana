@@ -10,7 +10,7 @@
 
     %label{:for => "image_url"} Tokens
     %select{ :name => 'image_url' }
-      - TOKENS.each do |key,value|
+      - TOKENS.sort.each do |key,value|
         %option{ :value => value } #{key}
 
 

@@ -12,7 +12,7 @@ ServerCommand.prototype.run = function() {
     library.update(user.cards);
 
     $('#user-local h3').text(user.name);
-    Utils.setObjectToDom('#user-local', new User(user))
+    Utils.setObjectToDom('#user-local', new User(user));
     game.message('You joined the game as ' + user.name + '.');
     break;
 
@@ -24,6 +24,7 @@ ServerCommand.prototype.run = function() {
     game.message('User ' + user.name + ' connected.');
     user_html = $('<div id="' + id + '" class="' + id +'">' + template + '</div>');
     Utils.setObjectToDom( user_html, user);
+    $('html > head').append("<link href='/stylesheets/users/" + user.id + ".css' rel='stylesheet' />");
     $("#users").append(user_html);
 
     break;

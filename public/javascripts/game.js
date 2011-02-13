@@ -10,7 +10,7 @@ Game.prototype.sendCommand = function(command) {
 }
 
 Game.prototype.create_card = function(image_url) {
-  var id = 'custom-card-by-USER_ID-' + this.id_sequence++;
+  var id = User.local().create_unique_id();
   var card = new Card({  id: id,  image_url: image_url });
   $('#battlefield').object().dropped(card);
 }
@@ -27,10 +27,6 @@ Game.prototype.message = function(msg) {
       $('#infobox p:first').html('');
     });
   }
-}
-
-Game.user_dom_id = function(user) {
-  return 'user-' + user.id;
 }
 
 

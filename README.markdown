@@ -50,7 +50,6 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
  - counters
  - each user has its own color
 
-
 ### Early Beta +
  - lobby synchronization
  - welcome site in Rails3
@@ -60,6 +59,7 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 
 ### More Features Convenience - Versions 1+
  
+ - counters on the cards 
  - link the cards to MagicCardsInfo (to see errata and stuff in a new window)
  - life counter
  - visible shuffling effect
@@ -69,6 +69,7 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
  - advanced keyboard shortcuts
  - select more cards + save selection (C&C style)
  - untap all / selected cards
+ - smart image loading (+ show dummy before card image is loaded)
  - zooming
  - Gravatar - http://railscasts.com/episodes/244-gravatar
  - http://headjs.com/
