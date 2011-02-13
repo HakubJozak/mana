@@ -36,4 +36,4 @@ namespace :thin do
   end
 end
 
-after "deploy:finalize_update", "deploy:shared_symlink"
+after "deploy:finalize_update", "deploy:shared_symlink", 'thin:restart'

@@ -15,6 +15,7 @@ MoveCommand = function(card, new_parent) {
 }
 
 
+  // TODO: REFACTOR this hackish multi-purpose thing
 MoveCommand.prototype.run = function() {
   // TODO: remove
   var owner_id = 'user-' + this.sid;
@@ -39,7 +40,8 @@ MoveCommand.prototype.run = function() {
   }
 
   if (c.parent().attr('id') != parent.attr('id')) {
-    switch_parent(c, parent);
+    var p = parent.object().unpacked == null ? false : parent.object().unpacked();
+    switch_parent(c, parent, p);
   }
 
   if (animate) {

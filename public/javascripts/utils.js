@@ -7,10 +7,10 @@ function _(method) {
     }
 }
 
-function switch_parent(box, parent) {
+function switch_parent(box, parent, prepend) {
   var old = box.offset();
   box.detach();
-  box.appendTo(parent);
+  prepend ? box.prependTo(parent) : box.appendTo(parent);
   box.offset(old);
 }
 
