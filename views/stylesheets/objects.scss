@@ -14,6 +14,8 @@
 @import "infobox";
 @import "chat";
 @import "box";
+@import "help";
+
 
 
 body {
@@ -33,7 +35,6 @@ body {
 
   @include border-radius;
   @include layout-element;
-
   @include gradient;
 
   width: $battlefield-width;

@@ -17,18 +17,6 @@ __WARNING 1__: the server has very limited resources and might go offline unexpe
 __WARNING 2__: anyone who knows little about HTML or JavaScript can cheat, so choose your opponents with care ;)
 __WARNING 3__: I am almost sure there are security issues (XSS and such), don't say I did not warn you! (see TODO)
 
-## Controls
-### Mouse
- - drag & drop does most of the actions
- - left click on card: shows the detail
- - right click on card: taps/untaps the card
- - right click on battlefield: add tokens/custom cards
-
-### Keyboard
- <t> - turns over the highlighted card
- <m> - send chat message to other players
- <spacebar> - show/hide hand
-
 ## Requirements 
 
 ### Client
@@ -55,7 +43,7 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
  - welcome site in Rails3
  - security (escape custom card links and check they are images)
  - prevent XSS
- - help
+
 
 ### More Features Convenience - Versions 1+
  
@@ -74,6 +62,7 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
  - Gravatar - http://railscasts.com/episodes/244-gravatar
  - http://headjs.com/
  - cheating prevention
+ - use backbone.js and moustache.js
 
 ## Contributions
 

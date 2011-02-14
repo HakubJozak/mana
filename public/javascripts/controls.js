@@ -43,6 +43,10 @@ $(document).ready(function() {
       $('#chat-bar input').focus();
       break;
 
+    case 'h':
+      $('#help').toggle();
+      break;
+
     case ' ':
       $('#hand').object().toggleShow();
       break;

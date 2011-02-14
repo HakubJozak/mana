@@ -13,7 +13,7 @@ ServerCommand.prototype.run = function() {
 
     $('#user-local h3').text(user.name);
     Utils.setObjectToDom('#user-local', new User(user));
-    game.message('You joined the game as ' + user.name + '.');
+    game.message('You joined the game as ' + user.name + '. Press "h" for help on controls.');
     break;
 
   case 'add_user':
