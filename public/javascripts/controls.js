@@ -18,10 +18,6 @@ $(document).ready(function() {
       event.stopPropagation();
   });
 
-  $('#battlefield').rightClick(function(event) {
-    $('#create-card-dialog').dialog('open');
-  });
-
   //
   // KEYS
   //
@@ -44,6 +40,11 @@ $(document).ready(function() {
       cards = $('.card:hover');
       if (cards.length > 0) cards.object().add_token();
       break;
+
+    case 'a':
+      $('#create-card-dialog').dialog('open');
+      break;
+
 
     case 'm':
       $('#chat-bar').toggle()
