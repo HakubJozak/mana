@@ -25,8 +25,7 @@ function close_chat() {
 
 function submit_chat() {
   var input = $('#chat-bar input');
-  MessageCommand.createAndRun(game.user.name + ': ' + input.val());
-    console.info(game.user);
+  MessageCommand.createAndRun(User.local().name + ': ' + input.val());
   input.val('');
   return false;
 }
