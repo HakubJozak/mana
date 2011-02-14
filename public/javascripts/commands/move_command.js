@@ -40,9 +40,10 @@ MoveCommand.prototype.run = function() {
   }
 
   if (c.parent().attr('id') != parent.attr('id')) {
-    var p = parent.object().unpacked == null ? false : parent.object().unpacked();
-    switch_parent(c, parent, p);
-  }
+//      var p = (parent.object && (parent.object().unpacked) != null) ? parent.object().unpacked() : false;
+      switch_parent(c, parent, false);
+  };
+  
 
   if (animate) {
     o = parent.offset()
