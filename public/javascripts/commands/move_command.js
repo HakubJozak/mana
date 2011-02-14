@@ -9,7 +9,7 @@ MoveCommand = function(card, new_parent) {
     tapped: card.tapped,
     name: card.name,
     covered: card.covered,
-    image_url : card.element.attr('src'),
+    image_url : card.e().attr('src'),
     picture : card.picture
   };
 }

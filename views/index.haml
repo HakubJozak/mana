@@ -79,6 +79,11 @@
   = haml(:_help, :layout => false)
 
   #coffin{:style => "display: none"}
+    #card-template
+      .card{ :id => '$ID' }
+        %img{ :src => '$SRC' }
+        .counters{ :style => 'display:none' } 0
+
     #user-remote-template
       %h3 
         $USERNAME 

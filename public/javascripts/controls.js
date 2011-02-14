@@ -33,9 +33,16 @@ $(document).ready(function() {
       return;
 
     switch (String.fromCharCode(e.keyCode)) {
+
+    // TODO: DRY
     case 't':
       cards = $('.card:hover');
       if (cards.length > 0) cards.object().turnOver();
+      break;
+
+    case 'c':
+      cards = $('.card:hover');
+      if (cards.length > 0) cards.object().add_token();
       break;
 
     case 'm':

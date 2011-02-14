@@ -1,7 +1,10 @@
 // -*- mode: javascript; tab-width: 2; -*-
 
 Card = function(params) {
-  var image = $('<img src="' + params.image_url + '" class="card" id="card-' + params.id + '" />');
+  var tmpl = $('#card-template').html()
+        .replace('$SRC', params.image_url)
+        .replace('$ID', "card-" + params.id);
+  var image = $(tmpl);
 
   // TODO: do it better way
   this.id = params.id;
@@ -53,6 +56,16 @@ Card.find_or_create_opponent_card = function(params,owner_id) {
   return card;
 }
 
+Card.prototype.e = function() {
+  return this.element.find('img');
+}
+
+Card.prototype.add_token = function() {
+  var e = this.element.find('.counters');
+  var count = parseInt(e.text());
+  e.text(count + 1);
+  e.show();
+}
 
 Card.prototype.container = function() {
   return this.element.parent().object();
@@ -83,7 +96,7 @@ Card.prototype.turnOverLocally = function(cover) {
     this.covered = !this.covered;
   }
 
-  this.element.attr('src', this.covered ?  "/images/back.jpg" : this.picture);
+  this.e().attr('src', this.covered ?  "/images/back.jpg" : this.picture);
 }
 
 // TODO: remove
@@ -96,7 +109,7 @@ Card.prototype.showDetail = function() {
     if (this.covered)
         return;
 
-    var detail = this.element.clone();
+    var detail = this.e().clone();
     $('body').append(detail);
     
     detail.css('z-index',10000)
