@@ -13,7 +13,13 @@
     @include shadow;
   } 
 
-  &.tapped { @include rotate(90deg);  }
+  &.tapped { 
+    @include rotate(90deg);
+    .power, .counters { @include rotate(-90deg); }
+  }
+
+  .power { right: 0px;  bottom: 0px; }
+  .counters { left: 0px;  top: 0px; }
   
   .counters, .power {
     @include border-radius;
@@ -24,9 +30,6 @@
     padding-top: 3px;
     margin: 5px;
   }
-
-  .power { right: 0px;  bottom: 0px; }
-  .counters { left: 0px;  top: 0px; }
 }
 
 .card  { 
