@@ -38,7 +38,7 @@
     :javascript
       $(document).ready(function() {
         game = new Game('ws://#{ADDRESS}:#{WEBSOCKET_PORT}','#{@game_id}');
-        // #{ENV['RACK_ENV'] == 'development' ?  'lobby_submit();' : ''}
+        #{ENV['RACK_ENV'] == 'development' ?  'lobby_submit();' : ''}
       });
 
 %body
@@ -82,7 +82,8 @@
     #card-template
       .card{ :id => '$ID' }
         %img{ :src => '$SRC' }
-        .counters{ :style => 'display:none' } 0
+        .counters{ :style => 'display:none' }
+        .power{ :style => 'display:none' }
 
     #user-remote-template
       %h3 

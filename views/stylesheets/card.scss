@@ -9,38 +9,28 @@
     @include box-shadow($highlight-color, 0px, 0px, 10px);
   }
 
-  &.dragged {  
+  &.ui-draggable-dragging {  
     @include shadow;
   } 
 
   &.tapped { @include rotate(90deg);  }
   
-  .counters {
+  .counters, .power {
+    @include border-radius;
     position: absolute;
-    left: 0px;
-    top: 0px;
     @include transparent;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    padding-top: 3px;
+    margin: 5px;
   }
+
+  .power { right: 0px;  bottom: 0px; }
+  .counters { left: 0px;  top: 0px; }
 }
 
 .card  { 
   @include card-like;
-}
-
-.token { 
-  @include card-like;
-  background-image: url('/images/medium-texture.png');
-
-  h1 {
-    color: gray;
-    overflow: hidden;
-    position: relative;
-    top: 10px;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: $card-h / 2;
-  }
 }
 
 .card-detail {

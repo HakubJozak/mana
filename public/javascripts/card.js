@@ -1,5 +1,4 @@
 // -*- mode: javascript; tab-width: 2; -*-
-
 Card = function(params) {
   var tmpl = $('#card-template').html()
         .replace('$SRC', params.image_url)
@@ -11,6 +10,11 @@ Card = function(params) {
   this.url = params.url;
   this.name = params.name;
   this.covered = params.covered;
+
+  this.counters = params.counters || 0;
+  this.power = params.power || 0;
+  this.toughness = params.toughness || 0;
+
   this.picture = params.picture || params.image_url;
 
   this.element = image;
@@ -42,6 +46,22 @@ Card.find = function(id) {
   return (element == null) ? null : element.object();
 }
 
+Card.prototype.adjust = function(what) {
+  var p = what['property'];
+  var view, text;
+  what['minus'] ? this[p]-- : this[p]++;
+
+    if (p == 'counters') {
+        view = p;
+        text = this[p];
+    } else { 
+        view = 'power';
+        text = '' + this.power + '/' + this.toughness;
+    }
+
+  this.element.find('.' + view).toggle(!what['clear']).text(text);
+}
+
 Card.find_or_create_opponent_card = function(params,owner_id) {
   var card = Card.find(params.id);
 
@@ -58,13 +78,6 @@ Card.find_or_create_opponent_card = function(params,owner_id) {
 
 Card.prototype.e = function() {
   return this.element.find('img');
-}
-
-Card.prototype.add_token = function() {
-  var e = this.element.find('.counters');
-  var count = parseInt(e.text());
-  e.text(count + 1);
-  e.show();
 }
 
 Card.prototype.container = function() {

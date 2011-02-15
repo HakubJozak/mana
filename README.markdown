@@ -33,12 +33,16 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 
 ## TODO
 
+### Bugs
+ - removing user causes error
+ - append card on dropbox does not work
+
 ### Essential - Alfa
- - add any card (by URL) 
-   - tokens http://magiccards.info/extras.html
-   - make script to get all the URL's
+ - make opponents libraries and graveyard browsable
  - counters
  - each user has its own color
+ - life counter
+ - number of cards in hand
 
 ### Early Beta +
  - lobby synchronization
@@ -46,12 +50,10 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
  - security (escape custom card links and check they are images)
  - prevent XSS
 
-
 ### More Features Convenience - Versions 1+
- 
+
  - counters on the cards 
  - link the cards to MagicCardsInfo (to see errata and stuff in a new window)
- - life counter
  - visible shuffling effect
  - inform all users about (all) other users' actions
  - history recording & match replays
@@ -69,6 +71,11 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 ## Contributions
 
 All contributions are welcome! The graphics needs rework (right now it is in-fact "borrowed" from http://tappedout.net), tests have to be written and a lot of features that are easy to implement but not so critical plea for attention. Just fork the repository and send me the pull request or write me a message on Github. If you don't know where to start, see the TODO list.
+
+
+## History
+23/10/2010 - First commit
+14/02/2011 - First game succesfully played and finished (Kolohnat X Kvetak)
 
 ## Licence
 

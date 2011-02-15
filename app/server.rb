@@ -46,7 +46,7 @@ module Mana
 
     get '/games/:name' do
       @game_id = params[:name]
-      haml :index
+      haml :game
     end
 
     get '/flow' do

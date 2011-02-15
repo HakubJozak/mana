@@ -18,6 +18,7 @@ $(document).ready(function() {
       event.stopPropagation();
   });
 
+
   //
   // KEYS
   //
@@ -31,20 +32,29 @@ $(document).ready(function() {
     switch (String.fromCharCode(e.keyCode)) {
 
     // TODO: DRY
-    case 't':
-      cards = $('.card:hover');
+    case 'u':
+      var cards = $('.card:hover');
       if (cards.length > 0) cards.object().turnOver();
       break;
 
+    case 'C':
     case 'c':
-      cards = $('.card:hover');
-      if (cards.length > 0) cards.object().add_token();
+      adjust_card('counters',e);
+      break;
+
+    case 'T':
+    case 't':
+      adjust_card('toughness',e);
+      break;
+
+    case 'P':
+    case 'p':
+      adjust_card('power',e);
       break;
 
     case 'a':
       $('#create-card-dialog').dialog('open');
       break;
-
 
     case 'm':
       $('#chat-bar').toggle()
@@ -78,3 +88,18 @@ function bind_control(name, action) {
     event.stopPropagation();
   });
 }
+
+function adjust_card(property,e) {
+  var cards = $('.card:hover');
+
+      if (cards.length > 0) {
+        console.info(e);
+        cards.object().adjust({ 
+            property: property,
+            minus: e.shiftKey, 
+            clear: e.ctrlKey
+          });
+      }
+
+}
+
