@@ -13,14 +13,16 @@
   background-color: rgba(1, 1, 1, 0.2);
 }
 
-@mixin focused {
-  background: rgba(48, 0, 0, 0.5);
-//  border-color: $normal-text-color;
-}
-
 @mixin gradient {
   @include linear-gradient(color-stops(rgba(20, 0, 0, 0.2), rgba(60, 0, 0, 0.4) ));
 }
+
+@mixin focused {
+  @include linear-gradient(color-stops(  rgba(255, 253, 102, 0.1), rgba(255, 253, 102, 0.07) ));
+//  border-color: $normal-text-color;
+}
+
+
 
 @mixin shadow {
   @include box-shadow( rgba(0,0,0,0.5), 20px, 20px, 20px);
