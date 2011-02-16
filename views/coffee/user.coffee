@@ -1,10 +1,10 @@
 class User
 
   @find: (id) ->
-    $("#user-#{id}").object()
+    $("#user-#{id}").ob()
 
   @local: ->
-    $("#user-local").object()
+    $("#user-local").ob()
 
   constructor: (attrs) ->
     @name = attrs.name

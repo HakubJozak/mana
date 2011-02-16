@@ -43,7 +43,7 @@ Card = function(params) {
 
 Card.find = function(id) {
   var element = $('#card-' + id);
-  return (element == null) ? null : element.object();
+  return (element == null) ? null : element.ob();
 }
 
 Card.prototype.adjust = function(what) {
@@ -81,7 +81,7 @@ Card.prototype.e = function() {
 }
 
 Card.prototype.container = function() {
-  return this.element.parent().object();
+  return this.element.parent().ob();
 }
 
 Card.prototype.isTapped = function() {

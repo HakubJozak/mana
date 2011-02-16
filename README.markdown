@@ -36,6 +36,7 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 ### Bugs
  - removing user causes error
  - append card on dropbox does not work
+ - when browsing library and uncover some card, it is uncovered remotely too
 
 ### Essential - Alfa
  - make opponents libraries and graveyard browsable

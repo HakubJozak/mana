@@ -16,22 +16,29 @@ module Mana
     end
 
     def connect(user)
-      @users.each do |remote_user|
-        user.message_to_client(:me, server_command(:add_user,remote_user))
-      end
-
-      @users << user
-
       user.sid = @channel.subscribe do |pack|
         # TODO: subclass EM::Channel to do this
         user.message_to_client(pack[:scope], pack[:command])
       end
 
-      args = { :user => user.to_hash(:include_library => true) }
-      user.message_to_client(:me, server_command(:start_game, user,
-                                                 :args => args))
+      # add all others to new user
+      @users.each do |remote_user|
+        args = { :user => remote_user.to_hash(:include_library => true) }
+        user.message_to_client(:all, server_command(:add_user,remote_user, :args => args ))
+      end
 
-      broadcast_to :opponents, server_command(:add_user, user)
+      # add new user to new user
+      # TODO: replace :local with requestID
+      args = { :user => user.to_hash(:include_library => true), :local => true  };
+      user.message_to_client(:me, server_command(:add_user, user, :args => args))
+
+      # add new user to all others
+      @users.each do |remote_user|
+        args = { :user => user.to_hash(:include_library => true) };
+        remote_user.message_to_client(:opponents, server_command(:add_user, user, :args => args))
+      end
+      
+      @users << user
     end
 
     def send_to_opponents(command)
@@ -41,7 +48,7 @@ module Mana
     def disconnect(user)
       @users.delete(user)
       @channel.unsubscribe(user.sid)
-      broadcast_to :opponents, server_command(:remove_user, user)
+      broadcast_to :opponents, server_command(:remove_user, user, :args => { :user => user.to_hash })
     end
 
     private

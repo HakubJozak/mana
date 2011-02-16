@@ -7,8 +7,8 @@ Dropbox = function(element) {
       greedy: true,
       hoverClass: 'card-over',
       drop: function(event,ui) {
-        card = ui.draggable.object();
-        this.object().dropped(card,event,ui);
+        card = ui.draggable.ob();
+        $(this).ob().dropped(card,event,ui);
       }
   });
 }
@@ -33,7 +33,7 @@ Dropbox.prototype.coverAll = function(mode) {
 
   run_exclusively(function() {
     that.children('.card').each(function() {
-      this.object().turnOverLocally(mode);
+      $(this).ob().turnOverLocally(mode);
     });
 
     MessageCommand.createAndRun('Browsing the library');

@@ -42,14 +42,8 @@ EM.run do
       when :connect
         game_id = command.delete('game_id')
         ws.game = Mana::Game.find_or_create(game_id)
-        puts command
         ws.user = Mana::User.new(ws, command)
         ws.game.connect(ws.user)
-
-      # when :server
-      #   # TODO: too many 'layers'
-      #   operation = command['operation'].downcase.to_sym
-      #   ws.user.add_card_to_library(command['args']['image_url']) if operation == 'create_card'
       else
         # adds author to the command
         ws.game.send_to_opponents(command.merge(:sid => ws.user.sid))

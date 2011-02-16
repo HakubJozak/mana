@@ -33,20 +33,18 @@ MoveCommand.prototype.run = function() {
       c.fadeOut(function() { $(this).remove() });
       return;
     } else if (this.new_parent != 'battlefield') {
-      // TODO: should be processed on server
-      parent = $('#' + owner_id + ' .' + this.new_parent + '-remote') ;
       position = parent.offset();
     }
   }
 
   if (c.parent().attr('id') != parent.attr('id')) {
-//      var p = (parent.object && (parent.object().unpacked) != null) ? parent.object().unpacked() : false;
+//      var p = (parent.object && (parent.ob().unpacked) != null) ? parent.ob().unpacked() : false;
       switch_parent(c, parent, false);
   };
   
 
   if (animate) {
-    o = parent.offset()
+    o = parent.offset();
     var top = position.top - o.top;
     var left = position.left - o.left;
     c.animate({ "top": top, "left": left }, animate);

@@ -18,8 +18,8 @@ $(document).ready(function() {
     },
 
     drop: function(event,ui) {
-      card = ui.draggable.object();
-      this.object().dropped(card,event,ui);
+      card = ui.draggable.ob();
+      $(this).ob().dropped(card,event,ui);
     }
   });
 });

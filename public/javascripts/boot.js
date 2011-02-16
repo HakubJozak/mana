@@ -3,7 +3,7 @@ CARD_H = 170;
 SPACING = 6;
 
 $.fn.reverse = [].reverse;
-controlKeyDown = false;
+
 
 function run_exclusively(code) {
   if (!mutex) {
@@ -21,17 +21,20 @@ function preventDefaults() {
 
 
 $(document).ready(function() {
-
   preventDefaults();
 
-  $('#graveyard, #exile, #library').each(function(i) {
-    new Dropbox($(this));
-  });
+  // $(window).bind('beforeunload',function(e) {
+  //   if (!confirm('Are you sure to leave the game?')) {
+  //     e.preventDefaults();
+  //     return false;
+  //   }
+  // });
 
-  library = new Library();
-
-  Object.prototype.object = function() {
+  jQuery.fn.ob = function() {
     return Utils.getObjectFromDom(this);
   }
 
 });
+
+
+

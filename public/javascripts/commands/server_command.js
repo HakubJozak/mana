@@ -7,36 +7,38 @@ ServerCommand = function(operation, args) {
 ServerCommand.prototype.run = function() {
   switch (this.operation) {
 
-  case 'start_game':
-    var user = this.args.user;
-    library.update(user.cards);
-
-    $('#user-local h3').text(user.name);
-    Utils.setObjectToDom('#user-local', new User(user));
-    game.message('You joined the game as ' + user.name + '. Press "h" for help on controls.');
-    break;
-
   case 'add_user':
-    var user = new User(this.user);
+    var user = new User(this.args.user);
     var id = user.to_dom_id();
-    var template = $('#user-remote-template').html().replace('$USERNAME', user.name);
+    var template = $('#user-remote-template').html()
+      .replace('$USERNAME', user.name)
+      .replace(/\$USER_ID/g, id);
 
+    $("#users").append(template);
+    var element = $('#' + id);
+    element.find('.box').each(function(i) {  new Dropbox($(this));  });
+    Utils.setObjectToDom( element, user);
+
+    $(this.args.user.cards).each(function(i,params) {
+      card = new Card(params);
+      card.turnOverLocally(true);
+      card.element.css('position', 'absolute')
+      $('#' + id + ' .library').ob().dropLocally(card);
+    });
+
+    // $('html > head').append("<link href='/stylesheets/users/" + user.id + ".css' rel='stylesheet' />");
+
+    // if local
+    $('#lobby').dialog('close');
     game.message('User ' + user.name + ' connected.');
-    user_html = $('<div id="' + id + '" class="' + id +'">' + template + '</div>');
-    $('html > head').append("<link href='/stylesheets/users/" + user.id + ".css' rel='stylesheet' />");
-    $("#users").append(user_html);
-    // TODO: Utils.setObjectToDom( user_html, user);
     break;
 
   case 'remove_user':
-    var user = User.find(this.user.id)
-    game.message('User ' + this.user.name + ' disconnected.');
-    $('.' + user.to_dom_id).fadeOut(function() {
-      $(this).remove();
-    });
+      var user = User.find(this.args.user.id);
+
+      if (true) {
+        game.message('User ' + user.name + ' disconnected.');
+        $('.' + user.to_dom_id()).fadeOut(function() { $(this).remove(); });
+      }
   }
-}
-
-
-function add_user() {
 }

@@ -1,20 +1,14 @@
 module BoxHelper
-      def box(id, has_id = true)
-        name = id.split('-').first.capitalize
+      def box(type)
+        name = type.split('-').first.capitalize
 
         haml_tag ".box-container" do
           haml_tag :h4 do
             haml_concat name
-            haml_tag "a.browse-button.button", 'Browse' if has_id
+            haml_tag "a.browse-button.button", 'Browse'
           end
 
-          params = if has_id
-                     { :id => id, :class => "box" }
-                   else
-                     { :class => "box #{id}" }
-                   end
-          
-          haml_tag :div, params do
+          haml_tag :div,  { :class => "box #{type}", :id => "#{type}-$USER_ID" } do
             if block_given?
               yield
             else

@@ -12,7 +12,7 @@ Game.prototype.sendCommand = function(command) {
 Game.prototype.create_card = function(image_url) {
   var id = User.local().create_unique_id();
   var card = new Card({  id: id,  image_url: image_url });
-  $('#battlefield').object().dropped(card);
+  $('#battlefield').ob().dropped(card);
 }
 
 
@@ -64,15 +64,18 @@ Game.prototype.connect = function(name,cards, color) {
   }
 
   this.socket.onmessage = function(msg) {
-    try {  
+    var receive_message = function() {
       var command = JSON.parse(msg.data);
       this.game.notifyAll(command);
       command.run = eval(command.action + 'Command').prototype.run;
       command.remote = true;
       command.run();
-    } catch (e) {
-      console.error('Mana Error:' + e);
-      this.game.message('Error:' + e);
+    }
+
+    if (console.env == 'development') {
+      receive_message();
+    } else {
+      try { receive_message();  } catch (e) { console.error('Mana error:' + e); }      
     }
   }
 };
