@@ -10,7 +10,11 @@ MoveCommand = function(card, new_parent) {
     name: card.name,
     covered: card.covered,
     image_url : card.e().attr('src'),
-    picture : card.picture
+    picture : card.picture,
+    power: card.power,
+    toughness: card.toughness,
+    counters: card.counters,
+    covered: card.covered,
   };
 }
 
