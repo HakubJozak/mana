@@ -1,6 +1,7 @@
 # Mana
 
-Mana is a proof-of-concept in-browser implementation of Magic the Gathering(tm) card game using jQuery, EventMachine, Sinatra, Compass and Websockets. Pre-pre-alpha stage.
+Mana is a proof-of-concept in-browser implementation of Magic the Gathering(tm) card game using jQuery, EventMachine, Sinatra, Compass and Websockets. Pre-alpha stage. The main aim is to be able to play Magic the Gathering via internet without any client-side setup (downloading cards, installing client ...). Any rules enforcing or checks are far beyond the scope however.
+
 
 ![Screenshot](https://github.com/HakubJozak/mana/raw/master/screenshots/1.png)
 

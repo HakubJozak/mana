@@ -15,6 +15,10 @@
     %script{:src => "/javascripts/vendor/mousehold.js", :type => "text/javascript"}
     %link{:href => "/stylesheets/objects.css", :rel => "stylesheet"}/
 
+    -# TODO: add -min when on production
+    %script{:src => "/javascripts/vendor/underscore.js", :type => "text/javascript"}
+    %script{:src => "/javascripts/vendor/backbone.js", :type => "text/javascript"}
+
     %script{:src => "/javascripts/utils.js", :type => "text/javascript"}
     %script{:src => "/javascripts/game.js", :type => "text/javascript"}
     %script{:src => "/javascripts/commands/tap_command.js", :type => "text/javascript"}
@@ -73,13 +77,23 @@
         .counters{ :style => 'display:none' }
         .power{ :style => 'display:none' }
 
-    #user-remote-template
+    #user-template
       %div{ :id => '$USER_ID', :class => '$USER_ID' }
         %h3 
           $USERNAME
           -# %input.life-counter{ :value => 20 }    
-        - box 'graveyard'
-        - box 'exile'
-        - box 'library'
+
+    #box-template
+      .box-container
+        %h4
+          $NAME
+          %a.browse-button.button Browse
+        %div{ :class => "box $TYPE", :id => "$TYPE-$USER_ID" }
+          .button-bar
+            %h4 $NAME
+            %a.shuffle-button.button Shuffle
+            %a.uncover-button.button Uncover All
+            %a.cover-button.button Cover All                
+            %a.close-button.button Close
 
   = haml :_google_analytics if ENV['RACK_ENV'] == 'production'

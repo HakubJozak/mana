@@ -11,7 +11,6 @@ module Mana
 
     helpers do
       include Haml::Helpers
-      include BoxHelper
     end
     
     # configure(:development) do

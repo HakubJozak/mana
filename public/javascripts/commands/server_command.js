@@ -4,17 +4,28 @@ ServerCommand = function(operation, args) {
   this.args = args;
 }
 
+function create_box(user_id, type, name) {
+  return $('#box-template').html()
+      .replace(/\$TYPE/g, type)
+      .replace(/\$NAME/g, name)
+      .replace(/\$USER_ID/g, user_id);
+}
+
 ServerCommand.prototype.run = function() {
   switch (this.operation) {
 
   case 'add_user':
     var user = new User(this.args.user);
     var id = user.to_dom_id();
-    var template = $('#user-remote-template').html()
+    var template = $('#user-template').html()
       .replace('$USERNAME', user.name)
       .replace(/\$USER_ID/g, id);
 
-    $("#users").append(template);
+    $("#users").append(template).find('#' + id)
+      .append(create_box(id,'graveyard', 'Graveyard'))
+      .append(create_box(id,'exile', 'Exile'))
+      .append(create_box(id,'library', 'Library'));
+
     var element = $('#' + id);
     element.find('.box').each(function(i) {  new Dropbox($(this));  });
     Utils.setObjectToDom( element, user);
@@ -23,6 +34,7 @@ ServerCommand.prototype.run = function() {
       card = new Card(params);
       card.turnOverLocally(true);
       card.element.css('position', 'absolute')
+      console.info('' + id + ' .library');
       $('#' + id + ' .library').ob().dropLocally(card);
     });
 
