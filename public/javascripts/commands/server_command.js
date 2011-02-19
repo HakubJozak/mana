@@ -34,7 +34,6 @@ ServerCommand.prototype.run = function() {
       card = new Card(params);
       card.turnOverLocally(true);
       card.element.css('position', 'absolute')
-      console.info('' + id + ' .library');
       $('#' + id + ' .library').ob().dropLocally(card);
     });
 

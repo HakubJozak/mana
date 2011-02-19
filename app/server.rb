@@ -22,8 +22,8 @@ module Mana
     #   Compass.add_project_configuration(File.join(Mana::StaticServer.root, 'config', 'compass.config'))
     # end
 
-    get '/javascripts/user.js' do
-      coffee :'coffee/user', :no_wrap => true
+    get '/javascripts/:name.js' do
+      coffee :"coffee/#{params[:name]}", :no_wrap => true
     end
 
     #

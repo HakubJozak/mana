@@ -1,12 +1,5 @@
 Utils = function() {}
 
-function _(method) {
-    return function(event) {
-      event.stopPropagation();
-      return eval("$(this).data('game-object')." + method + '(event)');
-    }
-}
-
 function switch_parent(box, parent, prepend) {
   var old = box.offset();
   box.detach();
@@ -25,5 +18,3 @@ Utils.setObjectToDom = function(element, data) {
 Utils.getObjectFromDom = function(element) {
     return $(element).data('game-object');
 }
-
-
