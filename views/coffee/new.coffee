@@ -25,5 +25,6 @@ class CardView extends Backbone.View
 
 card = new BCard({ covered: false })
 
+card.save();
 
-new CardView({ model: card })
+new CardView({ model: card });
