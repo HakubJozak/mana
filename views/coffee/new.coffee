@@ -1,4 +1,4 @@
-# set Mustache style templates for Underscore
+# set Moustache style templates for Underscore
 _.templateSettings = {
   interpolate : /\{\{(.+?)\}\}/g
 }

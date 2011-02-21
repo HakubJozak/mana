@@ -1,0 +1,23 @@
+#card-template
+  %img{ :src =>  "{{image_url}}" }
+    .counters{ :style => 'display:none' }
+    .power{ :style => 'display:none' }
+
+#user-template
+  %div{ :id => '$USER_ID', :class => '$USER_ID' }
+    %h3 
+      $USERNAME
+      -# %input.life-counter{ :value => 20 }    
+
+#box-template
+  .box-container
+    %h4
+      $NAME
+      %a.browse-button.button Browse
+    %div{ :class => "box $TYPE", :id => "$TYPE-$USER_ID" }
+      .button-bar
+        %h4 $NAME
+        %a.shuffle-button.button Shuffle
+        %a.uncover-button.button Uncover All
+        %a.cover-button.button Cover All                
+        %a.close-button.button Close
