@@ -10,13 +10,17 @@ class CardAttributes
 
 class Card extends Backbone.Model
 
-  @defaults =
+  defaults:
     covered: true
     tapped: false
     attrs: new CardAttributes
 
-  initialize: () ->
+  tapped: ->
+    @get('tapped')
 
+  toggle_tapped: ->
+    @set({ tapped: !@get('tapped') })
+    this
 
 class CardView extends Backbone.View
 
@@ -24,13 +28,26 @@ class CardView extends Backbone.View
   @className: 'card'
 
   constructor: ->
-    @template = _.template($('#card-template').html())
     super
+    @template = _.template($('#card-template').html())
+    @model.bind 'change', @render
 
   initialize: ->
     _.bindAll(this, "render")
 
   render: ->
-     $(@el).html(@template(@model.toJSON()))
+     attrs = @model.toJSON()
+     attrs.css_class = 'card tapped'
+     $(@el).html(@template(attrs))
      $(@el).attr('id', "card-#{@model.id}")
+     $(@el).addClass('tapped') if @model.tapped()
      this
+
+
+
+class CardCollection extends Backbone.Collection
+  model : Card
+
+  constructor: ->
+    super
+#    @refresh($FOURSQUARE_JSON)
