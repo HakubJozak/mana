@@ -8,41 +8,57 @@ class Card extends Backbone.Model
   defaults:
     # TODO: put loading image here
     image: 'http://example.com/unknown.jpg'
-    covered: true
+    covered: false
     tapped: false
     counters: 0
     power: 0
     toughness: 0
 
-  tapped: ->
-    @get('tapped')
-
-  toggle_tapped: ->
-    @set({ tapped: !@get('tapped') })
+  toggle_covered: (state = null) ->
+    state ||= !@get('covered')
+    @set({ tapped: state })
     this
 
+  toggle_tapped: (state = null) ->
+    state ||= !@get('tapped')
+    @set({ tapped: state })
+    this
+
+  tapped: -> @get('tapped')
+
+  covered: -> @get('covered')
+
   image: -> @get('image')
+
   name: -> @get('name')
 
 class CardView extends Backbone.View
 
+  @BACK_SIDE: "/images/back.jpg"
   @tagName: 'div'
   @className: 'card'
+
+  events:
+    click : "toggle_tapped"
 
   constructor: ->
     super
     @template = _.template($('#card-template').html())
     @model.bind 'change', @render
 
+  toggle_tapped: ->
+    @model.toggle_tapped()
+
   initialize: ->
     _.bindAll(this, "render")
 
   render: ->
      attrs = @model.toJSON()
-     attrs.css_class = 'card tapped'
+     attrs.image = unless @model.covered() then @model.image() else '/images/back.jpg'
      $(@el).html(@template(attrs))
      $(@el).attr('id', "card-#{@model.id}")
      $(@el).addClass('tapped') if @model.tapped()
+     $(@el).addClass('card')
      this
 
 

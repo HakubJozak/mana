@@ -21,8 +21,13 @@ module 'CardView'
 test 'creates correct element', ->
   equals $(@view.el).find('img').attr('src'), 'http://a.jpg'
   equals $(@view.el).attr('id'), 'card-42'
+  ok $(@view.el).hasClass('card')
 
 test 'tapping a card changes its view', ->
   @card.toggle_tapped()
   ok $(@view.el).hasClass('tapped')
+
+test 'covering should show back side of the card', ->
+  @card.toggle_covered(true)
+  equals $(@view.el).attr('src'), '/images/back.jpg'
 
