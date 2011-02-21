@@ -3,17 +3,14 @@ _.templateSettings = {
   interpolate : /\{\{(.+?)\}\}/g
 }
 
-
-class CardAttributes
-  constructor: (@counter = 0, @power = 0, @toughness = 0) ->
-
-
 class Card extends Backbone.Model
 
   defaults:
     covered: true
     tapped: false
-    attrs: new CardAttributes
+    counters: 0
+    power: 0
+    toughness: 0
 
   tapped: ->
     @get('tapped')
