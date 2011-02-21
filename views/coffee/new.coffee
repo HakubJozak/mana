@@ -1,30 +1,36 @@
+# set Mustache style templates for Underscore
+_.templateSettings = {
+  interpolate : /\{\{(.+?)\}\}/g
+}
+
+
 class CardAttributes
   constructor: (@counter = 0, @power = 0, @toughness = 0) ->
 
 
-class BCard extends Backbone.Model
+class Card extends Backbone.Model
 
   @defaults =
     covered: true
     tapped: false
     attrs: new CardAttributes
 
-  initialize: ->
+  initialize: () ->
+
 
 class CardView extends Backbone.View
 
   @tagName: 'div'
   @className: 'card'
 
+  constructor: ->
+    @template = _.template($('#card-template').html())
+    super
+
   initialize: ->
     _.bindAll(this, "render")
-    @id = "card-#{@options.model.id}"
 
   render: ->
-
-
-card = new BCard({ covered: false })
-
-card.save();
-
-new CardView({ model: card });
+     $(@el).html(@template(@model.toJSON()))
+     $(@el).attr('id', "card-#{@model.id}")
+     this

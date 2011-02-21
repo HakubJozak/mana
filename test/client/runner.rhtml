@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h2>Test Runner</h2>
+    <ul>
+    <% @suites.each do |suite| %>
+     <li>
+       <%= "<a href='/suites/#{suite}.html'>#{suite}</a>" %>
+     </li>     
+    <% end %>
+   </ul>
+  </body>
+</html>
