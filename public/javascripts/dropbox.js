@@ -13,7 +13,6 @@ Dropbox = function(element) {
   });
 }
 
-
 Dropbox.prototype.tappingAllowed = function() {
   return false;
 }
@@ -35,8 +34,6 @@ Dropbox.prototype.coverAll = function(mode) {
     that.children('.card').each(function() {
       $(this).ob().turnOverLocally(mode);
     });
-
-    MessageCommand.createAndRun('Browsing the library');
   });
 }
 

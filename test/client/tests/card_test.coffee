@@ -1,10 +1,10 @@
 module 'Card'
   setup: ->
-    @card = new Card({ name: 'Forest', image_url: 'http://a.jpg'})
+    @card = new Card({ name: 'Forest', image: 'http://a.jpg'})
 
 test 'Attributes are assigned in constructor', ->
-  equals @card.get('name'), 'Forest'
-  equals @card.get('image_url'), 'http://a.jpg'
+  equals @card.name(), 'Forest'
+  equals @card.image(), 'http://a.jpg'
 
 test 'is not tapped by default', ->
   equals @card.tapped(), false
@@ -15,7 +15,7 @@ test 'can be tapped', ->
 
 module 'CardView'
   setup: ->
-    @card = new Card({ name: 'Forest', image_url: 'http://a.jpg', id: 42 })
+    @card = new Card({ name: 'Forest', image: 'http://a.jpg', id: 42 })
     @view = new CardView({ model: @card }).render()
 
 test 'creates correct element', ->

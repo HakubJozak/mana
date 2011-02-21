@@ -19,7 +19,8 @@
     %script{:src => "/javascripts/vendor/underscore.js", :type => "text/javascript"}
     %script{:src => "/javascripts/vendor/backbone.js", :type => "text/javascript"}
     %script{:src => "/javascripts/sync.js", :type => "text/javascript"}
-    %script{:src => "/javascripts/new.js", :type => "text/javascript"}
+    %script{:src => "/javascripts/card.js", :type => "text/javascript"}
+    %script{:src => "/javascripts/mana.js", :type => "text/javascript"}
 
     %script{:src => "/javascripts/utils.js", :type => "text/javascript"}
     %script{:src => "/javascripts/game.js", :type => "text/javascript"}
@@ -28,7 +29,7 @@
     %script{:src => "/javascripts/commands/move_command.js", :type => "text/javascript"}
     %script{:src => "/javascripts/commands/message_command.js", :type => "text/javascript"}
     %script{:src => "/javascripts/commands/server_command.js", :type => "text/javascript"}
-    %script{:src => "/javascripts/card.js", :type => "text/javascript"}
+    -# %script{:src => "/javascripts/card.js", :type => "text/javascript"}
     %script{:src => "/javascripts/dropbox.js", :type => "text/javascript"}
     %script{:src => "/javascripts/battlefield.js", :type => "text/javascript"}
     %script{:src => "/javascripts/hand.js", :type => "text/javascript"}
@@ -73,5 +74,6 @@
   = haml(:_help, :layout => false)
 
   #coffin{:style => "display: none"}
-  = haml :_templates
+    = haml :_templates
+
   = haml :_google_analytics if ENV['RACK_ENV'] == 'production'
