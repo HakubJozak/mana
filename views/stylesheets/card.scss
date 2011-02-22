@@ -1,8 +1,8 @@
 // -*- mode: css; tab-width: 2; -*-
 
-@mixin card-like {
+.card {
   position: absolute;
-
+  @include card-size;
   img { @include card-size; }
 
   &:hover {   
@@ -30,10 +30,6 @@
     padding-top: 3px;
     margin: 5px;
   }
-}
-
-.card  { 
-  @include card-like;
 }
 
 .card-detail {

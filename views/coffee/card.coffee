@@ -16,7 +16,7 @@ class Card extends Backbone.Model
 
   toggle_covered: (state = null) ->
     state ||= !@get('covered')
-    @set({ tapped: state })
+    @set({ covered: state })
     this
 
   toggle_tapped: (state = null) ->
@@ -24,12 +24,12 @@ class Card extends Backbone.Model
     @set({ tapped: state })
     this
 
-  tapped: -> @get('tapped')
+  tapped: ->
+    @get('tapped')
 
   covered: -> @get('covered')
 
   image: -> @get('image')
-
   name: -> @get('name')
 
 class CardView extends Backbone.View
@@ -46,8 +46,10 @@ class CardView extends Backbone.View
     @template = _.template($('#card-template').html())
     @model.bind 'change', @render
 
-  toggle_tapped: ->
+  toggle_tapped: (e) ->
     @model.toggle_tapped()
+    e.preventDefault()
+    e.stopPropagation()
 
   initialize: ->
     _.bindAll(this, "render")
@@ -57,10 +59,26 @@ class CardView extends Backbone.View
      attrs.image = unless @model.covered() then @model.image() else '/images/back.jpg'
      $(@el).html(@template(attrs))
      $(@el).attr('id', "card-#{@model.id}")
-     $(@el).addClass('tapped') if @model.tapped()
+     if @model.tapped $(@el).addClass('tapped') else $(@el).removeClass('tapped')
      $(@el).addClass('card')
+     @init_dragged()
      this
 
+  init_dragged: ->
+    console.info @el
+    $(@el).draggable {
+      scope: 'cards',
+      snap: '.card',
+      #start: toggleDragged(),
+      #stop: toggleDragged(),
+      scroll: true,
+      revert: 'invalid',
+      containment: '#desk',
+      snapMode: 'inner',
+      # TODO: simulate this - removed because of z-index mess
+      # stack: '.card',
+      zIndex: 9999
+    }
 
 
 class CardCollection extends Backbone.Collection
