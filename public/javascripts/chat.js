@@ -25,7 +25,7 @@ function close_chat() {
 
 function submit_chat() {
   var input = $('#chat-bar input');
-  MessageCommand.createAndRun(User.local().name + ': ' + input.val());
+  MessageCommand.createAndRun('--> ' + input.val());
   input.val('');
   return false;
 }
