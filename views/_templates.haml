@@ -1,7 +1,8 @@
 #card-template
-  %img{ :src => "{{image}}" }
-    .counters{ :style => 'display:none' }
-    .power{ :style => 'display:none' }
+  %div{ :id => '{{id}}', :class => 'card' }
+    %img{ :src => "{{image}}" }
+      .counters{ :style => 'display:none' }
+      .power{ :style => 'display:none' }
 
 #user-template
   %div{ :id => '$USER_ID', :class => '$USER_ID' }

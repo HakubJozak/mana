@@ -1,6 +1,6 @@
 module 'Card'
   setup: ->
-    @card = new Card({ name: 'Forest', image: 'http://a.jpg'})
+    @card = new Card({ id: 42, name: 'Forest', image: 'http://a.jpg'})
 
 test 'Attributes are assigned in constructor', ->
   equals @card.name(), 'Forest'
@@ -9,6 +9,13 @@ test 'Attributes are assigned in constructor', ->
 test 'is not tapped by default', ->
   equals @card.tapped(), false
 
+test 'throws exception on null ID', ->
+  raises ->
+    new Card()
+
+test 'has non-null ID', ->
+  ok _.isNumber(@card.id)
+
 test 'can be tapped', ->
   @card.toggle_tapped().tapped()
 
@@ -16,7 +23,7 @@ test 'can be tapped', ->
 module 'CardView'
   setup: ->
     @card = new Card({ name: 'Forest', image: 'http://a.jpg', id: 42 })
-    @view = new CardView({ model: @card }).render()
+    @view = new CardView({ model: @card })
 
 test 'creates correct element', ->
   equals $(@view.el).find('img').attr('src'), 'http://a.jpg'

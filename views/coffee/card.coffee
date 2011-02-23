@@ -14,6 +14,9 @@ class Card extends Backbone.Model
     power: 0
     toughness: 0
 
+  initialize: ->
+    throw 'Missing card ID' unless @id
+
   toggle_covered: (state = null) ->
     state ||= !@get('covered')
     @set({ covered: state })
@@ -24,13 +27,14 @@ class Card extends Backbone.Model
     @set({ tapped: state })
     this
 
-  tapped: ->
-    @get('tapped')
+  tapped: -> @get('tapped')
 
   covered: -> @get('covered')
 
   image: -> @get('image')
+
   name: -> @get('name')
+
 
 class CardView extends Backbone.View
 
@@ -38,47 +42,75 @@ class CardView extends Backbone.View
   @tagName: 'div'
   @className: 'card'
 
-  events:
-    click : "toggle_tapped"
-
   constructor: ->
     super
-    @template = _.template($('#card-template').html())
     @model.bind 'change', @render
+    @template = _.template($('#card-template').html())
 
-  toggle_tapped: (e) ->
-    @model.toggle_tapped()
-    e.preventDefault()
-    e.stopPropagation()
+    @el = $(@template(@model.toJSON()))
+    @el.data('view',this)
 
-  initialize: ->
-    _.bindAll(this, "render")
-
-  render: ->
-     attrs = @model.toJSON()
-     attrs.image = unless @model.covered() then @model.image() else '/images/back.jpg'
-     $(@el).html(@template(attrs))
-     $(@el).attr('id', "card-#{@model.id}")
-     if @model.tapped $(@el).addClass('tapped') else $(@el).removeClass('tapped')
-     $(@el).addClass('card')
-     @init_dragged()
-     this
-
-  init_dragged: ->
-    console.info @el
-    $(@el).draggable {
+    @el.draggable
       scope: 'cards',
       snap: '.card',
-      #start: toggleDragged(),
-      #stop: toggleDragged(),
       scroll: true,
       revert: 'invalid',
       containment: '#desk',
       snapMode: 'inner',
-      # TODO: simulate this - removed because of z-index mess
-      # stack: '.card',
       zIndex: 9999
+      stack: '.card',
+
+    @el.bind 'click', @clicked
+    @el.bind 'contextmenu', @clicked
+
+  clicked: (e) ->
+    e.preventDefault()
+    e.stopPropagation()
+
+    if e.button == 2
+      @model.toggle_tapped()
+    else
+      @show_detail()
+
+  initialize: ->
+    _.bindAll(this, "render")
+    _.bindAll(this, 'clicked', 'show_detail')
+
+  render: ->
+    if @model.covered() then '/images/back.jpg' else @model.image()
+    if @model.tapped $(@el).addClass('tapped') else $(@el).removeClass('tapped')
+    this
+
+  show_detail: ->
+    return if @model.covered()
+
+    detail = @el.find('img').clone()
+    $('body').append(detail)
+
+    # TODO: template
+    detail.css('z-index',10000)
+        .attr('src', @model.image())
+        .offset(@el.offset())
+        .removeClass('card')
+        .addClass('card-detail')
+        .animate(CardView.detail_animation('+'), 200)
+
+    detail.click ->
+      $(this).unbind('click')
+      $(this).animate CardView.detail_animation('-'), 200, ->
+        $(this).remove()
+
+  @detail_animation: (resize) ->
+    reposition = if (resize == '+') then '-' else '+'
+
+    return {
+      left: reposition + '=60',
+      top: reposition + '=85',
+      height: resize + '=170',
+      width: resize + '=120'
     }
+
+
 
 
 class CardCollection extends Backbone.Collection
