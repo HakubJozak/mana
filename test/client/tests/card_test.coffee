@@ -31,10 +31,11 @@ test 'creates correct element', ->
   ok $(@view.el).hasClass('card')
 
 test 'tapping a card changes its view', ->
-  @card.toggle_tapped()
+  @card.toggle_tapped(true)
   ok $(@view.el).hasClass('tapped')
 
 test 'covering should show back side of the card', ->
+  @card.toggle_covered(false)
   @card.toggle_covered(true)
-  equals $(@view.el).attr('src'), '/images/back.jpg'
+  equals $(@view.el).find('img').attr('src'), '/images/back.jpg'
 

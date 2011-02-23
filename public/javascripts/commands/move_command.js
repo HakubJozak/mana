@@ -4,18 +4,19 @@ MoveCommand = function(card, new_parent) {
   this.new_parent = new_parent;
 
   // TODO: don't send so much info by default
-  this.card = { 
-    id: card.id,
-    tapped: card.tapped,
-    name: card.name,
-    covered: card.covered,
-    image_url : card.e().attr('src'),
-    picture : card.picture,
-    power: card.power,
-    toughness: card.toughness,
-    counters: card.counters,
-    covered: card.covered,
-  };
+  this.card = card;
+// { 
+//     id: card.id,
+//     tapped: card.tapped,
+//     name: card.name,
+//     covered: card.covered,
+//     image_url : card.element.find('img').attr('src'),
+//     picture : card.picture,
+//     power: card.power,
+//     toughness: card.toughness,
+//     counters: card.counters,
+//     covered: card.covered,
+//   };
 }
 
 
@@ -23,13 +24,11 @@ MoveCommand = function(card, new_parent) {
 MoveCommand.prototype.run = function() {
   // TODO: remove
   var owner_id = 'user-' + this.sid;
-  var card = Card.find_or_create_opponent_card(this.card, owner_id);
+  var card = this.card // Card.find_or_create_opponent_card(this.card, owner_id);
   var position = this.position;
   var animate = this.remote;
   var parent = $('#' + this.new_parent);
   var c = card.element;
-
-  console.info(card);
 
   // TODO: refactor this hard-coded ultra ad-hoc code
   if (this.remote) {
@@ -46,6 +45,7 @@ MoveCommand.prototype.run = function() {
       switch_parent(c, parent, false);
   };
   
+  return;
 
   if (animate) {
     o = parent.offset();

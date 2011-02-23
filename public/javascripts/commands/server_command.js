@@ -31,10 +31,10 @@ ServerCommand.prototype.run = function() {
     Utils.setObjectToDom( element, user);
 
     $(this.args.user.cards).each(function(i,params) {
-      card = new Card(params);
-      card.turnOverLocally(true);
-      card.element.css('position', 'absolute')
-      $('#' + id + ' .library').ob().dropLocally(card);
+      var view = new CardView({ model: new Card(params) });
+      view.turnOverLocally(true);
+      view.el.css('position', 'absolute')
+      $('#' + id + ' .library').ob().dropLocally(view);
     });
 
     // $('html > head').append("<link href='/stylesheets/users/" + user.id + ".css' rel='stylesheet' />");

@@ -34,7 +34,7 @@ $(document).ready(function() {
     // TODO: DRY
     case 'u':
       var cards = $('.card:hover');
-      if (cards.length > 0) cards.ob().turnOver();
+      if (cards.length > 0) cards.ob().model.toggle_covered();
       break;
 
     case 'C':

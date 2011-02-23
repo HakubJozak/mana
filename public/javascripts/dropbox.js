@@ -53,10 +53,11 @@ Dropbox.prototype.dropLocally = function(card) {
 }
 
 Dropbox.prototype.dropped = function(card,event,ui) {
-//  mc = new MoveCommand(card, this.element.attr('id'));
-//  mc.run();
+  mc = new MoveCommand(card, this.element.attr('id'));
+  mc.run();
   this.fixPosition(card);
-//  game.sendCommand(mc);
+  // game.sendCommand(mc);
+
 }
 
 
