@@ -66,10 +66,17 @@ Game.prototype.connect = function(name,cards, color) {
   this.socket.onmessage = function(msg) {
     var receive_message = function() {
       var command = JSON.parse(msg.data);
-      this.game.notifyAll(command);
-      command.run = eval(command.action + 'Command').prototype.run;
-      command.remote = true;
-      command.run();
+
+      if (command.action) {
+        // LEGACY MODE
+        this.game.notifyAll(command);
+        command.run = eval(command.action + 'Command').prototype.run;
+        command.remote = true;
+        command.run();
+      } else {
+        var card = CardCollection.all.get(command.card.id);
+        card.set(command.card);
+      }
     }
 
     if (console.env == 'development') {

@@ -31,7 +31,8 @@ ServerCommand.prototype.run = function() {
     Utils.setObjectToDom( element, user);
 
     $(this.args.user.cards).each(function(i,params) {
-      var view = new CardView({ model: new Card(params) });
+      var card = new Card(params);
+      var view = new CardView({ model: card });
       view.turnOverLocally(true);
       view.el.css('position', 'absolute')
       $('#' + id + ' .library').ob().dropLocally(view);

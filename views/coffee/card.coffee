@@ -8,7 +8,7 @@ class Card extends Backbone.Model
   defaults:
     # TODO: put loading image here
     # image: 'http://example.com/unknown.jpg'
-    position: { x: 0, y: 0 }
+    position: { container: 'battlefield', x: 0, y: 0 }
     covered: true
     tapped: false
     overlay:
@@ -19,21 +19,26 @@ class Card extends Backbone.Model
 
   initialize: ->
     throw 'Missing card ID' unless @id
+    CardCollection.all.add(this)
     # throw 'Missing card owner' unless @owner
     # LEGACY
     @element = @el
     @set({ image: @get('image_url')}) unless @get('image')
 
   toggle_covered: (state = null) ->
-    console.info 'sfdsf'
     @switch 'covered', state
 
   toggle_tapped: (state = null) ->
     @switch 'tapped', state
 
+  change_position: (pos) ->
+    @set({ position: pos })
+    @save()
+
   switch: (attr, state) ->
     state ||= !@get(attr)
     @set({ "#{attr}" : state })
+    @save()
     this
 
   tapped: -> @get('tapped')

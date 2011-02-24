@@ -31,15 +31,13 @@ EM.run do
     end
     
     ws.onopen do
-      ws.send(encode(message('Connected to server')))
     end
     
     ws.onmessage do |msg|
       command = decode(msg)
-      action = command['action'].downcase.to_sym
 
-      case action
-      when :connect
+      # LEGACY logic (Backbone does not save 'action')
+      if command['action']
         game_id = command.delete('game_id')
         ws.game = Mana::Game.find_or_create(game_id)
         ws.user = Mana::User.new(ws, command)

@@ -4,8 +4,8 @@ $(document).ready ->
   #          name: 'Elvish Archdruid'
   #          image: '/images/cards/1.jpg'
 
-  # view = new CardView({ model: card }).render()
   # $('#battlefield').append(view.el)
+  CardCollection.all = new CardCollection
 
 
 
