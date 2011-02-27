@@ -58,7 +58,7 @@ Dropbox.prototype.dropped = function(card,event,ui) {
   this.fixPosition(card);
   // game.sendCommand(mc);
   off = card.el.offset();
-  card.model.change_position({ container: 'battlefield', x: off.left, y:off.top });
+  card.model.change_position({ container: 'battlefield', x: off.left, y: off.top });
 }
 
 

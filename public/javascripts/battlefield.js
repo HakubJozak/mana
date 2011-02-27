@@ -4,14 +4,17 @@ $(document).ready(function() {
   Utils.setObjectToDom( battlefield, {
     tappingAllowed: function() { return true; },
     fixPosition: function() {},
-    dropped: Dropbox.prototype.dropped
+    dropped: Dropbox.prototype.dropped,
+    dropLocally: function(card) {
+      card.element.appendTo(this.element);
+    }
   });
 
   battlefield.droppable({
     scope: 'cards',
     greedy: false,
     hoverClass: 'card-over',
-    
+
     // HACK - otherwise battlefield eats all the events
     accept: function(draggable) {
       return ($('.card-over' ).length < 2) && draggable.hasClass('card');

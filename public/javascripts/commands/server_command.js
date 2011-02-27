@@ -36,6 +36,7 @@ ServerCommand.prototype.run = function() {
       view.turnOverLocally(true);
       view.el.css('position', 'absolute')
       $('#' + id + ' .library').ob().dropLocally(view);
+//      $('#battlefield').ob().dropLocally(view);
     });
 
     // $('html > head').append("<link href='/stylesheets/users/" + user.id + ".css' rel='stylesheet' />");

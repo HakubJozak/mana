@@ -1,4 +1,4 @@
-module 'Card'
+module 'Card tests'
   setup: ->
     @card = new Card({ id: 42, name: 'Forest', image: 'http://a.jpg'})
 
@@ -20,7 +20,7 @@ test 'can be tapped', ->
   @card.toggle_tapped().tapped()
 
 
-module 'CardView'
+module 'CardView dsfds'
   setup: ->
     @card = new Card({ name: 'Forest', image: 'http://a.jpg', id: 42 })
     @view = new CardView({ model: @card })

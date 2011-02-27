@@ -43,12 +43,21 @@ class CardView extends Backbone.View
       @show_detail()
 
   initialize: ->
-    _.bindAll(this, "render")
-    _.bindAll(this, 'clicked', 'show_detail')
+    _.bindAll(this, 'render', 'clicked', 'show_detail')
 
   render: ->
     if @model.covered() then @set_image('/images/back.jpg') else @set_image(@model.image())
     if @model.tapped $(@el).addClass('tapped') else $(@el).removeClass('tapped')
+
+    p = @model.get('position')
+    console.info '!!!'
+    # @el.animate({ top: '=' + p.y + 'px', left: '=' + p.x + 'px'})
+
+    o = @el.parent().offset();
+    top =  p.y - o.top;
+    left = p.x - o.left;
+    @el.animate({ "top": top, "left": left });
+
     this
 
   set_image: (img) ->

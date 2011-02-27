@@ -12,7 +12,7 @@ module Mana
     helpers do
       include Haml::Helpers
     end
-    
+
     # configure(:development) do
     #   register Sinatra::Reloader
     #   also_reload "app/**/*.rb"
@@ -23,7 +23,7 @@ module Mana
     # end
 
     get '/javascripts/:name.js' do
-      coffee :"coffee/#{params[:name]}", :no_wrap => true
+      coffee :"../client/#{params[:name]}", :no_wrap => true
     end
 
     #
@@ -36,8 +36,8 @@ module Mana
       @color = 'red'
       erb :'stylesheets/user.css'
     end
-    
-    
+
+
     get '/stylesheets/:name.css' do
       content_type 'text/css', :charset => 'utf-8'
       scss :"stylesheets/#{params[:name]}", Compass.sass_engine_options
@@ -56,7 +56,7 @@ module Mana
     #   card = MagicCardsInfo.create_card(params[:name])
     #   redirect(params[:format] == 'html' ? card.url : card.image_url)
     # end
-    
+
   end
-  
+
 end
