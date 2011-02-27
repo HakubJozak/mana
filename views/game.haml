@@ -17,16 +17,14 @@
     -# TODO: add -min when on production
     %script{:src => "/javascripts/vendor/underscore.js", :type => "text/javascript"}
     %script{:src => "/javascripts/vendor/backbone.js", :type => "text/javascript"}
-    %script{:src => "/javascripts/sync.js", :type => "text/javascript"}
-    %script{:src => "/javascripts/card.js", :type => "text/javascript"}
-    %script{:src => "/javascripts/card_view.js", :type => "text/javascript"}
-    %script{:src => "/javascripts/mana.js", :type => "text/javascript"}
+
+    - @scripts.each do |script|
+      %script{:src => "/javascripts/client/#{script}.js ", :type => "text/javascript"}
 
     %script{:src => "/javascripts/utils.js", :type => "text/javascript"}
     %script{:src => "/javascripts/game.js", :type => "text/javascript"}
 
     %script{:src => "/javascripts/commands/move_command.js", :type => "text/javascript"}
-    %script{:src => "/javascripts/commands/message_command.js", :type => "text/javascript"}
     %script{:src => "/javascripts/commands/server_command.js", :type => "text/javascript"}
 
     %script{:src => "/javascripts/dropbox.js", :type => "text/javascript"}
@@ -57,7 +55,7 @@
     %input#chat-input{ :name => 'message' }
 
   #battlefield
-    -# #token.token 
+    -# #token.token
     -#   %h1 1/1
 
   #infobox{ :style => 'display:none' }

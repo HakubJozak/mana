@@ -1,5 +1,7 @@
 Backbone.sync = (method, model, success, error) ->
-  console.debug "#{method} #{model.id}"
+  console.debug method
   console.debug model
-  game.socket.send(JSON.stringify({ card: model }))
-
+  name = model.constructor.name.toLowerCase()
+  game.socket.send(JSON.stringify({ "#{name}": model }))
+  model.set({ id: '223'})
+  true

@@ -22,7 +22,7 @@ module Mana
     #   Compass.add_project_configuration(File.join(Mana::StaticServer.root, 'config', 'compass.config'))
     # end
 
-    get '/javascripts/:name.js' do
+    get '/javascripts/client/:name.js' do
       coffee :"../client/#{params[:name]}", :no_wrap => true
     end
 
@@ -45,6 +45,7 @@ module Mana
 
     get '/games/:name' do
       @game_id = params[:name]
+      @scripts = Dir['./client/*.coffee'].map { |f| File.basename(f, '.coffee') }
       haml :game
     end
 
