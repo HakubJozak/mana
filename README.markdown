@@ -8,7 +8,7 @@ Mana is a proof-of-concept in-browser implementation of Magic the Gathering(tm) 
 
 ## Live Server
 
-Try it yourself!
+Try it yourself! (Press 'H' for help)
 
 [http://83.167.232.160/games/any-name](http://83.167.232.160/games/any-name)
 
@@ -20,7 +20,7 @@ __WARNING 2__: anyone who knows little about HTML or JavaScript can cheat, so ch
 
 __WARNING 3__: I am almost sure there are security issues (XSS and such), don't say I did not warn you! (see TODO)
 
-## Requirements 
+## Requirements
 
 ### Client
 
@@ -54,7 +54,7 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 
 ### More Features Convenience - Versions 1+
 
- - counters on the cards 
+ - counters on the cards
  - link the cards to MagicCardsInfo (to see errata and stuff in a new window)
  - visible shuffling effect
  - inform all users about (all) other users' actions
