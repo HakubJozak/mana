@@ -8,6 +8,13 @@ function switch_parent(box, parent, prepend) {
   box.offset(old);
 }
 
+function _(method) {
+  return function(event) {
+    event.stopPropagation();
+    return eval("$(this).data('game-object')." + method + '(event)');
+  }
+}
+
 
 Utils.setObjectToDom = function(element, data) {
   $(element).data('game-object', data);
