@@ -9,6 +9,12 @@ Game.prototype.sendCommand = function(command) {
   this.socket.send(JSON.stringify(command));
 }
 
+// LEGACY - remove
+Game.prototype.message = function(msg) {
+  InfoView.instance.render(msg)
+}
+
+
 Game.prototype.create_card = function(image_url) {
   var id = User.local().create_unique_id();
   var card = new Card({  id: id,  image_url: image_url });
@@ -16,19 +22,6 @@ Game.prototype.create_card = function(image_url) {
   $('#battlefield').ob().dropped(view);
 }
 
-
-Game.prototype.message = function(msg) {
-  var box = $('#infobox');
-  var output = $('#infobox p:first');
-
-  output.append(msg + "<br/>");
-
-  if (!box.is(':visible')) {
-    box.show('fade').delay(5000).hide('fade', function() {
-      $('#infobox p:first').html('');
-    });
-  }
-}
 
 
 Game.prototype.notifyAll = function(msg) {

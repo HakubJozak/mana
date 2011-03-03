@@ -35,6 +35,7 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 ## TODO
 
 ### Bugs
+ - card stacking on drop does not work remotely
  - removing user causes error
  - append card on dropbox does not work
  - when browsing library and uncover some card, it is uncovered remotely too

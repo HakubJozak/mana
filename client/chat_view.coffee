@@ -1,17 +1,11 @@
 class ChatView extends Backbone.View
 
   initialize: ->
-
-    @model.bind 'add', @render
-
     @el = $('#chat-bar')
     @el.draggable()
        .keyup(@close_or_submit)
        .children('input')
        .blur()
-
-  render: (msg) ->
-    game.message @last().text()
 
   close_or_submit: (event) =>
     if event.keyCode == 27
