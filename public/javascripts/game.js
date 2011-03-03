@@ -55,9 +55,9 @@ Game.prototype.connect = function(name,cards, color) {
 
   this.socket.onopen = function() {
       var g = this.game;
-      g.message('Connection opened...');
-      g.sendCommand({ action: 'connect', 
-                      game_id: g.game_id, 
+      g.message("Connected. Press 'H' for help.");
+      g.sendCommand({ action: 'connect',
+                      game_id: g.game_id,
                       cards: cards,
                       color: color,
                       name: name });
@@ -75,7 +75,7 @@ Game.prototype.connect = function(name,cards, color) {
     if (console.env == 'development') {
       receive_message();
     } else {
-      try { receive_message();  } catch (e) { console.error('Mana error:' + e); }      
+      try { receive_message();  } catch (e) { console.error('Mana error:' + e); }
     }
   }
 };
