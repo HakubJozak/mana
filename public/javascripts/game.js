@@ -10,7 +10,7 @@ Game.prototype.sendCommand = function(command) {
 }
 
 Game.prototype.create_card = function(image_url) {
-  var id = User.local().create_unique_id();
+  var id = $('#users div:first').ob().create_unique_id();
   var card = new Card({  id: id,  image_url: image_url });
   $('#battlefield').ob().dropped(card);
 }
