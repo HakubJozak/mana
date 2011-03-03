@@ -20,7 +20,7 @@ __WARNING 2__: anyone who knows little about HTML or JavaScript can cheat, so ch
 
 __WARNING 3__: I am almost sure there are security issues (XSS and such), don't say I did not warn you! (see TODO)
 
-## Requirements 
+## Requirements
 
 ### Client
 
@@ -48,13 +48,14 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 
 ### Early Beta +
  - lobby synchronization
+ - reconnect on connection failure
  - welcome site in Rails3
  - security (escape custom card links and check they are images)
  - prevent XSS
 
 ### More Features Convenience - Versions 1+
 
- - counters on the cards 
+ - counters on the cards
  - link the cards to MagicCardsInfo (to see errata and stuff in a new window)
  - visible shuffling effect
  - inform all users about (all) other users' actions
