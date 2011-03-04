@@ -4,10 +4,10 @@
     font-size: small;
 
     label, input { display:block; }
-    input.text, textarea, select { 
-        margin-bottom:12px; 
-        width:95%; 
-        padding: .4em; 
+    input.text, textarea, select {
+        margin-bottom:12px;
+        width:95%;
+        padding: .4em;
     }
 
     fieldset { padding:0; border:0; }
@@ -19,6 +19,13 @@
         font-style: italic;
         margin-bottom: 0.3em;
         margin-top: 0.3em;
+    }
+
+    #color-picker {
+        display: block;
+        position: absolute;
+        @include transparent(0.4);
+        @include shadow(10px);
     }
 }
 

@@ -11,8 +11,9 @@
       %label{:for => "user"} Player
       %input.text.ui-widget-content.ui-corner-all{:name => "name", :type => "text", :value => 'Name'}/
 
-      -# %label{:for => "color"} Color
-      -# %input{ :name => "color", :type => "color" }
+      %label{:for => "color"} Color
+      %input.text.ui-widget-content.ui-corner-all#color{ :name => 'color', :value => '#FFFFFF' }
+      #color-picker{ :style => 'display:none' }
 
       %label{:for => "user"} Library
 

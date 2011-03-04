@@ -1,7 +1,7 @@
 // -*- mode: css; tab-width: 2; -*-
 
-@mixin transparent {
-  background-color: rgba(0, 0, 0, 0.2);
+@mixin transparent($alpha: 0.2) {
+  background-color: rgba(0, 0, 0, $alpha);
 }
 
 @mixin textured {
@@ -24,8 +24,8 @@
 
 
 
-@mixin shadow {
-  @include box-shadow( rgba(0,0,0,0.5), 20px, 20px, 20px);
+@mixin shadow($size: 20px) {
+  @include box-shadow( rgba(0,0,0,0.5), $size, $size, $size);
 }
 
 

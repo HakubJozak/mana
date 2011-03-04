@@ -1,6 +1,10 @@
 class LobbyView
 
   constructor: ->
+    $('#color-picker').farbtastic('#color')
+    $('#color').focus -> $('#color-picker').fadeIn()
+    $('#color').blur -> $('#color-picker').fadeOut()
+
     $('#lobby form').submit(@submit)
     $('#lobby').dialog {
       autoOpen: false,
@@ -12,7 +16,6 @@ class LobbyView
         click: @submit
       }  ]
     }
-
 
   grab_input: (name) =>
     $('#lobby form *[name="' + name + '"]').val()
@@ -38,4 +41,5 @@ class LobbyView
 
   open: =>
     $('#lobby').dialog('open')
+
 
