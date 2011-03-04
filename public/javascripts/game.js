@@ -1,13 +1,7 @@
-function Game(url, game_id) {
+function Game() {
     this.id_sequence = 0;
-    this.url = url;
-    this.game_id = game_id;
-    this.listener = null;
 }
 
-Game.prototype.sendCommand = function(command) {
-  this.socket.send(JSON.stringify(command));
-}
 
 // LEGACY - remove
 Game.prototype.message = function(msg) {
@@ -23,24 +17,9 @@ Game.prototype.create_card = function(image_url) {
 }
 
 
-
-Game.prototype.notifyAll = function(msg) {
- // find a better way of making a command
- if (this.listener != null) {
-   this.listener.onRemoteMessage(msg);
- }
-}
-
-
-Game.prototype.setListener = function(l) {
-  this.listener = l;
-}
-
-Game.prototype.removeListener = function() {
-  this.listener = null;
-}
-
 Game.prototype.connect = function(name,cards, color) {
+  return;
+
   this.socket = new WebSocket(this.url);
   this.socket.game = this;
 

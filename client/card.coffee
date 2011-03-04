@@ -26,9 +26,6 @@ class Card extends Backbone.Model
     @element = @el
     @set({ image: @get('image_url')}) unless @get('image')
 
-  visible:
-    @container
-
   toggle_covered: (state = null) ->
     @switch 'covered', state
 
