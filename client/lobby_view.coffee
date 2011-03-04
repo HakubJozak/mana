@@ -1,7 +1,12 @@
 class LobbyView
 
   constructor: ->
-    $('#color-picker').farbtastic('#color')
+    $('#color-picker').farbtastic (color) ->
+      $('#color-picker').fadeOut()
+      $('#color').css('color', color)
+                 .val(color)
+
+    $('#color').click -> $('#color-picker').fadeIn()
     $('#color').focus -> $('#color-picker').fadeIn()
     $('#color').blur -> $('#color-picker').fadeOut()
 
