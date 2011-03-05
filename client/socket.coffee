@@ -14,14 +14,22 @@ class Socket
     @trigger('socket:disconnected', 'Disconnected')
 
   onmessage: (msg) =>
-    command = JSON.parse(msg.data)
+    data = JSON.parse(msg.data)
 
-    if command.card
-      card = CardCollection.all.get(command.card.id)
-      card.set(command.card)
+    if data.card
+      if card = CardCollection.all.get(data.card.id)
+        card.set(data.card)
+      else
+        console.error('Non-existing card')
+        # TODO - move creation code here from User?
+        #  $('#' + id + ' .library').ob().dropLocally(view);
+        #  TODO: give to correct user
 
-    if command.message
-      Chat.instance.add(new Message(command.message))
+    if data.message
+      Chat.instance.add(new Message(data.message))
+
+    if data.user
+      User.all.add(new User(data.user))
 
   connect: ->
     @ws = new WebSocket(@url)

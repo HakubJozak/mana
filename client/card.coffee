@@ -55,3 +55,8 @@ class CardCollection extends Backbone.Collection
   constructor: ->
     super
 #    @refresh($FOURSQUARE_JSON)
+
+
+# Change to Card.all
+CardCollection.all = new CardCollection()
+

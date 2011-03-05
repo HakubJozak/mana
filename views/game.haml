@@ -46,8 +46,6 @@
         Socket.instance = new Socket('ws://#{ADDRESS}:#{WEBSOCKET_PORT}','#{@game_id}');
         Socket.instance.connect()
 
-        CardCollection.all = new CardCollection();
-
         Chat.instance = new Chat();
         new ChatView({ model: Chat.instance });
 

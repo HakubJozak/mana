@@ -5,10 +5,10 @@
       .power{ :style => 'display:none' }
 
 #user-template
-  %div{ :id => '$USER_ID', :class => '$USER_ID' }
-    %h3 
-      $USERNAME
-      -# %input.life-counter{ :value => 20 }    
+  %div{ :id => 'user-{{id}}', :class => 'user' }
+    %h3
+      {{name}}
+      {{lives}}
 
 #box-template
   .box-container
@@ -20,5 +20,5 @@
         %h4 $NAME
         %a.shuffle-button.button Shuffle
         %a.uncover-button.button Uncover All
-        %a.cover-button.button Cover All                
+        %a.cover-button.button Cover All
         %a.close-button.button Close

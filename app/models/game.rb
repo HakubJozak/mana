@@ -8,7 +8,7 @@ module Mana
     def self.find_or_create(id)
       @@games[id] || create(id)
     end
-    
+
     def initialize(id)
       @id = id
       @users = []
@@ -24,20 +24,20 @@ module Mana
       # add all others to new user
       @users.each do |remote_user|
         args = { :user => remote_user.to_hash(:include_library => true) }
-        user.message_to_client(:all, server_command(:add_user,remote_user, :args => args ))
+        user.message_to_client(:all, args)
       end
 
       # add new user to new user
       # TODO: replace :local with requestID
-      args = { :user => user.to_hash(:include_library => true), :local => true  };
-      user.message_to_client(:me, server_command(:add_user, user, :args => args))
+      args = { :user => user.to_hash(:include_library => true).merge(:local => true)  };
+      user.message_to_client(:me, args)
 
       # add new user to all others
       @users.each do |remote_user|
         args = { :user => user.to_hash(:include_library => true) };
-        remote_user.message_to_client(:opponents, server_command(:add_user, user, :args => args))
+        remote_user.message_to_client(:opponents, args)
       end
-      
+
       @users << user
     end
 
@@ -48,11 +48,20 @@ module Mana
     def disconnect(user)
       @users.delete(user)
       @channel.unsubscribe(user.sid)
-      broadcast_to :opponents, server_command(:remove_user, user, :args => { :user => user.to_hash })
+      # TODO - send just ID and type
+      # broadcast_to :opponents, user.to_hash
     end
 
     private
-    
+
+    # def add_user(user, args)
+    #   server_command(:add_user, user, :args => args)
+    # end
+
+    # def remove_user(user)
+    #   server_command(:remove_user, user, :args => { :user => user.to_hash })
+    # end
+
     # TODO: subclass EM::Channel to do this
     def broadcast_to(scope, command)
       @channel.push(:scope => scope, :command => command)
@@ -62,12 +71,12 @@ module Mana
       @@games[id] = Game.new(id)
     end
 
-    def server_command(operation, user, args = {})
-      { :action => 'Server',
-        :operation => operation.to_s,
-        :sid => user.sid,
-        :user => user.to_hash }.merge(args)
-    end
-    
+    # def server_command(operation, user, args = {})
+    #   { :action => 'Server',
+    #     :operation => operation.to_s,
+    #     :sid => user.sid,
+    #     :user => user.to_hash }.merge(args)
+    # end
+
   end
 end

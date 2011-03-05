@@ -1,21 +1,19 @@
-class User
+class User extends Backbone.Model
 
-  @find: (id) ->
-    $("#user-#{id}").ob()
+  constructor: (params) ->
+    @library = new Library(params.cards)
+    @graveyard = new Dropbox()
+    @exile = new Dropbox()
+    # _.each(params.cards) (c) ->
+    #   card = new Card(c)
+    #   view = new CardView({ model: card })
 
-  @local: ->
-    $("#user-local").ob()
 
-  constructor: (attrs) ->
-    @name = attrs.name
-    @color = attrs.color
-    @id = attrs.id
-    @counter = 0
+class UserCollection extends Backbone.Collection
+  model : User
 
-  to_dom_id: ->
-    "user-#{@id}"
+  constructor: ->
+    super
 
-  create_unique_id: ->
-    "#{this.to_dom_id()}-created-#{@counter++}"
-
+User.all = new UserCollection()
 

@@ -1,0 +1,13 @@
+class UserView extends Backbone.View
+
+  @tagName: 'div'
+  @className: 'user'
+
+  constructor: ->
+    super
+    @model.bind 'change', @render
+    @template = _.template($('#user-template').html())
+    @el = $(@template(@model.toJSON()))
+    $("#users").append(@el)
+
+  render: =>
