@@ -16,20 +16,26 @@ class Socket
   onmessage: (msg) =>
     data = JSON.parse(msg.data)
 
-    if data.card
-      if card = CardCollection.all.get(data.card.id)
-        card.set(data.card)
-      else
-        console.error('Non-existing card')
-        # TODO - move creation code here from User?
-        #  $('#' + id + ' .library').ob().dropLocally(view);
-        #  TODO: give to correct user
+#    if data.card
+      # collection = CardCollection.get_by_id(data.card.collection)
+      # if card = collection.find(data.card.id)
+      #   card.set(data.card)
+      # else
+      #   console.error('Non-existing card')
+      # TODO - move creation code here from User?
+      #  $('#' + id + ' .library').ob().dropLocally(view);
+      #  TODO: give to correct user
 
     if data.message
       Chat.instance.add(new Message(data.message))
 
     if data.user
-      User.all.add(new User(data.user))
+      if user = User.all.find(data.user.id)
+        user.set(data.user)
+      else
+        user = new User(data.user)
+        User.all.add(user)
+        new UserView({ model: user })
 
   connect: ->
     @ws = new WebSocket(@url)

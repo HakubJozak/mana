@@ -7,15 +7,15 @@
 #user-template
   %div{ :id => 'user-{{id}}', :class => 'user' }
     %h3
-      {{name}}
-      {{lives}}
+      %span.name {{name}}
+      %span.lives ({{lives}})
 
-#box-template
+#dropbox-template
   .box-container
     %h4
-      $NAME
+      {{name}}
       %a.browse-button.button Browse
-    %div{ :class => "box $TYPE", :id => "$TYPE-$USER_ID" }
+    %div{ :class => "box {{name}}" }
       .button-bar
         %h4 $NAME
         %a.shuffle-button.button Shuffle

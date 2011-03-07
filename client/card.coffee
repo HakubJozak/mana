@@ -52,11 +52,7 @@ class Card extends Backbone.Model
 class CardCollection extends Backbone.Collection
   model : Card
 
-  constructor: ->
-    super
+  constructor: (@name, params) ->
+    super(params)
+    throw 'Name of the CardCollection missing' unless @name
 #    @refresh($FOURSQUARE_JSON)
-
-
-# Change to Card.all
-CardCollection.all = new CardCollection()
-

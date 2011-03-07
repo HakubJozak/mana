@@ -1,19 +1,17 @@
 class User extends Backbone.Model
 
   constructor: (params) ->
-    @library = new Library(params.cards)
-    @graveyard = new Dropbox()
-    @exile = new Dropbox()
-    # _.each(params.cards) (c) ->
-    #   card = new Card(c)
-    #   view = new CardView({ model: card })
+    super(params)
+    @set({ lives: 20 })
+
+    @library = new CardCollection('library', params.cards)
+    @graveyard = new CardCollection('graveyard')
+    @exile = new CardCollection('exile')
+
+  lives: -> get('lives')
 
 
 class UserCollection extends Backbone.Collection
   model : User
 
-  constructor: ->
-    super
-
 User.all = new UserCollection()
-

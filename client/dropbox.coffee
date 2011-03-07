@@ -1,11 +1,14 @@
-class DropboxView extends Backbone.View
+class Dropbox extends Backbone.View
 
   @tagName: 'div'
   @className: 'box'
 
   constructor: (attrs) ->
-    throw '"el" attribute missing for DropboxView'
     super(attrs)
+    @model.bind 'change', @render
+    @template = _.template($('#dropbox-template').html())
+    @el = $(@template({ name: @model.name }))
+
     @el.droppable
       scope: 'cards'
       greedy: true
@@ -31,4 +34,3 @@ class DropboxView extends Backbone.View
       p.top += 5
       p.left += 5
       card.change_position(p)
-
