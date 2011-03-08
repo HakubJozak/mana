@@ -8,8 +8,13 @@ class UserView extends Backbone.View
     @model.bind 'change', @render
     @template = _.template($('#user-template').html())
     @el = $(@template(@model.toJSON()))
+
+    _.each [ 'library', 'graveyard', 'exile' ], (collection) =>
+      view = new Dropbox({ model: @model[collection] })
+      @el.append(view.el)
+
     $("#users").append(@el)
-    @el.append(new Dropbox({ model: @model.graveyard }).el)
+
 
 
   render: =>

@@ -8,7 +8,7 @@ class User extends Backbone.Model
     @graveyard = new CardCollection('graveyard')
     @exile = new CardCollection('exile')
 
-  lives: -> get('lives')
+  lives: => @get('lives')
 
 
 class UserCollection extends Backbone.Collection

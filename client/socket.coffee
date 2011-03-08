@@ -36,6 +36,7 @@ class Socket
         user = new User(data.user)
         User.all.add(user)
         new UserView({ model: user })
+        user.library.trigger('add')
 
   connect: ->
     @ws = new WebSocket(@url)

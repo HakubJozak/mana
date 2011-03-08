@@ -3,6 +3,7 @@ _.templateSettings = {
   interpolate : /\{\{(.+?)\}\}/g
 }
 
+# TODO - Every card is bound with one CardView - test this!
 class Card extends Backbone.Model
 
   defaults:
@@ -26,6 +27,10 @@ class Card extends Backbone.Model
     @element = @el
     @set({ image: @get('image_url')}) unless @get('image')
 
+  hidden: =>
+     false
+#    @collection.visible?
+
   toggle_covered: (state = null) ->
     @switch 'covered', state
 
@@ -48,11 +53,11 @@ class Card extends Backbone.Model
   name: -> @get('name')
 
 
-
 class CardCollection extends Backbone.Collection
   model : Card
 
   constructor: (@name, params) ->
     super(params)
     throw 'Name of the CardCollection missing' unless @name
-#    @refresh($FOURSQUARE_JSON)
+
+  visible: -> false

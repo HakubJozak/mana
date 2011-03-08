@@ -5,10 +5,12 @@ class Dropbox extends Backbone.View
 
   constructor: (attrs) ->
     super(attrs)
+
+    @model.bind 'add', @render
     @model.bind 'change', @render
+
     @template = _.template($('#dropbox-template').html())
     @el = $(@template({ name: @model.name }))
-
     @el.droppable
       scope: 'cards'
       greedy: true
@@ -34,3 +36,11 @@ class Dropbox extends Backbone.View
       p.top += 5
       p.left += 5
       card.change_position(p)
+
+  render: =>
+    card = new CardView({ model: @model.first() })
+    p = @el.offset()
+    p.top += 5
+    p.left += 5
+    card.el.offset(p)
+    card.render()

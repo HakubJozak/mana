@@ -4,8 +4,8 @@ class CardView extends Backbone.View
   @tagName: 'div'
   @className: 'card'
 
-  constructor: ->
-    super
+  constructor: (params) ->
+    super(params)
     @model.bind 'change', @render
     @template = _.template($('#card-template').html())
     @el = $(@template(@model.toJSON()))
@@ -45,7 +45,7 @@ class CardView extends Backbone.View
   initialize: ->
     _.bindAll(this, 'render', 'clicked', 'show_detail')
 
-  render: ->
+  render: =>
     if @model.hidden()
       @el.fadeOut()
     else
@@ -53,6 +53,7 @@ class CardView extends Backbone.View
       if @model.covered() then @set_image('/images/back.jpg') else @set_image(@model.image())
       if @model.tapped $(@el).addClass('tapped') else $(@el).removeClass('tapped')
       @el.animate(@correct_position());
+
 
     this
 
