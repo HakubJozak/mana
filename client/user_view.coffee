@@ -20,5 +20,4 @@ class UserView extends Backbone.View
   render: =>
    @$('.lives').text(@model.lives)
    _.each @dropboxes, (dropbox) ->
-     console.info 'rendered'
      dropbox.render()

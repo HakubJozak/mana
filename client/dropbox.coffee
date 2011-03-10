@@ -13,6 +13,7 @@ class Dropbox extends Backbone.View
     @el = $(@template({ name: @model.name }))
     @box = @el.find('.box')
     @box.droppable
+      accept: @may_accept
       scope: 'cards'
       greedy: true
       hoverClass: 'card-over'
@@ -20,39 +21,26 @@ class Dropbox extends Backbone.View
 
   tappingAllowed: -> false
 
-  dropped: (event,ui) ->
-    card = ui.draggable.ob().model
-    @fixPosition(card);
-    p = card.el.offset();
-    card.change_position
-      container: 'battlefield'
-      x: p.left,
-      y: p.top
+  may_accept: (card)  =>
+    !@model.include(card.ob().model)
 
-  fixPosition: ->
-    if @unpacked()
-      @spread_cards(5, @el.width())
-    else
-      p = @el.offset()
-      p.top += 5
-      p.left += 5
-      card.change_position(p)
+  dropped: (event,ui) =>
+    card = ui.draggable.ob().model
+    card.collection.remove(card)
+    @model.add(card)
 
   render: =>
-    console.info 'view'
+    if card = @model.first()
+      dom = $("#card-#{card.id}")
 
-    if @model.first()
-      card = new CardView({ model: @model.first() })
-      card.render()
-      card.el.css('position','absolute')
-      card.el.offset({ top: 5, left: 5 })
-      @box.append(card.el)
-      # p = @el.offset()
-      # p.top += 5
-      # p.left += 5
-      # card.el.offset(p)
-      # console.info card
-      # card.render()
-      # @el.append(card.el.css('position','absolute'))
-    else
-      console.info @model
+      if dom.length > 0
+        console.info dom
+        view = dom.ob()
+      else
+        console.info 'not found'
+        view = new CardView({ model: @model.first() })
+        view.el.css('position','absolute')
+        $('body').append(view.el)
+
+      view.el.offset({ top: @box.offset().top + 5, left: @box.offset().left + 5 })
+      view.render()
