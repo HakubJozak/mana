@@ -58,6 +58,7 @@ class CardCollection extends Backbone.Collection
 
   constructor: (@name, params) ->
     super(params)
+    @trigger('add')
     throw 'Name of the CardCollection missing' unless @name
 
   visible: -> false

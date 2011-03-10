@@ -11,7 +11,8 @@ class Dropbox extends Backbone.View
 
     @template = _.template($('#dropbox-template').html())
     @el = $(@template({ name: @model.name }))
-    @el.droppable
+    @box = @el.find('.box')
+    @box.droppable
       scope: 'cards'
       greedy: true
       hoverClass: 'card-over'
@@ -38,9 +39,20 @@ class Dropbox extends Backbone.View
       card.change_position(p)
 
   render: =>
-    card = new CardView({ model: @model.first() })
-    p = @el.offset()
-    p.top += 5
-    p.left += 5
-    card.el.offset(p)
-    card.render()
+    console.info 'view'
+
+    if @model.first()
+      card = new CardView({ model: @model.first() })
+      card.render()
+      card.el.css('position','absolute')
+      card.el.offset({ top: 5, left: 5 })
+      @box.append(card.el)
+      # p = @el.offset()
+      # p.top += 5
+      # p.left += 5
+      # card.el.offset(p)
+      # console.info card
+      # card.render()
+      # @el.append(card.el.css('position','absolute'))
+    else
+      console.info @model
