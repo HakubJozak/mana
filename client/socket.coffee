@@ -16,21 +16,20 @@ class Socket
   onmessage: (msg) =>
     data = JSON.parse(msg.data)
 
-#    if data.card
-      # collection = CardCollection.get_by_id(data.card.collection)
-      # if card = collection.find(data.card.id)
-      #   card.set(data.card)
-      # else
-      #   console.error('Non-existing card')
-      # TODO - move creation code here from User?
-      #  $('#' + id + ' .library').ob().dropLocally(view);
-      #  TODO: give to correct user
+    if data.card
+      # TODO: don't use view to find the card
+      # card = $("#card-#{data.card.id}").ob().model
+      # CardCollection.all[data.card.collection_id].get - WON'T WORK - the user could change the location meanwhile
+      card = $("#card-#{data.card.id}").ob().model
+      card.set(data.card)
 
     if data.message
       Chat.instance.add(new Message(data.message))
 
     if data.user
-      if user = User.all.find(data.user.id)
+      console.info data.user
+
+      if user = User.all.get(data.user.id)
         user.set(data.user)
       else
         user = new User(data.user)
@@ -47,13 +46,14 @@ class Socket
     this
 
   send_object: (obj) ->
-    @ws.send(JSON.stringify(obj))
+    console.info obj
+    @ws.send(obj)
 
   # LEGACY - transform it to User.save and Library.save
   start_game: (name, cards) ->
-    @send_object {
+    @ws.send(JSON.stringify({
       action: 'connect',
       game_id: @game_id,
       cards: cards,
       name: name
-    }
+    }))

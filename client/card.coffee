@@ -6,6 +6,8 @@ _.templateSettings = {
 # TODO - Every card is bound with one CardView - test this!
 class Card extends Backbone.Model
 
+  collection: 'unknown'
+
   defaults:
     # TODO: put loading image here
     # image: 'http://example.com/unknown.jpg'
@@ -30,6 +32,21 @@ class Card extends Backbone.Model
   hidden: =>
      false
 #    @collection.visible?
+
+  toJSON: =>
+    @attributes['collection_id'] = @collection.id
+    super()
+
+  set: (data) =>
+    @move_to CardCollection.all[data.collection_id] if data.collection_id
+    super(data)
+
+  # Move from one collection to some other.
+  #
+  move_to: (target) =>
+    return if target == @collection
+    @collection.remove(this)
+    target.add(this)
 
   toggle_covered: (state = null) ->
     @switch 'covered', state
@@ -56,9 +73,14 @@ class Card extends Backbone.Model
 class CardCollection extends Backbone.Collection
   model : Card
 
-  constructor: (@name, params) ->
+  @all: []
+
+  constructor: (@id, @name, params) ->
     super(params)
-    @trigger('add')
+    CardCollection.all[@id] = this
     throw 'Name of the CardCollection missing' unless @name
+    throw 'Name of the CardCollection missing' unless @id
+    @trigger('add')
+
 
   visible: -> false

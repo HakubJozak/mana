@@ -26,21 +26,11 @@ class Dropbox extends Backbone.View
 
   dropped: (event,ui) =>
     card = ui.draggable.ob().model
-    card.collection.remove(card)
-    @model.add(card)
+    card.move_to(@model)
+    card.save()
 
   render: =>
-    if card = @model.first()
-      dom = $("#card-#{card.id}")
-
-      if dom.length > 0
-        console.info dom
-        view = dom.ob()
-      else
-        console.info 'not found'
-        view = new CardView({ model: @model.first() })
-        view.el.css('position','absolute')
-        $('body').append(view.el)
-
+    @model.each (card) =>
+      view = CardView.find_or_create(card)
       view.el.offset({ top: @box.offset().top + 5, left: @box.offset().left + 5 })
       view.render()
