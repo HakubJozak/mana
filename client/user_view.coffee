@@ -14,8 +14,10 @@ class UserView extends Backbone.View
       @dropboxes[collection] = new Dropbox({ model: @model[collection] })
       @el.append(@dropboxes[collection].el)
 
-    $("#users").append(@el)
-
+    if User.all.length == 1
+      $("#right-panel .users").append(@el)
+    else
+      $("#left-panel .users").append(@el)
 
   render: =>
    @$('.lives').text(@model.lives)

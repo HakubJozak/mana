@@ -1,13 +1,12 @@
 // -*- mode: css; tab-width: 2; -*-
 
 @mixin side-panel-component {
-    position: relative; 
+    position: relative;
     left: 10px;
 }
 
 @mixin panel {
   @include textured;
-
   position: relative;
 
   label {
@@ -25,16 +24,14 @@
   padding: 5px;
 }
 
+@mixin side-panel {
+  @include panel;
 
-#side-panel {
   position: absolute;
   top: 0px;
-  right: 0px;
+  width: $side-panel-width;
 
-  border-left: 1px dotted #C8B472;
-//  @include box-shadow( rgba(0,0,0,0.3), -5px, 0px, 5px);
-
-  #users {
+  .users {
 
     h3 {
         @include transparent;
@@ -46,7 +43,6 @@
         @include side-panel-component;
         margin-bottom: 3px;
         font-size: 14px;
-        width: 70%;
         padding: 5px;
 
         a {
@@ -58,4 +54,16 @@
 
 }
 
+#left-panel {
+  @include side-panel;
+  left: 0px;
+  border-right: 1px dotted #C8B472;
+}
+
+
+#right-panel {
+  @include side-panel;
+  right: 0px;
+  border-left: 1px dotted #C8B472;
+}
 
