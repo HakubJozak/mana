@@ -1,8 +1,11 @@
 // -*- mode: css; tab-width: 2; -*-
 
 @import "compass/reset";
-@import "compass/css3";  
+@import "compass/css3";
 @import "compass/css3/transition";
+@import "compass/css3/transition";
+@import "compass/css3/columns";
+
 
 @import "constants";
 @import "modules";
@@ -15,55 +18,24 @@
 @import "chat";
 @import "box";
 @import "help";
-
-
-
-body {
-  font-family: Georgia;
-  color: white;
-  background: #61461c url('../images/brown-texture.png'); 
-  height: $page-height;
-}
-
-@mixin layout-element {
- position: absolute;
-}
-
-
-#battlefield {
-  position: absolute;
-
-  @include border-radius;
-  @include layout-element;
-  @include gradient;
-
-  width: $battlefield-width;
-  margin: auto;
-  right: $side-panel-width + 20px;
-  
-  border: 1px dashed rgba(255, 255, 255, 0.14);
-  height: $page-height - 60px;
-}
+@import "layout";
 
 .button { font-size: 14px; }
-
 .highlight { color: $highlight-color }
 .warning   { color: red }
 
-#footer {
- @include layout-element;
+#battlefield {
+  @include border-radius;
+  @include gradient;
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+}
 
- z-index: -1;
- top: $page-height - 50px;
- margin-top: 20px;
+#footer {
  color: gray;
  text-align: center;
  font-size: small;
 
- width: $battlefield-width - 40px;
- right: $side-panel-width + 40px;
-
- hr { 
+ hr {
   background-color: black;
   height: 1px;
   border: none;
@@ -73,12 +45,3 @@ body {
  a:hover { color: $highlight-color }
 }
 
- 
-#side-panel {
-  @include panel;
-  @include layout-element;
-
-  padding-bottom: 20px;
-  right: 0px;
-  width: $side-panel-width;
-}

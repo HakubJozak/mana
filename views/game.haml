@@ -61,19 +61,22 @@
   = haml(:_lobby, :layout => false)
   = haml(:_create_card, :layout => false)
 
+  #left-panel.side-panel
+    .users
+
+  #battlefield
+
+  #right-panel.side-panel
+    .users
+
+  #desk
+
+  #infobox
+    %p
+
   #chat-bar
     %label Say:
     %input#chat-input{ :name => 'message' }
-
-  #battlefield
-  #infobox{ :style => 'display:none' }
-    %p
-
-  #left-panel
-    .users
-
-  #right-panel
-    .users
 
   #hand
     %h2 Hand

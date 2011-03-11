@@ -13,7 +13,7 @@ class CardView extends Backbone.View
       console.info 'not found'
       view = new CardView({ model: card })
       view.el.css('position','absolute')
-      $('body').append(view.el)
+      $('#desk').append(view.el)
 
     return view
 

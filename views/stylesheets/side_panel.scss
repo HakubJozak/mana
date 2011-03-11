@@ -1,13 +1,20 @@
 // -*- mode: css; tab-width: 2; -*-
 
+
+body {
+  font-family: Georgia;
+  color: white;
+  background: #61461c url('../images/brown-texture.png');
+}
+
+
+
 @mixin side-panel-component {
-    position: relative;
-    left: 10px;
+  margin: auto;
 }
 
 @mixin panel {
   @include textured;
-  position: relative;
 
   label {
     position: relative;
@@ -24,15 +31,10 @@
   padding: 5px;
 }
 
-@mixin side-panel {
+.side-panel {
   @include panel;
 
-  position: absolute;
-  top: 0px;
-  width: $side-panel-width;
-
   .users {
-
     h3 {
         @include transparent;
         padding: 3px;
@@ -44,26 +46,6 @@
         margin-bottom: 3px;
         font-size: 14px;
         padding: 5px;
-
-        a {
-            position: absolute;
-            right: 0px;
-        }
     }
   }
-
 }
-
-#left-panel {
-  @include side-panel;
-  left: 0px;
-  border-right: 1px dotted #C8B472;
-}
-
-
-#right-panel {
-  @include side-panel;
-  right: 0px;
-  border-left: 1px dotted #C8B472;
-}
-
