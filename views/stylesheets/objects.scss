@@ -26,8 +26,18 @@
 
 #battlefield {
   @include border-radius;
-  @include gradient;
   border: 1px dashed rgba(255, 255, 255, 0.14);
+
+  .user-area {
+      background-color: rgba(60, 0, 0, 0.2);
+      height: 320px;
+  }
+
+  .user-area.local {
+      background-color: rgba(0, 60, 0, 0.2);
+      height: 320px;
+  }
+
 }
 
 #footer {

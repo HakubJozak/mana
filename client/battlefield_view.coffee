@@ -38,12 +38,13 @@ class BattlefieldView extends Backbone.View
 
   render_user_areas: =>
     @el.find('.user-area').remove()
-    User.all.each (user) =>
-      @el.append(@user_area_template(user))
+    sorter = (u) -> u.id
+    _.each User.all.sortBy(sorter), (user) =>
+      area = $(@user_area_template(user))
+      area.addClass('local') if user.local
+      @el.append(area)
 
   render: =>
     @model.each (card) =>
-      console.info card
       view = CardView.find_or_create(card)
-      console.info @to_global(card.position())
       view.el.animate(@to_global(card.position()))
