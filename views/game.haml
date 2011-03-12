@@ -46,7 +46,7 @@
 
         var battlefield = new Battlefield();
         var bview = new BattlefieldView({ model: battlefield });
-        User.all.bind('change', bview.render)
+        User.all.bind('add', bview.render_user_areas)
 
         var info = new InfoView();
         InfoView.instance = info;
@@ -69,8 +69,6 @@
     .users
 
   #battlefield
-    .table-part{ :style => 'height: 50%; background-color: red' }
-    .table-part{ :style => 'height: 50%; background-color: green' }
 
   #right-panel.side-panel
     .users

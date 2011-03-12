@@ -6,6 +6,7 @@ class BattlefieldView extends Backbone.View
   constructor: (attrs) ->
     super(attrs)
 
+    @user_area_template = _.template($('#user-area-template').html())
     @model.bind 'add', @render
     @model.bind 'change', @render
 
@@ -34,6 +35,11 @@ class BattlefieldView extends Backbone.View
     top =  p.top - origin.top
     left = p.left - origin.left
     return { y: top, x: left }
+
+  render_user_areas: =>
+    @el.find('.user-area').remove()
+    User.all.each (user) =>
+      @el.append(@user_area_template(user))
 
   render: =>
     @model.each (card) =>

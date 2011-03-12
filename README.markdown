@@ -43,6 +43,7 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 ### Essential - Alfa
  - make opponents libraries and graveyard browsable
  - counters
+ - disconnect recovery
  - each user has its own color
  - life counter
  - number of cards in hand
@@ -56,6 +57,7 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 
 ### More Features Convenience - Versions 1+
 
+ - saving - (each player obtains unique URL to connect to the old game as a same user)
  - counters on the cards
  - link the cards to MagicCardsInfo (to see errata and stuff in a new window)
  - visible shuffling effect
