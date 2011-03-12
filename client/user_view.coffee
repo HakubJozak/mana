@@ -6,20 +6,19 @@ class UserView extends Backbone.View
   constructor: ->
     super
     @model.bind 'change', @render
-    @dropboxes = {}
+    @components = {}
     @template = _.template($('#user-template').html())
     @el = $(@template(@model.toJSON()))
 
     _.each [ 'library', 'graveyard', 'exile' ], (collection) =>
-      @dropboxes[collection] = new Dropbox({ model: @model[collection] })
-      @el.append(@dropboxes[collection].el)
+      @components[collection] = new Dropbox({ model: @model[collection] })
+      @el.append(@components[collection].el)
 
-    if User.all.length == 1
-      $("#right-panel .users").append(@el)
-    else
-      $("#left-panel .users").append(@el)
+    root = if @model.local then 'left' else 'right'
+    $("##{root}-panel .users").append(@el)
+
 
   render: =>
-   @$('.lives').text(@model.lives)
-   _.each @dropboxes, (dropbox) ->
+   @$('.lives').text('(' + @model.lives() + ')')
+   _.each @components, (dropbox) ->
      dropbox.render()

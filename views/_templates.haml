@@ -4,12 +4,15 @@
       .counters{ :style => 'display:none' }
       .power{ :style => 'display:none' }
 
+#hand-template
+  Hand
+
 #user-template
   %div{ :id => 'user-{{id}}', :class => 'user' }
     .hand
     %h3
       %span.name {{name}}
-      %span.lives ({{lives}})
+      %span.lives {{lives}}
 
 #user-area-template
   %div{ :class => 'user-area user-{{id}}' }

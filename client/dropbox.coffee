@@ -1,16 +1,10 @@
-class Dropbox extends Backbone.View
+class Dropbox extends CardCollectionView
 
   @tagName: 'div'
   @className: 'box'
 
   constructor: (attrs) ->
     super(attrs)
-
-    @model.bind 'add', @render
-    @model.bind 'change', @render
-
-    @template = _.template($('#dropbox-template').html())
-    @el = $(@template({ name: @model.name }))
     @box = @el.find('.box')
     @box.droppable
       accept: @may_accept

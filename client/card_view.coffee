@@ -10,7 +10,6 @@ class CardView extends Backbone.View
     if dom.length > 0
       view = dom.ob()
     else
-      console.info 'not found'
       view = new CardView({ model: card })
       view.el.css('position','absolute')
       $('#desk').append(view.el)

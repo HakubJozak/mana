@@ -45,7 +45,12 @@ module Mana
 
     get '/games/:name' do
       @game_id = params[:name]
-      @scripts = Dir['./client/*.coffee'].map { |f| File.basename(f, '.coffee') }
+      @scripts = Dir['./client/*.coffee'].map { |f| File.basename(f, '.coffee') }.sort
+
+      # TODO: handle priorities better way
+      @scripts.reject! { |s| s == 'battlefield' }
+      @scripts << 'battlefield'
+
       haml :game
     end
 
