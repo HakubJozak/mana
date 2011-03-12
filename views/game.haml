@@ -44,9 +44,13 @@
         Chat.instance = new Chat();
         new ChatView({ model: Chat.instance });
 
-        info = new InfoView();
+        var battlefield = new Battlefield();
+        var bview = new BattlefieldView({ model: battlefield });
+        User.all.bind('change', bview.render)
+
+        var info = new InfoView();
         InfoView.instance = info;
-        lobby = new LobbyView();
+        var lobby = new LobbyView();
 
         Chat.instance.bind('add', info.render);
         Socket.instance.bind('all', info.render);
@@ -65,13 +69,15 @@
     .users
 
   #battlefield
+    .table-part{ :style => 'height: 50%; background-color: red' }
+    .table-part{ :style => 'height: 50%; background-color: green' }
 
   #right-panel.side-panel
     .users
 
   #desk
 
-  #infobox
+  #infobox{ :style => 'display:none' }
     %p
 
   #chat-bar

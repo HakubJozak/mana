@@ -6,8 +6,6 @@ _.templateSettings = {
 # TODO - Every card is bound with one CardView - test this!
 class Card extends Backbone.Model
 
-  collection: 'unknown'
-
   defaults:
     # TODO: put loading image here
     # image: 'http://example.com/unknown.jpg'
@@ -81,6 +79,5 @@ class CardCollection extends Backbone.Collection
     throw 'Name of the CardCollection missing' unless @name
     throw 'Name of the CardCollection missing' unless @id
     @trigger('add')
-
 
   visible: -> false

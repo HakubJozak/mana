@@ -29,7 +29,7 @@ class CardView extends Backbone.View
       snap: '.card',
       scroll: true,
       revert: 'invalid',
-      containment: '#desk',
+      containment: 'body',
       snapMode: 'inner',
       zIndex: 9999
       stack: '.card',
@@ -69,14 +69,6 @@ class CardView extends Backbone.View
 #      @el.animate(@correct_position());
 
     this
-
-  correct_position: ->
-    p = @model.get('position')
-    origin = @el.parent().offset();
-    top =  p.y - origin.top;
-    left = p.x - origin.left;
-    { "top": top, "left": left }
-
 
   set_image: (img) ->
     @img.attr('src',img)
