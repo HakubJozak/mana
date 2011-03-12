@@ -36,15 +36,17 @@ class Card extends Backbone.Model
     super()
 
   set: (data) =>
-    super(data)
-    @move_to CardCollection.all[data.collection_id] if data.collection_id
+    opts = { silent: true }
+    super(data, opts)
+    @move_to(CardCollection.all[data.collection_id],opts) if data.collection_id
+    @change()
 
   # Move from one collection to some other.
   #
-  move_to: (target) =>
+  move_to: (target, options = {}) =>
     return if target == @collection
-    @collection.remove(this)
-    target.add(this)
+    @collection.remove(this, options)
+    target.add(this, options)
 
   toggle_covered: (state = null) ->
     @switch 'covered', state

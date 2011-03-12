@@ -18,7 +18,7 @@ class BattlefieldView extends Backbone.View
   dropped: (event,ui) =>
     p = ui.draggable.offset()
     card = ui.draggable.ob().model
-    card.move_to(@model)
+    card.move_to(@model, { silent: true })
     card.set({ position: @to_relative(p) }, { silent: true })
     card.save()
 
