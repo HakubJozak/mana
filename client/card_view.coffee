@@ -65,8 +65,6 @@ class CardView extends Backbone.View
       @el.fadeIn()
       if @model.covered() then @set_image('/images/back.jpg') else @set_image(@model.image())
       if @model.tapped $(@el).addClass('tapped') else $(@el).removeClass('tapped')
-# TODO: enable only for battlefield
-#      @el.animate(@correct_position());
 
     this
 

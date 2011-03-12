@@ -15,6 +15,8 @@ class Socket
 
   onmessage: (msg) =>
     data = JSON.parse(msg.data)
+    console.debug 'Received'
+    console.debug data
 
     if data.card
       # TODO: don't use view to find the card

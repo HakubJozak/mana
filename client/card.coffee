@@ -36,8 +36,8 @@ class Card extends Backbone.Model
     super()
 
   set: (data) =>
-    @move_to CardCollection.all[data.collection_id] if data.collection_id
     super(data)
+    @move_to CardCollection.all[data.collection_id] if data.collection_id
 
   # Move from one collection to some other.
   #
@@ -62,6 +62,7 @@ class Card extends Backbone.Model
     @save()
     this
 
+  position: -> @get('position')
   tapped: -> @get('tapped')
   covered: -> @get('covered')
   image: -> @get('image')
