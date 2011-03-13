@@ -64,8 +64,16 @@ class CardView extends Backbone.View
       @el.fadeIn()
       if @model.covered() then @set_image('/images/back.jpg') else @set_image(@model.image())
       if @model.tapped $(@el).addClass('tapped') else $(@el).removeClass('tapped')
+      @_render_overlay()
 
     this
+
+  _render_overlay: =>
+    if @model.counters()
+      @$('.counters').fadeIn().text(@model.counters())
+
+    if @model.toughness() or @model.power()
+      @$('.power').fadeIn().text("#{@model.power() || 0}/#{@model.toughness() || 0}")
 
   set_image: (img) ->
     @img.attr('src',img)

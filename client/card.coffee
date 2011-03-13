@@ -12,11 +12,19 @@ class Card extends Backbone.Model
     position: { x: 0, y: 0 }
     covered: true
     tapped: false
-    overlay:
-      show: false
-      counters: 0
-      power: 0
-      toughness: 0
+    overlay: false
+    counters: null
+    power: null
+    toughness: null
+
+  position: -> @get('position')
+  tapped: -> @get('tapped')
+  covered: -> @get('covered')
+  image: -> @get('image')
+  name: -> @get('name')
+  counters: => @get('counters')
+  power: => @get('power')
+  toughness: => @get('toughness')
 
   initialize: ->
     throw 'Missing card ID' unless @id
@@ -53,26 +61,26 @@ class Card extends Backbone.Model
     target.add(this, options)
 
   toggle_covered: (state = null) ->
-    @switch 'covered', state
+    @_switch 'covered', state
 
   toggle_tapped: (state = null) ->
-    @switch 'tapped', state
+    @_switch 'tapped', state
 
   change_position: (pos) ->
     @set({ position: pos })
     @save()
 
-  switch: (attr, state) ->
+  adjust: (attr, delta) ->
+    value = (@get(attr) || 0) + delta
+    @set({ "#{attr}": value })
+    @save()
+
+  _switch: (attr, state) ->
     state ||= !@get(attr)
     @set({ "#{attr}" : state })
     @save()
     this
 
-  position: -> @get('position')
-  tapped: -> @get('tapped')
-  covered: -> @get('covered')
-  image: -> @get('image')
-  name: -> @get('name')
 
 
 class CardCollection extends Backbone.Collection
