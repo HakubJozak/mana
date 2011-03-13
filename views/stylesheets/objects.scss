@@ -29,15 +29,19 @@
   border: 1px dashed rgba(255, 255, 255, 0.14);
 
   .user-area {
-      background-color: rgba(60, 0, 0, 0.2);
       height: 320px;
-  }
+      background-color: rgba(30, 30, 30, 0.2);
+      &.local { background-color: rgba(40, 0, 0, 0.2);}
 
-  .user-area.local {
-      background-color: rgba(0, 60, 0, 0.2);
-      height: 320px;
+      .name {
+          position: relative;
+          top: 1em;
+          margin: auto;
+          width: 300px;
+          font-size: 6em;
+          color: rgba(255, 255, 255, 0.05);
+      }
   }
-
 }
 
 #footer {

@@ -17,6 +17,7 @@ class User extends Backbone.Model
     @hand = new Hand({ user: this })
 
   lives: => @get('lives')
+  name: => @get('name')
 
 class UserCollection extends Backbone.Collection
   model : User
