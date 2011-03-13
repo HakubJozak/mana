@@ -6,12 +6,25 @@ class HandView extends CardCollectionView
   constructor: (attrs) ->
     super(attrs)
     $('body').append(@el)
-    @el.disableSelection();
-    @el.droppable( "option", "greedy", true );
+    @el.disableSelection()
     @el.draggable();
+    @el.droppable
+      accept: @may_accept
+      scope: 'cards'
+      greedy: true
+      hoverClass: 'card-over'
+      drop: @dropped
 
-  render: ->
+    @tr = @el.find('table tr')
+
+  render: =>
     if @model.user.local
       @el.fadeIn()
+      @model.each (card) =>
+        el = CardView.find_or_create(card).render().el
+        # TODO: DRY and optimize
+        # SPREAD
     else
       @el.fadeOut()
+
+    this

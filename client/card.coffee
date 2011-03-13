@@ -80,7 +80,7 @@ class CardCollection extends Backbone.Collection
     super(params)
     CardCollection.all[@id] = this
     throw 'Name of the CardCollection missing' unless @name
-    throw 'Name of the CardCollection missing' unless @id
+    throw 'ID of the CardCollection missing' unless @id
     @trigger('add')
 
   visible: -> false

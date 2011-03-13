@@ -15,6 +15,8 @@ class BattlefieldView extends Backbone.View
       scope: 'cards'
       hoverClass: 'card-over'
       drop: @dropped
+      accept: (draggable) ->
+        ($('.card-over' ).length < 2) && draggable.hasClass('card');
 
   dropped: (event,ui) =>
     p = ui.draggable.offset()
@@ -47,4 +49,7 @@ class BattlefieldView extends Backbone.View
   render: =>
     @model.each (card) =>
       view = CardView.find_or_create(card)
+      # TODO: DRY and optimize
+      view.el.detach
+      view.el.appendTo('body')
       view.el.animate(@to_global(card.position()))
