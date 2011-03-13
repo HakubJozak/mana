@@ -1,9 +1,6 @@
 $(document).ready(function() {
   var hand = new Dropbox($($('#hand')[0]));
 
-  hand.element.disableSelection();
-  hand.element.droppable( "option", "greedy", true );
-  hand.element.draggable();
 
   hand.toggleShow = function() {
     h = this.element;
@@ -31,7 +28,7 @@ $(document).ready(function() {
 
     h.css('width', (padding + CARD_W) * count + 2*padding)
     h.children('.card').offset(function(i,coords) {
-      return { 
+      return {
         top: h.offset().top + 30,
         left: padding + h.offset().left + i * (padding + CARD_W),
       }

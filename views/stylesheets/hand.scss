@@ -1,7 +1,9 @@
 // -*- mode: css; tab-width: 2; -*-
 
-#hand {
+.hand {
   position: fixed;
+  top: 10px;
+  left: $side-panel-width + 10;
   z-index: $hand-z-index;
 
   border: 1px dashed $hand-border-color;
@@ -22,7 +24,7 @@
   }
 
   &.card-over {
-     @include focused; 
+     @include focused;
   }
 
   @include shadow;

@@ -40,7 +40,6 @@ class BattlefieldView extends Backbone.View
     @el.find('.user-area').remove()
     sorter = (u) -> u.id
     _.each User.all.sortBy(sorter), (user) =>
-      console.info user
       area = $(@user_area_template(user))
       area.addClass('local') if user.local
       @el.append(area)
