@@ -7,7 +7,7 @@ class Dropbox extends CardCollectionView
     super(attrs)
     @box = @el.find('.box')
     @box.droppable
-      accept: @may_accept
+      accept: @_accept_unless_in
       scope: 'cards'
       greedy: true
       hoverClass: 'card-over'
@@ -16,14 +16,10 @@ class Dropbox extends CardCollectionView
 
   tappingAllowed: -> false
 
-  may_accept: (card)  =>
-    !@model.include(card.ob().model)
-
   render: =>
     @model.each (card) =>
       el = CardView.find_or_create(card).render().el
       # TODO: DRY and optimize
-      el.detach
-      el.appendTo('body')
+      @_attach_card(el)
       el.offset({ top: @box.offset().top + 5, left: @box.offset().left + 5 })
       this

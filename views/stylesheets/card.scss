@@ -1,6 +1,6 @@
 // -*- mode: css; tab-width: 2; -*-
 
-body > .card {  position: absolute !important; }
+.card {  position: absolute !important; }
 
 .card {
   @include card-size;

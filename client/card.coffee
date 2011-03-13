@@ -35,11 +35,15 @@ class Card extends Backbone.Model
     @attributes['collection_id'] = @collection.id
     super()
 
-  set: (data) =>
+  load: (data) =>
     opts = { silent: true }
-    super(data, opts)
+    @set(data, opts)
     @move_to(CardCollection.all[data.collection_id],opts) if data.collection_id
     @change()
+
+  set: (data, opts = {}) =>
+    super(data, opts)
+    @move_to(CardCollection.all[data.collection_id],opts) if data.collection_id
 
   # Move from one collection to some other.
   #

@@ -9,6 +9,7 @@ class BattlefieldView extends Backbone.View
     @user_area_template = _.template($('#user-area-template').html())
     @model.bind 'add', @render
     @model.bind 'change', @render
+    @model.bind 'remove', @render
 
     @el = $('#battlefield')
     @el.droppable
@@ -18,17 +19,32 @@ class BattlefieldView extends Backbone.View
       accept: (draggable) ->
         ($('.card-over' ).length < 2) && draggable.hasClass('card');
 
+  render: =>
+    console.info 'rendering field'
+    @model.each (card) =>
+      view = CardView.find_or_create(card)
+      # DRY - it is CardCollectionView#_attach_card method
+      unless view.el.parent().tagName == 'BODY'
+        old = @to_relative(view.el.offset())
+        view.el.detach
+        view.el.appendTo('body')
+        view.el.offset(@to_global(old))
+
+      view.el.animate(@to_global(card.position()))
+
+
   dropped: (event,ui) =>
     p = ui.draggable.offset()
     card = ui.draggable.ob().model
     card.move_to(@model, { silent: true })
     card.set({ position: @to_relative(p) }, { silent: true })
+    @render()
     card.save()
 
   to_global: (p) =>
     origin = @el.offset()
     return {
-      top: p.y + @el.offset().top,
+      top:  p.y + @el.offset().top,
       left: p.x + @el.offset().left
     }
 
@@ -45,11 +61,3 @@ class BattlefieldView extends Backbone.View
       area = $(@user_area_template(user))
       area.addClass('local') if user.local
       @el.append(area)
-
-  render: =>
-    @model.each (card) =>
-      view = CardView.find_or_create(card)
-      # TODO: DRY and optimize
-      view.el.detach
-      view.el.appendTo('body')
-      view.el.animate(@to_global(card.position()))
