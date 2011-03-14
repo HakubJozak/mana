@@ -19,15 +19,20 @@ class HandView extends CardCollectionView
 
   initialize_local: =>
     @visible = true
+    $('#battlefield').click @toggle_visible
+    Controls.current.bind 'key:spacebar', @toggle_visible
+
+  toggle_visible: =>
+    @visible = !@visible
+    @render()
 
   render: =>
-    @_spread()
-
-    if @visible
+    if @visible and @model.user.local
       @el.fadeIn()
     else
       @el.fadeOut()
 
+    @_spread()
     this
 
   _spread: =>

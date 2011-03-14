@@ -1,6 +1,8 @@
 class Controls
 
   constructor: ->
+    _.extend(this, Backbone.Events);
+
     $(document).keypress (e) =>
       name = $(e.target)[0].nodeName;
 
@@ -21,9 +23,6 @@ class Controls
       when 'a'
         $('#create-card-dialog').dialog('open');
 
-        # when ' ':
-        #   $('#hand').ob().toggleShow()
-
       when 'm'
         $('#chat-bar').toggle()
         $('#chat-bar input').focus()
@@ -42,6 +41,10 @@ class Controls
         _.each @_selected_cards(), (card) ->
           delta = if e.shiftKey then -1 else 1
           card.adjust(property, delta )
+
+      else
+        @trigger('key:spacebar') if c == ' '
+        # TODO: make it generic/register
 
   _selected_cards: ->
     _.map $('.card:hover'), (el) -> $(el).ob().model
