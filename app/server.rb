@@ -48,8 +48,9 @@ module Mana
       @scripts = Dir['./client/*.coffee'].map { |f| File.basename(f, '.coffee') }.sort
 
       # TODO: handle priorities better way
-      @scripts.reject! { |s| s == 'battlefield' }
-      @scripts << 'battlefield'
+      @scripts.reject! { |s| ['visibility', 'battlefield', 'card_browser'].include?(s) }
+      @scripts << 'battlefield' << 'card_browser'
+      @script.unshift 'visibility'
 
       haml :game
     end

@@ -40,12 +40,7 @@ class CardView extends Backbone.View
     @el.data('game-object',this)
     @element = @el
 
-  # LEGACY
-  turnOverLocally: (state) ->
-    value = if state then '/images/back.jpg' else @model.image()
-    @el.find('img').attr('src',value)
-
-  clicked: (e) ->
+  clicked: (e) =>
     e.preventDefault()
     e.stopPropagation()
 
@@ -53,9 +48,6 @@ class CardView extends Backbone.View
       @model.toggle_tapped()
     else
       @show_detail()
-
-  initialize: ->
-    _.bindAll(this, 'render', 'clicked', 'show_detail')
 
   render: =>
     if @model.hidden()
@@ -78,7 +70,7 @@ class CardView extends Backbone.View
   set_image: (img) ->
     @img.attr('src',img)
 
-  show_detail: ->
+  show_detail: =>
     return if @model.covered()
 
     # TODO: template it

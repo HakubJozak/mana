@@ -1,6 +1,7 @@
 // -*- mode: css; tab-width: 2; -*-
 
-.hand {
+.card-browser, .hand {
+  display: none;
   position: fixed;
   top: 10px;
   left: $side-panel-width + 10;
