@@ -8,7 +8,8 @@ class Dropbox extends CardCollectionView
 
     @visible = true
     @_enable_browsing()
-    @box = @el.find('.box')
+    @box = @$('.box')
+    @box.css('position','relative')
     @box.droppable
       accept: @_accept_unless_in
       scope: 'cards'
@@ -30,5 +31,6 @@ class Dropbox extends CardCollectionView
       # TODO: DRY and optimize
       el.detach()
       el.appendTo(@box)
-
+      el.css('position','relative')
       el.offset({ top: @box.offset().top + 5, left: @box.offset().left + 5 })
+      # el.offset({ top: 5, left: 5 })

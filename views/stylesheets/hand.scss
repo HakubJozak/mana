@@ -2,7 +2,6 @@
 
 .card-browser, .hand {
   display: none;
-  top: 10px;
   left: $side-panel-width + 10;
 
   border: 1px dashed $hand-border-color;
@@ -36,6 +35,13 @@
 }
 
 
-.hand {  position: fixed; }
-.card-browser {  position: absolute; }
+.hand {
+  position: fixed;
+  z-index: $hand-z-index;
+}
+
+.card-browser {
+  position: absolute;
+  z-index: $browser-z-index;
+}
 

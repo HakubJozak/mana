@@ -8,8 +8,10 @@ class HandView extends FloatingBrowser
 
     if @model.user.local
       @visible = true
-      $('#battlefield').click @toggle_visible
       Controls.current.bind 'key:spacebar', @toggle_visible
+      $('#battlefield').click _.wrap( @toggle_visible, _.preventer)
+      $('#battlefield').bind('contextmenu', _.wrap( @toggle_visible, _.preventer))
+
 
   _render_if_visible: =>
     views = @model.map (card) -> CardView.find_or_create(card)

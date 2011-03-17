@@ -41,7 +41,10 @@ body {
         input { color: red; }
     }
 
-    .box-container { margin-bottom: 1em; }
+    .box-container {
+        margin-bottom: 1em;
+    }
+
     .box-container > h4 {
         @include side-panel-component;
         margin-bottom: 3px;

@@ -24,6 +24,7 @@
 .warning   { color: red }
 
 #battlefield {
+  @include no-text-select;
   @include border-radius;
   border: 1px dashed rgba(255, 255, 255, 0.14);
 

@@ -1,5 +1,13 @@
 // -*- mode: css; tab-width: 2; -*-
 
+@mixin no-text-select {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+
 @mixin transparent($alpha: 0.2) {
   background-color: rgba(0, 0, 0, $alpha);
 }
@@ -24,7 +32,6 @@
 @mixin shadow($size: 20px) {
   @include box-shadow( rgba(0,0,0,0.5), $size, $size, $size);
 }
-
 
 @mixin card-size {
   height: $card-h;
