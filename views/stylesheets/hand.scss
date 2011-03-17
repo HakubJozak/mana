@@ -2,26 +2,30 @@
 
 .card-browser, .hand {
   display: none;
-  position: fixed;
   top: 10px;
   left: $side-panel-width + 10;
-  z-index: $hand-z-index;
 
   border: 1px dashed $hand-border-color;
   background-color: rgba(255, 255, 255, 0.1);
-  margin-left: auto;
-  margin-right: auto;
   min-width: $card-w + 20;
-  min-height: 180px;
+  min-height: 195px;
 
   padding: 15px;
   padding-left: 10px;
 
   h2 {
-      position: absolute;
-      top: 2px;
-      left: 4px;
+      display: inline;
+      position: relative;
       color: transparentize($highlight-color, 0.3);
+  }
+
+ .button-bar {
+    display: inline;
+    font-size: 80%;
+    a {
+        margin-right: 5px;
+        display: inline;
+    }
   }
 
   &.card-over {
@@ -30,3 +34,8 @@
 
   @include shadow;
 }
+
+
+.hand {  position: fixed; }
+.card-browser {  position: absolute; }
+

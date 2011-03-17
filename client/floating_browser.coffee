@@ -19,12 +19,8 @@ class FloatingBrowser extends CardCollectionView
   render: =>
     if @visible
       @el.fadeIn()
+      @_render_if_visible()
     else
       @el.fadeOut()
 
-    @_spread()
     this
-
-  _spread: =>
-    console.info 'spreading...'
-

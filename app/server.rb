@@ -50,7 +50,7 @@ module Mana
       # TODO: handle priorities better way
       @scripts.reject! { |s| ['visibility', 'battlefield', 'card_browser'].include?(s) }
       @scripts << 'battlefield' << 'card_browser'
-      @script.unshift 'visibility'
+      @scripts.unshift 'visibility'
 
       haml :game
     end

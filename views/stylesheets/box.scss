@@ -3,7 +3,7 @@
 .box {
     @include dropbox;
     @include gradient;
-    @include side-panel-component; 
+    @include side-panel-component;
     &.card-over { @include focused; }
     img { @include card-size; }
 
@@ -12,23 +12,4 @@
 
 //    z-index: auto;
 
-  .button-bar {
-      display: none;
-      margin: 10px;
-      font-size: 80%;
-      a { margin-right: 5px; }
-  }
-}
-
-
-.box.unpacked {
-   border: 1px solid black;
-   background: #61461c url('../images/medium-texture.png');
-
-   .button-bar { 
-     display: block;
-     h4 { display: inline; font-size: 14px; }
-   }
-
-   @include shadow;
 }

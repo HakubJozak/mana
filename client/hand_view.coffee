@@ -5,12 +5,13 @@ class HandView extends FloatingBrowser
 
   constructor: (attrs) ->
     super(attrs)
+
     if @model.user.local
       @visible = true
       $('#battlefield').click @toggle_visible
       Controls.current.bind 'key:spacebar', @toggle_visible
 
-  _spread: =>
+  _render_if_visible: =>
     views = @model.map (card) -> CardView.find_or_create(card)
 
     padding = 10
@@ -19,5 +20,5 @@ class HandView extends FloatingBrowser
       card.el.detach()
       card.el.appendTo(@el)
       card.el.offset
-       top: @el.offset().top + 30,
+       top: @el.offset().top + 40,
        left: padding + @el.offset().left + i * (padding + CARD_W),

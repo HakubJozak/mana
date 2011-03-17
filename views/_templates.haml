@@ -10,7 +10,13 @@
 
 #cardbrowser-template
   %div{ :id => '{{id}}', :class => 'card-browser' }
-    %h2 Card Browser
+    %h2 {{name}}
+    .button-bar
+      %a.shuffle-button.button Shuffle
+      %a.uncover-button.button Uncover All
+      %a.cover-button.button Cover All
+      %a.close-button.button Close
+
 
 #user-template
   %div{ :id => 'user-{{id}}', :class => 'user' }
@@ -28,9 +34,3 @@
       {{name}}
       %a.browse-button.button Browse
     %div{ :class => "box {{name}}" }
-      .button-bar
-        %h4 $NAME
-        %a.shuffle-button.button Shuffle
-        %a.uncover-button.button Uncover All
-        %a.cover-button.button Cover All
-        %a.close-button.button Close
