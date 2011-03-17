@@ -8,6 +8,13 @@ class CardBrowser extends FloatingBrowser
       @toggle_visible()
       @dropbox.toggle_visible()
 
+    @$('.uncover-button').click =>
+      @model.each (card) -> card.toggle_covered(false, { save: false })
+
+    @$('.cover-button').click =>
+      @model.each (card) -> card.toggle_covered(true, { save: false })
+
+
   _render_if_visible: (width = 950) =>
     padding = 10;
     h_start = 35;

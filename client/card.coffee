@@ -60,15 +60,15 @@ class Card extends Backbone.Model
     @collection.remove(this, options)
     target.add(this, options)
 
-  toggle_covered: (state = null) ->
-    @_switch 'covered', state
+  toggle_covered: (state = null, opts = {}) ->
+    @_switch 'covered', state, opts
 
-  toggle_tapped: (state = null) ->
-    @_switch 'tapped', state
+  toggle_tapped: (state = null, opts = {}) ->
+    @_switch 'tapped', state, opts
 
-  change_position: (pos) ->
+  change_position: (pos, opts = { save: true }) ->
     @set({ position: pos })
-    @save()
+    @save() if opts.save
 
   adjust: (attr, delta) ->
     value = (@get(attr) || 0) + delta

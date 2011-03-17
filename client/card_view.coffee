@@ -24,6 +24,7 @@ class CardView extends Backbone.View
     @img = @el.find('img')
 
     @el.draggable
+      position: 0,
       scope: 'cards',
       snap: '.card',
       scroll: true,
