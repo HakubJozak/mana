@@ -8,6 +8,9 @@ class CardBrowser extends FloatingBrowser
       @toggle_visible()
       @dropbox.toggle_visible()
 
+    @$('.shuffle-button').click =>
+      @model.shuffle()
+
     @$('.uncover-button').click =>
       @model.each (card) -> card.toggle_covered(false, { save: false })
 

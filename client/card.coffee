@@ -35,6 +35,12 @@ class Card extends Backbone.Model
     @element = @el
     @set({ image: @get('image_url')}) unless @get('image')
 
+  shuffle: =>
+    sortBy ->  Math.random() > 0.5
+    # HACK: does not work remotely
+    @render()
+
+
   hidden: =>
      false
 #    @collection.visible?
@@ -80,19 +86,3 @@ class Card extends Backbone.Model
     @set({ "#{attr}" : state })
     @save()
     this
-
-
-
-class CardCollection extends Backbone.Collection
-  model : Card
-
-  @all: []
-
-  constructor: (@id, @name, params) ->
-    super(params)
-    CardCollection.all[@id] = this
-    throw 'Name of the CardCollection missing' unless @name
-    throw 'ID of the CardCollection missing' unless @id
-    @trigger('add')
-
-  visible: -> false

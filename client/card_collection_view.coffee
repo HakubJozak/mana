@@ -10,6 +10,7 @@ class CardCollectionView extends Backbone.View
 
     @model.bind 'add', @render
     @model.bind 'remove', @render
+    @model.bind 'refresh', @render
 
   _accept_unless_in: (card)  =>
     !@model.include(card.ob().model)

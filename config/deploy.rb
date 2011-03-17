@@ -7,6 +7,7 @@ set :user, 'root'
 
 set :scm, :git
 set :deploy_to, "/root/#{application}_production"
+set :branch, 'backbone'
 
 
 role :app, "mana-edge"
@@ -27,11 +28,11 @@ namespace :deploy do
 end
 
 
-namespace :thin do  
-  %w(start stop restart).each do |action| 
-  desc "#{action} the app's Thin Cluster"  
-    task action.to_sym, :roles => :app do  
-      run "thin #{action} -c #{deploy_to}/current -C #{deploy_to}/current/config/thin.yml" 
+namespace :thin do
+  %w(start stop restart).each do |action|
+  desc "#{action} the app's Thin Cluster"
+    task action.to_sym, :roles => :app do
+      run "thin #{action} -c #{deploy_to}/current -C #{deploy_to}/current/config/thin.yml"
     end
   end
 end
