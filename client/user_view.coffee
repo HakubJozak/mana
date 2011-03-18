@@ -21,6 +21,6 @@ class UserView extends Backbone.View
 
 
   render: =>
-   @$('.lives').text('(' + @model.lives() + ')')
-   _.each @components, (box) ->
-     box.render()
+    @$('.lives').val @model.lives()
+    _.each @components, (box) ->
+      box.render()

@@ -21,8 +21,8 @@
 #user-template
   %div{ :id => 'user-{{id}}', :class => 'user' }
     %h3
-      %span.name {{name}}
-      %span.lives {{lives}}
+      %span{ :class => 'name' } {{name}}
+      %input.lives{ :value => '{{lives}}' }
 
 #user-area-template
   %div{ :class => 'user-area user-{{id}}' }

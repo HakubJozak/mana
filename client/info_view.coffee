@@ -2,12 +2,17 @@ class InfoView extends Backbone.View
 
   initialize: ->
     @el = $('#infobox')
-    Chat.instance.bind ''
+    @output = $('#infobox p:first');
+    @last = 0
+
+  message_added: =>
+    @render()
 
   render: (msg) =>
-    output = $('#infobox p:first');
-    output.append( msg.toString() + "<br/>");
+    @el.fadeIn()
+    for i in [@last...@model.length]
+      one = $('<span>' + @model.at(i).text() + '<br/></span>')
+      @output.append(one)
+      one.delay(6000).fadeOut()
 
-    unless @el.is(':visible')
-      @el.show('fade').delay(5000).hide 'fade', ->
-        $('#infobox p:first').html('')
+    @last = @model.length

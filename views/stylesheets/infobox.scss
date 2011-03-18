@@ -3,8 +3,9 @@
 #infobox {
  position: fixed;
  top: $top_bar_height;
+ left: $side-panel-width + 10;
+
  heigth: 30px;
- width: 100%;
  padding: 10px;
 
  background-color: rgba(80, 80, 80, 0.2);

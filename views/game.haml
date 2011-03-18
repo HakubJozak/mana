@@ -40,25 +40,29 @@
         Socket.instance = new Socket('ws://#{ADDRESS}:#{WEBSOCKET_PORT}','#{@game_id}');
         Socket.instance.connect()
 
-        Chat.instance = new Chat();
-        new ChatView({ model: Chat.instance });
-
         var battlefield = new Battlefield();
         var bview = new BattlefieldView({ model: battlefield });
         User.all.bind('add', bview.render_user_areas)
 
-        var info = new InfoView();
-        InfoView.instance = info;
-        var lobby = new LobbyView();
+        chat = new Chat();
+        new ChatView({ model: chat });
 
-        Chat.instance.bind('add', info.render);
+        var info = new InfoView({ model: chat });
+        InfoView.instance = info;
+        lobby = new LobbyView();
+
+        chat.bind('add', info.render);
         Socket.instance.bind('all', info.render);
         Socket.instance.bind('socket:connected', lobby.open);
-        // TODO: if ENV['RACK_ENV'] == 'development'
-        Socket.instance.bind('socket:connected', lobby.submit);
 
         console.env = '#{ENV['RACK_ENV']}';
       });
+
+    - if ENV['RACK_ENV'] == 'development'
+      :javascript
+        $(document).ready(function() {
+          Socket.instance.bind('socket:connected', lobby.submit);
+        });
 
 %body
   = haml(:_lobby, :layout => false)

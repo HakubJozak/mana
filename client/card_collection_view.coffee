@@ -25,11 +25,7 @@ class CardCollectionView extends Backbone.View
     @render()
 
   render: =>
-    console.info 'here'
-    console.info @el
-
     if @visible
-      console.info 'is visible'
       @el.fadeIn()
       @_render_if_visible()
     else

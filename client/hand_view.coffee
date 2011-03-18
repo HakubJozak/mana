@@ -11,7 +11,14 @@ class HandView extends FloatingBrowser
       Controls.current.bind 'key:spacebar', @toggle_visible
       $('#battlefield').click _.wrap( @toggle_visible, _.preventer)
       $('#battlefield').bind('contextmenu', _.wrap( @toggle_visible, _.preventer))
+      @el.droppable('option','drop', @_dropped_and_turned)
 
+  # TODO: DRY
+  _dropped_and_turned: (event, ui) =>
+    card = ui.draggable.ob().model
+    card.move_to(@model)
+    card.toggle_covered(false, { save: false })
+    card.save()
 
   _render_if_visible: =>
     views = @model.map (card) -> CardView.find_or_create(card)

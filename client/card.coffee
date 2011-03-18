@@ -43,7 +43,6 @@ class Card extends Backbone.Model
 
   hidden: =>
      false
-#    @collection.visible?
 
   toJSON: =>
     @attributes['collection_id'] = @collection.id

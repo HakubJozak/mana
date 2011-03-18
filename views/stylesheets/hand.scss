@@ -37,11 +37,13 @@
 
 .hand {
   position: fixed;
+  top: 10px;
   z-index: $hand-z-index;
 }
 
 .card-browser {
   position: absolute;
+  top: 250px;
   z-index: $browser-z-index;
 }
 

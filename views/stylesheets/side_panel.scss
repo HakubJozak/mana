@@ -36,9 +36,18 @@ body {
 
   .users {
     h3 {
-        @include transparent;
-        padding: 3px;
-        input { color: red; }
+      @include transparent;
+      padding: 3px;
+      padding-bottom: 10px;
+      font-size: larger;
+    }
+
+    input.lives {
+      font-size: medium;
+      padding: 3px;
+      text-align: center;
+      width: 2em;
+      float: right;
     }
 
     .box-container {

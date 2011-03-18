@@ -23,13 +23,22 @@
 .highlight { color: $highlight-color }
 .warning   { color: red }
 
+input {
+  color: #C8B472;
+  background: rgba(48, 0, 0, 0.5);
+  border: 1px solid #693E1B;
+  font-family: Georgia !important;
+  @include border-radius;
+}
+
+
 #battlefield {
   @include no-text-select;
   @include border-radius;
   border: 1px dashed rgba(255, 255, 255, 0.14);
 
   .user-area {
-      height: 320px;
+      height: 400px;
       background-color: rgba(30, 30, 30, 0.2);
       &.local { background-color: rgba(40, 0, 0, 0.2);}
 

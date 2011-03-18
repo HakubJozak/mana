@@ -18,7 +18,6 @@ class ChatView extends Backbone.View
     @el.hide().children('input').blur()
 
   submit_chat: ->
-    console.info '1211212'
     input = @el.find('input');
 
     # TODO: replace by create method
