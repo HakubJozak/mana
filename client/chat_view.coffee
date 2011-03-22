@@ -22,8 +22,8 @@ class ChatView extends Backbone.View
 
     # TODO: replace by create method
     message = new Message({ text: input.val() });
-    message.save()
     @model.add message
+    message.save()
 
     input.val('');
     false

@@ -1,5 +1,5 @@
 #card-template
-  %div{ :id => 'card-{{id}}', :class => 'card' }
+  %div{ :id => 'card-{{id}}', :class => 'card user-{{user_id}}' }
     %img{ :src => "{{image}}" }
       .counters{ :style => 'display:none' } 0
       .power{ :style => 'display:none' }
@@ -17,6 +17,16 @@
       %a.cover-button.button Cover All
       %a.close-button.button Close
 
+
+#user-stylesheet-template
+  :css
+    #infobox .user-{{id}} { color: {{color}} }
+    .user-{{id}}.card:hover {
+     -moz-box-shadow: {{color}} 0px 0px 15px 0;
+     -webkit-box-shadow: {{color}} 0px 0px 15px 0;
+     -o-box-shadow: {{color}} 0px 0px 15px 0;
+     box-shadow: {{color}} 0px 0px 15px 0;
+    }
 
 #user-template
   %div{ :id => 'user-{{id}}', :class => 'user' }

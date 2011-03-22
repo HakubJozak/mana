@@ -26,7 +26,7 @@ class Socket
       card.set(data.card)
 
     if data.message
-      Chat.instance.add(new Message(data.message))
+      @trigger('arrived:message', data.message)
 
     if data.user
       console.info data.user
@@ -52,10 +52,11 @@ class Socket
     @ws.send(obj)
 
   # LEGACY - transform it to User.save and Library.save
-  start_game: (name, cards) ->
+  start_game: (attrs) ->
     @ws.send(JSON.stringify({
       action: 'connect',
       game_id: @game_id,
-      cards: cards,
-      name: name
+      cards: attrs.cards,
+      name: attrs.name,
+      color: attrs.color
     }))

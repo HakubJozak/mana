@@ -5,13 +5,11 @@ class InfoView extends Backbone.View
     @output = $('#infobox p:first');
     @last = 0
 
-  message_added: =>
-    @render()
-
   render: (msg) =>
     @el.fadeIn()
     for i in [@last...@model.length]
-      one = $('<span>' + @model.at(i).text() + '<br/></span>')
+      msg = @model.at(i)
+      one = $("<div><span class='user-#{msg.user.id}'>#{msg.user.name()}:</span> #{msg.text()}</div>")
       @output.append(one)
       one.delay(6000).fadeOut()
 

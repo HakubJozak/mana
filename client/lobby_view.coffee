@@ -32,7 +32,10 @@ class LobbyView
 
   submit: =>
     if @is_valid
-      Socket.instance.start_game( @grab_input('name'), @grab_input('cards'))
+      Socket.instance.start_game
+        name: @grab_input('name'),
+        color: @grab_input('color'),
+        cards: @grab_input('cards')
 
       $('button').attr('disabled',true)
       $('#lobby').dialog('close');
@@ -45,5 +48,4 @@ class LobbyView
 
   open: =>
     $('#lobby').dialog('open')
-
 
