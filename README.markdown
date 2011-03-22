@@ -36,16 +36,10 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 
 ### Bugs
  - card stacking on drop does not work remotely
- - removing user causes error
- - append card on dropbox does not work
- - when browsing library and uncover some card, it is uncovered remotely too
+
 
 ### Essential - Alfa
- - make opponents libraries and graveyard browsable
- - counters
  - disconnect recovery
- - each user has its own color
- - life counter
  - number of cards in hand
 
 ### Early Beta +
