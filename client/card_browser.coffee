@@ -27,7 +27,7 @@ class CardBrowser extends FloatingBrowser
     @el.css('width', width)
 
     @model.each (card, i) =>
-      view = CardView.find_or_create(card)
+      view = CardView.find_or_create(@model.at(@model.length - i - 1))
       x = Math.floor(i % columns)
       y = Math.floor(i / columns)
       position = @el.offset()
