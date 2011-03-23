@@ -33,6 +33,13 @@
     %h3
       %span{ :class => 'name' } {{name}}
       %input.lives{ :value => '{{lives}}' }
+    -# %table
+    -#   %tr
+    -#     %td Hand
+    -#     %td 7
+    -#   %tr
+    -#     %td Library
+    -#     %td 100
 
 #user-area-template
   %div{ :class => 'user-area user-{{id}}' }
@@ -44,3 +51,7 @@
       {{name}}
       %a.browse-button.button Browse
     %div{ :class => "box {{name}}" }
+      .count.overlay{ :style => 'display:none' }
+      -# .browse.overlay{ :style => 'display:none' } browse
+
+

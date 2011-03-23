@@ -17,6 +17,14 @@ class Dropbox extends CardCollectionView
       hoverClass: 'card-over'
       drop: @dropped
 
+    # TODO - DRY - abstract overlay
+    @box.mouseenter =>
+      @$('.overlay').fadeIn()
+
+    @box.mouseleave =>
+      @$('.overlay').fadeOut()
+
+
   _enable_browsing: =>
     @browser = new CardBrowser({ model: @model, dropbox: this })
     @$('.browse-button').click =>
@@ -26,6 +34,7 @@ class Dropbox extends CardCollectionView
   tappingAllowed: -> false
 
   _render_if_visible: =>
+    @$('.count').text(@model.length)
     @model.each (card) =>
       el = CardView.find_or_create(card).render().el
       # TODO: DRY and optimize

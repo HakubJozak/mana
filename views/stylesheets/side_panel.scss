@@ -42,6 +42,15 @@ body {
       font-size: larger;
     }
 
+    table {
+      borders: none;
+      color: white;
+      font-size: small;
+      margin-bottom: 1em;
+
+      td { borders: none; }
+    }
+
     input.lives {
       font-size: medium;
       padding: 3px;

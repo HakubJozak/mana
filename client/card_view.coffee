@@ -33,6 +33,9 @@ class CardView extends Backbone.View
       snapMode: 'inner',
       zIndex: 9999
       stack: '.card',
+      start: =>
+        # HACK
+        $('.overlay').trigger('mouseleave')
 
     @el.bind 'click', @clicked
     @el.bind 'contextmenu', @clicked
