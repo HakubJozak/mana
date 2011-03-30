@@ -7,7 +7,7 @@ set :user, 'root'
 
 set :scm, :git
 set :deploy_to, "/root/#{application}_production"
-set :branch, 'backbone'
+set :branch, 'master'
 
 
 role :app, "mana-edge"
