@@ -1,9 +1,10 @@
 module Mana
   class User
+    include MongoMapper::Document
     include Mana::Commander
 
     attr_accessor :sid, :library
-    attr_reader :ws, :name
+    attr_reader :name
 
     alias :id :sid
 

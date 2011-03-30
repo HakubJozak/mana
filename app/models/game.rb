@@ -1,13 +1,11 @@
 module Mana
 
   class Game
+    include MongoMapper::Document
+
     @@games = {}
 
     attr_reader :users
-
-    def self.find_or_create(id)
-      @@games[id] || create(id)
-    end
 
     def initialize(id)
       @id = id
@@ -50,6 +48,10 @@ module Mana
       @channel.unsubscribe(user.sid)
       # TODO - send just ID and type
       # broadcast_to :opponents, user.to_hash
+    end
+
+    def self.find_or_create(id)
+      @@games[id] || create(id)
     end
 
     private

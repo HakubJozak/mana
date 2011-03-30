@@ -2,6 +2,8 @@ require 'ostruct'
 
 class Card < OpenStruct
 
+  include MongoMapper::Document
+
   attr_accessor :user
 
   @@counter = 0
@@ -14,13 +16,8 @@ class Card < OpenStruct
 
   def self.copy(original, user)
     card = original.clone
-    card.id = Card.new_id
     card.user = user
     card
-  end
-
-  def self.new_id
-    @@counter += 1
   end
 
   def to_hash

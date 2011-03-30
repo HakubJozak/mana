@@ -32,11 +32,17 @@ module Mana
     # let it actually do something!
     #
     get '/stylesheets/users/:user_id.css' do
+      MongoMapper.connection = mongo
+      MongoMapper.database = 'mana'
+      # MongoMapper.database.authenticate('{user-name}','{user-password}'
+
+      user = s.find_user(params[:user_id])
+      puts user.id
+
       content_type 'text/css', :charset => 'utf-8'
       @color = 'red'
       erb :'stylesheets/user.css'
     end
-
 
     get '/stylesheets/:name.css' do
       content_type 'text/css', :charset => 'utf-8'

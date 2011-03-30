@@ -8,6 +8,7 @@ require 'config/environments'
 require_all 'app'
 
 
+
 # HACK
 class EventMachine::WebSocket::Connection
   attr_accessor :game, :user
