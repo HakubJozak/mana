@@ -2,7 +2,7 @@ require 'ostruct'
 
 class Card < OpenStruct
 
-  attr_accessor :user
+  attr_accessor :user, :id
 
   @@counter = 0
 
@@ -16,6 +16,10 @@ class Card < OpenStruct
     card = original.clone
     card.id = Card.new_id
     card.user = user
+
+    puts 'Created card'
+    puts card.inspect
+
     card
   end
 
@@ -24,12 +28,14 @@ class Card < OpenStruct
   end
 
   def to_hash
-    { :id => id,
+    result = { :id => id,
       :name => name,
-      :user_id => user.id,
       :image_url => image_url,
       :picture => image_url,
       :url => url }
+
+    result[:user_id] = user.id if user
+    result
   end
 
 end

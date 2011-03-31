@@ -5,6 +5,8 @@ class Library
   # TODO: handle bad lines
   # TODO: handle wrong names
   def initialize(user, card_list = '')
+    raise 'User not supplied' unless user
+
     @user = user
 
     @cards = card_list.lines.map do |line|
