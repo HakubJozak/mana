@@ -28,6 +28,7 @@ class Card extends Backbone.Model
 
   initialize: ->
     throw 'Missing card ID' unless @id
+    throw 'Missing user_id' unless @get('user_id')
     # throw 'Missing container' unless @container
     # CardCollection.all.add(this)
     # throw 'Missing card owner' unless @owner
@@ -45,7 +46,7 @@ class Card extends Backbone.Model
      false
 
   toJSON: =>
-    @attributes['collection_id'] = @collection.id
+    @attributes['collection_id'] = @collection.id if @collection
     super()
 
   load: (data) =>
@@ -65,10 +66,10 @@ class Card extends Backbone.Model
     @collection.remove(this, options)
     target.add(this, options)
 
-  toggle_covered: (state = null, opts = {}) ->
+  toggle_covered: (state = null, opts = {}) =>
     @_switch 'covered', state, opts
 
-  toggle_tapped: (state = null, opts = {}) ->
+  toggle_tapped: (state = null, opts = {}) =>
     @_switch 'tapped', state, opts
 
   change_position: (pos, opts = { save: true }) ->
@@ -80,7 +81,7 @@ class Card extends Backbone.Model
     @set({ "#{attr}": value })
     @save()
 
-  _switch: (attr, state) ->
+  _switch: (attr, state) =>
     state ||= !@get(attr)
     @set({ "#{attr}" : state })
     @save()

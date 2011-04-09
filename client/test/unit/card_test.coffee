@@ -1,6 +1,15 @@
 module 'Card tests'
   setup: ->
-    @card = new Card({ id: 42, name: 'Forest', image: 'http://a.jpg'})
+    @card = new Card({ id: 42, name: 'Forest', image: 'http://a.jpg', user_id: 43 })
+    Backbone.sync = ->
+
+test 'throws exception on missing user ID', ->
+  raises ->
+    new Card({ id: 42, name: 'Forest', image: 'http://a.jpg' })
+
+test 'throws exception on null ID', ->
+  raises ->
+    new Card({ name: 'Forest', image: 'http://a.jpg', user_id: 43 })
 
 test 'Attributes are assigned in constructor', ->
   equals @card.name(), 'Forest'
@@ -9,21 +18,18 @@ test 'Attributes are assigned in constructor', ->
 test 'is not tapped by default', ->
   equals @card.tapped(), false
 
-test 'throws exception on null ID', ->
-  raises ->
-    new Card()
-
 test 'has non-null ID', ->
   ok _.isNumber(@card.id)
 
 test 'can be tapped', ->
-  @card.toggle_tapped().tapped()
+  ok  @card.toggle_tapped().tapped()
 
 
-module 'CardView dsfds'
+module 'CardView'
   setup: ->
-    @card = new Card({ name: 'Forest', image: 'http://a.jpg', id: 42 })
+    @card = new Card({ name: 'Forest', image: 'http://a.jpg', id: 42, user_id: 43 })
     @view = new CardView({ model: @card })
+    Backbone.sync = ->
 
 test 'creates correct element', ->
   equals $(@view.el).find('img').attr('src'), 'http://a.jpg'

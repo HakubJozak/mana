@@ -25,6 +25,12 @@ class CardCollectionView extends Backbone.View
     @render()
 
   render: =>
+    views = @model.map (card) -> CardView.find_or_create(card)
+
+    _.each views, (card, i) =>
+      card.el.detach()
+      card.el.appendTo(@el)
+
     if @visible
       @el.fadeIn()
       @_render_if_visible()
