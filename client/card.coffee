@@ -17,11 +17,12 @@ class Card extends Backbone.Model
     power: null
     toughness: null
 
-  position: -> @get('position')
-  tapped: -> @get('tapped')
-  covered: -> @get('covered')
-  image: -> @get('image')
-  name: -> @get('name')
+  order: => @get('order')
+  position: => @get('position')
+  tapped: => @get('tapped')
+  covered: => @get('covered')
+  image: => @get('image')
+  name: => @get('name')
   counters: => @get('counters')
   power: => @get('power')
   toughness: => @get('toughness')
@@ -29,6 +30,8 @@ class Card extends Backbone.Model
   initialize: ->
     throw 'Missing card ID' unless @id
     throw 'Missing user_id' unless @get('user_id')
+    throw 'Missing order' if @get('order') == null
+
     # throw 'Missing container' unless @container
     # CardCollection.all.add(this)
     # throw 'Missing card owner' unless @owner
@@ -59,11 +62,17 @@ class Card extends Backbone.Model
     super(data, opts)
     @move_to(CardCollection.all[data.collection_id],opts) if data.collection_id
 
-  # Move from one collection to some other.
+  # Move from one collection to some other, optionally adjusting the position.
   #
   move_to: (target, options = {}) =>
     return if target == @collection
     @collection.remove(this, options)
+
+    if options['order'] == 'last'
+      @set { order: target.last().order() + 10 }
+    else if options['order'] == 'first'
+      @set { order: target.first().order() - 10 }
+
     target.add(this, options)
 
   toggle_covered: (state = null, opts = {}) =>

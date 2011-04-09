@@ -10,6 +10,9 @@ class CardCollection extends Backbone.Collection
     throw 'ID of the CardCollection missing' unless @id
     @trigger('add')
 
+  comparator: (card) ->
+    card.order()
+
   shuffle: =>
     @comparator = (card) => Math.floor(Math.random() * (@length + 1))
     @sort()

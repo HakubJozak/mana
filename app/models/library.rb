@@ -17,6 +17,7 @@ class Library
     @cards.flatten!
     @cards.compact!
     @cards.shuffle!
+    @cards.each_with_index { |c,i| c.order = i }
   end
 
   def to_hash

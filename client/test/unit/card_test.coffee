@@ -1,6 +1,8 @@
+card_attrs = { name: 'Forest', image: 'http://a.jpg', id: 42, user_id: 43, order: 1 }
+
 module 'Card tests'
   setup: ->
-    @card = new Card({ id: 42, name: 'Forest', image: 'http://a.jpg', user_id: 43 })
+    @card = new Card(card_attrs)
     Backbone.sync = ->
 
 test 'throws exception on missing user ID', ->
@@ -27,7 +29,7 @@ test 'can be tapped', ->
 
 module 'CardView'
   setup: ->
-    @card = new Card({ name: 'Forest', image: 'http://a.jpg', id: 42, user_id: 43 })
+    @card = new Card(card_attrs)
     @view = new CardView({ model: @card })
     Backbone.sync = ->
 

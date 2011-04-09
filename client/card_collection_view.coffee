@@ -17,7 +17,7 @@ class CardCollectionView extends Backbone.View
 
   dropped: (event,ui) =>
     card = ui.draggable.ob().model
-    card.move_to(@model)
+    card.move_to(@model, { order: 'last' })
     card.save()
 
   toggle_visible: =>

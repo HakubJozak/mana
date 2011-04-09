@@ -2,7 +2,7 @@ require 'ostruct'
 
 class Card < OpenStruct
 
-  attr_accessor :user, :id
+  attr_accessor :user, :id, :order
 
   @@counter = 0
 
@@ -28,7 +28,9 @@ class Card < OpenStruct
   end
 
   def to_hash
-    result = { :id => id,
+    result = {
+      :id => id,
+      :order => order,
       :name => name,
       :image_url => image_url,
       :picture => image_url,
