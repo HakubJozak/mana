@@ -67,17 +67,7 @@
 %body
   = haml(:_lobby, :layout => false)
   = haml(:_create_card, :layout => false)
-  #card-browser{:title => "Card Browser", :style => 'display: none' }
-
-  #left-panel.side-panel
-    .users
-
-  #battlefield
-
-  #right-panel.side-panel
-    .users
-
-  #desk
+  = haml(:_playground, :layout => false)
 
   #infobox{ :style => 'display:none' }
     %p

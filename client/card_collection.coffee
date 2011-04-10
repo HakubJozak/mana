@@ -11,6 +11,7 @@ class CardCollection extends Backbone.Collection
     @trigger('add')
 
   comparator: (card) ->
+    console.info('comparing...')
     card.order()
 
   shuffle: =>

@@ -35,8 +35,9 @@ class Dropbox extends CardCollectionView
 
   _render_if_visible: =>
     @$('.count').text(@model.length)
-    @model.each (card) =>
-      el = CardView.find_or_create(card).render().el
+    @model.each (card, i) =>
+      # el = CardView.find_or_create(card).render().el
+      el  = CardView.find_or_create(@model.at(@model.length - i - 1)).render().el
       # TODO: DRY and optimize
       el.detach()
       el.appendTo(@box)

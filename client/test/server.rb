@@ -28,7 +28,7 @@ get '/client/:name.js' do
 end
 
 get '/tests/unit/:name.js' do
-  coffee :"../test/unit/card_test", :no_wrap => true
+  coffee :"../test/unit/#{params[:name]}", :no_wrap => true
 end
 
 get '/suites/:suite.html' do

@@ -10,10 +10,26 @@
     %script{:src => "/javascripts/vendor/underscore.js", :type => "text/javascript"}
     %script{:src => "/javascripts/vendor/backbone.js", :type => "text/javascript"}
 
+    %script{:src => "/javascripts/utils.js", :type => "text/javascript"}
+    %script{:src => "/javascripts/boot.js", :type => "text/javascript"}
+
+    %script{:src => "/client/user.js", :type => "text/javascript"}
+    %script{:src => "/client/user_view.js", :type => "text/javascript"}
+
+
     %script{:src => "/client/card.js", :type => "text/javascript"}
     %script{:src => "/client/card_view.js", :type => "text/javascript"}
-    %script{:src => "/tests/unit/card_test.js", :type => "text/javascript"}
 
+    %script{:src => "/client/card_collection.js", :type => "text/javascript"}
+    %script{:src => "/client/card_collection_view.js", :type => "text/javascript"}
+
+    %script{:src => "/client/dropbox.js", :type => "text/javascript"}
+    %script{:src => "/client/floating_browser.js", :type => "text/javascript"}
+    %script{:src => "/client/card_browser.js", :type => "text/javascript"}
+
+    %script{:src => "/client/hand.js", :type => "text/javascript"}
+    %script{:src => "/client/hand_view.js", :type => "text/javascript"}
+    %script{:src => "/tests/unit/#{@suite}.js", :type => "text/javascript"}
 
   %body
     %h1#qunit-header QUnit Test Suite
@@ -23,4 +39,4 @@
     %ol#qunit-tests
     #qunit-fixture
       = haml :"#{ROOT}/views/_templates", :layout => false
-
+      = haml :"#{ROOT}/views/_playground", :layout => false

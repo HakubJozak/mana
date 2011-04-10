@@ -1,5 +1,4 @@
 Backbone.sync = (method, model, success, error) ->
-  '!!!'
   console.debug method
 
   name = model.constructor.name.toLowerCase()
