@@ -27,5 +27,5 @@ test 'Card drop', ->
 
   equals cview.el.parent().attr('id'), 'desk'
   hand_view._dropped_and_turned({}, { draggable: cview.el })
-  equals cview.el.parent().attr('id'), 'hand'
+  equals cview.el.parent().attr('id'), 'hand-42'
 

@@ -20,7 +20,17 @@ class HandView extends FloatingBrowser
     card.toggle_covered(false, { save: false })
     card.save()
 
-  _render_if_visible: =>
+  render: =>
+    if @visible
+      @el.fadeIn()
+    else
+      @el.fadeOut()
+
+    @_render_cards()
+    this
+
+
+  _render_cards: =>
     views = @model.map (card) -> CardView.find_or_create(card)
 
     padding = 10

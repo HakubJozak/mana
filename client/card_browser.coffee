@@ -18,6 +18,15 @@ class CardBrowser extends FloatingBrowser
       @model.each (card) -> card.toggle_covered(true, { save: false })
 
 
+  render: =>
+    if @visible
+      @_render_if_visible()
+      @el.fadeIn()
+    else
+      @el.fadeOut()
+
+    this
+
   _render_if_visible: (width = 950) =>
     padding = 10;
     h_start = 35;
