@@ -4,4 +4,4 @@ Bundler.require :default, :test
 require 'test/unit/capybara'
 require 'capybara-webkit'
 
-require File.expand_path 'server'
+require File.join File.dirname(__FILE__), 'server'

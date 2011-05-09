@@ -34,9 +34,10 @@ end
 
 
 group :test do
-  gem 'jasmine'
-#  gem 'turn'
+  gem 'capybara-webkit'
+  gem 'capybara'
+  gem 'test-unit-capybara'
+
   gem 'shoulda'
-#  gem 'mongo'
   gem 'mocha'
 end

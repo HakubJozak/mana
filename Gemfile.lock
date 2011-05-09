@@ -13,30 +13,40 @@ GEM
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.0.0)
     capistrano_colors (0.5.2)
+    capybara (0.4.1.2)
+      celerity (>= 0.7.9)
+      culerity (>= 0.2.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (>= 0.0.27)
+      xpath (~> 0.1.3)
+    capybara-webkit (0.3.0)
+      capybara (~> 0.4.1)
+    celerity (0.8.9)
+    childprocess (0.1.8)
+      ffi (~> 1.0.6)
     coffee-script (2.1.1)
       coffee-script-source
     coffee-script-source (0.9.5)
     columnize (0.3.2)
     compass (0.10.6)
       haml (>= 3.0.4)
+    culerity (0.2.15)
     daemons (1.1.0)
-    diff-lcs (1.1.2)
     em-websocket (0.1.4)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
     eventmachine (0.12.10)
+    ffi (1.0.7)
+      rake (>= 0.8.7)
     haml (3.0.23)
     highline (1.6.1)
-    jasmine (1.0.1)
-      json_pure (>= 1.4.3)
-      rack (>= 1.0.0)
-      rake (>= 0.8.7)
-      rspec (>= 1.1.5)
-      selenium-client (>= 1.2.17)
-      selenium-rc (>= 2.1.0)
-    json_pure (1.4.6)
+    json_pure (1.5.1)
     linecache19 (0.5.11)
       ruby_core_source (>= 0.1.4)
+    mime-types (1.16)
     mocha (0.9.10)
       rake
     mongo (1.1.2)
@@ -48,30 +58,26 @@ GEM
     net-ssh (2.0.23)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
+    nokogiri (1.4.4)
     rack (1.2.1)
+    rack-test (0.6.0)
+      rack (>= 1.0)
     railsless-deploy (1.0.2)
     rake (0.8.7)
     require_all (1.2.0)
-    rspec (2.0.1)
-      rspec-core (~> 2.0.1)
-      rspec-expectations (~> 2.0.1)
-      rspec-mocks (~> 2.0.1)
-    rspec-core (2.0.1)
-    rspec-expectations (2.0.1)
-      diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.1)
-      rspec-core (~> 2.0.1)
-      rspec-expectations (~> 2.0.1)
     ruby-debug-base19 (0.11.24)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
       ruby_core_source (>= 0.1.4)
     ruby_core_source (0.1.4)
       archive-tar-minitar (>= 0.5.2)
+    rubyzip (0.9.4)
     sass (3.1.0.alpha.34)
-    selenium-client (1.2.18)
-    selenium-rc (2.2.4)
-      selenium-client (>= 1.2.18)
+    selenium-webdriver (0.2.0)
+      childprocess (>= 0.1.7)
+      ffi (>= 1.0.7)
+      json_pure
+      rubyzip
     shoulda (2.11.3)
     sinatra (1.1.0)
       rack (~> 1.1)
@@ -79,11 +85,17 @@ GEM
     sinatra-mongo (0.1.0)
       mongo
       sinatra (>= 0.9.4)
+    test-unit (2.3.0)
+    test-unit-capybara (1.0.0)
+      capybara
+      test-unit (>= 2.1.2)
     thin (1.2.7)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     tilt (1.1)
+    xpath (0.1.4)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -93,11 +105,12 @@ DEPENDENCIES
   awesome_print
   capistrano
   capistrano_colors
+  capybara
+  capybara-webkit
   coffee-script
   compass
   em-websocket
   haml
-  jasmine
   mocha
   mongo
   rack (~> 1.2.1)
@@ -108,4 +121,5 @@ DEPENDENCIES
   shoulda
   sinatra
   sinatra-mongo
+  test-unit-capybara
   thin

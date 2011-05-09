@@ -1,7 +1,0 @@
-source :rubygems
-
-gem 'coffee-script'
-gem 'sinatra'
-gem 'capybara-webkit'
-gem 'capybara'
-gem 'test-unit-capybara'
