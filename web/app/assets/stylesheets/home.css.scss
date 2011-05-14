@@ -4,11 +4,27 @@
   You can use Sass (SCSS) here: http://sass-lang.com/
 */
 
+@import "compass";
+
+
 ul.hmenu {
-  position: absolute;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+
+  background-color: grey;
+  text-align: left;
+  width: 100%;
+
+  margin: 0px;
+  padding: 0.4em;
 
   li {
     display: inline;
-    a { color: red; }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
   }
 }

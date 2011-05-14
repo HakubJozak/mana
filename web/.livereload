@@ -3,16 +3,18 @@
 # additional extensions to monitor
 config.exts << 'scss'
 config.exts << 'coffee'
+config.exts << 'haml'
 
 # exclude files with NAMES matching this mask
 #config.exclusions << '~*'
 # exclude files with PATHS matching this mask (if the mask contains a slash)
 #config.exclusions << '/excluded_dir/*'
 # exclude files with PATHS matching this REGEXP
-#config.exclusions << /somedir.*(ab){2,4}.(css|js)$/
+config.exclusions << /.*_flymake.*$/
 
 # reload the whole page when .js changes
-#config.apply_js_live = false
+config.apply_js_live = false
+
 # reload the whole page when .css changes
 #config.apply_css_live = false
 # reload the whole page when images (png, jpg, gif) change
