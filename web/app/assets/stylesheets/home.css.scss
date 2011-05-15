@@ -2,11 +2,22 @@
   Temporary design stolen from - http://www.css3maker.com/
 */
 
+$content-width: 1000px;
+$orange: #FFA500;
+$white: #FFFFFF;
+//$orange: #0000FF;
+
 @import 'compass_fake';
 
+.orange {
+ color: $orange;
+}
+
 body {
+  #content { width: $content-width; margin: auto; }
+
   background-image: url(/assets/wood_grey.jpg);
-  #content { width: 1000px; margin: auto; }
+  min-height: 2000px;
 }
 
 .search input {
@@ -19,24 +30,34 @@ body {
   margin-bottom: 2em;
 
   font-size: 40px;
-  color: grey;
+  color: transparentize($orange, 0.6);
 }
 
 
 h1 {
+ color: $white;
+
  text-align: center;
  width: 600px;
  font-size: 135px;
- color: white;
 
  margin: 0px auto;
  text-shadow: 0px 5px 3px black;
+
+super {
+   position: relative;
+   left: 125px;
+   top: -110px;
+   text-shadow: 1px 1px 0px black;
+   color: transparentize($white, 0.6);
+   font-size: 20px;
+ }
 
  sub {
    position: relative;
    left: -0.5em;
    font-size: 55%;
-   color: orange;
+   color: $orange;
  }
 }
 
@@ -64,13 +85,35 @@ ul.hmenu {
     display: inline;
 
     a {
-      color: white;
-      &:visited { color: white }
-      &:hover { color: orange; }
+      color: $white;
+      &:visited { color: $white }
+      &:hover { color: $orange; }
 
       @include text-shadow;
       text-decoration: none;
-      color: white;
+      color: $white;
     }
+  }
+}
+
+
+table {
+  margin: auto;
+  width: $content-width - 200px;
+  color: $white;
+  font-size: 24px;
+
+  tr {
+    borders: 1px solid red;
+  }
+
+  tr td, tr th {
+    border-bottom: 1px solid transparentize($white,0.5);
+  }
+
+
+  tr td:last-child {
+      a { color: $orange }
+      text-align: center;
   }
 }

@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title mana
+    %title Mana
     = stylesheet_link_tag :application
     = javascript_include_tag :application
     = csrf_meta_tag
@@ -13,7 +13,6 @@
       = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
 
     %h1
-      Mana
-      %sub &alpha;
+      != "M<span class='orange'>&alpha;</span>n<span class='orange'>&alpha;</span>"
 
-    = yield
+  = yield
