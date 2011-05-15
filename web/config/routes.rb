@@ -1,4 +1,6 @@
 Mana::Application.routes.draw do
+  resources :games
+
   #get \"users\/show\"
 
   root :to => "home#index"
