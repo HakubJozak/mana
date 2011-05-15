@@ -1,28 +1,74 @@
 /*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-  You can use Sass (SCSS) here: http://sass-lang.com/
+  Temporary design stolen from - http://www.css3maker.com/
 */
 
-@import "compass";
+@import 'compass_fake';
+
+body {
+  background-image: url(/assets/wood_grey.jpg);
+  #content { width: 1000px; margin: auto; }
+}
+
+.search input {
+  @include transparent;
+  @include transparent-border;
+  @include radius;
+
+  text-align: center;
+  margin-top: 0.7em;
+  margin-bottom: 2em;
+
+  font-size: 40px;
+  color: grey;
+}
+
+
+h1 {
+ text-align: center;
+ width: 600px;
+ font-size: 135px;
+ color: white;
+
+ margin: 0px auto;
+ text-shadow: 0px 5px 3px black;
+
+ sub {
+   position: relative;
+   left: -0.5em;
+   font-size: 55%;
+   color: orange;
+ }
+}
 
 
 ul.hmenu {
+//  @include shadow;
+  @include transparent;
+
+  @include radius;
+
+ -webkit-transform: rotate(30deg);
+
+ text-align: center;
   position: fixed;
-  left: 0px;
-  top: 0px;
+  right: 0px;
+  top: 2em;
+  font-size: 20px;
+  margin: 40px;
 
-  background-color: grey;
-  text-align: left;
-  width: 100%;
 
-  margin: 0px;
+   margin: 0px;
   padding: 0.4em;
 
   li {
     display: inline;
 
     a {
+      color: white;
+      &:visited { color: white }
+      &:hover { color: orange; }
+
+      @include text-shadow;
       text-decoration: none;
       color: white;
     }
