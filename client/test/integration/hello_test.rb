@@ -4,14 +4,21 @@ require_all 'app'
 
 class HelloTest < Test::Unit::TestCase
   include Capybara
-  Capybara.default_driver = :selenium
+
+  Capybara.run_server = false
+  Capybara.default_driver = :webkit
+  Capybara.app_host = 'http://localhost:3000'
 
   def setup
-    Capybara.app = Mana::Server.new
+    if fork
+      sleep 5
+    else
+      exec "bundle exec thin start -R ./config.ru"
+    end
   end
 
   def test_hello
-    visit '/flow'
+    visit '/games/some'
     assert_equal "hello world", page.body
   end
 
