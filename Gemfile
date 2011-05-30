@@ -39,9 +39,8 @@ group :test do
   gem 'capybara'
   gem 'test-unit-capybara'
   
-#  gem 'cucumber'
-  #gem 'cucumber-rails'
- # gem 'bermuda', :require => 'bermuda/cucumber' # jQuery UI helpers for capybara/cucumber
+  gem 'cucumber'
+  gem 'bermuda', :require => 'bermuda/cucumber' # jQuery UI helpers for capybara/cucumber
 
   gem 'shoulda'
   gem 'mocha'
