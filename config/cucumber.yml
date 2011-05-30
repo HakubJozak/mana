@@ -1,0 +1,7 @@
+# config/cucumber.yml
+##YAML Template
+<% opts = '--require features --format pretty --guess features' %>
+---
+default: <%= opts %>
+autotest: <%= opts %> --color
+autotest-all: <%= opts %> --color

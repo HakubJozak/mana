@@ -39,8 +39,11 @@ group :test do
   gem 'capybara'
   gem 'test-unit-capybara'
   
+  gem 'autotest'
+  gem 'autotest-growl'
+  gem 'autotest-fsevent'
   gem 'cucumber'
-  gem 'bermuda', :require => 'bermuda/cucumber' # jQuery UI helpers for capybara/cucumber
+  gem 'bermuda', :require => false #'bermuda/cucumber' # jQuery UI helpers for capybara/cucumber
 
   gem 'shoulda'
   gem 'mocha'

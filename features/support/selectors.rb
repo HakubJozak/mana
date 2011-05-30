@@ -1,3 +1,5 @@
+require 'bermuda/cucumber'
+
 module HtmlSelectorsHelper
   def selector_for(scope)
     case scope

@@ -25,7 +25,7 @@ test 'drops to hand', ->
   hand = $('.hand.ui-droppable')
   position = hand.position()
   
-  jQuery('body').scrollTop(@card.height()/2)
+  jQuery('body').scrollTop(@card.height()/2) # just make some scrolling before dragging
   
   drag_to @card, hand, 20, 20
   
