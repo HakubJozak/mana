@@ -11,7 +11,7 @@ When /^(?:|I )integrate QUnit$/ do
     );
     
     $('head').append('<link rel="stylesheet" href="/tests/qunit.css"/>');
-    
+    jQuery.getScript('/tests/jquery.simulate.js');
     jQuery.getScript('/tests/qunit.js', function(){
       QUnit.init();
     });
@@ -21,13 +21,16 @@ When /^(?:|I )integrate QUnit$/ do
   Then 'I wait 1 second'
 end
 
-When /^(?:|I )run (.+?) tests?$/ do |tests|
-  tests = tests.split(/ ?and ?| +|, +?/)
-  puts tests.inspect
+When /^(?:|I )run (.+?) (?:(integration|unit) )?tests?$/ do |tests, suite|
+  
+  tests = tests.split(/ and | +|, +?/)
+  suite ||= 'unit'
+  
+  puts "Loading #{suite} tests: #{tests.join(', ')}"
   
   tests.each do |test|
     page.execute_script %{
-      jQuery.getScript('/javascripts/tests/unit/#{test}_test.js', function(){
+      jQuery.getScript('/javascripts/tests/#{suite}/#{test}_test.js', function(){
         QUnit.start();
       });
     }

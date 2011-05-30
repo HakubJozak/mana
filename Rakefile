@@ -9,5 +9,5 @@ end
 require 'cucumber/rake/task'
 
 Cucumber::Rake::Task.new(:features) do |t|
-  t.cucumber_opts = "--require features --format pretty features"
+  t.cucumber_opts = "--require features --format pretty --guess features"
 end
