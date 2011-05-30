@@ -9,6 +9,7 @@ require File.join(File.dirname(__FILE__), '..', '..', 'app/server.rb')
 
 #require 'capybara'
 require 'capybara/cucumber'
+require 'test/unit/capybara'
 #require 'rspec'
 
 Capybara.app = Mana::Server
@@ -19,6 +20,7 @@ Capybara.app_host = 'http://localhost:3000'
 
 class Mana::ServerWorld
   include Capybara
+  include MiniTest::Assertions #Test::Unit::Assertions
   #include RSpec::Expectations
   #include RSpec::Matchers
   def setup

@@ -217,20 +217,3 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
-
-When /^(?:|I )(.*) within ([^:]+)$/ do |step, scope|
-  with_scope(selector_for(scope)) do
-    When step
-  end
-end
-
-# Multi-line version of above
-When /^(?:|I )(.*) within ([^:]+):$/ do |step, scope, table_or_string|
-  with_scope(selector_for(scope)) do
-    When "#{step}:", table_or_string
-  end
-end
-
-Then /^(?:|I )wait until "([^\"]*)" is visible$/ do |selector|
-  page.has_css?("#{selector}", :visible => true)
-end
