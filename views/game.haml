@@ -58,13 +58,12 @@
         console.env = '#{ENV['RACK_ENV']}';
       });
 
-    - if ENV['RACK_ENV'] == 'development'
+    - if env? :development
       :javascript
         $(document).ready(function() {
           // Socket.instance.bind('socket:connected', lobby.submit);
         });
-
-%body
+%body  
   = haml(:_lobby, :layout => false)
   = haml(:_create_card, :layout => false)
   = haml(:_playground, :layout => false)

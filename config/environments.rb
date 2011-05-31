@@ -1,6 +1,3 @@
-Thin::Logging.debug = true
-
-
 if ENV['RACK_ENV'] == 'production'
   require 'config/production.rb'
 
