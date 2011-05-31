@@ -7,7 +7,7 @@
   img { @include card-size; }
 
   &:hover {
-    @include box-shadow($highlight-color, 0px, 0px, 10px);
+    @include box-shadow($highlight-color 0px 0px 10px);
   }
 
   &.ui-draggable-dragging {
