@@ -20,7 +20,7 @@ Capybara.app_host = 'http://localhost:3000'
 
 class Mana::ServerWorld
   include Capybara
-  include MiniTest::Assertions #Test::Unit::Assertions
+  include MiniTest::Assertions
   #include RSpec::Expectations
   #include RSpec::Matchers
   def setup
