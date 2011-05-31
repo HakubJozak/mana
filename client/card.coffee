@@ -94,8 +94,7 @@ class Card extends Backbone.Model
     @set({ "#{attr}": value })
     @save()
 
-  _switch: (attr, state) =>
-    state ||= !@get(attr)
+  _switch: (attr, state = !@get(attr)) =>
     @set({ "#{attr}" : state })
     @save()
     this
