@@ -11,9 +11,9 @@ class User extends Backbone.Model
 
     @set({ lives: 20 })
     # TODO: DRY
-    @library = new CardCollection("library-#{@id}",'Library', params.cards)
-    @graveyard = new CardCollection("graveyard-#{@id}",'Graveyard')
-    @exile = new CardCollection("exile-#{@id}", 'Exile')
+    @library = new CardCollection(@id, 'library', params.cards)
+    @graveyard = new CardCollection(@id, 'graveyard')
+    @exile = new CardCollection(@id, 'exile')
     @hand = new Hand({ user: this })
 
   lives: => @get('lives')

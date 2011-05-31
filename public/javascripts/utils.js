@@ -18,3 +18,7 @@ Utils.setObjectToDom = function(element, data) {
 Utils.getObjectFromDom = function(element) {
     return $(element).data('game-object');
 }
+
+Utils.camelize = function(string){
+  return jQuery.camelCase(string).replace(/^\w/, function($1){return $1.toUpperCase()});
+}

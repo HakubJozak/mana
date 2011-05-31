@@ -5,12 +5,12 @@
       .power{ :style => 'display:none' }
 
 #handview-template
-  %div{ :id => '{{id}}', :class => 'hand' }
+  %div{ :id => '{{name}}-{{user_id}}', :class => 'hand' }
     %h2 Hand - {{user.name()}}
 
 #cardbrowser-template
-  %div{ :id => '{{id}}', :class => 'card-browser' }
-    %h2 {{name}}
+  %div{ :id => '{{name}}-{{user_id}}', :class => 'card-browser {{name}}' }
+    %h2 {{title}}
     .button-bar
       %a.shuffle-button.button Shuffle
       %a.uncover-button.button Uncover All
@@ -48,7 +48,7 @@
 #dropbox-template
   .box-container
     %h4
-      {{name}}
+      {{title}}
       %a.browse-button.button Browse
     %div{ :class => "box {{name}}" }
       .count.overlay{ :style => 'display:none' }
