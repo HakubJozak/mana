@@ -1,9 +1,11 @@
+Dir[File.expand_path('helpers/*.rb',  File.dirname(__FILE__))].each{|f| require f }
+
 module Mana
   class Server < Sinatra::Base
 
     set :app_file, __FILE__
     set :root, File.dirname(__FILE__)
-    set :views, "views"
+    set :views, 'views'
     set :public, 'public'
     set :sessions, true
     set :mongo, 'mongo://localhost:27017/mana'
@@ -11,6 +13,7 @@ module Mana
 
     helpers do
       include Haml::Helpers
+      include EnvHelper
     end
 
     # configure(:development) do
@@ -59,6 +62,12 @@ module Mana
       haml :test
     end
 
+    configure :test do # Routes to server QUnit and test files and styles
+      get '/javascripts/tests/:suite/:name.js' do
+        coffee File.join('..', 'client', 'test', params[:suite], params[:name]).to_sym, :no_wrap => true
+      end
+    end
+    
     # get '/cards/:name.:format' do
     #   card = MagicCardsInfo.create_card(params[:name])
     #   redirect(params[:format] == 'html' ? card.url : card.image_url)

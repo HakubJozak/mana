@@ -4,6 +4,10 @@ $:.unshift(File.expand_path('.'))
 
 require 'rubygems'
 require 'bundler'
+
+require 'thin'
+Thin::Logging.debug = true
+
 require 'config/environments'
 require_all 'app'
 
@@ -16,8 +20,6 @@ end
 class Rack::Builder
   include Mana::Commander
 end
-
-
 
 EM.run do
 
@@ -54,5 +56,5 @@ EM.run do
 
   Thin::Server.start Mana::Server, ADDRESS, STATIC_PORT
 
-  puts "Mana server started"  
+  puts "Mana server started"
 end
