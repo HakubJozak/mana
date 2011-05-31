@@ -3,11 +3,11 @@ require 'bermuda/cucumber'
 module HtmlSelectorsHelper
   def selector_for(scope)
     case scope
-      when /the "([^"]+)" accordion section/
+      when /the #{REQUIRED} accordion section/
        [:xpath, Bermuda::XPath.accordion_content($1)]
-     when /the "([^"]+)" dialog/
+     when /the #{REQUIRED} dialog/
        [:xpath, Bermuda::XPath.dialog($1)]
-     when /the "([^"]+)" tab/
+     when /the #{REQUIRED} tab/
        [:xpath, Bermuda::XPath.tab_content($1)]
     else
       raise "Can't find mapping from \"#{scope}\" to a selector.\n" +
