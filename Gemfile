@@ -1,13 +1,13 @@
 # A sample Gemfile
-source "http://rubygems.org"
+source :rubygems
 
 gem 'rack', '~> 1.2.1'
 gem 'thin'
 gem 'haml'
 # gem 'haml-more', '~> 0.5.1.beta' # Coffee script on-fly translator
 # gem 'escape_utils' # HAML speed-up
-gem 'sass'
 gem 'compass'
+#gem 'sass' # required by compass
 gem 'sinatra'
 # gem 'sinatra_more'
 gem 'activesupport', :require => 'active_support'
@@ -38,6 +38,10 @@ group :test do
   gem 'capybara-webkit'
   gem 'capybara'
   gem 'test-unit-capybara'
+  
+#  gem 'cucumber'
+  #gem 'cucumber-rails'
+ # gem 'bermuda', :require => 'bermuda/cucumber' # jQuery UI helpers for capybara/cucumber
 
   gem 'shoulda'
   gem 'mocha'

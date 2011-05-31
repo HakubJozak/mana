@@ -8,9 +8,9 @@ table tbody th { color: #c8b472; font-family: Times, "Times New Roman", Georgia,
 table tbody td { font-size: 14px; line-height: 1.25em; }
 
 #help {
- @include shadow;              
+ @include shadow;
  @include border-radius;
- @include linear-gradient(color-stops(#311607, #120802 ));
+ @include background-image(linear-gradient( color-stops(#311607, #120802 ) ));
 
  position: absolute; 
  top: 40px; 
