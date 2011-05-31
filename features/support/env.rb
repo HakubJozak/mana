@@ -10,13 +10,14 @@ require File.join(File.dirname(__FILE__), '..', '..', 'app/server.rb')
 #require 'capybara'
 require 'capybara/cucumber'
 require 'test/unit/capybara'
-#require 'rspec'
+#require 'rspec''
 
 Capybara.app = Mana::Server
 
 Capybara.run_server = false
 Capybara.default_driver = :webkit
 Capybara.app_host = 'http://localhost:3000'
+Capybara.save_and_open_page_path = 'tmp'
 
 class Mana::ServerWorld
   include Capybara
@@ -33,5 +34,7 @@ class Mana::ServerWorld
 end
 
 World do
+  
+  
   Mana::ServerWorld.new
 end

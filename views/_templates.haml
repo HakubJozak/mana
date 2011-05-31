@@ -46,10 +46,10 @@
     .name {{name()}}
 
 #dropbox-template
-  .box-container
+  .box-container{:class => '{{name}}-container'}
     %h4
       {{title}}
-      %a.browse-button.button Browse
+      %a.browse-button.button{:href => '#'} Browse
     %div{ :class => "box {{name}}" }
       .count.overlay{ :style => 'display:none' }
       -# .browse.overlay{ :style => 'display:none' } browse

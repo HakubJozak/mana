@@ -5,3 +5,4 @@
 default: <%= opts %>
 autotest: <%= opts %> --color
 autotest-all: <%= opts %> --color
+debug: --format debug
