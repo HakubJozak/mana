@@ -3,6 +3,7 @@ Bundler.require :default, :test
 
 require 'test/unit/capybara'
 require 'capybara-webkit'
+require 'bermuda/xpath'
 
 Capybara.run_server = false
 Capybara.default_driver = :webkit

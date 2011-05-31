@@ -1,6 +1,7 @@
 # Taken from the cucumber-rails project.
 
 module NavigationHelpers
+
   # Maps a name to a path. Used by the
   #
   #   When /^I go to (.+)$/ do |page_name|
@@ -9,9 +10,13 @@ module NavigationHelpers
   #
   def path_to(page_name)
     case page_name
-    when /the (.+?) game page/
-      "/games/#{$1}"
-    
+    when /a new game page/
+      # TODO - replace by creating a new game in frontend or MongoDB
+      $games_counter ||= 0
+      $games_counter += 1
+
+      "/games/#{$games_counter}"
+
     when /the home\s?page/
       '/'
 

@@ -1,8 +1,21 @@
 task :default => :test
 
-desc 'Run all *_test.rb files in test folder'
-task :test do
-  Dir['client/test/integration/*_test.rb'].each {|test| require File.expand_path(test) }
+
+desc 'Run all tests'
+task :test => [ :qunit, :integration ] do
+end
+
+
+
+desc 'Run integration tests'
+task :integration do
+  Dir['test/integration/*_test.rb'].each {|test| require File.expand_path(test) }
+end
+
+
+desc 'Runs all purely qunit tests'
+task :qunit do
+
 end
 
 
