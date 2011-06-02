@@ -68,11 +68,15 @@ class Card extends Backbone.Model
     return if target == @collection
     @collection.remove(this, options)
 
-    if options['order'] == 'last'
-      @set { order: target.last().order() + 10 }
-    else if options['order'] == 'first'
-      @set { order: target.first().order() - 10 }
-
+    unless target.last()? || target.first()?
+      @set order: 0
+    else
+      order = switch options['order']
+        when 'last' then target.last().order() + 10
+        when 'first' then target.first().order() - 10
+      
+      @set { order: order }
+      
     target.add(this, options)
 
   toggle_covered: (state = null, opts = {}) =>
@@ -90,8 +94,7 @@ class Card extends Backbone.Model
     @set({ "#{attr}": value })
     @save()
 
-  _switch: (attr, state) =>
-    state ||= !@get(attr)
+  _switch: (attr, state = !@get(attr)) =>
     @set({ "#{attr}" : state })
     @save()
     this

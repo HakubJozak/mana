@@ -9,6 +9,10 @@ module HtmlSelectorsHelper
        [:xpath, Bermuda::XPath.dialog($1)]
      when /the #{REQUIRED} tab/
        [:xpath, Bermuda::XPath.tab_content($1)]
+     when REQUIRED_PANEL
+       ".side-panel #user-#{current_user} .#{$2.underscore}-container"
+     when 'my hand'
+       "#hand-#{current_user}"
     else
       raise "Can't find mapping from \"#{scope}\" to a selector.\n" +
         "Now, go and add a mapping in #{__FILE__}"
