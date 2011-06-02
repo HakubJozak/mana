@@ -1,3 +1,3 @@
 #!/bin/bash
 
-bundle exec thin start -R ./config.ru
+bundle exec rackup
