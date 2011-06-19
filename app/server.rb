@@ -63,11 +63,17 @@ module Mana
     end
 
     configure :test do # Routes to server QUnit and test files and styles
-      get '/javascripts/tests/:suite/:name.js' do
-        coffee File.join('..', 'client', 'test', params[:suite], params[:name]).to_sym, :no_wrap => true
+
+      get '/tests/qunit' do
+        @headless = true if params[:headless]
+        erb :qunit_test
+      end
+
+      get '/tests/:suite/:name.js' do
+        coffee File.join('..', 'test', params[:suite], params[:name]).to_sym, :no_wrap => true
       end
     end
-    
+
     # get '/cards/:name.:format' do
     #   card = MagicCardsInfo.create_card(params[:name])
     #   redirect(params[:format] == 'html' ? card.url : card.image_url)

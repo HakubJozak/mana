@@ -24,13 +24,14 @@ __WARNING 3__: I am almost sure there are security issues (XSS and such), don't 
 
 ### Client
 
-Webkit-based browser (developed in Chrome) - for now. It is quite easy to make it cross-browser but right now the focus is on core features.
+Webkit-based browser (developed in Chrome) - for now. It is quite easy to make it cross-(modern)-browser but right now the focus is on the core features.
 
 ### Server
 
    - Ruby 1.9.2
    - Bundler + all the gems in Gemfile...
-   - Node.js (for coffee script)
+   - MongoDB
+   - Node.js (for Coffee script compiling)
 
 ## TODO
 

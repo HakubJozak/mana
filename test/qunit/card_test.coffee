@@ -1,5 +1,6 @@
 card_attrs = { name: 'Forest', image: 'http://a.jpg', id: 42, user_id: 43, order: 1 }
 
+
 module 'Card tests'
   setup: ->
     @card = new Card(card_attrs)
@@ -27,11 +28,11 @@ test 'can be tapped', ->
   ok  @card.toggle_tapped().tapped()
 
 
-module 'CardView'
+module 'CardView tests'
   setup: ->
+    Backbone.sync = ->
     @card = new Card(card_attrs)
     @view = new CardView({ model: @card })
-    Backbone.sync = ->
 
 test 'creates correct element', ->
   equals $(@view.el).find('img').attr('src'), 'http://a.jpg'

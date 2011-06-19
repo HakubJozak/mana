@@ -15,7 +15,8 @@ end
 
 desc 'Runs all purely qunit tests'
 task :qunit do
-
+  # TODO - run natively not externally
+  system 'bundle exec ruby test/qunit/test_runner.rb'
 end
 
 

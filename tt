@@ -1,3 +1,4 @@
 #!/bin/bash
 
-cd ./client/test && ./server.rb
+# cd ./client/test && ./server.rb
+bundle exec rackup -E test

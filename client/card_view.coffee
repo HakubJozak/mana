@@ -11,7 +11,7 @@ class CardView extends Backbone.View
       view = dom.ob()
     else
       view = new CardView({ model: card })
-#      view.el.css('position','absolute')
+      view.el.css('position','absolute')
       $('#desk').append(view.el)
 
     return view
@@ -43,6 +43,7 @@ class CardView extends Backbone.View
     # LEGACY
     @el.data('game-object',this)
     @element = @el
+
 
   clicked: (e) =>
     e.preventDefault()

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QUnit Test Suite</title>
+    <link rel="stylesheet" href="/javascripts/vendor/qunit/qunit/qunit.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="/javascripts/vendor/qunit/qunit/qunit.js"></script>
+
+    <script type="text/javascript" src="/javascripts/vendor/jquery-1.4.4.js"></script>
+    <script type="text/javascript" src="/javascripts/vendor/jquery-ui-1.8.6.custom.min.js"></script>
+
+    <script type="text/javascript" src="/javascripts/vendor/underscore.js"></script>
+    <!-- IMPORTANT: Backbone must be after jQuery due to dependency! -->
+    <script type="text/javascript" src="/javascripts/vendor/backbone.js"></script>
+
+    <script type="text/javascript" src="/javascripts/vendor/jquery.simulate.js"></script>
+    <script type="text/javascript" src="/javascripts/client/card.js"></script>
+    <script type="text/javascript" src="/javascripts/client/card_view.js"></script>
+
+    <script>
+      // var logs = ["begin", "testStart", "testDone", "log", "moduleStart", "moduleDone", "done"];
+      var logs = [ "testDone" ];
+      for (var i = 0; i < logs.length; i++) {
+		(function() {
+			var log = logs[i];
+			QUnit[log] = function() {
+			console.log(log, arguments[0].name, arguments);
+  		     };
+		})();
+      }
+     </script>
+  </head>
+<body>
+  <div id="qunit-fixture">
+    <%= haml :_templates %>
+  </div>
+
+  <% unless @headless %>
+    <h1 id="qunit-header">QUnit Test Suite</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+  <% end %>
+</body>
+</html>
