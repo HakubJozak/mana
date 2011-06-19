@@ -11,10 +11,30 @@
     <script type="text/javascript" src="/javascripts/vendor/underscore.js"></script>
     <!-- IMPORTANT: Backbone must be after jQuery due to dependency! -->
     <script type="text/javascript" src="/javascripts/vendor/backbone.js"></script>
-
     <script type="text/javascript" src="/javascripts/vendor/jquery.simulate.js"></script>
+
+    <!-- TODO: load these as required on per-test basis? -->
     <script type="text/javascript" src="/javascripts/client/card.js"></script>
     <script type="text/javascript" src="/javascripts/client/card_view.js"></script>
+    <script type="text/javascript" src="/javascripts/client/user.js"></script>
+    <script type="text/javascript" src="/javascripts/client/user_view.js"></script>
+
+    <script type="text/javascript" src="/javascripts/client/card_collection.js"></script>
+    <script type="text/javascript" src="/javascripts/client/card_collection_view.js"></script>
+    <script type="text/javascript" src="/javascripts/client/dropbox.js"></script>
+    <script type="text/javascript" src="/javascripts/client/floating_browser.js"></script>
+    <script type="text/javascript" src="/javascripts/client/card_browser.js"></script>
+
+    <script type="text/javascript" src="/javascripts/client/hand.js"></script>
+    <script type="text/javascript" src="/javascripts/client/hand_view.js"></script>
+
+    <script type="text/javascript" src="/javascripts/utils.js"></script>
+    <script type="text/javascript" src="/javascripts/boot.js"></script>
+
+    <% unless @headless %>
+      <script type="text/javascript" src="/tests/qunit/card_test.js"></script>
+      <script type="text/javascript" src="/tests/qunit/dropbox_test.js"></script>
+    <% end %>
 
     <script>
       // var logs = ["begin", "testStart", "testDone", "log", "moduleStart", "moduleDone", "done"];
@@ -23,8 +43,8 @@
 		(function() {
 			var log = logs[i];
 			QUnit[log] = function() {
-			console.log(log, arguments[0].name, arguments);
-  		     };
+			  console.log(log, arguments[0].name, arguments);
+  		        };
 		})();
       }
      </script>
