@@ -19,22 +19,25 @@ class QunitTest < Test::Unit::TestCase
   end
 
   def teardown
-    puts 'tearing down'
+    grab_qunit_errors
   end
 
   tests = Dir['test/qunit/*.coffee']
   puts "Loading qunit tests: #{tests.join(', ')}"
 
   tests.each do |file|
-    name = file
+    name = File.basename(file, '.coffee')
 
     define_method('test_' + name) do
       visit '/tests/qunit?headless=1'
       page.execute_script %{
-        jQuery.getScript('/javascripts/tests/#{name}_test.js', function(){
+        jQuery.getScript('/tests/qunit/#{name}.js', function(){
+          console.debug('Javascript loaded #{name}');
           QUnit.start();
         });
       }
+
+      page.save_and_open_page
     end
   end
 
@@ -43,14 +46,14 @@ class QunitTest < Test::Unit::TestCase
   def grab_qunit_errors
     failed, passed, total = nil
 
-    within '#qunit-testresult' do
+    within 'p#qunit-testresult' do
       passed = find('.passed').text.to_i
       failed = find('.failed').text.to_i
       total = find('.total').text.to_i
     end
 
-    assert_equal total, failed + passed
-    assert failed == 0, 'Some tests should fail'
+    assert_equal total, failed + passed, 'There were some errors'
+    assert_equal 0, failed, 'Some tests failed'
   end
 
 end

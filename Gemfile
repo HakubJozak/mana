@@ -25,7 +25,7 @@ group :development do
 #  gem 'sinatra-reloader', :require => 'sinatra/reloader'
   gem 'awesome_print'
   gem 'ruby-debug-base19'
-  #gem 'ruby-debug'
+  gem 'ruby-debug19'
 end
 
 group :tools do

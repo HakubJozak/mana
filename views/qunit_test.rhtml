@@ -34,7 +34,9 @@
     <% unless @headless %>
       <script type="text/javascript" src="/tests/qunit/card_test.js"></script>
       <script type="text/javascript" src="/tests/qunit/dropbox_test.js"></script>
-    <% end %>
+    <% else %>
+      <!-- Tests will be dynamically loaded by Capybara::Webkit -->
+    <% end  %>
 
     <script>
       // var logs = ["begin", "testStart", "testDone", "log", "moduleStart", "moduleDone", "done"];
