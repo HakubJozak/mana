@@ -1,4 +1,6 @@
 .bundle
 .git
 .sass-cache
+.cache_rake_t
 tmp
+TAGS

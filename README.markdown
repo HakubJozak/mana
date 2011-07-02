@@ -71,12 +71,13 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
 
 ## Contributions
 
-All contributions are welcome! The graphics needs rework (right now it is in-fact "borrowed" from http://tappedout.net), tests have to be written and a lot of features that are easy to implement but not so critical plea for attention. Just fork the repository and send me the pull request or write me a message on Github. If you don't know where to start, see the TODO list.
-
+All contributions are welcome! The graphics needs rework (right now it is in-fact "borrowed" from http://tappedout.net), tests have to be written and a lot of features that are easy to implement but not so critical plea for attention. Just fork the repository and send me the pull request or write me a message on Github. If you don't know where to start, see the TODO list and [Wiki](https://github.com/HakubJozak/mana/wiki/Home) to help you get on track.
 
 ## History
+
 23/10/2010 - First commit
 14/02/2011 - First game succesfully played and finished (Kolohnat X Kvetak)
+
 
 ## Licence
 
