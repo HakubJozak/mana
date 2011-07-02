@@ -1,5 +1,8 @@
 Dir[File.expand_path('helpers/*.rb',  File.dirname(__FILE__))].each{|f| require f }
 
+# TODO: don't reload in production
+require 'sinatra/reloader'
+
 module Mana
   class Server < Sinatra::Base
 
@@ -10,16 +13,20 @@ module Mana
     set :sessions, true
     set :mongo, 'mongo://localhost:27017/mana'
 
-
     helpers do
       include Haml::Helpers
       include EnvHelper
     end
 
-    # configure(:development) do
-    #   register Sinatra::Reloader
-    #   also_reload "app/**/*.rb"
-    # end
+    configure(:test, :development) do
+      register Sinatra::Reloader
+      also_reload "app/**/*.rb"
+      also_reload "client/**/*.coffee"
+    end
+
+    configure(:test) do
+      also_reload "test/**/*.rb"
+    end
 
     # configure do
     #   Compass.add_project_configuration(File.join(Mana::StaticServer.root, 'config', 'compass.config'))

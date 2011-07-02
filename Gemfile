@@ -22,7 +22,7 @@ gem 'coffee-script'
 
 group :development do
   gem 'railsless-deploy', :require => false
-#  gem 'sinatra-reloader', :require => 'sinatra/reloader'
+  gem 'sinatra-reloader'
   gem 'awesome_print'
   gem 'ruby-debug-base19'
   gem 'ruby-debug19'
@@ -35,6 +35,7 @@ end
 
 
 group :test do
+  gem 'shotgun'
   gem 'capybara-webkit'
   gem 'capybara'
   gem 'test-unit-capybara'

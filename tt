@@ -1,4 +1,6 @@
 #!/bin/bash
 
 # cd ./client/test && ./server.rb
-bundle exec rackup -E test
+# bundle exec shotgun --debug --env test --server thin
+
+bundle exec rackup --debug --env test --server thin
