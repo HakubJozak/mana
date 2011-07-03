@@ -22,6 +22,7 @@ module Mana
       register Sinatra::Reloader
       also_reload "app/**/*.rb"
       also_reload "client/**/*.coffee"
+      also_reload "views/**/*.*"
     end
 
     configure(:test) do

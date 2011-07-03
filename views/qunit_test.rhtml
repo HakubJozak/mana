@@ -38,17 +38,25 @@
       <!-- Tests will be dynamically loaded by Capybara::Webkit -->
     <% end  %>
 
-    <script>
-      // var logs = ["begin", "testStart", "testDone", "log", "moduleStart", "moduleDone", "done"];
-      var logs = [ "testDone" ];
-      for (var i = 0; i < logs.length; i++) {
-		(function() {
-			var log = logs[i];
-			QUnit[log] = function() {
-			  console.log(log, arguments[0].name, arguments);
-  		        };
-		})();
-      }
+     <script>
+        QUnit.testStart = function(info) {
+           console.info('Test ' + info.name + ' started');
+         };
+
+        QUnit.testDone = function(info) {
+           console.log('Test ' + info.name + ' finished');
+         };
+
+        // the method signature of QUnit.log is inconsistent with the docs
+        QUnit['log'] = function(details) {
+           if (details.result == false) {
+             console.info('... Failed assertion:');
+             console.info('... - message:' + details.message);
+             console.info('... - expected:' + details.expected);
+             console.info('... - actual:' + details.actual);
+           }
+        };
+
      </script>
   </head>
 <body>
@@ -56,12 +64,11 @@
     <%= haml :_templates %>
   </div>
 
-  <% unless @headless %>
-    <h1 id="qunit-header">QUnit Test Suite</h1>
-    <h2 id="qunit-banner"></h2>
-    <div id="qunit-testrunner-toolbar"></div>
-    <h2 id="qunit-userAgent"></h2>
-    <ol id="qunit-tests"></ol>
-  <% end %>
+  <h1 id="qunit-header">QUnit Test Suite</h1>
+  <h2 id="qunit-banner"></h2>
+  <div id="qunit-testrunner-toolbar"></div>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+  <p id="qunit-testresult" class="result">
 </body>
 </html>

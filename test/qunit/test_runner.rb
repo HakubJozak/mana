@@ -15,12 +15,11 @@ class QunitTest < Test::Unit::TestCase
 
   include Capybara
 
-  def setup
-  end
+  # def setup
+  # end
 
-  def teardown
-    grab_qunit_errors
-  end
+  # def teardown
+  # end
 
   tests = Dir['test/qunit/*.coffee']
   puts "Loading qunit tests: #{tests.join(', ')}"
@@ -30,14 +29,20 @@ class QunitTest < Test::Unit::TestCase
 
     define_method('test_' + name) do
       visit '/tests/qunit?headless=1'
+
       page.execute_script %{
         jQuery.getScript('/tests/qunit/#{name}.js', function(){
-          console.debug('Javascript loaded #{name}');
-          QUnit.start();
+          console.info('Finished QUnit test: #{name}');
         });
       }
 
-      page.save_and_open_page
+      # HACK: wait for the tests to finish
+      sleep 3
+
+      # puts page.body
+      # puts page.evaluate_script('document.total')
+
+      grab_qunit_errors
     end
   end
 
@@ -52,8 +57,8 @@ class QunitTest < Test::Unit::TestCase
       total = find('.total').text.to_i
     end
 
-    assert_equal total, failed + passed, 'There were some errors'
-    assert_equal 0, failed, 'Some tests failed'
+#    assert_equal total, failed + passed, 'There were some errors'
+    assert_equal 0, failed, "#{failed} QUnit failures"
   end
 
 end

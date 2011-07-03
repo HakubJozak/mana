@@ -14,7 +14,7 @@ module 'Dropbox'
     Backbone.sync = ->
 
 test 'User init', ->
-  equals @user.name(), 'Fakeaa'
+  equals @user.name(), 'Fake'
   equals @user.library.length, 1
 
 test 'Card drop', ->
