@@ -31,21 +31,20 @@ When %r{^#{I}grab first card from #{REQUIRED_PANEL}$} do |selector, section|
   within selector_for(selector) do
     @card = all('.card').first
   end
+
   refute_nil @card
 end
 
 When %r{^#{I}drag the card to my hand$} do
   refute_nil @card
-  @card.drag_to my_hand
+  puts @card
+  @card.drag_to(my_hand)
 end
 
 Then %r{^#{I}should see the card in my hand$} do
+  refute_nil @card
+
   within selector_for('my hand') do
     find "##{@card[:id]}"
   end
 end
-
-When %r{^#{I}drag the card a bit to the right$} do
-  pending # express the regexp above with the code you wish you had
-end
-

@@ -1,7 +1,7 @@
 Feature: Deck
 
 @focus
-Scenario: Dragging card to deck
+Scenario: Dragging card to hand repeatedly
   Given I am on a new game page
     And my name is "Mr. Bombastic"
 
@@ -10,7 +10,5 @@ Scenario: Dragging card to deck
 
   Then I should see the card in my hand
 
-  #When I drag the card a bit to the right
   When I drag the card to my hand
-
   Then I should see the card in my hand

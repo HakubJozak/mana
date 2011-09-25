@@ -70,9 +70,15 @@ module Mana
       haml :test
     end
 
-    configure :test do # Routes to server QUnit and test files and styles
+    # Routes to server QUnit and test files and styles
+    configure :test do
 
       get '/tests/qunit' do
+        @headless = true if params[:headless]
+        erb :qunit_test
+      end
+
+      get '/tests/integration' do
         @headless = true if params[:headless]
         erb :qunit_test
       end

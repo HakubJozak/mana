@@ -74,13 +74,16 @@ class Card extends Backbone.Model
       order = switch options['order']
         when 'last' then target.last().order() + 10
         when 'first' then target.first().order() - 10
-      
+
       @set { order: order }
-      
+
     target.add(this, options)
 
   toggle_covered: (state = null, opts = {}) =>
-    @_switch 'covered', state, opts
+    state ||= !@get('covered')
+    @set({ covered : state })
+    @save()
+    this
 
   toggle_tapped: (state = null, opts = {}) =>
     @_switch 'tapped', state, opts
@@ -91,10 +94,10 @@ class Card extends Backbone.Model
 
   adjust: (attr, delta) ->
     value = (@get(attr) || 0) + delta
-    @set({ "#{attr}": value })
+#    @set({ "#{attr}": value })
     @save()
 
   _switch: (attr, state = !@get(attr)) =>
-    @set({ "#{attr}" : state })
+#    @set({ "#{attr}" : state })
     @save()
     this

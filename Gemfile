@@ -18,6 +18,9 @@ gem 'em-websocket'
 gem 'mongo', '~> 1.3.1'
 gem 'sinatra-mongo'
 gem 'require_all'
+
+# gem 'therubyracer'
+# gem 'therubyrhino'
 gem 'coffee-script'
 
 group :development do
@@ -26,6 +29,8 @@ group :development do
   gem 'awesome_print'
   gem 'ruby-debug-base19'
   gem 'ruby-debug19'
+  gem 'pry'
+  gem 'pry-doc'
 end
 
 group :tools do

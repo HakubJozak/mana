@@ -12,7 +12,6 @@ require 'capybara/cucumber'
 require 'test/unit/capybara'
 #require 'rspec''
 
-Capybara.app = Mana::Server
 
 Capybara.run_server = false
 Capybara.default_driver = :webkit
@@ -22,19 +21,8 @@ Capybara.save_and_open_page_path = 'tmp'
 class Mana::ServerWorld
   include Capybara
   include MiniTest::Assertions
-  #include RSpec::Expectations
-  #include RSpec::Matchers
-  def setup
-    if fork
-      sleep 5
-    else
-      exec "bundle exec rackup"
-    end
-  end
 end
 
 World do
-  
-  
   Mana::ServerWorld.new
 end

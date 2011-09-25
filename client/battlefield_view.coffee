@@ -32,7 +32,6 @@ class BattlefieldView extends Backbone.View
 
       view.el.animate(@to_global(card.position()))
 
-
   dropped: (event,ui) =>
     p = ui.draggable.offset()
     card = ui.draggable.ob().model
