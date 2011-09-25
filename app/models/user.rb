@@ -30,7 +30,8 @@ module Mana
       when :all, :me
         @ws.send(encode(command))
       when :opponents
-        @ws.send(encode(command)) unless command[:sid] == @sid
+        @ws.send(encode(command))
+#        @ws.send(encode(command)) unless command[:sid] == @sid
       end
     end
   end

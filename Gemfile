@@ -31,6 +31,7 @@ group :development do
   gem 'ruby-debug19'
   gem 'pry'
   gem 'pry-doc'
+  gem 'guard-livereload'
 end
 
 group :tools do

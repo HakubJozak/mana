@@ -38,8 +38,8 @@ class BattlefieldView extends CardCollectionView
     old = card.collection
 
     card.set({ position: @to_relative(p) }, { silent: true })
-    old.remove(card)
-    @model.add(card)
+    old.remove(card, { silent: true })
+    @model.add(card, { silent: true })
 
     card.save()
 
