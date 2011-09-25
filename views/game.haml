@@ -21,8 +21,32 @@
     %script{:src => "/javascripts/vendor/underscore.js", :type => "text/javascript"}
     %script{:src => "/javascripts/vendor/backbone.js", :type => "text/javascript"}
 
-    - @scripts.each do |script|
-      %script{:src => "/javascripts/client/#{script}.js ", :type => "text/javascript"}
+    %script{ :src => "/javascripts/client/visibility.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/socket.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/card.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/card_collection.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/battlefield.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/card_overlay.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/chat.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/controls.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/hand.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/user.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/utils.js", :type => "text/javascript" }
+
+    %script{ :src => "/javascripts/client/views/card_collection_view.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/battlefield_view.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/card_view.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/chat_view.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/dialog.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/dropbox.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/floating_browser.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/hand_view.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/card_browser.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/game_view.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/info_view.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/lobby_view.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/client/views/user_view.js", :type => "text/javascript" }
+
 
     %script{:src => "/javascripts/utils.js", :type => "text/javascript"}
     %script{:src => "/javascripts/game.js", :type => "text/javascript"}
@@ -61,9 +85,9 @@
     - if env? :development
       :javascript
         $(document).ready(function() {
-          // Socket.instance.bind('socket:connected', lobby.submit);
+          Socket.instance.bind('socket:connected', lobby.submit);
         });
-%body  
+%body
   = haml(:_lobby, :layout => false)
   = haml(:_create_card, :layout => false)
   = haml(:_playground, :layout => false)

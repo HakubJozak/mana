@@ -37,6 +37,13 @@ module Mana
       coffee :"../client/#{params[:name]}", :no_wrap => true
     end
 
+    # TODO: DRY
+    get '/javascripts/client/views/:name.js' do
+      coffee :"../client/views/#{params[:name]}", :no_wrap => true
+    end
+
+
+
     #
     # TODO: replace by SCSS (when the issue with locals is resolved)
     #
@@ -56,13 +63,6 @@ module Mana
 
     get '/games/:name' do
       @game_id = params[:name]
-      @scripts = Dir['./client/*.coffee'].map { |f| File.basename(f, '.coffee') }.sort
-
-      # TODO: handle priorities better way
-      @scripts.reject! { |s| ['visibility', 'battlefield', 'card_browser'].include?(s) }
-      @scripts << 'battlefield' << 'card_browser'
-      @scripts.unshift 'visibility'
-
       haml :game
     end
 

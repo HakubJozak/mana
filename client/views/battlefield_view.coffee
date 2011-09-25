@@ -1,10 +1,10 @@
-class BattlefieldView extends Backbone.View
+class BattlefieldView extends CardCollectionView
 
   @tagName: 'div'
   @className: 'battlefield'
 
   constructor: (attrs) ->
-    super(attrs)
+    super(attrs, false)
 
     @user_area_template = _.template($('#user-area-template').html())
     @model.bind 'add', @render
@@ -20,7 +20,7 @@ class BattlefieldView extends Backbone.View
         ($('.card-over' ).length < 2) && draggable.hasClass('card');
 
   render: =>
-    console.info 'rendering field'
+    console.info 'rendering battlefield'
     @model.each (card) =>
       view = CardView.find_or_create(card)
       # DRY - it is CardCollectionView#_attach_card method
@@ -35,9 +35,12 @@ class BattlefieldView extends Backbone.View
   dropped: (event,ui) =>
     p = ui.draggable.offset()
     card = ui.draggable.ob().model
-    card.move_to(@model, { silent: true })
+    old = card.collection
+
     card.set({ position: @to_relative(p) }, { silent: true })
-    @render()
+    old.remove(card)
+    @model.add(card)
+
     card.save()
 
   to_global: (p) =>

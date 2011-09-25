@@ -23,7 +23,11 @@ class Socket
       # card = $("#card-#{data.card.id}").ob().model
       # CardCollection.all[data.card.collection_id].get - WON'T WORK - the user could change the location meanwhile
       card = $("#card-#{data.card.id}").ob().model
-      card.set(data.card)
+      add_to = CardCollection.all[data.card.collection_id]
+
+      card.load(data.card)
+      card.collection.remove(card)
+      add_to.add(card)
 
     if data.message
       @trigger('arrived:message', data.message)
@@ -60,3 +64,16 @@ class Socket
       name: attrs.name,
       color: attrs.color
     }))
+
+Backbone.sync = (method, model, success, error) ->
+  console.info method
+  name = model.constructor.name.toLowerCase()
+
+  params = {}
+  params[name] = model.toJSON()
+  # ({ "#{name}": model.toJSON() }
+
+  Socket.instance.send_object( JSON.stringify(params))
+  true
+
+

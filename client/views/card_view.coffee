@@ -40,6 +40,7 @@ class CardView extends Backbone.View
     @el.bind 'click', @clicked
     @el.bind 'contextmenu', @clicked
 
+
     # LEGACY
     @el.data('game-object',this)
     @element = @el
@@ -55,14 +56,27 @@ class CardView extends Backbone.View
       @show_detail()
 
   render: =>
+    console.info "rendering card #{@model.id}"
+
     if @model.hidden()
       @el.fadeOut()
     else
       @el.fadeIn()
-      if @model.covered() then @set_image('/images/back.jpg') else @set_image(@model.image())
-      if @model.tapped $(@el).addClass('tapped') else $(@el).removeClass('tapped')
-      @_render_overlay()
+      @el.find('.debug').text(@model.collection.name)
 
+    # TODO: @model.collection.shows_card(User.current) || @model.covered()
+    if  @model.covered()
+      @set_image('/images/back.jpg')
+    else
+      @set_image(@model.image())
+
+    # TODO: @model.collection.allows_tapping || @model.tapped()
+    if @model.tapped()
+      $(@el).addClass('tapped')
+    else
+      $(@el).removeClass('tapped')
+
+    @_render_overlay()
     this
 
   _render_overlay: =>

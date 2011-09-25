@@ -6,6 +6,12 @@
   @include card-size;
   img { @include card-size; }
 
+  .debug {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+
   &:hover {
     @include box-shadow($highlight-color 0px 0px 10px);
   }

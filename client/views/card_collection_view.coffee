@@ -1,7 +1,9 @@
 class CardCollectionView extends Backbone.View
 
-  constructor: (attrs) ->
+  constructor: (attrs, initialize = true) ->
     super(attrs)
+    return unless initialize
+
     throw 'Missing model' unless @model
 
     clazz = @constructor.name.toLowerCase()
@@ -13,12 +15,13 @@ class CardCollectionView extends Backbone.View
     @model.bind 'refresh', @render
 
   _accept_unless_in: (card)  =>
-    !@model.include(card.ob().model)
+    # !@model.include(card.ob().model)
+    true
 
   dropped: (event,ui) =>
-    console.info ui.draggable
     card = ui.draggable.ob().model
-    card.move_to(@model, { order: 'last' })
+    card.collection.remove(card)
+    @model.add(card)
     card.save()
 
   toggle_visible: =>
@@ -26,11 +29,13 @@ class CardCollectionView extends Backbone.View
     @render()
 
   render: =>
+    console.info "Rendering collection #{@model.name}"
     views = @model.map (card) -> CardView.find_or_create(card)
 
     _.each views, (card, i) =>
       card.el.detach()
       card.el.appendTo(@el)
+      card.render()
 
     if @visible
       @el.fadeIn()
@@ -38,4 +43,5 @@ class CardCollectionView extends Backbone.View
     else
       @el.fadeOut()
 
+    console.info "Rendering collection #{@model.name} finished"
     this

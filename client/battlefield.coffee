@@ -1,4 +1,7 @@
 class Battlefield extends CardCollection
 
   constructor: ->
-    super('battlefield', 'Battlefield')
+    super('--all--', 'Battlefield')
+
+  id: =>
+    "battlefield"

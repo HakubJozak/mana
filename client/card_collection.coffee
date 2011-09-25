@@ -5,12 +5,15 @@ class CardCollection extends Backbone.Collection
 
   constructor: (@user_id, @name, params) ->
     super(params)
-    CardCollection.all[@user_id] = this
     throw 'Name of the CardCollection missing' unless @name
     throw 'User ID of the CardCollection missing' unless @user_id
-    
+    CardCollection.all[@id()] = this
+
     @title = Utils.camelize(@name)
     @trigger('add')
+
+  id: =>
+    "#{@name}_#{@user_id}"
 
   comparator: (card) ->
     card.order()
@@ -19,5 +22,3 @@ class CardCollection extends Backbone.Collection
     @comparator = (card) => Math.floor(Math.random() * (@length + 1))
     @sort()
     @comparator = null
-
-  visible: -> false
