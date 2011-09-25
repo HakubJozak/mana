@@ -2,12 +2,9 @@
   Temporary design stolen from - http://www.css3maker.com/
 */
 
-$content-width: 1000px;
-$orange: #FFA500;
-$white: #FFFFFF;
-// $orange: #AEAFFF;
+@import 'constants';
+@import 'compass/css3';
 
-@import 'compass_fake';
 
 .orange {
  color: $orange;
@@ -20,31 +17,14 @@ body {
   min-height: 2000px;
 }
 
-.search input {
-  @include transparent;
-  @include transparent-border;
-  @include radius;
-
-  text-align: center;
-  margin-top: 0.7em;
-  margin-bottom: 2em;
-
-  font-size: 40px;
-  color: transparentize($orange, 0.6);
-}
-
-
-h1 {
+h1.hyper {
  color: $white;
-
  text-align: center;
  width: 600px;
  font-size: 135px;
-
- margin: 0px auto;
  text-shadow: 0px 5px 3px black;
 
-super {
+ super {
    position: relative;
    left: 125px;
    top: -110px;
@@ -66,9 +46,9 @@ ul.hmenu {
 //  @include shadow;
   @include transparent;
 
-  @include radius;
+  @include border-radius;
 
- -webkit-transform: rotate(30deg);
+// -webkit-transform: rotate(30deg);
 
  text-align: center;
   position: fixed;
@@ -93,27 +73,5 @@ ul.hmenu {
       text-decoration: none;
       color: $white;
     }
-  }
-}
-
-
-table {
-  margin: auto;
-  width: $content-width - 200px;
-  color: $white;
-  font-size: 24px;
-
-  tr {
-    borders: 1px solid red;
-  }
-
-  tr td, tr th {
-    border-bottom: 1px solid transparentize($white,0.5);
-  }
-
-
-  tr td:last-child {
-      a { color: $orange }
-      text-align: center;
   }
 }

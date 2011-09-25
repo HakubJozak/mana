@@ -1,12 +1,11 @@
 Mana::Application.routes.draw do
-  resources :games
-
-  #get \"users\/show\"
-
-  root :to => "home#index"
+  root :to => "games#index"
 
   devise_for :users
   resources :users, :only => :show
+
+  resources :games, :except => [ :destroy, :update ]
+
 
 
   # The priority is based upon order of creation:

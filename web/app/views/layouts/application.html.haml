@@ -2,9 +2,9 @@
 %html
   %head
     %title Mana
-    = stylesheet_link_tag :application
-    = javascript_include_tag :application
     = csrf_meta_tag
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
   %body
     %ul.hmenu
       = render 'devise/menu/registration_items'
@@ -12,7 +12,8 @@
     - flash.each do |name, msg|
       = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
 
-    %h1
-      != "M<span class='orange'>&alpha;</span>n<span class='orange'>&alpha;</span>"
+    %center
+      %h1.hyper
+        != "M<span class='orange'>&alpha;</span>n<span class='orange'>&alpha;</span>"
 
   = yield

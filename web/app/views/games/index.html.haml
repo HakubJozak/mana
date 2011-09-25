@@ -1,0 +1,20 @@
+#content
+  %center.search
+    %label
+      %input{ :placeholder => 'Search...',  :type => 'search' }
+    %a.button New Game
+
+  %table
+    %tr
+      %th
+      %th
+
+    - @games.each do |game|
+      %tr
+        %td= link_to game.name
+        %td= link_to 'Join', game
+        -# %td= link_to 'Edit', edit_game_path(game)
+
+%br
+
+

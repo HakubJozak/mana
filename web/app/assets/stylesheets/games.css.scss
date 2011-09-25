@@ -1,5 +1,37 @@
-/* 
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-  You can use Sass (SCSS) here: http://sass-lang.com/
-*/
+@import 'compass/css3';
+@import 'constants';
+
+
+.search input {
+  border-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+  @include border-radius;
+
+  text-align: center;
+  margin-top: 0.7em;
+  margin-bottom: 2em;
+
+  font-size: 40px;
+  color: transparentize($orange, 0.6);
+}
+
+table {
+  margin: auto;
+  width: $content-width - 200px;
+  color: $white;
+
+  tr {
+    borders: 1px solid red;
+
+    td, th {
+      font-size: 24px;
+      padding: 7px;
+      border-bottom: 1px solid transparentize($white,0.5);
+
+      &:last-child {
+        a { color: $orange }
+        text-align: center;
+      }
+    }
+  }
+}
