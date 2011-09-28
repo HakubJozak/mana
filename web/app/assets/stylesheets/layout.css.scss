@@ -10,6 +10,17 @@
  color: $orange;
 }
 
+
+.button {
+    @include border-radius;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    background-color: transparentize($orange, 0.6);
+    line-height: 38px;
+    font-size: 40px;
+
+}
+
+
 body {
   #content { width: $content-width; margin: auto; }
 

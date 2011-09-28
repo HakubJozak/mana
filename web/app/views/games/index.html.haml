@@ -1,17 +1,16 @@
 #content
-  %center.search
+  #search-box
     %label
-      %input{ :placeholder => 'Search...',  :type => 'search' }
-    %a.button New Game
+      %input{ :placeholder => 'Find a Game...',  :type => 'search' }
 
-  %table
+  %table{ :title => 'Games' }
     %tr
-      %th
-      %th
+      %th Name
+      %th= link_to 'Create', new_game_path
 
     - @games.each do |game|
       %tr
-        %td= link_to game.name
+        %td= link_to game.name, game_path(game)
         %td= link_to 'Join', game
         -# %td= link_to 'Edit', edit_game_path(game)
 

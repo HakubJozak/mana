@@ -1,0 +1,31 @@
+@import 'compass/css3/transform';
+
+#cards {
+  img {
+    height: 200pt;
+  }
+
+
+
+
+  @for $i from 1 through 7 {
+    img:nth-child(#{$i}) {
+      position: relative;
+      @include rotate(-40deg + $i * 10deg);
+    }
+  }
+
+  $move: 100px;
+
+  img:nth-child(1), img:nth-child(7) { top: 70px; }
+  img:nth-child(2), img:nth-child(6) { top: 30px; }
+  img:nth-child(3), img:nth-child(5) { top: 10px; }
+
+  img:nth-child(1) { left: 3 * $move; }
+  img:nth-child(2) { left: 2 * $move; }
+  img:nth-child(3) { left: 1 * $move; }
+
+  img:nth-child(7) { right: 3 * $move; }
+  img:nth-child(6) { right: 2 * $move; }
+  img:nth-child(5) { right: 1 * $move; }
+}

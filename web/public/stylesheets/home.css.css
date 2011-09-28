@@ -1,120 +1,103 @@
-/*
-  Temporary design stolen from - http://www.css3maker.com/
-*/
+/* line 4, ../../app/assets/stylesheets/home.css.scss */
+#cards img {
+  height: 200pt;
+}
 /* line 12, ../../app/assets/stylesheets/home.css.scss */
-.orange {
-  color: #ffa500;
-}
-
-/* line 16, ../../app/assets/stylesheets/home.css.scss */
-body {
-  background-image: url(/assets/wood_grey.jpg);
-  min-height: 2000px;
-}
-/* line 17, ../../app/assets/stylesheets/home.css.scss */
-body #content {
-  width: 1000px;
-  margin: auto;
-}
-
-/* line 23, ../../app/assets/stylesheets/home.css.scss */
-.search input {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-color: rgba(0, 0, 0, 0.2);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  text-align: center;
-  margin-top: 0.7em;
-  margin-bottom: 2em;
-  font-size: 40px;
-  color: rgba(255, 165, 0, 0.4);
-}
-
-/* line 37, ../../app/assets/stylesheets/home.css.scss */
-h1 {
-  color: white;
-  text-align: center;
-  width: 600px;
-  font-size: 135px;
-  margin: 0px auto;
-  text-shadow: 0px 5px 3px black;
-}
-/* line 47, ../../app/assets/stylesheets/home.css.scss */
-h1 super {
+#cards img:nth-child(1) {
   position: relative;
-  left: 125px;
-  top: -110px;
-  text-shadow: 1px 1px 0px black;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 20px;
+  -moz-transform: rotate(-30deg);
+  -webkit-transform: rotate(-30deg);
+  -o-transform: rotate(-30deg);
+  -ms-transform: rotate(-30deg);
+  transform: rotate(-30deg);
 }
-/* line 56, ../../app/assets/stylesheets/home.css.scss */
-h1 sub {
+/* line 12, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(2) {
   position: relative;
-  left: -0.5em;
-  font-size: 55%;
-  color: #ffa500;
+  -moz-transform: rotate(-20deg);
+  -webkit-transform: rotate(-20deg);
+  -o-transform: rotate(-20deg);
+  -ms-transform: rotate(-20deg);
+  transform: rotate(-20deg);
 }
-
-/* line 65, ../../app/assets/stylesheets/home.css.scss */
-ul.hmenu {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+/* line 12, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(3) {
+  position: relative;
+  -moz-transform: rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+}
+/* line 12, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(4) {
+  position: relative;
+  -moz-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+/* line 12, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(5) {
+  position: relative;
+  -moz-transform: rotate(10deg);
+  -webkit-transform: rotate(10deg);
+  -o-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  transform: rotate(10deg);
+}
+/* line 12, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(6) {
+  position: relative;
+  -moz-transform: rotate(20deg);
+  -webkit-transform: rotate(20deg);
+  -o-transform: rotate(20deg);
+  -ms-transform: rotate(20deg);
+  transform: rotate(20deg);
+}
+/* line 12, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(7) {
+  position: relative;
+  -moz-transform: rotate(30deg);
   -webkit-transform: rotate(30deg);
-  text-align: center;
-  position: fixed;
-  right: 0px;
-  top: 2em;
-  font-size: 20px;
-  margin: 40px;
-  margin: 0px;
-  padding: 0.4em;
+  -o-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
 }
-/* line 84, ../../app/assets/stylesheets/home.css.scss */
-ul.hmenu li {
-  display: inline;
+/* line 20, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(1), #cards img:nth-child(7) {
+  top: 70px;
 }
-/* line 87, ../../app/assets/stylesheets/home.css.scss */
-ul.hmenu li a {
-  color: white;
-  text-shadow: 0px 1px 0px black;
-  text-decoration: none;
-  color: white;
+/* line 21, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(2), #cards img:nth-child(6) {
+  top: 30px;
 }
-/* line 89, ../../app/assets/stylesheets/home.css.scss */
-ul.hmenu li a:visited {
-  color: white;
+/* line 22, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(3), #cards img:nth-child(5) {
+  top: 10px;
 }
-/* line 90, ../../app/assets/stylesheets/home.css.scss */
-ul.hmenu li a:hover {
-  color: #ffa500;
+/* line 24, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(1) {
+  left: 300px;
 }
-
-/* line 100, ../../app/assets/stylesheets/home.css.scss */
-table {
-  margin: auto;
-  width: 800px;
-  color: white;
-  font-size: 24px;
+/* line 25, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(2) {
+  left: 200px;
 }
-/* line 106, ../../app/assets/stylesheets/home.css.scss */
-table tr {
-  borders: 1px solid red;
+/* line 26, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(3) {
+  left: 100px;
 }
-/* line 110, ../../app/assets/stylesheets/home.css.scss */
-table tr td, table tr th {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+/* line 28, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(7) {
+  right: 300px;
 }
-/* line 115, ../../app/assets/stylesheets/home.css.scss */
-table tr td:last-child {
-  text-align: center;
+/* line 29, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(6) {
+  right: 200px;
 }
-/* line 116, ../../app/assets/stylesheets/home.css.scss */
-table tr td:last-child a {
-  color: #ffa500;
+/* line 30, ../../app/assets/stylesheets/home.css.scss */
+#cards img:nth-child(5) {
+  right: 100px;
 }

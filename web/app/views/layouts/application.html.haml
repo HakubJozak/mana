@@ -9,11 +9,13 @@
     %ul.hmenu
       = render 'devise/menu/registration_items'
       = render 'devise/menu/login_items'
+
+    %h1.hyper
+      = link_to root_path, :class => 'hyper' do
+        != "M<span class='orange'>&alpha;</span>n<span class='orange'>&alpha;</span>"
+
+
     - flash.each do |name, msg|
       = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
-
-    %center
-      %h1.hyper
-        != "M<span class='orange'>&alpha;</span>n<span class='orange'>&alpha;</span>"
 
   = yield

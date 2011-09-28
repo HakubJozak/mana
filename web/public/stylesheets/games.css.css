@@ -11,10 +11,10 @@ Syntax error: File to import not found or unreadable: constants.
 1: @import 'compass/css3';
 2: @import 'constants';
 3: 
-4: 
-5: .search input {
-6:   border-color: rgba(0, 0, 0, 0.2);
-7:   background-color: rgba(0, 0, 0, 0.2);
+4: #search-box {
+5:   margin: 0 auto 0;
+6:   width: $content-width - 250px;
+7: 
 
 Backtrace:
 /home/jakub/prog/projects/mana/web/app/assets/stylesheets/games.css.scss:2
@@ -87,4 +87,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: constants.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/jakub/prog/projects/mana/web/public/stylesheets/sass\A                 /home/jakub/prog/projects/mana/web/app/assets/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/compass/stylesheets\A         on line 2 of /home/jakub/prog/projects/mana/web/app/assets/stylesheets/games.css.scss\A \A 1: @import 'compass/css3';\A 2: @import 'constants';\A 3: \A 4: \A 5: .search input {\A 6:   border-color: rgba(0, 0, 0, 0.2);\A 7:   background-color: rgba(0, 0, 0, 0.2);"; }
+  content: "Syntax error: File to import not found or unreadable: constants.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/jakub/prog/projects/mana/web/public/stylesheets/sass\A                 /home/jakub/prog/projects/mana/web/app/assets/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/compass/stylesheets\A         on line 2 of /home/jakub/prog/projects/mana/web/app/assets/stylesheets/games.css.scss\A \A 1: @import 'compass/css3';\A 2: @import 'constants';\A 3: \A 4: #search-box {\A 5:   margin: 0 auto 0;\A 6:   width: $content-width - 250px;\A 7: "; }
