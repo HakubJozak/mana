@@ -1,16 +1,20 @@
-#content
+#content.games
   #search-box
     %label
       %input{ :placeholder => 'Find a Game...',  :type => 'search' }
 
   %table{ :title => 'Games' }
     %tr
+      %th Started
       %th Name
+      %th Players
       %th= link_to 'Create', new_game_path
 
     - @games.each do |game|
       %tr
+        %td= "#{time_ago_in_words(game.created_at)} ago"
         %td= link_to game.name, game_path(game)
+        %td  ...
         %td= link_to 'Join', game
         -# %td= link_to 'Edit', edit_game_path(game)
 

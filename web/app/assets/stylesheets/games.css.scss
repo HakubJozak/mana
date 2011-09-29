@@ -1,7 +1,8 @@
 @import 'compass/css3';
 @import 'constants';
 
-#search-box {
+#content.games {
+  #search-box {
   margin: 0 auto 0;
   width: $content-width - 250px;
 
@@ -19,6 +20,9 @@
     font-size: 40px;
     color: transparentize($orange, 0.6);
   }
+}
+
+form.formtastic {
 }
 
 table {
@@ -41,5 +45,10 @@ table {
         a { color: $orange }
       }
     }
+  }
+}
+
+  form.formtastic {
+    margin-top: 5em;
   }
 }

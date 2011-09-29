@@ -1,0 +1,40 @@
+@import 'compass/css3';
+@import 'constants';
+@import 'modules';
+
+
+form.formtastic {
+
+  /* hide the 'required' asterisks */
+  abbr { display: none; }
+
+  li.string input {
+   @include border-radius(10px);
+
+   font-size: $input-height - 1px;
+   border: 5px solid gray;
+
+   &:focus { border: 5px solid $orange; }
+  }
+
+  fieldset.buttons {
+    @include center(400px);
+
+    li {
+      overflow: visible;
+      float: none;
+      display: inline;
+     }
+
+    input.create, a {
+      @include button;
+      padding: 5px 5px 5px 5px;
+    }
+  }
+
+  label {
+   font-size: 70%;
+   line-height: $input-height;
+   font-size: $input-height;
+  }
+}

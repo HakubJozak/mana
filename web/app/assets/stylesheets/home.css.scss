@@ -1,5 +1,6 @@
 @import 'compass/css3';
 @import 'constants';
+@import 'modules';
 
 
 $move: 100px;
@@ -47,21 +48,7 @@ $c: $card-width * 0.5 + 630px;
   margin: 500px auto 0 auto;
   width: 500px;
 
-  a.button {
-    @include border-radius(10px);
-    @include single-text-shadow(black, 2px, 2px);
-
-    width: 100px;
-    border: 1px solid rgba(1.0,1.0,1.0,0.3);
-    padding: 10px 10px 10px 10px;
-    line-height: 38px;
-    font-size: 40px;
-    text-decoration: none;
-    color: white;
-
-    background-color: grey;
-    &:hover { background-color: $orange; }
-  }
+  a.button { @include big-button;  }
 
   a:last-child { margin-left: 15px }
 }

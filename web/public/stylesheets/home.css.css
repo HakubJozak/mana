@@ -10,11 +10,11 @@ Syntax error: File to import not found or unreadable: constants.
 
 1: @import 'compass/css3';
 2: @import 'constants';
-3: 
+3: @import 'modules';
 4: 
-5: $move: 100px;
-6: $card-width: 200px;
-7: $c: $card-width * 0.5 + 630px;
+5: 
+6: $move: 100px;
+7: $card-width: 200px;
 
 Backtrace:
 /home/jakub/prog/projects/mana/web/app/assets/stylesheets/home.css.scss:2
@@ -87,4 +87,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: constants.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/jakub/prog/projects/mana/web/public/stylesheets/sass\A                 /home/jakub/prog/projects/mana/web/app/assets/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/compass/stylesheets\A         on line 2 of /home/jakub/prog/projects/mana/web/app/assets/stylesheets/home.css.scss\A \A 1: @import 'compass/css3';\A 2: @import 'constants';\A 3: \A 4: \A 5: $move: 100px;\A 6: $card-width: 200px;\A 7: $c: $card-width * 0.5 + 630px;"; }
+  content: "Syntax error: File to import not found or unreadable: constants.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/jakub/prog/projects/mana/web/public/stylesheets/sass\A                 /home/jakub/prog/projects/mana/web/app/assets/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/compass/stylesheets\A         on line 2 of /home/jakub/prog/projects/mana/web/app/assets/stylesheets/home.css.scss\A \A 1: @import 'compass/css3';\A 2: @import 'constants';\A 3: @import 'modules';\A 4: \A 5: \A 6: $move: 100px;\A 7: $card-width: 200px;"; }
