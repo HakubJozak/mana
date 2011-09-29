@@ -3,39 +3,3 @@
  *= require_self
  *= require_tree .
 */
-
-
-a.hyper {  text-decoration:none;    }
-
-h1.hyper {
-    margin: 0 auto 0;
-    color: white;
-    color: white;
-}
-
-a {
-  color: white;
-
-  &:visited { color: #666; }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
-}
-
-
-
-
-img.fixed {
-  height: 250px;
-  position: fixed;
-  top: 2em;
-  left: 2em;
-}
-
-
-body {
-  color: white;
-}
-
-

@@ -1,12 +1,20 @@
 @import 'compass/css3/transform';
+@import 'constants';
+
+#button-bar {
+  margin: 0 auto 0;
+  width: 500px;
+
+  a:last-child { margin-left: 15px }
+}
 
 #cards {
+  height: 400px;
+  clear: both;
+
   img {
     height: 200pt;
   }
-
-
-
 
   @for $i from 1 through 7 {
     img:nth-child(#{$i}) {

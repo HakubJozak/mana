@@ -12,12 +12,16 @@
 
 
 .button {
-    @include border-radius;
-    border: 3px solid rgba(0, 0, 0, 0.2);
-    background-color: transparentize($orange, 0.6);
+    @include border-radius(10px);
+    @include single-text-shadow(black, 2px, 2px);
+
+    border: 1px solid rgba(1.0,1.0,1.0,0.3);
+    padding: 4px;
+    background-color: $orange;
     line-height: 38px;
     font-size: 40px;
-
+    text-decoration: none;
+    color: grey;
 }
 
 
@@ -86,3 +90,9 @@ ul.hmenu {
     }
   }
 }
+
+
+
+
+
+
