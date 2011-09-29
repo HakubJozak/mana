@@ -6,8 +6,8 @@
 @import 'compass/css3';
 
 
-.orange {
- color: $orange;
+a {
+ &:visited { color: white }
 }
 
 body {
@@ -15,14 +15,17 @@ body {
 
   background-image: url(/assets/wood_grey.jpg);
   min-height: 2000px;
+  color: white;
 }
 
 h1.hyper {
- color: $white;
  text-align: center;
  width: 600px;
  font-size: 135px;
  text-shadow: 0px 5px 3px black;
+
+ a { text-decoration: none }
+ .orange { color: $orange; }
 
  super {
    position: relative;
@@ -65,7 +68,7 @@ ul.hmenu {
 
     a {
       color: $white;
-      &:visited { color: $white }
+      &:visited { color: white }
       &:hover { color: $orange; }
 
       @include text-shadow;

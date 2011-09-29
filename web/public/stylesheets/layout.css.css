@@ -16,8 +16,8 @@ Syntax error: File to import not found or unreadable: constants.
 6: @import 'compass/css3';
 7: 
 8: 
-9: .orange {
-10:  color: $orange;
+9: a {
+10:  &:visited { color: white }
 
 Backtrace:
 /home/jakub/prog/projects/mana/web/app/assets/stylesheets/layout.css.scss:5
@@ -90,4 +90,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: constants.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/jakub/prog/projects/mana/web/public/stylesheets/sass\A                 /home/jakub/prog/projects/mana/web/app/assets/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/compass/stylesheets\A         on line 5 of /home/jakub/prog/projects/mana/web/app/assets/stylesheets/layout.css.scss\A \A 1: /*\A 2:   Temporary design stolen from - http://www.css3maker.com/\A 3: */\A 4: \A 5: @import 'constants';\A 6: @import 'compass/css3';\A 7: \A 8: \A 9: .orange {\A 10:  color: $orange;"; }
+  content: "Syntax error: File to import not found or unreadable: constants.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/jakub/prog/projects/mana/web/public/stylesheets/sass\A                 /home/jakub/prog/projects/mana/web/app/assets/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/compass/stylesheets\A         on line 5 of /home/jakub/prog/projects/mana/web/app/assets/stylesheets/layout.css.scss\A \A 1: /*\A 2:   Temporary design stolen from - http://www.css3maker.com/\A 3: */\A 4: \A 5: @import 'constants';\A 6: @import 'compass/css3';\A 7: \A 8: \A 9: a {\A 10:  &:visited { color: white }"; }
