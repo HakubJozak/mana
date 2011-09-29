@@ -1,19 +1,44 @@
 @import 'compass/css3/transform';
+@import 'compass/css3';
 @import 'constants';
 
+
+
 #button-bar {
-  margin: 0 auto 0;
+  margin: 500px auto 0 auto;
   width: 500px;
+
+  a.button {
+    @include border-radius(10px);
+    @include single-text-shadow(black, 2px, 2px);
+
+    width: 100px;
+    border: 1px solid rgba(1.0,1.0,1.0,0.3);
+    padding: 10px 10px 10px 10px;
+    line-height: 38px;
+    font-size: 40px;
+    text-decoration: none;
+    color: white;
+
+    background-color: grey;
+    &:hover { background-color: $orange; }
+  }
 
   a:last-child { margin-left: 15px }
 }
 
+$move: 100px;
+$card-width: 200px;
+$c: $card-width * 0.5 + 630px;
+
 #cards {
-  height: 400px;
-  clear: both;
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  width: 1500px;
 
   img {
-    height: 200pt;
+    width: $card-width;
   }
 
   @for $i from 1 through 7 {
@@ -23,17 +48,17 @@
     }
   }
 
-  $move: 100px;
-
   img:nth-child(1), img:nth-child(7) { top: 70px; }
   img:nth-child(2), img:nth-child(6) { top: 30px; }
   img:nth-child(3), img:nth-child(5) { top: 10px; }
 
-  img:nth-child(1) { left: 3 * $move; }
-  img:nth-child(2) { left: 2 * $move; }
-  img:nth-child(3) { left: 1 * $move; }
+  img:nth-child(1) { left: 3 * $move - $c; }
+  img:nth-child(2) { left: 2 * $move - $c; }
+  img:nth-child(3) { left: 1 * $move - $c; }
 
-  img:nth-child(7) { right: 3 * $move; }
-  img:nth-child(6) { right: 2 * $move; }
-  img:nth-child(5) { right: 1 * $move; }
+  img:nth-child(4) { left: - $c; }
+
+  img:nth-child(7) { right: 3 * $move + $c; }
+  img:nth-child(6) { right: 2 * $move + $c; }
+  img:nth-child(5) { right: 1 * $move + $c; }
 }

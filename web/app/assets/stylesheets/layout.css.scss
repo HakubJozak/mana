@@ -10,21 +10,6 @@
  color: $orange;
 }
 
-
-.button {
-    @include border-radius(10px);
-    @include single-text-shadow(black, 2px, 2px);
-
-    border: 1px solid rgba(1.0,1.0,1.0,0.3);
-    padding: 4px;
-    background-color: $orange;
-    line-height: 38px;
-    font-size: 40px;
-    text-decoration: none;
-    color: grey;
-}
-
-
 body {
   #content { width: $content-width; margin: auto; }
 
@@ -60,7 +45,6 @@ h1.hyper {
 ul.hmenu {
 //  @include shadow;
   @include transparent;
-
   @include border-radius;
 
 // -webkit-transform: rotate(30deg);
