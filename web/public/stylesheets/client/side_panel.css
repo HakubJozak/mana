@@ -6,22 +6,21 @@ Syntax error: File to import not found or unreadable: components.
                 /home/jakub/prog/projects/mana/web/app/assets/stylesheets
                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/blueprint/stylesheets
                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/compass/stylesheets
-        on line 6 of /home/jakub/prog/projects/mana/web/app/assets/stylesheets/client/side_panel.scss
+        on line 5 of /home/jakub/prog/projects/mana/web/app/assets/stylesheets/client/side_panel.scss
 
 1: // -*- mode: css; tab-width: 2; -*-
 2: 
-3: 
-4: @import "compass/css3";
-5: @import "constants";
-6: @import "components";
+3: @import "compass/css3";
+4: @import "constants";
+5: @import "components";
+6: 
 7: 
-8: 
-9: body {
-10:   font-family: Georgia;
-11:   color: white;
+8: body {
+9:   font-family: Georgia;
+10:   color: white;
 
 Backtrace:
-/home/jakub/prog/projects/mana/web/app/assets/stylesheets/client/side_panel.scss:6
+/home/jakub/prog/projects/mana/web/app/assets/stylesheets/client/side_panel.scss:5
 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.1.7/lib/sass/tree/import_node.rb:64:in `rescue in import'
 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.1.7/lib/sass/tree/import_node.rb:42:in `import'
 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.1.7/lib/sass/tree/import_node.rb:25:in `imported_file'
@@ -91,4 +90,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: components.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/jakub/prog/projects/mana/web/public/stylesheets/sass\A                 /home/jakub/prog/projects/mana/web/app/assets/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/compass/stylesheets\A         on line 6 of /home/jakub/prog/projects/mana/web/app/assets/stylesheets/client/side_panel.scss\A \A 1: // -*- mode: css; tab-width: 2; -*-\A 2: \A 3: \A 4: @import \"compass/css3\";\A 5: @import \"constants\";\A 6: @import \"components\";\A 7: \A 8: \A 9: body {\A 10:   font-family: Georgia;\A 11:   color: white;"; }
+  content: "Syntax error: File to import not found or unreadable: components.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/jakub/prog/projects/mana/web/public/stylesheets/sass\A                 /home/jakub/prog/projects/mana/web/app/assets/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /home/jakub/.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/compass/stylesheets\A         on line 5 of /home/jakub/prog/projects/mana/web/app/assets/stylesheets/client/side_panel.scss\A \A 1: // -*- mode: css; tab-width: 2; -*-\A 2: \A 3: @import \"compass/css3\";\A 4: @import \"constants\";\A 5: @import \"components\";\A 6: \A 7: \A 8: body {\A 9:   font-family: Georgia;\A 10:   color: white;"; }

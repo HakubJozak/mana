@@ -1,5 +1,8 @@
 /*
  * FIXME: Introduce SCSS & Sprockets
  *= require_self
- *= require ./client/objects
+ *= require ./humanity/jquery-ui-1.8.6.custom
+ *= require_tree ./client
+
+  farbtastic/farbtastic.css
 */

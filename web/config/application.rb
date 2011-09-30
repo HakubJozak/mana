@@ -53,6 +53,8 @@ module Mana
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    config.assets.version = '1.0'
+
     # faster - use only when there is no inheritance in models!
     config.mongoid.preload_models = false
 
