@@ -17,6 +17,10 @@ form.formtastic {
    &:focus { border: 5px solid $orange; }
   }
 
+  li p.inline-errors {
+    @include single-text-shadow(black,1px,1px);
+  }
+
   fieldset.buttons {
     @include center(400px);
 

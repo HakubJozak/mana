@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+
   # GET /games
   # GET /games.json
   def index
@@ -13,10 +14,13 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    @websocket_host = 'localhost'
+    @websocket_port = '8080'
+
     @game = Game.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => false }
       format.json { render json: @game }
     end
   end
