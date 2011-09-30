@@ -1,0 +1,26 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass/css3";
+
+.button {
+  @include border-radius;
+
+  cursor: pointer;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.746) 0px 0px 3px;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#9d7c41), to(#693e1b));
+  border: 1px solid #C8B472;
+
+  border-top-color: #C8B472;
+  color: #FAFEB2;
+  padding: 2px 4px 2px 2px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: black 1px 1px 1px;
+
+  &:hover {
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c8b472), to(#693e1b));
+    border-top-color: white;
+    color: white;
+  }
+
+}

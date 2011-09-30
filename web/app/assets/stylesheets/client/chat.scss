@@ -1,0 +1,37 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass/css3";
+@import "constants";
+@import "components";
+
+#chat-bar {
+  display: none;
+  position: fixed;
+  z-index: $hand-z-index;
+
+  @include textured;
+
+  left: $side-panel-width + 10;
+  width: $middle-width;
+  height: $top_bar_height;
+  bottom: 30px;
+
+  padding-top: 5px;
+  padding-left: 15px;
+
+  input {
+      width: $battlefield-width - 50px;
+      background: rgba(48, 0, 0, 0.5);
+      border: 1px solid #693e1b;
+      color: #c8b472;
+      font-family: Georgia;
+      font-size: 20px;
+      @include border-radius;
+  }
+
+  @include shadow;
+  @include border-radius;
+}
+
+
+

@@ -1,0 +1,21 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass/css3";
+@import "constants";
+@import "components";
+
+
+#infobox {
+ position: fixed;
+ top: $top_bar_height;
+ left: $side-panel-width + 10;
+
+ heigth: 30px;
+ padding: 10px;
+
+ background-color: rgba(80, 80, 80, 0.2);
+ color: $highlight-color;
+
+ label { color: $highlight-color; }
+}
+
