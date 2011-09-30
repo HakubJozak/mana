@@ -47,22 +47,17 @@ h1.hyper {
 
 
 ul.hmenu {
-//  @include shadow;
-  @include transparent;
-  @include border-radius;
+ @include border-radius;
+ @include rotate(30deg);
 
-// -webkit-transform: rotate(30deg);
-
+ background-color: rgba(0,0,0,0.8);
  text-align: center;
-  position: fixed;
-  right: 0px;
-  top: 2em;
-  font-size: 20px;
-  margin: 40px;
-
-
-   margin: 0px;
-  padding: 0.4em;
+ position: fixed;
+ right: 0px;
+ top: 1em;
+ font-size: 20px;
+ margin: 1em 0 1em 0;
+ padding: 0.4em;
 
   li {
     display: inline;
