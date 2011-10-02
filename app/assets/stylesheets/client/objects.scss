@@ -1,0 +1,58 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass/reset";
+@import "compass/css3";
+
+@import "constants";
+@import "components";
+
+.button { font-size: 14px; }
+.highlight { color: $highlight-color }
+.warning   { color: red }
+
+input {
+  color: #C8B472;
+  background: rgba(48, 0, 0, 0.5);
+  border: 1px solid #693E1B;
+  font-family: Georgia !important;
+  @include border-radius;
+}
+
+
+#battlefield {
+  @include no-text-select;
+  @include border-radius;
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+
+  .user-area {
+      height: 400px;
+      background-color: rgba(30, 30, 30, 0.2);
+      &.local { background-color: rgba(40, 0, 0, 0.2);}
+
+      .name {
+          // @include text-shadow;
+          position: relative;
+          text-align: center;
+          top: 1em;
+          margin: auto;
+          font-size: 6em;
+          color: rgba(255, 255, 255, 0.05);
+      }
+  }
+}
+
+#footer {
+ color: gray;
+ text-align: center;
+ font-size: small;
+
+ hr {
+  background-color: black;
+  height: 1px;
+  border: none;
+ }
+
+ a { color: #bdbdbd; text-decoration: none }
+ a:hover { color: $highlight-color }
+}
+

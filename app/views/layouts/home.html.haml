@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title Mana
+    = csrf_meta_tag
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+  %body
+    %ul.hmenu
+      = render 'devise/menu/registration_items'
+      = render 'devise/menu/login_items'
+
+  = yield

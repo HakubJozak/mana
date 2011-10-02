@@ -1,0 +1,60 @@
+@mixin side-panel-component {
+  margin: auto;
+}
+
+@mixin panel {
+  @include textured;
+
+  label {
+    position: relative;
+    padding-bottom: 5px;
+    font-size: smaller;
+  }
+
+  border: 0px solid #9D7C41;
+}
+
+@mixin dropbox {
+  @include card-size;
+  @include border-radius;
+  padding: 5px;
+}
+
+@mixin no-text-select {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+
+@mixin transparent($alpha: 0.2) {
+  background-color: rgba(0, 0, 0, $alpha);
+}
+
+@mixin textured {
+  color: $highlight-color;
+  background: #61461c url('../medium-texture.png');
+}
+
+@mixin transparent-white {
+  background-color: rgba(1, 1, 1, 0.2);
+}
+
+@mixin gradient($c1: rgba(20, 0, 0, 0.2), $c2: rgba(60, 0, 0, 0.4)) {
+  @include background-image(linear-gradient(color-stops( $c1, $c2 )));
+}
+
+@mixin focused {
+  //@include linear-gradient(color-stops(  rgba(255, 253, 102, 0.1), rgba(255, 253, 102, 0.07) ));
+  @include background-image(linear-gradient( rgba(255, 253, 102, 0.1), rgba(255, 253, 102, 0.07) ));
+}
+
+@mixin shadow($size: 20px) {
+  @include box-shadow( rgba(0,0,0,0.5) $size $size $size);
+}
+
+@mixin card-size {
+  height: $card-h;
+  width: $card-w;
+}

@@ -1,18 +1,22 @@
-if defined?(Sinatra)
-  # This is the configuration to use when running within sinatra
-  project_path = Sinatra::Application.root
-  environment = :development
-else
-  # this is the configuration to use when running within the compass command line tool.
-  css_dir = File.join 'static', 'stylesheets'
-  relative_assets = true
-  environment = :production
-end
+# This configuration file works with both the Compass command line tool and within Rails.
+# Require any additional compass plugins here.
+project_type = :rails
 
-# This is common configuration
-sass_dir = File.join 'views', 'stylesheets'
-images_dir = File.join 'static', 'images'
+# Set this to the root of your project when deployed:
 http_path = "/"
-http_images_path = "/images"
-http_stylesheets_path = "/stylesheets"
 
+# You can select your preferred output style here (can be overridden via the command line):
+# output_style = :expanded or :nested or :compact or :compressed
+
+# To enable relative paths to assets via compass helper functions. Uncomment:
+# relative_assets = true
+
+# To disable debugging comments that display the original location of your selectors. Uncomment:
+# line_comments = false
+
+
+# If you prefer the indented syntax, you might want to regenerate this
+# project again passing --syntax sass, or you can uncomment this:
+# preferred_syntax = :sass
+# and then run:
+# sass-convert -R --from scss --to sass app/stylesheets scss && rm -rf sass && mv scss sass

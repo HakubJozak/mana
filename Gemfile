@@ -1,55 +1,30 @@
-# A sample Gemfile
-source :rubygems
+source 'http://rubygems.org'
+gem 'rails', '3.1.0'
+gem "haml", ">= 3.0.25"
 
-gem 'rack', '~> 1.2.1'
-gem 'thin'
-gem 'haml'
-# gem 'haml-more', '~> 0.5.1.beta' # Coffee script on-fly translator
-# gem 'escape_utils' # HAML speed-up
-gem 'compass'
-#gem 'sass' # required by compass
-gem 'sinatra'
-# gem 'sinatra_more'
-gem 'activesupport', :require => 'active_support'
+gem "bson_ext", ">= 1.3.0"
+gem "mongoid", ">= 2.0.1", :git => 'https://github.com/mongoid/mongoid.git'
+gem "devise", ">= 1.3.3"
+gem 'jquery-rails'
+gem 'formtastic'
 
-gem 'bson_ext', '~> 1.3.1'
-gem 'em-websocket'
-# gem 'em-mongo'
-gem 'mongo', '~> 1.3.1'
-gem 'sinatra-mongo'
-gem 'require_all'
-
-# gem 'therubyracer'
-# gem 'therubyrhino'
-gem 'coffee-script'
-
-group :development do
-  gem 'railsless-deploy', :require => false
-  gem 'sinatra-reloader'
-  gem 'awesome_print'
-  gem 'ruby-debug-base19'
-  gem 'ruby-debug19'
-  gem 'pry'
-  gem 'pry-doc'
-  gem 'guard-livereload'
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+  gem "compass"
 end
-
-group :tools do
-  gem 'capistrano'
-  gem 'capistrano_colors'
-end
-
 
 group :test do
-  gem 'shotgun'
-  gem 'capybara-webkit'
-  gem 'capybara'
-  gem 'test-unit-capybara'
+  gem "cucumber-rails", ">= 0.4.1", :group => :test
+  gem "capybara", ">= 0.4.1.2", :group => :test
+  gem "database_cleaner", ">= 0.6.7", :group => :test
+  gem "launchy", ">= 0.4.0", :group => :test
+  gem 'turn', :require => false
+end
 
-  gem 'autotest'
-  gem 'autotest-growl'
-#  gem 'autotest-fsevent'
-  gem 'launchy'
-  gem 'shoulda'
-  gem 'mocha'
+group :development do
+  gem 'thin'
+  gem "haml-rails", ">= 0.3.4"
+  gem 'guard-livereload'
 end

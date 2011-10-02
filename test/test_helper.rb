@@ -1,22 +1,7 @@
-require 'rubygems'
-require 'bundler'
-
-Bundler.require(:default, :test, :development)
-
-require_all 'app'
-
+ENV["RAILS_ENV"] = "test"
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
 
 class ActiveSupport::TestCase
-
-  def setup
-    @conn = Mongo::Connection.new
-    @conn.drop_database('mana-test')
-    @db = @conn["mana-test"]
-  end
-
-  def teardown
-    @conn.drop_database('mana-test')
-  end
+  # Add more helper methods to be used by all tests here...
 end
-
-

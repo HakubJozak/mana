@@ -1,0 +1,39 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass/css3";
+@import "constants";
+@import "components";
+
+
+@mixin side-panel {
+  position: absolute;
+  top: 0px;
+  min-height: 100%;
+  width: $side-panel-width;
+}
+
+#left-panel {
+  @include side-panel;
+  left: 0px;
+  clear: right;
+}
+
+#right-panel {
+  @include side-panel;
+  right: 0px;
+}
+
+#battlefield {
+ margin-top: 30px;
+ width: 800px;
+ margin-left: auto;
+ margin-right: auto;
+ clear: right;
+}
+
+#footer {
+ position: absolute;
+ top: $page-height - 50px;
+ margin-top: 20px;
+ z-index: -1;
+}

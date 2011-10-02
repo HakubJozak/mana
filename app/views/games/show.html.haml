@@ -1,0 +1,57 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title Mana
+
+    = stylesheet_link_tag 'client'
+    = javascript_include_tag 'client'
+
+    :javascript
+      $(document).ready(function() {
+        game = new Game();
+        Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}','#{@game_id}');
+        Socket.instance.connect()
+
+        var battlefield = new Battlefield();
+        var bview = new BattlefieldView({ model: battlefield });
+        User.all.bind('add', bview.render_user_areas)
+
+        chat = new Chat();
+        new ChatView({ model: chat });
+        Socket.instance.bind('arrived:message', chat.message_arrived );
+
+        var info = new InfoView({ model: chat });
+        InfoView.instance = info;
+        lobby = new LobbyView();
+
+        chat.bind('add', info.render);
+        Socket.instance.bind('socket:connected', lobby.open);
+
+        console.env = '#{Rails.env}';
+      });
+
+    - if Rails.env.development?
+      :javascript
+        $(document).ready(function() {
+          Socket.instance.bind('socket:connected', lobby.submit);
+        });
+%body
+  = render('shared/lobby', :layout => false)
+  = render('shared/create_card', :layout => false)
+  = render('shared/playground', :layout => false)
+
+  #infobox{ :style => 'display:none' }
+    %p
+
+  #chat-bar
+    %label Say:
+    %input#chat-input{ :name => 'message' }
+
+  = render('shared/footer', :layout => false)
+  = render('shared/help', :layout => false)
+
+  #coffin{:style => "display: none"}
+    = render('shared/templates', :layout => false)
+
+  - if Rails.env.production?
+    = render('shared/google_analytics', :layout => false)

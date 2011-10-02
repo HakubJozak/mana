@@ -1,0 +1,52 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass/css3";
+@import "constants";
+@import "components";
+
+
+.card {  position: absolute !important; }
+
+.card {
+  @include card-size;
+  img { @include card-size; }
+
+  .debug {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+
+  &:hover {
+    @include box-shadow($highlight-color 0px 0px 10px);
+  }
+
+  &.ui-draggable-dragging {
+    @include shadow;
+  }
+
+  &.tapped {
+    @include rotate(90deg);
+    .power, .counters { @include rotate(-90deg); }
+  }
+
+  .power { right: 0px;  bottom: 0px; }
+  .counters { left: 0px;  top: 0px; }
+
+  .counters, .power {
+    position: absolute;
+
+    @include border-radius;
+    @include transparent;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    padding-top: 3px;
+    margin: 5px;
+  }
+}
+
+.card-detail {
+  @include card-size;
+  @include shadow;
+}
