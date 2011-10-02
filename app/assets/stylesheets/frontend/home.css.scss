@@ -1,0 +1,54 @@
+@import 'compass/css3';
+@import 'constants';
+@import 'modules';
+
+
+$move: 100px;
+$card-width: 200px;
+$c: $card-width * 0.5 + 630px;
+
+#cards {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  width: 1500px;
+
+  img {
+    width: $card-width;
+    &:hover {
+      @include single-box-shadow($color: $orange, $blur: 10px);
+//      z-index: 1000;
+    }
+  }
+
+  @for $i from 1 through 7 {
+    img:nth-child(#{$i}) {
+      position: relative;
+      @include rotate(-40deg + $i * 10deg);
+    }
+  }
+
+  img:nth-child(1), img:nth-child(7) { top: 70px; }
+  img:nth-child(2), img:nth-child(6) { top: 30px; }
+  img:nth-child(3), img:nth-child(5) { top: 10px; }
+
+  img:nth-child(1) { left: 3 * $move - $c; }
+  img:nth-child(2) { left: 2 * $move - $c; }
+  img:nth-child(3) { left: 1 * $move - $c; }
+
+  img:nth-child(4) { left: - $c; }
+
+  img:nth-child(7) { right: 3 * $move + $c; }
+  img:nth-child(6) { right: 2 * $move + $c; }
+  img:nth-child(5) { right: 1 * $move + $c; }
+}
+
+
+#button-bar {
+  margin: 500px auto 0 auto;
+  width: 500px;
+
+  a.button { @include big-button;  }
+
+  a:last-child { margin-left: 15px }
+}

@@ -1,0 +1,34 @@
+source :rubygems
+
+gem 'activesupport', :require => 'active_support'
+gem 'bson_ext', '~> 1.4.0'
+gem 'em-websocket'
+gem 'em-synchrony'
+gem "mongoid", ">= 2.0.1", :git => 'https://github.com/mongoid/mongoid.git'
+gem 'require_all'
+
+group :development do
+  gem 'railsless-deploy', :require => false
+  gem 'awesome_print'
+  gem 'ruby-debug-base19'
+  gem 'ruby-debug19'
+  gem 'pry'
+  gem 'pry-doc'
+  gem 'guard-livereload'
+end
+
+group :tools do
+  gem 'capistrano'
+  gem 'capistrano_colors'
+end
+
+group :test do
+  gem 'shotgun'
+  gem 'capybara-webkit'
+  gem 'capybara'
+  gem 'test-unit-capybara'
+  gem 'autotest'
+  gem 'autotest-growl'
+#  gem 'autotest-fsevent'
+  gem 'mocha'
+end

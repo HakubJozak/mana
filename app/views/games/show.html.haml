@@ -1,7 +1,7 @@
 !!!
 %html{:lang => "en"}
   %head
-    %title Mana
+    %title= "Mana - #{@game.name}"
 
     = stylesheet_link_tag 'client'
     = javascript_include_tag 'client'
@@ -9,7 +9,7 @@
     :javascript
       $(document).ready(function() {
         game = new Game();
-        Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}','#{@game_id}');
+        Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}','#{@game.id}');
         Socket.instance.connect()
 
         var battlefield = new Battlefield();
