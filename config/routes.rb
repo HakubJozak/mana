@@ -4,7 +4,10 @@ Mana::Application.routes.draw do
   devise_for :users
   resources :users, :only => :show
 
-  resources :games, :except => [ :destroy, :update ]
+  resources :games, :except => [ :destroy, :update ] do
+    resources :players, :only => [ :new, :create, :destroy ]
+  end
+
 
 
   # The priority is based upon order of creation:

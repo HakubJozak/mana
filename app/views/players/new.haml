@@ -1,0 +1,12 @@
+%h1 Join game '#{@game.name}'
+
+#content.games
+
+  = semantic_form_for @player do |f|
+
+    = f.inputs do
+      = f.input :name
+
+      = f.buttons do
+        = f.commit_button
+        %li= link_to 'Back', games_path

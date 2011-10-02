@@ -8,7 +8,9 @@
 
     :javascript
       $(document).ready(function() {
+        new User(#{@player.to_json}) // LOCAL!
         game = new Game();
+
         Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}','#{@game.id}');
         Socket.instance.connect()
 

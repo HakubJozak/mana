@@ -63,7 +63,7 @@ EM.synchrony do
       # LEGACY logic (Backbone does not save 'action')
       if command['action']
         game_id = command.delete('game_id')
-        ws.game = Game.find_or_create(game_id)
+        ws.game = Game.find(game_id)
         ws.user = Mana::User.new(ws, command)
         ws.game.connect(ws.user)
       else

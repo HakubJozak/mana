@@ -7,18 +7,21 @@ class Game
   field :name, :type => String
   field :created_at, :type => DateTime, :default => Time.now
 
+  embeds_many :players
+  attr_reader :use
+
+  @@games = []
+
   after_initialize do
+    @@games[self.id] = self
+
     @users = []
+    @queue = []
     @channel = EM::Channel.new
   end
 
-
-  #  embeds_many :users
-  attr_reader :users
-
-  # rename or not use at all!
-  def self.find_or_create(id)
-    Game.find(id)
+  def self.find(id)
+    @@games[id] || super
   end
 
 
@@ -60,14 +63,6 @@ class Game
   end
 
   private
-
-  # def add_user(user, args)
-  #   server_command(:add_user, user, :args => args)
-  # end
-
-  # def remove_user(user)
-  #   server_command(:remove_user, user, :args => { :user => user.to_hash })
-  # end
 
   # TODO: subclass EM::Channel to do this
   def broadcast_to(scope, command)
