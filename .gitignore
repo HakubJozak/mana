@@ -2,5 +2,6 @@
 .git
 .sass-cache
 .cache_rake_t
+log/*.log
 tmp
 TAGS

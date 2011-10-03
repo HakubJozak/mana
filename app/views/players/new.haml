@@ -1,12 +1,11 @@
-%h1 Join game '#{@game.name}'
+#content.create_player
 
-#content.games
-
-  = semantic_form_for @player do |f|
+  = semantic_form_for @player, :url => game_players_path(@game) do |f|
 
     = f.inputs do
       = f.input :name
+      = f.input :deck, :as => :text, :hint => "Login to enable deck management tools!"
 
       = f.buttons do
-        = f.commit_button
+        = f.commit_button "Join the '#{@game.name}' game"
         %li= link_to 'Back', games_path

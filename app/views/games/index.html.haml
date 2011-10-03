@@ -15,7 +15,10 @@
         %td= "#{time_ago_in_words(game.created_at)} ago"
         %td= link_to game.name, game_path(game)
         %td  ...
-        %td= link_to 'Join', game
+        - if is_playing?(game)
+          %td= link_to 'Continue', game
+        - else
+          %td= link_to 'Join', new_game_player_path(game)
         -# %td= link_to 'Edit', edit_game_path(game)
 
 %br

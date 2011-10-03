@@ -10,7 +10,7 @@ class Game
   embeds_many :players
   attr_reader :use
 
-  @@games = []
+  @@games = {}
 
   after_initialize do
     @@games[self.id] = self

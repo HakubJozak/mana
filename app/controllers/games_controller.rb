@@ -1,5 +1,8 @@
 class GamesController < ApplicationController
 
+  helper_method :is_playing?
+
+
   # GET /games
   # GET /games.json
   def index
@@ -57,31 +60,10 @@ class GamesController < ApplicationController
     end
   end
 
-  # PUT /games/1
-  # PUT /games/1.json
-  # def update
-  #   @game = Game.find(params[:id])
+  protected
 
-  #   respond_to do |format|
-  #     if @game.update_attributes(params[:game])
-  #       format.html { redirect_to @game, notice: 'Game was successfully updated.' }
-  #       format.json { head :ok }
-  #     else
-  #       format.html { render action: "edit" }
-  #       format.json { render json: @game.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def is_playing?(game)
+    !players[game.id].nil?
+  end
 
-  # DELETE /games/1
-  # DELETE /games/1.json
-  # def destroy
-  #   @game = Game.find(params[:id])
-  #   @game.destroy
-
-  #   respond_to do |format|
-  #     format.html { redirect_to games_url }
-  #     format.json { head :ok }
-  #   end
-  # end
 end
