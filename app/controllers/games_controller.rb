@@ -2,7 +2,6 @@ class GamesController < ApplicationController
 
   helper_method :is_playing?
 
-
   # GET /games
   # GET /games.json
   def index
@@ -22,10 +21,13 @@ class GamesController < ApplicationController
 
     @game = Game.find(params[:id])
 
-    respond_to do |format|
-      format.html { render :layout => false }
-      format.json { render json: @game }
+    if is_playing?(@game)
+      @player = player_for(@game)
+      render layout: false
+    else
+      redirect_to new_game_player_path(@game)
     end
+
   end
 
   # GET /games/new

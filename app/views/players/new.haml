@@ -4,7 +4,8 @@
 
     = f.inputs do
       = f.input :name
-      = f.input :deck, :as => :text, :hint => "Login to enable deck management tools!"
+      - tip = current_user.nil? ? "<b>TIP</b>: Login to enable deck management tools!".html_safe : ""
+      = f.input :deck, :as => :text, :hint => tip
 
       = f.buttons do
         = f.commit_button "Join the '#{@game.name}' game"

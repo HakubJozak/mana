@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     session[:player_ids]
   end
 
+  def player_for(game)
+    players[game.id]
+  end
+
 end
