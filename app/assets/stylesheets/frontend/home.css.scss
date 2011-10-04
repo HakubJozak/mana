@@ -15,9 +15,10 @@ $c: $card-width * 0.5 + 630px;
 
   img {
     width: $card-width;
+    @include box-shadow(rgba(black,0.4) 15px 15px 5px);
+
     &:hover {
-      @include single-box-shadow($color: $orange, $blur: 10px);
-//      z-index: 1000;
+      @include box-shadow($orange 0 0 10px, rgba(black,0.4) 15px 15px 5px);
     }
   }
 
