@@ -40,6 +40,12 @@ end
 
 class Table
 
+  @@tables = {}
+
+  def self.find(game)
+    @@tables[game.id] ||= Table.new(game)
+  end
+
   def initialize(game)
     @game = game
     @users = []
@@ -47,7 +53,7 @@ class Table
     @channel = EM::Channel.new
   end
 
-  def connect(user)
+  def sitdown(user)
     user.sid = @channel.subscribe do |pack|
       # TODO: subclass EM::Channel to do this
       user.message_to_client(pack[:scope], pack[:command])
@@ -123,9 +129,9 @@ EM.synchrony do
       # LEGACY logic (Backbone does not save 'action')
       if command['action']
         game = Game.find(command['game_id'])
-        ws.game = Table.new(game)
         ws.user = Mana::User.new(ws, game.players.find(command['player_id']))
-        ws.game.connect(ws.user)
+        ws.game = Table.find(game)
+        ws.game.sitdown(ws.user)
       else
         # adds author to the command
         ws.game.send_to_opponents(command.merge(:sid => ws.user.sid))
