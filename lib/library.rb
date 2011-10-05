@@ -20,10 +20,6 @@ class Library
     @cards.each_with_index { |c,i| c.order = i }
   end
 
-  def to_hash
-    { :cards => @cards }
-  end
-
   private
 
   def mono_card_array(count, name)

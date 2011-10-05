@@ -18,6 +18,7 @@ else
   WEBSOCKET_PORT = 8080
 end
 
+
 require '../lib/library'
 require '../lib/magic_cards_info'
 require '../lib/commander'
@@ -26,6 +27,9 @@ require '../app/models/game'
 require '../app/models/player'
 require '../app/models/card'
 require '../app/models/client/user'
+
+require 'table'
+
 
 
 # HACK
@@ -36,67 +40,6 @@ end
 # MEGA-HACK just for now
 class Object
   include Mana::Commander
-end
-
-class Table
-
-  @@tables = {}
-
-  def self.find(game)
-    @@tables[game.id] ||= Table.new(game)
-  end
-
-  def initialize(game)
-    @game = game
-    @users = []
-    @queue = []
-    @channel = EM::Channel.new
-  end
-
-  def sitdown(user)
-    user.sid = @channel.subscribe do |pack|
-      # TODO: subclass EM::Channel to do this
-      user.message_to_client(pack[:scope], pack[:command])
-    end
-
-    # add all others to new user
-    @users.each do |remote_user|
-      args = { :user => remote_user.to_hash(:include_library => true) }
-      user.message_to_client(:all, args)
-    end
-
-    # add new user to new user
-    # TODO: replace :local with requestID
-    args = { :user => user.to_hash(:include_library => true).merge(:local => true)  };
-    user.message_to_client(:me, args)
-
-    # add new user to all others
-    @users.each do |remote_user|
-      args = { :user => user.to_hash(:include_library => true) };
-      remote_user.message_to_client(:opponents, args)
-    end
-
-    @users << user
-  end
-
-  def send_to_opponents(command)
-    broadcast_to :opponents, command
-  end
-
-  def disconnect(user)
-    @users.delete(user)
-    @channel.unsubscribe(user.sid)
-    # TODO - send just ID and type
-    # broadcast_to :opponents, user.to_hash
-  end
-
-  private
-
-  # TODO: subclass EM::Channel to do this
-  def broadcast_to(scope, command)
-    @channel.push(:scope => scope, :command => command)
-  end
-
 end
 
 
@@ -129,9 +72,8 @@ EM.synchrony do
       # LEGACY logic (Backbone does not save 'action')
       if command['action']
         game = Game.find(command['game_id'])
-        ws.user = Mana::User.new(ws, game.players.find(command['player_id']))
         ws.game = Table.find(game)
-        ws.game.sitdown(ws.user)
+        ws.game.sitdown(command['player_id'], ws)
       else
         # adds author to the command
         ws.game.send_to_opponents(command.merge(:sid => ws.user.sid))
