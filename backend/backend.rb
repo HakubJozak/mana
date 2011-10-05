@@ -38,6 +38,62 @@ class Object
   include Mana::Commander
 end
 
+class Table
+
+  def initialize(game)
+    @game = game
+    @users = []
+    @queue = []
+    @channel = EM::Channel.new
+  end
+
+  def connect(user)
+    user.sid = @channel.subscribe do |pack|
+      # TODO: subclass EM::Channel to do this
+      user.message_to_client(pack[:scope], pack[:command])
+    end
+
+    # add all others to new user
+    @users.each do |remote_user|
+      args = { :user => remote_user.to_hash(:include_library => true) }
+      user.message_to_client(:all, args)
+    end
+
+    # add new user to new user
+    # TODO: replace :local with requestID
+    args = { :user => user.to_hash(:include_library => true).merge(:local => true)  };
+    user.message_to_client(:me, args)
+
+    # add new user to all others
+    @users.each do |remote_user|
+      args = { :user => user.to_hash(:include_library => true) };
+      remote_user.message_to_client(:opponents, args)
+    end
+
+    @users << user
+  end
+
+  def send_to_opponents(command)
+    broadcast_to :opponents, command
+  end
+
+  def disconnect(user)
+    @users.delete(user)
+    @channel.unsubscribe(user.sid)
+    # TODO - send just ID and type
+    # broadcast_to :opponents, user.to_hash
+  end
+
+  private
+
+  # TODO: subclass EM::Channel to do this
+  def broadcast_to(scope, command)
+    @channel.push(:scope => scope, :command => command)
+  end
+
+end
+
+
 # Mongoid config - hack cause it recognizes only this env value to
 # determine environment
 ENV["RACK_ENV"] = 'development' # 'production'
@@ -56,6 +112,7 @@ EM.synchrony do
     end
 
     ws.onopen do
+      puts "Client connected"
     end
 
     ws.onmessage do |msg|
@@ -65,8 +122,9 @@ EM.synchrony do
 
       # LEGACY logic (Backbone does not save 'action')
       if command['action']
-        ws.game = Game.find(command['game_id'])
-        ws.user = Mana::User.new(ws, ws.game.players.find(command['player_id']))
+        game = Game.find(command['game_id'])
+        ws.game = Table.new(game)
+        ws.user = Mana::User.new(ws, game.players.find(command['player_id']))
         ws.game.connect(ws.user)
       else
         # adds author to the command
