@@ -4,6 +4,9 @@
 
     = f.inputs do
       = f.input :name
+      = f.input :color
+      #color-picker{ :style => 'display:none;' }
+
       - tip = current_user.nil? ? "<b>TIP</b>: Login to enable deck management tools!".html_safe : ""
       = f.input :deck, :as => :text, :hint => tip
 

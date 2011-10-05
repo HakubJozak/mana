@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$(document).ready ->
+  $('#color-picker').farbtastic (color,second) ->
+    $('#player_color').css('color', color)
+               .val(color)
+
+  $('#player_color').click -> $('#color-picker').fadeIn()
+  $('#player_color').focus -> $('#color-picker').fadeIn()
+  $('#player_color').blur -> $('#color-picker').fadeOut()

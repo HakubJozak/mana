@@ -24,7 +24,6 @@
 
         var info = new InfoView({ model: chat });
         InfoView.instance = info;
-        lobby = new LobbyView();
 
         chat.bind('add', info.render);
         Socket.instance.bind('socket:connected', lobby.open);
