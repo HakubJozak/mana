@@ -26,5 +26,9 @@ end
 group :development do
   gem 'thin'
   gem "haml-rails", ">= 0.3.4"
+  gem 'ruby-debug-base19'
+  gem 'ruby-debug19'
+  gem 'pry'
+  gem 'pry-doc'
   gem 'guard-livereload'
 end

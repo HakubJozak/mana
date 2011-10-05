@@ -9,10 +9,10 @@ class PlayersController < ApplicationController
 
   def create
     attrs = params[:player]
-    attrs.merge(:user => current_user) if current_user
+    attrs.merge!(:user => current_user) if current_user
 
     if player = @game.players.create(attrs)
-      players[@game.id] = player.id
+      set_player_for( @game, player.id)
       redirect_to @game
     else
       render :new
@@ -26,7 +26,7 @@ class PlayersController < ApplicationController
   protected
 
   def redirect_if_player_exists
-    redirect_to @game if players[@game.id]
+    redirect_to @game if is_playing?(@game)
   end
 
   def find_game

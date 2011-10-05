@@ -1,7 +1,5 @@
 class GamesController < ApplicationController
 
-  helper_method :is_playing?
-
   # GET /games
   # GET /games.json
   def index
@@ -60,12 +58,6 @@ class GamesController < ApplicationController
         format.json { render json: @game.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  protected
-
-  def is_playing?(game)
-    !players[game.id].nil?
   end
 
 end

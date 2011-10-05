@@ -7,12 +7,18 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def players
-    session[:player_ids]
+  helper_method :is_playing?
+
+  def is_playing?(game)
+    !session[:player_ids][game.id].nil?
+  end
+
+  def set_player_for(game, player)
+    session[:player_ids][game.id] = player
   end
 
   def player_for(game)
-    players[game.id]
+    game.players.find(session[:player_ids][game.id])
   end
 
 end

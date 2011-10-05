@@ -19,6 +19,7 @@ class User extends Backbone.Model
   lives: => @get('lives')
   color: => @get('color')
   name: => @get('name')
+  id: => @get('_id')
 
 class UserCollection extends Backbone.Collection
   model : User
