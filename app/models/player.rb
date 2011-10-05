@@ -18,7 +18,7 @@ class Player
       self.name ||= "Guest"
     end
 
-    self.deck = File.open("#{Rails.root}/db/decks/eldrazi").read
+    self.deck = File.open("#{Rails.root}/db/decks/eldrazi").read if defined?(Rails)
   end
 end
 

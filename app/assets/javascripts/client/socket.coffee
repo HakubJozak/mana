@@ -56,17 +56,18 @@ class Socket
     @ws.send(obj)
 
   # LEGACY - transform it to User.save and Library.save
-  start_game: (attrs) ->
+  start_game: (game, user) ->
+    console.info('game')
+    console.info(game)
+
     @ws.send(JSON.stringify({
       action: 'connect',
-      game_id: @game_id,
-      cards: attrs.cards,
-      name: attrs.name,
-      color: attrs.color
+      game_id: game.id,
+      player_id: user.id
     }))
 
 Backbone.sync = (method, model, success, error) ->
-  console.info method
+  console.info "Sending #{method}"
   name = model.constructor.name.toLowerCase()
 
   params = {}

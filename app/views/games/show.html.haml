@@ -8,8 +8,9 @@
 
     :javascript
       $(document).ready(function() {
-        new User(#{@player.to_json}) // LOCAL!
-        game = new Game();
+        var attrs = #{@player.to_json};
+        attrs['id'] = '#{@player.id}';
+        User.local = new User(attrs);
 
         Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}','#{@game.id}');
         Socket.instance.connect()
@@ -26,7 +27,7 @@
         InfoView.instance = info;
 
         chat.bind('add', info.render);
-        Socket.instance.bind('socket:connected', lobby.open);
+        // Socket.instance.bind('socket:connected', lobby.open);
 
         console.env = '#{Rails.env}';
       });
@@ -34,7 +35,13 @@
     - if Rails.env.development?
       :javascript
         $(document).ready(function() {
-          Socket.instance.bind('socket:connected', lobby.submit);
+          Socket.instance.bind('socket:connected', function() {
+            var attrs = #{@game.to_json};
+            attrs['id'] = '#{@game.id}';
+            game = new Game(attrs);
+
+            Socket.instance.start_game(game, User.local);
+          });
         });
 %body
   = render('shared/lobby', :layout => false)

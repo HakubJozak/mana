@@ -23,6 +23,7 @@ require '../lib/magic_cards_info'
 require '../lib/commander'
 
 require '../app/models/game'
+require '../app/models/player'
 require '../app/models/card'
 require '../app/models/client/user'
 
@@ -60,11 +61,12 @@ EM.synchrony do
     ws.onmessage do |msg|
       command = decode(msg)
 
+      puts msg.to_json
+
       # LEGACY logic (Backbone does not save 'action')
       if command['action']
-        game_id = command.delete('game_id')
-        ws.game = Game.find(game_id)
-        ws.user = Mana::User.new(ws, command)
+        ws.game = Game.find(command['game_id'])
+        ws.user = Mana::User.new(ws, ws.game.players.find(command['player_id']))
         ws.game.connect(ws.user)
       else
         # adds author to the command

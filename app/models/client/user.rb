@@ -7,11 +7,11 @@ module Mana
 
     alias :id :sid
 
-    def initialize(ws, options)
+    def initialize(ws, player)
       @ws = ws
-      @name = options['name']
-      @color = options['color']
-      update_library(options['cards'])
+      @name = player.name
+      @color = player.color
+      update_library(player.deck)
     end
 
     def update_library(cards)

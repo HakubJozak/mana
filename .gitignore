@@ -3,5 +3,6 @@
 .sass-cache
 .cache_rake_t
 log/*.log
+publi/stylesheets/*.css.css
 tmp
 TAGS
