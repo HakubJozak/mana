@@ -11,8 +11,9 @@ class PlayersController < ApplicationController
     attrs = params[:player]
     attrs.merge!(:user => current_user) if current_user
 
-    if player = @game.players.create(attrs)
-      set_player_for( @game, player.id)
+    if @player = @game.players.create!(attrs)
+      set_player_for( @game, @player.id)
+      debugger
       redirect_to @game
     else
       render :new

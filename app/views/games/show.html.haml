@@ -8,20 +8,13 @@
 
     :javascript
       $(document).ready(function() {
-        var attrs = #{@player.to_json};
-        attrs['id'] = '#{@player.id}';
-        User.local = new User(attrs);
-
-        Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}','#{@game.id}');
-        Socket.instance.connect()
-
         var battlefield = new Battlefield();
         var bview = new BattlefieldView({ model: battlefield });
         User.all.bind('add', bview.render_user_areas)
 
         chat = new Chat();
         new ChatView({ model: chat });
-        Socket.instance.bind('arrived:message', chat.message_arrived );
+
 
         var info = new InfoView({ model: chat });
         InfoView.instance = info;
@@ -30,19 +23,20 @@
         // Socket.instance.bind('socket:connected', lobby.open);
 
         console.env = '#{Rails.env}';
+
+        Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}/games/#{@game.id}/players/#{@player.id}','#{@game.id}');
+
+        Socket.instance.bind('arrived:message', chat.message_arrived );
+        Socket.instance.bind('socket:connected', function() {
+          var attrs = #{@game.to_json};
+          attrs['id'] = '#{@game.id}';
+          game = new Game(attrs);
+          // Socket.instance.start_game(game, User.local);
+        });
+
+        Socket.instance.connect();
       });
 
-    - if Rails.env.development?
-      :javascript
-        $(document).ready(function() {
-          Socket.instance.bind('socket:connected', function() {
-            var attrs = #{@game.to_json};
-            attrs['id'] = '#{@game.id}';
-            game = new Game(attrs);
-
-            Socket.instance.start_game(game, User.local);
-          });
-        });
 %body
   = render('shared/lobby', :layout => false)
   = render('shared/create_card', :layout => false)

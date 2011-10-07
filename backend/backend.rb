@@ -29,12 +29,15 @@ require '../app/models/card'
 require '../app/models/client/user'
 
 require 'table'
+require 'active_player'
+
+
 
 
 
 # HACK
 class EventMachine::WebSocket::Connection
-  attr_accessor :game, :user
+  attr_accessor :table
 end
 
 # MEGA-HACK just for now
@@ -48,8 +51,10 @@ end
 ENV["RACK_ENV"] = 'development' # 'production'
 Mongoid.load!("./mongoid.yml")
 
-
-EM.synchrony do
+# TODO -
+# require 'em-synchrony-mongodb'
+# EM.synchrony do
+EM.run do
 
   @mongo = Mongo::Connection.new.db('mana')
   MagicCardsInfo.instance = MagicCardsInfo.new(@mongo)
@@ -61,25 +66,24 @@ EM.synchrony do
     end
 
     ws.onopen do
-      puts "Client connected"
+      ws.request['path'] =~ %r{/games/(\S*)/players/(\S*)}
+      game_id = $1
+      player_id = $2
+
+      game = Game.find(game_id)
+      @table = Table.find_or_create(game)
+      @table.sitdown(player_id, ws)
+
+      puts "Player #{player_id} connected."
     end
 
     ws.onmessage do |msg|
       command = decode(msg)
-
       puts msg.to_json
 
-      # LEGACY logic (Backbone does not save 'action')
-      if command['action']
-        game = Game.find(command['game_id'])
-        ws.game = Table.find(game)
-        ws.game.sitdown(command['player_id'], ws)
-      else
-        # adds author to the command
-        ws.game.send_to_opponents(command.merge(:sid => ws.user.sid))
-      end
+      @table.send_to_opponents(command)
 
-      ws.onclose { ws.game.disconnect(ws.user) }
+      ws.onclose { @table.disconnect(ws.user) }
     end
   end
 

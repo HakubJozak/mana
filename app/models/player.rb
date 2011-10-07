@@ -21,26 +21,5 @@ class Player
     self.deck = File.open("#{Rails.root}/db/decks/eldrazi").read if defined?(Rails)
   end
 
-  def to_hash(opts = {})
-    @library = Library.new(self, deck)
-
-    result = { :name => name, :id => id, :color => color }
-    opts[:include_library] ? result.merge({ :cards => @library.cards }) : result
-  end
-
-  def connection=(ws)
-    @connection = ws
-  end
-
-  def sid=(sid)
-    @sid = sid
-  end
-
-
-  def message_to_client(scope, command)
-    @connection.send(encode(command))
-  end
-
-
 end
 
