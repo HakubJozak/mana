@@ -18,7 +18,6 @@ class Table < EM::Channel
     #
     # TODO: what if the game changed in backend and the load will
     # override it?
-    @game.players(true)
     @game.reload
 
     # TODO: this should be somehow checked against Rails session -
@@ -35,7 +34,9 @@ class Table < EM::Channel
       player.message_received(model)
     end
 
+    # TODO: defer this job
     push(player)
+    player.cards(true).each { |c| push(c) }
   end
 
   def push(model)

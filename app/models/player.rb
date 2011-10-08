@@ -8,8 +8,19 @@ class Player
 
   validates_presence_of :name
 
-  embedded_in :game
   belongs_to :user
+  embedded_in :game
+  has_many :cards
+
+  after_create do
+    crd = Card.create!(
+      name: 'Forest',
+      url: 'http://magiccards.info/isd/en/262.html',
+      image_url: 'http://magiccards.info/scans/en/isd/262.jpg',
+      collection_id: "library-#{self.id}",
+      game: game,
+      player: self)
+  end
 
   after_initialize do
     if self.user
@@ -19,7 +30,10 @@ class Player
       self.name ||= "Guest"
     end
 
-    self.deck = File.open("#{Rails.root}/db/decks/eldrazi").read if defined?(Rails)
+    # TODO: remove
+    if defined?(Rails)
+      self.deck = File.open("#{Rails.root}/db/decks/eldrazi").read
+    end
   end
 
 end

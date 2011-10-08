@@ -13,7 +13,7 @@ class CardCollection extends Backbone.Collection
     @trigger('add')
 
   id: =>
-    "#{@name}_#{@user_id}"
+    "#{@name}-#{@user_id}"
 
   comparator: (card) ->
     card.order()

@@ -19,14 +19,13 @@ else
 end
 
 
-require '../lib/library'
+require '../lib/card_collection'
 require '../lib/magic_cards_info'
 require '../lib/commander'
 
 require '../app/models/game'
 require '../app/models/player'
 require '../app/models/card'
-require '../app/models/client/user'
 
 require 'table'
 require 'active_player'
@@ -38,11 +37,6 @@ require 'active_player'
 # HACK
 class EventMachine::WebSocket::Connection
   attr_accessor :table
-end
-
-# MEGA-HACK just for now
-class Object
-  include Mana::Commander
 end
 
 
@@ -57,6 +51,8 @@ Mongoid.load!("./mongoid.yml")
 EM.run do
 
   @mongo = Mongo::Connection.new.db('mana')
+
+  # change MagicCardsInfo to deferred object
   MagicCardsInfo.instance = MagicCardsInfo.new(@mongo)
 
   EventMachine::WebSocket.start(:host => ADDRESS, :port => WEBSOCKET_PORT, :debug => true) do |ws|

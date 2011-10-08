@@ -13,7 +13,6 @@ class PlayersController < ApplicationController
 
     if @player = @game.players.create!(attrs)
       set_player_for( @game, @player.id)
-      debugger
       redirect_to @game
     else
       render :new

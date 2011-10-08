@@ -1,10 +1,12 @@
-class Library
+class CardCollection
 
   attr_reader :cards
 
+  def initialize(container)
+  end
   # TODO: handle bad lines
   # TODO: handle wrong names
-  def initialize(user, card_list = '')
+  def create_all(user, card_list = '')
     raise 'User not supplied' unless user
 
     @user = user

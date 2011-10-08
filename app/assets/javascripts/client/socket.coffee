@@ -24,10 +24,10 @@ class Socket
       # TODO: don't use view to find the card
       # card = $("#card-#{data.card.id}").ob().model
       # CardCollection.all[data.card.collection_id].get - WON'T WORK - the user could change the location meanwhile
-      card = $("#card-#{data.card.id}").ob().model
-      add_to = CardCollection.all[data.card.collection_id]
+      card = $("#card-#{data.id}").ob().model
+      add_to = CardCollection.all[data.collection_id]
 
-      card.load(data.card)
+      card.load(data)
       card.collection.remove(card)
       add_to.add(card)
 

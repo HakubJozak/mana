@@ -38,6 +38,8 @@ table {
       padding: 7px;
       border-bottom: 1px solid transparentize($white,0.5);
 
+      a { color: white }
+
       &:last-child {
         text-align: center;
         width: 100px;

@@ -1,16 +1,18 @@
-require 'ostruct'
+class Card
 
-class Card < OpenStruct
+  include Mongoid::Document
 
-  attr_accessor :user, :id, :order
+  field :name, type: String
+  field :url, type: String
+  field :image_url, type: String
+  field :clazz, type: String, :default => 'Card'
 
-  @@counter = 0
+  # Graveyard, Library etc; cannot be 'collection' as this field is
+  # reserved by Mongoid
+  field :collection_name, type: String
 
-  # TODO: is the ID unique this way?
-  def initialize(params)
-    raise ArgumentError unless params
-    super(params.merge(:id => Card.new_id))
-  end
+  belongs_to :player
+  belongs_to :game
 
   def self.copy(original, user)
     card = original.clone
@@ -21,23 +23,6 @@ class Card < OpenStruct
     puts card.inspect
 
     card
-  end
-
-  def self.new_id
-    @@counter += 1
-  end
-
-  def to_hash
-    result = {
-      :id => id,
-      :order => order,
-      :name => name,
-      :image_url => image_url,
-      :picture => image_url,
-      :url => url }
-
-    result[:user_id] = user.id if user
-    result
   end
 
 end

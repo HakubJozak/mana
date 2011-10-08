@@ -8,5 +8,6 @@ class Game
   field :created_at, :type => DateTime, :default => Time.now
 
   embeds_many :players
+  has_many :cards
 
 end

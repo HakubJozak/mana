@@ -36,6 +36,7 @@ form.formtastic {
     @include center(400px);
 
     li {
+      font-size: 120%;
       overflow: visible;
       float: none;
       display: inline;
@@ -43,8 +44,9 @@ form.formtastic {
 
     input.create, a {
       @include button;
-      padding: 5px 5px 5px 5px;
+      padding: 7px 7px 7px 7px;
     }
+
   }
 
   label {

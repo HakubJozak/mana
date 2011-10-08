@@ -11,5 +11,5 @@
       = f.input :deck, :as => :text, :hint => tip
 
       = f.buttons do
-        = f.commit_button "Join the '#{@game.name}' game"
+        = f.commit_button "Join '#{@game.name}'"
         %li= link_to 'Back', games_path

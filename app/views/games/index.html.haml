@@ -13,7 +13,7 @@
     - @games.each do |game|
       %tr
         %td= "#{time_ago_in_words(game.created_at)} ago"
-        %td= link_to game.name, game_path(game)
+        %td= game.name
         %td  ...
         - if is_playing?(game)
           %td= link_to 'Continue', game
