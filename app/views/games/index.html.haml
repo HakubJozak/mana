@@ -14,9 +14,9 @@
       %tr
         %td= "#{time_ago_in_words(game.created_at)} ago"
         %td= game.name
-        %td  ...
+        %td= truncate(game.players.map(&:name).join(', '))
         - if is_playing?(game)
-          %td= link_to 'Continue', game
+          %td= link_to "Continue as #{player_for(game).name}", game
         - else
           %td= link_to 'Join', new_game_player_path(game)
         -# %td= link_to 'Edit', edit_game_path(game)

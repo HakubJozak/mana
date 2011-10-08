@@ -20,7 +20,6 @@ end
 
 
 require '../lib/card_collection'
-require '../lib/magic_cards_info'
 require '../lib/commander'
 
 require '../app/models/game'
@@ -50,10 +49,7 @@ Mongoid.load!("./mongoid.yml")
 # EM.synchrony do
 EM.run do
 
-  @mongo = Mongo::Connection.new.db('mana')
-
-  # change MagicCardsInfo to deferred object
-  MagicCardsInfo.instance = MagicCardsInfo.new(@mongo)
+  # @mongo = Mongo::Connection.new.db('mana')
 
   EventMachine::WebSocket.start(:host => ADDRESS, :port => WEBSOCKET_PORT, :debug => true) do |ws|
 

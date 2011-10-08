@@ -27,9 +27,12 @@ class Socket
       card = Card.all[data.id] || new Card(data)
       card.load(data)
 
-      add_to = CardCollection.all[data.collection_id]
-      card.collection.remove(card) if card.collection
-      add_to.add(card)
+      if card.collection && card.collection.id != data.collection_id
+        card.collection.remove(card) if card.collection
+
+      if !card.collection || card.collection.id != data.collection_id
+        add_to = CardCollection.all[data.collection_id]
+        add_to.add(card)
 
     if data.clazz == 'Message'
       @trigger('arrived:message', data.message)

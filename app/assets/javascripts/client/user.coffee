@@ -9,7 +9,6 @@ class User extends Backbone.Model
       @unset('local',{ silent: true })
       @local = true
 
-    alert('hewlrewlr')
     @set({ lives: 20 })
     # TODO: DRY
     @library = new CardCollection("library-#{@id}", 'library')

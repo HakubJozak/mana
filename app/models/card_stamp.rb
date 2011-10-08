@@ -2,58 +2,50 @@ require 'net/http'
 require 'uri'
 
 
-class MagicCardsInfo
+class CardStamp
 
-  @@singleton = MagicCardsInfo.new
+  include Mongoid::Document
+
+  field :name, type: String
+  field :url, type: String
+  field :image_url, type: String
 
   CARDS_REGEXP = Regexp.new("<p>([0-9])+ <a href=\"(.*)\" onmouse.*>(.*)</a></p>")
   IMAGE_REGEXP = Regexp.new("<img src=\".*(/scans/.*\.jpg)\".*")
   CARD_NAME_REGEXP = Regexp.new('<h1><a href=.*>(.*)</a>.*</h1>')
 
-  def self.instance=(val)
-    @@singleton = val
+  def self.print_by_name(name, &block)
+    stamp = where(name: name).first || fetch_stamp(name)
+    stamp.print(&block)
   end
 
-  def self.instance
-    @@singleton
+  def print(&block)
+    Card.new( name: self.name,
+              image_url: self.image_url,
+              url: url) do |card|
+      yield(card) if block
+    end
   end
 
-  def initialize(db)
-    @db = db['cards']
-  end
-
-  def find_or_create_card(name)
-    raise ArgumentError.new('Card name must not be nil') unless name
-    find_card(name) || create_card(name)
-  end
-
-  private
-
-  def find_card(name)
-    # add CARD parameter!
-    hash = @db.find_one(:name => name)
-    hash.nil? ? nil : Card.new(hash)
-  end
-
-
-  # TODO: create card with non-existing URLs
-  #
-  def create_card(name)
-    card = Card.new(:name => name)
-    card.url, page = goto_url(card_url(name))
+  def self.fetch_stamp(name)
+    stamp = new(:name => name)
+    stamp.url, page = goto_url(stamp_url(name))
     uri = page.scan(IMAGE_REGEXP)[0]
 
     if page && uri
-      card.image_url = "http://magiccards.info" + uri[0]
-      @db.insert(card.to_hash)
-      card
+      stamp.image_url = "http://magiccards.info" + uri[0]
+      stamp.save!
+      stamp
     else
+      # TODO: inform about missing card
       nil
     end
   end
 
+  private
+
   # TODO - limit number of redirects
-  def goto_url(url)
+  def self.goto_url(url)
     response = Net::HTTP.get_response(URI.parse(url))
     status = response.code.to_i
 
@@ -67,7 +59,7 @@ class MagicCardsInfo
     end
   end
 
-  def card_url(name)
+  def self.stamp_url(name)
     "http://magiccards.info/query?q=!#{URI.escape(name)}&v=card&s=cname"
   end
 

@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  helper_method :is_playing?
+  helper_method :is_playing?, :player_for
 
   def is_playing?(game)
-    !session[:player_ids][game.id].nil?
+    session[:player_ids][game.id]
   end
 
   def set_player_for(game, player)

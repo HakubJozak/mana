@@ -50,7 +50,6 @@ class Card extends Backbone.Model
   load: (data) =>
     opts = { silent: true }
     @set(data, opts)
-    # @move_to(CardCollection.all[data.collection_id],opts) if data.collection_id
     @change()
 
   toggle_covered: (state = null, opts = {}) =>

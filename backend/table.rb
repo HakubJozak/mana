@@ -44,7 +44,7 @@ class Table < EM::Channel
   end
 
   def disconnect(player)
-    @players.delete(player)
+    @players.delete(player.id)
     @channel.unsubscribe(player.sid)
   end
 
