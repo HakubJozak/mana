@@ -7,7 +7,9 @@ class Game
   field :name, :type => String
   field :created_at, :type => DateTime, :default => Time.now
 
-  embeds_many :players
+  has_many :game_events
   has_many :cards
+  embeds_many :players
+
 
 end

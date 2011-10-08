@@ -1,23 +1,28 @@
 class Player
 
-#  extend Forwardable
-#  def_delegators :@player, :name, :deck, :color, :to_hash, :game,  :user
-
   after_initialize do
     @last_mid = -1
   end
 
-  # def to_hash(opts = {})
-  #   @library = Library.new(self, deck)
-
-  #   result = { :name => name, :id => id, :color => color }
-  #   opts[:include_library] ? result.merge({ :cards => @library.cards }) : result
-  # end
+  def replay_history
+    game.game_events.where('mid' => { '$gt' => @last_mid }).each do |event|
+      puts "replaying event #{event.id}"
+      @queue.push(event)
+    end
+  end
 
   # Websocket connection with the browser controlling this player.
   #
   def ws=(ws)
     @ws = ws
+    @queue = EM::Queue.new
+
+    consumer = Proc.new do |event|
+      @ws.send(event.raw)
+      @queue.pop(&consumer)
+    end
+
+    @queue.pop(&consumer)
   end
 
   # SID is a 'subscription ID' by which
@@ -27,15 +32,9 @@ class Player
     @sid = sid
   end
 
-  def message_received(message)
-    @last_mid = message[:mid]
-    @ws.send(encode(message[:data]))
-  end
-
-  private
-
-  def encode(model)
-    ActiveSupport::JSON.encode(model)
+  def message_received(event)
+    @last_mid = event.mid
+    @queue.push(event)
   end
 
 end

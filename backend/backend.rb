@@ -22,12 +22,14 @@ end
 require '../lib/card_collection'
 require '../lib/commander'
 
+require '../app/models/game_event'
 require '../app/models/game'
 require '../app/models/player'
 require '../app/models/card'
 
 require 'table'
 require 'active_player'
+
 
 
 
@@ -71,7 +73,7 @@ EM.run do
     end
 
     ws.onmessage do |msg|
-      ws.table.push(ActiveSupport::JSON.decode(msg))
+      ws.table.push(raw: msg)
     end
   end
 

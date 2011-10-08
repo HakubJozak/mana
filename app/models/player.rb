@@ -41,7 +41,7 @@ class Player
 
   private
 
-    # TODO: handle bad lines
+  # TODO: handle bad lines
   # TODO: handle wrong names
   def parse_deck(&block)
     raise unless block
