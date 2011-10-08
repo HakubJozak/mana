@@ -21,14 +21,14 @@ class Socket
     console.debug data
 
     if data.clazz == 'Card'
-      # TODO: don't use view to find the card
-      # card = $("#card-#{data.card.id}").ob().model
-      # CardCollection.all[data.card.collection_id].get - WON'T WORK - the user could change the location meanwhile
-      card = $("#card-#{data.id}").ob().model
-      add_to = CardCollection.all[data.collection_id]
+      # LEGACY
+      data.user_id = data.player_id
 
+      card = Card.all[data.id] || new Card(data)
       card.load(data)
-      card.collection.remove(card)
+
+      add_to = CardCollection.all[data.collection_id]
+      card.collection.remove(card) if card.collection
       add_to.add(card)
 
     if data.clazz == 'Message'

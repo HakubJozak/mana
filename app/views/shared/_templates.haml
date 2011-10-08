@@ -6,11 +6,11 @@
       .power{ :style => 'display:none' }
 
 #handview-template
-  %div{ :id => '{{name}}-{{user_id}}', :class => 'hand' }
+  %div{ :id => '{{id}}', :class => 'hand' }
     %h2 {{title}} - {{user.name()}}
 
 #cardbrowser-template
-  %div{ :id => '{{name}}-{{user_id}}', :class => 'card-browser {{name}}' }
+  %div{ :id => '{{id}}', :class => 'card-browser {{name}}' }
     %h2 {{title}}
     .button-bar
       %a.shuffle-button.button Shuffle
@@ -34,13 +34,6 @@
     %h3
       %span{ :class => 'name' } {{name}}
       %input.lives{ :value => '{{lives}}' }
-    -# %table
-    -#   %tr
-    -#     %td Hand
-    -#     %td 7
-    -#   %tr
-    -#     %td Library
-    -#     %td 100
 
 #user-area-template
   %div{ :class => 'user-area user-{{id}}' }

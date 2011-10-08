@@ -38,12 +38,13 @@ class Card extends Backbone.Model
     # LEGACY
     @element = @el
     @set({ image: @get('image_url')}) unless @get('image')
+    Card.all[@id] = this
 
   hidden: =>
      false
 
   toJSON: =>
-    @attributes['collection_id'] = @collection.id() if @collection
+    @attributes['collection_id'] = @collection.id if @collection
     super()
 
   load: (data) =>
@@ -69,4 +70,5 @@ class Card extends Backbone.Model
     @save()
     this
 
+Card.all = {}
 window.Card = Card

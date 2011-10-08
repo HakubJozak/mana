@@ -9,11 +9,12 @@ class User extends Backbone.Model
       @unset('local',{ silent: true })
       @local = true
 
+    alert('hewlrewlr')
     @set({ lives: 20 })
     # TODO: DRY
-    @library = new CardCollection(@id, 'library', params.cards)
-    @graveyard = new CardCollection(@id, 'graveyard')
-    @exile = new CardCollection(@id, 'exile')
+    @library = new CardCollection("library-#{@id}", 'library')
+    @graveyard = new CardCollection("graveyard-#{@id}", 'graveyard')
+    @exile = new CardCollection("exile-#{@id}", 'exile')
     @hand = new Hand({ user: this })
 
   lives: => @get('lives')

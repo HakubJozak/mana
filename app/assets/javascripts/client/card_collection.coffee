@@ -1,19 +1,16 @@
 class CardCollection extends Backbone.Collection
   model : Card
 
-  @all: []
+  @all: {}
 
-  constructor: (@user_id, @name, params) ->
+  constructor: (@id, @name, params) ->
     super(params)
     throw 'Name of the CardCollection missing' unless @name
-    throw 'User ID of the CardCollection missing' unless @user_id
-    CardCollection.all[@id()] = this
+    throw 'ID of the CardCollection missing' unless @id
+    CardCollection.all[@id] = this
 
     @title = Utils.camelize(@name)
     @trigger('add')
-
-  id: =>
-    "#{@name}-#{@user_id}"
 
   comparator: (card) ->
     card.order()
