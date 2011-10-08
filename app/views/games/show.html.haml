@@ -15,12 +15,9 @@
         chat = new Chat();
         new ChatView({ model: chat });
 
-
         var info = new InfoView({ model: chat });
         InfoView.instance = info;
-
         chat.bind('add', info.render);
-        // Socket.instance.bind('socket:connected', lobby.open);
 
         console.env = '#{Rails.env}';
 
@@ -28,9 +25,10 @@
 
         Socket.instance.bind('arrived:message', chat.message_arrived );
         Socket.instance.bind('socket:connected', function() {
-          var attrs = #{@game.to_json};
-          attrs['id'] = '#{@game.id}';
-          game = new Game(attrs);
+          console.info('Connected to server');
+          // var attrs = #{@game.to_json};
+          // attrs['id'] = '#{@game.id}';
+          // game = new Game(attrs);
           // Socket.instance.start_game(game, User.local);
         });
 

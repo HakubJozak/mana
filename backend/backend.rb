@@ -71,19 +71,15 @@ EM.run do
       player_id = $2
 
       game = Game.find(game_id)
-      @table = Table.find_or_create(game)
-      @table.sitdown(player_id, ws)
+      ws.table = Table.find_or_create(game)
+      ws.table.sitdown(player_id, ws)
+      ws.onclose { ws.table.disconnect(player_id) }
 
       puts "Player #{player_id} connected."
     end
 
     ws.onmessage do |msg|
-      command = decode(msg)
-      puts msg.to_json
-
-      @table.send_to_opponents(command)
-
-      ws.onclose { @table.disconnect(ws.user) }
+      ws.table.push(ActiveSupport::JSON.decode(msg))
     end
   end
 

@@ -1,6 +1,4 @@
-class Table
-
-  include Mana::Commander
+class Table < EM::Channel
 
   @@tables = {}
 
@@ -9,9 +7,10 @@ class Table
   end
 
   def initialize(game)
+    super()
+    @mid = 0
     @game = game
     @players = {}
-    @channel = EM::Channel.new
   end
 
   def sitdown(player_id, ws)
@@ -26,32 +25,26 @@ class Table
     # security issue
     #
     # the player is reconnecting || fresh connect
-    player = @players[player_id] ||= ActivePlayer.new(@game.players(true).find(player_id))
+    player = @players[player_id] ||= @game.players(true).find(player_id)
 
     raise "Player not found in the game" unless player
     player.ws = ws
 
-    # TODO: check and close any active connection on player
-    player.sid = @channel.subscribe do |object|
+    player.sid = subscribe do |model|
       # TODO: subclass EM::Channel to do this
-      player.message_to_client(pack[:scope], pack[:command])
+      player.message_received(model)
     end
+
+    push(player)
   end
 
-  def send_to_opponents(command)
-    broadcast_to :opponents, command
+  def push(model)
+    super( :mid => @mid, :data => model )
   end
 
   def disconnect(player)
     @players.delete(player)
-    @channel.unsubscribe(player.connection)
-  end
-
-  private
-
-  # TODO: subclass EM::Channel to do this
-  def broadcast_to(scope, command)
-    @channel.push(:scope => scope, :command => command)
+    @channel.unsubscribe(player.sid)
   end
 
 end
