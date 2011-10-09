@@ -5,7 +5,7 @@ class Player
   end
 
   def replay_history
-    game.game_events.where('mid' => { '$gt' => @last_mid }).each do |event|
+    game.game_events(true).where('mid' => { '$gt' => @last_mid }).each do |event|
       puts "replaying event #{event.id}"
       @queue.push(event)
     end

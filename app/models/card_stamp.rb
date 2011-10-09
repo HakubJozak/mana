@@ -9,6 +9,7 @@ class CardStamp
   field :name, type: String
   field :url, type: String
   field :image_url, type: String
+  field :counter, type: Integer, default: lambda { Mongoid.database.eval('next_counter()').to_i }
 
   CARDS_REGEXP = Regexp.new("<p>([0-9])+ <a href=\"(.*)\" onmouse.*>(.*)</a></p>")
   IMAGE_REGEXP = Regexp.new("<img src=\".*(/scans/.*\.jpg)\".*")
@@ -17,14 +18,6 @@ class CardStamp
   def self.print_by_name(name, &block)
     stamp = where(name: name).first || fetch_stamp(name)
     stamp.print(&block)
-  end
-
-  def print(&block)
-    Card.new( name: self.name,
-              image_url: self.image_url,
-              url: url) do |card|
-      yield(card) if block
-    end
   end
 
   def self.fetch_stamp(name)
@@ -39,6 +32,21 @@ class CardStamp
     else
       # TODO: inform about missing card
       nil
+    end
+  end
+
+  def self.random
+    rnd = Random.rand(CardStamp.count)
+    #  HACK: returning first card in case none is found is wrong but
+    #  enough for our dumb random
+    stamp = where({ 'counter' => rnd }).first || all.first
+  end
+
+  def print(&block)
+    Card.new( name: self.name,
+              image_url: self.image_url,
+              url: url) do |card|
+      yield(card) if block
     end
   end
 
