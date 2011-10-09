@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   before_filter :redirect_if_player_exists
 
   def new
-    @player = @game.players.build
+    @player = @game.players.new(user: current_user)
   end
 
   def create

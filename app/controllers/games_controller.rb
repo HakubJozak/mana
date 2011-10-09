@@ -32,6 +32,7 @@ class GamesController < ApplicationController
   # GET /games/new.json
   def new
     @game = Game.new
+    @game.name = "#{current_user.name}'s game" if current_user
 
     respond_to do |format|
       format.html # new.html.erb
