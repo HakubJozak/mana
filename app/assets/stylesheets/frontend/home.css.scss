@@ -31,7 +31,7 @@ $step: $width / 7;
     $t: 1.5 + $step * $i;
     $r: 150px;
 
-    img:nth-child(#{$i}) {
+    a:nth-child(#{$i}) img {
       @include box-shadow(rgba(black,0.4) 15px 15px 5px);
       width: $card-width;
 
