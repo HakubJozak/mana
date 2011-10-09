@@ -1,6 +1,6 @@
 class Socket
 
-  constructor: (@url, @game_id) ->
+  constructor: (@url, @local_player_id) ->
     _.extend(this, Backbone.Events)
     _.bindAll(this)
 
@@ -42,6 +42,7 @@ class Socket
       if user = User.all.get(data.id)
         user.set(data.user)
       else
+        data.local = true if data.id == @local_player_id
         user = new User(data)
         User.all.add(user)
         user_view = new UserView({ model: user })

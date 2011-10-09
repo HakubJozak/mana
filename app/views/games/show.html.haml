@@ -21,7 +21,7 @@
 
         console.env = '#{Rails.env}';
 
-        Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}/games/#{@game.id}/players/#{@player.id}','#{@game.id}');
+        Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}/games/#{@game.id}/players/#{@player.id}', "#{@player.id}");
 
         Socket.instance.bind('arrived:message', chat.message_arrived );
         Socket.instance.bind('socket:connected', function() {
