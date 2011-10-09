@@ -54,9 +54,10 @@ $step: $width / 7;
 }
 
 
+// TODO: absolute positioning
 #button-bar {
   margin: 600px auto 0 auto;
-  width: 500px;
+  width: 510px;
 
   a.button { @include big-button;  }
 
