@@ -26,7 +26,7 @@ form.formtastic {
    font-size: $input-height - 1px;
    border: 4px solid gray;
    width: 60%;
-   max-height: 400px;
+   max-height: 250pt;
    padding: 0.3em;
 
    &:focus { border: 4px solid $orange; }

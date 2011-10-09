@@ -11,18 +11,20 @@ a {
 }
 
 body {
-  #content { width: $content-width; margin: auto; }
-
+  font-family: "Times New Roman", "Serif";
   background-image: url(/assets/wood_grey.jpg);
   min-height: 2000px;
   color: white;
+
+  #content { width: $content-width; margin: auto; }
 }
 
 h1.hyper {
+ width: 600pt;
+
  text-align: center;
- width: 600px;
- font-size: 155px;
- margin: 0 auto 0;
+ font-size: 155pt;
+ margin: 30pt auto 20pt;
  text-shadow: 0px 5px 3px black;
 
  a { text-decoration: none }
@@ -48,19 +50,25 @@ h1.hyper {
 
 ul.hmenu {
  @include border-radius;
- @include rotate(30deg);
 
- background-color: rgba(0,0,0,0.8);
+ right: 0;
+ top: 0;
+ width: 100%;
+ text-align: right;
+
+ background-color: rgba(0,0,0,0.6);
  text-align: center;
  position: fixed;
- right: 0px;
- top: 1em;
- font-size: 20px;
- margin: 1em 0 1em 0;
+ font-size: 14pt;
+
+ margin-top: 0;
+ margin-left: 1em;
  padding: 0.4em;
 
   li {
     display: inline;
+    float: right;
+    margin-left: 1em;
 
     a {
       color: $white;

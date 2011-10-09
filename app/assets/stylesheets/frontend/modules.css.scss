@@ -1,9 +1,3 @@
-body {
- font-family: "Times New Roman", "Serif";
-}
-
-
-
 @mixin center($width: 900px) {
   margin: 0 auto 0;
   width: $width;
