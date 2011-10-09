@@ -1,5 +1,7 @@
 class Player
 
+  attr_reader :ws, :sid
+
   after_initialize do
     @last_mid = -1
   end

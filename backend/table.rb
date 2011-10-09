@@ -24,10 +24,29 @@ class Table < EM::Channel
     # security issue
     #
     # the player is reconnecting || fresh connect
-    player = @players[player_id] ||= @game.players(true).find(player_id)
+
+    if player = @players[player_id]
+      player.ws.close_websocket
+    else
+      player = @game.players.find(player_id)
+      @players[player_id] = player
+    end
 
     raise "Player not found in the game" unless player
+
+    # CONNECT
+    #
     player.ws = ws
+
+    ws.onclose {
+      p = @players.delete(player_id)
+      @channel.unsubscribe(player.sid) if p
+      puts "Player #{player.name}(#{player.id}) disconnected"
+    }
+
+    ws.onmessage { |msg|
+      ws.table.push(raw: msg)
+    }
 
     player.sid = subscribe do |model|
       # TODO: subclass EM::Channel to do this
@@ -37,9 +56,14 @@ class Table < EM::Channel
     # TODO: DEFER these jobs!?
     player.replay_history
 
+    # TODO: this should happen atomically!
     # add player that just sit down
-    push(model: player)
-    player.cards(true).each { |c| push(model: c) }
+    unless player.has_started
+      push(model: player)
+      player.cards(true).each { |c| push(model: c) }
+      player.update_attribute( :has_started, true)
+    end
+
   end
 
   # Required one of:
@@ -59,11 +83,4 @@ class Table < EM::Channel
 
     super(event)
   end
-
-
-  def disconnect(player)
-    @players.delete(player.id)
-    @channel.unsubscribe(player.sid)
-  end
-
 end

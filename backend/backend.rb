@@ -67,13 +67,8 @@ EM.run do
       game = Game.find(game_id)
       ws.table = Table.find_or_create(game)
       ws.table.sitdown(player_id, ws)
-      ws.onclose { ws.table.disconnect(player_id) }
 
       puts "Player #{player_id} connected."
-    end
-
-    ws.onmessage do |msg|
-      ws.table.push(raw: msg)
     end
   end
 

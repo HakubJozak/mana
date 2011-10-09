@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all
+    @games = Game.desc(:created_at)
 
     respond_to do |format|
       format.html

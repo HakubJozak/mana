@@ -4,6 +4,7 @@ class Player
   field :name, type: String
   field :deck, type: String
   field :color,type: String, default: '#FF0000'
+  field :has_started, type: Boolean
   field :clazz, type: String, :default => 'Player'
 
   validates_presence_of :name
