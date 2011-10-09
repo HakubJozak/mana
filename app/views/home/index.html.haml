@@ -1,11 +1,6 @@
 #cards
-  %img{ :src => CardStamp.random.image_url }/
-  %img{ :src => CardStamp.random.image_url }/
-  %img{ :src => CardStamp.random.image_url }/
-  %img{ :src => CardStamp.random.image_url }/
-  %img{ :src => CardStamp.random.image_url }/
-  %img{ :src => CardStamp.random.image_url }/
-  %img{ :src => CardStamp.random.image_url }/
+  - CardStamp.random(7).each do |card|
+    %img{ :src => card.image_url }/
 
 #button-bar
   = link_to 'New Game', new_game_path, :class => 'button'

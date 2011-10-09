@@ -35,11 +35,15 @@ class CardStamp
     end
   end
 
-  def self.random
-    rnd = Random.rand(CardStamp.count)
+  def self.random(count = 1)
+    max = CardStamp.count
+    randoms = count.times.map { Random.rand(max) }
+
     #  HACK: returning first card in case none is found is wrong but
-    #  enough for our dumb random
-    stamp = where({ 'counter' => rnd }).first || all.first
+    #  enough for our dumb random search
+    # TODO: in 1 query
+    # any_in(counter: randoms)
+    randoms.map { |rnd| where(counter: rnd).first || all.first }
   end
 
   def print(&block)
