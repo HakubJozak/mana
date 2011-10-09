@@ -1,6 +1,7 @@
-#cards
-  - CardStamp.random(7).each do |card|
-    %img{ :src => card.image_url }/
+#outer
+  #cards.inner
+    - CardStamp.random(7).each do |card|
+      %img{ :src => card.image_url }/
 
 #button-bar
   = link_to 'New Game', new_game_path, :class => 'button'

@@ -3,6 +3,18 @@
   width: $width;
 }
 
+@mixin absolutely-centered($w) {
+  position: absolute;
+  left: 50%;
+  width: $w;
+
+ .inner {
+   position: relative;
+   left: -50%;
+ }
+}
+
+
 @mixin button {
     @include border-radius(10px);
     @include single-text-shadow(black, 2px, 2px);

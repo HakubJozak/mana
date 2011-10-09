@@ -5,48 +5,57 @@
 
 $move: 100px;
 $card-width: 200px;
-$c: $card-width * 0.5 + 630px;
+
+$width: 1000px;
+$step: $width / 7;
+
+
+#outer {  @include absolutely-centered($width); }
 
 #cards {
-  position: absolute;
-  left: 50%;
   top: 50px;
-  width: 1500px;
+  width: 1000px;
+  height: 200px;
 
-  img {
-    width: $card-width;
-    @include box-shadow(rgba(black,0.4) 15px 15px 5px);
+  /*
+    Using cycloid curve to round the cards:
 
-    &:hover {
-      @include box-shadow($orange 0 0 10px, rgba(black,0.4) 15px 15px 5px);
-    }
-  }
+     x(t) = t * (t - cos(t))
+     y(t) = t * (1 - sin(t))  ; t from <0,2*PI>
 
+     (http://en.wikipedia.org/wiki/Cycloid)
+   */
   @for $i from 1 through 7 {
+    $angle: -40deg + $i * 10deg;
+    $step: (((2 * 3.14) - 3) / 8);
+    $t: 1.5 + $step * $i;
+    $r: 150px;
+
     img:nth-child(#{$i}) {
-      position: relative;
-      @include rotate(-40deg + $i * 10deg);
+      @include box-shadow(rgba(black,0.4) 15px 15px 5px);
+      width: $card-width;
+
+      @include transition;
+
+      position: absolute;
+      left: -80px + $r * ($t - sin($t));
+      bottom: 150px + $r * (1 - cos($t));
+
+      @include rotate($angle);
+
+      &:hover {
+          @include box-shadow($highlight-color 0 0 10px, rgba(black,0.4) 15px 15px 5px);
+          @include rotate(0deg);
+          width: $card-width * 1.4;
+          z-index: 1000;
+      }
     }
   }
-
-  img:nth-child(1), img:nth-child(7) { top: 70px; }
-  img:nth-child(2), img:nth-child(6) { top: 30px; }
-  img:nth-child(3), img:nth-child(5) { top: 10px; }
-
-  img:nth-child(1) { left: 3 * $move - $c; }
-  img:nth-child(2) { left: 2 * $move - $c; }
-  img:nth-child(3) { left: 1 * $move - $c; }
-
-  img:nth-child(4) { left: - $c; }
-
-  img:nth-child(7) { right: 3 * $move + $c; }
-  img:nth-child(6) { right: 2 * $move + $c; }
-  img:nth-child(5) { right: 1 * $move + $c; }
 }
 
 
 #button-bar {
-  margin: 500px auto 0 auto;
+  margin: 600px auto 0 auto;
   width: 500px;
 
   a.button { @include big-button;  }

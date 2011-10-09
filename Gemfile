@@ -31,4 +31,5 @@ group :development do
   gem 'pry'
   gem 'pry-doc'
   gem 'guard-livereload'
+  gem 'rb-inotify', '>= 0.5.1' # for Guard
 end
