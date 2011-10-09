@@ -9,9 +9,16 @@ class Player
 
   validates_presence_of :name
 
-  belongs_to :user
   embedded_in :game
   has_many :cards
+
+  # TODO: hackish - better way?
+  if defined? Rails
+    belongs_to :user
+  else
+    attr_accessor :user
+  end
+
 
   after_create do
     # TODO: compute order automatically or too much pain?
