@@ -4,13 +4,15 @@ Mana is a proof-of-concept in-browser implementation of Magic the Gathering(tm) 
 
 
 ![Screenshot](https://github.com/HakubJozak/mana/raw/master/screenshots/1.png)
+![Screenshot](https://github.com/HakubJozak/mana/raw/master/screenshots/2.png)
+![Screenshot](https://github.com/HakubJozak/mana/raw/master/screenshots/3.png)
 
 
 ## Live Server
 
 Try it yourself!
 
-[http://83.167.232.160/games/any-name](http://83.167.232.160/games/any-name)
+(__temporarily down__) [http://83.167.232.160/games/any-name](http://83.167.232.160/games/any-name)
 
 and replace 'any-name' by a name of your choice. Send the URL to your friend(s) and play!
 
@@ -18,7 +20,7 @@ __WARNING 1__: the server has very limited resources and might go offline unexpe
 
 __WARNING 2__: anyone who knows little about HTML or JavaScript can cheat, so choose your opponents with care ;)
 
-__WARNING 3__: I am almost sure there are security issues (XSS and such), don't say I did not warn you! (see TODO)
+__WARNING 3__: I am almost sure there are security issues (XSS and such), don't say I didn't warn you! (see TODO)
 
 ## Requirements
 

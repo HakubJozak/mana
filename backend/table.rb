@@ -40,8 +40,8 @@ class Table < EM::Channel
 
     ws.onclose {
       p = @players.delete(player_id)
-      @channel.unsubscribe(player.sid) if p
-      puts "Player #{player.name}(#{player.id}) disconnected"
+      unsubscribe(p.sid) if p
+      puts "Player #{p.name}(#{p.id}) disconnected"
     }
 
     ws.onmessage { |msg|
