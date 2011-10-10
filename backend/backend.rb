@@ -32,9 +32,6 @@ require 'active_player'
 
 
 
-
-
-
 # HACK
 class EventMachine::WebSocket::Connection
   attr_accessor :table
@@ -43,7 +40,7 @@ end
 
 # Mongoid config - hack cause it recognizes only this env value to
 # determine environment
-ENV["RACK_ENV"] = 'development' # 'production'
+ENV["RACK_ENV"] ||= 'development' # 'production'
 Mongoid.load!("./mongoid.yml")
 
 # TODO -

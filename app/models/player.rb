@@ -43,7 +43,7 @@ class Player
 
     # TODO: remove
     if defined?(Rails)
-      self.deck = File.open("#{Rails.root}/db/decks/eldrazi").read
+      self.deck ||= File.open("#{Rails.root}/db/decks/eldrazi").read
     end
   end
 
