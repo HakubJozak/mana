@@ -10,13 +10,28 @@ class CardCollectionView extends Backbone.View
     @template = _.template($("##{clazz}-template").html())
     @el = $(@template(@model))
 
-    @model.bind 'add', @render
-    @model.bind 'remove', @render
+    @views = []
+
+    @model.bind 'add', @add_card_view
+    @model.bind 'remove', @remove_card_view
     @model.bind 'refresh', @render
 
+    @model.each (card) => @add_view(card)
+
   _accept_unless_in: (card)  =>
-    # !@model.include(card.ob().model)
     true
+
+  add_card_view: (card) =>
+    # view = new CardView(model: card)
+    view = CardView.find_or_create(card)
+    @views.push(view)
+    # view.el.appendTo(@el) if @rendered
+    $('#desk').append(view.el)
+
+  remove_card_view: (card) =>
+    view = _(@views).select (v) -> v == view
+    @views = _(@views).without(view[0]);
+    view.el.remove if @rendered
 
   dropped: (event,ui) =>
     card = ui.draggable.ob().model
@@ -30,11 +45,9 @@ class CardCollectionView extends Backbone.View
 
   render: =>
     console.info "Rendering collection #{@model.name}"
-    views = @model.map (card) -> CardView.find_or_create(card)
 
-    _.each views, (card, i) =>
-      card.el.detach()
-      card.el.appendTo(@el)
+    _.each @views, (card, i) =>
+      console.info "-- #{card.name}"
       card.render()
 
     if @visible
@@ -44,6 +57,7 @@ class CardCollectionView extends Backbone.View
       @el.fadeOut()
 
     console.info "Rendering collection #{@model.name} finished"
+    @rendered = true
     this
 
 window.CardCollectionView = CardCollectionView

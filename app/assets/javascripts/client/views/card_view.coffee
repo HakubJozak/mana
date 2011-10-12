@@ -5,15 +5,9 @@ class CardView extends Backbone.View
   @className: 'card'
 
   @find_or_create: (card) ->
-    dom = $("#card-#{card.id}")
-
-    if dom.length > 0
-      view = dom.ob()
-    else
-      view = new CardView({ model: card })
-      view.el.css('position','absolute')
-      $('#desk').append(view.el)
-
+    view = new CardView({ model: card })
+    view.el.css('position','absolute')
+    $('#desk').append(view.el)
     return view
 
   constructor: (params) ->
