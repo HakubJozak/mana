@@ -18,8 +18,8 @@ class Socket
     data = JSON.parse(msg.data)
     data.id = data._id if data._id
 
-    console.debug 'Received'
-    console.debug data
+#    console.debug 'Received'
+#    console.debug data
 
     if data.clazz == 'Card'
       # LEGACY

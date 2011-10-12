@@ -4,24 +4,16 @@ class CardView extends Backbone.View
   @tagName: 'div'
   @className: 'card'
 
-  @find_or_create: (card) ->
-    dom = $("#card-#{card.id}")
-
-    if dom.length > 0
-      view = dom.ob()
-    else
-      view = new CardView({ model: card })
-      view.el.css('position','absolute')
-      $('#desk').append(view.el)
-
-    return view
-
   constructor: (params) ->
     super(params)
     @model.bind 'change', @render
     @template = _.template($('#card-template').html())
-    @el = $(@template(@model.toJSON()))
-    @img = @el.find('img')
+    @container = @get('container')
+
+    @el = $(@template(@model.toJSON())) unless @el
+
+    @el.detach()
+    @el.appendTo(@container)
 
     @el.draggable
       position: 0,
@@ -40,11 +32,9 @@ class CardView extends Backbone.View
     @el.bind 'click', @clicked
     @el.bind 'contextmenu', @clicked
 
-
-    # LEGACY
+    # LEGACY - bind the view object to element
     @el.data('game-object',this)
     @element = @el
-
 
   clicked: (e) =>
     e.preventDefault()
@@ -56,8 +46,6 @@ class CardView extends Backbone.View
       @show_detail()
 
   render: =>
-    console.info "rendering card #{@model.id}"
-
     if @model.hidden()
       @el.fadeOut()
     else
@@ -87,7 +75,7 @@ class CardView extends Backbone.View
       @$('.power').fadeIn().text("#{@model.power() || 0}/#{@model.toughness() || 0}")
 
   set_image: (img) ->
-    @img.attr('src',img)
+    @el.find('img').attr('src',img)
 
   show_detail: =>
     return if @model.covered()

@@ -23,6 +23,7 @@
 //= require ./client/game
 //= require ./client/utils
 //= require ./client/utils2
+//= require ./client/views/updating_collection_view
 //= require ./client/views/card_collection_view
 //= require ./client/views/battlefield_view
 //= require ./client/views/card_view

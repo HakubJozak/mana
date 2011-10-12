@@ -3,13 +3,10 @@ class BattlefieldView extends CardCollectionView
   @tagName: 'div'
   @className: 'battlefield'
 
-  constructor: (attrs) ->
-    super(attrs, false)
+  initialize: (attrs) ->
+    super(attrs)
 
     @user_area_template = _.template($('#user-area-template').html())
-    @model.bind 'add', @render
-    @model.bind 'change', @render
-    @model.bind 'remove', @render
 
     @el = $('#battlefield')
     @el.droppable

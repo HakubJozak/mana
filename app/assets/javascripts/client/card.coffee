@@ -3,7 +3,7 @@ _.templateSettings = {
   interpolate : /\{\{(.+?)\}\}/g
 }
 
-# TODO - Every card is bound with one CardView - test this!
+# TODO - Every card is no longer bound with one CardView - test this!
 class Card extends Backbone.Model
 
   defaults:
