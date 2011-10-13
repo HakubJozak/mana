@@ -33,16 +33,8 @@ class Dropbox extends CardCollectionView
 
   tappingAllowed: -> false
 
-  _render_if_visible: =>
-    @$('.count').text(@model.length)
-    @model.each (card, i) =>
-      # el = CardView.find_or_create(card).render().el
-      el  = CardView.find_or_create(@model.at(@model.length - i - 1)).render().el
-      # TODO: DRY and optimize
-      el.detach()
-      el.appendTo(@box)
-      el.css('position','relative')
-      el.offset({ top: @box.offset().top + 5, left: @box.offset().left + 5 })
-      # el.offset({ top: 5, left: 5 })
+#  render: =>
+#    super
+    #@$('.count').text(@model.length)
 
 window.Dropbox = Dropbox

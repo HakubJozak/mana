@@ -6,8 +6,6 @@ class CardView extends Backbone.View
 
   @find_or_create: (card) ->
     view = new CardView({ model: card })
-    view.el.css('position','absolute')
-    $('#desk').append(view.el)
     return view
 
   constructor: (params) ->

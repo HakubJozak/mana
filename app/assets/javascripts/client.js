@@ -26,6 +26,7 @@
 //= require ./client/views/card_collection_view
 //= require ./client/views/battlefield_view
 //= require ./client/views/card_view
+//= require ./client/views/card_view_dropbox
 //= require ./client/views/chat_view
 //= require ./client/views/dialog
 //= require ./client/views/dropbox

@@ -22,16 +22,17 @@ class CardCollectionView extends Backbone.View
     true
 
   add_card_view: (card) =>
-    # view = new CardView(model: card)
-    view = CardView.find_or_create(card)
+    view = new CardViewDropbox(model: card, this)
     @views.push(view)
     # view.el.appendTo(@el) if @rendered
-    $('#desk').append(view.el)
+    if @rendered
+      $('#desk').append(view.el)
+      view.render()
 
   remove_card_view: (card) =>
-    view = _(@views).select (v) -> v == view
+    view = _(@views).select (v) -> v.model.id == card.id
     @views = _(@views).without(view[0]);
-    view.el.remove if @rendered
+    view.el.remove() if @rendered
 
   dropped: (event,ui) =>
     card = ui.draggable.ob().model
@@ -48,13 +49,8 @@ class CardCollectionView extends Backbone.View
 
     _.each @views, (card, i) =>
       console.info "-- #{card.name}"
+      $('#desk').append(view.el)
       card.render()
-
-    if @visible
-      @el.fadeIn()
-      @_render_if_visible()
-    else
-      @el.fadeOut()
 
     console.info "Rendering collection #{@model.name} finished"
     @rendered = true
