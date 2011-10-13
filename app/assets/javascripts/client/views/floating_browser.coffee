@@ -4,7 +4,7 @@ class FloatingBrowser extends CardCollectionView
     super(attrs)
     $('body').append(@el)
     @el.disableSelection()
-    @el.draggable();
+    @el.draggable()
     @el.droppable
       accept: @_accept_unless_in
       scope: 'cards'

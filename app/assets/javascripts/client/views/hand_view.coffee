@@ -13,12 +13,6 @@ class HandView extends FloatingBrowser
       $('#battlefield').bind('contextmenu', _.wrap( @toggle_visible, _.preventer))
 
   render: =>
-    if @visible
-      @el.fadeIn()
-    else
-      @el.fadeOut()
-
-    @_render_cards()
     this
 
 

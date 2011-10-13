@@ -21,8 +21,11 @@ class CardCollectionView extends Backbone.View
   _accept_unless_in: (card)  =>
     true
 
+  create_card_view: (card) =>
+    new CardView(model: card, this)
+
   add_card_view: (card) =>
-    view = new CardViewDropbox(model: card, this)
+    view = @create_card_view(card)
     @views.push(view)
     # view.el.appendTo(@el) if @rendered
     if @rendered
@@ -39,10 +42,6 @@ class CardCollectionView extends Backbone.View
     card.collection.remove(card)
     @model.add(card)
     card.save()
-
-  toggle_visible: =>
-    @visible = !@visible
-    @render()
 
   render: =>
     console.info "Rendering collection #{@model.name}"

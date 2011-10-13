@@ -48,7 +48,7 @@ class CardView extends Backbone.View
       @show_detail()
 
   render: =>
-    console.info "rendering card #{@model.id}"
+    # console.info "rendering card #{@model.id}"
 
     if @model.hidden()
       @el.fadeOut()
