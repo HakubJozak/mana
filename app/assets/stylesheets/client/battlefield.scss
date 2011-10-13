@@ -1,0 +1,31 @@
+@import "compass/reset";
+@import "compass/css3";
+
+@import "constants";
+@import "components";
+
+#battlefield {
+  @include no-text-select;
+  @include border-radius;
+
+  position: relative;
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  background-color: rgba(30, 30, 30, 0.2);
+  height: 1000px;
+
+  .user-area {
+      height: 400px;
+      background-color: rgba(30, 30, 30, 0.2);
+      &.local { background-color: rgba(40, 0, 0, 0.2);}
+
+      .name {
+          // @include text-shadow;
+          position: relative;
+          text-align: center;
+          top: 1em;
+          margin: auto;
+          font-size: 6em;
+          color: rgba(255, 255, 255, 0.05);
+      }
+  }
+}
