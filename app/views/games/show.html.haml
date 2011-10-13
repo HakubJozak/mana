@@ -10,7 +10,6 @@
       $(document).ready(function() {
         var battlefield = new Battlefield();
         var bview = new BattlefieldView({ model: battlefield });
-        User.all.bind('add', bview.render_user_areas)
 
         chat = new Chat();
         new ChatView({ model: chat });

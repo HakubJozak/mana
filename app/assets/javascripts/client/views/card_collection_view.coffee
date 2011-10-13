@@ -7,16 +7,19 @@ class CardCollectionView extends Backbone.View
     throw 'Missing model' unless @model
 
     clazz = @constructor.name.toLowerCase()
-    @template = _.template($("##{clazz}-template").html())
-    @el = $(@template(@model))
+    tmpl = $("##{clazz}-template")
+
+    if tmpl.length > 0
+      @template = _.template(tmpl.html())
+      @el = $(@template(@model))
 
     @views = []
 
     @model.bind 'add', @add_card_view
     @model.bind 'remove', @remove_card_view
-    @model.bind 'refresh', @render
 
-    @model.each (card) => @add_view(card)
+    @model.each (card) => @add_card_view(card)
+    @render()
 
   _accept_unless_in: (card)  =>
     true
@@ -27,13 +30,16 @@ class CardCollectionView extends Backbone.View
   add_card_view: (card) =>
     view = @create_card_view(card)
     @views.push(view)
-    # view.el.appendTo(@el) if @rendered
-    if @rendered
-      $('#desk').append(view.el)
+
+    if @append_card_view?
+      @append_card_view(view)
       view.render()
+    else
+      throw 'Implement append_card_view method!'
 
   remove_card_view: (card) =>
     view = _(@views).select (v) -> v.model.id == card.id
+    view = view[0]
     @views = _(@views).without(view[0]);
     view.el.remove() if @rendered
 

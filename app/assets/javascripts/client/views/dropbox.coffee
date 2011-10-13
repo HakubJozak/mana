@@ -26,5 +26,7 @@ class Dropbox extends CardCollectionView
   create_card_view: (card) =>
     new CardViewDropbox(model: card, this)
 
+  append_card_view: (view) =>
+    @box.append(view.el)
 
 window.Dropbox = Dropbox

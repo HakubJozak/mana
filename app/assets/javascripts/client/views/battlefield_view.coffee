@@ -4,12 +4,7 @@ class BattlefieldView extends CardCollectionView
   @className: 'battlefield'
 
   constructor: (attrs) ->
-    super(attrs, false)
-
-    @user_area_template = _.template($('#user-area-template').html())
-    @model.bind 'add', @render
-    @model.bind 'change', @render
-    @model.bind 'remove', @render
+    super(attrs)
 
     @el = $('#battlefield')
     @el.droppable
@@ -19,18 +14,15 @@ class BattlefieldView extends CardCollectionView
       accept: (draggable) ->
         ($('.card-over' ).length < 2) && draggable.hasClass('card');
 
+  create_card_view: (card) =>
+    new CardViewBattlefield(model: card)
+
+  append_card_view: (view) =>
+    @el.append(view.el)
+
   render: =>
     console.info 'rendering battlefield'
-    @model.each (card) =>
-      view = CardView.find_or_create(card)
-      # DRY - it is CardCollectionView#_attach_card method
-      unless view.el.parent().tagName == 'BODY'
-        old = @to_relative(view.el.offset())
-        view.el.detach
-        view.el.appendTo('body')
-        view.el.offset(@to_global(old))
-
-      view.el.animate(@to_global(card.position()))
+    @rendered = true
 
   dropped: (event,ui) =>
     p = ui.draggable.offset()
@@ -38,8 +30,10 @@ class BattlefieldView extends CardCollectionView
     old = card.collection
 
     card.set({ position: @to_relative(p) }, { silent: true })
-    old.remove(card, { silent: true })
-    @model.add(card, { silent: true })
+
+    unless old.id == @model.id
+      old.remove(card)
+      @model.add(card)
 
     card.save()
 
@@ -56,12 +50,5 @@ class BattlefieldView extends CardCollectionView
     left = p.left - origin.left
     return { y: top, x: left }
 
-  render_user_areas: =>
-    @el.find('.user-area').remove()
-    sorter = (u) -> u.id
-    _.each User.all.sortBy(sorter), (user) =>
-      area = $(@user_area_template(user))
-      area.addClass('local') if user.local
-      @el.append(area)
 
 window.BattlefieldView = BattlefieldView

@@ -8,9 +8,7 @@ class CardCollection extends Backbone.Collection
     throw 'Name of the CardCollection missing' unless @name
     throw 'ID of the CardCollection missing' unless @id
     CardCollection.all[@id] = this
-
     @title = Utils.camelize(@name)
-    @trigger('add')
 
   comparator: (card) ->
     card.order()
