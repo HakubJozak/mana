@@ -4,10 +4,6 @@ class CardView extends Backbone.View
   @tagName: 'div'
   @className: 'card'
 
-  @find_or_create: (card) ->
-    view = new CardView({ model: card })
-    return view
-
   constructor: (params) ->
     super(params)
     @model.bind 'change', @render
@@ -48,8 +44,6 @@ class CardView extends Backbone.View
       @show_detail()
 
   render: =>
-    # console.info "rendering card #{@model.id}"
-
     if @model.hidden()
       @el.fadeOut()
     else

@@ -48,6 +48,9 @@ class Socket
         user_view = new UserView({ model: user })
         user_view.render()
 
+        if user.local
+          HandView.bind_controls(user)
+
   connect: ->
     @ws = new WebSocket(@url)
     @ws.onopen = @onopen

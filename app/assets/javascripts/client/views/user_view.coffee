@@ -15,14 +15,17 @@ class UserView extends Backbone.View
       @components[collection] = new Dropbox({ model: @model[collection] })
       @el.append(@components[collection].el)
 
-    @components['hand'] = new HandView({ model: @model.hand });
     @model.bind 'change', @render
+    @model.hand.bind 'add', @render
+    @model.hand.bind 'remove', @render
 
     root = if @model.local then 'left' else 'right'
     $("##{root}-panel .users").append(@el)
+    @render()
 
   render: =>
     @$('.lives').val(@model.lives())
+    @$('.hand-size').text('(' + @model.hand.size() + ')')
 
 
 window.UserView = UserView

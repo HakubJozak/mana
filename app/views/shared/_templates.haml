@@ -8,6 +8,7 @@
 #handview-template
   %div{ :id => '{{id}}', :class => 'hand' }
     %h2 {{title}} - {{user.name()}}
+    .container
 
 #cardbrowser-template
   %div{ :id => '{{id}}', :class => 'card-browser {{name}}' }
@@ -33,7 +34,9 @@
   %div{ :id => 'user-{{id}}', :class => 'user' }
     %h3
       %span{ :class => 'name' } {{name}}
-      %input.lives{ :value => '{{lives}}' }
+      %span.hand-size
+      %input.lives{ :value => '' }
+
 
 #user-area-template
   %div{ :class => 'user-area user-{{id}}' }

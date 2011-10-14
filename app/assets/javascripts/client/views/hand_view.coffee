@@ -3,29 +3,41 @@ class HandView extends FloatingBrowser
   @tagName: 'div'
   @className: 'hand'
 
+  @bind_controls: (user) ->
+    create = ->
+      view = new HandView({ model: user.hand });
+
+    Controls.current.bind 'key:spacebar', create
+    $('#battlefield').click _.wrap( create, _.preventer)
+    $('#battlefield').bind('contextmenu', _.wrap( create, _.preventer))
+
+
   constructor: (attrs) ->
     super(attrs)
 
-    if @model.user.local
-      @visible = true
-      Controls.current.bind 'key:spacebar', @toggle_visible
-      $('#battlefield').click _.wrap( @toggle_visible, _.preventer)
-      $('#battlefield').bind('contextmenu', _.wrap( @toggle_visible, _.preventer))
+    $('body').append(@el)
+    @el.disableSelection()
+    @el.draggable()
+    @el.droppable
+      accept: @_accept_unless_in
+      scope: 'cards'
+      greedy: true
+      hoverClass: 'card-over'
+      drop: @dropped
+
+    @render()
+
+  create_card_view: (card) =>
+    new CardView(model: card)
+
+  append_card_view: (view) =>
+    @el.find('.container').append(view.el)
 
   render: =>
+    _.each @views, (view, i) => view.render()
+    @el.fadeIn()
     this
 
 
-  _render_cards: =>
-    views = @model.map (card) -> CardView.find_or_create(card)
-
-    padding = 10
-    @el.css('width', (padding + CARD_W) * @model.length + 2*padding)
-    _.each views, (card, i) =>
-      card.el.detach()
-      card.el.appendTo(@el)
-      card.el.offset
-       top: @el.offset().top + 40,
-       left: padding + @el.offset().left + i * (padding + CARD_W),
 
 window.HandView = HandView
