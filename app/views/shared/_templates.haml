@@ -1,5 +1,5 @@
 #card-template
-  %div{ :class => 'card user-{{user_id}}' }
+  %div{ :class => 'card user-{{user_id}}', :"data-id" => '{{id}}' }
     .debug DEBUG
     %img{ :src => "/assets/back.gif" }
       .counters{ :style => 'display:none' } 0

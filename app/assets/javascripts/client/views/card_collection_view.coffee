@@ -1,10 +1,11 @@
 class CardCollectionView extends Backbone.View
 
-  constructor: (attrs, initialize = true) ->
-    super(attrs)
-    return unless initialize
+  @all: {}
 
+  constructor: (attrs) ->
+    super(attrs)
     throw 'Missing model' unless @model
+    CardCollectionView.all[@model.id] = this
 
     clazz = @constructor.name.toLowerCase()
     tmpl = $("##{clazz}-template")
@@ -40,8 +41,8 @@ class CardCollectionView extends Backbone.View
   remove_card_view: (card) =>
     view = _(@views).select (v) -> v.model.id == card.id
     view = view[0]
-    @views = _(@views).without(view[0]);
-    view.el.remove() if @rendered
+    @views = _(@views).without(view);
+    view.el.remove()
 
   dropped: (event,ui) =>
     card = ui.draggable.ob().model

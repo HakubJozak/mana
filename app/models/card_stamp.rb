@@ -17,7 +17,7 @@ class CardStamp
 
   def self.print_by_name(name, &block)
     stamp = where(name: name).first || fetch_stamp(name)
-    stamp.print(&block)
+    stamp && stamp.imprint(&block)
   end
 
   def self.fetch_stamp(name)
@@ -46,7 +46,7 @@ class CardStamp
     randoms.map { |rnd| where(counter: rnd).first || all.first }
   end
 
-  def print(&block)
+  def imprint(&block)
     Card.new( name: self.name,
               image_url: self.image_url,
               url: url) do |card|
