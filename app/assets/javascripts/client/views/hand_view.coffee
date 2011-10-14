@@ -3,13 +3,18 @@ class HandView extends FloatingBrowser
   @tagName: 'div'
   @className: 'hand'
 
-  @bind_controls: (user) ->
-    create = ->
-      view = new HandView({ model: user.hand });
 
-    Controls.current.bind 'key:spacebar', create
-    $('#battlefield').click _.wrap( create, _.preventer)
-    $('#battlefield').bind('contextmenu', _.wrap( create, _.preventer))
+  @bind_controls: (user) ->
+    create_or_close = ->
+      if HandView.current?
+        HandView.current.el.fadeOut()
+        HandView.current = null
+      else
+        HandView.current = new HandView({ model: user.hand });
+
+    Controls.current.bind 'key:spacebar', create_or_close
+    $('#battlefield').click _.wrap( create_or_close, _.preventer)
+    $('#battlefield').bind('contextmenu', _.wrap( create_or_close, _.preventer))
 
 
   constructor: (attrs) ->

@@ -5,7 +5,7 @@ class CardViewDropbox extends CardView
 
   render: =>
     super()
-    # @el.css('position','relative')
+    @el.css('position','absolute')
     @el.offset({ top: @dropbox.box.offset().top + 5, left: @dropbox.box.offset().left + 5 })
 
 
