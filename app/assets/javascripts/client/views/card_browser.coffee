@@ -12,7 +12,6 @@ class CardBrowser extends CardCollectionView
       hoverClass: 'card-over'
       drop: @dropped
 
-
     @$('.close-button').click =>
       @el.fadeOut()
       @el.remove()
@@ -31,7 +30,7 @@ class CardBrowser extends CardCollectionView
 
 
   create_card_view: (card) =>
-    new CardView(model: card)
+    new CardViewBrowser(model: card)
 
   append_card_view: (view) =>
     @box.prepend(view.el)
@@ -41,4 +40,15 @@ class CardBrowser extends CardCollectionView
     @el.appendTo('body')
     @el.fadeIn()
 
+class CardViewBrowser extends CardView
+
+  show_image: =>
+    @img.attr('src',@model.image())
+
+  show_tapping: =>
+    $(@el).removeClass('tapped')
+
+
+
 window.CardBrowser = CardBrowser
+window.CardViewBrowser = CardViewBrowser

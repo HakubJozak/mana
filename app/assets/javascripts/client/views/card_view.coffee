@@ -44,25 +44,11 @@ class CardView extends Backbone.View
       @show_detail()
 
   render: =>
-    if @model.hidden()
-      @el.fadeOut()
-    else
-      @el.fadeIn()
-      @el.find('.debug').text(@model.collection.name)
-
-    # TODO: @model.collection.shows_card(User.current) || @model.covered()
-    if  @model.covered()
-      @set_image('/assets/back.jpg')
-    else
-      @set_image(@model.image())
-
-    # TODO: @model.collection.allows_tapping || @model.tapped()
-    if @model.tapped()
-      $(@el).addClass('tapped')
-    else
-      $(@el).removeClass('tapped')
-
+    @el.find('.debug').text(@model.collection.name)
+    @show_image()
+    @show_tapping()
     @_render_overlay()
+    @el.show()
     this
 
   _render_overlay: =>
@@ -72,8 +58,17 @@ class CardView extends Backbone.View
     if @model.toughness() or @model.power()
       @$('.power').fadeIn().text("#{@model.power() || 0}/#{@model.toughness() || 0}")
 
-  set_image: (img) ->
-    @img.attr('src',img)
+  show_image: =>
+    if  @model.covered()
+      @img.attr('src','/assets/back.jpg')
+    else
+      @img.attr('src',@model.image())
+
+  show_tapping: =>
+    if @model.tapped()
+      $(@el).addClass('tapped')
+    else
+      $(@el).removeClass('tapped')
 
   show_detail: =>
     return if @model.covered()
