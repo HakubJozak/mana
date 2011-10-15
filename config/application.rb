@@ -51,11 +51,11 @@ module Mana
 
     # Enable the asset pipeline
     config.assets.enabled = true
-
-    # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.assets.precompile += ['client.js', 'client.css']
 
-    config.assets.version = '1.0'
+    # TODO: remove!
+    config.assets.compile = true
 
     # faster - use only when there is no inheritance in models!
     config.mongoid.preload_models = false

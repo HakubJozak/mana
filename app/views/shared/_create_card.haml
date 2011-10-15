@@ -8,12 +8,6 @@
     %label{:for => "custom_image_url"} Custom Image URL
     %input.text.ui-widget-content.ui-corner-all{:name => "custom_image_url", :type => "text" }/
 
-    %label{:for => "image_url"} Tokens
-    %select{ :name => 'image_url' }
-      - Card::TOKENS.sort.each do |key,value|
-        %option{ :value => value } #{key}
-
-
 :javascript
   $(document).ready(function() {
 

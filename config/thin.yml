@@ -1,12 +1,10 @@
-address: 83.167.232.160
+address: "ec2-176-34-195-147.eu-west-1.compute.amazonaws.com"
 pid: pids/thin.pid
 log: log/thin.log
 timeout: 30
-port: 80
+port: 8080
 max_conns: 256
-# chdir: /root/mana_production/current
-# rackup: /root/mana_production/current/config/config.ru
-rackup: config/config.ru
+rackup: config.ru
 max_persistent_conns: 128
 environment: production
 servers: 1

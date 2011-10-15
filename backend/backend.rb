@@ -7,17 +7,18 @@ require 'bundler'
 
 
 if ENV['RACK_ENV'] == 'production'
-  require 'config/production.rb'
-
   Bundler.require(:default)
-  ADDRESS = "83.167.232.160"
-  WEBSOCKET_PORT = 80
 else
   Bundler.require(:default, :development)
-  ADDRESS = "0.0.0.0"
-  WEBSOCKET_PORT = 8080
 end
 
+if ARGV.length == 2
+  ADDRESS = ARGV[0]
+  WEBSOCKET_PORT = ARGV[1]
+else
+  puts "Run it as: bundle exec backend.rb HOST PORT"
+  exit
+end
 
 require '../lib/card_collection'
 require '../lib/commander'
@@ -41,7 +42,7 @@ end
 # Mongoid config - hack cause it recognizes only this env value to
 # determine environment
 ENV["RACK_ENV"] ||= 'development' # 'production'
-Mongoid.load!("./mongoid.yml")
+Mongoid.load!("../config/mongoid.yml")
 
 # TODO -
 # require 'em-synchrony-mongodb'

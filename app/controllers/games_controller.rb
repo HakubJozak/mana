@@ -14,8 +14,8 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
-    @websocket_host = 'localhost'
-    @websocket_port = '8080'
+    @websocket_host = request.host
+    @websocket_port = '9090'
 
     @game = Game.find(params[:id])
 

@@ -1,7 +1,9 @@
+*.pem
 .bundle
 .git
 .sass-cache
 .cache_rake_t
+.cache_cap_t
 log/*.log
 public/stylesheets/*.css
 public/stylesheets/*/*.css
