@@ -23,14 +23,14 @@
 //= require ./client/game
 //= require ./client/utils
 //= require ./client/utils2
+//= require ./client/views/card_view
 //= require ./client/views/card_collection_view
 //= require ./client/views/battlefield_view
-//= require ./client/views/card_view
-//= require ./client/views/card_view_dropbox
-//= require ./client/views/card_view_battlefield
+//= require ./client/views/dropbox
+
 //= require ./client/views/chat_view
 //= require ./client/views/dialog
-//= require ./client/views/dropbox
+
 //= require ./client/views/floating_browser
 //= require ./client/views/hand_view
 //= require ./client/views/card_browser
