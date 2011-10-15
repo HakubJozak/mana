@@ -20,7 +20,7 @@ form.formtastic {
     text-align: center;
   }
 
-  li.string input, li.text textarea {
+  li.password input, li.string input, li.text textarea {
    @include border-radius(10px);
 
    font-size: $input-height - 1px;
@@ -33,18 +33,19 @@ form.formtastic {
   }
 
   fieldset.buttons {
-    @include center(400px);
 
     li {
+      padding-left: none;
       font-size: 120%;
       overflow: visible;
-      float: none;
+      float: left;
       display: inline;
-     }
+      line-height: 2em;
 
-    input.create, a {
-      @include button;
-      padding: 7px 7px 7px 7px;
+      input, a {
+          @include button;
+          padding: 7px 10px 7px 10px;
+      }
     }
 
   }

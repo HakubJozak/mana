@@ -10,7 +10,12 @@ $width: 1000px;
 $step: $width / 7;
 
 
-#outer {  @include absolutely-centered($width); }
+#outer {
+  @include absolutely-centered($width);
+  z-index: -100;
+}
+
+
 
 #cards {
   top: 50px;
@@ -59,6 +64,7 @@ $step: $width / 7;
   margin: 600px auto 0 auto;
   width: 510px;
 
+  li { display: inline; list-style: none; }
   a.button { @include big-button;  }
 
   a:last-child { margin-left: 15px }
