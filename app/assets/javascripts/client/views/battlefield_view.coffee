@@ -14,15 +14,13 @@ class BattlefieldView extends CardCollectionView
       accept: (draggable) ->
         ($('.card-over' ).length < 2) && draggable.hasClass('card');
 
+    @render()
+
   create_card_view: (card) =>
     new CardViewBattlefield(model: card)
 
   append_card_view: (view) =>
     @el.append(view.el)
-
-  render: =>
-    console.info 'rendering battlefield'
-    @rendered = true
 
   dropped: (event,ui) =>
     p = ui.draggable.offset()

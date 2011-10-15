@@ -1,12 +1,21 @@
-class CardBrowser extends FloatingBrowser
+class CardBrowser extends CardCollectionView
 
   constructor: (params) ->
     super(params)
-    @dropbox = params.dropbox
+
+    $('body').append(@el)
+    @el.disableSelection()
+    @el.draggable()
+    @el.droppable
+      scope: 'cards'
+      greedy: true
+      hoverClass: 'card-over'
+      drop: @dropped
+
 
     @$('.close-button').click =>
-      @toggle_visible()
-      @dropbox.toggle_visible()
+      @el.fadeOut()
+      @el.remove()
 
     @$('.shuffle-button').click =>
       @model.shuffle()
@@ -17,36 +26,19 @@ class CardBrowser extends FloatingBrowser
     @$('.cover-button').click =>
       @model.each (card) -> card.toggle_covered(true, { save: false })
 
+    @box = @$('.container')
+    @render()
+
+
+  create_card_view: (card) =>
+    new CardView(model: card)
+
+  append_card_view: (view) =>
+    @box.prepend(view.el)
 
   render: =>
-    if @visible
-      @_render_if_visible()
-      @el.fadeIn()
-    else
-      @el.fadeOut()
-
-    this
-
-  _render_if_visible: (width = 950) =>
-    padding = 10;
-    h_start = 35;
-    w_per_card = CARD_W + padding
-    h_per_card = CARD_H + padding
-    columns = Math.floor(width / w_per_card)
-    @el.css('width', width)
-
-    @model.each (card, i) =>
-      view = CardView.find_or_create(@model.at(@model.length - i - 1))
-      x = Math.floor(i % columns)
-      y = Math.floor(i / columns)
-      position = @el.offset()
-
-      view.el.detach()
-      view.el.appendTo(@el)
-      view.el.offset
-        top: position.top + h_start + padding + y * h_per_card
-        left: position.left + padding + w_per_card * x
-
-      @el.css('height', h_start + (y+1) * h_per_card)
+    super()
+    @el.appendTo('body')
+    @el.fadeIn()
 
 window.CardBrowser = CardBrowser

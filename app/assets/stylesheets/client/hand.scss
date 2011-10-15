@@ -6,6 +6,7 @@
 @import "components";
 
 
+
 .card-browser, .hand {
   display: none;
   left: $side-panel-width + 10;
@@ -22,6 +23,13 @@
       display: inline;
       position: relative;
       color: transparentize($highlight-color, 0.3);
+  }
+
+  .card {
+    position: relative;
+    float: left;
+    margin-top: 15px;
+    margin-right: 10px;
   }
 
  .button-bar {
@@ -51,5 +59,7 @@
   position: absolute;
   top: 250px;
   z-index: $browser-z-index;
+  width: $battlefield-width;
+  background-color: rgba(0,0,0,0.7);
 }
 

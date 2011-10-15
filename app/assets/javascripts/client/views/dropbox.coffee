@@ -15,12 +15,17 @@ class Dropbox extends CardCollectionView
       hoverClass: 'card-over'
       drop: @dropped
 
+    @render()
+
     # TODO - DRY - abstract overlay
     @box.mouseenter =>
       @$('.overlay').fadeIn()
 
     @box.mouseleave =>
       @$('.overlay').fadeOut()
+
+    @$('.browse-button').click =>
+      new CardBrowser(model: @model)
 
 
   create_card_view: (card) =>

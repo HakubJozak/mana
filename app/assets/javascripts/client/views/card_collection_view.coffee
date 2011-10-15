@@ -14,11 +14,8 @@ class CardCollectionView extends Backbone.View
       @template = _.template(tmpl.html())
       @el = $(@template(@model))
 
-    @views = []
-
     @model.bind 'add', @add_card_view
     @model.bind 'remove', @remove_card_view
-    @model.each (card) => @add_card_view(card)
 
   _accept_unless_in: (card)  =>
     true
@@ -31,6 +28,11 @@ class CardCollectionView extends Backbone.View
     @views.push(view)
     @append_card_view(view)
     view.render()
+
+  render: =>
+    unless @views?
+      @views = []
+      @model.each (card) => @add_card_view(card)
 
   append_card_view: ->
     throw 'Implement append_card_view method!'

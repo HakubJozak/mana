@@ -1,16 +1,18 @@
-class HandView extends FloatingBrowser
+class HandView extends CardCollectionView
 
   @tagName: 'div'
   @className: 'hand'
-
 
   @bind_controls: (user) ->
     create_or_close = ->
       if HandView.current?
         HandView.current.el.fadeOut()
+        HandView.last_position = HandView.current.el.offset()
+        HandView.current.el.remove()
         HandView.current = null
       else
         HandView.current = new HandView({ model: user.hand });
+        HandView.current.el.offset(HandView.last_position) if HandView.last_position
 
     Controls.current.bind 'key:spacebar', create_or_close
     $('#battlefield').click _.wrap( create_or_close, _.preventer)
@@ -39,6 +41,7 @@ class HandView extends FloatingBrowser
     @el.find('.container').append(view.el)
 
   render: =>
+    super()
     _.each @views, (view, i) => view.render()
     @el.fadeIn()
     this

@@ -1,7 +1,7 @@
 #card-template
   %div{ :class => 'card user-{{user_id}}', :"data-id" => '{{id}}' }
     .debug DEBUG
-    %img{ :src => "/assets/back.gif" }
+    %img{ :src => "/assets/back.jpg" }
       .counters{ :style => 'display:none' } 0
       .power{ :style => 'display:none' }
 
@@ -15,9 +15,8 @@
     %h2 {{title}}
     .button-bar
       %a.shuffle-button.button Shuffle
-      %a.uncover-button.button Uncover All
-      %a.cover-button.button Cover All
       %a.close-button.button Close
+    .container
 
 
 #user-stylesheet-template
@@ -48,5 +47,4 @@
       {{title}}
       %a.browse-button.button{:href => '#'} Browse
     %div{ :class => "box {{name}}" }
-      .count.overlay{ :style => 'display:none' }
-      -# .browse.overlay{ :style => 'display:none' } browse
+      .count.overlay{ }

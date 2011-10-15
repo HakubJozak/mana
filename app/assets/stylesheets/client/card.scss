@@ -5,9 +5,6 @@
 @import "components";
 
 
-.hand .card { position: relative; float: left; }
-
-
 .card {
   position: absolute;
 
@@ -15,6 +12,7 @@
   img { @include card-size; }
 
   .debug {
+    display: none;
     position: absolute;
     top: 5px;
     left: 5px;
