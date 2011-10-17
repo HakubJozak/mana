@@ -28,4 +28,8 @@ Mana::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # TODO: remove
+  config.serve_static_assets = true
+  config.assets.compile = false
+
 end
