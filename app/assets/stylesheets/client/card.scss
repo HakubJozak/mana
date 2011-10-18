@@ -24,6 +24,11 @@
 
   &.ui-draggable-dragging {
     @include shadow;
+    @include transition-property(none);
+  }
+
+  &.moving {
+    @include transition("left,top,rotate", 0.4s, ease-out);
   }
 
   &.tapped {

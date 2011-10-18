@@ -30,6 +30,6 @@ Mana::Application.configure do
 
   # TODO: remove
   config.serve_static_assets = true
-  # config.assets.compile = false
+  config.assets.compile = true
 
 end
