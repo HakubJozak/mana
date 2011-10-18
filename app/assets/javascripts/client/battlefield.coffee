@@ -1,9 +1,8 @@
-class Battlefield extends CardCollection
+class Battlefield extends Backbone.Collection
+  model : Card
 
-  constructor: ->
-    super('battlefield', 'Battlefield')
-
-  id: =>
-    "battlefield"
+  initialize: =>
+    @id = "battlefield"
+    CardCollection.all[@id] = this
 
 window.Battlefield = Battlefield

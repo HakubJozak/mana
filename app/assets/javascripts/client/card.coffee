@@ -27,7 +27,7 @@ class Card extends Backbone.Model
   power: => @get('power')
   toughness: => @get('toughness')
 
-  initialize: ->
+  initialize: =>
     throw 'Missing card ID' unless @id
     throw 'Missing user_id' unless @get('user_id')
     throw 'Missing order' if @get('order') == null

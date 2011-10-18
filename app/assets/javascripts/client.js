@@ -9,7 +9,9 @@
 
 
 //= require ./client/boot
-//= require ./client/visibility
+
+//= require ./client/action
+
 //= require ./client/socket
 //= require ./client/card
 //= require ./client/card_collection
@@ -17,11 +19,11 @@
 //= require ./client/card_overlay
 //= require ./client/chat
 //= require ./client/controls
-//= require ./client/hand
 //= require ./client/user
 //= require ./client/game
 //= require ./client/utils
 //= require ./client/utils2
+
 //= require ./client/views/card_view
 //= require ./client/views/card_collection_view
 //= require ./client/views/battlefield_view
@@ -29,8 +31,6 @@
 
 //= require ./client/views/chat_view
 //= require ./client/views/dialog
-
-//= require ./client/views/floating_browser
 //= require ./client/views/hand_view
 //= require ./client/views/card_browser
 //= require ./client/views/game_view

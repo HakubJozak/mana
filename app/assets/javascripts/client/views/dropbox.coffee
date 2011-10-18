@@ -11,7 +11,7 @@ class Dropbox extends CardCollectionView
     @box.droppable
       accept: @_accept_unless_in
       scope: 'cards'
-      greedy: true
+#      greedy: true
       hoverClass: 'card-over'
       drop: @dropped
 

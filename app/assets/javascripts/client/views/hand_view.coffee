@@ -24,7 +24,11 @@ class HandView extends CardCollectionView
 
     $('body').append(@el)
     @el.disableSelection()
-    @el.draggable()
+
+    @el.draggable
+      scope: 'decks',
+      containment: 'body',
+
     @el.droppable
       accept: @_accept_unless_in
       scope: 'cards'
@@ -32,6 +36,7 @@ class HandView extends CardCollectionView
       hoverClass: 'card-over'
       drop: @dropped
 
+    @el.data('game-object', @model)
     @render()
 
   create_card_view: (card) =>

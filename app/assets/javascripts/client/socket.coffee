@@ -35,6 +35,11 @@ class Socket
         add_to = CardCollection.all[data.collection_id]
         add_to.add(card)
 
+    if data.clazz == 'Action'
+      console.debug 'action arrived'
+      action = new Action(data)
+      action.run()
+
     if data.clazz == 'Message'
       @trigger('arrived:message', data.message)
 
@@ -59,15 +64,14 @@ class Socket
     @ws.onmessage = @onmessage
     this
 
-  send_object: (obj) ->
-    console.info obj
-    @ws.send(obj)
-
+  send_object: (obj) =>
+    console.debug "Sending object"
+    console.debug obj
+    @ws.send(JSON.stringify(obj.toJSON()))
 
 Backbone.sync = (method, model, success, error) ->
-  console.info "Sending #{method}"
   model.clazz = model.constructor.name
-  Socket.instance.send_object( JSON.stringify(model.toJSON()))
+  Socket.instance.send_object(model)
   return true
 
 window.Socket = Socket

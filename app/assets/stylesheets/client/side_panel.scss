@@ -15,6 +15,11 @@ body {
   @include panel;
 
   .users {
+
+    .user.deck-over {
+      @include focused;
+    }
+
     h3 {
       @include transparent;
       padding: 3px;

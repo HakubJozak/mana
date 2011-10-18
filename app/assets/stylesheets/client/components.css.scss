@@ -46,7 +46,6 @@
 }
 
 @mixin focused {
-  //@include linear-gradient(color-stops(  rgba(255, 253, 102, 0.1), rgba(255, 253, 102, 0.07) ));
   @include background-image(linear-gradient( rgba(255, 253, 102, 0.1), rgba(255, 253, 102, 0.07) ));
 }
 

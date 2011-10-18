@@ -1,3 +1,5 @@
+# -*- mode: coffee; tab-width: 2; -*-
+#
 class CardView extends Backbone.View
 
   @tagName: 'div'
@@ -18,7 +20,7 @@ class CardView extends Backbone.View
       revert: 'invalid',
       containment: 'body',
       snapMode: 'inner',
-      zIndex: 9999
+      zIndex: 9999,
       stack: '.card',
       start: =>
         # HACK
@@ -26,7 +28,6 @@ class CardView extends Backbone.View
 
     @el.bind 'click', @clicked
     @el.bind 'contextmenu', @clicked
-
 
     # LEGACY
     @el.data('game-object',this)
