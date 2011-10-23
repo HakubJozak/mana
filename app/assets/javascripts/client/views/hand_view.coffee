@@ -6,10 +6,7 @@ class HandView extends CardCollectionView
   @bind_controls: (user) ->
     create_or_close = ->
       if HandView.current?
-        HandView.current.el.fadeOut()
-        HandView.last_position = HandView.current.el.offset()
-        HandView.current.el.remove()
-        HandView.current = null
+        HandView.current.close()
       else
         HandView.current = new HandView({ model: user.hand });
         HandView.current.el.offset(HandView.last_position) if HandView.last_position
@@ -27,7 +24,6 @@ class HandView extends CardCollectionView
 
     @el.draggable
       scope: 'decks',
-      containment: 'body',
 
     @el.droppable
       accept: @_accept_unless_in
@@ -38,6 +34,14 @@ class HandView extends CardCollectionView
 
     @el.data('game-object', @model)
     @render()
+    @$('.close-button').click(@close)
+
+  close: =>
+    if User.local is @model.user
+      HandView.last_position = @el.offset()
+      HandView.current = null
+
+    @el.fadeOut => @el.remove()
 
   create_card_view: (card) =>
     new CardView(model: card)

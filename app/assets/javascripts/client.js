@@ -15,6 +15,7 @@
 //= require ./client/socket
 //= require ./client/card
 //= require ./client/card_collection
+//= require ./client/hand
 //= require ./client/battlefield
 //= require ./client/card_overlay
 //= require ./client/chat

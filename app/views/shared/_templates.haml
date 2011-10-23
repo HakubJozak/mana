@@ -7,12 +7,14 @@
 
 #handview-template
   %div{ :id => '{{id}}', :class => 'hand' }
-    %h2 {{title}} - {{user.name()}}
+    %h2 {{user.name()}}'s {{title}}
+    .button-bar
+      %a.close-button.button Close
     .container
 
 #cardbrowser-template
   %div{ :id => '{{id}}', :class => 'card-browser {{name}}' }
-    %h2 {{title}}
+    %h2 {{user.name()}}'s {{title}}
     .button-bar
       %a.shuffle-button.button Shuffle
       %a.close-button.button Close

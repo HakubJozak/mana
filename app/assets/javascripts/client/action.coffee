@@ -8,9 +8,15 @@ class Action extends Backbone.Model
     @type = @get 'type'
 
   run: =>
-    if @type == 'show_collection' and User.local? and User.local.id == @get('user_to_id')
-      collection = CardCollection.all[@get('collection_id')]
-      new HandView(model: collection)
+    if @type == 'show_collection'
+      if User.local? and User.local.id == @get('user_to_id')
+        collection = CardCollection.all[@get('collection_id')]
 
+        if collection.name == 'hand'
+          console.info 'aaa'
+          new HandView(model: collection)
+        else
+          new CardBrowser(model: collection)
+          console.info 'bbb'
 
 window.Action = Action

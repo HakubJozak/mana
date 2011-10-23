@@ -5,7 +5,12 @@ class CardBrowser extends CardCollectionView
 
     $('body').append(@el)
     @el.disableSelection()
-    @el.draggable()
+    @el.data('game-object', @model)
+
+    @el.draggable
+      scope: 'decks',
+      containment: 'body'
+
     @el.droppable
       scope: 'cards'
       greedy: true
@@ -13,17 +18,10 @@ class CardBrowser extends CardCollectionView
       drop: @dropped
 
     @$('.close-button').click =>
-      @el.fadeOut()
-      @el.remove()
+      @el.fadeOut => @el.remove()
 
     @$('.shuffle-button').click =>
       @model.shuffle()
-
-    @$('.uncover-button').click =>
-      @model.each (card) -> card.toggle_covered(false, { save: false })
-
-    @$('.cover-button').click =>
-      @model.each (card) -> card.toggle_covered(true, { save: false })
 
     @box = @$('.container')
     @render()
