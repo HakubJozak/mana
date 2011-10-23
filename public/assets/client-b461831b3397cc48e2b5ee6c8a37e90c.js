@@ -9840,8 +9840,47 @@ $(document).ready(function() {
 
 
 (function() {
-  var Visibility;
-  Visibility = {};
+  var Action;
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; }, __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
+    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
+    function ctor() { this.constructor = child; }
+    ctor.prototype = parent.prototype;
+    child.prototype = new ctor;
+    child.__super__ = parent.prototype;
+    return child;
+  };
+  Action = (function() {
+    __extends(Action, Backbone.Model);
+    function Action() {
+      this.run = __bind(this.run, this);
+      this.initialize = __bind(this.initialize, this);
+      Action.__super__.constructor.apply(this, arguments);
+    }
+    Action.show_deck = function(collection, user) {
+      return new Action({
+        type: 'show_collection',
+        collection_id: collection.id,
+        user_to_id: user.id
+      });
+    };
+    Action.prototype.initialize = function() {
+      this.set({
+        clazz: 'Action'
+      });
+      return this.type = this.get('type');
+    };
+    Action.prototype.run = function() {
+      var collection;
+      if (this.type === 'show_collection' && (User.local != null) && User.local.id === this.get('user_to_id')) {
+        collection = CardCollection.all[this.get('collection_id')];
+        return new HandView({
+          model: collection
+        });
+      }
+    };
+    return Action;
+  })();
+  window.Action = Action;
 }).call(this);
 (function() {
   var Socket;
@@ -9850,6 +9889,7 @@ $(document).ready(function() {
     function Socket(url, local_player_id) {
       this.url = url;
       this.local_player_id = local_player_id;
+      this.send_object = __bind(this.send_object, this);
       this.onmessage = __bind(this.onmessage, this);
       this.onclose = __bind(this.onclose, this);
       this.onerror = __bind(this.onerror, this);
@@ -9861,14 +9901,15 @@ $(document).ready(function() {
       return this.trigger('socket:connected', 'Connected');
     };
     Socket.prototype.onerror = function(e) {
-      return this.trigger('socket:error', e);
+      this.trigger('socket:error', e);
+      return console.error("Websocket failure: " + e);
     };
     Socket.prototype.onclose = function() {
       this.trigger('socket:disconnected', 'Disconnected');
       return alert('Disconnected!');
     };
     Socket.prototype.onmessage = function(msg) {
-      var add_to, card, data, user, user_view;
+      var action, add_to, card, data, user, user_view;
       data = JSON.parse(msg.data);
       if (data._id) {
         data.id = data._id;
@@ -9886,6 +9927,11 @@ $(document).ready(function() {
           add_to = CardCollection.all[data.collection_id];
           add_to.add(card);
         }
+      }
+      if (data.clazz === 'Action') {
+        console.debug('action arrived');
+        action = new Action(data);
+        action.run();
       }
       if (data.clazz === 'Message') {
         this.trigger('arrived:message', data.message);
@@ -9918,15 +9964,15 @@ $(document).ready(function() {
       return this;
     };
     Socket.prototype.send_object = function(obj) {
-      console.info(obj);
-      return this.ws.send(obj);
+      console.debug("Sending object");
+      console.debug(obj);
+      return this.ws.send(JSON.stringify(obj.toJSON()));
     };
     return Socket;
   })();
   Backbone.sync = function(method, model, success, error) {
-    console.info("Sending " + method);
     model.clazz = model.constructor.name;
-    Socket.instance.send_object(JSON.stringify(model.toJSON()));
+    Socket.instance.send_object(model);
     return true;
   };
   window.Socket = Socket;
@@ -9953,6 +9999,7 @@ $(document).ready(function() {
       this.load = __bind(this.load, this);
       this.toJSON = __bind(this.toJSON, this);
       this.hidden = __bind(this.hidden, this);
+      this.initialize = __bind(this.initialize, this);
       this.toughness = __bind(this.toughness, this);
       this.power = __bind(this.power, this);
       this.counters = __bind(this.counters, this);
@@ -10092,19 +10139,23 @@ $(document).ready(function() {
     __extends(CardCollection, Backbone.Collection);
     CardCollection.prototype.model = Card;
     CardCollection.all = {};
-    function CardCollection(id, name, params) {
-      this.id = id;
+    function CardCollection(name, user, cards) {
       this.name = name;
+      this.user = user;
+      if (cards == null) {
+        cards = null;
+      }
       this.shuffle = __bind(this.shuffle, this);
-      CardCollection.__super__.constructor.call(this, params);
-      if (!this.name) {
+      CardCollection.__super__.constructor.call(this, cards);
+      if (this.name == null) {
         throw 'Name of the CardCollection missing';
       }
-      if (!this.id) {
-        throw 'ID of the CardCollection missing';
+      if (this.user == null) {
+        throw 'CardCollection is missing user';
       }
-      CardCollection.all[this.id] = this;
+      this.id = "" + this.name + "-" + this.user.id;
       this.title = Utils.camelize(this.name);
+      CardCollection.all[this.id] = this;
     }
     CardCollection.prototype.comparator = function(card) {
       return card.order();
@@ -10131,12 +10182,15 @@ $(document).ready(function() {
     return child;
   };
   Battlefield = (function() {
-    __extends(Battlefield, CardCollection);
+    __extends(Battlefield, Backbone.Collection);
     function Battlefield() {
-      this.id = __bind(this.id, this);      Battlefield.__super__.constructor.call(this, 'battlefield', 'Battlefield');
+      this.initialize = __bind(this.initialize, this);
+      Battlefield.__super__.constructor.apply(this, arguments);
     }
-    Battlefield.prototype.id = function() {
-      return "battlefield";
+    Battlefield.prototype.model = Card;
+    Battlefield.prototype.initialize = function() {
+      this.id = "battlefield";
+      return CardCollection.all[this.id] = this;
     };
     return Battlefield;
   })();
@@ -10269,30 +10323,6 @@ $(document).ready(function() {
   window.Controls = Controls;
 }).call(this);
 (function() {
-  var Hand;
-  var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
-    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
-    function ctor() { this.constructor = child; }
-    ctor.prototype = parent.prototype;
-    child.prototype = new ctor;
-    child.__super__ = parent.prototype;
-    return child;
-  };
-  Hand = (function() {
-    __extends(Hand, CardCollection);
-    function Hand(attrs) {
-      if (!attrs.user) {
-        throw 'Hand must have an owner - "user" not specified';
-      }
-      this.user = attrs.user;
-      Hand.__super__.constructor.call(this, this.user.id, 'hand');
-      this.title = Utils.camelize(this.name);
-    }
-    return Hand;
-  })();
-  window.Hand = Hand;
-}).call(this);
-(function() {
   var User, UserCollection;
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; }, __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
@@ -10319,12 +10349,10 @@ $(document).ready(function() {
       this.set({
         lives: 20
       });
-      this.library = new CardCollection("library-" + this.id, 'library');
-      this.graveyard = new CardCollection("graveyard-" + this.id, 'graveyard');
-      this.exile = new CardCollection("exile-" + this.id, 'exile');
-      this.hand = new Hand({
-        user: this
-      });
+      this.library = new CardCollection('library', this);
+      this.graveyard = new CardCollection('graveyard', this);
+      this.exile = new CardCollection('exile', this);
+      this.hand = new CardCollection('hand', this);
     }
     User.prototype.lives = function() {
       return this.get('lives');
@@ -10439,11 +10467,11 @@ Utils.camelize = function(string){
     CardView.tagName = 'div';
     CardView.className = 'card';
     function CardView(params) {
-      this.show_detail = __bind(this.show_detail, this);
       this.show_tapping = __bind(this.show_tapping, this);
       this.show_image = __bind(this.show_image, this);
       this._render_overlay = __bind(this._render_overlay, this);
       this.render = __bind(this.render, this);
+      this.show_detail = __bind(this.show_detail, this);
       this.clicked = __bind(this.clicked, this);      CardView.__super__.constructor.call(this, params);
       this.model.bind('change', this.render);
       this.template = _.template($('#card-template').html());
@@ -10477,6 +10505,19 @@ Utils.camelize = function(string){
         return this.show_detail();
       }
     };
+    CardView.prototype.show_detail = function() {
+      var img, pos;
+      if (!this.model.covered()) {
+        img = this.$('img');
+        pos = img.offset();
+        return img.clone().addClass('detail').appendTo('body').offset({
+          top: pos.top,
+          left: pos.left
+        }).click(function() {
+          return $(this).remove();
+        });
+      }
+    };
     CardView.prototype.render = function() {
       this.el.find('.debug').text(this.model.collection.name);
       this.show_image();
@@ -10506,31 +10547,6 @@ Utils.camelize = function(string){
       } else {
         return $(this.el).removeClass('tapped');
       }
-    };
-    CardView.prototype.show_detail = function() {
-      var detail;
-      if (this.model.covered()) {
-        return;
-      }
-      detail = this.el.find('img').clone();
-      $('body').append(detail);
-      detail.css('z-index', 10000).attr('src', this.model.image()).offset(this.el.offset()).removeClass('card').addClass('card-detail').animate(CardView.detail_animation('+'), 200);
-      return detail.click(function() {
-        $(this).unbind('click');
-        return $(this).animate(CardView.detail_animation('-'), 200, function() {
-          return $(this).remove();
-        });
-      });
-    };
-    CardView.detail_animation = function(resize) {
-      var reposition;
-      reposition = resize === '+' ? '-' : '+';
-      return {
-        left: reposition + '=60',
-        top: reposition + '=85',
-        height: resize + '=170',
-        width: resize + '=120'
-      };
     };
     return CardView;
   })();
@@ -10654,8 +10670,7 @@ Utils.camelize = function(string){
       });
     };
     BattlefieldView.prototype.append_card_view = function(view) {
-      this.el.append(view.el);
-      return view.el.addClass('moving');
+      return this.el.append(view.el);
     };
     BattlefieldView.prototype.dropped = function(event, ui) {
       var card, old, p;
@@ -10700,14 +10715,18 @@ Utils.camelize = function(string){
       CardViewBattlefield.__super__.constructor.apply(this, arguments);
     }
     CardViewBattlefield.prototype.render = function() {
-      var pos;
+      var pos, revive;
       CardViewBattlefield.__super__.render.call(this);
       this.el.css('position', 'absolute');
       pos = this.model.position();
-      return this.el.css({
+      this.el.css({
         left: pos.x,
         top: pos.y
       });
+      revive = __bind(function() {
+        return this.el.addClass('moving');
+      }, this);
+      return window.setTimeout(revive, 300);
     };
     return CardViewBattlefield;
   })();
@@ -10736,7 +10755,6 @@ Utils.camelize = function(string){
       this.box.droppable({
         accept: this._accept_unless_in,
         scope: 'cards',
-        greedy: true,
         hoverClass: 'card-over',
         drop: this.dropped
       });
@@ -10862,25 +10880,6 @@ Utils.camelize = function(string){
   window.Dialog = Dialog;
 }).call(this);
 (function() {
-  var FloatingBrowser;
-  var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
-    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
-    function ctor() { this.constructor = child; }
-    ctor.prototype = parent.prototype;
-    child.prototype = new ctor;
-    child.__super__ = parent.prototype;
-    return child;
-  };
-  FloatingBrowser = (function() {
-    __extends(FloatingBrowser, CardCollectionView);
-    function FloatingBrowser(attrs) {
-      FloatingBrowser.__super__.constructor.call(this, attrs);
-    }
-    return FloatingBrowser;
-  })();
-  window.FloatingBrowser = FloatingBrowser;
-}).call(this);
-(function() {
   var HandView;
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; }, __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
@@ -10921,7 +10920,10 @@ Utils.camelize = function(string){
       this.create_card_view = __bind(this.create_card_view, this);      HandView.__super__.constructor.call(this, attrs);
       $('body').append(this.el);
       this.el.disableSelection();
-      this.el.draggable();
+      this.el.draggable({
+        scope: 'decks',
+        containment: 'body'
+      });
       this.el.droppable({
         accept: this._accept_unless_in,
         scope: 'cards',
@@ -10929,6 +10931,7 @@ Utils.camelize = function(string){
         hoverClass: 'card-over',
         drop: this.dropped
       });
+      this.el.data('game-object', this.model);
       this.render();
     }
     HandView.prototype.create_card_view = function(card) {
@@ -11170,12 +11173,19 @@ Utils.camelize = function(string){
     UserView.className = 'user';
     function UserView(attrs) {
       this.render = __bind(this.render, this);
+      this.deck_dropped = __bind(this.deck_dropped, this);
       var root;
       UserView.__super__.constructor.call(this, attrs);
       $('head').append(_.template($('#user-stylesheet-template').html(), this.model.toJSON()));
       this.components = {};
       this.template = _.template($('#user-template').html());
       this.el = $(this.template(this.model.toJSON()));
+      this.el.droppable({
+        scope: 'decks',
+        tolerance: 'touch',
+        hoverClass: 'deck-over',
+        drop: this.deck_dropped
+      });
       _.each(['library', 'graveyard', 'exile'], __bind(function(collection) {
         this.components[collection] = new Dropbox({
           model: this.model[collection]
@@ -11189,6 +11199,11 @@ Utils.camelize = function(string){
       $("#" + root + "-panel .users").append(this.el);
       this.render();
     }
+    UserView.prototype.deck_dropped = function(event, ui) {
+      var deck;
+      deck = ui.draggable.ob();
+      return Action.show_deck(deck, this.model).save();
+    };
     UserView.prototype.render = function() {
       this.$('.lives').val(this.model.lives());
       return this.$('.hand-size').text('(' + this.model.hand.size() + ')');
@@ -11199,6 +11214,8 @@ Utils.camelize = function(string){
 }).call(this);
 // not used require jquery
 // not used require jquery_ujs
+
+
 
 
 

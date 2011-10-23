@@ -8,6 +8,7 @@ gem "devise", ">= 1.3.3"
 gem 'jquery-rails'
 gem 'formtastic'
 gem 'thin'
+gem 'god', '~> 0.11.0'
 
 
 #group :assets do

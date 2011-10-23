@@ -9,6 +9,7 @@ class Socket
 
   onerror: (e) =>
     @trigger('socket:error', e)
+    console.error("Websocket failure: #{e}")
 
   onclose: =>
     @trigger('socket:disconnected', 'Disconnected')

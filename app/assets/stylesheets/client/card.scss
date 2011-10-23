@@ -4,12 +4,21 @@
 @import "constants";
 @import "components";
 
+body > img.detail {
+  width: 200px;
+//  @include scale(1.5,1.5);
+}
+
 
 .card {
   position: absolute;
 
   @include card-size;
   img { @include card-size; }
+
+
+
+
 
   .debug {
     display: none;

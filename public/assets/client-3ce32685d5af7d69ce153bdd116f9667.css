@@ -665,38 +665,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-color: rgba(30, 30, 30, 0.2);
   height: 1000px;
 }
-/* line 11, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/battlefield.scss */
-#battlefield .card.moving {
-  -moz-transition-property: left,top,rotate;
-  -webkit-transition-property: left,top,rotate;
-  -o-transition-property: left,top,rotate;
-  transition-property: left,top,rotate;
-  -moz-transition-duration: 0.4s;
-  -webkit-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-  -moz-transition-timing-function: ease-out;
-  -webkit-transition-timing-function: ease-out;
-  -o-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-/* line 15, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/battlefield.scss */
-#battlefield .card.ui-draggable-dragging {
-  -moz-transition-property: none;
-  -webkit-transition-property: none;
-  -o-transition-property: none;
-  transition-property: none;
-}
-/* line 24, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/battlefield.scss */
+/* line 16, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/battlefield.scss */
 #battlefield .user-area {
   height: 400px;
   background-color: rgba(30, 30, 30, 0.2);
 }
-/* line 27, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/battlefield.scss */
+/* line 19, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/battlefield.scss */
 #battlefield .user-area.local {
   background-color: rgba(40, 0, 0, 0.2);
 }
-/* line 29, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/battlefield.scss */
+/* line 21, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/battlefield.scss */
 #battlefield .user-area .name {
   position: relative;
   text-align: center;
@@ -804,39 +782,63 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* $desk-z-index: -1; */
 /* $battlefield-z-index: -10; */
 /* $infobox-z-index: 3000; */
-/* line 8, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+/* line 7, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+body > img.detail {
+  width: 200px;
+}
+
+/* line 13, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
 .card {
   position: absolute;
   height: 170px;
   width: 120px;
 }
-/* line 12, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+/* line 17, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
 .card img {
   height: 170px;
   width: 120px;
 }
-/* line 14, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+/* line 23, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
 .card .debug {
   display: none;
   position: absolute;
   top: 5px;
   left: 5px;
 }
-/* line 21, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+/* line 30, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
 .card:hover {
   -moz-box-shadow: #fafeb2 0px 0px 10px;
   -webkit-box-shadow: #fafeb2 0px 0px 10px;
   -o-box-shadow: #fafeb2 0px 0px 10px;
   box-shadow: #fafeb2 0px 0px 10px;
 }
-/* line 25, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+/* line 34, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
 .card.ui-draggable-dragging {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 20px 20px 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 20px 20px 20px;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 20px 20px 20px;
   box-shadow: rgba(0, 0, 0, 0.5) 20px 20px 20px;
+  -moz-transition-property: none;
+  -webkit-transition-property: none;
+  -o-transition-property: none;
+  transition-property: none;
 }
-/* line 29, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+/* line 39, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+.card.moving {
+  -moz-transition-property: left,top,rotate;
+  -webkit-transition-property: left,top,rotate;
+  -o-transition-property: left,top,rotate;
+  transition-property: left,top,rotate;
+  -moz-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  -moz-transition-timing-function: ease-out;
+  -webkit-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+/* line 43, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
 .card.tapped {
   -moz-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
@@ -844,7 +846,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
-/* line 31, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+/* line 45, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
 .card.tapped .power, .card.tapped .counters {
   -moz-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
@@ -852,17 +854,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
-/* line 34, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+/* line 48, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
 .card .power {
   right: 0px;
   bottom: 0px;
 }
-/* line 35, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+/* line 49, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
 .card .counters {
   left: 0px;
   top: 0px;
 }
-/* line 37, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+/* line 51, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
 .card .counters, .card .power {
   position: absolute;
   -moz-border-radius: 5px;
@@ -878,7 +880,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin: 5px;
 }
 
-/* line 50, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
+/* line 64, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/card.scss */
 .card-detail {
   height: 170px;
   width: 120px;
@@ -1370,25 +1372,34 @@ body {
   padding-bottom: 5px;
   font-size: smaller;
 }
-/* line 18, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
+/* line 19, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
+.side-panel .users .user.deck-over {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 253, 102, 0.1)), color-stop(100%, rgba(255, 253, 102, 0.07)));
+  background-image: -webkit-linear-gradient(rgba(255, 253, 102, 0.1), rgba(255, 253, 102, 0.07));
+  background-image: -moz-linear-gradient(rgba(255, 253, 102, 0.1), rgba(255, 253, 102, 0.07));
+  background-image: -o-linear-gradient(rgba(255, 253, 102, 0.1), rgba(255, 253, 102, 0.07));
+  background-image: -ms-linear-gradient(rgba(255, 253, 102, 0.1), rgba(255, 253, 102, 0.07));
+  background-image: linear-gradient(rgba(255, 253, 102, 0.1), rgba(255, 253, 102, 0.07));
+}
+/* line 23, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
 .side-panel .users h3 {
   background-color: rgba(0, 0, 0, 0.2);
   padding: 3px;
   padding-bottom: 10px;
   font-size: larger;
 }
-/* line 25, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
+/* line 30, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
 .side-panel .users table {
   borders: none;
   color: white;
   font-size: small;
   margin-bottom: 1em;
 }
-/* line 31, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
+/* line 36, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
 .side-panel .users table td {
   borders: none;
 }
-/* line 34, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
+/* line 39, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
 .side-panel .users input.lives {
   font-size: medium;
   padding: 3px;
@@ -1396,11 +1407,11 @@ body {
   width: 2em;
   float: right;
 }
-/* line 42, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
+/* line 47, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
 .side-panel .users .box-container {
   margin-bottom: 1em;
 }
-/* line 46, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
+/* line 51, /home/jakub/prog/projects/mana/app/assets/stylesheets/client/side_panel.scss */
 .side-panel .users .box-container > h4 {
   margin: auto;
   margin-bottom: 3px;

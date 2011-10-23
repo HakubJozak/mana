@@ -43,6 +43,16 @@ class CardView extends Backbone.View
     else
       @show_detail()
 
+  show_detail: =>
+    unless @model.covered()
+      img = @$('img')
+      pos = img.offset()
+      img.clone()
+         .addClass('detail')
+         .appendTo('body')
+         .offset(top: pos.top, left: pos.left)
+         .click -> $(this).remove()
+
   render: =>
     @el.find('.debug').text(@model.collection.name)
     @show_image()
@@ -70,33 +80,5 @@ class CardView extends Backbone.View
     else
       $(@el).removeClass('tapped')
 
-  show_detail: =>
-    return if @model.covered()
-
-    # TODO: template it
-    detail = @el.find('img').clone()
-    $('body').append(detail)
-
-    detail.css('z-index',10000)
-        .attr('src', @model.image())
-        .offset(@el.offset())
-        .removeClass('card')
-        .addClass('card-detail')
-        .animate(CardView.detail_animation('+'), 200)
-
-    detail.click ->
-      $(this).unbind('click')
-      $(this).animate CardView.detail_animation('-'), 200, ->
-        $(this).remove()
-
-  @detail_animation: (resize) ->
-    reposition = if (resize == '+') then '-' else '+'
-
-    return {
-      left: reposition + '=60',
-      top: reposition + '=85',
-      height: resize + '=170',
-      width: resize + '=120'
-    }
 
 window.CardView = CardView

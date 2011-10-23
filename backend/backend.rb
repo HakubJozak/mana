@@ -6,10 +6,15 @@ require 'rubygems'
 require 'bundler'
 
 
-if ENV['RACK_ENV'] == 'production'
-  Bundler.require(:default)
-else
+# Mongoid config - hack cause it recognizes only this env value to
+# determine environment
+ENV["RACK_ENV"] ||= 'production'
+
+
+if ENV['RACK_ENV'] == 'development'
   Bundler.require(:default, :development)
+else
+  Bundler.require(:default)
 end
 
 if ARGV.length == 2
@@ -39,9 +44,6 @@ class EventMachine::WebSocket::Connection
 end
 
 
-# Mongoid config - hack cause it recognizes only this env value to
-# determine environment
-ENV["RACK_ENV"] ||= 'development' # 'production'
 Mongoid.load!("../config/mongoid.yml")
 
 # TODO -
