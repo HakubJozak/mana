@@ -10,11 +10,9 @@ Mana is a proof-of-concept in-browser implementation of Magic the Gathering(tm) 
 
 ## Live Server
 
-Try it yourself!
+[Try it for yourself!](http://ec2-176-34-195-147.eu-west-1.compute.amazonaws.com:8080)
 
-(__temporarily down__) [http://83.167.232.160/games/any-name](http://83.167.232.160/games/any-name)
-
-and replace 'any-name' by a name of your choice. Send the URL to your friend(s) and play!
+Just before you do, please notice that:
 
 __WARNING 1__: the server has very limited resources and might go offline unexpectedly.
 
