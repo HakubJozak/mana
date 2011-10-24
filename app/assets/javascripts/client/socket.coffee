@@ -19,9 +19,6 @@ class Socket
     data = JSON.parse(msg.data)
     data.id = data._id if data._id
 
-#    console.debug 'Received'
-#    console.debug data
-
     if data.clazz == 'Card'
       # LEGACY
       data.user_id = data.player_id
@@ -42,7 +39,7 @@ class Socket
       action.run()
 
     if data.clazz == 'Message'
-      @trigger('arrived:message', data.message)
+      Message.all.add(new Message(data))
 
     if data.clazz == 'Player'
       if user = User.all.get(data.id)

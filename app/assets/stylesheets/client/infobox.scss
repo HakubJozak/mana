@@ -6,12 +6,11 @@
 
 
 #infobox {
- position: fixed;
- top: $top_bar_height;
- left: $side-panel-width + 10;
+ position: relative;
 
- heigth: 30px;
- padding: 10px;
+ heigth: 70px;
+ padding: 15px 10px 15px 10px;
+ @include panel;
 
  background-color: rgba(80, 80, 80, 0.2);
  color: $highlight-color;

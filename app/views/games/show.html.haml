@@ -11,18 +11,12 @@
         var battlefield = new Battlefield();
         var bview = new BattlefieldView({ model: battlefield });
 
-        chat = new Chat();
-        new ChatView({ model: chat });
-
-        var info = new InfoView({ model: chat });
-        InfoView.instance = info;
-        chat.bind('add', info.render);
+        new ChatView({ model: Message.all });
 
         console.env = '#{Rails.env}';
 
         Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}/games/#{@game.id}/players/#{@player.id}', "#{@player.id}");
 
-        Socket.instance.bind('arrived:message', chat.message_arrived );
         Socket.instance.bind('socket:connected', function() {
           console.info('Connected to server');
           // var attrs = #{@game.to_json};
@@ -37,10 +31,18 @@
 %body
   = render('shared/lobby', :layout => false)
   = render('shared/create_card', :layout => false)
-  = render('shared/playground', :layout => false)
 
-  #infobox{ :style => 'display:none' }
-    %p
+  #left-panel.side-panel
+    .users
+
+  #desk
+    #infobox
+      Infobox
+
+    #battlefield
+
+  #right-panel.side-panel
+    .users
 
   #chat-bar
     %label Say:

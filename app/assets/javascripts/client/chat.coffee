@@ -9,10 +9,11 @@ class Message extends Backbone.Model
     super(attrs)
 
 
-class Chat extends Backbone.Collection
+class MessageCollection extends Backbone.Collection
   model: Message
 
-  message_arrived: (msg) =>
-    @add(msg)
 
-window.Chat = Chat
+Message.all = new MessageCollection()
+
+window.Message = Message
+window.MessageCollection = MessageCollection

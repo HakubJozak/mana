@@ -18,18 +18,30 @@
   clear: right;
 }
 
+#desk {
+  position: absolute;
+  left: $side-panel-width;
+  right: $side-panel-width;
+
+  #battlefield {
+    margin-top: 30px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    clear: right;
+  }
+
+  #infobox {
+    width: 100%;
+    height: 60px;
+  }
+}
+
 #right-panel {
   @include side-panel;
   right: 0px;
 }
 
-#battlefield {
- margin-top: 30px;
- width: 800px;
- margin-left: auto;
- margin-right: auto;
- clear: right;
-}
 
 #footer {
  position: absolute;
