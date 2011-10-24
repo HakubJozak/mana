@@ -30,7 +30,7 @@ class HandView extends CardCollectionView
       scope: 'cards'
       greedy: true
       hoverClass: 'card-over'
-      drop: @dropped
+      drop: @dropped_and_turned
 
     @el.data('game-object', @model)
     @render()
@@ -48,6 +48,18 @@ class HandView extends CardCollectionView
 
   append_card_view: (view) =>
     @el.find('.container').append(view.el)
+
+  dropped_and_turned: (event,ui) =>
+    card = ui.draggable.ob().model
+    card.collection.remove(card)
+    @model.add(card)
+    card.set(covered: false, {silent: true})
+    console.info card
+    card.save()
+    console.info card
+
+
+#    @dropped(event, ui)
 
   render: =>
     super()

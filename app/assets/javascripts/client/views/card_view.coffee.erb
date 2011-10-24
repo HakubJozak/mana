@@ -46,12 +46,19 @@ class CardView extends Backbone.View
   show_detail: =>
     unless @model.covered()
       img = @$('img')
+      w = img.width() * 2
+      h = img.height() * 2
       pos = img.offset()
+      remove = -> $(this).click -> $(this).fadeOut -> $(this).remove()
+
       img.clone()
          .addClass('detail')
+         .css('position', 'absolute')
+         .css('top',  pos.top)
+         .css('left', pos.left)
          .appendTo('body')
-         .offset(top: pos.top, left: pos.left)
-         .click -> $(this).remove()
+         .animate({ width: "#{w}px", height: "#{h}px", top: "#{pos.top - 50}px", left: "#{pos.left - 50}px" }, remove)
+         .draggable()
 
   render: =>
     @el.find('.debug').text(@model.collection.name)

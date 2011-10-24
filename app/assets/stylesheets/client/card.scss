@@ -5,8 +5,12 @@
 @import "components";
 
 body > img.detail {
-  width: 200px;
+//  @include transition("width", 0.4s, ease-out);
+//  @include transition;
 //  @include scale(1.5,1.5);
+  position: absolute;
+  @include card-size;
+  z-index: 10000;
 }
 
 
@@ -15,9 +19,6 @@ body > img.detail {
 
   @include card-size;
   img { @include card-size; }
-
-
-
 
 
   .debug {
