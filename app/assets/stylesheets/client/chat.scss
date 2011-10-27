@@ -8,7 +8,16 @@
   @include textured;
 
   padding: 7px 7px 7px 7px;
-  font-size: 20px;
+
+  .message-list {
+    @include border-radius;
+    @include transparent;
+    font-size: 17px;
+    padding: 3px;
+    font-weight: normal;
+    max-height: 4em;
+    overflow-y: scroll;
+  }
 
   input.chat-input {
       @include border-radius;
@@ -16,13 +25,14 @@
       background: rgba(48, 0, 0, 0.5);
       border: 1px solid #693e1b;
       color: #c8b472;
-
       width: 95%;
+
       font-size: 20px;
       line-height: 1.5;
   }
 
   .button {
+    font-size: 20px;
   }
 }
 

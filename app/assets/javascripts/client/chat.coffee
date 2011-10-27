@@ -4,6 +4,7 @@ class Message extends Backbone.Model
   initialize: =>
     @user = User.all.get(@get('user_id')) || User.local
     @set({ user_id: @user.id })
+    @set(clazz: 'Message')
 
   constructor: (attrs) ->
     super(attrs)
