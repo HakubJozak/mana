@@ -6,6 +6,9 @@ class Message extends Backbone.Model
     @set({ user_id: @user.id })
     @set(clazz: 'Message')
 
+  text: =>
+    @escape('text')
+
   constructor: (attrs) ->
     super(attrs)
 

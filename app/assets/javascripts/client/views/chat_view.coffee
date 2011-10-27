@@ -3,6 +3,7 @@ class ChatView extends Backbone.View
   initialize: =>
     @el = $('#top-panel')
     @el.submit(@submit)
+    @template = _.template($("#message-template").html())
 
     @model.bind 'add', @message_added
     Controls.current.bind 'key:m', @focus
@@ -11,7 +12,8 @@ class ChatView extends Backbone.View
     input = @$('.chat-input').focus();
 
   message_added: (message) =>
-    @$('.message-list').prepend("<li>#{message.escape('text')}</li>")
+    li = $(@template(message))
+    @$('.message-list').prepend(li)
 
   submit: =>
     input = @$('form .chat-input');

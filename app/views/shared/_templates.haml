@@ -20,10 +20,15 @@
       %a.close-button.button Close
     .container
 
+#message-template
+  %li
+    %span.message{ :class => "message user-{{user.id}}" }
+      {{user.name()}}:
+    {{text()}}
 
 #user-stylesheet-template
   :css
-    #infobox .user-{{id}} { color: {{color}} }
+    .message.user-{{id}} { color: {{color}} }
     .user-{{id}}.card:hover {
      -moz-box-shadow: {{color}} 0px 0px 15px 0;
      -webkit-box-shadow: {{color}} 0px 0px 15px 0;
