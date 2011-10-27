@@ -13,7 +13,6 @@ class User extends Backbone.Model
     # TODO: DRY
     @library = new CardCollection( 'library',  this)
     @graveyard = new CardCollection( 'graveyard',  this)
-    @exile = new CardCollection( 'exile',  this)
     @hand = new Hand( 'hand',  this)
 
   lives: => @get('lives')

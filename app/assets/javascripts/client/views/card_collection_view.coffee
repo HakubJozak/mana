@@ -33,6 +33,8 @@ class CardCollectionView extends Backbone.View
     unless @views?
       @views = []
       @model.each (card) => @add_card_view(card)
+#      reversed = @model.models.slice(0).reverse()
+#      _(reversed).each (card) => @add_card_view(card)
 
   append_card_view: ->
     throw 'Implement append_card_view method!'
@@ -46,7 +48,15 @@ class CardCollectionView extends Backbone.View
   dropped: (event,ui) =>
     card = ui.draggable.ob().model
     card.collection.remove(card)
+
+    order = if @model.last()
+              @model.last().order() + 1
+            else
+              1
+
+    card.set({ order: order }, { silent: true} )
     @model.add(card)
+
     card.save()
 
 window.CardCollectionView = CardCollectionView

@@ -1,24 +1,15 @@
 class ChatView extends Backbone.View
 
-  initialize: ->
-    @el = $('#chat-bar')
-    @el.draggable()
-       .keyup(@close_or_submit)
-       .children('input')
-       .blur()
+  initialize: =>
+    @el = $('#top-panel form')
+    @el.submit(@submit)
+    Controls.current.bind 'key:m', @focus
 
-  close_or_submit: (event) =>
-    if event.keyCode == 27
-      @close_chat()
-    else if event.keyCode == 13
-      @submit_chat()
-      @close_chat()
+  focus: =>
+    input = @$('.chat-input').focus();
 
-  close_chat: ->
-    @el.hide().children('input').blur()
-
-  submit_chat: ->
-    input = @el.find('input');
+  submit: =>
+    input = @$('.chat-input');
 
     # TODO: replace by create method
     message = new Message({ text: input.val() });
@@ -26,6 +17,7 @@ class ChatView extends Backbone.View
     message.save()
 
     input.val('');
+    input.blur();
     false
 
 window.ChatView = ChatView

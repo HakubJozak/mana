@@ -33,7 +33,7 @@ class Dropbox extends CardCollectionView
 
   append_card_view: (view) =>
     @box.append(view.el)
-
+#    @box.prepend(view.el)
 
 class CardViewDropbox extends CardView
 

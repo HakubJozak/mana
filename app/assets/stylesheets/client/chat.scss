@@ -4,33 +4,26 @@
 @import "constants";
 @import "components";
 
-#chat-bar {
-  display: none;
-  position: fixed;
-  z-index: $hand-z-index;
-
+#top-panel {
   @include textured;
 
-  left: $side-panel-width + 10;
-  width: $middle-width;
-  height: $top_bar_height;
-  bottom: 30px;
+  padding: 7px 7px 7px 7px;
+  font-size: 20px;
 
-  padding-top: 5px;
-  padding-left: 15px;
+  input.chat-input {
+      @include border-radius;
 
-  input {
-      width: $battlefield-width - 50px;
       background: rgba(48, 0, 0, 0.5);
       border: 1px solid #693e1b;
       color: #c8b472;
-      font-family: Georgia;
+
+      width: 95%;
       font-size: 20px;
-      @include border-radius;
+      line-height: 1.5;
   }
 
-  @include shadow;
-  @include border-radius;
+  .button {
+  }
 }
 
 

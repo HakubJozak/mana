@@ -5,11 +5,13 @@ $highlight-color: #fafeb2;
 
 $hand-border-color: #111111;
 
-$page-height: 1400px;
 $battlefield-width: 800px;
+$battlefield-height: 1000px;
+
+$page-height: 1400px;
 $side-panel-width: 150px;
 $default-border-radius: 5px;
-$middle-width: $battlefield-width + 40;
+
 
 $top_bar_height: 35px;
 
@@ -21,8 +23,10 @@ $top_bar_height: 35px;
 /* $infobox-z-index: 3000; */
 
 $top-z-index: 500;
+$menu-z-index: 675;
 $browser-z-index: 750;
 $hand-z-index: 1000;
+
 
 $card-w : 120px;
 $card-h : 170px;

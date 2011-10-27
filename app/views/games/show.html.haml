@@ -9,7 +9,11 @@
     :javascript
       $(document).ready(function() {
         var battlefield = new Battlefield();
-        var bview = new BattlefieldView({ model: battlefield });
+        var exile = new CardCollection( 'exile');
+
+        var battlefield_view = new BattlefieldView({ model: battlefield });
+        var exile_view = new Dropbox({ model: exile });
+        exile_view.el.appendTo($('#left-panel .commons'));
 
         new ChatView({ model: Message.all });
 
@@ -19,34 +23,28 @@
 
         Socket.instance.bind('socket:connected', function() {
           console.info('Connected to server');
-          // var attrs = #{@game.to_json};
-          // attrs['id'] = '#{@game.id}';
-          // game = new Game(attrs);
-          // Socket.instance.start_game(game, User.local);
         });
 
         Socket.instance.connect();
       });
 
 %body
-  = render('shared/lobby', :layout => false)
   = render('shared/create_card', :layout => false)
 
   #left-panel.side-panel
     .users
+    .commons
 
   #desk
-    #infobox
-      Infobox
+    #top-panel
+      %form
+        %input.chat-input{ :name => 'message', :placeholder => 'Say...', }
+        %input.send-button.button{ :value => 'Send', :type => 'submit' }
 
     #battlefield
 
   #right-panel.side-panel
     .users
-
-  #chat-bar
-    %label Say:
-    %input#chat-input{ :name => 'message' }
 
   = render('shared/footer', :layout => false)
   = render('shared/help', :layout => false)

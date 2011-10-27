@@ -5,16 +5,4 @@
 @import "components";
 
 
-#infobox {
- position: relative;
-
- heigth: 70px;
- padding: 15px 10px 15px 10px;
- @include panel;
-
- background-color: rgba(80, 80, 80, 0.2);
- color: $highlight-color;
-
- label { color: $highlight-color; }
-}
 

@@ -14,7 +14,7 @@ body {
 .side-panel {
   @include panel;
 
-  .users {
+  .users, .commons {
 
     .user.deck-over {
       @include focused;

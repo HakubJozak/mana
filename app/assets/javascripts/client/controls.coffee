@@ -23,10 +23,6 @@ class Controls
       when 'a'
         $('#create-card-dialog').dialog('open');
 
-      when 'm'
-        $('#chat-bar').toggle()
-        $('#chat-bar input').focus()
-
       when 'h'
         $('#help').toggle()
 
@@ -44,6 +40,7 @@ class Controls
 
       else
         @trigger('key:spacebar') if c == ' '
+        @trigger('key:m') if c == 'm'
         # TODO: make it generic/register
 
   _selected_cards: ->
