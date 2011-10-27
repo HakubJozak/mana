@@ -16,6 +16,7 @@ class CardCollectionView extends Backbone.View
 
     @model.bind 'add', @add_card_view
     @model.bind 'remove', @remove_card_view
+    @model.bind 'change', @sort
 
   _accept_unless_in: (card)  =>
     true
@@ -28,6 +29,13 @@ class CardCollectionView extends Backbone.View
     @views.push(view)
     @append_card_view(view)
     view.render()
+    @sort()
+
+  sort: =>
+    @views = _(@views).sortBy (view) -> view.model.order()
+    _(@views).each (view) =>
+      view.el.detach()
+      @append_card_view(view)
 
   render: =>
     unless @views?
@@ -44,6 +52,7 @@ class CardCollectionView extends Backbone.View
     view = view[0]
     @views = _(@views).without(view);
     view.el.remove()
+    @sort()
 
   dropped: (event,ui) =>
     card = ui.draggable.ob().model

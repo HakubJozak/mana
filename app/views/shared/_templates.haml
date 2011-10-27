@@ -16,7 +16,6 @@
   %div{ :id => '{{id}}', :class => 'card-browser {{name}}' }
     %h2 {{long_title}}
     .button-bar
-      %a.shuffle-button.button Shuffle
       %a.close-button.button Close
     .container
 
@@ -51,7 +50,7 @@
 #dropbox-template
   .box-container{:class => '{{name}}-container'}
     %h4
-      {{title}}
-      %a.browse-button.button{:href => '#'} Browse
+      %a.browse-button.button{:href => '#'} {{title}}
+      %a.shuffle-button.button{:href => '#' } Shuffle
     %div{ :class => "box {{name}}" }
       .count.overlay{ }
