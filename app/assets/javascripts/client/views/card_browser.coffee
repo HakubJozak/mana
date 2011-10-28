@@ -38,6 +38,9 @@ class CardBrowser extends CardCollectionView
 
   remove: =>
     after = () =>
+      @model.unbind 'add', @add_card_view
+      @model.unbind 'remove', @remove_card_view
+      @model.unbind 'change', @render
       @el.remove()
       CardBrowser.all[@model.id] = null
 
