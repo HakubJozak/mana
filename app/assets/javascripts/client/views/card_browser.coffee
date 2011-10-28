@@ -1,5 +1,15 @@
 class CardBrowser extends CardCollectionView
 
+  @all: {}
+
+  @show_or_hide: (model) =>
+    all = CardBrowser.all
+
+    if all[model.id]?
+      all[model.id].remove()
+    else
+      all[model.id] = new CardBrowser(model: model)
+
   constructor: (params) ->
     super(params)
 
@@ -18,7 +28,7 @@ class CardBrowser extends CardCollectionView
       drop: @dropped
 
     @$('.close-button').click =>
-      @el.fadeOut => @el.remove()
+      @remove()
 
     @$('.shuffle-button').click =>
       @model.shuffle()
@@ -26,6 +36,12 @@ class CardBrowser extends CardCollectionView
     @box = @$('.container')
     @render()
 
+  remove: =>
+    after = () =>
+      @el.remove()
+      CardBrowser.all[@model.id] = null
+
+    @el.fadeOut('200', after)
 
   create_card_view: (card) =>
     new CardViewBrowser(model: card)

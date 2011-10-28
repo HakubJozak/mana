@@ -22,6 +22,9 @@ class BattlefieldView extends CardCollectionView
   append_card_view: (view) =>
     @el.append(view.el)
 
+#  sort: =>
+    # do it better
+
   dropped: (event,ui) =>
     p = ui.draggable.offset()
     card = ui.draggable.ob().model

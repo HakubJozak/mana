@@ -1,11 +1,8 @@
 class CardCollectionView extends Backbone.View
 
-  @all: {}
-
   constructor: (attrs) ->
     super(attrs)
     throw 'Missing model' unless @model
-    CardCollectionView.all[@model.id] = this
 
     clazz = @constructor.name.toLowerCase()
     tmpl = $("##{clazz}-template")
@@ -16,7 +13,7 @@ class CardCollectionView extends Backbone.View
 
     @model.bind 'add', @add_card_view
     @model.bind 'remove', @remove_card_view
-    @model.bind 'change', @sort
+    @model.bind 'change', @render
 
   _accept_unless_in: (card)  =>
     true
@@ -29,30 +26,31 @@ class CardCollectionView extends Backbone.View
     @views.push(view)
     @append_card_view(view)
     view.render()
-    @sort()
-
-  sort: =>
-    @views = _(@views).sortBy (view) -> view.model.order()
-    _(@views).each (view) =>
-      view.el.detach()
-      @append_card_view(view)
-
-  render: =>
-    unless @views?
-      @views = []
-      @model.each (card) => @add_card_view(card)
-#      reversed = @model.models.slice(0).reverse()
-#      _(reversed).each (card) => @add_card_view(card)
-
-  append_card_view: ->
-    throw 'Implement append_card_view method!'
+    @render()
 
   remove_card_view: (card) =>
     view = _(@views).select (v) -> v.model.id == card.id
     view = view[0]
     @views = _(@views).without(view);
     view.el.remove()
-    @sort()
+    @render()
+
+  sort: =>
+    @views = _(@views).sortBy (view) -> view.model.order()
+    _(@views).each (view) =>
+      view.el.detach()
+      @append_card_view(view)
+      view.el.css('z-index', view.model.order())
+
+  render: =>
+    if @views?
+      @sort()
+    else
+      @views = []
+      @model.each (card) => @add_card_view(card)
+
+  append_card_view: ->
+    throw 'Implement append_card_view method!'
 
   dropped: (event,ui) =>
     card = ui.draggable.ob().model
@@ -65,7 +63,7 @@ class CardCollectionView extends Backbone.View
 
     card.set({ order: order }, { silent: true} )
     @model.add(card)
-
     card.save()
+
 
 window.CardCollectionView = CardCollectionView

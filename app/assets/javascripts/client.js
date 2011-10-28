@@ -28,12 +28,12 @@
 //= require ./client/views/card_view
 //= require ./client/views/card_collection_view
 //= require ./client/views/battlefield_view
+//= require ./client/views/card_browser
 //= require ./client/views/dropbox
 
 //= require ./client/views/chat_view
 //= require ./client/views/dialog
 //= require ./client/views/hand_view
-//= require ./client/views/card_browser
 //= require ./client/views/game_view
 //= require ./client/views/info_view
 //= require ./client/views/lobby_view

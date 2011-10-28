@@ -25,11 +25,11 @@ class Dropbox extends CardCollectionView
       @$('.overlay').fadeOut()
 
     @$('.browse-button').click =>
-      new CardBrowser(model: @model)
+      CardBrowser.show_or_hide(@model)
 
     @$('.shuffle-button').click =>
-      new Message(text: "Player #{User.local.name()} has shuffled #{@model.long_title}.")
       @model.shuffle_cards()
+      new Message(text: "Player #{User.local.name()} has shuffled #{@model.long_title}.").save()
 
 
   create_card_view: (card) =>

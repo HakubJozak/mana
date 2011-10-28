@@ -61,7 +61,7 @@ class CardView extends Backbone.View
          .draggable()
 
   render: =>
-    @el.find('.debug').text(@model.collection.name)
+    @el.find('.debug').text(@model.order())
     @show_image()
     @show_tapping()
     @_render_overlay()
