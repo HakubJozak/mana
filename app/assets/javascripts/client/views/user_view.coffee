@@ -17,7 +17,6 @@ class UserView extends Backbone.View
       hoverClass: 'deck-over'
       drop: @deck_dropped
 
-
     _.each [ 'library', 'graveyard'], (collection) =>
       @components[collection] = new Dropbox({ model: @model[collection] })
       @el.append(@components[collection].el)
@@ -28,6 +27,8 @@ class UserView extends Backbone.View
 
     root = if @model.local then 'left' else 'right'
     $("##{root}-panel .users").append(@el)
+
+    @$('form').submit @lives_changed
     @render()
 
   deck_dropped: (event, ui) =>
@@ -35,6 +36,13 @@ class UserView extends Backbone.View
 
     if confirm("Do you really want to show cards in your #{deck.name} to #{@model.name()}")
       Action.show_deck(deck, @model).save()
+
+  lives_changed: =>
+    lives = @$('input.lives').val()
+    @model.set(lives: lives, { silent: true })
+    @model.save()
+    Message.action "is changing #{@model.name()}'s live count to #{lives}."
+    return false
 
   render: =>
     @$('.lives').val(@model.lives())

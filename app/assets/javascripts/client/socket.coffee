@@ -43,7 +43,7 @@ class Socket
 
     if data.clazz == 'Player'
       if user = User.all.get(data.id)
-        user.set(data.user)
+        user.set(data)
       else
         data.local = true if data.id == @local_player_id
         user = new User(data)
