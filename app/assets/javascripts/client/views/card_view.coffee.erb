@@ -40,6 +40,11 @@ class CardView extends Backbone.View
 
     if e.button == 2
       @model.toggle_tapped()
+
+      if @model.covered()
+        Message.action "is tapping a card."
+      else
+        Message.action "is tapping '#{@model.name()}'."
     else
       @show_detail()
 

@@ -29,8 +29,7 @@ class Dropbox extends CardCollectionView
 
     @$('.shuffle-button').click =>
       @model.shuffle_cards()
-      new Message(text: "Player #{User.local.name()} has shuffled #{@model.long_title}.").save()
-
+      Message.action "is shuffling #{@model.long_title}."
 
   create_card_view: (card) =>
     new CardViewDropbox(model: card, this)

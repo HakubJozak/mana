@@ -1,4 +1,9 @@
 class Message extends Backbone.Model
+
+  @action: (txt) ->
+    m = new Message(text: txt)
+    m.save()
+
   text: => @get('text')
 
   initialize: =>

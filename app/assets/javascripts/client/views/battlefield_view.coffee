@@ -21,8 +21,13 @@ class BattlefieldView extends CardCollectionView
 
   append_card_view: (view) =>
     @el.append(view.el)
+    # 'moving' is delayes, so that the drop does not
+    #  a cause confusing effect on local
+    revive = () => view.el.addClass('moving')
+    window.setTimeout(revive, 300)
 
-#  sort: =>
+
+  sort: =>
     # do it better
 
   dropped: (event,ui) =>
@@ -59,11 +64,6 @@ class CardViewBattlefield extends CardView
     @el.css('position','absolute')
     pos = @model.position()
     @el.css({ left: pos.x, top: pos.y })
-
-    # 'moving' is delayes, so that the drop does not
-    #  a cause confusing effect on local
-    revive = () => @el.addClass('moving')
-    window.setTimeout(revive, 300)
 
 window.CardViewBattlefield = CardViewBattlefield
 window.BattlefieldView = BattlefieldView

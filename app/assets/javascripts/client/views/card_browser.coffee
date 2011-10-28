@@ -35,6 +35,7 @@ class CardBrowser extends CardCollectionView
 
     @box = @$('.container')
     @render()
+    Message.action "is browsing #{@model.long_title}."
 
   remove: =>
     after = () =>

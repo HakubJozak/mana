@@ -57,7 +57,7 @@ class CardCollectionView extends Backbone.View
     card.collection.remove(card)
 
     order = if @model.last()
-              @model.last().order() + 1
+              @model.last().order() + 10
             else
               1
 
