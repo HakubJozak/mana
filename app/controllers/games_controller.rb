@@ -18,6 +18,7 @@ class GamesController < ApplicationController
     @websocket_port = '9090'
 
     @game = Game.find(params[:id])
+    @debug = true if params[:debug].present?
 
     if is_playing?(@game)
       @player = player_for(@game)

@@ -6,6 +6,10 @@
     = stylesheet_link_tag 'client'
     = javascript_include_tag 'client'
 
+    - unless @debug
+      :css
+        .debug { display: none; }
+
     :javascript
       $(document).ready(function() {
         var battlefield = new Battlefield();

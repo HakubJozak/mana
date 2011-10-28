@@ -20,9 +20,7 @@ body > img.detail {
   @include card-size;
   img { @include card-size; }
 
-
   .debug {
-//    display: none;
     position: absolute;
     top: 5px;
     left: 5px;
