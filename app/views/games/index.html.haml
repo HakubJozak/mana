@@ -12,7 +12,7 @@
 
     - @games.each do |game|
       %tr
-        %td= "#{time_ago_in_words(game.created_at)} ago"
+        %td= "#{time_ago_in_words(game.created_at)} ago / #{game.created_at}"
         %td= game.name
         %td= truncate(game.players.map(&:name).join(', '))
         - if is_playing?(game)
