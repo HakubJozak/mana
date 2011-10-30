@@ -16,15 +16,15 @@ body {
 
   .users, .commons {
 
-    .user.deck-over {
-      @include focused;
-    }
+    .user.deck-over {  @include focused;   }
+    form { display: inline; }
 
     h3 {
       @include transparent;
       padding: 3px;
       padding-bottom: 10px;
       font-size: larger;
+      width: 100%;
     }
 
     table {
@@ -33,15 +33,20 @@ body {
       font-size: small;
       margin-bottom: 1em;
 
-      td { borders: none; }
+      td, th {
+        borders: none;
+        font-size: medium;
+        text-align: center;
+        padding: 1px;
+        margin: 0 0 0 0;
+      }
     }
 
-    input.lives {
+    input {
       font-size: medium;
       padding: 3px;
       text-align: center;
       width: 2em;
-      float: right;
     }
 
     .box-container {

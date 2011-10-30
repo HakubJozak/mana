@@ -37,11 +37,23 @@
 
 #user-template
   %div{ :id => 'user-{{id}}', :class => 'user' }
-    %h3
-      %span{ :class => 'name' } {{name}}
-      %span.hand-size
-      %form
-        %input.lives{ :value => '' }
+    %h3.name {{name}}
+    %table
+      %tr
+        %th Lives
+        %td
+          %a.button.small.plus  +
+          %a.button.small.minus &nbsp;-&nbsp;
+        %td
+          %form
+            %input.lives{ :value => 20 }
+
+      %tr
+        %th Hand
+        %td{ :colspan => 1 }
+        %td
+          %input.hand-size{ :disabled => true }
+
 
 
 #user-area-template

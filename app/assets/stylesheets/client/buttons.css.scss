@@ -7,6 +7,10 @@
   @include border-radius;
   @include gradient-button( #9d7c41, #693e1b);
 
+  &.small {
+    min-width: 26px;
+  }
+
   &:hover {
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c8b472), to(#693e1b));
     border-top-color: white;

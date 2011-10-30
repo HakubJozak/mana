@@ -29,6 +29,8 @@ class UserView extends Backbone.View
     $("##{root}-panel .users").append(@el)
 
     @$('form').submit @lives_changed
+    @$('.plus').click => @change_lives(1)
+    @$('.minus').click => @change_lives(-1)
     @render()
 
   deck_dropped: (event, ui) =>
@@ -37,8 +39,13 @@ class UserView extends Backbone.View
     if confirm("Do you really want to show cards in your #{deck.name} to #{@model.name()}")
       Action.show_deck(deck, @model).save()
 
-  lives_changed: =>
+  change_lives: (delta) =>
     lives = @$('input.lives').val()
+    @$('input.lives').val(parseInt(lives) + delta)
+    @$('form').submit()
+
+  lives_changed: =>
+    lives = parseInt(@$('input.lives').val())
     @model.set(lives: lives, { silent: true })
     @model.save()
     Message.action "is changing #{@model.name()}'s live count to #{lives}."
@@ -46,7 +53,7 @@ class UserView extends Backbone.View
 
   render: =>
     @$('.lives').val(@model.lives())
-    @$('.hand-size').text('(' + @model.hand.size() + ')')
+    @$('.hand-size').val(@model.hand.size())
 
 
 window.UserView = UserView
