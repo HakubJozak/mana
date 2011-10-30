@@ -5,7 +5,7 @@ class Game
 
   field :name, type: String
   field :hidden, type: Boolean
-  field :created_at, :type => DateTime, :default => Time.now
+  field :created_at, :type => DateTime, :default => lambda { Time.now }
 
   has_many :game_events
   has_many :cards
