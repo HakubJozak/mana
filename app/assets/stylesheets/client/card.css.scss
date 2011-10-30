@@ -21,6 +21,7 @@ body > img.detail {
   img { @include card-size; }
 
   .debug {
+    color: #7BFF47;
     position: absolute;
     top: 5px;
     left: 5px;

@@ -14,19 +14,16 @@
     @include gradient;
     border: 1px dashed #9D7C41;
 
-    .overlay {
-      background-color: rgba(0,0,0,0);
+    .counter {
+      @include border-radius;
       position: absolute;
-      z-index: 10000;
-    }
 
-    .count {
-        position: absolute;
-        left: 0px;  top: 0px;
-        @include border-radius;
-        @include transparent;
-        padding: 5px;
-        padding-top: 3px;
-        margin: 5px;
+      left: 3px;
+      top: 3px;
+      background-color: rgba(0,0,0,0.7);
+      padding: 5px;
+      padding-top: 3px;
+      margin: 5px;
+      z-index: 10000;
     }
 }

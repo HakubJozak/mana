@@ -11,18 +11,13 @@ class Dropbox extends CardCollectionView
     @box.droppable
       accept: @_accept_unless_in
       scope: 'cards'
-#      greedy: true
       hoverClass: 'card-over'
       drop: @dropped
 
     @render()
-
-    # TODO - DRY - abstract overlay
-    @box.mouseenter =>
-      @$('.overlay').fadeIn()
-
-    @box.mouseleave =>
-      @$('.overlay').fadeOut()
+    @model.bind 'change', @update_counter
+    @model.bind 'add', @update_counter
+    @model.bind 'remove', @update_counter
 
     @$('.browse-button').click =>
       CardBrowser.show_or_hide(@model)
@@ -31,12 +26,15 @@ class Dropbox extends CardCollectionView
       @model.shuffle_cards()
       Message.action "is shuffling #{@model.long_title}."
 
+  update_counter: =>
+    @$('.counter').text @model.size()
+
   create_card_view: (card) =>
     new CardViewDropbox(model: card, this)
 
   append_card_view: (view) =>
     @box.append(view.el)
-#    @box.prepend(view.el)
+
 
 class CardViewDropbox extends CardView
 
@@ -48,6 +46,8 @@ class CardViewDropbox extends CardView
     @el.css('position','absolute')
     @el.offset({ top: @dropbox.box.offset().top + 5, left: @dropbox.box.offset().left + 5 })
 
+  clicked: =>
+   # no tapping here
 
 window.Dropbox = Dropbox
 window.CardViewDropbox = CardViewDropbox
