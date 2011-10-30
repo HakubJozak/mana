@@ -98,5 +98,5 @@ jquery-ui.min.js: jquery-ui-2d636677553e53a3e7f6014c5eb3c7ab.min.js
 jquery.min.js: jquery-11f94fc8608cd07ab22e46d3cf753d46.min.js
 application.js: application-b43d75b31281c361c2893dcace2a189d.js
 application.css: application-e0e7b1e43ffda3af114ce2fc98173abb.css
-client.js: client-d2b18cd18be551e36b91a074f432bf05.js
-client.css: client-b0ae85ddbf364ac2629a86dc38a3ede6.css
+client.js: client-8d40c9c20cb442bfa3b2c5daa53b5d3a.js
+client.css: client-8841defebded7179c40283e9e09c8d12.css
