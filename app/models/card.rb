@@ -15,6 +15,7 @@ class Card
 
   belongs_to :player
   belongs_to :game
+  embeds_one :backside, class_name: 'Card'
 
   def self.copy(original, user)
     card = original.clone
