@@ -28,4 +28,8 @@ class Card
     card
   end
 
+  def to_json
+    super(:include => :backside)
+  end
+
 end
