@@ -44,9 +44,14 @@ class CardViewDropbox extends CardView
   render: =>
     super()
     @el.css('position','absolute')
-    @el.offset({ top: @dropbox.box.offset().top + 5, left: @dropbox.box.offset().left + 5 })
+    @el.offset
+      top: @dropbox.box.offset().top + 5,
+      left: @dropbox.box.offset().left + 5
 
-  clicked: =>
+  clicked: (e) =>
+    e.preventDefault()
+    e.stopPropagation()
+    @show_detail() unless e.button == 2
    # no tapping here
 
 window.Dropbox = Dropbox
