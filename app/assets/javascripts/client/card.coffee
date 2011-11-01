@@ -51,6 +51,8 @@ class Card extends Backbone.Model
     attrs[property] = value
     Message.action "changed #{property} of '#{@name()}' to #{value}."
     @set(attrs)
+    @save()
+    value
 
   toJSON: =>
     @attributes['collection_id'] = @collection.id if @collection
