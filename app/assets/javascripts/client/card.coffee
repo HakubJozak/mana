@@ -43,6 +43,15 @@ class Card extends Backbone.Model
   hidden: =>
      false
 
+  adjust: (property, delta) =>
+    value = (@get(property) || 0) + delta
+
+    # FIXME: really ughly way to create hash with given key
+    attrs = {}
+    attrs[property] = value
+    Message.action "changed #{property} of '#{@name()}' to #{value}."
+    @set(attrs)
+
   toJSON: =>
     @attributes['collection_id'] = @collection.id if @collection
     super()
