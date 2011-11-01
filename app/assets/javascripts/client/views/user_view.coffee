@@ -36,7 +36,7 @@ class UserView extends Backbone.View
   deck_dropped: (event, ui) =>
     deck = ui.draggable.ob()
 
-    if confirm("Do you really want to show cards in your #{deck.name} to #{@model.name()}")
+    if User.local != @model and confirm("Do you really want to show cards in your #{deck.name} to #{@model.name()}")
       Action.show_deck(deck, @model).save()
 
   change_lives: (delta) =>
