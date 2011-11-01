@@ -1,10 +1,13 @@
 source :rubygems
 
 gem 'activesupport', :require => 'active_support'
-gem 'bson_ext', '~> 1.4.0'
+
 gem 'em-websocket'
 gem 'em-synchrony'
-gem "mongoid", ">= 2.0.1", :git => 'https://github.com/mongoid/mongoid.git'
+
+gem "mongoid", ">= 2.0.1"
+gem 'bson_ext', '~> 1.4.0'
+
 gem 'require_all'
 
 group :development do

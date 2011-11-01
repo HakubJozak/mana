@@ -3,7 +3,7 @@ gem 'rails', '3.1.0'
 gem "haml", ">= 3.0.25"
 
 gem "bson_ext", ">= 1.3.0"
-gem "mongoid", ">= 2.0.1", :git => 'https://github.com/mongoid/mongoid.git'
+gem "mongoid", ">= 2.0.1"
 gem "devise", ">= 1.3.3"
 gem 'jquery-rails'
 gem 'formtastic'
@@ -19,10 +19,10 @@ gem 'god', '~> 0.11.0'
 #end
 
 group :test do
-  gem "cucumber-rails", ">= 0.4.1", :group => :test
-  gem "capybara", ">= 0.4.1.2", :group => :test
-  gem "database_cleaner", ">= 0.6.7", :group => :test
-  gem "launchy", ">= 0.4.0", :group => :test
+  gem "cucumber-rails", ">= 0.4.1"
+  gem "capybara", ">= 0.4.1.2"
+  gem "database_cleaner", ">= 0.6.7"
+  gem "launchy", ">= 0.4.0"
   gem 'turn', :require => false
 end
 
