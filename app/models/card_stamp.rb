@@ -11,7 +11,8 @@ class CardStamp
   field :image_url, type: String
   field :counter, type: Integer, default: lambda { Mongoid.database.eval('next_counter()').to_i }
 
-  has_one :backside, class_name: 'CardStamp'
+  has_one    :backside,  class_name: 'CardStamp', inverse_of: :frontside
+  belongs_to :frontside, class_name: 'CardStamp', inverse_of: :backside
 
   IMAGE_REGEXP = Regexp.new("<img src=\".*(/scans/.*\.jpg)\".*")
 
@@ -19,7 +20,7 @@ class CardStamp
   REAL_URL_REGEXP = /\[url=(.*?)\]/
 
   def self.print_by_name(name, &block)
-    stamp = where(name: name).first || fetch(name)
+    stamp = where(name: name).includes(:backside).first || fetch(name)
     stamp && stamp.imprint(&block)
   end
 
@@ -43,13 +44,9 @@ class CardStamp
     #
     if stamp.url.end_with?('a.html')
       # TODO - the name is wrong!
-      back = CardStamp.create do |b|
-        b.name = name
-        b.url = stamp.url.gsub /a\.html$/, 'b.html'
-        b.image_url = stamp.image_url.gsub /a\.jpg$/, 'b.jpg'
-      end
-
-      stamp.backside = back
+      back = stamp.create_backside( name: name + " - B",
+                                   url: stamp.url.gsub(/a\.html$/, 'b.html'),
+                                   image_url: stamp.image_url.gsub(/a\.jpg$/, 'b.jpg'))
     end
 
     stamp.save!
@@ -60,18 +57,25 @@ class CardStamp
     max = CardStamp.count
     randoms = count.times.map { Random.rand(max) }
 
-    #  HACK: returning first card in case none is found is wrong but
-    #  enough for our dumb random search
-    # TODO: in 1 query
-    # any_in(counter: randoms)
+    # HACK: returning first card in case none is found is wrong but
+    #       enough for our dumb random search
+    #
+    # TODO: in 1 query any_in(counter: randoms)
+    #
     randoms.map { |rnd| where(counter: rnd).first || all.first }
   end
 
   def imprint(&block)
     Card.new( name: self.name,
               image_url: self.image_url,
-              backside: self.backside,
               url: url) do |card|
+
+      card.backside = {
+        :name => self.backside.name,
+        :url => self.backside.url,
+        :image_url => self.backside.image_url
+      }
+
       yield(card) if block
     end
   end

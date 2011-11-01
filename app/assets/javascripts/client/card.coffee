@@ -45,6 +45,7 @@ class Card extends Backbone.Model
 
   toJSON: =>
     @attributes['collection_id'] = @collection.id if @collection
+    console.info @get('backside')
     super()
 
   load: (data) =>
