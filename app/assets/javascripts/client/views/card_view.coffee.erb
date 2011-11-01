@@ -74,10 +74,10 @@ class CardView extends Backbone.View
     this
 
   _render_overlay: =>
-    if @model.counters()
+    if @model.counters()?
       @$('.counters').fadeIn().text(@model.counters())
 
-    if @model.toughness() or @model.power()
+    if @model.toughness()? or @model.power()?
       @$('.power').fadeIn().text("#{@model.power() || 0}/#{@model.toughness() || 0}")
 
   show_image: =>
