@@ -78,7 +78,7 @@ class Card extends Backbone.Model
     if @get('backside')?
       b = @get('backside')
       @set(backside: { name: @get('name'), image_url: @get('image_url'), url: @get('url') })
-      @set(name: b.url, url: b.url, image_url: b.image_url)
+      @set(name: b.name, url: b.url, image_url: b.image_url)
       @save()
 
 
