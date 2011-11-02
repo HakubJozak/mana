@@ -29,6 +29,7 @@
           console.info('Connected to server');
         });
 
+        #{ "$('#help').toggle()" unless Rails.env.development? }
         Socket.instance.connect();
       });
 
