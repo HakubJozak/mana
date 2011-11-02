@@ -26,6 +26,10 @@ class Controls
       when 'h'
         $('#help').toggle()
 
+      when 'r'
+        _.each @_selected_cards(), (card) ->
+          card.transform()
+
       when 'c','C','t','T','p','P'
         props =
           c: 'counters'

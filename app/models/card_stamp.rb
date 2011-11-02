@@ -70,11 +70,13 @@ class CardStamp
               image_url: self.image_url,
               url: url) do |card|
 
-      card.backside = {
-        :name => self.backside.name,
-        :url => self.backside.url,
-        :image_url => self.backside.image_url
-      }
+      if backside
+        card.backside = {
+          :name => self.backside.name,
+          :url => self.backside.url,
+          :image_url => self.backside.image_url
+        }
+      end
 
       yield(card) if block
     end

@@ -21,7 +21,7 @@ class Card extends Backbone.Model
   position: => @get('position')
   tapped: => @get('tapped')
   covered: => @get('covered')
-  image: => @get('image')
+  image: => @get('image_url')
   name: => @get('name')
   counters: => @get('counters')
   power: => @get('power')
@@ -37,7 +37,6 @@ class Card extends Backbone.Model
     # throw 'Missing card owner' unless @owner
     # LEGACY
     @element = @el
-    @set({ image: @get('image_url')}) unless @get('image')
     Card.all[@id] = this
 
   hidden: =>
@@ -74,6 +73,14 @@ class Card extends Backbone.Model
     @set({ tapped : state })
     @save()
     this
+
+  transform: =>
+    if @get('backside')?
+      b = @get('backside')
+      @set(backside: { name: @get('name'), image_url: @get('image_url'), url: @get('url') })
+      @set(name: b.url, url: b.url, image_url: b.image_url)
+      @save()
+
 
   change_position: (pos) =>
     @set({ position: pos })
