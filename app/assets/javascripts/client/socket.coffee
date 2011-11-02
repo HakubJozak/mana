@@ -27,7 +27,7 @@ class Socket
       card.load(data)
 
       if card.collection && card.collection.id != data.collection_id
-        card.collection.remove(card) if card.collection
+        card.collection.remove(card)
 
       if !card.collection || card.collection.id != data.collection_id
         add_to = CardCollection.all[data.collection_id]

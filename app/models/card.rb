@@ -5,9 +5,11 @@ class Card
   field :name, type: String
   field :url, type: String
   field :image_url, type: String
+  field :backside, type: Hash
   field :collection_id, type: String
   field :order, type: Integer
   field :clazz, type: String, :default => 'Card'
+
 
   # Graveyard, Library etc; cannot be 'collection' as this field is
   # reserved by Mongoid
@@ -26,5 +28,6 @@ class Card
 
     card
   end
+
 
 end
