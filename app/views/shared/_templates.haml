@@ -9,13 +9,15 @@
   %div{ :id => '{{id}}', :class => 'hand' }
     %h2 {{user.name()}}'s {{title}}
     .button-bar
+      %a.mulligan-button.button Mulligan
+    .button-bar.right
       %a.close-button.button Close
     .container
 
 #cardbrowser-template
   %div{ :id => '{{id}}', :class => 'card-browser {{name}}' }
     %h2 {{long_title}}
-    .button-bar
+    .button-bar.right
       %a.close-button.button Close
     .container
 

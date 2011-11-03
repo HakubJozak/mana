@@ -64,7 +64,6 @@ namespace :backend do
   task :bundle do
     run "rvm use #{rvm_ruby_string} && cd #{current_path}/backend && bundle install --deployment --without test development tools"
   end
-
 end
 
 
@@ -76,6 +75,7 @@ namespace :thin do
     end
   end
 end
+
 
 after "deploy:finalize_update", "deploy:shared_symlink"
 # after "deploy", 'thin:restart'

@@ -45,10 +45,13 @@ class Card extends Backbone.Model
   adjust: (property, delta) =>
     value = (@get(property) || 0) + delta
 
-    # FIXME: really ughly way to create hash with given key
+    # FIXME: really ugly way to create hash with given key
     attrs = {}
     attrs[property] = value
-    Message.action "changed #{property} of '#{@name()}' to #{value}."
+
+    card = if @covered() then 'card' else @name()
+    Message.action "changed #{property} of '#{card}' to #{value}."
+
     @set(attrs)
     @save()
     value

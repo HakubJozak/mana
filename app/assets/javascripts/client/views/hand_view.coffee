@@ -35,6 +35,7 @@ class HandView extends CardCollectionView
     @el.data('game-object', @model)
     @render()
     @$('.close-button').click(@close)
+    @$('.mulligan-button').click(@mulligan)
 
   close: =>
     if User.local is @model.user
@@ -67,6 +68,9 @@ class HandView extends CardCollectionView
     @el.fadeIn()
     this
 
+  mulligan: =>
+    if confirm('Do you really want to mulligan?')
+      @model.mulligan()
 
 
 window.HandView = HandView

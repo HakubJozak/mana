@@ -23,9 +23,6 @@ class CardCollection extends Backbone.Collection
 
   shuffle_cards: =>
     old = @comparator
-    # @comparator = (card) => Math.floor(Math.random() * (@length + 1))
-    # @sort()
-    # @comparator = old
     @models = _.shuffle(@models)
     @each (card,i) ->
       card.set(order: i*10)
