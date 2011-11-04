@@ -46,24 +46,8 @@ class CardView extends Backbone.View
       else
         Message.action "is tapping '#{@model.name()}'."
     else
-      @show_detail()
-
-  show_detail: =>
-    unless @model.covered()
-      img = @$('img')
-      w = img.width() * 2
-      h = img.height() * 2
-      pos = img.offset()
-      remove = -> $(this).click -> $(this).fadeOut -> $(this).remove()
-
-      img.clone()
-         .addClass('detail')
-         .css('position', 'absolute')
-         .css('top',  pos.top)
-         .css('left', pos.left)
-         .appendTo('body')
-         .animate({ width: "#{w}px", height: "#{h}px", top: "#{pos.top - 50}px", left: "#{pos.left - 50}px" }, remove)
-         .draggable()
+      unless @model.covered()
+        new CardDetailView(model: @model, position: @el.offset())
 
   render: =>
     @el.find('.debug').text(@model.order())

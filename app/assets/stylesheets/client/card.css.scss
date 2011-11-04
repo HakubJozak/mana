@@ -4,13 +4,33 @@
 @import "constants";
 @import "components";
 
-body > img.detail {
+body > .detail {
 //  @include transition("width", 0.4s, ease-out);
 //  @include transition;
 //  @include scale(1.5,1.5);
   position: absolute;
   @include card-size;
+  img { width: 100%; height: 100%; }
   z-index: 10000;
+  clear: both;
+
+  ul.menu {
+    @include border-radius;
+    @include transparent;
+
+    position: absolute;
+    top: -1.5em;
+    right: 0.5em;
+
+    padding: 3px 3px 3px 3px;
+    background-color: rgba(255, 255, 255, 0.2);
+
+    li a {
+      padding: 3px 3px 3px 3px;
+      color: $highlight-color;
+      text-decoration: none;
+    }
+  }
 }
 
 

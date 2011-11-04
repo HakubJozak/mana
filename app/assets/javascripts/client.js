@@ -26,6 +26,7 @@
 //= require ./client/utils2
 
 //= require ./client/views/card_view
+//= require ./client/views/card_detail_view
 //= require ./client/views/card_collection_view
 //= require ./client/views/battlefield_view
 //= require ./client/views/card_browser

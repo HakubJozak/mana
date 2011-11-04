@@ -2,8 +2,16 @@
   %div{ :class => 'card user-{{user_id}}', :"data-id" => '{{id}}' }
     .debug DEBUG
     %img{ :src => "/assets/back.jpg" }
-      .counters{ :style => 'display:none' } 0
-      .power{ :style => 'display:none' }
+    .counters{ :style => 'display:none' } 0
+    .power{ :style => 'display:none' }
+
+#card-detail-template
+  .detail
+    %img{ :src => "{{image_url}}" }
+    %ul.menu
+      %li
+        %a{ :href => "{{url}}", :title => 'Open MagicCards.info page in a new window', :target => '_blank' }
+          MagicCards.info
 
 #handview-template
   %div{ :id => '{{id}}', :class => 'hand' }
