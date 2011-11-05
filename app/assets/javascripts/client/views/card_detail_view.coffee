@@ -12,18 +12,29 @@ class CardDetailView extends Backbone.View
        .css('top',  @position.top)
        .css('left', @position.left)
        .appendTo('body')
-       .draggable()
+       .draggable(start: @disable_close)
+#
 
     w = @el.width() * 2
     h = @el.height() * 2
 
     @el.animate({ width: "#{w}px", height: "#{h}px", top: "#{@position.top - 50}px", left: "#{@position.left - 50}px" }, @on_animation_end)
 
+   disable_close: =>
+     @ignore_click = true
+
    on_animation_end: =>
+     @$('img').click (e) =>
+       if @ignore_click
+         @ignore_click = false
+       else
+         @el.fadeOut =>
+           @el.remove()
+
+       true
+
 #     @$('ul.menu').css('display','block')
-     @el.click =>
-       @el.fadeOut =>
-        @el.remove()
+
 
 
 window.CardDetailView = CardDetailView
