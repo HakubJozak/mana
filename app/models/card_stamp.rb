@@ -9,10 +9,13 @@ class CardStamp
   field :name, type: String
   field :url, type: String
   field :image_url, type: String
+  field :token, type: Boolean
   field :counter, type: Integer, default: lambda { Mongoid.database.eval('next_counter()').to_i }
 
   has_one    :backside,  class_name: 'CardStamp', inverse_of: :frontside
   belongs_to :frontside, class_name: 'CardStamp', inverse_of: :backside
+
+  scope :tokens, where(token: true).asc(:name)
 
   IMAGE_REGEXP = Regexp.new("<img src=\".*(/scans/.*\.jpg)\".*")
 

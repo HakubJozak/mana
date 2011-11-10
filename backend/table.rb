@@ -74,11 +74,33 @@ class Table < EM::Channel
   def push(params = {})
     raise 'Missing :model or :raw' unless params.key?(:raw) || params.key?(:model)
 
+    model = params[:model] || ActiveSupport::JSON.decode(params[:raw])
+    raw = params[:raw] || ActiveSupport::JSON.encode(params[:model])
+
+    # ----------- ISOLATE to method ----------
+    if model['clazz'] == 'Action' && model['type'] == 'create_token'
+      stamp = CardStamp.find(model['card_stamp_id'])
+      player = @game.players.find(model['player_id'])
+
+      card = stamp.imprint do |c|
+        c.player = player
+        c.game = @game
+        c.collection_id = "battlefield"
+        c.order = 0
+        c.covered = false
+        c.save!
+      end
+
+      model = card
+      raw = ActiveSupport::JSON.encode(model)
+    end
+    # ------------------------------------------
+
     # TODO: DEFER that or is it done automatically by synchrony?
     event = @game.game_events.create! do |e|
       e.mid = (@mid += 1)
-      e.raw =  params[:raw] || ActiveSupport::JSON.encode(params[:model])
-      e.model = params[:model] || ActiveSupport::JSON.decode(params[:raw])
+      e.raw =  raw
+      e.model = model
     end
 
     super(event)

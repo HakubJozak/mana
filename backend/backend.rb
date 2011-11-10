@@ -32,10 +32,10 @@ require '../app/models/game_event'
 require '../app/models/game'
 require '../app/models/player'
 require '../app/models/card'
+require '../app/models/card_stamp'
 
 require 'table'
-require 'active_player'
-
+require 'player'
 
 
 # HACK
@@ -50,7 +50,6 @@ Mongoid.load!("../config/mongoid.yml")
 # require 'em-synchrony-mongodb'
 # EM.synchrony do
 EM.run do
-
   # @mongo = Mongo::Connection.new.db('mana')
 
   EventMachine::WebSocket.start(:host => ADDRESS, :port => WEBSOCKET_PORT, :debug => true) do |ws|

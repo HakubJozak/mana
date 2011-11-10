@@ -22,6 +22,7 @@ class Card extends Backbone.Model
   tapped: => @get('tapped')
   covered: => @get('covered')
   image: => @get('image_url')
+  url: => @get('url')
   name: => @get('name')
   counters: => @get('counters')
   power: => @get('power')

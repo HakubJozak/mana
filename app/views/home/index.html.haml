@@ -4,7 +4,7 @@
       - if card
         = link_to image_tag(card.image_url), card.url, :target => '_blank'
       - else
-        = image_tag('/assets/back.jpg')
+        = link_to image_tag('/assets/back.jpg'), '/'
 
 %ul#button-bar
   %li= link_to 'New Game', new_game_path, :class => 'button'

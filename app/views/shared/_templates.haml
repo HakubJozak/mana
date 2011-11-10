@@ -9,8 +9,8 @@
   .detail
     %img{ :src => "{{image_url}}" }
     %ul.menu
-      %li
-        %a{ :href => "{{url}}", :title => 'Open MagicCards.info page in a new window', :target => '_blank' }
+      %li{ :class => 'info-link', :style => 'display:none' }
+        %a{ :href => "{{url}}" , :title => 'Open MagicCards.info page in a new window', :target => '_blank' }
           MagicCards.info
 
 #handview-template

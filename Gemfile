@@ -8,12 +8,15 @@ gem "devise", ">= 1.3.3"
 gem 'jquery-rails'
 gem 'formtastic'
 gem 'thin'
-gem 'god', '~> 0.11.0'
+
+gem 'god', '~> 0.11.0', :require => false
+gem 'mechanize', :require => false
 
 
 #group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
+  gem 'coffee-filter'
   gem 'uglifier'
   gem "compass"
 #end

@@ -14,7 +14,7 @@ class Player
     end
   end
 
-  # Websocket connection with the browser controlling this player.
+  # Websocket connection with a browser controlling this player.
   #
   def ws=(ws)
     @ws = ws

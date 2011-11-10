@@ -13,12 +13,13 @@ class CardDetailView extends Backbone.View
        .css('left', @position.left)
        .appendTo('body')
        .draggable(start: @disable_close)
-#
 
     w = @el.width() * 2
     h = @el.height() * 2
 
     @el.animate({ width: "#{w}px", height: "#{h}px", top: "#{@position.top - 50}px", left: "#{@position.left - 50}px" }, @on_animation_end)
+    @el.find('.info-link').show() if @model.url()?
+    console.info this
 
    disable_close: =>
      @ignore_click = true

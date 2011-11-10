@@ -81,6 +81,11 @@ body > .detail {
   }
 }
 
+#token-preview {
+  height: $card-h * 2;
+  width: $card-w * 2;
+}
+
 .card-detail {
   @include card-size;
   @include shadow;
