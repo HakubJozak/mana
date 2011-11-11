@@ -8,8 +8,8 @@ class Card
   field :backside, type: Hash
   field :collection_id, type: String
   field :order, type: Integer
-  field :covered, type: Boolean
-  field :tapped, type: Boolean
+  field :covered, type: Boolean, :default => true
+  field :tapped, type: Boolean, :default => false
   field :clazz, type: String, :default => 'Card'
 
 

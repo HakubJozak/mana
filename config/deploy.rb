@@ -31,6 +31,7 @@ end
 
 namespace :log do
   %w(thin production backend god).each do |type|
+    desc "Tails log of #{type}"
     task type.to_sym do
       type = 'thin.8080' if type == 'thin'
       run "tail -f #{shared_path}/log/#{type}.log"
@@ -42,11 +43,13 @@ end
 bundle = "cd #{current_path} && rvm use #{rvm_ruby_string} && bundle exec "
 
 namespace :god do
+  desc 'Start God'
   task :start do
     run "#{bundle} god start -c #{current_path}/mana.god"
     run "tail /var/log/system"
   end
 
+  desc 'Stop God'
   task :stop do
     run "#{bundle} god terminate"
   end
@@ -56,11 +59,13 @@ end
 
 namespace :backend do
   %w(start stop restart status).each do |action|
+    desc "#{action} backend"
     task action.to_sym, :roles => :app do
       run "#{bundle} god #{action} mana"
     end
   end
 
+  desc "bundle install for backend"
   task :bundle do
     run "rvm use #{rvm_ruby_string} && cd #{current_path}/backend && bundle install --deployment --without test development tools"
   end
@@ -77,5 +82,7 @@ namespace :thin do
 end
 
 
-after "deploy:finalize_update", "deploy:shared_symlink"
-# after "deploy", 'thin:restart'
+#after "deploy:finalize_update", "deploy:shared_symlink"
+after "deploy", 'thin:restart'
+after "deploy", 'backend:bundle'
+after "deploy", 'backend:restart'
