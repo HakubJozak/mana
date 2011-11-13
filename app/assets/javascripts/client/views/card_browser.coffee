@@ -19,7 +19,8 @@ class CardBrowser extends CardCollectionView
 
     @el.draggable
       scope: 'decks',
-      containment: 'body'
+      containment: 'body',
+      handle: 'h2'
 
     @el.droppable
       scope: 'cards'

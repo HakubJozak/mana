@@ -61,8 +61,13 @@
 .card-browser {
   position: absolute;
   top: 250px;
+  width: 75%;
   z-index: $browser-z-index;
-  width: $battlefield-width;
   background-color: rgba(0,0,0,0.7);
+
+  .container {
+   max-height: 3* $card-h;
+   overflow-y: scroll;
+  }
 }
 

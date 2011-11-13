@@ -9,7 +9,8 @@ class HandView extends CardCollectionView
         HandView.current.close()
       else
         HandView.current = new HandView({ model: user.hand });
-        HandView.current.el.offset(HandView.last_position) if HandView.last_position
+        HandView.current.el.offset(HandView.last_position) if HandView.last_position?
+        HandView.current.el.fadeIn()
 
     Controls.current.bind 'key:spacebar', create_or_close
     $('#battlefield').click _.wrap( create_or_close, _.preventer)
@@ -30,7 +31,7 @@ class HandView extends CardCollectionView
       scope: 'cards'
       greedy: true
       hoverClass: 'card-over'
-      drop: @dropped_and_turned
+      drop: @drop_and_turn
 
     @el.data('game-object', @model)
     @render()
@@ -50,17 +51,12 @@ class HandView extends CardCollectionView
   append_card_view: (view) =>
     @el.find('.container').append(view.el)
 
-  dropped_and_turned: (event,ui) =>
+  drop_and_turn: (event,ui) =>
     card = ui.draggable.ob().model
     card.collection.remove(card)
     @model.add(card)
     card.set(covered: false, {silent: true})
-    console.info card
     card.save()
-    console.info card
-
-
-#    @dropped(event, ui)
 
   render: =>
     super()
