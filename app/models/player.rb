@@ -2,15 +2,14 @@ class Player
   include Mongoid::Document
 
   field :name, type: String
-  field :deck, type: String
   field :color,type: String, default: '#FF0000'
   field :has_started, type: Boolean
   field :clazz, type: String, :default => 'Player'
 
   validates_presence_of :name
-
   embedded_in :game
   has_many :cards
+  embeds_one :deck
 
   # TODO: hackish - better way?
   if defined? Rails
@@ -24,7 +23,7 @@ class Player
     # TODO: compute order automatically or too much pain?
     order = 0
 
-    parse_deck do |card|
+    Deck.build_cards(deck.mainboard) do |card|
       card.player = self
       card.game = game
       card.order = (order += 1)
@@ -42,30 +41,15 @@ class Player
     end
 
     # TODO: remove
-    if defined?(Rails)
-      self.deck ||= File.open("#{Rails.root}/db/decks/eldrazi").read
-    end
+    # if defined?(Rails)
+    #   self.deck ||= File.open("#{Rails.root}/db/decks/eldrazi").read
+    # end
   end
 
-  private
-
-  # TODO: handle bad lines
-  # TODO: handle wrong names
-  def parse_deck(&block)
-    raise unless block
-    return [] unless deck.present?
-
-    deck.lines.each do |line|
-      count, name = line.strip.split(/\t|\;/)
-      count = count.to_i rescue 1
-
-      # TODO: inform about bad card
-      if name.present?
-        count.times { CardStamp.print_by_name(name, &block) }
-      end
-    end
+  def chosen_deck
+    nil
+#    current_user.decks.
   end
-
 
 end
 

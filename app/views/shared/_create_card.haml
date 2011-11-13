@@ -37,7 +37,6 @@
           {
            text: 'Create',
            click: function() {
-                  // var custom_url = $('#create-card-dialog input').val();
                   var card_stamp_id =  $('#create-card-dialog select').val();
                   Action.create_token(card_stamp_id).save();
                   $('#create-card-dialog').dialog('close');

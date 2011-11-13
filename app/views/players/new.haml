@@ -7,9 +7,30 @@
       = f.input :color
       #color-picker{ :style => 'display:none;' }
 
-      - tip = current_user.nil? ? "<b>TIP</b>: Login to enable deck management tools!".html_safe : ""
-      = f.input :deck, :as => :text, :hint => tip
+      = f.semantic_fields_for :deck do |d|
+        - if current_user
+          -#
+          -# Faked Formtastic Input
+          -#
+          %li#prepared_deck_input.select.input.optional
+            %label{ :for => 'prepared_deck'} Deck
+            %select#prepared_deck{ :name => 'prepared_deck' }
+              %option{ :value => '1;Black Lotus', "data-sideboard" => '' }
+                Custom
+
+              - current_user.decks.each do |deck|
+                %option{ :value => deck.mainboard, "data-sideboard" => deck.sideboard }
+                  = deck.name
+
+        = d.input :mainboard, :as => :text, :label => 'Cards', :hint => deck_hint
 
       = f.buttons do
         = f.commit_button "Join '#{@game.name}'"
         %li= link_to 'Back', games_path
+
+:coffeescript
+  console.info 'asdfdsa'
+  $('#prepared_deck').change ->
+    txt = $('#prepared_deck option:selected').val()
+    console.info txt
+    $('#player_deck_mainboard').val(txt)

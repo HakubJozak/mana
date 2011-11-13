@@ -20,7 +20,7 @@ form.formtastic {
     text-align: center;
   }
 
-  li.password input, li.string input, li.text textarea {
+  li.password input, li.string input, li.text textarea, select {
    @include border-radius(10px);
 
    font-size: $input-height - 1px;

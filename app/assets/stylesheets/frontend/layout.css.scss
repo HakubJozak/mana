@@ -10,6 +10,8 @@ a {
  &:visited { color: white }
 }
 
+.notice { color: $orange; }
+
 body {
   font-family: "Times New Roman", "Serif";
   background-image: url(/assets/fabric.png);

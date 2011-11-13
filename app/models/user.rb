@@ -11,5 +11,6 @@ class User
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
   has_many :games
+  has_many :decks
 end
 

@@ -22,4 +22,3 @@ code = <<-eos
           eos
 
 db.add_stored_function 'next_counter', code
-
