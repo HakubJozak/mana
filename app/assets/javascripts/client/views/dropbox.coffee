@@ -48,10 +48,8 @@ class CardViewDropbox extends CardView
       top: @dropbox.box.offset().top + 5,
       left: @dropbox.box.offset().left + 5
 
-  clicked: (e) =>
-    e.preventDefault()
-    e.stopPropagation()
-    @show_detail() unless e.button == 2
+  visible: =>  !@model.covered()
+
    # no tapping here
 
 window.Dropbox = Dropbox

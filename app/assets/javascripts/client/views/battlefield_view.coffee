@@ -74,7 +74,7 @@ class CardViewBattlefield extends CardView
     else
       Message.action "is tapping '#{@model.name()}'."
 
-  visible: =>  @model.covered()
+  visible: =>  !@model.covered()
 
   render: =>
     super()

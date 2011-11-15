@@ -1,5 +1,7 @@
 # -*- mode: coffee; tab-width: 2; -*-
 #
+# TODO: rename to AbstractCardView
+#
 class CardView extends Backbone.View
 
   @tagName: 'div'
@@ -22,13 +24,8 @@ class CardView extends Backbone.View
       containment: 'window',
       zIndex: 99999,
       stack: '.card',
-      # start: ->
-      #   $('.card-browser .container').css('overflow-y', 'visible')
-      # stop: ->
-      #   $('.card-browser .container').css('overflow-y', 'scroll')
 
     @el.bind 'click', @clicked
-
 
     # LEGACY
     @el.data('game-object',this)
@@ -37,9 +34,7 @@ class CardView extends Backbone.View
   clicked: (e) =>
     e.preventDefault()
     e.stopPropagation()
-
-    if @visible()
-      new CardDetailView(model: @model, position: @el.offset())
+    new CardDetailView(model: @model, position: @el.offset()) if @visible()
 
 
   render: =>

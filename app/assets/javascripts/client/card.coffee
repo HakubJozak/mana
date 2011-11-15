@@ -70,13 +70,13 @@ class Card extends Backbone.Model
     state ||= !@get('covered')
     @set({ covered : state })
     @save()
-    this
+    false
 
   toggle_tapped: (state = null, opts = {}) =>
     state ||= !@get('tapped')
     @set({ tapped : state })
     @save()
-    this
+    false
 
   transform: =>
     if @get('backside')?
@@ -84,6 +84,7 @@ class Card extends Backbone.Model
       @set(backside: { name: @get('name'), image_url: @get('image_url'), url: @get('url') })
       @set(name: b.name, url: b.url, image_url: b.image_url)
       @save()
+    false
 
 
   change_position: (pos) =>

@@ -6,6 +6,12 @@ class CardDetailView extends Backbone.View
     @template = _.template($('#card-detail-template').html())
     @render()
 
+    @$('.close-button').click @close
+    @$('.transform-button').click => @model.transform()
+    @$('.cover-button').click => @model.toggle_covered()
+    @$('.tap-button').click => @model.toggle_tapped()
+
+
   render: =>
     @el = $(@template(@model.toJSON()))
     @el.css('position', 'absolute')
@@ -21,7 +27,12 @@ class CardDetailView extends Backbone.View
     @el.find('.info-link').show() if @model.url()?
     console.info this
 
+   close: =>
+      @el.fadeOut =>
+        @el.remove()
+
    disable_close: =>
+     # HACK: prevents the detail to be closed after dragging.
      @ignore_click = true
 
    on_animation_end: =>
@@ -29,9 +40,7 @@ class CardDetailView extends Backbone.View
        if @ignore_click
          @ignore_click = false
        else
-         @el.fadeOut =>
-           @el.remove()
-
+         @close()
        true
 
 #     @$('ul.menu').css('display','block')
