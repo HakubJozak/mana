@@ -61,6 +61,11 @@ class CardBrowser extends CardCollectionView
 
 class CardViewBrowser extends CardView
 
+  constructor: (params) ->
+    super(params)
+#    @el.draggable( "option", "helper", 'clone' )
+#    @el.draggable( "option", "appendTo", 'body' )
+
   show_image: =>
     @img.attr('src',@model.image())
 

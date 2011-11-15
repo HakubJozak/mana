@@ -16,9 +16,6 @@
   @include side-panel;
   left: 0px;
   clear: right;
-
-  .exile {
-  }
 }
 
 #desk {
@@ -47,12 +44,4 @@
   right: 0px + $side-panel-width;
   bottom: 0px;
   z-index: $menu-z-index;
-}
-
-
-#footer {
- position: absolute;
- top: $page-height - 50px;
- margin-top: 20px;
- z-index: -1;
 }

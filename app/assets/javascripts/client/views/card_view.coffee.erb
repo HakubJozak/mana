@@ -18,13 +18,14 @@ class CardView extends Backbone.View
       snap: '.card',
       scroll: true,
       revert: 'invalid',
-      containment: 'body',
+      containment: 'window',
       snapMode: 'inner',
-      zIndex: 9999,
+      zIndex: 99999,
       stack: '.card',
-      start: =>
-        # HACK
-        $('.overlay').trigger('mouseleave')
+      # start: ->
+      #   $('.card-browser .container').css('overflow-y', 'visible')
+      # stop: ->
+      #   $('.card-browser .container').css('overflow-y', 'scroll')
 
     @el.bind 'click', @clicked
     @el.bind 'contextmenu', @clicked
@@ -65,7 +66,7 @@ class CardView extends Backbone.View
       @$('.power').fadeIn().text("#{@model.power() || 0}/#{@model.toughness() || 0}")
 
   show_image: =>
-    if  @model.covered()
+    if @model.covered()
       @img.attr('src','/images/back.jpg')
     else
       @img.attr('src',@model.image())

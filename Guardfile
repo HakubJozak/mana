@@ -1,7 +1,7 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'livereload', :api_version => '1.6', :port => 4444 do
+guard 'livereload', :api_version => '1.6', :port => 35729 do
   # watch(%r{app/.+\.(erb|haml)})
   # watch(%r{app/helpers/.+\.rb})
 #  watch(%r{(public/|app/assets).+\.(css|js|html)})

@@ -18,19 +18,3 @@ input {
   @include border-radius;
 }
 
-
-#footer {
- color: gray;
- text-align: center;
- font-size: small;
-
- hr {
-  background-color: black;
-  height: 1px;
-  border: none;
- }
-
- a { color: #bdbdbd; text-decoration: none }
- a:hover { color: $highlight-color }
-}
-

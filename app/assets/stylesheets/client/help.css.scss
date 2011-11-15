@@ -42,4 +42,30 @@ table tbody td { font-size: 14px; line-height: 1.25em; }
   height: 560px; padding: 20px 40px; position: relative;
 }
 
+#footer {
+ position: absolute;
+ bottom: 5px;
+
+ color: gray;
+ text-align: center;
+ font-size: small;
+
+ hr {
+   background-color: black;
+   height: 1px;
+   border: none;
+ }
+
+ a { color: #bdbdbd; text-decoration: none }
+ a:hover { color: $highlight-color }
+
+ p {
+   text-align: justify;
+   margin: 0 2em 0 2em;
+ }
+
+ .highlight { text-align: center; }
+}
+
+
 

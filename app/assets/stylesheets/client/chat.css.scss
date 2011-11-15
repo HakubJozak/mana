@@ -8,6 +8,7 @@
   @include textured;
 
   padding: 7px 7px 7px 7px;
+  z-index: $chat-z-index;
 
   .message-list {
     @include border-radius;

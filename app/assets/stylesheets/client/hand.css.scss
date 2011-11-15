@@ -59,15 +59,15 @@
 }
 
 .card-browser {
-  position: absolute;
-  top: 250px;
-  width: 75%;
-  z-index: $browser-z-index;
-  background-color: rgba(0,0,0,0.7);
+  @include textured;
 
-  .container {
-   max-height: 3* $card-h;
-   overflow-y: scroll;
-  }
+  bottom: 0px;
+  left: $side-panel-width;
+  right: -$side-panel-width;
+  height: 75%;
+  position: absolute;
+
+  z-index: $browser-z-index;
+//  background-color: rgba(0,0,0,0.7);
 }
 
