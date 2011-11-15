@@ -4,23 +4,13 @@ class CardBrowser extends CardCollectionView
 
   @show_or_hide: (model) =>
     all = CardBrowser.all
-
-    if all[model.id]?
-      all[model.id].remove()
-    else
-      all[model.id] = new CardBrowser(model: model)
+    all[model.id] ||= new CardBrowser(model: model)
+    all[model.id].open()
 
   constructor: (params) ->
     super(params)
-
-    $('body').append(@el)
     @el.disableSelection()
     @el.data('game-object', @model)
-
-    @el.draggable
-      scope: 'decks',
-      containment: 'body',
-      handle: 'h2'
 
     @el.droppable
       scope: 'cards'
@@ -28,43 +18,52 @@ class CardBrowser extends CardCollectionView
       hoverClass: 'card-over'
       drop: @dropped
 
-    @$('.close-button').click =>
-      @remove()
+    @el.dialog
+      autoOpen: false
+      modal: true
+#      maxWidth: '80%'
+#      maxHeight: '80%'
+      position: 'center'
+      width: '80%'
+      height: '750'
+      minHeight: '750'
+      title: @model.long_title
 
-    @$('.shuffle-button').click =>
-      @model.shuffle()
 
     @box = @$('.container')
     @render()
     Message.action "is browsing #{@model.long_title}."
 
-  remove: =>
-    after = () =>
-      @model.unbind 'add', @add_card_view
-      @model.unbind 'remove', @remove_card_view
-      @model.unbind 'change', @render
-      @el.remove()
-      CardBrowser.all[@model.id] = null
+  open: =>
+    @el.dialog('open')
 
-    @el.fadeOut('200', after)
+    # after_fadeout = () =>
+    #   @model.unbind 'add', @add_card_view
+    #   @model.unbind 'remove', @remove_card_view
+    #   @model.unbind 'change', @render
+    #   @el.remove()
+    #   CardBrowser.all[@model.id] = null
+    # @el.fadeOut('200', after_fadeout)
 
   create_card_view: (card) =>
-    new CardViewBrowser(model: card)
+    view = new CardViewBrowser(model: card)
+    view.el.draggable( "option", "containment", @el)
+    view
 
   append_card_view: (view) =>
     @box.prepend(view.el)
 
   render: =>
     super()
-    @el.appendTo('body')
-    @el.fadeIn()
+    @sort()
 
 class CardViewBrowser extends CardView
 
   constructor: (params) ->
     super(params)
-#    @el.draggable( "option", "helper", 'clone' )
-#    @el.draggable( "option", "appendTo", 'body' )
+    @el.bind 'contextmenu', @show_menu
+
+  visible: -> true
 
   show_image: =>
     @img.attr('src',@model.image())

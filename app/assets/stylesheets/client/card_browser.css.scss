@@ -1,0 +1,18 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass/css3";
+@import "constants";
+@import "components";
+
+.card-browser .container {
+  .card {
+    position: static;
+    float: left;
+    margin-top: 15px;
+    margin-right: 10px;
+  }
+
+  .container {
+    overflow-y: scroll;
+  }
+}

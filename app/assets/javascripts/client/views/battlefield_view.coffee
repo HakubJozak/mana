@@ -59,6 +59,23 @@ class BattlefieldView extends CardCollectionView
 
 class CardViewBattlefield extends CardView
 
+  constructor: (params) ->
+    super(params)
+    @el.bind 'contextmenu', @tap_untap
+
+  tap_untap: (e) =>
+    e.preventDefault()
+    e.stopPropagation()
+    @model.toggle_tapped()
+
+    # TODO: put elsewhere!
+    if @model.covered()
+      Message.action "is tapping a card."
+    else
+      Message.action "is tapping '#{@model.name()}'."
+
+  visible: =>  @model.covered()
+
   render: =>
     super()
     @el.css('position','absolute')

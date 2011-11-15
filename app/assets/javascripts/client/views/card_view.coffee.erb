@@ -16,10 +16,10 @@ class CardView extends Backbone.View
       position: 0,
       scope: 'cards',
       snap: '.card',
+      snapMode: 'inner',
       scroll: true,
       revert: 'invalid',
       containment: 'window',
-      snapMode: 'inner',
       zIndex: 99999,
       stack: '.card',
       # start: ->
@@ -28,27 +28,19 @@ class CardView extends Backbone.View
       #   $('.card-browser .container').css('overflow-y', 'scroll')
 
     @el.bind 'click', @clicked
-    @el.bind 'contextmenu', @clicked
+
 
     # LEGACY
     @el.data('game-object',this)
     @element = @el
 
-
   clicked: (e) =>
     e.preventDefault()
     e.stopPropagation()
 
-    if e.button == 2
-      @model.toggle_tapped()
+    if @visible()
+      new CardDetailView(model: @model, position: @el.offset())
 
-      if @model.covered()
-        Message.action "is tapping a card."
-      else
-        Message.action "is tapping '#{@model.name()}'."
-    else
-      unless @model.covered()
-        new CardDetailView(model: @model, position: @el.offset())
 
   render: =>
     @el.find('.debug').text(@model.order())

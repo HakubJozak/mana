@@ -36,9 +36,12 @@ class CardCollectionView extends Backbone.View
     @render()
 
   sort: =>
-    @views = _(@views).sortBy (view) -> view.model.order()
     _(@views).each (view) =>
       view.el.detach()
+
+    @views = _(@views).sortBy (view) -> view.model.order()
+
+    _(@views).each (view) =>
       @append_card_view(view)
       view.el.css('z-index', view.model.order())
 

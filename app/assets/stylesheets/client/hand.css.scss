@@ -5,7 +5,7 @@
 @import "constants";
 @import "components";
 
-.card-browser, .hand {
+/*.card-browser-removed, */.hand {
   display: none;
   left: $side-panel-width + 10;
 
@@ -58,7 +58,8 @@
   z-index: $hand-z-index;
 }
 
-.card-browser {
+/*
+.card-browser-removed {
   @include textured;
 
   bottom: 0px;
@@ -71,3 +72,4 @@
 //  background-color: rgba(0,0,0,0.7);
 }
 
+*/
