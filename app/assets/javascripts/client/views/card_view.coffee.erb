@@ -10,9 +10,16 @@ class CardView extends Backbone.View
   constructor: (params) ->
     super(params)
     @model.bind 'change', @render
+
+    @menu_item_template = _.template($('#menu-item-template').html())
     @template = _.template($('#card-template').html())
     @el = $(@template(@model.toJSON()))
+
     @img = @$('img')
+    @menu = @$('ul.menu')
+
+    prevent_detail = =>
+      @dragged = true
 
     @el.draggable
       position: 0,
@@ -21,11 +28,14 @@ class CardView extends Backbone.View
       snapMode: 'inner',
       scroll: true,
       revert: 'invalid',
+      stop: prevent_detail
       containment: 'window',
       zIndex: 99999,
       stack: '.card',
 
-    @el.bind 'click', @clicked
+    @img.click(@show_detail)
+    @add_menu_item 'bottom-button', 'Bottom', 'Put the card to the bottom of your library'
+    @$('.bottom-button').click => @model.put_to_bottom()
 
     moc = =>
       @menu_open_countdown = window.setTimeout(@show_menu, 1000)
@@ -43,11 +53,17 @@ class CardView extends Backbone.View
     window.clearTimeout(@menu_open_countdown) if @menu_open_countdown?
     @$('.menu').hide()
 
+  add_menu_item: (clazz, name, title) =>
+    item = @menu_item_template(name: name, clazz: clazz, title: title)
+    @$('.menu').append(item)
 
-  clicked: (e) =>
-    e.preventDefault()
-    e.stopPropagation()
-    new CardDetailView(model: @model, position: @el.offset()) if @visible()
+  show_detail: (e) =>
+    if @visible() and !@dragged
+      @close_menu()
+      new CardDetailView(model: @model, position: @el.offset())
+
+    @dragged = false
+    false
 
   render: =>
     @el.find('.debug').text(@model.order())

@@ -66,6 +66,14 @@ class Card extends Backbone.Model
     @set(data, opts)
     @change()
 
+  put_to_bottom: =>
+    User.local.library.put_to_bottom(this)
+    false
+
+  put_to_hand: =>
+    User.local.hand.add_on_top(this)
+    false
+
   toggle_covered: (state = null, opts = {}) =>
     state ||= !@get('covered')
     @set({ covered : state })
@@ -85,7 +93,6 @@ class Card extends Backbone.Model
       @set(name: b.name, url: b.url, image_url: b.image_url)
       @save()
     false
-
 
   change_position: (pos) =>
     @set({ position: pos })

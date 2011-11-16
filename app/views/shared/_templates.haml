@@ -1,27 +1,11 @@
 #card-template
   %div{ :class => 'card user-{{user_id}}', :"data-id" => '{{id}}' }
     .debug DEBUG
-
     %ul.menu{ :style => 'display:none' }
-      %li
-        %a{ :class => '', :href => "{{url}}" , :title => 'Open MagicCards.info page in a new window', :target => '_blank' }
-          MagicCards.info
-      %li
-        %a{ :class => 'transform-button', :title => 'Transform card', :href => "#" }
-          Transform
-      %li
-        %a{ :class => 'tap-button', :title => 'Cover/Uncover the card', :href => "#" }
-          Un|tap
-      %li
-        %a{ :class => 'cover-button', :title => 'Cover/Uncover the card', :href => "#" }
-          Un|cover
-      %li
-        %a{ :class => 'close-button', :title => 'Close', :href => "#" }
-          Close
-
     %img{ :src => "/assets/back.jpg" }
     .counters{ :style => 'display:none' } 0
     .power{ :style => 'display:none' }
+
 
 #card-detail-template
   .detail
@@ -30,20 +14,16 @@
         %a{ :class => '', :href => "{{url}}" , :title => 'Open MagicCards.info page in a new window', :target => '_blank' }
           MagicCards.info
       %li
-        %a{ :class => 'transform-button', :title => 'Transform card', :href => "#" }
-          Transform
-      %li
-        %a{ :class => 'tap-button', :title => 'Cover/Uncover the card', :href => "#" }
-          Un|tap
-      %li
-        %a{ :class => 'cover-button', :title => 'Cover/Uncover the card', :href => "#" }
-          Un|cover
-      %li
         %a{ :class => 'close-button', :title => 'Close', :href => "#" }
           Close
 
     %img{ :src => "{{image_url}}" }
 
+
+#menu-item-template
+  %li
+    %a{ :class => '{{clazz}}', :title => '{{title}}', :href => "#" }
+      {{name}}
 
 #handview-template
   %div{ :id => '{{id}}', :class => 'hand' }

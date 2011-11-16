@@ -46,7 +46,7 @@ class HandView extends CardCollectionView
     @el.fadeOut => @el.remove()
 
   create_card_view: (card) =>
-    new CardView(model: card)
+    new CardViewHand(model: card)
 
   append_card_view: (view) =>
     @el.find('.container').append(view.el)
@@ -69,4 +69,14 @@ class HandView extends CardCollectionView
       @model.mulligan()
 
 
+class CardViewHand extends CardView
+
+  constructor: (params, @dropbox) ->
+    super(params)
+
+  visible: => true
+
+
+
+window.CardViewHand = CardViewHand
 window.HandView = HandView

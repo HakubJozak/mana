@@ -43,7 +43,8 @@ class CardCollectionView extends Backbone.View
 
     _(@views).each (view) =>
       @append_card_view(view)
-      view.el.css('z-index', view.model.order())
+      # HACK - remove
+      view.el.css('z-index', 1000 + view.model.order())
 
   render: =>
     if @views?
@@ -57,16 +58,6 @@ class CardCollectionView extends Backbone.View
 
   dropped: (event,ui) =>
     card = ui.draggable.ob().model
-    card.collection.remove(card)
-
-    order = if @model.last()
-              @model.last().order() + 10
-            else
-              1
-
-    card.set({ order: order }, { silent: true} )
-    @model.add(card)
-    card.save()
-
+    @model.add_on_top(card)
 
 window.CardCollectionView = CardCollectionView

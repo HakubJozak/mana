@@ -18,6 +18,31 @@ class CardCollection extends Backbone.Collection
 
     CardCollection.all[@id] = this
 
+  add_on_top: (card) =>
+    card.collection.remove(card)
+
+    order = if @last()
+              @last().order() + 10
+            else
+              1
+
+    card.set({ order: order }, { silent: true} )
+    @add(card)
+    card.save()
+
+
+  put_to_bottom: (card) =>
+    card.collection.remove(card)
+
+    order = if @first()
+              @first().order() - 10
+            else
+              1
+
+    card.set({ order: order }, { silent: true} )
+    @add(card)
+    card.save()
+
   comparator: (card) ->
     card.order()
 

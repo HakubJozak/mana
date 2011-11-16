@@ -7,10 +7,6 @@ class CardDetailView extends Backbone.View
     @render()
 
     @$('.close-button').click @close
-    @$('.transform-button').click => @model.transform()
-    @$('.cover-button').click => @model.toggle_covered()
-    @$('.tap-button').click => @model.toggle_tapped()
-
 
   render: =>
     @el = $(@template(@model.toJSON()))

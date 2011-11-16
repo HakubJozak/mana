@@ -60,8 +60,11 @@ class CardBrowser extends CardCollectionView
 class CardViewBrowser extends CardView
 
   constructor: (params) ->
+    params['template'] = '#card-view-browser-template'
     super(params)
     @el.bind 'contextmenu', @show_menu
+    @add_menu_item 'to-hand-button', 'Hand', 'Put the card to your hand'
+    @$('.to-hand-button').click => @model.put_to_hand()
 
   visible: -> true
 
