@@ -12,7 +12,7 @@ class CardView extends Backbone.View
     @model.bind 'change', @render
     @template = _.template($('#card-template').html())
     @el = $(@template(@model.toJSON()))
-    @img = @el.find('img')
+    @img = @$('img')
 
     @el.draggable
       position: 0,
@@ -27,15 +27,27 @@ class CardView extends Backbone.View
 
     @el.bind 'click', @clicked
 
+    moc = =>
+      @menu_open_countdown = window.setTimeout(@show_menu, 1000)
+
+    @el.hover( moc, @close_menu)
+
     # LEGACY
     @el.data('game-object',this)
     @element = @el
+
+  show_menu: =>
+    @$('.menu').show()
+
+  close_menu: =>
+    window.clearTimeout(@menu_open_countdown) if @menu_open_countdown?
+    @$('.menu').hide()
+
 
   clicked: (e) =>
     e.preventDefault()
     e.stopPropagation()
     new CardDetailView(model: @model, position: @el.offset()) if @visible()
-
 
   render: =>
     @el.find('.debug').text(@model.order())
