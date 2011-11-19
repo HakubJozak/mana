@@ -1,0 +1,11 @@
+@import 'compass/css3';
+@import 'constants';
+
+#content table.deck {
+  width: $content-width;
+
+  td {
+    width: 20%;
+    img { width: 95%; }
+  }
+}

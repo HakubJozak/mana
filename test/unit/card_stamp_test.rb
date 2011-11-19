@@ -16,6 +16,13 @@ class CardStampTest < ActiveSupport::TestCase
     assert_nil stamp.backside
   end
 
+  test 'fetch & load card with 3 words name' do
+    stamp = CardStamp.fetch('Drana, Kalastria Bloodchief')
+    assert_not_nil stamp
+    assert_equal 'http://magiccards.info/roe/en/107.html', stamp.url
+    assert_nil stamp.backside
+  end
+
   test '#fetch transformable card' do
     stamp = CardStamp.fetch('Cloistered Youth')
     assert_equal 'http://magiccards.info/isd/en/8a.html', stamp.url

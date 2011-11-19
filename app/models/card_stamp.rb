@@ -11,6 +11,7 @@ class CardStamp
   field :image_url, type: String
   field :token, type: Boolean
   field :counter, type: Integer, default: lambda { Mongoid.database.eval('next_counter()').to_i }
+  index :name # unique: true
 
   has_one    :backside,  class_name: 'CardStamp', inverse_of: :frontside
   belongs_to :frontside, class_name: 'CardStamp', inverse_of: :backside
@@ -23,15 +24,25 @@ class CardStamp
   REAL_URL_REGEXP = /\[url=(.*?)\]/
 
   def self.print_by_name(name, &block)
-    stamp = where(name: name).includes(:backside).first || fetch(name)
+    stamp = find_or_create_by_name(name)
     stamp && stamp.imprint(&block)
+  end
+
+  def self.find_or_create_by_name(name)
+    stamp = where(name: name).includes(:backside).first
+
+    unless stamp
+      Rails.logger.info "Fetching stamp #{name}"
+      stamp = fetch(name)
+    end
+
+    stamp
   end
 
   # Either by name or direct and exact URL.
   #
   def self.fetch(name)
     stamp = CardStamp.new(:name => name)
-
     page = goto_url("http://magiccards.info/query?q=!#{URI.escape(name)}&v=card&s=cname")
 
     stamp.url = page.scan(REAL_URL_REGEXP)[0][0] rescue nil

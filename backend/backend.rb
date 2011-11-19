@@ -30,6 +30,7 @@ require '../lib/commander'
 
 require '../app/models/game_event'
 require '../app/models/game'
+require '../app/models/deck'
 require '../app/models/player'
 require '../app/models/card'
 require '../app/models/card_stamp'

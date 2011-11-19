@@ -1,0 +1,17 @@
+#content.decks
+  - if @decks.empty?
+    %p
+      You have no saved decks.
+      = link_to 'Create one?', new_deck_path
+  - else
+    %table.decks{ :title => 'Decks' }
+      %tr
+        %th Name
+        %th= link_to 'New Deck', new_deck_path
+
+      - @decks.each do |deck|
+        %tr
+          %td= link_to deck.name, deck
+          %td
+            = link_to 'Edit', edit_deck_path(deck)
+            = link_to 'Delete', deck, :confirm => 'Are you sure?', :method => :delete

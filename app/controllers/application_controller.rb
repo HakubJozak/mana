@@ -9,16 +9,18 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_playing?, :player_for
 
+  # DRY with player_for
   def is_playing?(game)
-    session[:player_ids][game.id]
+    id = session[:player_ids][game.id]
+    game.players.where(_id: id).first if id
   end
 
   def set_player_for(game, player)
-    session[:player_ids][game.id] = player
+    session[:player_ids][game.id] = player.id
   end
 
   def player_for(game)
-    game.players.find(session[:player_ids][game.id])
+    game.players.where(_id: session[:player_ids][game.id]).first
   end
 
 end

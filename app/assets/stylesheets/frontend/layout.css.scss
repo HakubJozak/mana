@@ -10,6 +10,8 @@ a {
  &:visited { color: white }
 }
 
+.notice { color: $orange; }
+
 body {
   font-family: "Times New Roman", "Serif";
   background-image: url(/assets/fabric.png);
@@ -17,6 +19,7 @@ body {
   color: white;
 
   #content { width: $content-width; margin: auto; }
+  #flash_notice { color: $orange; font-size: larger; }
 }
 
 h1.hyper {

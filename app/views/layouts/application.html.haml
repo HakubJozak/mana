@@ -7,15 +7,14 @@
     = javascript_include_tag 'application'
     = yield :head
   %body
-    %ul.hmenu
-      = render 'devise/menu/registration_items'
-      = render 'devise/menu/login_items'
+    = render 'shared/menu'
+
 
     %h1.hyper
       = link_to root_path, :class => 'hyper' do
         != "M<span class='orange'>&alpha;</span>n<span class='orange'>&alpha;</span>"
 
+  #content
     - flash.each do |name, msg|
       = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
-
-  = yield
+    = yield

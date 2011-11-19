@@ -22,6 +22,9 @@ gem 'mechanize', :require => false
 #end
 
 group :test do
+  gem "fabricator"
+  gem "minitest"
+  gem "ruby-prof"
   gem "capybara", ">= 0.4.1.2"
   gem "capybara-webkit"
   gem "database_cleaner", ">= 0.6.7"
