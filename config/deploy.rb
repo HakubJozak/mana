@@ -17,15 +17,6 @@ set :branch, 'master'
 
 
 
-
-# namespace :deploy do
-#   task :shared_symlink do
-#     shared_dir = File.join(shared_path, 'bundle')
-#     release_dir = File.join(current_release, '.bundle')
-#     run("mkdir -p #{shared_dir} && ln -s #{shared_dir} #{release_dir}")
-#   end
-# end
-
 namespace :log do
   %w(thin production backend god).each do |type|
     desc "Tails log of #{type}"

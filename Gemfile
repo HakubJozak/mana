@@ -27,6 +27,7 @@ group :test do
   gem "database_cleaner", ">= 0.6.7"
   gem "launchy", ">= 0.4.0"
   gem 'turn', :require => false
+  gem 'minitest'
 end
 
 group :development do
