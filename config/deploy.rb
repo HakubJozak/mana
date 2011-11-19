@@ -70,7 +70,7 @@ namespace :backend do
   %w(start stop restart status).each do |action|
     desc "#{action} backend"
     task action.to_sym, :roles => :app do
-      run "{#rbundle} god #{action} mana"
+      run "#{bundle} god #{action} mana"
     end
   end
 
@@ -85,7 +85,7 @@ namespace :thin do
   %w(start stop restart).each do |action|
     desc "#{action} the app's Thin Cluster"
     task action.to_sym, :roles => :app do
-      run "cd #{current_path} && rvm use #{rvm_ruby_string} && bundle exec thin #{action} -c #{deploy_to}/current -C #{deploy_to}/current/config/thin.yml"
+      run "cd #{current_path} && rvm use #{rvm_ruby_string} && bundle exec thin #{action} -c #{current_path} -C #{current_path}/config/thin.yml"
     end
   end
 end
