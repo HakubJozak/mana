@@ -56,12 +56,21 @@ namespace :god do
 end
 
 
+namespace :mongo do
+  desc 'Start God'
+  task :dump do
+    run "cd #{shared_path} && mongodump -h localhost -d mana_production && tar -zcf data.tar.gz ./dump"
+    get "#{shared_path}/data.tar.gz", "db/data.tar.gz"
+    run "rm -rf #{shared_path}/dump && rm #{shared_path}/data.tar.gz"
+  end
+end
+
 
 namespace :backend do
   %w(start stop restart status).each do |action|
     desc "#{action} backend"
     task action.to_sym, :roles => :app do
-      run "#{bundle} god #{action} mana"
+      run "{#rbundle} god #{action} mana"
     end
   end
 
