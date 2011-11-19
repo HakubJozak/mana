@@ -38,19 +38,19 @@ class Table < EM::Channel
     #
     player.ws = ws
 
-    ws.onclose {
+    ws.onclose do
       p = @players.delete(player_id)
       unsubscribe(p.sid) if p
       puts "Player #{p.name}(#{p.id}) disconnected"
-    }
+    end
 
-    ws.onmessage { |msg|
+    ws.onmessage do |msg|
       ws.table.push(raw: msg)
-    }
+    end
 
-    player.sid = subscribe do |model|
+    player.sid = subscribe do |event|
       # TODO: subclass EM::Channel to do this
-      player.message_received(model)
+      player.send_event_to_client(event)
     end
 
     # TODO: DEFER these jobs!?
@@ -87,6 +87,8 @@ class Table < EM::Channel
         c.game = @game
         c.collection_id = "battlefield"
         c.order = 0
+
+
         c.covered = false
         c.save!
       end
@@ -96,12 +98,17 @@ class Table < EM::Channel
     end
     # ------------------------------------------
 
+    puts "!!!- #{raw.encoding}"
+
     # TODO: DEFER that or is it done automatically by synchrony?
     event = @game.game_events.create! do |e|
       e.mid = (@mid += 1)
       e.raw =  raw
       e.model = model
     end
+
+    puts "???- #{event.id}"
+    puts "???- #{event.raw.encoding}"
 
     super(event)
   end

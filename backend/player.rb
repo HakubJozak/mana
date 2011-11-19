@@ -9,7 +9,6 @@ class Player
   # TODO: squeeze into batch
   def replay_history
     game.game_events(true).where('mid' => { '$gt' => @last_mid }).each do |event|
-      puts "replaying event #{event.id}"
       @queue.push(event)
     end
   end
@@ -21,10 +20,14 @@ class Player
     @queue = EM::Queue.new
 
     consumer = Proc.new do |event|
-      @ws.send(event.raw)
+      # HACK: the force encoding should not be necessary
+      # yet sometimes the data arrive ecoded in ASCII-8BIT.
+      @ws.send(event.raw.force_encoding('utf-8'))
+      # process the next event by this block
       @queue.pop(&consumer)
     end
 
+    # process the first event (non-blocking call)
     @queue.pop(&consumer)
   end
 
@@ -35,7 +38,7 @@ class Player
     @sid = sid
   end
 
-  def message_received(event)
+  def send_event_to_client(event)
     @last_mid = event.mid
     @queue.push(event)
   end
