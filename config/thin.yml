@@ -1,5 +1,4 @@
 address: "ec2-176-34-195-147.eu-west-1.compute.amazonaws.com"
-pid: ../shared/pids/thin.8080.pid
 log: ../shared/log/thin.log
 timeout: 30
 port: 8080
