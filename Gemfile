@@ -22,15 +22,11 @@ gem 'mechanize', :require => false
 #end
 
 group :test do
-  gem "cucumber-rails", ">= 0.4.1"
   gem "capybara", ">= 0.4.1.2"
+  gem "capybara-webkit"
   gem "database_cleaner", ">= 0.6.7"
   gem "launchy", ">= 0.4.0"
   gem 'turn', :require => false
-end
-
-group :production do
-  gem 'therubyracer'
 end
 
 group :development do
