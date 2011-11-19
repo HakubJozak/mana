@@ -18,16 +18,13 @@ set :branch, 'master'
 
 
 
-namespace :deploy do
-  task :shared_symlink do
-    [ 'pids' ].each do |path|
-      run "ln -s #{shared_path}/#{path} #{release_path}/#{path}"
-    end
-
-    # Bundle for Backend
-    run "ln -s #{shared_path} #{release_path}/backend/vendor"
-  end
-end
+# namespace :deploy do
+#   task :shared_symlink do
+#     shared_dir = File.join(shared_path, 'bundle')
+#     release_dir = File.join(current_release, '.bundle')
+#     run("mkdir -p #{shared_dir} && ln -s #{shared_dir} #{release_dir}")
+#   end
+# end
 
 namespace :log do
   %w(thin production backend god).each do |type|
@@ -91,7 +88,9 @@ namespace :thin do
 end
 
 
-#after "deploy:finalize_update", "deploy:shared_symlink"
+
+
+# after 'deploy:update_code', "deploy:shared_symlink"
 after "deploy", 'thin:restart'
 after "deploy", 'backend:bundle'
 after "deploy", 'backend:restart'

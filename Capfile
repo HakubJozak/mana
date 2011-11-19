@@ -10,10 +10,11 @@ require "rvm/capistrano"
 require 'bundler/capistrano'
 # require 'railsless-deploy'
 
-
 set :rvm_ruby_string, "1.9.2-p290"
 set :rvm_type, :user
 
 
 load 'config/deploy'
+
+
 # load 'deploy/assets'
