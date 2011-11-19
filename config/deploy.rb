@@ -83,5 +83,5 @@ end
 
 # after 'deploy:update_code', "deploy:shared_symlink"
 after "deploy", 'thin:restart'
-after "deploy", 'backend:bundle'
+# after "deploy", 'backend:bundle'
 after "deploy", 'backend:restart'
