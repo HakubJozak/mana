@@ -22,7 +22,11 @@
                 %option{ :value => deck.mainboard, "data-sideboard" => deck.sideboard }
                   = deck.name
 
-        = d.input :mainboard, :as => :text, :label => 'Cards', :hint => deck_hint
+        - if current_user
+          = d.input :mainboard, :as => :text, :label => 'Cards', :hint => 'User format "1;Black Lotus" for cards, separated by new lines'
+        - else
+          = d.input :mainboard, :as => :text, :label => 'Cards',
+                    :hint => raw("<b>TIP</b>: #{link_to('Login', new_user_session_path)} to enable deck management and saving games!")
 
       = f.buttons do
         = f.commit_button "Join '#{@game.name}'"

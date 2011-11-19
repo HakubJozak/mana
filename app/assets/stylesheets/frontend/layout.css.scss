@@ -19,6 +19,7 @@ body {
   color: white;
 
   #content { width: $content-width; margin: auto; }
+  #flash_notice { color: $orange; font-size: larger; }
 }
 
 h1.hyper {

@@ -18,6 +18,10 @@ form.formtastic {
     font-size: $input-height * 0.8;
     color: $orange;
     text-align: center;
+    a {
+        color: $orange;
+        font-weight: bold;
+      }
   }
 
   li.password input, li.string input, li.text textarea, select {
