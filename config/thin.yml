@@ -1,5 +1,5 @@
 address: "ec2-176-34-195-147.eu-west-1.compute.amazonaws.com"
-log: ../shared/log/thin.log
+log: log/thin.log
 timeout: 30
 port: 8080
 max_conns: 256
