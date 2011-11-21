@@ -12,6 +12,11 @@
 
     :javascript
       $(document).ready(function() {
+        if (!window.WebSocket && window.MozWebSocket) {
+          // very simple Mozilla fallback
+          window.WebSocket = window.MozWebSocket;
+        }
+
         var battlefield = new Battlefield();
         var exile = new CardCollection( 'exile');
 

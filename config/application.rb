@@ -57,6 +57,8 @@ module Mana
     # TODO: remove!
     config.assets.compile = true
 
+    config.log_level = :debug
+
     # faster - use only when there is no inheritance in models!
     config.mongoid.preload_models = false
 

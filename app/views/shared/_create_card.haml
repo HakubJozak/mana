@@ -13,7 +13,7 @@
           %option{ :value => token.id, 'data-image-url' => token.image_url } #{token.name}
 
     %center
-      %img#token-preview{ :src => "#{tokens.first.image_url}" }
+      %img#token-preview{ :src => "#{tokens.first.image_url if tokens.first}" }
 
 
     -# %br/
