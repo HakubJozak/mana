@@ -34,8 +34,6 @@ class CardView extends Backbone.View
       stack: '.card',
 
     @img.click(@show_detail)
-    @add_menu_item 'bottom-button', 'Bottom', 'Put the card to the bottom of your library'
-    @$('.bottom-button').click => @model.put_to_bottom()
 
     moc = =>
       @menu_open_countdown = window.setTimeout(@show_menu, 1000)
@@ -53,9 +51,10 @@ class CardView extends Backbone.View
     window.clearTimeout(@menu_open_countdown) if @menu_open_countdown?
     @$('.menu').hide()
 
-  add_menu_item: (clazz, name, title) =>
+  add_menu_item: (clazz, name, title, callback) =>
     item = @menu_item_template(name: name, clazz: clazz, title: title)
     @$('.menu').append(item)
+    @$(".menu .#{clazz}").click(callback)
 
   show_detail: (e) =>
     if @visible() and !@dragged

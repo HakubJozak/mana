@@ -4,7 +4,7 @@ require 'test/test_helper'
 require 'capybara/rails'
 
 
-class WebsocketEncodingTest < ActionDispatch::IntegrationTest
+class BasicTest < ActionDispatch::IntegrationTest
 
   include Capybara::DSL
 
@@ -13,7 +13,7 @@ class WebsocketEncodingTest < ActionDispatch::IntegrationTest
     # Capybara.default_wait_time = 2
 
     env = { 'BUNDLE_GEMFILE' => './Gemfile', 'RACK_ENV' => 'test' }
-    cmd = 'bundle exec ruby ./backend.rb localhost 9090'
+    cmd = 'bundle exec ruby ./backend.rb localhost 9999'
 
     @backend = Process.spawn(env, cmd, :chdir => './backend')
     puts "Backend PID: #{@backend}"
@@ -25,7 +25,7 @@ class WebsocketEncodingTest < ActionDispatch::IntegrationTest
     Process.wait(@backend)
   end
 
-  test 'all is fine' do
+  test 'create and enter game' do
     visit '/games'
     click_link 'Create'
     fill_in 'Name', with: 'Igra'
@@ -35,7 +35,6 @@ class WebsocketEncodingTest < ActionDispatch::IntegrationTest
     click_button "Join 'Igra'"
 
     assert page.has_css? "#left-panel .users .user"
-
     # page.execute_script("console.info('something');")
     # assert_equal 8, page.evaluate_script('4 + 4');
   end

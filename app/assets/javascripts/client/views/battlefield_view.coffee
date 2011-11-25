@@ -62,16 +62,10 @@ class CardViewBattlefield extends CardView
   constructor: (params) ->
     super(params)
     @el.bind 'contextmenu', @tap_untap
-    @add_menu_item 'transform-button', 'Transform', 'Transform card (r)'
-#    @add_menu_item 'tap-button', 'Un|tap', 'Tap/Untap the card (RMB)'
-    @add_menu_item 'detail-button', 'Detail', 'Show detail of the card'
-    @add_menu_item 'cover-button', 'Un|cover', 'Cover/Uncover the card (u)'
-
-    @$('.transform-button').click => @model.transform()
-    @$('.cover-button').click => @model.toggle_covered()
-#    @$('.tap-button').click => @model.toggle_tapped()
-    @$('.detail-button').click => @show_detail()
-
+    @add_menu_item 'transform-button', 'Transform', 'Transform card (r)', => @model.transform()
+    @add_menu_item 'cover-button', 'Un|cover', 'Cover/Uncover the card (u)', => @model.toggle_covered()
+    @add_menu_item 'detail-button', 'Detail', 'Show detail of the card', => @show_detail()
+    @add_menu_item 'bottom-button', 'Bottom', 'Put the card to the bottom of your library', => @model.put_to_bottom()
 
   tap_untap: (e) =>
     e.preventDefault()

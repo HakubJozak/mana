@@ -74,6 +74,10 @@ class Card extends Backbone.Model
     User.local.hand.add_on_top(this)
     false
 
+  put_on_battlefield: =>
+    CardCollection.all['battlefield'].put(this)
+    false
+
   toggle_covered: (state = null, opts = {}) =>
     state ||= !@get('covered')
     @set({ covered : state })

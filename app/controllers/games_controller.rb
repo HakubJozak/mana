@@ -15,7 +15,13 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
     @websocket_host = request.host
-    @websocket_port = '9090'
+
+    # TODO: this has to go to app config!
+    if Rails.env.test?
+      @websocket_port = '9999'
+    else
+      @websocket_port = '9090'
+    end
 
     @game = Game.find(params[:id])
     @debug = true if params[:debug].present?
