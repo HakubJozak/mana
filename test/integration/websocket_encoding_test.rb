@@ -10,11 +10,19 @@ class WebsocketEncodingTest < ActionDispatch::IntegrationTest
 
   def setup
     Capybara.default_driver = :webkit
-    Capybara.default_wait_time = 2
+    # Capybara.default_wait_time = 2
 
-    fork do
-      exec 'bash ./backend-test.sh'
-    end
+    env = { 'BUNDLE_GEMFILE' => './Gemfile', 'RACK_ENV' => 'test' }
+    cmd = 'bundle exec ruby ./backend.rb localhost 9090'
+
+    @backend = Process.spawn(env, cmd, :chdir => './backend')
+    puts "Backend PID: #{@backend}"
+  end
+
+  def teardown
+    puts 'teardown called'
+    Process.kill("INT", @backend)
+    Process.wait(@backend)
   end
 
   test 'all is fine' do
@@ -26,7 +34,6 @@ class WebsocketEncodingTest < ActionDispatch::IntegrationTest
     fill_in 'Cards', with: '15,Forest'
     click_button "Join 'Igra'"
 
-#    assert page.has_css? "#left-panel .users"
     assert page.has_css? "#left-panel .users .user"
 
     # page.execute_script("console.info('something');")

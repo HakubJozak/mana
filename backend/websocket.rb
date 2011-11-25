@@ -6,6 +6,14 @@ end
 
 Mongoid.load!("../config/mongoid.yml")
 
+
+# Signal.trap('HUP') do
+#   # TODO: do something sane here - like save all the connection data?
+#   puts 'Exiting...'
+#   exit!
+# end
+
+
 # TODO -
 # require 'em-synchrony-mongodb'
 # EM.synchrony do

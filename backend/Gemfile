@@ -4,11 +4,10 @@ gem 'activesupport', :require => 'active_support'
 
 gem 'em-websocket'
 gem 'em-synchrony'
-
 gem "mongoid", ">= 2.0.1"
 gem 'bson_ext', '~> 1.4.0'
 
-gem 'require_all'
+# gem 'require_all'
 
 group :development do
   gem 'awesome_print'
