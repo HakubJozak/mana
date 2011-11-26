@@ -11,10 +11,10 @@
   .detail
     %ul.menu{}
       %li
-        %a{ :class => '', :href => "{{url}}" , :title => 'Open MagicCards.info page in a new window', :target => '_blank' }
+        %a.button{ :class => '', :href => "{{url}}" , :title => 'Open MagicCards.info page in a new window', :target => '_blank' }
           MagicCards.info
       %li
-        %a{ :class => 'close-button', :title => 'Close', :href => "#" }
+        %a.button{ :class => 'close-button', :title => 'Close', :href => "#" }
           Close
 
     %img{ :src => "{{image_url}}" }
@@ -22,7 +22,7 @@
 
 #menu-item-template
   %li
-    %a{ :class => '{{clazz}}', :title => '{{title}}', :href => "#" }
+    %a.button{ :class => '{{clazz}}', :title => '{{title}}', :href => "#" }
       {{name}}
 
 #handview-template

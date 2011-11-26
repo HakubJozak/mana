@@ -12,3 +12,4 @@ class Battlefield extends Backbone.Collection
     CardCollection.all[@id] = this
 
 window.Battlefield = Battlefield
+new Battlefield();

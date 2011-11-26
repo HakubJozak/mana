@@ -39,11 +39,6 @@ class Player
       # TODO: take it from cookie
       self.name ||= "Guest"
     end
-
-    # TODO: remove
-    # if defined?(Rails)
-    #   self.deck ||= File.open("#{Rails.root}/db/decks/eldrazi").read
-    # end
   end
 
   def chosen_deck

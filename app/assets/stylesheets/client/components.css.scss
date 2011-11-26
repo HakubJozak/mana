@@ -1,24 +1,3 @@
-@mixin side-panel-component {
-  margin: auto;
-}
-
-@mixin panel {
-  @include textured;
-
-  label {
-    position: relative;
-    padding-bottom: 5px;
-    font-size: smaller;
-  }
-
-  border: 0px solid #9D7C41;
-}
-
-@mixin dropbox {
-  @include card-size;
-  @include border-radius;
-  padding: 5px;
-}
 
 @mixin no-text-select {
   -moz-user-select: none;

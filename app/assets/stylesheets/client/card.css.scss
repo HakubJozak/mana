@@ -18,16 +18,12 @@
 
       a {
         @include border-radius;
-        background-color: rgba(128, 128, 128, 0.7);
         margin: 3px 3px 3px 3px;
         padding: 3px 3px 3px 3px;
 
         margin-left: -20px;
         padding-left: 25px;
         padding-right: 5px;
-
-        color: $highlight-color;
-        text-decoration: none;
       }
     }
   }

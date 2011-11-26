@@ -13,27 +13,3 @@
    left: -50%;
  }
 }
-
-
-@mixin button {
-    @include border-radius(10px);
-    @include single-text-shadow(black, 2px, 2px);
-
-    border: 1px solid rgba(1.0,1.0,1.0,0.3);
-    padding: 2px 2px 2px 2px;
-
-    text-decoration: none;
-    color: white;
-
-    background-color: grey;
-    &:hover { background-color: $orange; }
-}
-
-@mixin big-button {
-  @include button;
-
-  padding: 10px 10px 10px 10px;
-  line-height: 38px;
-  font-size: 35px;
-}
-

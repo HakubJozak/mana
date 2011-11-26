@@ -54,3 +54,5 @@ class CardCollection extends Backbone.Collection
       card.save()
 
 window.CardCollection = CardCollection
+new CardCollection('exile')
+

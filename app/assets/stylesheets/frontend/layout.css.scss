@@ -14,7 +14,7 @@ a {
 
 body {
   font-family: "Times New Roman", "Serif";
-  background-color: gray;
+  background-color: black;
   background-image: url(/assets/fabric.png);
   min-height: 2000px;
   color: white;
@@ -31,7 +31,7 @@ h1.hyper {
  margin: 30pt auto 20pt;
  text-shadow: 0px 5px 3px black;
 
- a { text-decoration: none }
+ a { text-decoration: none; color: white; }
  .orange { color: $orange; }
 
  super {

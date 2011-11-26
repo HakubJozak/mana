@@ -1,17 +1,18 @@
 // not used require jquery
 // not used require jquery_ujs
 
-//= require vendor/jquery-1.4.4
-//= require vendor/jquery-ui-1.8.6.custom.min
+//= require vendor/jquery-1.6.2.min.js
+//= require vendor/jquery-ui-1.8.16.custom.min.js
 //= require vendor/mousehold
 //= require vendor/underscore
 //= require vendor/backbone
 
 
 //= require ./client/boot
+//= require ./client/utils
+//= require ./client/utils2
 
 //= require ./client/action
-
 //= require ./client/socket
 //= require ./client/card
 //= require ./client/card_collection
@@ -22,8 +23,6 @@
 //= require ./client/controls
 //= require ./client/user
 //= require ./client/game
-//= require ./client/utils
-//= require ./client/utils2
 
 //= require ./client/views/card_view
 //= require ./client/views/card_detail_view

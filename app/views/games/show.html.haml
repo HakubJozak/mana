@@ -17,12 +17,9 @@
           window.WebSocket = window.MozWebSocket;
         }
 
-        var battlefield = new Battlefield();
-        var exile = new CardCollection( 'exile');
-
-        var battlefield_view = new BattlefieldView({ model: battlefield });
-        var exile_view = new Dropbox({ model: exile });
-        exile_view.el.appendTo($('#left-panel .commons'));
+        var battlefield_view = new BattlefieldView({ model: CardCollection.all.battlefield });
+        var exile_view = new Dropbox({ model: CardCollection.all.exile });
+        exile_view.el.appendTo($('#right-panel .commons'));
 
         new ChatView({ model: Message.all });
 
@@ -43,7 +40,6 @@
 
   #left-panel.side-panel
     .users
-    .commons
 
   #desk
     #top-panel
@@ -56,6 +52,7 @@
     #battlefield
 
   #right-panel.side-panel
+    .commons
     .users
 
   = render('shared/footer', :layout => false)

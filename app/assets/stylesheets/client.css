@@ -2,10 +2,13 @@
  * FIXME: Introduce SCSS & Sprockets
  *= require_self
 
- *= require ./themes/humanity/jquery-ui-1.8.6.custom
- ** require ./themes/orange-black/jquery-ui-1.8.16.custom
-
  *= require_tree ./client
 
-  farbtastic/farbtastic.css
+ ***  farbtastic/farbtastic.css
+
+ *= require ./themes/humanity/jquery-ui-1.8.6.custom
+ ** require ./themes/orange-black/jquery-ui-1.8.16.custom
+ ** require ./themes/dark-hive/jquery-ui-1.8.16.custom
+
+
 */

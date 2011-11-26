@@ -7,7 +7,7 @@
       = f.input :color
       #color-picker{ :style => 'display:none;' }
 
-      = f.semantic_fields_for :deck do |d|
+      = f.semantic_fields_for @player.deck do |d|
         - if current_user
           -#
           -# Faked Formtastic Input
@@ -15,7 +15,7 @@
           %li#prepared_deck_input.select.input.optional
             %label{ :for => 'prepared_deck'} Deck
             %select#prepared_deck{ :name => 'prepared_deck' }
-              %option{ :value => '1;Black Lotus', "data-sideboard" => '' }
+              %option{ :value => @player.deck.mainboard, "data-sideboard" => '' }
                 Custom
 
               - current_user.decks.each do |deck|
@@ -23,7 +23,8 @@
                   = deck.name
 
         - if current_user
-          = d.input :mainboard, :as => :text, :label => 'Cards', :hint => 'User format "1;Black Lotus" for cards, separated by new lines'
+          = d.input :mainboard, :as => :text, :label => 'Cards',
+                    :hint => 'One card name and count per-line: 1;Black Lotus'
         - else
           = d.input :mainboard, :as => :text, :label => 'Cards',
                     :hint => raw("<b>TIP</b>: #{link_to('Login', new_user_session_path)} to enable deck management and saving games!")
@@ -33,8 +34,6 @@
         %li= link_to 'Back', games_path
 
 :coffeescript
-  console.info 'asdfdsa'
   $('#prepared_deck').change ->
     txt = $('#prepared_deck option:selected').val()
-    console.info txt
     $('#player_deck_mainboard').val(txt)

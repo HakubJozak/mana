@@ -24,7 +24,7 @@ class ChatView extends Backbone.View
     message.save()
 
     input.val('');
-    input.blur();
+    # input.blur();
     false
 
 window.ChatView = ChatView

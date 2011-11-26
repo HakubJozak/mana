@@ -4,6 +4,23 @@
 @import "constants";
 @import "components";
 
+
+
+#desk {
+  position: absolute;
+  left: $side-panel-width;
+  right: $side-panel-width;
+  top: 1em;
+  bottom: 1em;
+
+  #battlefield {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+
+
 #battlefield {
   @include no-text-select;
   @include border-radius;
@@ -11,7 +28,6 @@
   position: relative;
   border: 1px dashed rgba(255, 255, 255, 0.54);
   background-color: rgba(30, 30, 30, 0.2);
-  height: 1000px;
 
   .user-area {
       height: 400px;

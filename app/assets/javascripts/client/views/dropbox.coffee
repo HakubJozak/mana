@@ -22,9 +22,12 @@ class Dropbox extends CardCollectionView
     @$('.browse-button').click =>
       CardBrowser.show_or_hide(@model)
 
-    @$('.shuffle-button').click =>
-      @model.shuffle_cards()
-      Message.action "is shuffling #{@model.long_title}."
+    if attrs.shuffle?
+      @$('.shuffle-button').click =>
+        @model.shuffle_cards()
+        Message.action "is shuffling #{@model.long_title}."
+    else
+      @$('.shuffle-button').hide()
 
   update_counter: =>
     @$('.counter').text @model.size()

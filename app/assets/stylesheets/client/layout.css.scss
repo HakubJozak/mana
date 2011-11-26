@@ -3,40 +3,26 @@
 @import "compass/css3";
 @import "constants";
 @import "components";
+@import '../buttons';
 
 
-@mixin side-panel {
-  position: absolute;
-  top: 0px;
-  min-height: $battlefield-height;
-  width: $side-panel-width;
-}
+body {
+  font-family: Georgia;
+  color: white;
+  background-image: url(/assets/fabric.png);
 
-#left-panel {
-  @include side-panel;
-  left: 0px;
-  clear: right;
-}
+  .button {  @include button($orange);  }
+  .highlight { color: $highlight-color }
+  .warning   { color: red }
 
-#desk {
-  position: absolute;
-  left: $side-panel-width;
-  right: $side-panel-width;
-
-  #battlefield {
-    margin-top: 30px;
-    width: 800px;
-    width: $battlefield-height;
-    margin-left: auto;
-    margin-right: auto;
-    clear: right;
+  input {
+    @include transparent;
+    @include border-radius;
+    color: $orange;
+    border: 1px solid #424242;
   }
 }
 
-#right-panel {
-  @include side-panel;
-  right: 0px;
-}
 
 #top-panel {
   position: fixed;

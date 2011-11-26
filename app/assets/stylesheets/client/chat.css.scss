@@ -5,7 +5,7 @@
 @import "components";
 
 #top-panel {
-  @include textured;
+  @include transparent;
 
   padding: 7px 7px 7px 7px;
   z-index: $chat-z-index;
@@ -16,24 +16,14 @@
     font-size: 17px;
     padding: 3px;
     font-weight: normal;
-    max-height: 4em;
+    max-height: 6em;
     overflow-y: scroll;
   }
 
   input.chat-input {
-      @include border-radius;
-
-      background: rgba(48, 0, 0, 0.5);
-      border: 1px solid #693e1b;
-      color: #c8b472;
-      width: 95%;
-
-      font-size: 20px;
-      line-height: 1.5;
-  }
-
-  .button {
+    width: 90%;
     font-size: 20px;
+    line-height: 1.5;
   }
 }
 

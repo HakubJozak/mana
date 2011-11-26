@@ -5,17 +5,47 @@
 @import "components";
 
 
-body {
-  font-family: Georgia;
-  color: white;
-  background: #61461c image-url('brown-texture.png');
+@mixin side-panel {
+  position: absolute;
+  width: $side-panel-width;
+}
+
+@mixin panel {
+  label {
+    position: relative;
+    padding-bottom: 5px;
+    font-size: smaller;
+  }
+
+  border: 0px solid #9D7C41;
+}
+
+
+#left-panel {
+  top: 0px;
+  @include side-panel;
+  left: 0px;
+  clear: right;
+
+  .card {
+    @include rotate(180deg);
+    &.ui-draggable-dragging {
+      @include rotate(0deg);
+    }
+  }
+}
+
+#right-panel {
+  @include side-panel;
+  right: 0px;
+  bottom: 0px;
 }
 
 .side-panel {
   @include panel;
 
   .users, .commons {
-
+    padding: 0.5em;
     .user.deck-over {  @include focused;   }
     form { display: inline; }
 
@@ -47,17 +77,6 @@ body {
       padding: 3px;
       text-align: center;
       width: 2em;
-    }
-
-    .box-container {
-        margin-bottom: 1em;
-    }
-
-    .box-container > h4 {
-        @include side-panel-component;
-        margin-bottom: 3px;
-        font-size: 14px;
-        padding: 5px;
     }
   }
 }
