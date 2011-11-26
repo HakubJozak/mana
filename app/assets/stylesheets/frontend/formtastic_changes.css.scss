@@ -1,6 +1,7 @@
 @import 'compass/css3';
 @import 'constants';
 @import 'modules';
+@import '../buttons';
 
 
 form.formtastic {
@@ -47,8 +48,8 @@ form.formtastic {
       line-height: 2em;
 
       input, a {
-          @include button;
-          padding: 7px 10px 7px 10px;
+        @include button($orange);
+        padding: 7px 10px 7px 10px;
       }
     }
 

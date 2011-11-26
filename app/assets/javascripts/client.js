@@ -11,6 +11,7 @@
 //= require ./client/boot
 //= require ./client/utils
 //= require ./client/utils2
+//= require ./client/compatibility
 
 //= require ./client/action
 //= require ./client/socket

@@ -12,28 +12,26 @@
 
     :javascript
       $(document).ready(function() {
-        if (!window.WebSocket && window.MozWebSocket) {
-          // very simple Mozilla fallback
-          window.WebSocket = window.MozWebSocket;
+        if (window.has_enough_mana()) {
+          var battlefield_view = new BattlefieldView({ model: CardCollection.all.battlefield });
+          var exile_view = new Dropbox({ model: CardCollection.all.exile });
+          exile_view.el.appendTo($('#right-panel .commons'));
+
+          new ChatView({ model: Message.all });
+
+          console.env = '#{Rails.env}';
+
+          Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}/games/#{@game.id}/players/#{@player.id}', "#{@player.id}");
+
+          Socket.instance.bind('socket:connected', function() {
+            console.info('Connected to server');
+          });
+
+          #{ "$('#help').toggle()" unless Rails.env.development? }
+          Socket.instance.connect();
         }
-
-        var battlefield_view = new BattlefieldView({ model: CardCollection.all.battlefield });
-        var exile_view = new Dropbox({ model: CardCollection.all.exile });
-        exile_view.el.appendTo($('#right-panel .commons'));
-
-        new ChatView({ model: Message.all });
-
-        console.env = '#{Rails.env}';
-
-        Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}/games/#{@game.id}/players/#{@player.id}', "#{@player.id}");
-
-        Socket.instance.bind('socket:connected', function() {
-          console.info('Connected to server');
-        });
-
-        #{ "$('#help').toggle()" unless Rails.env.development? }
-        Socket.instance.connect();
       });
+
 
 %body
   = render('shared/create_card', :layout => false)

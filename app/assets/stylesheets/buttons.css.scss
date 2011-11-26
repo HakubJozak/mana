@@ -15,8 +15,8 @@
   text-decoration: none;
 }
 
-@mixin big-button {
-  @include button;
+@mixin big-button($color) {
+  @include button($color);
   @include border-radius(10px);
   padding: 10px 10px 10px 10px;
   line-height: 38px;

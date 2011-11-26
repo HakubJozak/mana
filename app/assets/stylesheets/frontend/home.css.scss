@@ -1,6 +1,7 @@
 @import 'compass/css3';
 @import 'constants';
 @import 'modules';
+@import '../buttons';
 
 
 $move: 100px;
@@ -65,7 +66,7 @@ $step: $width / 7;
   width: 510px;
 
   li { display: inline; list-style: none; }
-  a.button { @include big-button;  }
+  a.button { @include big-button($orange);  }
 
   a:last-child { margin-left: 15px }
 }

@@ -26,8 +26,8 @@
   @include border-radius;
 
   position: relative;
-  border: 1px dashed rgba(255, 255, 255, 0.54);
-  background-color: rgba(30, 30, 30, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  background-color: rgba(0, 0, 0, 0.24);
 
   .user-area {
       height: 400px;
