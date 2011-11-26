@@ -20,9 +20,9 @@ class BattlefieldView extends CardCollectionView
     new CardViewBattlefield(model: card)
 
   append_card_view: (view) =>
-    @el.append(view.el)
-    # 'moving' is delayes, so that the drop does not
-    #  a cause confusing effect on local
+    @$("##{view.model.position()}").append(view.el)
+    # 'moving' is delayed so that the drop does not
+    #  cause a confusing effect on local
     revive = () => view.el.addClass('moving')
     window.setTimeout(revive, 300)
 
@@ -31,11 +31,10 @@ class BattlefieldView extends CardCollectionView
     # do it better
 
   dropped: (event,ui) =>
-    p = ui.draggable.offset()
+    cell = $(event.target)
     card = ui.draggable.ob().model
     old = card.collection
-
-    card.set({ position: @to_relative(p) }, { silent: true })
+    card.set({ position: cell.attr('id') }, { silent: true })
 
     unless old.id == @model.id
       old.remove(card)
@@ -43,18 +42,6 @@ class BattlefieldView extends CardCollectionView
 
     card.save()
 
-  to_global: (p) =>
-    origin = @el.offset()
-    return {
-      top:  p.y + @el.offset().top,
-      left: p.x + @el.offset().left
-    }
-
-  to_relative: (p) =>
-    origin = @el.offset()
-    top =  p.top - origin.top
-    left = p.left - origin.left
-    return { y: top, x: left }
 
 
 class CardViewBattlefield extends CardView
@@ -82,10 +69,11 @@ class CardViewBattlefield extends CardView
 
   render: =>
     super()
+#    @el.css('position','absolute')
+    @el.css('top','0px')
+    @el.css('left','0px')
+    @el.appendTo("##{@model.position()}")
 
-    @el.css('position','absolute')
-    pos = @model.position()
-    @el.css({ left: pos.x, top: pos.y })
 
 window.CardViewBattlefield = CardViewBattlefield
 window.BattlefieldView = BattlefieldView

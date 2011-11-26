@@ -46,20 +46,19 @@
       %form
         %input.chat-input{ :name => 'message', :placeholder => 'Say...', }
         %input.send-button.button{ :value => 'Send', :type => 'submit' }
+        %a.close-button.button Close
 
     %table#battlefield
-      - 2.times do
-        %tr.active.remote
-          - 8.times do
-            %td
+      - 5.times do |y|
+        - if y == 2
+          %tr.spacing
+            %td{ :colspan => 8 }
+        - else
+          - side = y > 2 ? 'local' : 'remote'
+          %tr{ :class => "active #{side}"}
+            - 8.times do |x|
+              %td{ :id => "grid-#{x}-#{y}" }
 
-      %tr.spacing
-        %td{ :colspan => 8 }
-
-      - 2.times do
-        %tr.active.local
-          - 8.times do
-            %td
 
   #right-panel.side-panel
     .commons
