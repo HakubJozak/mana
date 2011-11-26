@@ -3,6 +3,7 @@ class ChatView extends Backbone.View
   initialize: =>
     @el = $('#top-panel')
     @el.submit(@submit)
+    @el.draggable()
     @template = _.template($("#message-template").html())
 
     @model.bind 'add', @message_added

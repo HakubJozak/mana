@@ -1,18 +1,18 @@
 class BattlefieldView extends CardCollectionView
 
-  @tagName: 'div'
+  @tagName: 'table'
   @className: 'battlefield'
 
   constructor: (attrs) ->
     super(attrs)
 
     @el = $('#battlefield')
-    @el.droppable
+    @$('tr.active td').droppable
       scope: 'cards'
       hoverClass: 'card-over'
       drop: @dropped
-      accept: (draggable) ->
-        ($('.card-over' ).length < 2) && draggable.hasClass('card');
+#      accept: (draggable) ->
+#        ($('.card-over' ).length < 2) && draggable.hasClass('card');
 
     @render()
 

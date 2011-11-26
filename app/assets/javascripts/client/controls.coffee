@@ -35,6 +35,9 @@ class Controls
         _.each @_selected_cards(), (card) ->
           card.transform()
 
+      when ' '
+        @trigger('hand:show')
+
       when 'c','C','t','T','p','P'
         props =
           c: 'counters'

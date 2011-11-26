@@ -47,7 +47,19 @@
         %input.chat-input{ :name => 'message', :placeholder => 'Say...', }
         %input.send-button.button{ :value => 'Send', :type => 'submit' }
 
-    #battlefield
+    %table#battlefield
+      - 2.times do
+        %tr.active.remote
+          - 8.times do
+            %td
+
+      %tr.spacing
+        %td{ :colspan => 8 }
+
+      - 2.times do
+        %tr.active.local
+          - 8.times do
+            %td
 
   #right-panel.side-panel
     .commons
