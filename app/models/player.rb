@@ -2,7 +2,7 @@ class Player
   include Mongoid::Document
 
   field :name, type: String
-  field :color,type: String, default: '#FF0000'
+  field :color,type: String, default: '#FFD012'
   field :has_started, type: Boolean
   field :clazz, type: String, :default => 'Player'
 

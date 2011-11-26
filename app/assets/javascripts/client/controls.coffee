@@ -3,10 +3,15 @@ class Controls
   constructor: ->
     _.extend(this, Backbone.Events);
 
+    $(document).keyup (e) =>
+        # Escape
+        if e.which == 27
+          @trigger('chat:toggle')
+
     $(document).keypress (e) =>
       name = $(e.target)[0].nodeName;
 
-      if name == 'INPUT' || name == 'TEXTAREA'
+      if (name == 'INPUT' || name == 'TEXTAREA')
         return
       else
         @input(e)
@@ -43,8 +48,6 @@ class Controls
           card.adjust(property, delta )
 
       else
-        @trigger('key:spacebar') if c == ' '
-        @trigger('key:m') if c == 'm'
         # TODO: make it generic/register
 
   _selected_cards: ->

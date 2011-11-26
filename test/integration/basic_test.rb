@@ -34,7 +34,7 @@ class BasicTest < ActionDispatch::IntegrationTest
     fill_in 'Cards', with: '15,Forest'
     click_button "Join 'Igra'"
 
-    assert page.has_css? "#left-panel .users .user"
+    assert page.has_css? ".users .user"
     # page.execute_script("console.info('something');")
     # assert_equal 8, page.evaluate_script('4 + 4');
   end

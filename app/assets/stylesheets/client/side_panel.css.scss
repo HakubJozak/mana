@@ -63,7 +63,8 @@
       font-size: small;
       margin-bottom: 1em;
 
-      td, th {
+      tbody td, tbody th {
+        color: white;
         borders: none;
         font-size: medium;
         text-align: center;

@@ -6,10 +6,18 @@ class ChatView extends Backbone.View
     @template = _.template($("#message-template").html())
 
     @model.bind 'add', @message_added
-    Controls.current.bind 'key:m', @focus
+    Controls.current.bind 'chat:toggle', @toggle
 
-  focus: =>
-    input = @$('.chat-input').focus();
+  toggle: =>
+    @el.toggle()
+    @$('.chat-input').focus() # if visible!
+
+  open: =>
+    @el.fadeIn()
+    @$('.chat-input').focus()
+
+  close: =>
+    @el.fadeOut()
 
   message_added: (message) =>
     li = $(@template(message))

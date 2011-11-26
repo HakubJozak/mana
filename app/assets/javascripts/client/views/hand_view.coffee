@@ -12,7 +12,7 @@ class HandView extends CardCollectionView
         HandView.current.el.offset(HandView.last_position) if HandView.last_position?
         HandView.current.el.fadeIn()
 
-    Controls.current.bind 'key:spacebar', create_or_close
+    Controls.current.bind 'hand:show', create_or_close
     $('#battlefield').click _.wrap( create_or_close, _.preventer)
     $('#battlefield').bind('contextmenu', _.wrap( create_or_close, _.preventer))
 

@@ -17,11 +17,8 @@ class UserView extends Backbone.View
       hoverClass: 'deck-over'
       drop: @deck_dropped
 
-    @components.library = new Dropbox(model: @model.library, shuffle: true)
-    @el.append(@components.library.el)
-
-    @components.graveyard = new Dropbox({ model: @model.graveyard })
-    @el.append(@components.graveyard.el)
+    @components.library = new Dropbox(model: @model.library, shuffle: @model.local)
+    @components.graveyard = new Dropbox({ model: @model.graveyard, shuffle: @model.local })
 
     @model.bind 'change', @render
     @model.hand.bind 'add', @render
@@ -29,12 +26,16 @@ class UserView extends Backbone.View
 
     if @model.local
       $("#right-panel .users").append(@el)
+      @$('form').submit @lives_changed
+      @$('.plus').click => @change_lives(1)
+      @$('.minus').click => @change_lives(-1)
     else
       $("#left-panel .users").append(@el)
+      @$('.plus').hide()
+      @$('.minus').hide()
 
-    @$('form').submit @lives_changed
-    @$('.plus').click => @change_lives(1)
-    @$('.minus').click => @change_lives(-1)
+    @el.append(@components.library.el)
+    @el.append(@components.graveyard.el)
     @render()
 
   deck_dropped: (event, ui) =>
