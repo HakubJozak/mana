@@ -22,12 +22,3 @@ body {
     border: 1px solid #424242;
   }
 }
-
-
-#top-panel {
-  position: fixed;
-  left: 0px + $side-panel-width;
-  right: 0px + $side-panel-width;
-  bottom: 0px;
-  z-index: $menu-z-index;
-}

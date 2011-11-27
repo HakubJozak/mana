@@ -20,7 +20,7 @@ class HandView extends CardCollectionView
   constructor: (attrs) ->
     super(attrs)
 
-    $('#battlefield').append(@el)
+    $('body').append(@el)
     @el.disableSelection()
 
     @el.draggable

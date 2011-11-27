@@ -45,8 +45,9 @@
 
       %form
         %input.chat-input{ :name => 'message', :placeholder => 'Say...', }
-        %input.send-button.button{ :value => 'Send', :type => 'submit' }
-        %a.close-button.button Close
+        %span.button-bar
+          %input.send-button.button{ :value => 'Send', :type => 'submit' }
+          %a.close-button.button{ :hint => 'Close chat (ESC)'} Close
 
     %table#battlefield
       %tbody.remote

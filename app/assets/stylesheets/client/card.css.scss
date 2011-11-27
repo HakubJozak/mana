@@ -6,8 +6,6 @@
 
 @mixin menu-inside {
   ul.menu {
-    z-index: -1;
-
     position: absolute;
     top: 0.5em;
     left: 100%;
@@ -26,6 +24,20 @@
         padding-right: 5px;
       }
     }
+  }
+}
+
+#battlefield .card {
+  z-index: $card-battlefield-z-index;
+  img { z-index: $card-battlefield-z-index+10; }
+  .menu {
+   z-index: $card-battlefield-z-index - 1;
+   li {
+     z-index: $card-battlefield-z-index - 1;
+     a {
+       z-index: $card-battlefield-z-index - 1;
+     }
+   }
   }
 }
 

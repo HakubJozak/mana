@@ -7,6 +7,11 @@
 #top-panel {
   @include transparent;
 
+  position: fixed;
+  left: 0px + $side-panel-width;
+//  right: 0px + $side-panel-width;
+  top: 0px;
+  width: 70%;
   padding: 7px 7px 7px 7px;
   z-index: $chat-z-index;
 
@@ -17,12 +22,15 @@
     padding: 3px;
     margin: 5px;
     font-weight: normal;
-    max-height: 6em;
-    min-height: 6em;
     overflow-y: scroll;
   }
 
+  .button-bar {
+    input, a { display: inline; }
+  }
+
   input.chat-input {
+    color: white;
     width: 90%;
     font-size: 20px;
     line-height: 1.5;

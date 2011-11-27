@@ -42,10 +42,10 @@
   }
 
   tr {
-   border: 1px dashed gray;
+   border: none; // 1px dashed gray;
 
    td {
-     border: 1px dashed gray;
+     border: none; // 1px dashed gray;
      @include card-size;
      &.card-over { @include focused; }
    }

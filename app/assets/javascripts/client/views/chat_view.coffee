@@ -4,10 +4,16 @@ class ChatView extends Backbone.View
     @el = $('#top-panel')
     @el.submit(@submit)
     @el.draggable()
-    @template = _.template($("#message-template").html())
+    @el.resizable
+      minHeight: 100
+      minWidth: 100
+      handles: 's,e,se'
+      alsoResize: '.message-list'
 
+    @template = _.template($("#message-template").html())
     @model.bind 'add', @message_added
     Controls.current.bind 'chat:toggle', @toggle
+    @$('.close-button').click @close
 
   toggle: =>
     @el.toggle()
