@@ -5,16 +5,30 @@ class BattlefieldView extends CardCollectionView
 
   constructor: (attrs) ->
     super(attrs)
-
+    BattlefieldView.instance = this
     @el = $('#battlefield')
-    @$('tr.active td').droppable
+    @remote_part = _.template($('#battlefield-remote-part-template tbody').html())
+    @local_part = _.template($('#battlefield-local-part-template tbody').html())
+    @render()
+
+  create_user_part: (user) =>
+    if user.local
+      part = $(@local_part(user.toJSON()))
+      $('#battlefield tbody.local').append(part)
+    else
+      part = $(@remote_part(user.toJSON()))
+      $('#battlefield tbody.remote').append(part)
+
+    part.find('td').droppable
       scope: 'cards'
       hoverClass: 'card-over'
       drop: @dropped
-#      accept: (draggable) ->
-#        ($('.card-over' ).length < 2) && draggable.hasClass('card');
-
-    @render()
+      accept: (draggable) ->
+        if ($('.hand.card-over').length < 1) && draggable.hasClass('card')
+          return true
+        else
+          $('td.card-over').removeClass('card-over')
+          return false
 
   create_card_view: (card) =>
     new CardViewBattlefield(model: card)
@@ -26,19 +40,19 @@ class BattlefieldView extends CardCollectionView
     revive = () => view.el.addClass('moving')
     window.setTimeout(revive, 300)
 
-
   sort: =>
     # do it better
 
   dropped: (event,ui) =>
+    console.info 'dropped'
     cell = $(event.target)
     card = ui.draggable.ob().model
     old = card.collection
     card.set({ position: cell.attr('id') }, { silent: true })
 
-    unless old.id == @model.id
-      old.remove(card)
-      @model.add(card)
+#    unless old.id == @model.id
+    old.remove(card)
+    @model.add(card)
 
     card.save()
 
@@ -70,9 +84,8 @@ class CardViewBattlefield extends CardView
   render: =>
     super()
 #    @el.css('position','absolute')
-    @el.css('top','0px')
-    @el.css('left','0px')
-    @el.appendTo("##{@model.position()}")
+    @el.css('top','0px').css('left','0px')
+#    @el.appendTo("##{@model.position()}")
 
 
 window.CardViewBattlefield = CardViewBattlefield

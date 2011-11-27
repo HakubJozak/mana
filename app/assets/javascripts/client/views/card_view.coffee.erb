@@ -22,16 +22,15 @@ class CardView extends Backbone.View
       @dragged = true
 
     @el.draggable
-      position: 0,
-      scope: 'cards',
-      snap: '.card',
-      snapMode: 'inner',
-      scroll: true,
-      revert: 'invalid',
+      position: 0
+      scope: 'cards'
+      snap: '.card'
+      snapMode: 'inner'
+      scroll: true
+      revert: 'invalid'
       stop: prevent_detail
-      containment: 'window',
-      zIndex: 99999,
-      stack: '.card',
+      containment: 'window'
+      zIndex: 99999
 
     @img.click(@show_detail)
 

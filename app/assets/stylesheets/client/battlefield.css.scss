@@ -26,49 +26,28 @@
   @include border-radius;
 
   position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.24);
   background-color: rgba(0, 0, 0, 0.24);
-
-  .user-area {
-      height: 400px;
-      background-color: rgba(30, 30, 30, 0.2);
-      &.local { background-color: rgba(40, 0, 0, 0.2);}
-
-      .name {
-          // @include text-shadow;
-          position: relative;
-          text-align: center;
-          top: 1em;
-          margin: auto;
-          font-size: 6em;
-          color: rgba(255, 255, 255, 0.05);
-      }
-  }
-
+  border: 1px solid rgba(0, 0, 0, 0.24);
   border: collapse;
 
+  tbody.local {
+  }
+
+  tbody.remote {
+    .card img { @include rotate(180deg);  }
+  }
+
+  tbody.spacing {
+    td { height: 20px; width: 100%; }
+  }
+
   tr {
-//    border: 1px dashed gray;
-//    td { border: 1px dashed gray; }
-    border: none;
-    td { border: none; }
+   border: 1px dashed gray;
 
-    &.spacing {
-      td {
-       height: 20px;
-       width: 100%;
-      }
-    }
-
-    &.active {
-      td {
-        @include card-size;
-        &.card-over { @include focused; }
-      }
-    }
-
-    &.remote {
-      .card img { @include rotate(180deg);  }
-    }
+   td {
+     border: 1px dashed gray;
+     @include card-size;
+     &.card-over { @include focused; }
+   }
   }
 }

@@ -26,12 +26,12 @@ class Socket
       card = Card.all[data.id] || new Card(data)
       card.load(data)
 
-      if card.collection && card.collection.id != data.collection_id
+      if card.collection # && card.collection.id != data.collection_id
         card.collection.remove(card)
 
-      if !card.collection || card.collection.id != data.collection_id
-        add_to = CardCollection.all[data.collection_id]
-        add_to.add(card)
+#      if !card.collection || card.collection.id != data.collection_id
+      add_to = CardCollection.all[data.collection_id]
+      add_to.add(card)
 
     if data.clazz == 'Action'
       console.debug 'action arrived'

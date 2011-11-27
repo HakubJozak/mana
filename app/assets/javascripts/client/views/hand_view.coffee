@@ -20,7 +20,7 @@ class HandView extends CardCollectionView
   constructor: (attrs) ->
     super(attrs)
 
-    $('body').append(@el)
+    $('#battlefield').append(@el)
     @el.disableSelection()
 
     @el.draggable
@@ -29,7 +29,7 @@ class HandView extends CardCollectionView
     @el.droppable
       accept: @_accept_unless_in
       scope: 'cards'
-      greedy: true
+      greedy: false
       hoverClass: 'card-over'
       drop: @drop_and_turn
 

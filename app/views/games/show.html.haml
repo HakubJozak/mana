@@ -49,15 +49,11 @@
         %a.close-button.button Close
 
     %table#battlefield
-      - 5.times do |y|
-        - if y == 2
-          %tr.spacing
-            %td{ :colspan => 8 }
-        - else
-          - side = y > 2 ? 'local' : 'remote'
-          %tr{ :class => "active #{side}"}
-            - 8.times do |x|
-              %td{ :id => "grid-#{x}-#{y}" }
+      %tbody.remote
+      %tbody.spacing
+        %tr
+          %td{ :colspan => 8 }
+      %tbody.local
 
 
   #right-panel.side-panel
