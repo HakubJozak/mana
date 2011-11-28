@@ -10,6 +10,7 @@ class ChatView extends Backbone.View
       handles: 's,e,se'
       alsoResize: '.message-list'
 
+    @$('.message-list').css('height','7em')
     @template = _.template($("#message-template").html())
     @model.bind 'add', @message_added
     Controls.current.bind 'chat:toggle', @toggle
