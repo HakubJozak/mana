@@ -9,7 +9,7 @@ class Card extends Backbone.Model
   defaults:
     # TODO: put loading image here
     # image: 'http://example.com/unknown.jpg'
-    position: 'grid-0-0'
+    # position: 'grid-0-0'
     covered: true
     tapped: false
     overlay: false

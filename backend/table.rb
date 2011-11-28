@@ -86,8 +86,8 @@ class Table < EM::Channel
         c.player = player
         c.game = @game
         c.collection_id = "battlefield"
+        c.position = "grid-0-0-#{player.id}"
         c.order = 0
-
 
         c.covered = false
         c.save!
