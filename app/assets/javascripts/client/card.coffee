@@ -43,6 +43,10 @@ class Card extends Backbone.Model
   hidden: =>
      false
 
+  player: =>
+    User.all.find (user) =>
+      @get('user_id') == user.id
+
   adjust: (property, delta) =>
     value = (@get(property) || 0) + delta
 

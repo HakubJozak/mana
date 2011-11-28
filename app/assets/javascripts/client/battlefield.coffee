@@ -3,6 +3,7 @@ class Battlefield extends Backbone.Collection
 
   put: (card) =>
     card.collection.remove(card)
+    card.set(position: "grid-0-0-#{card.get('user_id')}", { silent: true })
     @add(card)
     card.save()
     false

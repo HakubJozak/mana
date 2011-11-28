@@ -3,7 +3,9 @@ class ChatView extends Backbone.View
   initialize: =>
     @el = $('#top-panel')
     @el.submit(@submit)
-    @el.draggable()
+    @el.draggable
+      handle: '.handle'
+
     @el.resizable
       minHeight: 100
       minWidth: 100
