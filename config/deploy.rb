@@ -34,7 +34,7 @@ namespace :god do
   desc 'Start God'
   task :start do
     run "#{bundle} god start -c #{current_path}/mana.god"
-    run "tail /var/log/system"
+    run "tail /var/log/syslog"
   end
 
   desc 'Stop God'
