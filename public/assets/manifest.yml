@@ -9,6 +9,7 @@ cards/5.jpg: cards/5-a5c1dd12b40fbb2c3ab5eb02e5ed20d3.jpg
 cards/6.jpg: cards/6-02efbba8227e031ef60b255495ee433f.jpg
 cards/token.jpg: cards/token-762c00e95c1508f0dbefb96f47432bd1.jpg
 fabric.png: fabric-03a2ff49abf7fac89b32426cc26923a3.png
+hive.png: hive-76b02611ee44cde8e8cc622e97d5743d.png
 loading.gif: loading-aa3dc07f73edeb07da82c980df906e6e.gif
 mask.png: mask-82b6a7a1c6d104b3f9f60e1507897648.png
 wheel.png: wheel-885c9d702654cef598316e0544a85b4b.png
@@ -127,6 +128,6 @@ themes/orange-black/jquery-ui-1.8.16.custom.css: themes/orange-black/jquery-ui-1
 jquery-ui.min.js: jquery-ui.min-de1f48daa9de18901932b78b8f066891.js
 jquery.min.js: jquery.min-64ec6193cab230480c3e8fdf9409dd82.js
 application.js: application-cc2c7a0057d15544549b9cd474174b32.js
-application.css: application-64a3bd1b5d6cae7c08a25316f24e498c.css
-client.js: client-c23521a856bea81a95e275e9d4955871.js
-client.css: client-a60f7903e9c7feedcad562cb691b8187.css
+application.css: application-2d3576ca5a0072f823854e5e84fa28b0.css
+client.js: client-022c1001996795018e0889a0f03f544e.js
+client.css: client-4bbac55581a80e38e3b1eb0b56bd19af.css
