@@ -20,6 +20,7 @@ class User extends Backbone.Model
   name: => @get('name')
   id: => @get('_id')
 
+
 class UserCollection extends Backbone.Collection
   model : User
 

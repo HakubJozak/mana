@@ -4,13 +4,14 @@
 @import "constants";
 @import "components";
 
-
 table { border-collapse: collapse; width: 100%; }
-table th, table td { border-bottom: 1px dashed #471c00; padding: 5px; text-align: left; }
-table thead th { color: #9d7c41; }
+table th, table td { border-bottom: 1px dashed gray; padding: 5px; text-align: left; }
+table thead th { color: $orange; }
 table thead th.keys_column { text-align: center; }
-table tbody th { color: #c8b472; font-family: Times, "Times New Roman", Georgia, serif; font-size: 24px; font-weight: normal; text-align: center; }
-table tbody td { font-size: 14px; line-height: 1.25em; }
+table tbody th { color: white; font-weight: normal; text-align: center; }
+table tbody td { font-size: 18px; line-height: 1.25em; }
+
+
 
 #help {
  @include shadow;
@@ -23,8 +24,7 @@ table tbody td { font-size: 14px; line-height: 1.25em; }
  z-index: 9999;
 
  border: 1px solid #693e1b;
- border-bottom-color: #471c00;
- border-top-color: #9d7c41;
+
  color: #999;
  font-size: 16px;
  height: 600px;
@@ -38,7 +38,7 @@ table tbody td { font-size: 14px; line-height: 1.25em; }
 
 
 .margin {
-  background: url('../modal-texture.png');
+  background: url(/assets/hive.png);
   height: 560px; padding: 20px 40px; position: relative;
 }
 

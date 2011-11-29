@@ -13,9 +13,6 @@ class HandView extends CardCollectionView
         HandView.current.el.fadeIn()
 
     Controls.current.bind 'hand:show', create_or_close
-    $('#battlefield').click _.wrap( create_or_close, _.preventer)
-    $('#battlefield').bind('contextmenu', _.wrap( create_or_close, _.preventer))
-
 
   constructor: (attrs) ->
     super(attrs)

@@ -19,6 +19,17 @@ class Controls
       e.stopPropagation();
       e.preventDefault();
 
+    console.info $('#battlefield')
+    $('#battlefield').click => @trigger('hand:show')
+    $('#battlefield').bind 'contextmenu', => @trigger('card:untap:all')
+#    $('#battlefield').bind 'contextmenu',  _.wrap( => @trigger('card:untap:all'), _.preventer)
+
+  trigger_and_prevent: (name) =>
+    action = =>
+      console.info "!!!!!!!!!!!!"
+      @trigger(name)
+    _.wrap( action , _.preventer)
+
   input: (e) =>
     switch c = String.fromCharCode(e.keyCode)
       when 'u'
@@ -57,6 +68,7 @@ class Controls
     _.map $('.card:hover'), (el) -> $(el).ob().model
 
 
-Controls.current = new Controls()
+$(window.document).ready ->
+  Controls.current = new Controls()
 
 window.Controls = Controls

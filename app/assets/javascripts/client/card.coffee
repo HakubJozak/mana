@@ -33,6 +33,8 @@ class Card extends Backbone.Model
     throw 'Missing user_id' unless @get('user_id')
     throw 'Missing order' if @get('order') == null
 
+    Controls.current.bind 'card:untap:all', @untap
+
     # throw 'Missing container' unless @container
     # CardCollection.all.add(this)
     # throw 'Missing card owner' unless @owner
@@ -87,6 +89,9 @@ class Card extends Backbone.Model
     @set({ covered : state })
     @save()
     false
+
+  untap: =>
+    @toggle_tapped(false)
 
   toggle_tapped: (state = null, opts = {}) =>
     state ||= !@get('tapped')
