@@ -85,7 +85,7 @@ body > .detail {
     @include transition-property(none);
   }
 
-  @include transition("left,top,rotate", 0.4s, ease-out);
+  @include transition("left,top,rotate", 0.7s, ease-out);
 
   &.tapped {
     @include rotate(90deg);

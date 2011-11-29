@@ -19,14 +19,10 @@ class Controls
       e.stopPropagation();
       e.preventDefault();
 
-    console.info $('#battlefield')
     $('#battlefield').click => @trigger('hand:show')
-    $('#battlefield').bind 'contextmenu', => @trigger('card:untap:all')
-#    $('#battlefield').bind 'contextmenu',  _.wrap( => @trigger('card:untap:all'), _.preventer)
 
   trigger_and_prevent: (name) =>
     action = =>
-      console.info "!!!!!!!!!!!!"
       @trigger(name)
     _.wrap( action , _.preventer)
 

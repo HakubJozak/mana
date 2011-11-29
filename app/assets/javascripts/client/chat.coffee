@@ -10,7 +10,7 @@ class Message extends Backbone.Model
     @set(clazz: 'Message')
 
   text: =>
-    @escape('text')
+    @detect_links(@escape('text'))
 
   detect_links: (text) =>
     regexp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;

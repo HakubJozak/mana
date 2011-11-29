@@ -26,7 +26,7 @@ class CardView extends Backbone.View
       scope: 'cards'
       snap: '.card'
       snapMode: 'inner'
-      scroll: true
+      scroll: false
       revert: 'invalid'
       stop: prevent_detail
       containment: 'window'
@@ -38,9 +38,8 @@ class CardView extends Backbone.View
       @menu_open_countdown = window.setTimeout(@show_menu, 1000)
 
     @el.hover( moc, @close_menu)
-
-    # LEGACY
     @el.data('game-object',this)
+    # LEGACY
     @element = @el
 
   show_menu: =>

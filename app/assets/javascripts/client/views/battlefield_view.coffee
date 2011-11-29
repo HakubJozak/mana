@@ -11,6 +11,9 @@ class BattlefieldView extends CardCollectionView
     @local_part = _.template($('#battlefield-local-part-template tbody').html())
     @render()
 
+  tap_a_row: () =>
+
+
   create_user_part: (user) =>
     if user.local
       part = $(@local_part(user.toJSON()))
@@ -18,6 +21,15 @@ class BattlefieldView extends CardCollectionView
     else
       part = $(@remote_part(user.toJSON()))
       $('#battlefield tbody.remote').append(part)
+
+    part.bind 'contextmenu', (e) =>
+      $(e.target).parent('tr').find('td .card').each (i,card) =>
+        $(card).data('game-object').model.toggle_tapped()
+        true
+
+      e.stopPropagation();
+      e.preventDefault();
+
 
     part.find('td').droppable
       scope: 'cards'
