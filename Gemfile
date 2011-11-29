@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 gem "haml", ">= 3.0.25"
 
-gem "bson_ext", ">= 1.3.0"
+gem 'bson_ext', '~> 1.4.0'
 gem "mongoid", ">= 2.0.1"
 gem "devise", ">= 1.3.3"
 gem 'jquery-rails'
@@ -43,4 +43,11 @@ group :development do
   gem 'pry-doc'
   gem 'guard-livereload'
   gem 'rb-inotify', '>= 0.5.1', :require => false # for Guard
+end
+
+group :backend do
+  gem 'activesupport', :require => 'active_support'
+  gem 'em-websocket'
+  gem 'em-synchrony'
+  gem "mongoid", ">= 2.0.1"
 end

@@ -22,14 +22,3 @@ group :tools do
   gem 'capistrano'
   gem 'capistrano_colors'
 end
-
-# group :test do
-#   gem 'shotgun'
-#   gem 'capybara-webkit'
-#   gem 'capybara'
-#   gem 'test-unit-capybara'
-#   gem 'autotest'
-#   gem 'autotest-growl'
-# #  gem 'autotest-fsevent'
-#   gem 'mocha'
-# end
