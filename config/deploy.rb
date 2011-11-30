@@ -61,11 +61,6 @@ namespace :backend do
       run "#{bundle} god #{action} mana"
     end
   end
-
-  desc "bundle install for backend"
-  task :bundle do
-    run "rvm use #{rvm_ruby_string} && cd #{current_path}/backend && bundle install --deployment --without test development tools"
-  end
 end
 
 

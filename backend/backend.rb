@@ -12,9 +12,10 @@ ENV["RACK_ENV"] ||= 'production'
 
 
 if ENV['RACK_ENV'] == 'development'
-  Bundler.require(:default, :development)
+  Bundler.require(:default, :backend, :development)
 else
-  Bundler.require(:default)
+# TODO: require the needed stuffmanually
+  Bundler.require(:default, :backend)
 end
 
 if ARGV.length == 2

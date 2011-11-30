@@ -22,7 +22,7 @@ God.watch do |w|
 
   w.env = {
     'RACK_ENV' => 'production',
-    'BUNDLE_GEMFILE' => "#{root}/backend/Gemfile"
+    'BUNDLE_GEMFILE' => "#{root}/Gemfile"
   }
 
   w.start = "bundle exec ./backend.rb #{domain} #{port}"
