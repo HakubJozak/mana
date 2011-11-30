@@ -21,8 +21,14 @@ namespace :log do
   %w(thin production backend god).each do |type|
     desc "Tails log of #{type}"
     task type.to_sym do
-      type = 'thin.8080' if type == 'thin'
-      run "tail -f #{shared_path}/log/#{type}.log"
+      if type == 'thin'
+        type = 'thin.8080'
+      elsif type == 'god'
+        file = '/var/log/syslog'
+      end
+
+      file ||= "#{shared_path}/log/#{type}.log"
+      run "tail -f #{file}"
     end
   end
 end
@@ -78,5 +84,4 @@ end
 
 # after 'deploy:update_code', "deploy:shared_symlink"
 after "deploy", 'thin:restart'
-# after "deploy", 'backend:bundle'
 after "deploy", 'backend:restart'
