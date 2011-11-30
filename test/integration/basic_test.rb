@@ -13,7 +13,7 @@ class BasicTest < ActionDispatch::IntegrationTest
     Capybara.default_driver = :webkit
     # Capybara.default_wait_time = 2
 
-    env = { 'BUNDLE_GEMFILE' => './Gemfile', 'RACK_ENV' => 'test' }
+    env = { 'BUNDLE_GEMFILE' => '../Gemfile', 'RACK_ENV' => 'test' }
     cmd = 'bundle exec ruby ./backend.rb localhost 9999'
 
     @backend = Process.spawn(env, cmd, chdir: './backend', close_others: false)
