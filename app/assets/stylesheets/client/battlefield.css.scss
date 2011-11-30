@@ -45,9 +45,11 @@
    border: none; // 1px dashed gray;
 
    td {
+     position: relative;
      border: none; // 1px dashed gray;
      @include card-size;
      &.card-over { @include focused; }
+     .card { position: absolute; }
    }
   }
 }

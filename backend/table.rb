@@ -79,16 +79,17 @@ class Table < EM::Channel
 
     # ----------- ISOLATE to method ----------
     if model['clazz'] == 'Action' && model['type'] == 'create_token'
-      stamp = CardStamp.find(model['card_stamp_id'])
-      player = @game.players.find(model['player_id'])
+      params = model
+
+      stamp = CardStamp.find(params['card_stamp_id'])
+      player = @game.players.find(params['player_id'])
 
       card = stamp.imprint do |c|
         c.player = player
         c.game = @game
         c.collection_id = "battlefield"
-        c.position = "grid-0-0-#{player.id}"
-        c.order = 0
-
+        c.position = params['position']
+        c.order = params['order']
         c.covered = false
         c.save!
       end
@@ -98,17 +99,12 @@ class Table < EM::Channel
     end
     # ------------------------------------------
 
-    puts "!!!- #{raw.encoding}"
-
     # TODO: DEFER that or is it done automatically by synchrony?
     event = @game.game_events.create! do |e|
       e.mid = (@mid += 1)
       e.raw =  raw
       e.model = model
     end
-
-    puts "???- #{event.id}"
-    puts "???- #{event.raw.encoding}"
 
     super(event)
   end

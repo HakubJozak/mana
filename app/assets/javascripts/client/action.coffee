@@ -4,7 +4,14 @@ class Action extends Backbone.Model
     new Action(type: 'show_collection', collection_id: collection.id, user_to_id: user.id )
 
   @create_token = (card_stamp_id) ->
-    new Action(type: 'create_token', card_stamp_id: card_stamp_id, player_id: User.local.id )
+    coords = CardCollection.all.battlefield.landing_coords()
+
+    new Action
+      type: 'create_token'
+      card_stamp_id: card_stamp_id
+      player_id: User.local.id
+      position: coords.position
+      order: coords.order
 
   initialize: =>
     @set clazz: 'Action'

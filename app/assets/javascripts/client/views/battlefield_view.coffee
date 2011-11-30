@@ -13,7 +13,7 @@ class BattlefieldView extends CardCollectionView
 
   tap_a_row: () =>
 
-
+  # REFACTOR this god method?
   create_user_part: (user) =>
     if user.local
       part = $(@local_part(user.toJSON()))
@@ -46,28 +46,21 @@ class BattlefieldView extends CardCollectionView
     new CardViewBattlefield(model: card)
 
   append_card_view: (view) =>
-    @$("##{view.model.position()}").append(view.el)
+    td = @$("##{view.model.position()}")
+    td.append(view.el)
+    view.stack_in_cell()
     # 'moving' is delayed so that the drop does not
     #  cause a confusing effect on local
-    revive = () => view.el.addClass('moving')
-    window.setTimeout(revive, 300)
+    # revive = () => view.el.addClass('moving')
+    # window.setTimeout(revive, 300)
 
   sort: =>
     # do it better
 
   dropped: (event,ui) =>
-    console.info 'dropped'
     cell = $(event.target)
     card = ui.draggable.ob().model
-    old = card.collection
-    card.set({ position: cell.attr('id') }, { silent: true })
-
-#    unless old.id == @model.id
-    old.remove(card)
-    @model.add(card)
-
-    card.save()
-
+    @model.put_on_position( card, cell.attr('id'))
 
 
 class CardViewBattlefield extends CardView
@@ -85,19 +78,23 @@ class CardViewBattlefield extends CardView
     e.stopPropagation()
     @model.toggle_tapped()
 
-    # TODO: put elsewhere!
-    if @model.covered()
-      Message.action "is tapping a card."
-    else
-      Message.action "is tapping '#{@model.name()}'."
-
   visible: =>  !@model.covered()
+
+  stack_in_cell: =>
+    y = @model.get('order') * 25
+    @el.css('position','absolute')
+
+    # remote cards are stacked up-side-down
+    if @el.parents('tbody.remote').length > 0
+      @el.css('top',"-#{y}px")
+    else
+      @el.css('top',"#{y}px")
+
+    @el.css('z-index',y)
+    @el.css('left',"7px")
 
   render: =>
     super()
-#    @el.css('position','absolute')
-    @el.css('top','0px').css('left','0px')
-#    @el.appendTo("##{@model.position()}")
 
 
 window.CardViewBattlefield = CardViewBattlefield

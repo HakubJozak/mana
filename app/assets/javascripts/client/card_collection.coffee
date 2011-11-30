@@ -22,7 +22,7 @@ class CardCollection extends Backbone.Collection
     card.collection.remove(card)
 
     order = if @last()
-              @last().order() + 10
+              @last().order() + 1
             else
               1
 
@@ -35,7 +35,7 @@ class CardCollection extends Backbone.Collection
     card.collection.remove(card)
 
     order = if @first()
-              @first().order() - 10
+              @first().order() - 1
             else
               1
 

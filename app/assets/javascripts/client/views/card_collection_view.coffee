@@ -43,7 +43,7 @@ class CardCollectionView extends Backbone.View
 
     _(@views).each (view) =>
       @append_card_view(view)
-      # HACK - remove
+      # HACK - remove - should be handled in subviews
       view.el.css('z-index', 1000 + view.model.order())
 
   render: =>
