@@ -34,6 +34,11 @@ require '../lib/commander'
 require '../app/models/game_event'
 require '../app/models/game'
 require '../app/models/deck'
+
+# TODO: do we really need Devise in the backend?
+require '../config/initializers/devise.rb'
+require '../app/models/user'
+
 require '../app/models/player'
 require '../app/models/card'
 require '../app/models/card_stamp'

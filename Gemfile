@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
-gem 'rails', '3.1.0'
+
+gem 'rails', '~> 3.1.0'
 gem "haml", ">= 3.0.25"
 
 gem 'bson_ext', '~> 1.4.0'

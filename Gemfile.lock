@@ -276,7 +276,7 @@ DEPENDENCIES
   mongoid (>= 2.0.1)
   pry
   pry-doc
-  rails (= 3.1.0)
+  rails (~> 3.1.0)
   rb-inotify (>= 0.5.1)
   ruby-debug-base19
   ruby-debug19

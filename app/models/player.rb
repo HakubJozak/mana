@@ -13,12 +13,7 @@ class Player
   embeds_one :deck
 
   # TODO: hackish - better way?
-  if defined? Rails
-    belongs_to :user
-  else
-    attr_accessor :user
-  end
-
+  belongs_to :user
 
   after_create do
     # TODO: compute order automatically or too much pain?
