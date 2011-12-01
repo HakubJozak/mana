@@ -84,14 +84,17 @@ class CardViewBattlefield extends CardView
     y = @model.get('order') * 25
     @el.css('position','absolute')
 
-    # remote cards are stacked up-side-down
-    if @el.parents('tbody.remote').length > 0
-      @el.css('top',"-#{y}px")
+    if @model.tapped()
+      @el.css('top',"0px")
+      @el.css('left',"-#{y}px")
     else
-      @el.css('top',"#{y}px")
+      if @el.parents('tbody.remote').length > 0
+        # remote cards are stacked up-side-down
+        @el.css('top',"-#{y}px")
+      else
+        @el.css('top',"#{y}px")
 
     @el.css('z-index',y)
-    @el.css('left',"7px")
 
   render: =>
     super()
