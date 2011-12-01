@@ -47,11 +47,13 @@ class CardCollection extends Backbone.Collection
     card.order()
 
   shuffle_cards: =>
-    old = @comparator
     @models = _.shuffle(@models)
     @each (card,i) ->
-      card.set(order: i*10)
-      card.save()
+      card.set(order: i)
+    @save()
+
+  save: =>
+    Backbone.sync('save', this)
 
 window.CardCollection = CardCollection
 new CardCollection('exile')

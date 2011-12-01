@@ -17,10 +17,18 @@ class Socket
 
   onmessage: (msg) =>
     data = JSON.parse(msg.data)
-    data.id = data._id if data._id
 
+    if _.isArray(data)
+      _each data, (attrs) ->
+        @load_model(attrs)
+        true
+    else
+      data.id = data._id if data._id
+      @load_model(data)
+
+  load_model: (data) =>
     if data.clazz == 'Card'
-      # LEGACY
+     # LEGACY
       data.user_id = data.player_id
 
       card = Card.all[data.id] || new Card(data)

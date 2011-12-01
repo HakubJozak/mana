@@ -45,7 +45,8 @@ class Table < EM::Channel
     end
 
     ws.onmessage do |msg|
-      ws.table.push(raw: msg)
+      model = ActiveSupport::JSON.decode(params[:raw])
+      ws.table.received_message(msg)
     end
 
     player.sid = subscribe do |event|
@@ -66,6 +67,47 @@ class Table < EM::Channel
 
   end
 
+
+  def received_message(model)
+
+    # ----------- ISOLATE to method ----------
+    if model['clazz'] == 'Action'
+      params = model
+
+      if params['type'] == 'create_token'
+        stamp = CardStamp.find(params['card_stamp_id'])
+        player = @game.players.find(params['player_id'])
+
+        card = stamp.imprint do |c|
+          c.player = player
+          c.game = @game
+          c.collection_id = "battlefield"
+          c.position = params['position']
+          c.order = params['order']
+          c.covered = false
+          c.save!
+        end
+
+        model = card
+        raw = ActiveSupport::JSON.encode(model)
+      elsif params['type'] == 'shuffle'
+      end
+    end
+    # ------------------------------------------
+
+    ws.table.push(raw: msg)
+#  rescue => e
+    # TODO: inform about problem
+    # do not close connection on error...
+#        puts e.backtrace
+#      end
+
+  end
+
+
+
+
+
   # Required one of:
   #
   # :raw - JSON representation of the message
@@ -76,28 +118,6 @@ class Table < EM::Channel
 
     model = params[:model] || ActiveSupport::JSON.decode(params[:raw])
     raw = params[:raw] || ActiveSupport::JSON.encode(params[:model])
-
-    # ----------- ISOLATE to method ----------
-    if model['clazz'] == 'Action' && model['type'] == 'create_token'
-      params = model
-
-      stamp = CardStamp.find(params['card_stamp_id'])
-      player = @game.players.find(params['player_id'])
-
-      card = stamp.imprint do |c|
-        c.player = player
-        c.game = @game
-        c.collection_id = "battlefield"
-        c.position = params['position']
-        c.order = params['order']
-        c.covered = false
-        c.save!
-      end
-
-      model = card
-      raw = ActiveSupport::JSON.encode(model)
-    end
-    # ------------------------------------------
 
     # TODO: DEFER that or is it done automatically by synchrony?
     event = @game.game_events.create! do |e|
