@@ -1,3 +1,3 @@
 #!/bin/bash
 
-bundle exec rails server --debugger
+bundle exec unicorn_rails & tail -f log/development.log

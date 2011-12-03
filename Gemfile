@@ -8,7 +8,7 @@ gem "mongoid", ">= 2.0.1"
 gem "devise", ">= 1.3.3"
 gem 'jquery-rails'
 gem 'formtastic'
-gem 'thin'
+gem 'unicorn'
 
 gem 'god', '~> 0.11.0', :require => false
 gem 'mechanize', :require => false
