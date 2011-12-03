@@ -20,6 +20,7 @@ class HandView extends CardCollectionView
     $('body').append(@el)
     @el.disableSelection()
 
+    @el.resizable
     @el.draggable
       scope: 'decks',
 

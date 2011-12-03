@@ -5,9 +5,14 @@
 @import "constants";
 @import "components";
 
-/*.card-browser-removed, */.hand {
+.hand {
   display: none;
-  left: $side-panel-width + 10;
+  left: 70%;
+  top: 60%;
+  //  right: $side-panel-width + 10;
+
+  position: fixed;
+  z-index: $hand-z-index;
 
   border: 1px dashed $hand-border-color;
   background-color: rgba(255, 255, 255, 0.1);
@@ -50,26 +55,3 @@
 
   @include shadow;
 }
-
-
-.hand {
-  position: fixed;
-  top: 10px;
-  z-index: $hand-z-index;
-}
-
-/*
-.card-browser-removed {
-  @include textured;
-
-  bottom: 0px;
-  left: $side-panel-width;
-  right: -$side-panel-width;
-  height: 75%;
-  position: absolute;
-
-  z-index: $browser-z-index;
-//  background-color: rgba(0,0,0,0.7);
-}
-
-*/
