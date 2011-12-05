@@ -4,27 +4,13 @@ require 'test/test_helper'
 require 'capybara/rails'
 
 
-class BasicTest < ActionDispatch::IntegrationTest
+class BasicTest < BackendTestBase
 
   include Capybara::DSL
 
   def setup
     super
     Capybara.default_driver = :webkit
-    # Capybara.default_wait_time = 2
-
-    env = { 'BUNDLE_GEMFILE' => '../Gemfile', 'RACK_ENV' => 'test' }
-    cmd = 'bundle exec ruby ./backend.rb localhost 9999'
-
-    @backend = Process.spawn(env, cmd, chdir: './backend', close_others: false)
-    puts "Backend PID: #{@backend}"
-  end
-
-  def teardown
-    puts 'teardown called'
-    super
-    Process.kill("INT", @backend)
-    Process.wait(@backend)
   end
 
   test 'create and enter game' do

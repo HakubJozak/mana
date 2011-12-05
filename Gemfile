@@ -12,6 +12,8 @@ gem 'unicorn'
 
 gem 'god', '~> 0.11.0', :require => false
 gem 'mechanize', :require => false
+gem 'em-websocket'
+gem 'em-synchrony'
 
 
 #group :assets do
@@ -48,7 +50,5 @@ end
 
 group :backend do
   gem 'activesupport', :require => 'active_support'
-  gem 'em-websocket'
-  gem 'em-synchrony'
   gem "mongoid", ">= 2.0.1"
 end
