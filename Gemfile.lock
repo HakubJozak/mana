@@ -87,9 +87,7 @@ GEM
     eventmachine (0.12.10)
     execjs (1.2.9)
       multi_json (~> 1.0)
-    fabricator (0.0.5)
-      activesupport (>= 2.0.2)
-      rubigen (= 1.5.2)
+    fabrication (1.2.0)
     ffi (1.0.9)
     formtastic (2.0.2)
       rails (~> 3.0)
@@ -190,8 +188,6 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.11)
       json (~> 1.4)
-    rubigen (1.5.2)
-      activesupport (>= 2.2.2)
     ruby-debug-base19 (0.11.25)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
@@ -241,6 +237,7 @@ GEM
       raindrops (~> 0.6)
     warden (1.0.6)
       rack (>= 1.0)
+    web-socket-ruby (0.1.0)
     webrobots (0.0.10)
       nokogiri (>= 1.4.4)
     xpath (0.1.4)
@@ -264,7 +261,7 @@ DEPENDENCIES
   devise (>= 1.3.3)
   em-synchrony
   em-websocket
-  fabricator
+  fabrication
   formtastic
   god (~> 0.11.0)
   guard-livereload
@@ -286,3 +283,4 @@ DEPENDENCIES
   turn
   uglifier
   unicorn
+  web-socket-ruby

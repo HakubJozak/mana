@@ -64,5 +64,12 @@ module Mana
 
     config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
     config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/blueprint/stylesheets"
+
+
+
+    config.generators do |g|
+      g.fixture_replacement :fabrication, :dir => "test/fabricators"
+      # g.test_framework :mini_test, :spec => false
+    end
   end
 end

@@ -25,7 +25,7 @@ gem 'em-synchrony'
 #end
 
 group :test do
-  gem "fabricator"
+  gem "fabrication"
   gem "minitest"
   gem "ruby-prof"
   gem "capybara", ">= 0.4.1.2"
@@ -33,7 +33,7 @@ group :test do
   gem "database_cleaner", ">= 0.6.7"
   gem "launchy", ">= 0.4.0"
   gem 'turn', :require => false
-  gem 'minitest'
+  gem 'web-socket-ruby', :require => 'web_socket'
 end
 
 group :development do
