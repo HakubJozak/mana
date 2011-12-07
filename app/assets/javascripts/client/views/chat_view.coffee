@@ -14,7 +14,10 @@ class ChatView extends Backbone.View
 
     @$('.message-list').css('height','7em')
     @template = _.template($("#message-template").html())
+
     @model.bind 'add', @message_added
+    User.all.bind 'change', @user_changed
+
     Controls.current.bind 'chat:toggle', @toggle
     @$('.close-button').click @close
 
@@ -29,7 +32,24 @@ class ChatView extends Backbone.View
   close: =>
     @el.fadeOut()
 
+  user_changed: (user) =>
+    change = user.changedAttributes()
+
+    if change.connected?
+      state = if user.connected() then 'connected.' else 'disconnected.'
+      @prepend({ user: user, message: state })
+    else if change.lives?
+      @prepend({ user: user, message: "has #{user.lives()} lives now." })
+
+  card_changed: (card) =>
+    card.info 'changed'
+
   message_added: (message) =>
+    # TODO: remove that hack
+    message.message = message.text()
+    @prepend(message)
+
+  prepend: (message) =>
     li = $(@template(message))
     @$('.message-list').prepend(li)
 

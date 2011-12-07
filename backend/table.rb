@@ -39,9 +39,12 @@ class Table < EM::Channel
     player.ws = ws
 
     ws.onclose do
-      p = @players.delete(player_id)
-      unsubscribe(p.sid) if p
-      puts "Player #{p.name}(#{p.id}) disconnected"
+      if player = @players.delete(player_id)
+        unsubscribe(player.sid)
+        player.update_attribute( :connected, false)
+        push(model: player)
+        puts "Player #{p.name}(#{p.id}) disconnected"
+      end
     end
 
     ws.onmessage do |msg|
@@ -64,6 +67,8 @@ class Table < EM::Channel
       player.update_attribute( :has_started, true)
     end
 
+    player.update_attribute( :connected, true)
+    push(model: player)
   end
 
   # Required one of:

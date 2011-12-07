@@ -15,6 +15,7 @@ class User extends Backbone.Model
     @graveyard = new CardCollection( 'graveyard',  this)
     @hand = new Hand( 'hand',  this)
 
+  connected: => @get('connected')
   lives: => @get('lives')
   color: => @get('color')
   name: => @get('name')

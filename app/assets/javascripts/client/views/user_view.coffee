@@ -14,7 +14,6 @@ class UserView extends Backbone.View
     # TODO: call from elsewhere
     BattlefieldView.instance.create_user_part(@model)
 
-
     @el.droppable
       scope: 'decks'
       tolerance: 'touch'
@@ -56,9 +55,8 @@ class UserView extends Backbone.View
 
   lives_changed: =>
     lives = parseInt(@$('input.lives').val())
-    @model.set(lives: lives, { silent: true })
+    @model.set(lives: lives)
     @model.save()
-    Message.action "is changing #{@model.name()}'s live count to #{lives}."
     return false
 
   render: =>

@@ -1,6 +1,10 @@
+require 'timeout'
+
 # Very thin layer simulating web browser/client of the backend.
 #
 class Browser
+
+  include Timeout
 
   attr_accessor :cards, :players
 
@@ -13,19 +17,22 @@ class Browser
   end
 
   def receive(expected_class)
-    attrs = ActiveSupport::JSON.decode(@ws.receive)
-    clazz = attrs['clazz']
-    id = attrs['_id']
+    timeout(3) do
+      attrs = ActiveSupport::JSON.decode(@ws.receive)
+      clazz = attrs['clazz']
+      id = attrs['_id']
 
-    raise "Exptected #{expected_class} but received #{clazz}" unless clazz == expected_class
+      raise "Exptected #{expected_class} but received #{clazz}" unless clazz == expected_class
 
-    if clazz == 'Card'
-      @cards[id] = attrs
-    elsif clazz == 'Player'
-      @players[id] = attrs
+      if clazz == 'Card'
+        @cards[id] = attrs
+      elsif clazz == 'Player'
+        @players[id] = attrs
+      end
+
+
+      attrs
     end
-
-    attrs
   end
 
   def player
