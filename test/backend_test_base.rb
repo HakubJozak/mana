@@ -1,7 +1,6 @@
 class BackendTestBase < ActionDispatch::IntegrationTest
 
-  def setup
-    super
+  def start_backend
     env = { 'BUNDLE_GEMFILE' => '../Gemfile', 'RACK_ENV' => 'test' }
     cmd = 'bundle exec ruby ./backend.rb localhost 9999'
 
@@ -10,10 +9,13 @@ class BackendTestBase < ActionDispatch::IntegrationTest
   end
 
   def teardown
-    puts 'teardown called'
     super
-    Process.kill("INT", @backend)
-    Process.wait(@backend)
+
+    if @backend
+      puts 'Stopping backend'
+      Process.kill("INT", @backend)
+      Process.wait(@backend)
+    end
   end
 
 end

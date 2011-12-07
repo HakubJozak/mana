@@ -11,6 +11,7 @@ class BasicTest < BackendTestBase
   def setup
     super
     Capybara.default_driver = :webkit
+    start_backend
   end
 
   test 'create and enter game' do

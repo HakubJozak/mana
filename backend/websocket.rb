@@ -27,6 +27,7 @@ EM.run do
     end
 
     ws.onopen do
+      puts "Rececived connection request to #{ws.request['path']}"
       ws.request['path'] =~ %r{/games/(\S*)/players/(\S*)}
       game_id = $1
       player_id = $2
