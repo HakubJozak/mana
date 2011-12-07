@@ -24,6 +24,4 @@ class BackendTest < BackendTestBase
   def test_shuffle
   end
 
-  private
-
 end

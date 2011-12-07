@@ -34,7 +34,6 @@ class Socket
       add_to.add(card)
 
     if data.clazz == 'Action'
-      console.debug 'action arrived'
       action = new Action(data)
       action.run()
 
