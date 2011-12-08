@@ -8,9 +8,11 @@ class Player
 
   # TODO: squeeze into batch
   def replay_history
-    game.game_events(true).where('mid' => { '$gt' => @last_mid }).each do |event|
-      @queue.push(event)
-    end
+    game.players(true).each { |p| @queue.push(p) }
+    game.cards(true).each   { |c| @queue.push(c) }
+    # game.game_events(true).where('mid' => { '$gt' => @last_mid }).each do |event|
+    #   @queue.push(event)
+    # end
   end
 
   # Websocket connection with a browser controlling this player.
@@ -19,10 +21,16 @@ class Player
     @ws = ws
     @queue = EM::Queue.new
 
-    consumer = Proc.new do |event|
+    consumer = Proc.new do |data|
+      txt = if data.respond_to?(:raw)
+              data.raw
+            else
+              data.to_json
+            end
+
       # HACK: the force encoding should not be necessary
       # yet sometimes the data arrive ecoded in ASCII-8BIT.
-      @ws.send(event.raw.force_encoding('utf-8'))
+      @ws.send(txt.force_encoding('utf-8'))
       # process the next event by this block
       @queue.pop(&consumer)
     end
