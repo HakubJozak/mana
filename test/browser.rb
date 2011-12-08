@@ -36,6 +36,10 @@ class Browser
     end
   end
 
+  def send(hash)
+    @ws.send ActiveSupport::JSON.encode(hash)
+  end
+
   def wait_until_connected
     timeout 5 do
       while obj = self.receive(:any)
@@ -46,6 +50,8 @@ class Browser
         end
       end
     end
+
+    self
   end
 
   def player

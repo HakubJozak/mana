@@ -13,4 +13,25 @@ class GameEvent
     opts[:before]
   end
 
+  def apply
+    if model.is_a?(Hash)
+      case model['clazz']
+      when 'Card'
+        card = game.cards.find(model['_id'])
+        card.update_attributes(model)
+      when 'Player'
+        # player = game.players.find(model['_id'])
+        # player.update_attributes(model)
+      when 'Message'
+      else
+        puts '!!!!!!', model
+        puts model.class
+        puts model['clazz']
+        raise "Unknown event received #{}"
+      end
+    else
+      model.save!
+    end
+  end
+
 end

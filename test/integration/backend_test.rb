@@ -7,11 +7,11 @@ class BackendTest < BackendTestBase
 
   def setup
     super
-#    start_backend
+    start_backend
   end
 
   def test_connect
-    VCR.use_cassette('normal_deck') do
+#    VCR.use_cassette('normal_deck') do
       game = Fabricate(:game_with_players)
       player = game.players.first
 
@@ -24,11 +24,11 @@ class BackendTest < BackendTestBase
       5.times { @browser.receive('Card') }
       @browser.receive('Player')
       assert_equal true, @browser.player['connected']
-    end
+#    end
   end
 
   def test_reconnect
-    VCR.use_cassette('normal_deck') do
+#    VCR.use_cassette('normal_deck') do
       game = Fabricate(:game_with_players)
       player = game.players.first
 
@@ -37,10 +37,21 @@ class BackendTest < BackendTestBase
         browser.wait_until_connected
         browser.close
       end
-    end
+#    end
   end
 
   def test_shuffle
+#    VCR.use_cassette('normal_deck') do
+      game = Fabricate(:game_with_players)
+      player = game.players.first
+      browser = Browser.new(game.id, player.id).wait_until_connected
+      browser.send( clazz: 'Action',
+                    type: 'shuffle',
+                    collection_id: "library-#{player.id}")
+
+      # randomizer is seeded as Random.srand(42) in test environment
+      5.times { STDERR.puts browser.receive('Card') }
+#    end
   end
 
 end

@@ -60,7 +60,7 @@ class Table < EM::Channel
     player.replay_history
 
     # TODO: this should happen atomically!
-    # add player that just sit down
+    # add player that just sits down
     unless player.has_started
       push(model: player)
       player.cards(true).each { |c| push(model: c) }
@@ -83,34 +83,53 @@ class Table < EM::Channel
     raw = params[:raw] || ActiveSupport::JSON.encode(params[:model])
 
     # ----------- ISOLATE to method ----------
-    if model['clazz'] == 'Action' && model['type'] == 'create_token'
-      params = model
+    tuples = if model['clazz'] == 'Action'
+      if model['type'] == 'create_token'
+        params = model
 
-      stamp = CardStamp.find(params['card_stamp_id'])
-      player = @game.players.find(params['player_id'])
+        stamp = CardStamp.find(params['card_stamp_id'])
+        player = @game.players.find(params['player_id'])
 
-      card = stamp.imprint do |c|
-        c.player = player
-        c.game = @game
-        c.collection_id = "battlefield"
-        c.position = params['position']
-        c.order = params['order']
-        c.covered = false
-        c.save!
+        card = stamp.imprint do |c|
+          c.player = player
+          c.game = @game
+          c.collection_id = "battlefield"
+          c.position = params['position']
+          c.order = params['order']
+          c.covered = false
+          c.save!
+        end
+
+        [[ ActiveSupport::JSON.encode(card), card ]]
+      elsif model['type'] == 'shuffle'
+        c = @game.cards.first
+        r = ActiveSupport::JSON.encode(c)
+        [ [r,c],[r,c],[r,c],[r,c], [r,c] ]
       end
-
-      model = card
-      raw = ActiveSupport::JSON.encode(model)
+    else
+      [[ raw, model]]
     end
     # ------------------------------------------
 
+    # Save & apply event ------------------------------
     # TODO: DEFER that or is it done automatically by synchrony?
-    event = @game.game_events.create! do |e|
-      e.mid = (@mid += 1)
-      e.raw =  raw
-      e.model = model
-    end
+    tuples.each do |raw, model|
+      event = @game.game_events.create! do |e|
+        e.mid = (@mid += 1)
+        e.raw =  raw
+        e.model = model
+      end
 
-    super(event)
+      event.apply
+
+      super(event)
+    end
+    # ------------------------------------------
+
+    # Apply Event -----------------------------
+
+    # ------------------------------------------
+
+
   end
 end

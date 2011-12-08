@@ -35,7 +35,7 @@ group :test do
   gem 'turn', :require => false
   gem 'web-socket-ruby', :require => 'web_socket'
   gem 'webmock'
-  gem 'vcr'
+  gem 'vcr', :git => 'https://github.com/myronmarston/vcr.git'
 end
 
 group :development do

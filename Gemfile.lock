@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/myronmarston/vcr.git
+  revision: c74dde62b321cbe8573ca02466cb6259830bbe56
+  specs:
+    vcr (2.0.0.beta2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -236,7 +242,6 @@ GEM
       kgio (~> 2.4)
       rack
       raindrops (~> 0.6)
-    vcr (1.11.3)
     warden (1.0.6)
       rack (>= 1.0)
     web-socket-ruby (0.1.0)
@@ -288,6 +293,6 @@ DEPENDENCIES
   turn
   uglifier
   unicorn
-  vcr
+  vcr!
   web-socket-ruby
   webmock

@@ -18,6 +18,10 @@ else
   Bundler.require(:default, :backend)
 end
 
+if ENV['RACK_ENV'] == 'test'
+  Random.srand(42)
+end
+
 if ARGV.length == 2
   ADDRESS = ARGV[0]
   WEBSOCKET_PORT = ARGV[1]
