@@ -40,6 +40,20 @@ class BackendTest < BackendTestBase
 #    end
   end
 
+  def test_one_player_tapping
+    game = Fabricate(:game_with_players)
+    p1 = game.players.first
+    p2 = game.players.last
+
+
+    b1 = Browser.new(game.id, p1.id).wait_until_connected
+    card = b1.cards.values.first
+    b1.send(clazz: 'Card', _id: card['_id'], tapped: true)
+
+    b2 = Browser.new(game.id, p2.id).wait_until_connected
+    assert_equal true, b2.cards[card['_id']]['tapped']
+  end
+
   def test_shuffle
 #    VCR.use_cassette('normal_deck') do
       game = Fabricate(:game_with_players)

@@ -16,7 +16,7 @@ Fabricator(:deck) do
     1;Island
     1;Swamp
     1;Plains
-  %}
+  }
 end
 
 Fabricator(:player) do
