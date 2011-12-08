@@ -10,7 +10,13 @@ end
 
 Fabricator(:deck) do
   name 'Highlander'
-  mainboard '10;Forest'
+  mainboard %{
+    1;Forest
+    1;Mountain
+    1;Island
+    1;Swamp
+    1;Plains
+  %}
 end
 
 Fabricator(:player) do

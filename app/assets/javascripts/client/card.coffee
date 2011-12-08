@@ -53,9 +53,6 @@ class Card extends Backbone.Model
     attrs = {}
     attrs[property] = value
 
-    card = if @covered() then 'card' else @name()
-    Message.action "changed #{property} of '#{card}' to #{value}."
-
     @set(attrs)
     @save()
     value

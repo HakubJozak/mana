@@ -34,6 +34,8 @@ group :test do
   gem "launchy", ">= 0.4.0"
   gem 'turn', :require => false
   gem 'web-socket-ruby', :require => 'web_socket'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do

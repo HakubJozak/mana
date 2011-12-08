@@ -14,12 +14,14 @@ class ChatView extends Backbone.View
 
     @$('.message-list').css('height','7em')
     @template = _.template($("#message-template").html())
+    @anonymous = _.template($("#anonymous-message-template").html())
 
     @model.bind 'add', @message_added
     User.all.bind 'change', @user_changed
 
     Controls.current.bind 'chat:toggle', @toggle
     @$('.close-button').click @close
+
 
   toggle: =>
     @el.toggle()
@@ -42,7 +44,12 @@ class ChatView extends Backbone.View
       @prepend({ user: user, message: "has #{user.lives()} lives now." })
 
   card_changed: (card) =>
-    card.info 'changed'
+    # TODO
+    # user.changedAttributes()
+    # card = if @covered() then 'card' else @name()
+    # "changed #{property} of '#{card}' to #{value}."
+    # li = @anonymous(message: message)
+    # @$('.message-list').prepend(li)
 
   message_added: (message) =>
     # TODO: remove that hack

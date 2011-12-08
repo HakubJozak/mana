@@ -1,0 +1,1497 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://magiccards.info:80/query?q=!Forest&s=cname&v=card
+    body: !!null 
+    headers: !!null 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/0.8.53
+      date:
+      - Thu, 08 Dec 2011 09:46:27 GMT
+      content-type:
+      - text/html;charset=utf-8
+      connection:
+      - keep-alive
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - sameorigin
+      x-xss-protection:
+      - 1; mode=block
+      content-length:
+      - '22553'
+      access-control-allow-origin:
+      - ! '*'
+    body: ! "\n<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n
+      \  \"http://www.w3.org/TR/html4/loose.dtd\">\n\n<html lang=\"en\">\n<head>\n
+      \ <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n
+      \   <title>!Forest</title>\n    <style type=\"text/css\">\n    <!--\n    body
+      {background: #fafafa url(http://magiccards.info/images/bg.gif) repeat-x;margin:
+      1em 1.5em;}\n    body,td,th {font: 0.9em/1.2em Verdana;color: #444;}\n    th
+      {text-align: left; font-weight: bold;}\n    p {margin: 0.5em 0;}\n    a {color:
+      #4666BC;}\n    a:hover {color: #333;background-color: #ff0;}\n    a:active {text-decoration:
+      none;}\n    a:visited {color: #283C71;}\n    li.legal {color: #216728;}\n    li.restricted
+      {color: #B98420;}\n    li.banned {color: #672121;}\n    li.reserve {color: #4F55CC;}\n
+      \   p.ctext {background-color: #fff;padding: 4px;}\n    p.otext {background-color:
+      #fff;padding: 4px;}\n    div.oo {margin-left: 0em; padding: 0.5em 0 0 0; border:
+      1px solid #bbb; font-size: 75%;line-height: 100%;}\n    div.oo span {padding:
+      4px;}\n    div.oo p {margin: 0.5em 0 0 0;}\n    tr.odd {background-color: #e0e0e0;}\n
+      \   tr.even {background-color: #fafafa;}\n    #searchhelper td {line-height:
+      150%;vertical-align: middle;border-bottom: 1px dotted #999; padding: 5px 5px
+      5px 0;}\n    #searchhelper label {font-weight: bold;}\n    #searchhelper label.sl
+      {font-weight: normal;}\n    #searchhelper table td {border: none; padding: 0;
+      font-size: 1em;}\n    span.missing {color: #aaa;font-weight:bold;font-style:italic;}\n
+      \   dt {font-weight: bold; font-size: 110%; margin: 1em 0 0.5em 0;}\n    table#nav
+      {font-size: 90%;}\n    ul {padding-left: 2em;}\n    -->\n    </style>\n    <script
+      type=\"text/javascript\">\n    <!--\n    function preventFocus() { isTop = false;
+      }\n    function focusForm()    { if (isTop && document.f) { document.f.q.select();
+      } }\n    var isTop       = true;\n    window.onscroll = preventFocus;\n    window.onload
+      \  = focusForm;\n    // -->\n    </script>\n    <link rel=\"search\" type=\"application/opensearchdescription+xml\"
+      title=\"MagicCards.Info\" href=\"/opensearch.xml\">\n</head>\n<body>\n<table
+      width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" id=\"nav\">\n    <tr>\n        <td>\n
+      \           <img src=\"http://magiccards.info/images/en.gif\" alt=\"en\" width=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\">\n             <a href=\"/\">Home</a>,
+      \n             <a href=\"/random.html\">Random</a>, \n             <a href=\"/art.html\">Art
+      Game</a>, \n             <a href=\"/search.html\"><b>Advanced</b></a>, \n             <a
+      href=\"/extras.html\">Extras</a>, \n             <a href=\"/rules.html\">Rules</a>,
+      \n             <a href=\"/about.html\">About</a>. \n        </td>\n        <td
+      align=\"right\">\n            Sets: \n            <a href=\"/isd/en.html\">Innistrad</a>
+      <small><span style=\"color: red;\">(new)</span></small>, \n            <a href=\"/m12/en.html\">Magic
+      2012</a>, \n            <a href=\"/cmd/en.html\">Commander</a>\n            &gt;
+      <a href=\"/sitemap.html\"><b>All Sets</b></a>\n        </td>\n    </tr>\n</table>\n<hr>\n\n\n<form
+      method=\"GET\" action=\"/query\" style=\"font-size: 1.5em;\" name=\"f\">\n<table
+      border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" align=\"center\">\n
+      \ <tr>\n    <td nowrap=\"nowrap\">\n        <label for=\"q\">Query:</label>
+      \n        <input type=\"text\" name=\"q\" id=\"q\" size=\"30\" value=\"!Forest\"
+      style=\"font-size: 1em;\" tabindex=\"1\">\n    </td>\n    <td align=\"right\">\n
+      \     <select name=\"v\" onchange=\"this.form.submit();\">\n        <optgroup
+      label=\"Select Output Format:\">\n          <option value=\"card\" selected=\"selected\">View
+      as Cards with Scans</option>\n          <option value=\"olist\">View as a List
+      (Oracle)</option>\n          <option value=\"list\">View as Checklist</option>\n
+      \         <option value=\"scan\">View as Scans only</option>\n          <option
+      value=\"spoiler\">View as a Spoiler</option>\n        </optgroup>\n      </select>\n
+      \     <select name=\"s\" onchange=\"this.form.submit();\">\n        <optgroup
+      label=\"Select Sort Order:\">\n          <option value=\"cname\" selected=\"selected\">Sort
+      by Name &gt; Edition</option>\n          <option value=\"color\">Sort by Color
+      &gt; Name</option>\n          <option value=\"otype\">Sort by Type &gt; Name</option>\n
+      \         <option value=\"cmc\">Sort by Converted Mana Cost &gt; Name</option>\n
+      \         <option value=\"pow\">Sort by Power &gt; Name</option>\n          <option
+      value=\"tou\">Sort by Toughness &gt; Name</option>\n          <option value=\"random\">Sort
+      by Random</option>\n          <option value=\"edition\">Sort by Edition &gt;
+      Name</option>\n          <option value=\"issue\">Sort by Edition &gt; Collector's
+      Number</option>\n        </optgroup>\n      </select>\n      <input type=\"submit\"
+      value=\"Search\">\n    </td>\n  </tr>\n</table>\n</form>\n\n\n\n\n\n\n\n<hr
+      />\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n<tr>\n<td
+      align=\"left\" width=\"35%\">\n\n&larr; <a href=\"/isd/en/261.html\">Mountain</a>\n\n</td>\n<td
+      align=\"center\" width=\"30%\">\n<a href=\"/isd/en.html\">Innistrad</a>\n</td>\n<td
+      align=\"right\" width=\"35%\">\n\n<a href=\"/isd/en/263.html\">Forest</a> &rarr;\n\n</td>\n</tr>\n</table>\n<hr
+      />\n\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"
+      align=\"center\" style=\"margin: 0 0 0.5em 0;\">\n<tr>\n<td width=\"312\" valign=\"top\">\n<script
+      type=\"text/javascript\" src=\"http://partner.tcgplayer.com/syn/synhighlow.ashx?pk=MAGCINFO&amp;pi=isd-262\"></script>\n<img
+      src=\"http://magiccards.info/scans/en/isd/262.jpg\" \nalt=\"Forest\" width=\"312\"
+      height=\"445\" style=\"border: 1px solid black;\">\n</td>\n<td valign=\"top\"
+      style=\"padding: 0.5em;\" width=\"70%\">\n<span style=\"font-size: 1.5em;\">\n<a
+      href=\"/isd/en/262.html\">Forest</a>\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\"\nwidth=\"16\" height=\"11\" style=\"vertical-align:-10%;\">\n</span>\n\n\n<p>Basic
+      Land - Forest</p>\n<p class=\"ctext\"><b>({T}: Add {G} to your mana pool.)</b></p>\n\n\n\n<p><i></i></p>\n<p>Illus.
+      James Paick</p>\n<p><b>Gatherer Card Rulings<a href=\"http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=245247\">?</a>,
+      Legality<a href=\"http://www.wizards.com/Magic/TCG/Resources.aspx?x=judge/resources/banned\">?</a></b></p>\n\n<ul>\n<li
+      class=\"legal\">Legal in Vintage (Type 1)</li><li class=\"legal\">Legal in Legacy
+      (Type 1.5)</li><li class=\"legal\">Legal in Extended (Type 1.X)</li><li class=\"legal\">Legal
+      in Standard (Type 2)</li><!--<li class=\"legal\">Legal in Block Constructed</li>--><li
+      class=\"legal\">Legal in Classic (MTGO)</li><li class=\"legal\">Legal in Commander</li><li
+      class=\"legal\">Legal in Modern</li>\n</ul>\n</td>\n<td valign=\"top\" style=\"padding:
+      0 0.5em;\" width=\"30%\" nowrap=\"nowrap\">\n<small>\n\n\n\n\n<u><b>Printings:</b></u><br>\n\n<b>#262
+      (James Paick)</b><br>\n\n<a href=\"/isd/en/263.html\">#263</a> (Jung Park)<br>\n\n<a
+      href=\"/isd/en/264.html\">#264</a> (Eytan Zana)<br>\n\n\n<br><u><b>Editions:</b></u><br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<b>Innistrad (Land)</b><br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ddh/en/38.html\">Duel
+      Decks: Ajani vs. Nicol Bolas</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/m12/en/246.html\">Magic 2012</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/cmd/en/315.html\">Commander</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ddg/en/43.html\">Duel Decks: Knights vs. Dragons</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/nph/en/174.html\">New
+      Phyrexia</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mbs/en/154.html\">Mirrodin Besieged</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/som/en/246.html\">Scars of Mirrodin</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/dpa/en/110.html\">Duels of the Planeswalkers</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/m11/en/246.html\">Magic
+      2011</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/arc/en/148.html\">Archenemy</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/roe/en/245.html\">Rise
+      of the Eldrazi</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/pvc/en/70.html\">Duel Decks: Phyrexia vs. The Coalition</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/pds/en/41.html\">Premium
+      Deck Series: Slivers</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/gvl/en/28.html\">Duel Decks: Garruk vs. Liliana</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/zen/en/246.html\">Zendikar</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/pch/en/165.html\">Planechase</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/m10/en/246.html\">Magic
+      2010</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ala/en/246.html\">Shards
+      of Alara</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/shm/en/298.html\">Shadowmoor</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/evg/en/28.html\">Duel Decks: Elves vs. Goblins</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/lw/en/298.html\">Lorwyn</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/10e/en/380.html\">Tenth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ts/en/298.html\">Time Spiral</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/cstd/en/60.html\">Coldsnap Theme Decks</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/rav/en/303.html\">Ravnica:
+      City of Guilds</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/9e/en/347.html\">Ninth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/uh/en/140.html\">Unhinged</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/chk/en/303.html\">Champions of Kamigawa</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/mi/en/303.html\">Mirrodin</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/8e/en/347.html\">Eighth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/on/en/347.html\">Onslaught</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/dm/en/48.html\">Deckmasters</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/od/en/347.html\">Odyssey</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/7e/en/328.html\">Seventh Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/arena/en/5.html\">Arena League</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/in/en/347.html\">Invasion</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/bd/en/88.html\">Beatdown Box Set</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/euro/en/1.html\">European Land Program</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/br/en/101.html\">Battle
+      Royale Box Set</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mm/en/347.html\">Mercadian Masques</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/st/en/170.html\">Starter 1999</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/guru/en/1.html\">Guru</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/p3k/en/178.html\">Portal Three Kingdoms</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/6e/en/347.html\">Classic
+      Sixth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/at/en/84.html\">Anthologies</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/us/en/347.html\">Urza's Saga</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/apac/en/1.html\">Asia Pacific Land Program</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ug/en/88.html\">Unglued</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/po2/en/151.html\">Portal
+      Second Age</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/tp/en/308.html\">Tempest</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/po/en/203.html\">Portal</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/5e/en/417.html\">Fifth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mr/en/292.html\">Mirage</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/itp/en/18.html\">Introductory Two-Player Set</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ia/en/328.html\">Ice
+      Age</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/4e/en/175.html\">Fourth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/rv/en/284.html\">Revised Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/un/en/280.html\">Unlimited Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/be/en/280.html\">Limited Edition Beta</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/al/en/279.html\">Limited
+      Edition Alpha</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/me3/en/228.html\">MTGO Masters Edition III</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/med/en/193.html\">MTGO
+      Masters Edition</a> (Land)<br>\n\n\n<br><u><b>Languages:</b></u><br>\n\n<img
+      src=\"http://magiccards.info/images/de.gif\" alt=\"German\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/isd/de/262.html\">Wald</a><br>\n\n<img
+      src=\"http://magiccards.info/images/fr.gif\" alt=\"French\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/isd/fr/262.html\">Forêt</a><br>\n\n<img
+      src=\"http://magiccards.info/images/it.gif\" alt=\"Italian\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/it/262.html\">Foresta</a><br>\n\n<img
+      src=\"http://magiccards.info/images/es.gif\" alt=\"Spanish\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/es/262.html\">Bosque</a><br>\n\n<img
+      src=\"http://magiccards.info/images/pt.gif\" alt=\"Portuguese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/pt/262.html\">Floresta</a><br>\n\n<img
+      src=\"http://magiccards.info/images/jp.gif\" alt=\"Japanese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/jp/262.html\">森</a><br>\n\n<img
+      src=\"http://magiccards.info/images/cn.gif\" alt=\"Simplified Chinese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/cn/262.html\">树林</a><br>\n\n<img
+      src=\"http://magiccards.info/images/ru.gif\" alt=\"Russian\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/ru/262.html\">Лес</a><br>\n\n<img
+      src=\"http://magiccards.info/images/tw.gif\" alt=\"Traditional Chinese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/tw/262.html\">樹林</a><br>\n\n<img
+      src=\"http://magiccards.info/images/ko.gif\" alt=\"Korean\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/9e/ko/347.html\">숲</a><br>\n\n\n<br><br>\n<a
+      href=\"/query?q=%2B%2Bo%21%22Forest%22&amp;v=olist\">all prints in all languages</a>\n</small>\n</td>\n</tr>\n</table>\n\n<hr
+      />\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"95%\">\n<tr>\n<td
+      valign=\"top\" width=\"50%\">\n<b>Rules Questions / Links</b><br>\n<a href=\"http://magic.tcgplayer.com/db/magic_single_card.asp?cn=Forest&amp;partner=MAGCINFO\">View
+      All Prices for Forest</a><br>\n<a href=\"http://magic.tcgplayer.com/db/deck_search_result.asp?CardName=Forest&amp;partner=MAGCINFO\">View
+      Decks with Forest</a><br>\n<a href=\"http://crystalkeep.com/cgi-bin/magicsearch.cgi?cardName=Forest\">Crystal
+      Keep Rulings Summaries</a><br>\n<a href=\"http://www.google.com/search?hl=en&amp;q=%22Forest%22+site%3Amtgsalvation.com+inurl%3Acranial\">Cranial
+      Insertion (MTG Salvation)</a><br>\n\n<br>\n<b>MOTL Price Lists</b><br>\n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic&amp;field=0&amp;operator=re&amp;target=Forest\">Non-Foil</a>
+      &middot; \n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic-foils&amp;field=0&amp;operator=re&amp;target=Forest\">Foil</a>
+      &middot; \n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic-online&amp;field=0&amp;operator=re&amp;target=Forest\">MTGO</a><br><br>\n<b>Print
+      Proxies:</b><br><a href=\"/proxy?add=scans/en/isd/262&amp;n=1&amp;back=isd/en/262\">[
+      +1 ]</a> <a href=\"/proxy?add=scans/en/isd/262&amp;n=2&amp;back=isd/en/262\">[
+      +2 ]</a> <a href=\"/proxy?add=scans/en/isd/262&amp;n=3&amp;back=isd/en/262\">[
+      +3 ]</a> <a href=\"/proxy?add=scans/en/isd/262&amp;n=4&amp;back=isd/en/262\">[
+      +4 ]</a> </b> &middot; <a href=\"/proxy?back=isd/en/262\">View</a> &middot;
+      <a href=\"/proxy?clear=true&amp;back=isd/en/262\">Clear</a><br><br>\n\n<b>HTML
+      link to this card</b>:<br><input size=\"60\" value=\"&lt;a href=&quot;http://magiccards.info/isd/en/262.html&quot;&gt;Forest&lt;/a&gt;\"
+      onclick=\"this.select()\"><br>\n<b>BBCode link to this card</b>:<br><input size=\"60\"
+      value=\"[url=http://magiccards.info/isd/en/262.html]Forest[/url]\" onclick=\"this.select()\">\n</td>\n<td
+      valign=\"top\" width=\"50%\">\n<script type=\"text/javascript\" src=\"http://partner.tcgplayer.com/syn/Synidcate.ashx?pk=MAGCINFO&amp;pi=isd-262\"></script>\n</td>\n</tr>\n</table>\n\n\n\n<br>\n<small
+      style=\"color: #aaa;font-size: 0.6em;\">\n  The information presented on this
+      site about \n  <b>Magic: The Gathering</b>, both literal and graphical, \n  is
+      copyrighted by Wizards of the Coast.<br>\n  This website is not produced, endorsed,
+      supported, \n  or affiliated with Wizards of the Coast.</small>\n  <script type=\"text/javascript\">\n
+      \   var _gaq = _gaq || [];\n    _gaq.push(['_setAccount', 'UA-74661-5']);\n
+      \   _gaq.push(['_setDomainName', '.magiccards.info'])\n    _gaq.push(['_trackPageview']);\n
+      \   (function() {\n      var ga = document.createElement('script'); ga.type
+      = 'text/javascript'; ga.async = true;\n      ga.src = ('https:' == document.location.protocol
+      ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ga);\n    })();\n  </script>\n</body>\n</html>\n"
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://magiccards.info:80/query?q=!Mountain&s=cname&v=card
+    body: !!null 
+    headers: !!null 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/0.8.53
+      date:
+      - Thu, 08 Dec 2011 09:46:28 GMT
+      content-type:
+      - text/html;charset=utf-8
+      connection:
+      - keep-alive
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - sameorigin
+      x-xss-protection:
+      - 1; mode=block
+      content-length:
+      - '22981'
+      access-control-allow-origin:
+      - ! '*'
+    body: ! "\n<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n
+      \  \"http://www.w3.org/TR/html4/loose.dtd\">\n\n<html lang=\"en\">\n<head>\n
+      \ <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n
+      \   <title>!Mountain</title>\n    <style type=\"text/css\">\n    <!--\n    body
+      {background: #fafafa url(http://magiccards.info/images/bg.gif) repeat-x;margin:
+      1em 1.5em;}\n    body,td,th {font: 0.9em/1.2em Verdana;color: #444;}\n    th
+      {text-align: left; font-weight: bold;}\n    p {margin: 0.5em 0;}\n    a {color:
+      #4666BC;}\n    a:hover {color: #333;background-color: #ff0;}\n    a:active {text-decoration:
+      none;}\n    a:visited {color: #283C71;}\n    li.legal {color: #216728;}\n    li.restricted
+      {color: #B98420;}\n    li.banned {color: #672121;}\n    li.reserve {color: #4F55CC;}\n
+      \   p.ctext {background-color: #fff;padding: 4px;}\n    p.otext {background-color:
+      #fff;padding: 4px;}\n    div.oo {margin-left: 0em; padding: 0.5em 0 0 0; border:
+      1px solid #bbb; font-size: 75%;line-height: 100%;}\n    div.oo span {padding:
+      4px;}\n    div.oo p {margin: 0.5em 0 0 0;}\n    tr.odd {background-color: #e0e0e0;}\n
+      \   tr.even {background-color: #fafafa;}\n    #searchhelper td {line-height:
+      150%;vertical-align: middle;border-bottom: 1px dotted #999; padding: 5px 5px
+      5px 0;}\n    #searchhelper label {font-weight: bold;}\n    #searchhelper label.sl
+      {font-weight: normal;}\n    #searchhelper table td {border: none; padding: 0;
+      font-size: 1em;}\n    span.missing {color: #aaa;font-weight:bold;font-style:italic;}\n
+      \   dt {font-weight: bold; font-size: 110%; margin: 1em 0 0.5em 0;}\n    table#nav
+      {font-size: 90%;}\n    ul {padding-left: 2em;}\n    -->\n    </style>\n    <script
+      type=\"text/javascript\">\n    <!--\n    function preventFocus() { isTop = false;
+      }\n    function focusForm()    { if (isTop && document.f) { document.f.q.select();
+      } }\n    var isTop       = true;\n    window.onscroll = preventFocus;\n    window.onload
+      \  = focusForm;\n    // -->\n    </script>\n    <link rel=\"search\" type=\"application/opensearchdescription+xml\"
+      title=\"MagicCards.Info\" href=\"/opensearch.xml\">\n</head>\n<body>\n<table
+      width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" id=\"nav\">\n    <tr>\n        <td>\n
+      \           <img src=\"http://magiccards.info/images/en.gif\" alt=\"en\" width=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\">\n             <a href=\"/\">Home</a>,
+      \n             <a href=\"/random.html\">Random</a>, \n             <a href=\"/art.html\">Art
+      Game</a>, \n             <a href=\"/search.html\"><b>Advanced</b></a>, \n             <a
+      href=\"/extras.html\">Extras</a>, \n             <a href=\"/rules.html\">Rules</a>,
+      \n             <a href=\"/about.html\">About</a>. \n        </td>\n        <td
+      align=\"right\">\n            Sets: \n            <a href=\"/isd/en.html\">Innistrad</a>
+      <small><span style=\"color: red;\">(new)</span></small>, \n            <a href=\"/m12/en.html\">Magic
+      2012</a>, \n            <a href=\"/cmd/en.html\">Commander</a>\n            &gt;
+      <a href=\"/sitemap.html\"><b>All Sets</b></a>\n        </td>\n    </tr>\n</table>\n<hr>\n\n\n<form
+      method=\"GET\" action=\"/query\" style=\"font-size: 1.5em;\" name=\"f\">\n<table
+      border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" align=\"center\">\n
+      \ <tr>\n    <td nowrap=\"nowrap\">\n        <label for=\"q\">Query:</label>
+      \n        <input type=\"text\" name=\"q\" id=\"q\" size=\"30\" value=\"!Mountain\"
+      style=\"font-size: 1em;\" tabindex=\"1\">\n    </td>\n    <td align=\"right\">\n
+      \     <select name=\"v\" onchange=\"this.form.submit();\">\n        <optgroup
+      label=\"Select Output Format:\">\n          <option value=\"card\" selected=\"selected\">View
+      as Cards with Scans</option>\n          <option value=\"olist\">View as a List
+      (Oracle)</option>\n          <option value=\"list\">View as Checklist</option>\n
+      \         <option value=\"scan\">View as Scans only</option>\n          <option
+      value=\"spoiler\">View as a Spoiler</option>\n        </optgroup>\n      </select>\n
+      \     <select name=\"s\" onchange=\"this.form.submit();\">\n        <optgroup
+      label=\"Select Sort Order:\">\n          <option value=\"cname\" selected=\"selected\">Sort
+      by Name &gt; Edition</option>\n          <option value=\"color\">Sort by Color
+      &gt; Name</option>\n          <option value=\"otype\">Sort by Type &gt; Name</option>\n
+      \         <option value=\"cmc\">Sort by Converted Mana Cost &gt; Name</option>\n
+      \         <option value=\"pow\">Sort by Power &gt; Name</option>\n          <option
+      value=\"tou\">Sort by Toughness &gt; Name</option>\n          <option value=\"random\">Sort
+      by Random</option>\n          <option value=\"edition\">Sort by Edition &gt;
+      Name</option>\n          <option value=\"issue\">Sort by Edition &gt; Collector's
+      Number</option>\n        </optgroup>\n      </select>\n      <input type=\"submit\"
+      value=\"Search\">\n    </td>\n  </tr>\n</table>\n</form>\n\n\n\n\n\n\n\n<hr
+      />\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n<tr>\n<td
+      align=\"left\" width=\"35%\">\n\n&larr; <a href=\"/isd/en/258.html\">Swamp</a>\n\n</td>\n<td
+      align=\"center\" width=\"30%\">\n<a href=\"/isd/en.html\">Innistrad</a>\n</td>\n<td
+      align=\"right\" width=\"35%\">\n\n<a href=\"/isd/en/260.html\">Mountain</a>
+      &rarr;\n\n</td>\n</tr>\n</table>\n<hr />\n\n<table border=\"0\" cellpadding=\"0\"
+      cellspacing=\"0\" width=\"100%\" align=\"center\" style=\"margin: 0 0 0.5em
+      0;\">\n<tr>\n<td width=\"312\" valign=\"top\">\n<script type=\"text/javascript\"
+      src=\"http://partner.tcgplayer.com/syn/synhighlow.ashx?pk=MAGCINFO&amp;pi=isd-259\"></script>\n<img
+      src=\"http://magiccards.info/scans/en/isd/259.jpg\" \nalt=\"Mountain\" width=\"312\"
+      height=\"445\" style=\"border: 1px solid black;\">\n</td>\n<td valign=\"top\"
+      style=\"padding: 0.5em;\" width=\"70%\">\n<span style=\"font-size: 1.5em;\">\n<a
+      href=\"/isd/en/259.html\">Mountain</a>\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\"\nwidth=\"16\" height=\"11\" style=\"vertical-align:-10%;\">\n</span>\n\n\n<p>Basic
+      Land - Mountain</p>\n<p class=\"ctext\"><b>({T}: Add {R} to your mana pool.)</b></p>\n\n\n\n<p><i></i></p>\n<p>Illus.
+      James Paick</p>\n<p><b>Gatherer Card Rulings<a href=\"http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=245242\">?</a>,
+      Legality<a href=\"http://www.wizards.com/Magic/TCG/Resources.aspx?x=judge/resources/banned\">?</a></b></p>\n\n<ul>\n<li
+      class=\"legal\">Legal in Vintage (Type 1)</li><li class=\"legal\">Legal in Legacy
+      (Type 1.5)</li><li class=\"legal\">Legal in Extended (Type 1.X)</li><li class=\"legal\">Legal
+      in Standard (Type 2)</li><!--<li class=\"legal\">Legal in Block Constructed</li>--><li
+      class=\"legal\">Legal in Classic (MTGO)</li><li class=\"legal\">Legal in Commander</li><li
+      class=\"legal\">Legal in Modern</li>\n</ul>\n</td>\n<td valign=\"top\" style=\"padding:
+      0 0.5em;\" width=\"30%\" nowrap=\"nowrap\">\n<small>\n\n\n\n\n<u><b>Printings:</b></u><br>\n\n<b>#259
+      (James Paick)</b><br>\n\n<a href=\"/isd/en/260.html\">#260</a> (Adam Paquette)<br>\n\n<a
+      href=\"/isd/en/261.html\">#261</a> (Eytan Zana)<br>\n\n\n<br><u><b>Editions:</b></u><br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<b>Innistrad (Land)</b><br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ddh/en/41.html\">Duel
+      Decks: Ajani vs. Nicol Bolas</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/m12/en/242.html\">Magic 2012</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/cmd/en/311.html\">Commander</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ddg/en/78.html\">Duel Decks: Knights vs. Dragons</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/nph/en/172.html\">New
+      Phyrexia</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mbs/en/152.html\">Mirrodin Besieged</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/pd2/en/31.html\">Premium Deck Series: Fire and Lightning</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/som/en/242.html\">Scars
+      of Mirrodin</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/dpa/en/106.html\">Duels of the Planeswalkers</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/m11/en/242.html\">Magic
+      2011</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/arc/en/145.html\">Archenemy</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/roe/en/241.html\">Rise
+      of the Eldrazi</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/pvc/en/69.html\">Duel Decks: Phyrexia vs. The Coalition</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/pds/en/40.html\">Premium
+      Deck Series: Slivers</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/zen/en/242.html\">Zendikar</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/pch/en/156.html\">Planechase</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/m10/en/242.html\">Magic 2010</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/jvc/en/59.html\">Duel Decks: Jace vs. Chandra</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ala/en/242.html\">Shards
+      of Alara</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/shm/en/294.html\">Shadowmoor</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/evg/en/59.html\">Duel Decks: Elves vs. Goblins</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/lw/en/294.html\">Lorwyn</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/10e/en/376.html\">Tenth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ts/en/294.html\">Time Spiral</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/cstd/en/57.html\">Coldsnap Theme Decks</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/rav/en/299.html\">Ravnica:
+      City of Guilds</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/9e/en/343.html\">Ninth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/uh/en/139.html\">Unhinged</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/chk/en/299.html\">Champions of Kamigawa</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/mi/en/299.html\">Mirrodin</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/8e/en/343.html\">Eighth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/on/en/343.html\">Onslaught</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/dm/en/45.html\">Deckmasters</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/od/en/343.html\">Odyssey</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/7e/en/337.html\">Seventh Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/arena/en/4.html\">Arena League</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/in/en/343.html\">Invasion</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/bd/en/85.html\">Beatdown Box Set</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/euro/en/3.html\">European Land Program</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/br/en/115.html\">Battle
+      Royale Box Set</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mm/en/343.html\">Mercadian Masques</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/st/en/166.html\">Starter 1999</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/guru/en/3.html\">Guru</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/p3k/en/175.html\">Portal Three Kingdoms</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/6e/en/343.html\">Classic
+      Sixth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/at/en/40.html\">Anthologies</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/us/en/343.html\">Urza's Saga</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/apac/en/3.html\">Asia Pacific Land Program</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ug/en/87.html\">Unglued</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/po2/en/157.html\">Portal
+      Second Age</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/tp/en/319.html\">Tempest</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/po/en/211.html\">Portal</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/5e/en/430.html\">Fifth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mr/en/301.html\">Mirage</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/itp/en/34.html\">Introductory Two-Player Set</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ia/en/340.html\">Ice
+      Age</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/4e/en/182.html\">Fourth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/rv/en/290.html\">Revised Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/un/en/286.html\">Unlimited Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/an/en/91.html\">Arabian Nights</a> (Uncommon (C1))<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/be/en/286.html\">Limited
+      Edition Beta</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/al/en/283.html\">Limited Edition Alpha</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/me3/en/225.html\">MTGO
+      Masters Edition III</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/med/en/190.html\">MTGO Masters Edition</a> (Land)<br>\n\n\n<br><u><b>Languages:</b></u><br>\n\n<img
+      src=\"http://magiccards.info/images/de.gif\" alt=\"German\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/isd/de/259.html\">Gebirge</a><br>\n\n<img
+      src=\"http://magiccards.info/images/fr.gif\" alt=\"French\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/isd/fr/259.html\">Montagne</a><br>\n\n<img
+      src=\"http://magiccards.info/images/it.gif\" alt=\"Italian\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/it/259.html\">Montagna</a><br>\n\n<img
+      src=\"http://magiccards.info/images/es.gif\" alt=\"Spanish\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/es/259.html\">Montaña</a><br>\n\n<img
+      src=\"http://magiccards.info/images/pt.gif\" alt=\"Portuguese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/pt/259.html\">Montanha</a><br>\n\n<img
+      src=\"http://magiccards.info/images/jp.gif\" alt=\"Japanese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/jp/259.html\">山</a><br>\n\n<img
+      src=\"http://magiccards.info/images/cn.gif\" alt=\"Simplified Chinese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/cn/259.html\">山脉</a><br>\n\n<img
+      src=\"http://magiccards.info/images/ru.gif\" alt=\"Russian\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/ru/259.html\">Гора</a><br>\n\n<img
+      src=\"http://magiccards.info/images/tw.gif\" alt=\"Traditional Chinese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/tw/259.html\">山脈</a><br>\n\n<img
+      src=\"http://magiccards.info/images/ko.gif\" alt=\"Korean\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/9e/ko/343.html\">산</a><br>\n\n\n<br><br>\n<a
+      href=\"/query?q=%2B%2Bo%21%22Mountain%22&amp;v=olist\">all prints in all languages</a>\n</small>\n</td>\n</tr>\n</table>\n\n<hr
+      />\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"95%\">\n<tr>\n<td
+      valign=\"top\" width=\"50%\">\n<b>Rules Questions / Links</b><br>\n<a href=\"http://magic.tcgplayer.com/db/magic_single_card.asp?cn=Mountain&amp;partner=MAGCINFO\">View
+      All Prices for Mountain</a><br>\n<a href=\"http://magic.tcgplayer.com/db/deck_search_result.asp?CardName=Mountain&amp;partner=MAGCINFO\">View
+      Decks with Mountain</a><br>\n<a href=\"http://crystalkeep.com/cgi-bin/magicsearch.cgi?cardName=Mountain\">Crystal
+      Keep Rulings Summaries</a><br>\n<a href=\"http://www.google.com/search?hl=en&amp;q=%22Mountain%22+site%3Amtgsalvation.com+inurl%3Acranial\">Cranial
+      Insertion (MTG Salvation)</a><br>\n\n<br>\n<b>MOTL Price Lists</b><br>\n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic&amp;field=0&amp;operator=re&amp;target=Mountain\">Non-Foil</a>
+      &middot; \n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic-foils&amp;field=0&amp;operator=re&amp;target=Mountain\">Foil</a>
+      &middot; \n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic-online&amp;field=0&amp;operator=re&amp;target=Mountain\">MTGO</a><br><br>\n<b>Print
+      Proxies:</b><br><a href=\"/proxy?add=scans/en/isd/259&amp;n=1&amp;back=isd/en/259\">[
+      +1 ]</a> <a href=\"/proxy?add=scans/en/isd/259&amp;n=2&amp;back=isd/en/259\">[
+      +2 ]</a> <a href=\"/proxy?add=scans/en/isd/259&amp;n=3&amp;back=isd/en/259\">[
+      +3 ]</a> <a href=\"/proxy?add=scans/en/isd/259&amp;n=4&amp;back=isd/en/259\">[
+      +4 ]</a> </b> &middot; <a href=\"/proxy?back=isd/en/259\">View</a> &middot;
+      <a href=\"/proxy?clear=true&amp;back=isd/en/259\">Clear</a><br><br>\n\n<b>HTML
+      link to this card</b>:<br><input size=\"60\" value=\"&lt;a href=&quot;http://magiccards.info/isd/en/259.html&quot;&gt;Mountain&lt;/a&gt;\"
+      onclick=\"this.select()\"><br>\n<b>BBCode link to this card</b>:<br><input size=\"60\"
+      value=\"[url=http://magiccards.info/isd/en/259.html]Mountain[/url]\" onclick=\"this.select()\">\n</td>\n<td
+      valign=\"top\" width=\"50%\">\n<script type=\"text/javascript\" src=\"http://partner.tcgplayer.com/syn/Synidcate.ashx?pk=MAGCINFO&amp;pi=isd-259\"></script>\n</td>\n</tr>\n</table>\n\n\n\n<br>\n<small
+      style=\"color: #aaa;font-size: 0.6em;\">\n  The information presented on this
+      site about \n  <b>Magic: The Gathering</b>, both literal and graphical, \n  is
+      copyrighted by Wizards of the Coast.<br>\n  This website is not produced, endorsed,
+      supported, \n  or affiliated with Wizards of the Coast.</small>\n  <script type=\"text/javascript\">\n
+      \   var _gaq = _gaq || [];\n    _gaq.push(['_setAccount', 'UA-74661-5']);\n
+      \   _gaq.push(['_setDomainName', '.magiccards.info'])\n    _gaq.push(['_trackPageview']);\n
+      \   (function() {\n      var ga = document.createElement('script'); ga.type
+      = 'text/javascript'; ga.async = true;\n      ga.src = ('https:' == document.location.protocol
+      ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ga);\n    })();\n  </script>\n</body>\n</html>\n"
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://magiccards.info:80/query?q=!Island&s=cname&v=card
+    body: !!null 
+    headers: !!null 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/0.8.53
+      date:
+      - Thu, 08 Dec 2011 09:46:28 GMT
+      content-type:
+      - text/html;charset=utf-8
+      connection:
+      - keep-alive
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - sameorigin
+      x-xss-protection:
+      - 1; mode=block
+      content-length:
+      - '22014'
+      access-control-allow-origin:
+      - ! '*'
+    body: ! "\n<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n
+      \  \"http://www.w3.org/TR/html4/loose.dtd\">\n\n<html lang=\"en\">\n<head>\n
+      \ <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n
+      \   <title>!Island</title>\n    <style type=\"text/css\">\n    <!--\n    body
+      {background: #fafafa url(http://magiccards.info/images/bg.gif) repeat-x;margin:
+      1em 1.5em;}\n    body,td,th {font: 0.9em/1.2em Verdana;color: #444;}\n    th
+      {text-align: left; font-weight: bold;}\n    p {margin: 0.5em 0;}\n    a {color:
+      #4666BC;}\n    a:hover {color: #333;background-color: #ff0;}\n    a:active {text-decoration:
+      none;}\n    a:visited {color: #283C71;}\n    li.legal {color: #216728;}\n    li.restricted
+      {color: #B98420;}\n    li.banned {color: #672121;}\n    li.reserve {color: #4F55CC;}\n
+      \   p.ctext {background-color: #fff;padding: 4px;}\n    p.otext {background-color:
+      #fff;padding: 4px;}\n    div.oo {margin-left: 0em; padding: 0.5em 0 0 0; border:
+      1px solid #bbb; font-size: 75%;line-height: 100%;}\n    div.oo span {padding:
+      4px;}\n    div.oo p {margin: 0.5em 0 0 0;}\n    tr.odd {background-color: #e0e0e0;}\n
+      \   tr.even {background-color: #fafafa;}\n    #searchhelper td {line-height:
+      150%;vertical-align: middle;border-bottom: 1px dotted #999; padding: 5px 5px
+      5px 0;}\n    #searchhelper label {font-weight: bold;}\n    #searchhelper label.sl
+      {font-weight: normal;}\n    #searchhelper table td {border: none; padding: 0;
+      font-size: 1em;}\n    span.missing {color: #aaa;font-weight:bold;font-style:italic;}\n
+      \   dt {font-weight: bold; font-size: 110%; margin: 1em 0 0.5em 0;}\n    table#nav
+      {font-size: 90%;}\n    ul {padding-left: 2em;}\n    -->\n    </style>\n    <script
+      type=\"text/javascript\">\n    <!--\n    function preventFocus() { isTop = false;
+      }\n    function focusForm()    { if (isTop && document.f) { document.f.q.select();
+      } }\n    var isTop       = true;\n    window.onscroll = preventFocus;\n    window.onload
+      \  = focusForm;\n    // -->\n    </script>\n    <link rel=\"search\" type=\"application/opensearchdescription+xml\"
+      title=\"MagicCards.Info\" href=\"/opensearch.xml\">\n</head>\n<body>\n<table
+      width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" id=\"nav\">\n    <tr>\n        <td>\n
+      \           <img src=\"http://magiccards.info/images/en.gif\" alt=\"en\" width=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\">\n             <a href=\"/\">Home</a>,
+      \n             <a href=\"/random.html\">Random</a>, \n             <a href=\"/art.html\">Art
+      Game</a>, \n             <a href=\"/search.html\"><b>Advanced</b></a>, \n             <a
+      href=\"/extras.html\">Extras</a>, \n             <a href=\"/rules.html\">Rules</a>,
+      \n             <a href=\"/about.html\">About</a>. \n        </td>\n        <td
+      align=\"right\">\n            Sets: \n            <a href=\"/isd/en.html\">Innistrad</a>
+      <small><span style=\"color: red;\">(new)</span></small>, \n            <a href=\"/m12/en.html\">Magic
+      2012</a>, \n            <a href=\"/cmd/en.html\">Commander</a>\n            &gt;
+      <a href=\"/sitemap.html\"><b>All Sets</b></a>\n        </td>\n    </tr>\n</table>\n<hr>\n\n\n<form
+      method=\"GET\" action=\"/query\" style=\"font-size: 1.5em;\" name=\"f\">\n<table
+      border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" align=\"center\">\n
+      \ <tr>\n    <td nowrap=\"nowrap\">\n        <label for=\"q\">Query:</label>
+      \n        <input type=\"text\" name=\"q\" id=\"q\" size=\"30\" value=\"!Island\"
+      style=\"font-size: 1em;\" tabindex=\"1\">\n    </td>\n    <td align=\"right\">\n
+      \     <select name=\"v\" onchange=\"this.form.submit();\">\n        <optgroup
+      label=\"Select Output Format:\">\n          <option value=\"card\" selected=\"selected\">View
+      as Cards with Scans</option>\n          <option value=\"olist\">View as a List
+      (Oracle)</option>\n          <option value=\"list\">View as Checklist</option>\n
+      \         <option value=\"scan\">View as Scans only</option>\n          <option
+      value=\"spoiler\">View as a Spoiler</option>\n        </optgroup>\n      </select>\n
+      \     <select name=\"s\" onchange=\"this.form.submit();\">\n        <optgroup
+      label=\"Select Sort Order:\">\n          <option value=\"cname\" selected=\"selected\">Sort
+      by Name &gt; Edition</option>\n          <option value=\"color\">Sort by Color
+      &gt; Name</option>\n          <option value=\"otype\">Sort by Type &gt; Name</option>\n
+      \         <option value=\"cmc\">Sort by Converted Mana Cost &gt; Name</option>\n
+      \         <option value=\"pow\">Sort by Power &gt; Name</option>\n          <option
+      value=\"tou\">Sort by Toughness &gt; Name</option>\n          <option value=\"random\">Sort
+      by Random</option>\n          <option value=\"edition\">Sort by Edition &gt;
+      Name</option>\n          <option value=\"issue\">Sort by Edition &gt; Collector's
+      Number</option>\n        </optgroup>\n      </select>\n      <input type=\"submit\"
+      value=\"Search\">\n    </td>\n  </tr>\n</table>\n</form>\n\n\n\n\n\n\n\n<hr
+      />\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n<tr>\n<td
+      align=\"left\" width=\"35%\">\n\n&larr; <a href=\"/isd/en/252.html\">Plains</a>\n\n</td>\n<td
+      align=\"center\" width=\"30%\">\n<a href=\"/isd/en.html\">Innistrad</a>\n</td>\n<td
+      align=\"right\" width=\"35%\">\n\n<a href=\"/isd/en/254.html\">Island</a> &rarr;\n\n</td>\n</tr>\n</table>\n<hr
+      />\n\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"
+      align=\"center\" style=\"margin: 0 0 0.5em 0;\">\n<tr>\n<td width=\"312\" valign=\"top\">\n<script
+      type=\"text/javascript\" src=\"http://partner.tcgplayer.com/syn/synhighlow.ashx?pk=MAGCINFO&amp;pi=isd-253\"></script>\n<img
+      src=\"http://magiccards.info/scans/en/isd/253.jpg\" \nalt=\"Island\" width=\"312\"
+      height=\"445\" style=\"border: 1px solid black;\">\n</td>\n<td valign=\"top\"
+      style=\"padding: 0.5em;\" width=\"70%\">\n<span style=\"font-size: 1.5em;\">\n<a
+      href=\"/isd/en/253.html\">Island</a>\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\"\nwidth=\"16\" height=\"11\" style=\"vertical-align:-10%;\">\n</span>\n\n\n<p>Basic
+      Land - Island</p>\n<p class=\"ctext\"><b>({T}: Add {U} to your mana pool.)</b></p>\n\n\n\n<p><i></i></p>\n<p>Illus.
+      James Paick</p>\n<p><b>Gatherer Card Rulings<a href=\"http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=245235\">?</a>,
+      Legality<a href=\"http://www.wizards.com/Magic/TCG/Resources.aspx?x=judge/resources/banned\">?</a></b></p>\n\n<ul>\n<li
+      class=\"legal\">Legal in Vintage (Type 1)</li><li class=\"legal\">Legal in Legacy
+      (Type 1.5)</li><li class=\"legal\">Legal in Extended (Type 1.X)</li><li class=\"legal\">Legal
+      in Standard (Type 2)</li><!--<li class=\"legal\">Legal in Block Constructed</li>--><li
+      class=\"legal\">Legal in Classic (MTGO)</li><li class=\"legal\">Legal in Commander</li><li
+      class=\"legal\">Legal in Modern</li>\n</ul>\n</td>\n<td valign=\"top\" style=\"padding:
+      0 0.5em;\" width=\"30%\" nowrap=\"nowrap\">\n<small>\n\n\n\n\n<u><b>Printings:</b></u><br>\n\n<b>#253
+      (James Paick)</b><br>\n\n<a href=\"/isd/en/254.html\">#254</a> (Adam Paquette)<br>\n\n<a
+      href=\"/isd/en/255.html\">#255</a> (Jung Park)<br>\n\n\n<br><u><b>Editions:</b></u><br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<b>Innistrad (Land)</b><br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ddh/en/79.html\">Duel
+      Decks: Ajani vs. Nicol Bolas</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/m12/en/234.html\">Magic 2012</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/cmd/en/303.html\">Commander</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/nph/en/168.html\">New Phyrexia</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mbs/en/148.html\">Mirrodin Besieged</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/som/en/234.html\">Scars of Mirrodin</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ddf/en/76.html\">Duel Decks: Elspeth vs. Tezzeret</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/dpa/en/98.html\">Duels
+      of the Planeswalkers</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/m11/en/234.html\">Magic 2011</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/arc/en/139.html\">Archenemy</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/roe/en/233.html\">Rise of the Eldrazi</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/pvc/en/68.html\">Duel
+      Decks: Phyrexia vs. The Coalition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/pds/en/38.html\">Premium Deck Series: Slivers</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/zen/en/234.html\">Zendikar</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/pch/en/147.html\">Planechase</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/m10/en/234.html\">Magic
+      2010</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/jvc/en/30.html\">Duel
+      Decks: Jace vs. Chandra</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ala/en/234.html\">Shards of Alara</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/shm/en/286.html\">Shadowmoor</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/lw/en/286.html\">Lorwyn</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/10e/en/368.html\">Tenth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ts/en/286.html\">Time Spiral</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/cstd/en/51.html\">Coldsnap Theme Decks</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/rav/en/291.html\">Ravnica:
+      City of Guilds</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/9e/en/335.html\">Ninth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/uh/en/137.html\">Unhinged</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/chk/en/291.html\">Champions of Kamigawa</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/mi/en/291.html\">Mirrodin</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/8e/en/335.html\">Eighth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/on/en/335.html\">Onslaught</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/od/en/335.html\">Odyssey</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/7e/en/332.html\">Seventh Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/arena/en/2.html\">Arena League</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/in/en/335.html\">Invasion</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/bd/en/79.html\">Beatdown Box Set</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/euro/en/2.html\">European Land Program</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/br/en/110.html\">Battle
+      Royale Box Set</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mm/en/335.html\">Mercadian Masques</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/st/en/158.html\">Starter 1999</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/guru/en/2.html\">Guru</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/p3k/en/169.html\">Portal Three Kingdoms</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/6e/en/335.html\">Classic
+      Sixth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/us/en/335.html\">Urza's Saga</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/apac/en/2.html\">Asia Pacific Land Program</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ug/en/85.html\">Unglued</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/po2/en/154.html\">Portal
+      Second Age</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/tp/en/313.html\">Tempest</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/po/en/207.html\">Portal</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/5e/en/425.html\">Fifth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mr/en/297.html\">Mirage</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/itp/en/26.html\">Introductory Two-Player Set</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ia/en/334.html\">Ice
+      Age</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/4e/en/178.html\">Fourth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/rv/en/287.html\">Revised Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/un/en/283.html\">Unlimited Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/be/en/283.html\">Limited Edition Beta</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/al/en/281.html\">Limited
+      Edition Alpha</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/me3/en/219.html\">MTGO Masters Edition III</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/med/en/184.html\">MTGO
+      Masters Edition</a> (Land)<br>\n\n\n<br><u><b>Languages:</b></u><br>\n\n<img
+      src=\"http://magiccards.info/images/de.gif\" alt=\"German\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/isd/de/253.html\">Insel</a><br>\n\n<img
+      src=\"http://magiccards.info/images/fr.gif\" alt=\"French\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/isd/fr/253.html\">Île</a><br>\n\n<img
+      src=\"http://magiccards.info/images/it.gif\" alt=\"Italian\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/it/253.html\">Isola</a><br>\n\n<img
+      src=\"http://magiccards.info/images/es.gif\" alt=\"Spanish\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/es/253.html\">Isla</a><br>\n\n<img
+      src=\"http://magiccards.info/images/pt.gif\" alt=\"Portuguese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/pt/253.html\">Ilha</a><br>\n\n<img
+      src=\"http://magiccards.info/images/jp.gif\" alt=\"Japanese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/jp/253.html\">島</a><br>\n\n<img
+      src=\"http://magiccards.info/images/cn.gif\" alt=\"Simplified Chinese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/cn/253.html\">海岛</a><br>\n\n<img
+      src=\"http://magiccards.info/images/ru.gif\" alt=\"Russian\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/ru/253.html\">Остров</a><br>\n\n<img
+      src=\"http://magiccards.info/images/tw.gif\" alt=\"Traditional Chinese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/tw/253.html\">海島</a><br>\n\n<img
+      src=\"http://magiccards.info/images/ko.gif\" alt=\"Korean\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/9e/ko/335.html\">섬</a><br>\n\n\n<br><br>\n<a
+      href=\"/query?q=%2B%2Bo%21%22Island%22&amp;v=olist\">all prints in all languages</a>\n</small>\n</td>\n</tr>\n</table>\n\n<hr
+      />\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"95%\">\n<tr>\n<td
+      valign=\"top\" width=\"50%\">\n<b>Rules Questions / Links</b><br>\n<a href=\"http://magic.tcgplayer.com/db/magic_single_card.asp?cn=Island&amp;partner=MAGCINFO\">View
+      All Prices for Island</a><br>\n<a href=\"http://magic.tcgplayer.com/db/deck_search_result.asp?CardName=Island&amp;partner=MAGCINFO\">View
+      Decks with Island</a><br>\n<a href=\"http://crystalkeep.com/cgi-bin/magicsearch.cgi?cardName=Island\">Crystal
+      Keep Rulings Summaries</a><br>\n<a href=\"http://www.google.com/search?hl=en&amp;q=%22Island%22+site%3Amtgsalvation.com+inurl%3Acranial\">Cranial
+      Insertion (MTG Salvation)</a><br>\n\n<br>\n<b>MOTL Price Lists</b><br>\n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic&amp;field=0&amp;operator=re&amp;target=Island\">Non-Foil</a>
+      &middot; \n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic-foils&amp;field=0&amp;operator=re&amp;target=Island\">Foil</a>
+      &middot; \n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic-online&amp;field=0&amp;operator=re&amp;target=Island\">MTGO</a><br><br>\n<b>Print
+      Proxies:</b><br><a href=\"/proxy?add=scans/en/isd/253&amp;n=1&amp;back=isd/en/253\">[
+      +1 ]</a> <a href=\"/proxy?add=scans/en/isd/253&amp;n=2&amp;back=isd/en/253\">[
+      +2 ]</a> <a href=\"/proxy?add=scans/en/isd/253&amp;n=3&amp;back=isd/en/253\">[
+      +3 ]</a> <a href=\"/proxy?add=scans/en/isd/253&amp;n=4&amp;back=isd/en/253\">[
+      +4 ]</a> </b> &middot; <a href=\"/proxy?back=isd/en/253\">View</a> &middot;
+      <a href=\"/proxy?clear=true&amp;back=isd/en/253\">Clear</a><br><br>\n\n<b>HTML
+      link to this card</b>:<br><input size=\"60\" value=\"&lt;a href=&quot;http://magiccards.info/isd/en/253.html&quot;&gt;Island&lt;/a&gt;\"
+      onclick=\"this.select()\"><br>\n<b>BBCode link to this card</b>:<br><input size=\"60\"
+      value=\"[url=http://magiccards.info/isd/en/253.html]Island[/url]\" onclick=\"this.select()\">\n</td>\n<td
+      valign=\"top\" width=\"50%\">\n<script type=\"text/javascript\" src=\"http://partner.tcgplayer.com/syn/Synidcate.ashx?pk=MAGCINFO&amp;pi=isd-253\"></script>\n</td>\n</tr>\n</table>\n\n\n\n<br>\n<small
+      style=\"color: #aaa;font-size: 0.6em;\">\n  The information presented on this
+      site about \n  <b>Magic: The Gathering</b>, both literal and graphical, \n  is
+      copyrighted by Wizards of the Coast.<br>\n  This website is not produced, endorsed,
+      supported, \n  or affiliated with Wizards of the Coast.</small>\n  <script type=\"text/javascript\">\n
+      \   var _gaq = _gaq || [];\n    _gaq.push(['_setAccount', 'UA-74661-5']);\n
+      \   _gaq.push(['_setDomainName', '.magiccards.info'])\n    _gaq.push(['_trackPageview']);\n
+      \   (function() {\n      var ga = document.createElement('script'); ga.type
+      = 'text/javascript'; ga.async = true;\n      ga.src = ('https:' == document.location.protocol
+      ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ga);\n    })();\n  </script>\n</body>\n</html>\n"
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://magiccards.info:80/query?q=!Swamp&s=cname&v=card
+    body: !!null 
+    headers: !!null 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/0.8.53
+      date:
+      - Thu, 08 Dec 2011 09:46:29 GMT
+      content-type:
+      - text/html;charset=utf-8
+      connection:
+      - keep-alive
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - sameorigin
+      x-xss-protection:
+      - 1; mode=block
+      content-length:
+      - '22607'
+      access-control-allow-origin:
+      - ! '*'
+    body: ! "\n<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n
+      \  \"http://www.w3.org/TR/html4/loose.dtd\">\n\n<html lang=\"en\">\n<head>\n
+      \ <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n
+      \   <title>!Swamp</title>\n    <style type=\"text/css\">\n    <!--\n    body
+      {background: #fafafa url(http://magiccards.info/images/bg.gif) repeat-x;margin:
+      1em 1.5em;}\n    body,td,th {font: 0.9em/1.2em Verdana;color: #444;}\n    th
+      {text-align: left; font-weight: bold;}\n    p {margin: 0.5em 0;}\n    a {color:
+      #4666BC;}\n    a:hover {color: #333;background-color: #ff0;}\n    a:active {text-decoration:
+      none;}\n    a:visited {color: #283C71;}\n    li.legal {color: #216728;}\n    li.restricted
+      {color: #B98420;}\n    li.banned {color: #672121;}\n    li.reserve {color: #4F55CC;}\n
+      \   p.ctext {background-color: #fff;padding: 4px;}\n    p.otext {background-color:
+      #fff;padding: 4px;}\n    div.oo {margin-left: 0em; padding: 0.5em 0 0 0; border:
+      1px solid #bbb; font-size: 75%;line-height: 100%;}\n    div.oo span {padding:
+      4px;}\n    div.oo p {margin: 0.5em 0 0 0;}\n    tr.odd {background-color: #e0e0e0;}\n
+      \   tr.even {background-color: #fafafa;}\n    #searchhelper td {line-height:
+      150%;vertical-align: middle;border-bottom: 1px dotted #999; padding: 5px 5px
+      5px 0;}\n    #searchhelper label {font-weight: bold;}\n    #searchhelper label.sl
+      {font-weight: normal;}\n    #searchhelper table td {border: none; padding: 0;
+      font-size: 1em;}\n    span.missing {color: #aaa;font-weight:bold;font-style:italic;}\n
+      \   dt {font-weight: bold; font-size: 110%; margin: 1em 0 0.5em 0;}\n    table#nav
+      {font-size: 90%;}\n    ul {padding-left: 2em;}\n    -->\n    </style>\n    <script
+      type=\"text/javascript\">\n    <!--\n    function preventFocus() { isTop = false;
+      }\n    function focusForm()    { if (isTop && document.f) { document.f.q.select();
+      } }\n    var isTop       = true;\n    window.onscroll = preventFocus;\n    window.onload
+      \  = focusForm;\n    // -->\n    </script>\n    <link rel=\"search\" type=\"application/opensearchdescription+xml\"
+      title=\"MagicCards.Info\" href=\"/opensearch.xml\">\n</head>\n<body>\n<table
+      width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" id=\"nav\">\n    <tr>\n        <td>\n
+      \           <img src=\"http://magiccards.info/images/en.gif\" alt=\"en\" width=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\">\n             <a href=\"/\">Home</a>,
+      \n             <a href=\"/random.html\">Random</a>, \n             <a href=\"/art.html\">Art
+      Game</a>, \n             <a href=\"/search.html\"><b>Advanced</b></a>, \n             <a
+      href=\"/extras.html\">Extras</a>, \n             <a href=\"/rules.html\">Rules</a>,
+      \n             <a href=\"/about.html\">About</a>. \n        </td>\n        <td
+      align=\"right\">\n            Sets: \n            <a href=\"/isd/en.html\">Innistrad</a>
+      <small><span style=\"color: red;\">(new)</span></small>, \n            <a href=\"/m12/en.html\">Magic
+      2012</a>, \n            <a href=\"/cmd/en.html\">Commander</a>\n            &gt;
+      <a href=\"/sitemap.html\"><b>All Sets</b></a>\n        </td>\n    </tr>\n</table>\n<hr>\n\n\n<form
+      method=\"GET\" action=\"/query\" style=\"font-size: 1.5em;\" name=\"f\">\n<table
+      border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" align=\"center\">\n
+      \ <tr>\n    <td nowrap=\"nowrap\">\n        <label for=\"q\">Query:</label>
+      \n        <input type=\"text\" name=\"q\" id=\"q\" size=\"30\" value=\"!Swamp\"
+      style=\"font-size: 1em;\" tabindex=\"1\">\n    </td>\n    <td align=\"right\">\n
+      \     <select name=\"v\" onchange=\"this.form.submit();\">\n        <optgroup
+      label=\"Select Output Format:\">\n          <option value=\"card\" selected=\"selected\">View
+      as Cards with Scans</option>\n          <option value=\"olist\">View as a List
+      (Oracle)</option>\n          <option value=\"list\">View as Checklist</option>\n
+      \         <option value=\"scan\">View as Scans only</option>\n          <option
+      value=\"spoiler\">View as a Spoiler</option>\n        </optgroup>\n      </select>\n
+      \     <select name=\"s\" onchange=\"this.form.submit();\">\n        <optgroup
+      label=\"Select Sort Order:\">\n          <option value=\"cname\" selected=\"selected\">Sort
+      by Name &gt; Edition</option>\n          <option value=\"color\">Sort by Color
+      &gt; Name</option>\n          <option value=\"otype\">Sort by Type &gt; Name</option>\n
+      \         <option value=\"cmc\">Sort by Converted Mana Cost &gt; Name</option>\n
+      \         <option value=\"pow\">Sort by Power &gt; Name</option>\n          <option
+      value=\"tou\">Sort by Toughness &gt; Name</option>\n          <option value=\"random\">Sort
+      by Random</option>\n          <option value=\"edition\">Sort by Edition &gt;
+      Name</option>\n          <option value=\"issue\">Sort by Edition &gt; Collector's
+      Number</option>\n        </optgroup>\n      </select>\n      <input type=\"submit\"
+      value=\"Search\">\n    </td>\n  </tr>\n</table>\n</form>\n\n\n\n\n\n\n\n<hr
+      />\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n<tr>\n<td
+      align=\"left\" width=\"35%\">\n\n&larr; <a href=\"/pd3/en/26.html\">Polluted
+      Mire</a>\n\n</td>\n<td align=\"center\" width=\"30%\">\n<a href=\"/pd3/en.html\">Premium
+      Deck Series: Graveborn</a>\n</td>\n<td align=\"right\" width=\"35%\">\n\n<a
+      href=\"/pd3/en/28.html\">Swamp</a> &rarr;\n\n</td>\n</tr>\n</table>\n<hr />\n\n<table
+      border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" align=\"center\"
+      style=\"margin: 0 0 0.5em 0;\">\n<tr>\n<td width=\"312\" valign=\"top\">\n<script
+      type=\"text/javascript\" src=\"http://partner.tcgplayer.com/syn/synhighlow.ashx?pk=MAGCINFO&amp;pi=pd3-27\"></script>\n<img
+      src=\"http://magiccards.info/scans/en/pd3/27.jpg\" \nalt=\"Swamp\" width=\"312\"
+      height=\"445\" style=\"border: 1px solid black;\">\n</td>\n<td valign=\"top\"
+      style=\"padding: 0.5em;\" width=\"70%\">\n<span style=\"font-size: 1.5em;\">\n<a
+      href=\"/pd3/en/27.html\">Swamp</a>\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\"\nwidth=\"16\" height=\"11\" style=\"vertical-align:-10%;\">\n</span>\n\n\n<p>Basic
+      Land - Swamp</p>\n<p class=\"ctext\"><b>({T}: Add {B} to your mana pool.)</b></p>\n\n\n\n<p><i></i></p>\n<p>Illus.
+      Aleksi Briclot</p>\n<p><b>Gatherer Card Rulings<a href=\"http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=270475\">?</a>,
+      Legality<a href=\"http://www.wizards.com/Magic/TCG/Resources.aspx?x=judge/resources/banned\">?</a></b></p>\n\n<ul>\n<li
+      class=\"legal\">Legal in Vintage (Type 1)</li><li class=\"legal\">Legal in Legacy
+      (Type 1.5)</li><li class=\"legal\">Legal in Extended (Type 1.X)</li><li class=\"legal\">Legal
+      in Standard (Type 2)</li><!--<li class=\"legal\">Legal in Block Constructed</li>--><li
+      class=\"legal\">Legal in Classic (MTGO)</li><li class=\"legal\">Legal in Commander</li><li
+      class=\"legal\">Legal in Modern</li>\n</ul>\n</td>\n<td valign=\"top\" style=\"padding:
+      0 0.5em;\" width=\"30%\" nowrap=\"nowrap\">\n<small>\n\n\n\n\n<u><b>Printings:</b></u><br>\n\n<b>#27
+      (Aleksi Briclot)</b><br>\n\n<a href=\"/pd3/en/28.html\">#28</a> (James Paick)<br>\n\n<a
+      href=\"/pd3/en/29.html\">#29</a> (Jung Park)<br>\n\n<a href=\"/pd3/en/30.html\">#30</a>
+      (Alan Pollack)<br>\n\n\n<br><u><b>Editions:</b></u><br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<b>Premium Deck Series: Graveborn (Land)</b><br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/isd/en/256.html\">Innistrad</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ddh/en/77.html\">Duel Decks: Ajani vs. Nicol Bolas</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/m12/en/238.html\">Magic
+      2012</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/cmd/en/307.html\">Commander</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/nph/en/170.html\">New
+      Phyrexia</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mbs/en/150.html\">Mirrodin Besieged</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/som/en/238.html\">Scars of Mirrodin</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/dpa/en/102.html\">Duels of the Planeswalkers</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/m11/en/238.html\">Magic
+      2011</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/arc/en/142.html\">Archenemy</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/roe/en/237.html\">Rise
+      of the Eldrazi</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/pvc/en/32.html\">Duel Decks: Phyrexia vs. The Coalition</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/pds/en/39.html\">Premium
+      Deck Series: Slivers</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/gvl/en/60.html\">Duel Decks: Garruk vs. Liliana</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/zen/en/238.html\">Zendikar</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/pch/en/151.html\">Planechase</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/m10/en/238.html\">Magic
+      2010</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/dvd/en/59.html\">Duel
+      Decks: Divine vs. Demonic</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ala/en/238.html\">Shards of Alara</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/shm/en/290.html\">Shadowmoor</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/lw/en/290.html\">Lorwyn</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/10e/en/372.html\">Tenth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ts/en/290.html\">Time Spiral</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/cstd/en/54.html\">Coldsnap Theme Decks</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/rav/en/295.html\">Ravnica:
+      City of Guilds</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/9e/en/339.html\">Ninth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/uh/en/138.html\">Unhinged</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/chk/en/295.html\">Champions of Kamigawa</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/mi/en/295.html\">Mirrodin</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/8e/en/339.html\">Eighth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/on/en/339.html\">Onslaught</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/dm/en/42.html\">Deckmasters</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/od/en/339.html\">Odyssey</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/7e/en/346.html\">Seventh Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/arena/en/3.html\">Arena League</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/in/en/339.html\">Invasion</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/bd/en/82.html\">Beatdown Box Set</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/euro/en/5.html\">European Land Program</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/br/en/133.html\">Battle
+      Royale Box Set</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mm/en/339.html\">Mercadian Masques</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/st/en/162.html\">Starter 1999</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/guru/en/5.html\">Guru</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/p3k/en/172.html\">Portal Three Kingdoms</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/6e/en/339.html\">Classic
+      Sixth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/at/en/42.html\">Anthologies</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/us/en/339.html\">Urza's Saga</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/apac/en/5.html\">Asia Pacific Land Program</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ug/en/86.html\">Unglued</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/po2/en/163.html\">Portal
+      Second Age</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/tp/en/334.html\">Tempest</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/po/en/219.html\">Portal</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/5e/en/442.html\">Fifth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mr/en/311.html\">Mirage</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/itp/en/52.html\">Introductory Two-Player Set</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ia/en/353.html\">Ice
+      Age</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/4e/en/190.html\">Fourth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/rv/en/299.html\">Revised Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/un/en/295.html\">Unlimited Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/be/en/295.html\">Limited Edition Beta</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/al/en/290.html\">Limited
+      Edition Alpha</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/me3/en/222.html\">MTGO Masters Edition III</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/med/en/187.html\">MTGO
+      Masters Edition</a> (Land)<br>\n\n\n<br><u><b>Languages:</b></u><br>\n\n<img
+      src=\"http://magiccards.info/images/de.gif\" alt=\"German\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/isd/de/256.html\">Sumpf</a><br>\n\n<img
+      src=\"http://magiccards.info/images/fr.gif\" alt=\"French\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/isd/fr/256.html\">Marais</a><br>\n\n<img
+      src=\"http://magiccards.info/images/it.gif\" alt=\"Italian\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/it/256.html\">Palude</a><br>\n\n<img
+      src=\"http://magiccards.info/images/es.gif\" alt=\"Spanish\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/es/256.html\">Pantano</a><br>\n\n<img
+      src=\"http://magiccards.info/images/pt.gif\" alt=\"Portuguese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/pt/256.html\">Pântano</a><br>\n\n<img
+      src=\"http://magiccards.info/images/jp.gif\" alt=\"Japanese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/jp/256.html\">沼</a><br>\n\n<img
+      src=\"http://magiccards.info/images/cn.gif\" alt=\"Simplified Chinese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/cn/256.html\">沼泽</a><br>\n\n<img
+      src=\"http://magiccards.info/images/ru.gif\" alt=\"Russian\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/ru/256.html\">Болото</a><br>\n\n<img
+      src=\"http://magiccards.info/images/tw.gif\" alt=\"Traditional Chinese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/tw/256.html\">沼澤</a><br>\n\n<img
+      src=\"http://magiccards.info/images/ko.gif\" alt=\"Korean\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/9e/ko/339.html\">늪</a><br>\n\n\n<br><br>\n<a
+      href=\"/query?q=%2B%2Bo%21%22Swamp%22&amp;v=olist\">all prints in all languages</a>\n</small>\n</td>\n</tr>\n</table>\n\n<hr
+      />\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"95%\">\n<tr>\n<td
+      valign=\"top\" width=\"50%\">\n<b>Rules Questions / Links</b><br>\n<a href=\"http://magic.tcgplayer.com/db/magic_single_card.asp?cn=Swamp&amp;partner=MAGCINFO\">View
+      All Prices for Swamp</a><br>\n<a href=\"http://magic.tcgplayer.com/db/deck_search_result.asp?CardName=Swamp&amp;partner=MAGCINFO\">View
+      Decks with Swamp</a><br>\n<a href=\"http://crystalkeep.com/cgi-bin/magicsearch.cgi?cardName=Swamp\">Crystal
+      Keep Rulings Summaries</a><br>\n<a href=\"http://www.google.com/search?hl=en&amp;q=%22Swamp%22+site%3Amtgsalvation.com+inurl%3Acranial\">Cranial
+      Insertion (MTG Salvation)</a><br>\n\n<br>\n<b>MOTL Price Lists</b><br>\n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic&amp;field=0&amp;operator=re&amp;target=Swamp\">Non-Foil</a>
+      &middot; \n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic-foils&amp;field=0&amp;operator=re&amp;target=Swamp\">Foil</a>
+      &middot; \n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic-online&amp;field=0&amp;operator=re&amp;target=Swamp\">MTGO</a><br><br>\n<b>Print
+      Proxies:</b><br><a href=\"/proxy?add=scans/en/pd3/27&amp;n=1&amp;back=pd3/en/27\">[
+      +1 ]</a> <a href=\"/proxy?add=scans/en/pd3/27&amp;n=2&amp;back=pd3/en/27\">[
+      +2 ]</a> <a href=\"/proxy?add=scans/en/pd3/27&amp;n=3&amp;back=pd3/en/27\">[
+      +3 ]</a> <a href=\"/proxy?add=scans/en/pd3/27&amp;n=4&amp;back=pd3/en/27\">[
+      +4 ]</a> </b> &middot; <a href=\"/proxy?back=pd3/en/27\">View</a> &middot; <a
+      href=\"/proxy?clear=true&amp;back=pd3/en/27\">Clear</a><br><br>\n\n<b>HTML link
+      to this card</b>:<br><input size=\"60\" value=\"&lt;a href=&quot;http://magiccards.info/pd3/en/27.html&quot;&gt;Swamp&lt;/a&gt;\"
+      onclick=\"this.select()\"><br>\n<b>BBCode link to this card</b>:<br><input size=\"60\"
+      value=\"[url=http://magiccards.info/pd3/en/27.html]Swamp[/url]\" onclick=\"this.select()\">\n</td>\n<td
+      valign=\"top\" width=\"50%\">\n<script type=\"text/javascript\" src=\"http://partner.tcgplayer.com/syn/Synidcate.ashx?pk=MAGCINFO&amp;pi=pd3-27\"></script>\n</td>\n</tr>\n</table>\n\n\n\n<br>\n<small
+      style=\"color: #aaa;font-size: 0.6em;\">\n  The information presented on this
+      site about \n  <b>Magic: The Gathering</b>, both literal and graphical, \n  is
+      copyrighted by Wizards of the Coast.<br>\n  This website is not produced, endorsed,
+      supported, \n  or affiliated with Wizards of the Coast.</small>\n  <script type=\"text/javascript\">\n
+      \   var _gaq = _gaq || [];\n    _gaq.push(['_setAccount', 'UA-74661-5']);\n
+      \   _gaq.push(['_setDomainName', '.magiccards.info'])\n    _gaq.push(['_trackPageview']);\n
+      \   (function() {\n      var ga = document.createElement('script'); ga.type
+      = 'text/javascript'; ga.async = true;\n      ga.src = ('https:' == document.location.protocol
+      ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ga);\n    })();\n  </script>\n</body>\n</html>\n"
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://magiccards.info:80/query?q=!Plains&s=cname&v=card
+    body: !!null 
+    headers: !!null 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/0.8.53
+      date:
+      - Thu, 08 Dec 2011 09:46:30 GMT
+      content-type:
+      - text/html;charset=utf-8
+      connection:
+      - keep-alive
+      vary:
+      - Accept-Encoding
+      x-frame-options:
+      - sameorigin
+      x-xss-protection:
+      - 1; mode=block
+      content-length:
+      - '22045'
+      access-control-allow-origin:
+      - ! '*'
+    body: ! "\n<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n
+      \  \"http://www.w3.org/TR/html4/loose.dtd\">\n\n<html lang=\"en\">\n<head>\n
+      \ <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n
+      \   <title>!Plains</title>\n    <style type=\"text/css\">\n    <!--\n    body
+      {background: #fafafa url(http://magiccards.info/images/bg.gif) repeat-x;margin:
+      1em 1.5em;}\n    body,td,th {font: 0.9em/1.2em Verdana;color: #444;}\n    th
+      {text-align: left; font-weight: bold;}\n    p {margin: 0.5em 0;}\n    a {color:
+      #4666BC;}\n    a:hover {color: #333;background-color: #ff0;}\n    a:active {text-decoration:
+      none;}\n    a:visited {color: #283C71;}\n    li.legal {color: #216728;}\n    li.restricted
+      {color: #B98420;}\n    li.banned {color: #672121;}\n    li.reserve {color: #4F55CC;}\n
+      \   p.ctext {background-color: #fff;padding: 4px;}\n    p.otext {background-color:
+      #fff;padding: 4px;}\n    div.oo {margin-left: 0em; padding: 0.5em 0 0 0; border:
+      1px solid #bbb; font-size: 75%;line-height: 100%;}\n    div.oo span {padding:
+      4px;}\n    div.oo p {margin: 0.5em 0 0 0;}\n    tr.odd {background-color: #e0e0e0;}\n
+      \   tr.even {background-color: #fafafa;}\n    #searchhelper td {line-height:
+      150%;vertical-align: middle;border-bottom: 1px dotted #999; padding: 5px 5px
+      5px 0;}\n    #searchhelper label {font-weight: bold;}\n    #searchhelper label.sl
+      {font-weight: normal;}\n    #searchhelper table td {border: none; padding: 0;
+      font-size: 1em;}\n    span.missing {color: #aaa;font-weight:bold;font-style:italic;}\n
+      \   dt {font-weight: bold; font-size: 110%; margin: 1em 0 0.5em 0;}\n    table#nav
+      {font-size: 90%;}\n    ul {padding-left: 2em;}\n    -->\n    </style>\n    <script
+      type=\"text/javascript\">\n    <!--\n    function preventFocus() { isTop = false;
+      }\n    function focusForm()    { if (isTop && document.f) { document.f.q.select();
+      } }\n    var isTop       = true;\n    window.onscroll = preventFocus;\n    window.onload
+      \  = focusForm;\n    // -->\n    </script>\n    <link rel=\"search\" type=\"application/opensearchdescription+xml\"
+      title=\"MagicCards.Info\" href=\"/opensearch.xml\">\n</head>\n<body>\n<table
+      width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" id=\"nav\">\n    <tr>\n        <td>\n
+      \           <img src=\"http://magiccards.info/images/en.gif\" alt=\"en\" width=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\">\n             <a href=\"/\">Home</a>,
+      \n             <a href=\"/random.html\">Random</a>, \n             <a href=\"/art.html\">Art
+      Game</a>, \n             <a href=\"/search.html\"><b>Advanced</b></a>, \n             <a
+      href=\"/extras.html\">Extras</a>, \n             <a href=\"/rules.html\">Rules</a>,
+      \n             <a href=\"/about.html\">About</a>. \n        </td>\n        <td
+      align=\"right\">\n            Sets: \n            <a href=\"/isd/en.html\">Innistrad</a>
+      <small><span style=\"color: red;\">(new)</span></small>, \n            <a href=\"/m12/en.html\">Magic
+      2012</a>, \n            <a href=\"/cmd/en.html\">Commander</a>\n            &gt;
+      <a href=\"/sitemap.html\"><b>All Sets</b></a>\n        </td>\n    </tr>\n</table>\n<hr>\n\n\n<form
+      method=\"GET\" action=\"/query\" style=\"font-size: 1.5em;\" name=\"f\">\n<table
+      border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" align=\"center\">\n
+      \ <tr>\n    <td nowrap=\"nowrap\">\n        <label for=\"q\">Query:</label>
+      \n        <input type=\"text\" name=\"q\" id=\"q\" size=\"30\" value=\"!Plains\"
+      style=\"font-size: 1em;\" tabindex=\"1\">\n    </td>\n    <td align=\"right\">\n
+      \     <select name=\"v\" onchange=\"this.form.submit();\">\n        <optgroup
+      label=\"Select Output Format:\">\n          <option value=\"card\" selected=\"selected\">View
+      as Cards with Scans</option>\n          <option value=\"olist\">View as a List
+      (Oracle)</option>\n          <option value=\"list\">View as Checklist</option>\n
+      \         <option value=\"scan\">View as Scans only</option>\n          <option
+      value=\"spoiler\">View as a Spoiler</option>\n        </optgroup>\n      </select>\n
+      \     <select name=\"s\" onchange=\"this.form.submit();\">\n        <optgroup
+      label=\"Select Sort Order:\">\n          <option value=\"cname\" selected=\"selected\">Sort
+      by Name &gt; Edition</option>\n          <option value=\"color\">Sort by Color
+      &gt; Name</option>\n          <option value=\"otype\">Sort by Type &gt; Name</option>\n
+      \         <option value=\"cmc\">Sort by Converted Mana Cost &gt; Name</option>\n
+      \         <option value=\"pow\">Sort by Power &gt; Name</option>\n          <option
+      value=\"tou\">Sort by Toughness &gt; Name</option>\n          <option value=\"random\">Sort
+      by Random</option>\n          <option value=\"edition\">Sort by Edition &gt;
+      Name</option>\n          <option value=\"issue\">Sort by Edition &gt; Collector's
+      Number</option>\n        </optgroup>\n      </select>\n      <input type=\"submit\"
+      value=\"Search\">\n    </td>\n  </tr>\n</table>\n</form>\n\n\n\n\n\n\n\n<hr
+      />\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n<tr>\n<td
+      align=\"left\" width=\"35%\">\n\n&larr; <a href=\"/isd/en/249.html\">Woodland
+      Cemetery</a>\n\n</td>\n<td align=\"center\" width=\"30%\">\n<a href=\"/isd/en.html\">Innistrad</a>\n</td>\n<td
+      align=\"right\" width=\"35%\">\n\n<a href=\"/isd/en/251.html\">Plains</a> &rarr;\n\n</td>\n</tr>\n</table>\n<hr
+      />\n\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"
+      align=\"center\" style=\"margin: 0 0 0.5em 0;\">\n<tr>\n<td width=\"312\" valign=\"top\">\n<script
+      type=\"text/javascript\" src=\"http://partner.tcgplayer.com/syn/synhighlow.ashx?pk=MAGCINFO&amp;pi=isd-250\"></script>\n<img
+      src=\"http://magiccards.info/scans/en/isd/250.jpg\" \nalt=\"Plains\" width=\"312\"
+      height=\"445\" style=\"border: 1px solid black;\">\n</td>\n<td valign=\"top\"
+      style=\"padding: 0.5em;\" width=\"70%\">\n<span style=\"font-size: 1.5em;\">\n<a
+      href=\"/isd/en/250.html\">Plains</a>\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\"\nwidth=\"16\" height=\"11\" style=\"vertical-align:-10%;\">\n</span>\n\n\n<p>Basic
+      Land - Plains</p>\n<p class=\"ctext\"><b>({T}: Add {W} to your mana pool.)</b></p>\n\n\n\n<p><i></i></p>\n<p>Illus.
+      Adam Paquette</p>\n<p><b>Gatherer Card Rulings<a href=\"http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=245230\">?</a>,
+      Legality<a href=\"http://www.wizards.com/Magic/TCG/Resources.aspx?x=judge/resources/banned\">?</a></b></p>\n\n<ul>\n<li
+      class=\"legal\">Legal in Vintage (Type 1)</li><li class=\"legal\">Legal in Legacy
+      (Type 1.5)</li><li class=\"legal\">Legal in Extended (Type 1.X)</li><li class=\"legal\">Legal
+      in Standard (Type 2)</li><!--<li class=\"legal\">Legal in Block Constructed</li>--><li
+      class=\"legal\">Legal in Classic (MTGO)</li><li class=\"legal\">Legal in Commander</li><li
+      class=\"legal\">Legal in Modern</li>\n</ul>\n</td>\n<td valign=\"top\" style=\"padding:
+      0 0.5em;\" width=\"30%\" nowrap=\"nowrap\">\n<small>\n\n\n\n\n<u><b>Printings:</b></u><br>\n\n<b>#250
+      (Adam Paquette)</b><br>\n\n<a href=\"/isd/en/251.html\">#251</a> (Jung Park)<br>\n\n<a
+      href=\"/isd/en/252.html\">#252</a> (Eytan Zana)<br>\n\n\n<br><u><b>Editions:</b></u><br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<b>Innistrad (Land)</b><br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ddh/en/40.html\">Duel
+      Decks: Ajani vs. Nicol Bolas</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/m12/en/230.html\">Magic 2012</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/cmd/en/299.html\">Commander</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ddg/en/39.html\">Duel Decks: Knights vs. Dragons</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/nph/en/166.html\">New
+      Phyrexia</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mbs/en/146.html\">Mirrodin Besieged</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/som/en/230.html\">Scars of Mirrodin</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ddf/en/35.html\">Duel Decks: Elspeth vs. Tezzeret</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/m11/en/230.html\">Magic
+      2011</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/arc/en/137.html\">Archenemy</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/roe/en/229.html\">Rise
+      of the Eldrazi</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/pvc/en/67.html\">Duel Decks: Phyrexia vs. The Coalition</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/pds/en/37.html\">Premium
+      Deck Series: Slivers</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/zen/en/230.html\">Zendikar</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/pch/en/142.html\">Planechase</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/m10/en/230.html\">Magic 2010</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/dvd/en/26.html\">Duel Decks: Divine vs. Demonic</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ala/en/230.html\">Shards
+      of Alara</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/shm/en/282.html\">Shadowmoor</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/lw/en/282.html\">Lorwyn</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/10e/en/364.html\">Tenth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/ts/en/282.html\">Time Spiral</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/cstd/en/48.html\">Coldsnap Theme Decks</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/rav/en/287.html\">Ravnica:
+      City of Guilds</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/9e/en/331.html\">Ninth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/uh/en/136.html\">Unhinged</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/chk/en/287.html\">Champions of Kamigawa</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/mi/en/287.html\">Mirrodin</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/8e/en/331.html\">Eighth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/on/en/331.html\">Onslaught</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/od/en/331.html\">Odyssey</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/7e/en/341.html\">Seventh Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/arena/en/1.html\">Arena League</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/in/en/331.html\">Invasion</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/euro/en/4.html\">European Land Program</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/br/en/124.html\">Battle
+      Royale Box Set</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mm/en/331.html\">Mercadian Masques</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/st/en/154.html\">Starter 1999</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/guru/en/4.html\">Guru</a> (Special)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/p3k/en/166.html\">Portal Three Kingdoms</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/6e/en/331.html\">Classic
+      Sixth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/at/en/86.html\">Anthologies</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/us/en/331.html\">Urza's Saga</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/apac/en/4.html\">Asia Pacific Land Program</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ug/en/84.html\">Unglued</a>
+      (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/po2/en/160.html\">Portal
+      Second Age</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/tp/en/324.html\">Tempest</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/po/en/215.html\">Portal</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/5e/en/434.html\">Fifth Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/mr/en/306.html\">Mirage</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/itp/en/42.html\">Introductory Two-Player Set</a> (Special)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/ia/en/343.html\">Ice
+      Age</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\" alt=\"English\"
+      \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/4e/en/186.html\">Fourth
+      Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/rv/en/293.html\">Revised Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/un/en/289.html\">Unlimited Edition</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/be/en/289.html\">Limited Edition Beta</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/al/en/285.html\">Limited
+      Edition Alpha</a> (Land)<br>\n\n<img src=\"http://magiccards.info/images/en.gif\"
+      alt=\"English\" \nwidth=\"16\" height=\"11\" style=\"vertical-align:-20%;\">
+      \n\n<a href=\"/me3/en/216.html\">MTGO Masters Edition III</a> (Land)<br>\n\n<img
+      src=\"http://magiccards.info/images/en.gif\" alt=\"English\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n\n<a href=\"/med/en/181.html\">MTGO
+      Masters Edition</a> (Land)<br>\n\n\n<br><u><b>Languages:</b></u><br>\n\n<img
+      src=\"http://magiccards.info/images/de.gif\" alt=\"German\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/isd/de/250.html\">Ebene</a><br>\n\n<img
+      src=\"http://magiccards.info/images/fr.gif\" alt=\"French\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/isd/fr/250.html\">Plaine</a><br>\n\n<img
+      src=\"http://magiccards.info/images/it.gif\" alt=\"Italian\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/it/250.html\">Pianura</a><br>\n\n<img
+      src=\"http://magiccards.info/images/es.gif\" alt=\"Spanish\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/es/250.html\">Llanura</a><br>\n\n<img
+      src=\"http://magiccards.info/images/pt.gif\" alt=\"Portuguese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/pt/250.html\">Planície</a><br>\n\n<img
+      src=\"http://magiccards.info/images/jp.gif\" alt=\"Japanese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/jp/250.html\">平地</a><br>\n\n<img
+      src=\"http://magiccards.info/images/cn.gif\" alt=\"Simplified Chinese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/cn/250.html\">平原</a><br>\n\n<img
+      src=\"http://magiccards.info/images/ru.gif\" alt=\"Russian\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/ru/250.html\">Равнина</a><br>\n\n<img
+      src=\"http://magiccards.info/images/tw.gif\" alt=\"Traditional Chinese\" \nwidth=\"16\"
+      height=\"11\" style=\"vertical-align:-20%;\"> \n<a href=\"/isd/tw/250.html\">平原</a><br>\n\n<img
+      src=\"http://magiccards.info/images/ko.gif\" alt=\"Korean\" \nwidth=\"16\" height=\"11\"
+      style=\"vertical-align:-20%;\"> \n<a href=\"/9e/ko/331.html\">들</a><br>\n\n\n<br><br>\n<a
+      href=\"/query?q=%2B%2Bo%21%22Plains%22&amp;v=olist\">all prints in all languages</a>\n</small>\n</td>\n</tr>\n</table>\n\n<hr
+      />\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"95%\">\n<tr>\n<td
+      valign=\"top\" width=\"50%\">\n<b>Rules Questions / Links</b><br>\n<a href=\"http://magic.tcgplayer.com/db/magic_single_card.asp?cn=Plains&amp;partner=MAGCINFO\">View
+      All Prices for Plains</a><br>\n<a href=\"http://magic.tcgplayer.com/db/deck_search_result.asp?CardName=Plains&amp;partner=MAGCINFO\">View
+      Decks with Plains</a><br>\n<a href=\"http://crystalkeep.com/cgi-bin/magicsearch.cgi?cardName=Plains\">Crystal
+      Keep Rulings Summaries</a><br>\n<a href=\"http://www.google.com/search?hl=en&amp;q=%22Plains%22+site%3Amtgsalvation.com+inurl%3Acranial\">Cranial
+      Insertion (MTG Salvation)</a><br>\n\n<br>\n<b>MOTL Price Lists</b><br>\n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic&amp;field=0&amp;operator=re&amp;target=Plains\">Non-Foil</a>
+      &middot; \n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic-foils&amp;field=0&amp;operator=re&amp;target=Plains\">Foil</a>
+      &middot; \n<a href=\"http://www.magictraders.com/cgi-bin/query.cgi?list=magic-online&amp;field=0&amp;operator=re&amp;target=Plains\">MTGO</a><br><br>\n<b>Print
+      Proxies:</b><br><a href=\"/proxy?add=scans/en/isd/250&amp;n=1&amp;back=isd/en/250\">[
+      +1 ]</a> <a href=\"/proxy?add=scans/en/isd/250&amp;n=2&amp;back=isd/en/250\">[
+      +2 ]</a> <a href=\"/proxy?add=scans/en/isd/250&amp;n=3&amp;back=isd/en/250\">[
+      +3 ]</a> <a href=\"/proxy?add=scans/en/isd/250&amp;n=4&amp;back=isd/en/250\">[
+      +4 ]</a> </b> &middot; <a href=\"/proxy?back=isd/en/250\">View</a> &middot;
+      <a href=\"/proxy?clear=true&amp;back=isd/en/250\">Clear</a><br><br>\n\n<b>HTML
+      link to this card</b>:<br><input size=\"60\" value=\"&lt;a href=&quot;http://magiccards.info/isd/en/250.html&quot;&gt;Plains&lt;/a&gt;\"
+      onclick=\"this.select()\"><br>\n<b>BBCode link to this card</b>:<br><input size=\"60\"
+      value=\"[url=http://magiccards.info/isd/en/250.html]Plains[/url]\" onclick=\"this.select()\">\n</td>\n<td
+      valign=\"top\" width=\"50%\">\n<script type=\"text/javascript\" src=\"http://partner.tcgplayer.com/syn/Synidcate.ashx?pk=MAGCINFO&amp;pi=isd-250\"></script>\n</td>\n</tr>\n</table>\n\n\n\n<br>\n<small
+      style=\"color: #aaa;font-size: 0.6em;\">\n  The information presented on this
+      site about \n  <b>Magic: The Gathering</b>, both literal and graphical, \n  is
+      copyrighted by Wizards of the Coast.<br>\n  This website is not produced, endorsed,
+      supported, \n  or affiliated with Wizards of the Coast.</small>\n  <script type=\"text/javascript\">\n
+      \   var _gaq = _gaq || [];\n    _gaq.push(['_setAccount', 'UA-74661-5']);\n
+      \   _gaq.push(['_setDomainName', '.magiccards.info'])\n    _gaq.push(['_trackPageview']);\n
+      \   (function() {\n      var ga = document.createElement('script'); ga.type
+      = 'text/javascript'; ga.async = true;\n      ga.src = ('https:' == document.location.protocol
+      ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ga);\n    })();\n  </script>\n</body>\n</html>\n"
+    http_version: '1.1'

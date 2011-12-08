@@ -7,23 +7,37 @@ class BackendTest < BackendTestBase
 
   def setup
     super
-    start_backend
+#    start_backend
   end
 
   def test_connect
-    game = Fabricate(:game_with_players)
-    player = game.players.first
+    VCR.use_cassette('normal_deck') do
+      game = Fabricate(:game_with_players)
+      player = game.players.first
 
-    @browser = Browser.new(game.id, player.id)
+      @browser = Browser.new(game.id, player.id)
 
-    @browser.receive('Player')
-    assert_equal nil, @browser.player['connected']
+      @browser.receive('Player')
+      assert_equal nil, @browser.player['connected']
+      assert_equal player.name, @browser.player['name']
 
-    10.times { @browser.receive('Card') }
-    @browser.receive('Player')
+      5.times { @browser.receive('Card') }
+      @browser.receive('Player')
+      assert_equal true, @browser.player['connected']
+    end
+  end
 
-    assert_equal player.name, @browser.player['name']
-    assert_equal true, @browser.player['connected']
+  def test_reconnect
+    VCR.use_cassette('normal_deck') do
+      game = Fabricate(:game_with_players)
+      player = game.players.first
+
+      2.times do
+        browser = Browser.new(game.id, player.id)
+        browser.wait_until_connected
+        browser.close
+      end
+    end
   end
 
   def test_shuffle

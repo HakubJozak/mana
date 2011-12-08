@@ -4,6 +4,15 @@ require 'rails/test_help'
 require 'test/backend_test_base'
 require 'test/browser'
 
+
+VCR.config do |c|
+  c.cassette_library_dir = "#{Rails.root}/test/vcr"
+  c.allow_http_connections_when_no_cassette = true
+  c.ignore_localhost = true
+  c.stub_with :webmock
+end
+
+
 class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   def setup

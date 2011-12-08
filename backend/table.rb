@@ -43,7 +43,7 @@ class Table < EM::Channel
         unsubscribe(player.sid)
         player.update_attribute( :connected, false)
         push(model: player)
-        puts "Player #{p.name}(#{p.id}) disconnected"
+        puts "Player #{player.name}(#{player.id}) disconnected"
       end
     end
 

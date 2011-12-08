@@ -22,7 +22,9 @@ class Browser
       clazz = attrs['clazz']
       id = attrs['_id']
 
-      raise "Exptected #{expected_class} but received #{clazz}" unless clazz == expected_class
+      if expected_class != :any && clazz != expected_class
+        raise "Exptected #{expected_class} but received #{clazz}"
+      end
 
       if clazz == 'Card'
         @cards[id] = attrs
@@ -30,8 +32,19 @@ class Browser
         @players[id] = attrs
       end
 
-
       attrs
+    end
+  end
+
+  def wait_until_connected
+    timeout 5 do
+      while obj = self.receive(:any)
+        if obj['clazz'] == 'Player' &&
+           obj == self.player &&
+           obj['connected'] == true
+          break
+        end
+      end
     end
   end
 

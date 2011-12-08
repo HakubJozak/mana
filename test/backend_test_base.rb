@@ -10,7 +10,6 @@ class BackendTestBase < ActionDispatch::IntegrationTest
 
   def teardown
     super
-
     if @backend
       puts 'Stopping backend'
       Process.kill("INT", @backend)

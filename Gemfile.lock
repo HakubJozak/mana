@@ -73,6 +73,7 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    crack (0.3.1)
     database_cleaner (0.6.7)
     devise (1.4.9)
       bcrypt-ruby (~> 3.0)
@@ -235,9 +236,13 @@ GEM
       kgio (~> 2.4)
       rack
       raindrops (~> 0.6)
+    vcr (1.11.3)
     warden (1.0.6)
       rack (>= 1.0)
     web-socket-ruby (0.1.0)
+    webmock (1.7.8)
+      addressable (~> 2.2, > 2.2.5)
+      crack (>= 0.1.7)
     webrobots (0.0.10)
       nokogiri (>= 1.4.4)
     xpath (0.1.4)
@@ -283,4 +288,6 @@ DEPENDENCIES
   turn
   uglifier
   unicorn
+  vcr
   web-socket-ruby
+  webmock
