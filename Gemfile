@@ -26,13 +26,12 @@ gem 'em-synchrony'
 
 group :test do
   gem "fabrication"
-  gem "minitest"
+#  gem "minitest"
   gem "ruby-prof"
   gem "capybara", ">= 0.4.1.2"
   gem "capybara-webkit"
   gem "database_cleaner", ">= 0.6.7"
   gem "launchy", ">= 0.4.0"
-  gem 'turn', :require => false
   gem 'web-socket-ruby', :require => 'web_socket'
   gem 'webmock'
   gem 'vcr', :git => 'https://github.com/myronmarston/vcr.git'

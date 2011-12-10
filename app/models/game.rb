@@ -11,4 +11,10 @@ class Game
   has_many :cards
   embeds_many :players
 
+  def shuffle_collection(collection_id)
+    cards.where( collection_id: collection_id).shuffle.map.with_index do |c,i|
+      { '_id' => c.id, 'order' => i+1, 'clazz' => 'Card', 'name' => c.name }
+    end
+  end
+
 end

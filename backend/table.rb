@@ -102,9 +102,8 @@ class Table < EM::Channel
 
         [[ ActiveSupport::JSON.encode(card), card ]]
       elsif model['type'] == 'shuffle'
-        c = @game.cards.first
-        r = ActiveSupport::JSON.encode(c)
-        [ [r,c],[r,c],[r,c],[r,c], [r,c] ]
+        cards = @game.shuffle_collection(model['collection_id'])
+        cards.map { |c| [ ActiveSupport::JSON.encode(c), c ] }
       end
     else
       [[ raw, model]]

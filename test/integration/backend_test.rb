@@ -68,9 +68,15 @@ class BackendTest < BackendTestBase
                   type: 'shuffle',
                   collection_id: "library-#{player.id}")
 
-    # randomizer is seeded as Random.srand(42) in test environment
-    5.times { browser.receive('Card') }
-    # TODO:
+    # In backend, randomizer is seeded as Random.srand(42)
+    # while in test environment, therefor the outcome
+    # should be invariant
+    lands = %w{Forest Plains Island Swamp Mountain}
+
+    lands.each do |land|
+      c = browser.receive('Card')
+      assert_equal land, c['name']
+    end
   end
 
 end
