@@ -3,8 +3,8 @@ class Action extends Backbone.Model
   @show_deck = (collection, user) ->
     new Action(type: 'show_collection', collection_id: collection.id, user_to_id: user.id )
 
-#  @shuffle = (card_stamp_id) ->
-#    shuff
+  @shuffle = (collection) ->
+    new Action(type: 'shuffle', collection_id: collection.id)
 
   @create_token = (card_stamp_id) ->
     coords = CardCollection.all.battlefield.landing_coords()
