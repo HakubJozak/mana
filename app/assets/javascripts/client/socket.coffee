@@ -21,7 +21,7 @@ class Socket
 
     if data.clazz == 'Card'
       # LEGACY
-      data.user_id = data.player_id
+      data.user_id = data.player_id if data.player_id?
 
       card = Card.all[data.id] || new Card(data)
       card.load(data)
