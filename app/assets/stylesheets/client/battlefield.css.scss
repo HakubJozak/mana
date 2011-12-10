@@ -16,40 +16,36 @@
   #battlefield {
     height: 100%;
     width: 100%;
-  }
-}
 
+    @include no-text-select;
+    @include border-radius;
 
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.24);
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    border: collapse;
 
-#battlefield {
-  @include no-text-select;
-  @include border-radius;
+    tbody.local {
+    }
 
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.24);
-  border: 1px solid rgba(0, 0, 0, 0.24);
-  border: collapse;
+    tbody.remote {
+      .card img { @include rotate(180deg);  }
+    }
 
-  tbody.local {
-  }
+    tbody.spacing {
+      td { height: 20px; width: 100%; }
+    }
 
-  tbody.remote {
-    .card img { @include rotate(180deg);  }
-  }
+    tr {
+      border: none; // 1px dashed gray;
 
-  tbody.spacing {
-    td { height: 20px; width: 100%; }
-  }
-
-  tr {
-   border: none; // 1px dashed gray;
-
-   td {
-     position: relative;
-     border: none; // 1px dashed gray;
-     @include card-size;
-     &.card-over { @include focused; }
-     .card { position: absolute; }
-   }
+      td {
+        position: relative;
+        border: none; // 1px dashed gray;
+        @include card-size;
+        &.card-over { @include focused; }
+        .card { position: absolute; }
+      }
+    }
   }
 }

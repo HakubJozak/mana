@@ -17,9 +17,11 @@ class BattlefieldView extends CardCollectionView
   create_user_part: (user) =>
     if user.local
       part = $(@local_part(user.toJSON()))
+      $('#battlefield tbody.local tr.dummy').remove()
       $('#battlefield tbody.local').append(part)
     else
       part = $(@remote_part(user.toJSON()))
+      $('#battlefield tbody.remote tr.dummy').remove()
       $('#battlefield tbody.remote').append(part)
 
     part.bind 'contextmenu', (e) =>

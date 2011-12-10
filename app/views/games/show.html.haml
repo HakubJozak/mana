@@ -52,10 +52,18 @@
 
     %table#battlefield
       %tbody.remote
+        - 2.times do
+          %tr.dummy
+            %td{ :colspan => 8 }
+
       %tbody.spacing
         %tr
           %td{ :colspan => 8 }
+
       %tbody.local
+        - 2.times do
+          %tr.dummy
+            %td{ :colspan => 8 }
 
 
   #right-panel.side-panel
