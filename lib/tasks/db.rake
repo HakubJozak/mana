@@ -1,4 +1,4 @@
-namespace :mongo do
+namespace :db do
 
   desc 'Restore mongo db from data.tar.gz'
   task :restore do

@@ -5,8 +5,8 @@ class Player
   field :color,type: String, default: '#FFD012'
   field :has_started, type: Boolean
   field :connected, type: Boolean
-  field :spectator, type: Boolean
-  field :clazz, type: String, :default => 'Player'
+  field :spectator, type: Boolean, default: false
+  field :clazz, type: String, default: 'Player'
 
   validates_presence_of :name
   embedded_in :game

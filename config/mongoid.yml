@@ -1,6 +1,7 @@
 development:
   host: localhost
-  database: mana_development
+#  database: mana_development
+  database: mana_production
 #  database: mana_development_master
 #  identity_map_enabled: true
 

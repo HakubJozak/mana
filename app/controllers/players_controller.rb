@@ -7,6 +7,7 @@ class PlayersController < ApplicationController
     @player = @game.players.new(user: current_user)
     txt = File.open("#{Rails.root}/db/decks/eldrazi").read
     @player.build_deck(mainboard: txt)
+    @player.spectator = false
   end
 
   def create

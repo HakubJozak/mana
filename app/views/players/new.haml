@@ -7,6 +7,9 @@
       = f.input :color
       #color-picker{ :style => 'display:none;' }
 
+      = f.input :spectator, :label => 'Join as', :as => :radio, :collection => [ [ "Player", false ], [ "Spectator", true ]]
+
+    = f.inputs :id => 'cards-form' do
       = f.semantic_fields_for @player.deck do |d|
         - if current_user
           -#
@@ -37,3 +40,11 @@
   $('#prepared_deck').change ->
     txt = $('#prepared_deck option:selected').val()
     $('#player_deck_mainboard').val(txt)
+
+  $('input:radio[name=player[spectator]]').change ->
+    is_spectator = $('input:radio[name=player[spectator]]:checked').val()
+
+    if is_spectator
+      $('#cards-form').fadeOut()
+    else
+      $('#cards-form').fadeIn()
