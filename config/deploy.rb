@@ -18,13 +18,12 @@ set :branch, 'master'
 
 
 namespace :log do
-  %w(thin production backend god).each do |type|
+  %w(unicorn production backend god).each do |type|
     desc "Tails log of #{type}"
     task type.to_sym do
-      if type == 'thin'
-        type = 'thin.8080'
-      elsif type == 'god'
-        file = '/var/log/syslog'
+      case type
+        when 'god' then '/var/log/syslog'
+        when 'nginx' then ''
       end
 
       file ||= "#{shared_path}/log/#{type}.log"
