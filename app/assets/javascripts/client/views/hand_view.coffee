@@ -4,13 +4,21 @@ class HandView extends CardCollectionView
   @className: 'hand'
 
   @bind_controls: (user) ->
+    # TODO: refactor this crap
     create_or_close = ->
       if HandView.current?
+        HandView.last_position = HandView.current.el.offset()
         HandView.current.close()
+        HandView.current = null
       else
         HandView.current = new HandView({ model: user.hand });
-        HandView.current.el.offset(HandView.last_position) if HandView.last_position?
         HandView.current.el.fadeIn()
+
+        if HandView.last_position?
+          console.info HandView.last_position
+          HandView.current.el
+                  .css('top',HandView.last_position.top + 'px')
+                  .css('left',HandView.last_position.left + 'px')
 
     Controls.current.bind 'hand:show', create_or_close
 
@@ -37,10 +45,6 @@ class HandView extends CardCollectionView
     @$('.mulligan-button').click(@mulligan)
 
   close: =>
-    if User.local is @model.user
-      HandView.last_position = @el.offset()
-      HandView.current = null
-
     @el.fadeOut => @el.remove()
 
   create_card_view: (card) =>
@@ -73,7 +77,6 @@ class CardViewHand extends CardView
     super(params)
 
   visible: => true
-
 
 
 window.CardViewHand = CardViewHand

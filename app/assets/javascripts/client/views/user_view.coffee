@@ -32,7 +32,6 @@ class UserView extends Backbone.View
       @$('form').submit @lives_changed
       @$('.plus').click => @change_lives(1)
       @$('.minus').click => @change_lives(-1)
-      new HandView(model: @model.hand)
     else
       $("#left-panel .users").append(@el)
       @$('.plus').hide()
