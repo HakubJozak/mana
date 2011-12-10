@@ -11,6 +11,7 @@ role :app, domain
 role :web, domain
 
 set :scm, :git
+set :scm_verbose, true
 set :repository, "git@github.com:HakubJozak/mana.git"
 set :scm_user, "git"
 set :branch, 'master'
