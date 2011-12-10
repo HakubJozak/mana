@@ -11,33 +11,37 @@ class BackendTest < BackendTestBase
   end
 
   def test_connect
-#    VCR.use_cassette('normal_deck') do
-      game = Fabricate(:game_with_players)
-      player = game.players.first
+    game = Fabricate(:game_with_players)
+    player = game.players.first
 
-      @browser = Browser.new(game.id, player.id)
+    browser = Browser.new(game.id, player.id)
 
-      @browser.receive('Player')
-      assert_equal nil, @browser.player['connected']
-      assert_equal player.name, @browser.player['name']
+    # Player 1
+    browser.receive('Player')
+    assert_equal nil, browser.player['connected']
+    assert_equal player.name, browser.player['name']
 
-      5.times { @browser.receive('Card') }
-      @browser.receive('Player')
-      assert_equal true, @browser.player['connected']
-#    end
+    # Player 2
+    p2 = browser.receive('Player')
+    assert_equal 'Player2', p2['name']
+
+    # All cards
+    10.times { browser.receive('Card') }
+
+    # Player 1 state changes to 'connected'
+    p1 = browser.receive('Player')
+    assert_equal true, p1['connected']
   end
 
   def test_reconnect
-#    VCR.use_cassette('normal_deck') do
-      game = Fabricate(:game_with_players)
-      player = game.players.first
+    game = Fabricate(:game_with_players)
+    player = game.players.first
 
-      2.times do
-        browser = Browser.new(game.id, player.id)
-        browser.wait_until_connected
-        browser.close
-      end
-#    end
+    2.times do
+      browser = Browser.new(game.id, player.id)
+      browser.wait_until_connected
+      browser.close
+    end
   end
 
   def test_replay
@@ -54,17 +58,17 @@ class BackendTest < BackendTestBase
   end
 
   def test_shuffle
-#    VCR.use_cassette('normal_deck') do
-      game = Fabricate(:game_with_players)
-      player = game.players.first
-      browser = Browser.new(game.id, player.id).wait_until_connected
-      browser.send( clazz: 'Action',
-                    type: 'shuffle',
-                    collection_id: "library-#{player.id}")
+    game = Fabricate(:game_with_players)
+    player = game.players.first
+    browser = Browser.new(game.id, player.id).wait_until_connected
 
-      # randomizer is seeded as Random.srand(42) in test environment
-      5.times { STDERR.puts browser.receive('Card') }
-#    end
+    browser.send( clazz: 'Action',
+                  type: 'shuffle',
+                  collection_id: "library-#{player.id}")
+
+    # randomizer is seeded as Random.srand(42) in test environment
+    5.times { browser.receive('Card') }
+    # TODO:
   end
 
 end

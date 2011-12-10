@@ -62,8 +62,8 @@ class Table < EM::Channel
     # TODO: this should happen atomically!
     # add player that just sits down
     unless player.has_started
-      push(model: player)
-      player.cards(true).each { |c| push(model: c) }
+#      push(model: player)
+#      player.cards(true).each { |c| push(model: c) }
       player.update_attribute( :has_started, true)
     end
 

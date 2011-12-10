@@ -25,9 +25,8 @@ end
 
 Fabricator(:game_with_players, :from => :game) do
   after_create do |game|
-    2.times do
-      game.players << Fabricate.build(:player)
-    end
+    game.players << Fabricate.build(:player, name: 'Player1')
+    game.players << Fabricate.build(:player, name: 'Player2')
   end
 end
 
