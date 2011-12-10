@@ -1,3 +1,3 @@
 #!/bin/bash
 
-bundle exec unicorn_rails & tail -f log/development.log
+bundle exec unicorn & tail -f log/development.log
