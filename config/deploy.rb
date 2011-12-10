@@ -106,5 +106,5 @@ end
 
 
 # after 'deploy:update_code', "deploy:shared_symlink"
-after "deploy", 'thin:restart'
-after "deploy", 'backend:restart'
+# after "deploy", 'thin:restart'
+# after "deploy", 'backend:restart'
