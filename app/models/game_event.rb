@@ -15,19 +15,18 @@ class GameEvent
 
   def apply
     if model.is_a?(Hash)
-      case model['clazz']
+      case type = model['clazz']
       when 'Card'
         card = game.cards.find(model['_id'])
         card.update_attributes(model)
       when 'Player'
-        # player = game.players.find(model['_id'])
-        # player.update_attributes(model)
+        if player = game.players.find(model['_id'])
+          player.update_attributes(model)
+        end
       when 'Message'
+        # TODO: save messages
       else
-        puts '!!!!!!', model
-        puts model.class
-        puts model['clazz']
-        raise "Unknown event received #{}"
+        raise "Unknown event received: '#{type}'"
       end
     else
       model.save!

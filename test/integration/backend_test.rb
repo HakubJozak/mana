@@ -52,9 +52,11 @@ class BackendTest < BackendTestBase
     b1 = Browser.new(game.id, p1.id).wait_until_connected
     card = b1.cards.values.first
     b1.send(clazz: 'Card', _id: card['_id'], tapped: true)
+    b1.send(clazz: 'Player', _id: p1.id, lives: 25)
 
     b2 = Browser.new(game.id, p2.id).wait_until_connected
     assert_equal true, b2.cards[card['_id']]['tapped']
+    assert_equal 25, b2.players[p1.id.to_s]['lives']
   end
 
   def test_shuffle
