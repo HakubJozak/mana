@@ -10,7 +10,7 @@ Mana is a proof-of-concept in-browser implementation of Magic the Gathering(tm) 
 
 ## Live Server
 
-[Try it for yourself!](http://ec2-176-34-195-147.eu-west-1.compute.amazonaws.com:8080)
+[Try it for yourself!](http://ec2-176-34-195-147.eu-west-1.compute.amazonaws.com)
 
 Just before you do, please notice that:
 
@@ -33,28 +33,8 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
    - MongoDB
    - Node.js (for Coffee script compiling)
 
-## TODO
-
-### Bugs
- - card stacking on drop does not work remotely
-
-
-### Essential - Alfa
- - disconnect recovery
- - number of cards in hand
-
-### Early Beta +
- - lobby synchronization
- - reconnect on connection failure
- - welcome site in Rails3
- - security (escape custom card links and check they are images)
- - prevent XSS
-
 ### More Features Convenience - Versions 1+
 
- - saving - (each player obtains unique URL to connect to the old game as a same user)
- - counters on the cards
- - link the cards to MagicCardsInfo (to see errata and stuff in a new window)
  - visible shuffling effect
  - inform all users about (all) other users' actions
  - history recording & match replays
@@ -65,9 +45,7 @@ Webkit-based browser (developed in Chrome) - for now. It is quite easy to make i
  - smart image loading (+ show dummy before card image is loaded)
  - zooming
  - Gravatar - http://railscasts.com/episodes/244-gravatar
- - http://headjs.com/
  - cheating prevention
- - use backbone.js and moustache.js
 
 ## Contributions
 
