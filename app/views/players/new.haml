@@ -3,7 +3,7 @@
   = semantic_form_for @player, :url => game_players_path(@game) do |f|
 
     = f.inputs do
-      = f.input :spectator, :label => 'Join as', :as => :radio, :collection => [ [ "Player", false ], [ "Spectator", true ]]
+      -# f.input :spectator, :label => 'Join as', :as => :radio, :collection => [ [ "Player", false ], [ "Spectator", true ]]
       = f.input :name
       = f.input :color
       #color-picker{ :style => 'display:none;' }
