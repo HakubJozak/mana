@@ -24,7 +24,6 @@ class Table < EM::Channel
     # security issue
     #
     # the player is reconnecting || fresh connect
-
     if player = @players[player_id]
       player.ws.close_websocket
     else
@@ -57,7 +56,9 @@ class Table < EM::Channel
     end
 
     # TODO: DEFER these jobs!?
-    player.replay_history
+    @players.each_value { |p| puts p; push(model: p); }
+    @game.cards(true).each { |c| push(model: c); puts c }
+
     player.update_attribute( :connected, true)
     push(model: player)
   end

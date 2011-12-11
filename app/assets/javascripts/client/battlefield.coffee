@@ -23,6 +23,9 @@ class Battlefield extends Backbone.Collection
     first = "grid-0-0-#{User.local.id}"
     return { order: @cards_in_cell(first).length, position: first }
 
+  sort: ->
+    true
+
   initialize: =>
     @id = "battlefield"
     CardCollection.all[@id] = this
