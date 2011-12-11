@@ -47,11 +47,14 @@ class Socket
         data.local = true if data.id == @local_player_id
         user = new User(data)
         User.all.add(user)
-        user_view = new UserView({ model: user })
-        user_view.render()
 
-        if user.local
-          HandView.bind_controls(user)
+        # TODO: rather bind 'add' even on the User.all collection
+        unless user.spectator()
+          user_view = new UserView({ model: user })
+          user_view.render()
+
+          if user.local
+            HandView.bind_controls(user)
 
   connect: ->
     @ws = new WebSocket(@url)
