@@ -32,9 +32,9 @@
           = d.input :mainboard, :as => :text, :label => 'Cards',
                     :hint => raw("<b>TIP</b>: #{link_to('Login', new_user_session_path)} to enable deck management and saving games!")
 
-      = f.buttons do
-        = f.commit_button "Join '#{@game.name}'"
-        %li= link_to 'Back', games_path
+    = f.buttons do
+      = f.commit_button "Join '#{@game.name}'"
+      %li= link_to 'Back', games_path
 
 :coffeescript
   $('#prepared_deck').change ->
@@ -44,7 +44,7 @@
   $('input:radio[name=player[spectator]]').change ->
     is_spectator = $('input:radio[name=player[spectator]]:checked').val()
 
-    if is_spectator
+    if is_spectator == 'true'
       $('#cards-form').fadeOut()
     else
       $('#cards-form').fadeIn()

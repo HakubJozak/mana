@@ -19,12 +19,12 @@ class CardCollection extends Backbone.Collection
     CardCollection.all[@id] = this
 
   add_on_top: (card) =>
-    top = @last() && @last().order() + 1
+    top = @last()? && @last().order() + 1
     @add_card_with_order( card, top)
 
   put_to_bottom: (card) =>
     card.set({ transformed: false }, { silent: true} )
-    bottom = @first() && @first().order() - 1
+    bottom = @first()? && @first().order() - 1
     @add_card_with_order( card, bottom)
 
   # private
