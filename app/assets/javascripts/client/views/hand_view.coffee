@@ -15,7 +15,6 @@ class HandView extends CardCollectionView
         HandView.current.el.fadeIn()
 
         if HandView.last_position?
-          console.info HandView.last_position
           HandView.current.el
                   .css('top',HandView.last_position.top + 'px')
                   .css('left',HandView.last_position.left + 'px')

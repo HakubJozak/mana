@@ -25,6 +25,22 @@ form.formtastic {
       }
   }
 
+  li.radio {
+     overflow: hidden;
+
+     ol { float: none; }
+
+     .choices {
+         height: 2em;
+
+         li {
+           display: inline;
+           margin-right: 4em;
+           label { width: inherit; display: inline; }
+         }
+     }
+  }
+
   li.password input, li.string input, li.text textarea, select {
    @include border-radius(10px);
 
@@ -56,6 +72,7 @@ form.formtastic {
   }
 
   label {
+   color: white;
    font-size: 70%;
    line-height: $input-height;
    font-size: $input-height;

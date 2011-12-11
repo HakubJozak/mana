@@ -64,6 +64,7 @@ class Card extends Backbone.Model
   load: (data) =>
     opts = { silent: true }
     @set(data, opts)
+    @collection.sort() if @collection?
     @change()
 
   put_to_bottom: =>

@@ -3,10 +3,12 @@
   = semantic_form_for @player, :url => game_players_path(@game) do |f|
 
     = f.inputs do
+      = f.input :spectator, :label => 'Join as', :as => :radio, :collection => [ [ "Player", false ], [ "Spectator", true ]]
       = f.input :name
       = f.input :color
       #color-picker{ :style => 'display:none;' }
 
+    = f.inputs :id => 'cards-form' do
       = f.semantic_fields_for @player.deck do |d|
         - if current_user
           -#
@@ -29,11 +31,19 @@
           = d.input :mainboard, :as => :text, :label => 'Cards',
                     :hint => raw("<b>TIP</b>: #{link_to('Login', new_user_session_path)} to enable deck management and saving games!")
 
-      = f.buttons do
-        = f.commit_button "Join '#{@game.name}'"
-        %li= link_to 'Back', games_path
+    = f.buttons do
+      = f.commit_button "Join '#{@game.name}'"
+      %li= link_to 'Back', games_path
 
 :coffeescript
   $('#prepared_deck').change ->
     txt = $('#prepared_deck option:selected').val()
     $('#player_deck_mainboard').val(txt)
+
+  $('input:radio[name=player[spectator]]').change ->
+    is_spectator = $('input:radio[name=player[spectator]]:checked').val()
+
+    if is_spectator == 'true'
+      $('#cards-form').fadeOut()
+    else
+      $('#cards-form').fadeIn()

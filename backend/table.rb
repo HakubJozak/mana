@@ -24,7 +24,6 @@ class Table < EM::Channel
     # security issue
     #
     # the player is reconnecting || fresh connect
-
     if player = @players[player_id]
       player.ws.close_websocket
     else
@@ -57,15 +56,8 @@ class Table < EM::Channel
     end
 
     # TODO: DEFER these jobs!?
-    player.replay_history
-
-    # TODO: this should happen atomically!
-    # add player that just sits down
-    unless player.has_started
-#      push(model: player)
-#      player.cards(true).each { |c| push(model: c) }
-      player.update_attribute( :has_started, true)
-    end
+    @players.each_value { |p| puts p; push(model: p); }
+    @game.cards(true).each { |c| push(model: c); puts c }
 
     player.update_attribute( :connected, true)
     push(model: player)
