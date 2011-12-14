@@ -38,6 +38,7 @@ class Table < EM::Channel
     player.ws = ws
 
     ws.onclose do
+      # TODO: player#disconnect method
       if player = @players.delete(player_id)
         unsubscribe(player.sid)
         player.update_attribute( :connected, false)

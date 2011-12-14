@@ -15,7 +15,10 @@ class PlayersController < ApplicationController
     attrs.merge!(:user => current_user) if current_user
 
     @player = @game.players.build(attrs)
-    @player.build_deck(attrs[:deck].merge(name: "#{@player.name}'s deck for #{@game.name}"))
+
+    unless @player.spectator?
+      @player.build_deck(attrs[:deck].merge(name: "#{@player.name}'s deck for #{@game.name}"))
+    end
 
     if @player.save
       set_player_for( @game, @player)

@@ -17,7 +17,6 @@
           var exile_view = new Dropbox({ model: CardCollection.all.exile });
           exile_view.el.appendTo($('#right-panel .commons'));
 
-          new ChatView({ model: Message.all });
 
           console.env = '#{Rails.env}';
 
@@ -26,6 +25,9 @@
           Socket.instance.bind('socket:connected', function() {
             console.info('Connected to server');
           });
+
+          new OverlayView({ model: Socket.instance });
+          new ChatView({ model: Message.all });
 
           #{ "$('#help').toggle()" unless Rails.env.development? }
           Socket.instance.connect();
@@ -75,6 +77,10 @@
 
   #coffin{:style => "display: none"}
     = render('shared/templates', :layout => false)
+
+  #overlay{:style => "display: none"}
+    %h1
+      Connecting...
 
   - if Rails.env.production?
     = render('shared/google_analytics', :layout => false)

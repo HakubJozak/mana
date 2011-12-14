@@ -13,7 +13,6 @@ class Socket
 
   onclose: =>
     @trigger('socket:disconnected', 'Disconnected')
-    alert('Disconnected!')
 
   onmessage: (msg) =>
     data = JSON.parse(msg.data)

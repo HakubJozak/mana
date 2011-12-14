@@ -39,6 +39,7 @@
 //= require ./client/views/info_view
 //= require ./client/views/lobby_view
 //= require ./client/views/user_view
+//= require ./client/views/overlay_view
 
 //= require ./client/utils
 

@@ -21,4 +21,23 @@ body {
     color: $orange;
     border: 1px solid #424242;
   }
+
+  #overlay {
+    background-color: white;
+    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $overlay-z-index;
+
+    h1 {
+      color: white;
+      font-size: 30px;
+      text-align: center;
+      position: fixed;
+      top: 50%;
+    }
+  }
 }
