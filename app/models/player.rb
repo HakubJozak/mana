@@ -3,7 +3,6 @@ class Player
 
   field :name, type: String
   field :color,type: String, default: '#FFD012'
-  field :has_started, type: Boolean
   field :connected, type: Boolean
   field :spectator, type: Boolean, default: false
   field :clazz, type: String, default: 'Player'
@@ -17,15 +16,17 @@ class Player
   belongs_to :user
 
   after_create do
-    # TODO: compute order automatically or too much pain?
-    order = 0
+    unless self.spectator?
+      # TODO: compute order automatically or too much pain?
+      order = 0
 
-    Deck.build_cards(deck.mainboard) do |card|
-      card.player = self
-      card.game = game
-      card.order = (order += 1)
-      card.collection_id = "library-#{self.id}"
-      card.save!
+      Deck.build_cards(deck.mainboard) do |card|
+        card.player = self
+        card.game = game
+        card.order = (order += 1)
+        card.collection_id = "library-#{self.id}"
+        card.save!
+      end
     end
   end
 
