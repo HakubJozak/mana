@@ -20,26 +20,23 @@ class UserView extends Backbone.View
       hoverClass: 'deck-over'
       drop: @deck_dropped
 
-    @components.library = new Dropbox(model: @model.library, shuffle: @model.local)
-    @components.graveyard = new Dropbox({ model: @model.graveyard, shuffle: @model.local })
-
     @model.bind 'change', @render
     @model.hand.bind 'add', @render
     @model.hand.bind 'remove', @render
 
     if @model.local
-      $("#right-panel .users").append(@el)
       @$('form').submit @lives_changed
       @$('.plus').click => @change_lives(1)
       @$('.minus').click => @change_lives(-1)
     else
-      $("#left-panel .users").append(@el)
       @$('.plus').hide()
       @$('.minus').hide()
 
+    @components.library = new Dropbox(model: @model.library, shuffle: @model.local)
+    @components.graveyard = new Dropbox(model: @model.graveyard, shuffle: @model.local )
+
     @el.append(@components.library.el)
     @el.append(@components.graveyard.el)
-    @render()
 
   deck_dropped: (event, ui) =>
     deck = ui.draggable.ob()

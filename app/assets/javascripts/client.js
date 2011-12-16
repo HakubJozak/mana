@@ -35,11 +35,11 @@
 //= require ./client/views/chat_view
 //= require ./client/views/dialog
 //= require ./client/views/hand_view
-//= require ./client/views/game_view
 //= require ./client/views/info_view
 //= require ./client/views/lobby_view
 //= require ./client/views/user_view
 //= require ./client/views/overlay_view
+//= require ./client/views/layout
 
 //= require ./client/utils
 

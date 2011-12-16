@@ -3,10 +3,8 @@ class User extends Backbone.Model
   constructor: (params) ->
     super(params)
 
-    # set the local flag and clean it so that it does not spread on save()
-    if params.local
+    if @id == User.local_player_id
       User.local = this
-      @unset('local',{ silent: true })
       @local = true
 
     @set({ lives: 20 })

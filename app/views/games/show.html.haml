@@ -13,6 +13,8 @@
     :javascript
       $(document).ready(function() {
         if (window.has_enough_mana()) {
+          var layout = new Layout({ model: User.all });
+
           var battlefield_view = new BattlefieldView({ model: CardCollection.all.battlefield });
           var exile_view = new Dropbox({ model: CardCollection.all.exile });
           exile_view.el.appendTo($('#right-panel .commons'));
@@ -20,7 +22,9 @@
 
           console.env = '#{Rails.env}';
 
-          Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}/games/#{@game.id}/players/#{@player.id}', "#{@player.id}");
+          User.local_player_id = '#{@player.id}';
+
+          Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}/games/#{@game.id}/players/#{@player.id}');
 
           Socket.instance.bind('socket:connected', function() {
             console.info('Connected to server');
