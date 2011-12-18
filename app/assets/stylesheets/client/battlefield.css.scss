@@ -13,10 +13,12 @@
   top: 1em;
   bottom: 1em;
 
-  #battlefield {
+  #battlefield  {
     height: 100%;
     width: 100%;
+  }
 
+  #battlefield table {
     @include no-text-select;
     @include border-radius;
 
@@ -24,16 +26,13 @@
     background-color: rgba(0, 0, 0, 0.24);
     border: 1px solid rgba(0, 0, 0, 0.24);
     border: collapse;
+    height: 50%;
 
-    tbody.local {
+    .local {
     }
 
-    tbody.remote {
+    tbody.rotated {
       .card img { @include rotate(180deg);  }
-    }
-
-    tbody.spacing {
-      td { height: 20px; width: 100%; }
     }
 
     tr {
@@ -42,7 +41,7 @@
       td {
         position: relative;
         border: none; // 1px dashed gray;
-        @include card-size;
+        // @include card-size;
         &.card-over { @include focused; }
         .card { position: absolute; }
       }

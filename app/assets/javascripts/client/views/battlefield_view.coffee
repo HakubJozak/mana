@@ -17,10 +17,10 @@ class BattlefieldView extends CardCollectionView
   create_user_part: (user) =>
     if user.local
       part = $(@local_part(user.toJSON()))
-      $('#battlefield table.local').append(part)
+      $('#battlefield .local').append(part)
     else
       part = $(@remote_part(user.toJSON()))
-      $('#battlefield table.remote').append(part)
+      $('#battlefield .remote').append(part)
 
     part.bind 'contextmenu', (e) =>
       $(e.target).parent('tr').find('td .card').each (i,card) =>
@@ -30,6 +30,10 @@ class BattlefieldView extends CardCollectionView
       e.stopPropagation();
       e.preventDefault();
 
+    h = $('#battlefield').height() / 6;
+    w = h * 0.7
+
+    $('body').append("<style>#battlefield tbody .card img, #battlefield tbody .card { width: #{w}px; height: #{h-10}px; }</style>")
 
     part.find('td').droppable
       scope: 'cards'

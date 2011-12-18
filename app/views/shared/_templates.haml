@@ -40,7 +40,7 @@
     %tbody
       - 3.times do |y|
         %tr
-          - 8.times do |x|
+          - 12.times do |x|
             %td{ :id => "grid-#{x}-#{y}-{{id}}" }
 
 -# HACK: it has to be table or browser cleans up trs and tds and template is empty
@@ -48,9 +48,9 @@
 #battlefield-remote-part-template
   %table
     %tbody.rotated
-      - 2.times do |y|
+      - 3.times do |y|
         %tr
-          - 8.times do |x|
+          - 12.times do |x|
             %td{ :id => "grid-#{8-x-1}-#{2-y-1}-{{id}}" }
 
 
