@@ -7,8 +7,8 @@ class BattlefieldView extends CardCollectionView
     super(attrs)
     BattlefieldView.instance = this
     @el = $('#battlefield')
-    @remote_part = _.template($('#battlefield-remote-part-template tbody').html())
-    @local_part = _.template($('#battlefield-local-part-template tbody').html())
+    @remote_part = _.template($('#battlefield-remote-part-template table').html())
+    @local_part = _.template($('#battlefield-local-part-template table').html())
     @render()
 
   tap_a_row: () =>
@@ -17,12 +17,10 @@ class BattlefieldView extends CardCollectionView
   create_user_part: (user) =>
     if user.local
       part = $(@local_part(user.toJSON()))
-      $('#battlefield tbody.local tr.dummy').remove()
-      $('#battlefield tbody.local').append(part)
+      $('#battlefield table.local').append(part)
     else
       part = $(@remote_part(user.toJSON()))
-      $('#battlefield tbody.remote tr.dummy').remove()
-      $('#battlefield tbody.remote').append(part)
+      $('#battlefield table.remote').append(part)
 
     part.bind 'contextmenu', (e) =>
       $(e.target).parent('tr').find('td .card').each (i,card) =>
@@ -90,7 +88,7 @@ class CardViewBattlefield extends CardView
       @el.css('top',"0px")
       @el.css('left',"-#{y}px")
     else
-      if @el.parents('tbody.remote').length > 0
+      if @el.parents('.rotated').length > 0
         # remote cards are stacked up-side-down
         @el.css('top',"-#{y}px")
       else

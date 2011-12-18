@@ -56,21 +56,9 @@
           %input.send-button.button{ :value => 'Send', :type => 'submit' }
           %a.close-button.button{ :hint => 'Close chat (ESC)'} Close
 
-    %table#battlefield
-      %tbody.remote
-        - 2.times do
-          %tr.dummy
-            %td{ :colspan => 8 }
-
-      %tbody.spacing
-        %tr
-          %td{ :colspan => 8 }
-
-      %tbody.local
-        - 2.times do
-          %tr.dummy
-            %td{ :colspan => 8 }
-
+    #battlefield
+      %table.remote
+      %table.local
 
   #right-panel.side-panel
     .commons

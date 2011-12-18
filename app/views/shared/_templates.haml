@@ -38,7 +38,7 @@
 #battlefield-local-part-template
   %table
     %tbody
-      - 2.times do |y|
+      - 3.times do |y|
         %tr
           - 8.times do |x|
             %td{ :id => "grid-#{x}-#{y}-{{id}}" }
@@ -47,7 +47,7 @@
 -# TODO: DRY
 #battlefield-remote-part-template
   %table
-    %tbody
+    %tbody.rotated
       - 2.times do |y|
         %tr
           - 8.times do |x|
