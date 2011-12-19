@@ -19,7 +19,6 @@
           var exile_view = new Dropbox({ model: CardCollection.all.exile });
           exile_view.el.appendTo($('#right-panel .commons'));
 
-
           console.env = '#{Rails.env}';
 
           User.local_player_id = '#{@player.id}';

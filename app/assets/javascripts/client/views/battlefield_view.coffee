@@ -17,7 +17,7 @@ class BattlefieldView extends CardCollectionView
       true
 
   # REFACTOR this god method?
-  create_user_part: (user) =>
+  create_user_part: (user, cols, rows) =>
     if user.local
       part = $(@local_part(user.toJSON()))
       $('#battlefield .local').append(part)
@@ -27,9 +27,18 @@ class BattlefieldView extends CardCollectionView
 
     part.bind 'contextmenu', _.preventing_wrap(@tap_a_row)
 
-    w = $('#battlefield').width() / 14;
-    h = w * 1.5
-    $('body').append("<style>#battlefield tbody .card img, #battlefield tbody .card { width: #{w}px; height: #{h-10}px; }</style>")
+    card_w = $('#battlefield').width() / cols
+    card_h = card_w * 1.5
+
+    $('body').append """
+                      <style>
+                        #battlefield tbody .card,
+                        #battlefield tbody .card img {
+                          width: #{card_w}px;
+                          height: #{card_h - 10}px;
+                        }
+                      </style>
+                     """
 
     part.find('td').droppable
       scope: 'cards'

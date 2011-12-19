@@ -11,9 +11,6 @@ class UserView extends Backbone.View
     @template = _.template($('#user-template').html())
     @el = $(@template(@model.toJSON()))
 
-    # TODO: call from elsewhere
-    BattlefieldView.instance.create_user_part(@model)
-
     @el.droppable
       scope: 'decks'
       tolerance: 'touch'
