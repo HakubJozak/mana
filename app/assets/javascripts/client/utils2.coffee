@@ -1,6 +1,11 @@
 _.mixin {
+  preventing_wrap: (f) ->
+    (event) ->
+      f.call(this, event)
+      event.preventDefault()
+      event.stopPropagation()
+
   preventer: (f, event) ->
-    console.info 'preventing'
     event.preventDefault()
     event.stopPropagation()
     f(event)
