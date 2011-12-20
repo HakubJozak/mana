@@ -8,13 +8,18 @@ class Layout extends Backbone.View
     unless player.spectator()
       view = new UserView(model: player)
 
-      BattlefieldView.instance.create_user_part(player, 14, 3)
-
       if player.local
         HandView.bind_controls(player)
         $("#right-panel .users").append(view.el)
+
+        part = BattlefieldView.instance.create_user_part(player, 8, 2)
+        $('#battlefield .local').append(part)
       else
         $("#left-panel .users").append(view.el)
+
+        part = BattlefieldView.instance.create_user_part(player, 12, 3)
+        $('#battlefield .remote').append(part)
+
 
       view.render()
 

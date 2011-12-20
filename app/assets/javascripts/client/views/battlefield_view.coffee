@@ -7,8 +7,6 @@ class BattlefieldView extends CardCollectionView
     super(attrs)
     BattlefieldView.instance = this
     @el = $('#battlefield')
-    @remote_part = _.template($('#battlefield-remote-part-template table').html())
-    @local_part = _.template($('#battlefield-local-part-template table').html())
     @render()
 
   tap_a_row: (event) =>
@@ -18,27 +16,9 @@ class BattlefieldView extends CardCollectionView
 
   # REFACTOR this god method?
   create_user_part: (user, cols, rows) =>
-    if user.local
-      part = $(@local_part(user.toJSON()))
-      $('#battlefield .local').append(part)
-    else
-      part = $(@remote_part(user.toJSON()))
-      $('#battlefield .remote').append(part)
+    part = @build_part(user, cols, rows)
 
     part.bind 'contextmenu', _.preventing_wrap(@tap_a_row)
-
-    card_w = $('#battlefield').width() / cols
-    card_h = card_w * 1.5
-
-    $('body').append """
-                      <style>
-                        #battlefield tbody .card,
-                        #battlefield tbody .card img {
-                          width: #{card_w}px;
-                          height: #{card_h - 10}px;
-                        }
-                      </style>
-                     """
 
     part.find('td').droppable
       scope: 'cards'
@@ -50,6 +30,35 @@ class BattlefieldView extends CardCollectionView
         else
           $('td.card-over').removeClass('card-over')
           return false
+
+    part
+
+  build_part: (user, cols, rows) =>
+    card_w = ($('#battlefield').width() / cols) - 10
+    card_h = card_w * 1.4
+    id = "battlefield-part-#{user.id}"
+    tbody = $("<tbody id='#{id}'></tbody>")
+
+    for y in [1..rows]
+      tr = $('<tr></tr>')
+
+      for x in [1..cols]
+        td = "<td id='grid-#{x}-#{y}-#{user.id}'></td>"
+        tr.append(td)
+
+      tbody.append(tr)
+
+    style = """
+              <style>
+                #battlefield tbody##{id} .card,
+                #battlefield tbody##{id} .card img {
+                width: #{card_w}px;
+                height: #{card_h - 10}px;
+               }
+               </style>
+            """
+
+    tbody.append(style)
 
   create_card_view: (card) =>
     new CardViewBattlefield(model: card)

@@ -34,27 +34,6 @@
       %a.close-button.button Close
     .container
 
--# HACK: it has to be table or browser cleans up trs and tds and template is empty
-#battlefield-local-part-template
-  %table
-    %tbody
-      - 3.times do |y|
-        %tr
-          - 12.times do |x|
-            %td{ :id => "grid-#{x}-#{y}-{{id}}" }
-
--# HACK: it has to be table or browser cleans up trs and tds and template is empty
--# TODO: DRY
-#battlefield-remote-part-template
-  %table
-    %tbody.rotated
-      - 3.times do |y|
-        %tr
-          - 12.times do |x|
-            %td{ :id => "grid-#{8-x-1}-#{2-y-1}-{{id}}" }
-
-
-
 #cardbrowser-template
   %div{ :id => '{{id}}', :class => 'card-browser {{name}}' }
     .container
