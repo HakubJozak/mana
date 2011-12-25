@@ -1,5 +1,4 @@
-class Battlefield extends Backbone.Collection
-  model : Card
+class Battlefield extends CardCollection
 
   put: (card) =>
     @put_on_position(card, "grid-0-0-#{card.get('user_id')}")
@@ -7,7 +6,7 @@ class Battlefield extends Backbone.Collection
 
   put_on_position: (card, position) =>
     old = card.collection
-    old.remove(card) if old
+    old.remove(card) if old?
     next = @cards_in_cell(position).length
     card.set({ position: position, order: next }, { silent: true })
     @add(card)
@@ -26,9 +25,4 @@ class Battlefield extends Backbone.Collection
   sort: ->
     true
 
-  initialize: =>
-    @id = "battlefield"
-    CardCollection.all[@id] = this
-
 window.Battlefield = Battlefield
-new Battlefield();

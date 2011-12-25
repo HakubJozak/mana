@@ -7,10 +7,16 @@ class User extends Backbone.Model
       User.local = this
       @local = true
 
-    @set({ lives: 20 })
+    @set
+      lives: 20
+      settings:
+        rows: 2
+        cols: 8
+
     # TODO: DRY
-    @library = new CardCollection( 'library',  this)
-    @graveyard = new CardCollection( 'graveyard',  this)
+    @library = new CardCollection( 'library', this)
+    @graveyard = new CardCollection( 'graveyard', this)
+    @battlefield = new Battlefield( 'battlefield', this, null)
     @hand = new Hand( 'hand',  this)
 
   spectator: => @get('spectator')

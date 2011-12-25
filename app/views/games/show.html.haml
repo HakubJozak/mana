@@ -15,7 +15,6 @@
         if (window.has_enough_mana()) {
           var layout = new Layout({ model: User.all });
 
-          var battlefield_view = new BattlefieldView({ model: CardCollection.all.battlefield });
           var exile_view = new Dropbox({ model: CardCollection.all.exile });
           exile_view.el.appendTo($('#right-panel .commons'));
 
@@ -56,8 +55,6 @@
           %a.close-button.button{ :hint => 'Close chat (ESC)'} Close
 
     #battlefield
-      %table.remote
-      %table.local
 
   #right-panel.side-panel
     .commons

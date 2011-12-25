@@ -1,12 +1,8 @@
 class BattlefieldView extends CardCollectionView
 
-  @tagName: 'table'
-  @className: 'battlefield'
-
-  constructor: (attrs) ->
-    super(attrs)
-    BattlefieldView.instance = this
-    @el = $('#battlefield')
+  initialize: (attrs) ->
+    @player = attrs.player
+    @create_user_part(@player)
     @render()
 
   tap_a_row: (event) =>
@@ -15,12 +11,12 @@ class BattlefieldView extends CardCollectionView
       true
 
   # REFACTOR this god method?
-  create_user_part: (user, cols, rows) =>
-    part = @build_part(user, cols, rows)
+  create_user_part: (player) =>
+    @el = @build_part(player)
 
-    part.bind 'contextmenu', _.preventing_wrap(@tap_a_row)
+    @el.bind 'contextmenu', _.preventing_wrap(@tap_a_row)
 
-    part.find('td').droppable
+    @el.find('td').droppable
       scope: 'cards'
       hoverClass: 'card-over'
       drop: @dropped
@@ -31,19 +27,39 @@ class BattlefieldView extends CardCollectionView
           $('td.card-over').removeClass('card-over')
           return false
 
-    part
+    # TODO: separate to its own View
+    #------ MENU --------
+    menu = """
+            <ol class='battlefield-menu'
+                id='battlefield-menu-#{player.id}'
+                style='display:none'
+                >
+              <li>+</li>
+              <li>-</li>
+            </ol>
+           """
+    tmpl = _.template(menu)
+    menu = $(tmpl(player: player))
+    $('body').append(menu)
+    menu.position(@el.position)
+    #-------------------
 
-  build_part: (user, cols, rows) =>
+
+  build_part: (player) =>
+    settings = player.get 'settings'
+    rows = settings.rows
+    cols = settings.cols
+
     card_w = ($('#battlefield').width() / cols) - 10
     card_h = card_w * 1.4
-    id = "battlefield-part-#{user.id}"
-    tbody = $("<tbody id='#{id}'></tbody>")
+    id = "battlefield-part-#{player.id}"
+    tbody = $("<table><tbody id='#{id}'></tbody></table>")
 
     for y in [1..rows]
       tr = $('<tr></tr>')
 
       for x in [1..cols]
-        td = "<td id='grid-#{x}-#{y}-#{user.id}'></td>"
+        td = "<td id='grid-#{x}-#{y}-#{player.id}'></td>"
         tr.append(td)
 
       tbody.append(tr)
@@ -74,6 +90,7 @@ class BattlefieldView extends CardCollectionView
 
   sort: =>
     # do it better
+    true
 
   dropped: (event,ui) =>
     cell = $(event.target)

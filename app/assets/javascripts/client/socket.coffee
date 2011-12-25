@@ -54,8 +54,8 @@ class Socket
     this
 
   send_object: (obj) =>
-    console.debug "Sending object"
-    console.debug obj
+#    console.debug "Sending object"
+#    console.debug obj
     @ws.send(JSON.stringify(obj.toJSON()))
 
 Backbone.sync = (method, model, success, error) ->

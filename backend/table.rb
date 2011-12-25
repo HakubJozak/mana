@@ -57,8 +57,8 @@ class Table < EM::Channel
     end
 
     # TODO: DEFER these jobs!?
-    @players.each_value { |p| puts p; push(model: p); }
-    @game.cards(true).each { |c| push(model: c); puts c }
+    @game.players.each { |p| push(model: p); }
+    @game.cards(true).each { |c| push(model: c); }
 
     player.update_attribute( :connected, true)
     push(model: player)
