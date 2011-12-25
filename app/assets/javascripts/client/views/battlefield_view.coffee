@@ -18,8 +18,8 @@ class BattlefieldView extends CardCollectionView
                }
                </style>
                <ol class='battlefield-menu' style='' >
-                  <li>-</li>
-                  <li>+</li>
+                  <li class='minus'>-</li>
+                  <li class='plus'>+</li>
               </ol>
             """
     @el.append(addon)
@@ -29,12 +29,27 @@ class BattlefieldView extends CardCollectionView
     else
       $("#battlefield").prepend(@el)
 
+    @$('.plus').click _.preventing_wrap(@zoom_in)
+    @$('.minus').click _.preventing_wrap(@zoom_out)
     @render()
 
   tap_a_row: (event) =>
     $(event.target).parent('tr').find('td .card').each (i,card) =>
       $(card).data('game-object').model.toggle_tapped()
       true
+
+  zoom: =>
+    @el.remove()
+    new BattlefieldView( model: @player.battlefield, player: @player )
+
+  zoom_in: =>
+    if @rows > 2
+      @player.set(settings: { rows: @rows - 1, cols: @cols - 4 })
+    @zoom()
+
+  zoom_out: =>
+    @player.set(settings: { rows: @rows + 1, cols: @cols + 4 })
+    @zoom()
 
   # REFACTOR this god method?
   create_user_part: (player) =>
