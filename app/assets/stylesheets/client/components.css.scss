@@ -6,6 +6,10 @@
   user-select: none;
 }
 
+@mixin opaque {
+  @include border-radius;
+  background-color: rgba(128, 128, 128, 0.45);
+}
 
 @mixin transparent($alpha: 0.2) {
   background-color: rgba(0, 0, 0, $alpha);

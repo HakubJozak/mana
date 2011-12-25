@@ -2,7 +2,33 @@ class BattlefieldView extends CardCollectionView
 
   initialize: (attrs) ->
     @player = attrs.player
-    @create_user_part(@player)
+
+    id = "battlefield-part-#{@player.id}"
+    @el = $("<div id='#{id}' class='battlefield-part'></div>")
+    @el.append(@create_user_part(@player))
+
+    # TODO: DRY!
+    @id = "battlefield-part-#{@player.id}"
+    addon = """
+              <style>
+                ##{@id} .card,
+                ##{@id} .card img {
+                  width: #{@card_w}px;
+                  height: #{@card_h - 10}px;
+               }
+               </style>
+               <ol class='battlefield-menu' style='' >
+                  <li>-</li>
+                  <li>+</li>
+              </ol>
+            """
+    @el.append(addon)
+
+    if @player.local
+      $("#battlefield").append(@el)
+    else
+      $("#battlefield").prepend(@el)
+
     @render()
 
   tap_a_row: (event) =>
@@ -12,11 +38,11 @@ class BattlefieldView extends CardCollectionView
 
   # REFACTOR this god method?
   create_user_part: (player) =>
-    @el = @build_part(player)
+    part = @build_part(player)
 
-    @el.bind 'contextmenu', _.preventing_wrap(@tap_a_row)
+    part.bind 'contextmenu', _.preventing_wrap(@tap_a_row)
 
-    @el.find('td').droppable
+    part.find('td').droppable
       scope: 'cards'
       hoverClass: 'card-over'
       drop: @dropped
@@ -30,51 +56,34 @@ class BattlefieldView extends CardCollectionView
     # TODO: separate to its own View
     #------ MENU --------
     menu = """
-            <ol class='battlefield-menu'
-                id='battlefield-menu-#{player.id}'
-                style='display:none'
-                >
-              <li>+</li>
-              <li>-</li>
-            </ol>
+
            """
+
     tmpl = _.template(menu)
-    menu = $(tmpl(player: player))
-    $('body').append(menu)
-    menu.position(@el.position)
+    @menu = $(tmpl(player: @player))
     #-------------------
+    return part
 
 
   build_part: (player) =>
     settings = player.get 'settings'
-    rows = settings.rows
-    cols = settings.cols
+    @rows = settings.rows
+    @cols = settings.cols
 
-    card_w = ($('#battlefield').width() / cols) - 10
-    card_h = card_w * 1.4
-    id = "battlefield-part-#{player.id}"
-    tbody = $("<table><tbody id='#{id}'></tbody></table>")
+    @card_w = ($('#battlefield').width() / @cols) - 10
+    @card_h = @card_w * 1.4
+    tbody = $("<table><tbody></tbody></table>")
 
-    for y in [1..rows]
+    for y in [1..@rows]
       tr = $('<tr></tr>')
 
-      for x in [1..cols]
+      for x in [1..@cols]
         td = "<td id='grid-#{x}-#{y}-#{player.id}'></td>"
         tr.append(td)
 
       tbody.append(tr)
 
-    style = """
-              <style>
-                #battlefield tbody##{id} .card,
-                #battlefield tbody##{id} .card img {
-                width: #{card_w}px;
-                height: #{card_h - 10}px;
-               }
-               </style>
-            """
-
-    tbody.append(style)
+    tbody
 
   create_card_view: (card) =>
     new CardViewBattlefield(model: card)
@@ -130,10 +139,6 @@ class CardViewBattlefield extends CardView
         @el.css('top',"#{y}px")
 
     @el.css('z-index',y)
-
-  render: =>
-    super()
-
 
 window.CardViewBattlefield = CardViewBattlefield
 window.BattlefieldView = BattlefieldView

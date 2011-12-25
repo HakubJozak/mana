@@ -10,8 +10,8 @@ class User extends Backbone.Model
     @set
       lives: 20
       settings:
-        rows: 2
-        cols: 8
+        rows: 3 # 2,3,4
+        cols: 12 # 8,12,16
 
     # TODO: DRY
     @library = new CardCollection( 'library', this)

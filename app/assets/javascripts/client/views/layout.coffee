@@ -13,10 +13,8 @@ class Layout extends Backbone.View
       if player.local
         HandView.bind_controls(player)
         $("#right-panel .users").append(player_view.el)
-        $("#battlefield").append(battlefield_view.el)
       else
         $("#left-panel .users").append(player_view.el)
-        $("#battlefield").prepend(battlefield_view.el)
 
       battlefield_view.render()
 
