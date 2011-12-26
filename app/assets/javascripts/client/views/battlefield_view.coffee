@@ -2,6 +2,7 @@ class BattlefieldView extends CardCollectionView
 
   initialize: (attrs) ->
     @player = attrs.player
+    @player.bind 'change:settings', @on_resize
 
     id = "battlefield-part-#{@player.id}"
     @el = $("<div id='#{id}' class='battlefield-part'></div>")
@@ -38,18 +39,21 @@ class BattlefieldView extends CardCollectionView
       $(card).data('game-object').model.toggle_tapped()
       true
 
-  zoom: =>
-    @el.remove()
-    new BattlefieldView( model: @player.battlefield, player: @player )
+  on_resize: =>
+    if @player.settings().rows != @rows
+      @player.unbind 'change:settings', @on_resize
+      @el.remove()
+      new BattlefieldView( model: @player.battlefield, player: @player )
 
   zoom_in: =>
     if @rows > 2
       @player.set(settings: { rows: @rows - 1, cols: @cols - 4 })
-    @zoom()
+      @player.save()
 
   zoom_out: =>
-    @player.set(settings: { rows: @rows + 1, cols: @cols + 4 })
-    @zoom()
+    if @rows < 4
+      @player.set(settings: { rows: @rows + 1, cols: @cols + 4 })
+      @player.save()
 
   # REFACTOR this god method?
   create_user_part: (player) =>
@@ -68,15 +72,6 @@ class BattlefieldView extends CardCollectionView
           $('td.card-over').removeClass('card-over')
           return false
 
-    # TODO: separate to its own View
-    #------ MENU --------
-    menu = """
-
-           """
-
-    tmpl = _.template(menu)
-    @menu = $(tmpl(player: @player))
-    #-------------------
     return part
 
 

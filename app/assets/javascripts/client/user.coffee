@@ -13,12 +13,12 @@ class User extends Backbone.Model
         rows: 3  #2,3,4
         cols: 12 # 8,12,16
 
-    # TODO: DRY
     @library = new CardCollection( 'library', this)
     @graveyard = new CardCollection( 'graveyard', this)
-    @battlefield = new Battlefield( 'battlefield', this, null)
+    @battlefield = new Battlefield( 'battlefield', this)
     @hand = new Hand( 'hand',  this)
 
+  settings: => @get('settings')
   spectator: => @get('spectator')
   connected: => @get('connected')
   lives: => @get('lives')
