@@ -58,6 +58,11 @@ class BattlefieldView extends CardCollectionView
       @player.save()
 
   rotate: =>
+    @$('tbody tr').reverse().each ->
+      tr = $(this)
+      parent = tr.parent()
+      tr.detach().appendTo(parent)
+
     @$('tbody').toggleClass('rotated')
 
   # REFACTOR this god method?
@@ -101,7 +106,7 @@ class BattlefieldView extends CardCollectionView
     tbody
 
   create_card_view: (card) =>
-    new CardViewBattlefield(model: card)
+    new CardViewBattlefield(model: card, battlefield: this)
 
   append_card_view: (view) =>
     td = @$("##{view.model.position()}")
@@ -126,6 +131,7 @@ class CardViewBattlefield extends CardView
 
   constructor: (params) ->
     super(params)
+    @battlefield = params.battlefield
     @el.bind 'contextmenu', @tap_untap
     @add_menu_item 'transform-button', 'Transform', 'Transform card (r)', => @model.transform()
     @add_menu_item 'cover-button', 'Un|cover', 'Cover/Uncover the card (u)', => @model.toggle_covered()
@@ -140,7 +146,7 @@ class CardViewBattlefield extends CardView
   visible: =>  !@model.covered()
 
   stack_in_cell: =>
-    y = @model.get('order') * 25
+    y = @model.get('order') * @battlefield.card_h * 0.1
     @el.css('position','absolute')
 
     if @model.tapped()

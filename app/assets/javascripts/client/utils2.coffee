@@ -1,3 +1,5 @@
+jQuery.fn.reverse = [].reverse
+
 _.mixin {
   preventing_wrap: (f) ->
     (event) ->
