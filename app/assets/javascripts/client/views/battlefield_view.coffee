@@ -34,6 +34,10 @@ class BattlefieldView extends CardCollectionView
     @$('.plus').click _.preventing_wrap(@zoom_in)
     @$('.minus').click _.preventing_wrap(@zoom_out)
     @$('.rotate').click _.preventing_wrap(@rotate)
+
+    if Player.local && Player.local.show_rotated_battlefield(@player)
+      @rotate()
+
     @render()
 
   tap_a_row: (event) =>

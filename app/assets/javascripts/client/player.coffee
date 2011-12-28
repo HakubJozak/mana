@@ -1,4 +1,4 @@
-class User extends Backbone.Model
+class Player extends Backbone.Model
 
   constructor: (params) ->
     super(params)
@@ -20,11 +20,20 @@ class User extends Backbone.Model
   name: => @get('name')
   id: => @get('_id')
 
+  show_rotated_battlefield: (player) =>
+    if @spectator()
+      # bullshit - that's never called
+      false
+    else
+      player.id != @id
+
 
 class UserCollection extends Backbone.Collection
-  model : User
+  model : Player
 
-User.all = new UserCollection()
+Player.all = new UserCollection()
 
-window.User = User
+
+window.User = Player # Legacy
+window.Player = Player
 window.UserCollection = UserCollection
