@@ -7,12 +7,6 @@ class User extends Backbone.Model
       User.local = this
       @local = true
 
-    @set
-      lives: 20
-      settings:
-        rows: 3  #2,3,4
-        cols: 12 # 8,12,16
-
     @library = new CardCollection( 'library', this)
     @graveyard = new CardCollection( 'graveyard', this)
     @battlefield = new Battlefield( 'battlefield', this)

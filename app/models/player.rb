@@ -2,9 +2,12 @@ class Player
   include Mongoid::Document
 
   field :name, type: String
+  field :lives, type: Integer, default: 20
+
   field :color,type: String, default: '#FFD012'
   field :connected, type: Boolean
   field :spectator, type: Boolean, default: false
+  field :settings, type: Hash, default: { rows: 2, cols: 8 }
   field :clazz, type: String, default: 'Player'
 
   validates_presence_of :name

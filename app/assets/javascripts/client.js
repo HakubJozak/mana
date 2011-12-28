@@ -22,7 +22,7 @@
 //= require ./client/card_overlay
 //= require ./client/chat
 //= require ./client/controls
-//= require ./client/user
+//= require ./client/player
 //= require ./client/game
 
 //= require ./client/views/card_view

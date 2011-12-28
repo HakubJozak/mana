@@ -21,6 +21,7 @@ class BattlefieldView extends CardCollectionView
                <ol class='battlefield-menu' style='' >
                   <li class='minus'>-</li>
                   <li class='plus'>+</li>
+                  <li class='rotate'>&darr;</li>
               </ol>
             """
     @el.append(addon)
@@ -32,6 +33,7 @@ class BattlefieldView extends CardCollectionView
 
     @$('.plus').click _.preventing_wrap(@zoom_in)
     @$('.minus').click _.preventing_wrap(@zoom_out)
+    @$('.rotate').click _.preventing_wrap(@rotate)
     @render()
 
   tap_a_row: (event) =>
@@ -54,6 +56,9 @@ class BattlefieldView extends CardCollectionView
     if @rows < 4
       @player.set(settings: { rows: @rows + 1, cols: @cols + 4 })
       @player.save()
+
+  rotate: =>
+    @$('tbody').toggleClass('rotated')
 
   # REFACTOR this god method?
   create_user_part: (player) =>
