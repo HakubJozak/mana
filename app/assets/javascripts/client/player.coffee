@@ -20,9 +20,10 @@ class Player extends Backbone.Model
   name: => @get('name')
   id: => @get('_id')
 
+  # true if the battlefield should be rotated by default
   show_rotated_battlefield: (player) =>
     if @spectator()
-      # bullshit - that's never called
+      # bullshit - that's never called because
       false
     else
       player.id != @id

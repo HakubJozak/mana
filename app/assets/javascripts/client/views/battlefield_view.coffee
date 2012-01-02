@@ -26,10 +26,13 @@ class BattlefieldView extends CardCollectionView
             """
     @el.append(addon)
 
-    if @player.local
-      $("#battlefield").append(@el)
+    if attrs.replace?
+      attrs.replace.replaceWith(@el)
     else
-      $("#battlefield").prepend(@el)
+      if @player.local
+        $("#battlefield").append(@el)
+      else
+        $("#battlefield").prepend(@el)
 
     @$('.plus').click _.preventing_wrap(@zoom_in)
     @$('.minus').click _.preventing_wrap(@zoom_out)
@@ -48,8 +51,7 @@ class BattlefieldView extends CardCollectionView
   on_resize: =>
     if @player.settings().rows != @rows
       @player.unbind 'change:settings', @on_resize
-      @el.remove()
-      new BattlefieldView( model: @player.battlefield, player: @player )
+      new BattlefieldView( model: @player.battlefield, player: @player, replace: @el )
 
   zoom_in: =>
     if @rows > 2
