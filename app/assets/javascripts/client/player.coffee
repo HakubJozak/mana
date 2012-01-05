@@ -28,6 +28,12 @@ class Player extends Backbone.Model
     else
       player.id != @id
 
+  can_browse: (collection) =>
+    @spectator() ||
+    collection.public() ||
+    collection.player.id = Player.local.id ||
+    collection.player.browsables.include(collection.id)
+
 
 class UserCollection extends Backbone.Collection
   model : Player

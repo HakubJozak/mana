@@ -3,15 +3,17 @@ class CardCollection extends Backbone.Collection
 
   @all: {}
 
-  constructor: (@name, @user, cards = null) ->
+  constructor: (@name, @player, cards = null) ->
     super(cards)
     throw 'Name of the CardCollection missing' unless @name?
 
     @title = "#{Utils.camelize(@name)}"
+    # TODO: legacy - remove
+    @user = @player
 
-    if @user
-      @id = "#{@name}-#{@user.id}"
-      @long_title = "#{@user.name()}'s #{@title}"
+    if @player
+      @id = "#{@name}-#{@player.id}"
+      @long_title = "#{@player.name()}'s #{@title}"
     else
       @id = @name
       @long_title = @title
@@ -37,6 +39,9 @@ class CardCollection extends Backbone.Collection
 
   comparator: (card) ->
     card.order()
+
+  public: =>
+    (@name != 'library') and (@name != 'hand')
 
   shuffle_cards: =>
     Action.shuffle(this).save()

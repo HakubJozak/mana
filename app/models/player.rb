@@ -8,6 +8,7 @@ class Player
   field :connected, type: Boolean
   field :spectator, type: Boolean, default: false
   field :settings, type: Hash, default: { rows: 2, cols: 8 }
+  field :browsables, type: Array, default: []
   field :clazz, type: String, default: 'Player'
 
   validates_presence_of :name

@@ -1,5 +1,7 @@
 class Dropbox extends CardCollectionView
 
+  @template
+
   @tagName: 'div'
   @className: 'box'
 
@@ -17,7 +19,9 @@ class Dropbox extends CardCollectionView
     @render()
     @model.bind 'change', @update_counter
     @model.bind 'add', @update_counter
-    @model.bind 'remove', @update_counter
+
+    if @model.player
+      @model.player.bind 'change:browsables', @render_buttons
 
     @$('.browse-button').click =>
       CardBrowser.show_or_hide(@model)
