@@ -7,13 +7,14 @@ class Action extends Backbone.Model
     new Action(type: 'shuffle', collection_id: collection.id)
 
   @create_token = (card_stamp_id) ->
-    coords = CardCollection.all.battlefield.landing_coords()
+    coords = Player.local.battlefield.landing_coords()
 
     new Action
       type: 'create_token'
       card_stamp_id: card_stamp_id
-      player_id: User.local.id
+      player_id: Player.local.id
       position: coords.position
+      collection_id: Player.local.battlefield.id
       order: coords.order
 
   initialize: =>

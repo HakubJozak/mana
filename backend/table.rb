@@ -86,7 +86,7 @@ class Table < EM::Channel
         card = stamp.imprint do |c|
           c.player = player
           c.game = @game
-          c.collection_id = "battlefield"
+          c.collection_id = params['collection_id']
           c.position = params['position']
           c.order = params['order']
           c.covered = false

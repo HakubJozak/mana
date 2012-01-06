@@ -19,7 +19,7 @@ class Battlefield extends CardCollection
   # returns grid coordinates and stack order (i.e. [ grid-0-0-XXX, 2 ]
   # of an empty grid cell so that a new card can get them (see add token action)
   landing_coords: =>
-    first = "grid-0-0-#{User.local.id}"
+    first = "grid-1-1-#{Player.local.id}"
     return { order: @cards_in_cell(first).length, position: first }
 
   sort: ->
