@@ -15,12 +15,6 @@
   padding: 7px 7px 7px 7px;
   z-index: $chat-z-index;
 
-  .handle {
-    @include opaque;
-    width: 100%;
-    height: 20px;
-  }
-
   .message-list {
     @include border-radius;
     @include transparent;

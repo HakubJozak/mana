@@ -3,16 +3,50 @@
 @import "compass/css3";
 @import "constants";
 @import "components";
+@import "../buttons";
 
-.card-browser .container {
-  .card {
-    position: static;
-    float: left;
-    margin-top: 15px;
-    margin-right: 10px;
+.card-browser {
+  @include border-radius;
+
+  position: relative;
+  top: 5%;
+  width: 90%;
+  height: 90%;
+  margin: 0 auto 0 auto;
+
+  background-color: opacify( $button-background-color, 1.0);
+  background: url(/assets/hive.png);
+
+  .handle {
+    padding-left: 0.4em;
+    padding-top: 0.4em;
+    width: 100%;
+
+    h1 {
+      display: inline;
+      color: $orange;
+      clear: both;
+    }
+
+    .close-button {
+      position: relative;
+      left: -1em;
+      text-align: right;
+      float: right;
+    }
   }
 
+
   .container {
+    max-height: 90%;
+    padding-left: 2em;
     overflow-y: scroll;
+
+    .card {
+        position: static;
+        float: left;
+        margin-top: 15px;
+        margin-right: 10px;
+    }
   }
 }

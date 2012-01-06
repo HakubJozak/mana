@@ -13,6 +13,7 @@ class Player extends Backbone.Model
     @hand = new Hand( 'hand',  this)
 
   settings: => @get('settings')
+  browsables: => @get('browsables')
   spectator: => @get('spectator')
   connected: => @get('connected')
   lives: => @get('lives')
@@ -31,8 +32,8 @@ class Player extends Backbone.Model
   can_browse: (collection) =>
     @spectator() ||
     collection.public() ||
-    collection.player.id = Player.local.id ||
-    collection.player.browsables.include(collection.id)
+    collection.player.local ||
+    _.include( collection.player.browsables(), collection.id)
 
 
 class UserCollection extends Backbone.Collection

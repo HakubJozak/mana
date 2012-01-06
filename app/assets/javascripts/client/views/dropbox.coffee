@@ -39,7 +39,7 @@ class Dropbox extends CardCollectionView
     @model.player.bind('change:browsables', @render_buttons) if @model.player
 
     @$('.browse-button').click =>
-      CardBrowser.show_or_hide(@model)
+      new CardBrowser(model: @model)
 
     @$('.shuffle-button').click =>
       @model.shuffle_cards()
@@ -53,6 +53,10 @@ class Dropbox extends CardCollectionView
 
   append_card_view: (view) =>
     @box.append(view.el)
+
+  render: =>
+    super()
+    @$('.overlay').text @model.size()
 
 
 class CardViewDropbox extends CardView

@@ -1,59 +1,47 @@
 class CardBrowser extends CardCollectionView
 
   @HTML = """
-           <div class='overlay'>
-
+           <div class='overlay-container'>
+             <div class='card-browser'>
+               <div class='handle'>
+                 <h1>{{title}}</h1>
+                 <span class='close-button button'>x</span>
+               </div>
+               <div class='container'></div>
+             </div>
            </div>
           """
 
-  @all: {}
-
-  @show_or_hide: (model) =>
-    all = CardBrowser.all
-    all[model.id] ||= new CardBrowser(model: model)
-    all[model.id].open()
 
   constructor: (params) ->
     super(params)
+
+    @el = $($.mustache(CardBrowser.HTML, @model))
+    @el.appendTo('body')
+
     @el.disableSelection()
     @el.data('game-object', @model)
-
-    @el.droppable
-      scope: 'cards'
-      greedy: true
-      hoverClass: 'card-over'
-      drop: @dropped
-
-    @el.dialog
-      autoOpen: false
-      modal: true
-#      maxWidth: '80%'
-#      maxHeight: '80%'
-      position: 'center'
-      width: '80%'
-      height: '750'
-      minHeight: '750'
-      title: @model.long_title
-
+    @$('.close-button').click @close
 
     @box = @$('.container')
     @render()
     Message.action "is browsing #{@model.long_title}."
 
-  open: =>
-    @el.dialog('open')
-
   create_card_view: (card) =>
     view = new CardViewBrowser(model: card)
-    view.el.draggable("option", "disabled", true)
     view
 
   append_card_view: (view) =>
     @box.prepend(view.el)
 
+  close: =>
+    @el.remove()
+
   render: =>
     super()
     @sort()
+
+
 
 class CardViewBrowser extends CardView
 
