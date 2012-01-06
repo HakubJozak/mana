@@ -59,25 +59,6 @@
      box-shadow: {{color}} 0px 0px 15px 0;
     }
 
-#user-template
-  %div{ :id => 'user-{{id}}', :class => 'user' }
-    %h3.name {{name}}
-    %table
-      %tr
-        %th Lives
-        %td
-          %a.button.small.plus  +
-          %a.button.small.minus &nbsp;-&nbsp;
-        %td
-          %form
-            %input.lives{ :value => 20 }
-
-      %tr
-        %th Hand
-        %td{ :colspan => 1 }
-        %td
-          %input.hand-size{ :disabled => true }
-
 
 #user-area-template
   %div{ :class => 'user-area user-{{id}}' }
