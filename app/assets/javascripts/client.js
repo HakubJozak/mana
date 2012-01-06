@@ -6,7 +6,7 @@
 //= require vendor/mousehold
 //= require vendor/underscore
 //= require vendor/backbone
-
+//= require vendor/jquery.mustache
 
 //= require ./client/boot
 //= require ./client/utils

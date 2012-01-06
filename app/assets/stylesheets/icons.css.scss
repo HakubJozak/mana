@@ -1,0 +1,19 @@
+.icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  text-indent: -99999px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: 4px 4px;
+  margin-right: 2px;
+}
+
+.icon-browse {
+  background-image: url(/assets/glass.png);
+}
+
+.icon-shuffle {
+  background-image: url(/assets/spin.png);
+}
+

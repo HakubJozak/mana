@@ -82,11 +82,3 @@
 #user-area-template
   %div{ :class => 'user-area user-{{id}}' }
     .name {{name()}}
-
-#dropbox-template
-  .box-container{:class => '{{name}}-container'}
-    %h4
-      %a.browse-button.button{:href => '#'} {{title}}
-      %a.shuffle-button.button{:href => '#' } Shuffle
-    %div{ :class => "box {{name}}" }
-      .counter.overlay 0

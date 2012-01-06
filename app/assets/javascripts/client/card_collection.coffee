@@ -20,6 +20,15 @@ class CardCollection extends Backbone.Collection
 
     CardCollection.all[@id] = this
 
+  browsable: =>
+    if @player
+      @player.can_browse(this)
+    else
+      false
+
+  shufflable: =>
+    @player? and @player.local
+
   add_on_top: (card) =>
     top = @last()? && @last().order() + 1
     @add_card_with_order( card, top)

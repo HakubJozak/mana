@@ -1,6 +1,22 @@
 class Dropbox extends CardCollectionView
 
-  @template
+  @HTML = """
+           <div class='box-container {{name}}-container'>
+             <h4>
+               {{title}}
+               {{#shufflable}}
+                 <span class='shuffle-button icon icon-shuffle' title='Shuffle' ></span>
+               {{/shufflable}}
+
+               {{#browsable}}
+                 <span class='browse-button icon icon-browse' title='Browse' ></span>
+               {{/browsable}}
+             </h4>
+             <div class='box {{name}}'>
+               <div class='counter overlay'>0</div>
+             </div>
+           </div>
+          """
 
   @tagName: 'div'
   @className: 'box'
@@ -8,6 +24,7 @@ class Dropbox extends CardCollectionView
   constructor: (attrs) ->
     super(attrs)
 
+    @el = $($.mustache(Dropbox.HTML, @model))
     @box = @$('.box')
     @box.css('position','relative')
     @box.droppable
@@ -19,19 +36,14 @@ class Dropbox extends CardCollectionView
     @render()
     @model.bind 'change', @update_counter
     @model.bind 'add', @update_counter
-
-    if @model.player
-      @model.player.bind 'change:browsables', @render_buttons
+    @model.player.bind('change:browsables', @render_buttons) if @model.player
 
     @$('.browse-button').click =>
       CardBrowser.show_or_hide(@model)
 
-    if attrs.shuffle?
-      @$('.shuffle-button').click =>
-        @model.shuffle_cards()
-        Message.action "is shuffling #{@model.long_title}."
-    else
-      @$('.shuffle-button').hide()
+    @$('.shuffle-button').click =>
+      @model.shuffle_cards()
+      Message.action "is shuffling #{@model.long_title}."
 
   update_counter: =>
     @$('.counter').text @model.size()
