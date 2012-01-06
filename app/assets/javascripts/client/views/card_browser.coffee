@@ -1,5 +1,11 @@
 class CardBrowser extends CardCollectionView
 
+  @HTML = """
+           <div class='overlay'>
+
+           </div>
+          """
+
   @all: {}
 
   @show_or_hide: (model) =>
@@ -37,17 +43,9 @@ class CardBrowser extends CardCollectionView
   open: =>
     @el.dialog('open')
 
-    # after_fadeout = () =>
-    #   @model.unbind 'add', @add_card_view
-    #   @model.unbind 'remove', @remove_card_view
-    #   @model.unbind 'change', @render
-    #   @el.remove()
-    #   CardBrowser.all[@model.id] = null
-    # @el.fadeOut('200', after_fadeout)
-
   create_card_view: (card) =>
     view = new CardViewBrowser(model: card)
-    view.el.draggable( "option", "containment", @el)
+    view.el.draggable("option", "disabled", true)
     view
 
   append_card_view: (view) =>
@@ -73,7 +71,6 @@ class CardViewBrowser extends CardView
 
   show_tapping: =>
     $(@el).removeClass('tapped')
-
 
 
 window.CardBrowser = CardBrowser

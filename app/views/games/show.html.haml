@@ -66,9 +66,5 @@
   #coffin{:style => "display: none"}
     = render('shared/templates', :layout => false)
 
-  #overlay{:style => "display: none"}
-    %h1
-      Connecting...
-
   - if Rails.env.production?
     = render('shared/google_analytics', :layout => false)
