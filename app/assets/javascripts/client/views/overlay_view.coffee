@@ -1,7 +1,7 @@
 class OverlayView extends Backbone.View
 
   @HTML = """
-           <div class='overlay-container' >
+           <div id='overlay' class='overlay-container' >
              <div class='info'>
                 <h1>Connecting</h1>
                 <p>Please wait...</p>

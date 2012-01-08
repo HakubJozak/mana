@@ -16,6 +16,7 @@
 
   background-color: opacify( $button-background-color, 1.0);
   background: url(/assets/hive.png);
+  z-index: $browser-z-index;
 
   .handle {
     padding-left: 0.4em;

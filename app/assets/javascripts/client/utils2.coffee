@@ -12,3 +12,5 @@ _.mixin {
     event.stopPropagation()
     f(event)
 }
+
+# draggable_card_element = (el) ->

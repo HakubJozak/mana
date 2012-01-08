@@ -75,6 +75,21 @@ class CardViewHand extends CardView
   constructor: (params, @dropbox) ->
     super(params)
 
+    prevent_detail = =>
+      @dragged = true
+
+    @el.draggable
+      position: 0
+      scope: 'cards'
+      snap: '.card'
+      snapMode: 'inner'
+      scroll: false
+      revert: 'invalid'
+      stop: prevent_detail
+      containment: 'window'
+      zIndex: 99999
+
+
   visible: => true
 
 

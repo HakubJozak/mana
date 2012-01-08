@@ -18,20 +18,6 @@ class CardView extends Backbone.View
     @img = @$('img')
     @menu = @$('ul.menu')
 
-    prevent_detail = =>
-      @dragged = true
-
-    @el.draggable
-      position: 0
-      scope: 'cards'
-      snap: '.card'
-      snapMode: 'inner'
-      scroll: false
-      revert: 'invalid'
-      stop: prevent_detail
-      containment: 'window'
-      zIndex: 99999
-
     @img.click(@show_detail)
 
     moc = =>

@@ -54,7 +54,7 @@ body > .detail {
     width: 100%;
     height: 100%;
     display: block;
-    z-index: 1;
+    z-index: $browser-z-index + 1;
   }
 
   @include menu-inside;

@@ -5,6 +5,9 @@
 @import "components";
 @import '../buttons';
 
+#overlay {
+  z-index: $overlay-z-index;
+}
 
   .overlay-container {
     background-color: rgba(255,255,255,0.5);
@@ -13,7 +16,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: $overlay-z-index;
 
     .info {
       @include single-text-shadow(black, 2px, 2px);

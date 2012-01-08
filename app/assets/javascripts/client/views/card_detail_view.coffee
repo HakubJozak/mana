@@ -39,8 +39,5 @@ class CardDetailView extends Backbone.View
          @close()
        true
 
-#     @$('ul.menu').css('display','block')
-
-
 
 window.CardDetailView = CardDetailView

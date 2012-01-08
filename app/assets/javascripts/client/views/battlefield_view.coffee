@@ -144,6 +144,21 @@ class CardViewBattlefield extends CardView
     @add_menu_item 'detail-button', 'Detail', 'Show detail of the card', => @show_detail()
     @add_menu_item 'bottom-button', 'Bottom', 'Put the card to the bottom of your library', => @model.put_to_bottom()
 
+    prevent_detail = =>
+      @dragged = true
+
+    @el.draggable
+      position: 0
+      scope: 'cards'
+      snap: '.card'
+      snapMode: 'inner'
+      scroll: false
+      revert: 'invalid'
+      stop: prevent_detail
+      containment: 'window'
+      zIndex: 99999
+
+
   tap_untap: (e) =>
     e.preventDefault()
     e.stopPropagation()

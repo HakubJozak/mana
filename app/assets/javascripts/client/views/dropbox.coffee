@@ -66,6 +66,20 @@ class CardViewDropbox extends CardView
     @add_menu_item 'bottom-button', 'Bottom', 'Put the card to the bottom of your library', => @model.put_to_bottom()
     @add_menu_item 'battlefield-button', 'Battlefield', 'Put the card on the battlefield', => @model.put_on_battlefield()
 
+    prevent_detail = =>
+      @dragged = true
+
+    @el.draggable
+      position: 0
+      scope: 'cards'
+      snap: '.card'
+      snapMode: 'inner'
+      scroll: false
+      revert: 'invalid'
+      stop: prevent_detail
+      containment: 'window'
+      zIndex: 99999
+
   render: =>
     super()
     @el.css('position','absolute')
