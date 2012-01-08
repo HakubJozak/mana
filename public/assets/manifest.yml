@@ -9,9 +9,16 @@ cards/5.jpg: cards/5-a5c1dd12b40fbb2c3ab5eb02e5ed20d3.jpg
 cards/6.jpg: cards/6-02efbba8227e031ef60b255495ee433f.jpg
 cards/token.jpg: cards/token-762c00e95c1508f0dbefb96f47432bd1.jpg
 fabric.png: fabric-03a2ff49abf7fac89b32426cc26923a3.png
+glass-orange.png: glass-orange-e62c7b7589bd9b886f7e72197125818a.png
+glass.png: glass-0be82fe555374985aace8fce4edd5130.png
+glass.svg: glass-59122e689ea1b05fb07a1aa650d3521b.svg
 hive.png: hive-76b02611ee44cde8e8cc622e97d5743d.png
+icons.png: icons-861416bef845b609cd2338c7c7aa8e44.png
 loading.gif: loading-aa3dc07f73edeb07da82c980df906e6e.gif
 mask.png: mask-82b6a7a1c6d104b3f9f60e1507897648.png
+spin-orange.png: spin-orange-db6459897359feb7b591abcc21f701ea.png
+spin.png: spin-90eaf20ce84d5f7e4e1e113679001660.png
+spin.svg: spin-4b87371e56ef6187c8732d85b47755b1.svg
 wheel.png: wheel-885c9d702654cef598316e0544a85b4b.png
 wood_grey.jpg: wood_grey-13c0f7679bdfe781444d9af72300d49d.jpg
 vendor/dimensions-1.1.2/ChangeLog.txt: vendor/dimensions-1.1.2/ChangeLog-4eb8898445b29ea0c75d8241ab663e7c.txt
@@ -73,6 +80,7 @@ vendor/jquery-tooltip/lib/jquery.bgiframe.js: vendor/jquery-tooltip/lib/jquery.b
 vendor/jquery-tooltip/lib/jquery.delegate.js: vendor/jquery-tooltip/lib/jquery.delegate-c700d5fff82e4c387893bd941ca19db0.js
 vendor/jquery-tooltip/lib/jquery.dimensions.js: vendor/jquery-tooltip/lib/jquery.dimensions-8d3382cf1d15a19f436bd9d74958e06d.js
 vendor/jquery-ui-1.8.16.custom.min.js: vendor/jquery-ui-1.8.16.custom.min-de1f48daa9de18901932b78b8f066891.js
+vendor/jquery.mustache.js: vendor/jquery.mustache-8919c753a22f9b1369bee8eb62f1f69b.js
 vendor/jquery.rightClick.js: vendor/jquery.rightClick-9f9ec3fa4323144a72a7f68dc2ac7b71.js
 vendor/jquery.simulate.js: vendor/jquery.simulate-fb516e3c89643449327e972b95bb2afb.js
 vendor/qunit/README.md: vendor/qunit/README-08369f583320fcdda650627eef2062d1.md
@@ -128,6 +136,6 @@ themes/orange-black/jquery-ui-1.8.16.custom.css: themes/orange-black/jquery-ui-1
 jquery-ui.min.js: jquery-ui.min-de1f48daa9de18901932b78b8f066891.js
 jquery.min.js: jquery.min-64ec6193cab230480c3e8fdf9409dd82.js
 application.js: application-cc2c7a0057d15544549b9cd474174b32.js
-application.css: application-615e00c60bd2a8d395fc1ff218cd9dcb.css
-client.js: client-a8fa8e7c81ccc4c669574bed75f4a377.js
-client.css: client-89d8ef980ee2b780d769888b92efc052.css
+application.css: application-538ac237b92fe243716f9dbfe95be02a.css
+client.js: client-23cb375836402659ccf3fd721f14f04e.js
+client.css: client-cabaa9f8cf557405679a93d8b6dba1cd.css
