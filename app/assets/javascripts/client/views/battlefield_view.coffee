@@ -139,10 +139,11 @@ class CardViewBattlefield extends CardView
     super(params)
     @battlefield = params.battlefield
     @el.bind 'contextmenu', @tap_untap
+    @add_menu_item 'detail-button', 'Detail', 'Show detail of the card', => @show_detail()
     @add_menu_item 'transform-button', 'Transform', 'Transform card (r)', => @model.transform()
     @add_menu_item 'cover-button', 'Un|cover', 'Cover/Uncover the card (u)', => @model.toggle_covered()
-    @add_menu_item 'detail-button', 'Detail', 'Show detail of the card', => @show_detail()
     @add_menu_item 'bottom-button', 'Bottom', 'Put the card to the bottom of your library', => @model.put_to_bottom()
+    # @add_menu_item 'close-button', 'Close', 'Close the menu', => @close_menu()
 
     prevent_detail = =>
       @dragged = true

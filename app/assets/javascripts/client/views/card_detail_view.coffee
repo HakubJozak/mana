@@ -1,12 +1,32 @@
 class CardDetailView extends Backbone.View
 
+  @HTML = """
+          <div class='detail'>
+            <ul class='menu'>
+              <li>
+                <a class='button' href='{{url}}' target='_blank' title='Open MagicCards.info page in a new window'>
+                  MagicCards.info
+                </a>
+              </li>
+              <li>
+                <a class='button close-button' href='#' title='Close'>
+                  Close
+                </a>
+              </li>
+            </ul>
+            <img src='{{image_url}}' />
+          </div>
+        """
+
+
   constructor: (attrs) ->
     super(attrs)
     @position = attrs.position
-    @template = _.template($('#card-detail-template').html())
+    @template = _.template(CardDetailView.HTML)
     @render()
 
     @$('.close-button').click @close
+    @menu = @$('ul.menu')
 
   render: =>
     @el = $(@template(@model.toJSON()))

@@ -49,6 +49,7 @@ class CardViewBrowser extends CardView
     params['template'] = '#card-view-browser-template'
     super(params)
     @el.bind 'contextmenu', @show_menu
+    @add_menu_item 'detail-button', 'Detail', 'Show detail of the card', => @show_detail()
     @add_menu_item 'to-hand-button', 'Hand', 'Put the card to your hand', => @model.put_to_hand()
     @add_menu_item 'battlefield-button', 'Battlefield', 'Put the card on the battlefield', => @model.put_on_battlefield()
 

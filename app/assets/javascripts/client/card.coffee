@@ -68,15 +68,15 @@ class Card extends Backbone.Model
     @change()
 
   put_to_bottom: =>
-    User.local.library.put_to_bottom(this)
+    Player.local.library.put_to_bottom(this)
     false
 
   put_to_hand: =>
-    User.local.hand.add_on_top(this)
+    Player.local.hand.add_on_top(this)
     false
 
   put_on_battlefield: =>
-    CardCollection.all['battlefield'].put(this)
+    Player.local.battlefield.put(this)
     false
 
   toggle_covered: (state = null, opts = {}) =>

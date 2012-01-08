@@ -1,7 +1,7 @@
 class Battlefield extends CardCollection
 
   put: (card) =>
-    @put_on_position(card, "grid-0-0-#{card.get('user_id')}")
+    @put_on_position(card, "grid-1-1-#{card.get('user_id')}")
     false
 
   put_on_position: (card, position) =>

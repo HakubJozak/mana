@@ -7,24 +7,6 @@
     .power{ :style => 'display:none' }
 
 
-#card-detail-template
-  .detail
-    %ul.menu{}
-      %li
-        %a.button{ :class => '', :href => "{{url}}" , :title => 'Open MagicCards.info page in a new window', :target => '_blank' }
-          MagicCards.info
-      %li
-        %a.button{ :class => 'close-button', :title => 'Close', :href => "#" }
-          Close
-
-    %img{ :src => "{{image_url}}" }
-
-
-#menu-item-template
-  %li
-    %a.button{ :class => '{{clazz}}', :title => '{{title}}', :href => "#" }
-      {{name}}
-
 #handview-template
   %div{ :id => '{{id}}', :class => 'hand' }
     %h2 {{user.name()}}'s {{title}}

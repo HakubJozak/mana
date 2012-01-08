@@ -14,11 +14,20 @@
       $(document).ready(function() {
         if (window.has_enough_mana()) {
           var layout = new Layout({ model: User.all });
-
           var exile_view = new Dropbox({ model: CardCollection.all.exile });
+
           exile_view.el.appendTo($('#right-panel .commons'));
 
           console.env = '#{Rails.env}';
+
+          $(document).click(function(event) {
+            if ($('.card .menu').length > 0) {
+              event.preventDefault();
+              event.stopPropagation()
+            }
+
+            $('.card .menu').hide();
+          });
 
           User.local_player_id = '#{@player.id}';
 

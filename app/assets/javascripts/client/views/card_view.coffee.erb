@@ -4,6 +4,12 @@
 #
 class CardView extends Backbone.View
 
+  @MENU_ITEM_HTML = """
+                     <li class='{{clazz}}' title='{{title}}'>
+                      {{name}}
+                     </li>
+                    """
+
   @tagName: 'div'
   @className: 'card'
 
@@ -11,33 +17,30 @@ class CardView extends Backbone.View
     super(params)
     @model.bind 'change', @render
 
-    @menu_item_template = _.template($('#menu-item-template').html())
+    @menu_item_template = _.template(CardView.MENU_ITEM_HTML)
     @template = _.template($('#card-template').html())
     @el = $(@template(@model.toJSON()))
 
     @img = @$('img')
     @menu = @$('ul.menu')
 
-    @img.click(@show_detail)
+    @el.click (event) =>
+      event.preventDefault()
+      event.stopPropagation()
+      @menu.show()
+      console.info event
+      @menu.offset( left: event.clientX - 20, top: event.clientY - 20)
 
-    moc = =>
-      @menu_open_countdown = window.setTimeout(@show_menu, 1000)
-
-    @el.hover( moc, @close_menu)
     @el.data('game-object',this)
     # LEGACY
     @element = @el
 
-  show_menu: =>
-    @$('.menu').show()
-
   close_menu: =>
-    window.clearTimeout(@menu_open_countdown) if @menu_open_countdown?
-    @$('.menu').hide()
+    @menu.hide()
 
   add_menu_item: (clazz, name, title, callback) =>
     item = @menu_item_template(name: name, clazz: clazz, title: title)
-    @$('.menu').append(item)
+    @menu.append(item)
     @$(".menu .#{clazz}").click(callback)
 
   show_detail: (e) =>

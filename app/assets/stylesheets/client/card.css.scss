@@ -3,26 +3,35 @@
 @import "compass/css3";
 @import "constants";
 @import "components";
+@import "../buttons";
 
 @mixin menu-inside {
   ul.menu {
+    @include border-radius;
+    @include box-shadow(rgba(black,0.4) 10px 10px 10px);
+
     position: absolute;
-    top: 0.5em;
-    left: 100%;
+//    background-color: opacify($button-background-color, 1.0);
+    background-color: $button-background-color;
 
     li {
+      @include single-text-shadow(black, 2px, 2px);
+
       text-align: left;
       margin-bottom: 15px;
 
-      a {
-        @include border-radius;
-        color: white;
-        margin: 3px 3px 3px 3px;
-        padding: 3px 3px 3px 3px;
+      text-decoration: none;
+      color: white;
+      margin: 3px 3px 3px 3px;
+      padding: 3px 3px 3px 3px;
 
-        margin-left: -20px;
-        padding-left: 25px;
-        padding-right: 5px;
+      margin-left: -20px;
+      padding-left: 25px;
+      padding-right: 5px;
+      cursor: pointer;
+
+      &:hover {
+        color: $orange;
       }
     }
   }
