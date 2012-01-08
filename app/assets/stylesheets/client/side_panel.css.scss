@@ -26,13 +26,14 @@
   @include side-panel;
   left: 0px;
   clear: right;
-
+/*
   .card {
     @include rotate(180deg);
     &.ui-draggable-dragging {
       @include rotate(0deg);
     }
   }
+*/
 }
 
 #right-panel {
