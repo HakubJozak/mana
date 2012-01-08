@@ -78,6 +78,8 @@ class CardViewHand extends CardView
     prevent_detail = =>
       @dragged = true
 
+    @el.click @show_detail
+
     @el.draggable
       position: 0
       scope: 'cards'
