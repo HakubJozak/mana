@@ -16,11 +16,7 @@
     font-size: 14px;
     padding: 5px;
 
-    .icon {
-      float: right;
-      @include border-radius;
-      background-color: $button-background-color;
-    }
+    .icon { float: right;  }
   }
 }
 

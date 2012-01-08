@@ -10,10 +10,14 @@
 }
 
 .icon-browse {
+  cursor: hand;
   background-image: url(/assets/glass.png);
+  &:hover { background-image: url(/assets/glass-orange.png); }
 }
 
 .icon-shuffle {
+  cursor: hand;
   background-image: url(/assets/spin.png);
+  &:hover { background-image: url(/assets/spin-orange.png); }
 }
 
