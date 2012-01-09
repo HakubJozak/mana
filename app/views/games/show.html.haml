@@ -21,7 +21,7 @@
           console.env = '#{Rails.env}';
 
           $(document).click(function(event) {
-            if ($('.card .menu').length > 0) {
+            if ($('.card .menu:visible').length > 0) {
               event.preventDefault();
               event.stopPropagation()
             }
