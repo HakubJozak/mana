@@ -4,6 +4,16 @@
 #
 class CardView extends Backbone.View
 
+  @HTML = """
+            <div class='card user-{{user_id}}' data-id='{{id}}'>
+              <div class='debug'>DEBUG</div>
+              <ul class='menu' style='display:none'></ul>
+              <img src='/assets/back.jpg' />
+              <div class='counters' style='display:none'>0</div>
+              <div class='power' style='display:none'></div>
+            </div>
+          """
+
   @MENU_ITEM_HTML = """
                      <li class='{{clazz}}' title='{{title}}'>
                       {{name}}
@@ -16,10 +26,7 @@ class CardView extends Backbone.View
   constructor: (params) ->
     super(params)
     @model.bind 'change', @render
-
-    @menu_item_template = _.template(CardView.MENU_ITEM_HTML)
-    @template = _.template($('#card-template').html())
-    @el = $(@template(@model.toJSON()))
+    @el = $($.mustache(CardView.HTML, @model))
 
     @img = @$('img')
     @menu = @$('ul.menu')
@@ -39,7 +46,7 @@ class CardView extends Backbone.View
     @menu.hide()
 
   add_menu_item: (clazz, name, title, callback) =>
-    item = @menu_item_template(name: name, clazz: clazz, title: title)
+    item = $.mustache( CardView.MENU_ITEM_HTML, { name: name, clazz: clazz, title: title })
     @menu.append(item)
     @$(".menu .#{clazz}").click(callback)
 

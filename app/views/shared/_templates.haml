@@ -1,12 +1,3 @@
-#card-template
-  %div{ :class => 'card user-{{user_id}}', :"data-id" => '{{id}}' }
-    .debug DEBUG
-    %ul.menu{ :style => 'display:none' }
-    %img{ :src => "/assets/back.jpg" }
-    .counters{ :style => 'display:none' } 0
-    .power{ :style => 'display:none' }
-
-
 #handview-template
   %div{ :id => '{{id}}', :class => 'hand' }
     %h2 {{user.name()}}'s {{title}}

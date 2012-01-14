@@ -13,7 +13,7 @@ class Dropbox extends CardCollectionView
                {{/browsable}}
              </h4>
              <div class='box {{name}}'>
-               <div class='counter overlay'>0</div>
+               <div class='counter dropbox-overlay'>0</div>
              </div>
            </div>
           """
