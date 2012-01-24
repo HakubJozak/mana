@@ -1,3 +1,4 @@
+# -*- mode: ruby; tab-width: 2; -*-
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 

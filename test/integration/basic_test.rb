@@ -23,7 +23,7 @@ class BasicTest < BackendTestBase
     fill_in 'Cards', with: '15,Forest'
     click_button "Join 'Igra'"
 
-    assert page.has_css? ".users .user"
+    assert page.has_css?(".users .user"), "No user present"
     # page.execute_script("console.info('something');")
     # assert_equal 8, page.evaluate_script('4 + 4');
   end
@@ -36,7 +36,6 @@ class BasicTest < BackendTestBase
     fill_in 'Password', with: 'lillianaissexy'
     fill_in 'Password confirmation', with: 'lillianaissexy'
     click_button "Sign up"
-    # save_and_open_page
     assert_match /Logout/, page.body
 
     click_link 'My Decks'
