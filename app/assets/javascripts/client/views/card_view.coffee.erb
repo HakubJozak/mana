@@ -35,7 +35,6 @@ class CardView extends Backbone.View
       event.preventDefault()
       event.stopPropagation()
       @menu.show()
-      console.info event
       @menu.offset( left: event.clientX - 20, top: event.clientY - 20)
 
     @el.data('game-object',this)

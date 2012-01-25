@@ -160,10 +160,10 @@ class CardViewBattlefield extends CardView
       zIndex: 99999
 
 
-  tap_untap: (e) =>
-    e.preventDefault()
-    e.stopPropagation()
-    @model.toggle_tapped()
+  tap_untap: (event) =>
+    $(event.target).parents('td').find('.card').each (i,card) =>
+      $(card).data('game-object').model.toggle_tapped()
+      true
 
   visible: =>  !@model.covered()
 
