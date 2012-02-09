@@ -4,7 +4,7 @@ require 'test/test_helper'
 require 'capybara/rails'
 
 
-class CreateGameTest < ActionDispatch::IntegrationTest
+class BasicTest < ActionDispatch::IntegrationTest
 
   include Capybara::DSL
   include BackendTestRunner
@@ -13,20 +13,6 @@ class CreateGameTest < ActionDispatch::IntegrationTest
     super
     Capybara.default_driver = :webkit
     start_backend
-  end
-
-  test 'create and enter game' do
-    visit '/games'
-    click_link 'Create'
-    fill_in 'Name', with: 'Igra'
-    click_button 'Create Game'
-
-    fill_in 'Cards', with: '15,Forest'
-    click_button "Join 'Igra'"
-
-    assert page.has_css?(".users .user"), "No user present"
-    # page.execute_script("console.info('something');")
-    # assert_equal 8, page.evaluate_script('4 + 4');
   end
 
   test 'register, login and create deck' do

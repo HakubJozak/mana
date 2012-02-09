@@ -8,17 +8,24 @@ class Browser
 
   attr_accessor :cards, :players
 
-  def initialize(game_id, player_id)
+  def initialize(game_id, player_id, opts = {})
     # connect as @player
     @cards = {}
     @players = {}
     @local_player_id = player_id
-    @ws = WebSocket.new("ws://localhost:9999/games/#{game_id}/players/#{player_id}")
+
+    @port = opts[:port] || 9999
+    @host = opts[:host] || 'localhost'
+
+    @ws = WebSocket.new("ws://#{@host}:#{@port}/games/#{game_id}/players/#{player_id}")
   end
 
   def receive(expected_class)
     timeout(3) do
-      attrs = ActiveSupport::JSON.decode(@ws.receive)
+      data = @ws.receive
+      raise 'Failed to receive data from backend' unless data
+
+      attrs = ActiveSupport::JSON.decode(data)
       clazz = attrs['clazz']
       id = attrs['_id']
 

@@ -1,4 +1,4 @@
-class BackendTestBase < ActionDispatch::IntegrationTest
+module BackendTestRunner
 
   def start_backend
     env = { 'BUNDLE_GEMFILE' => '../Gemfile', 'RACK_ENV' => 'test' }

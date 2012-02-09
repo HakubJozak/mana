@@ -24,8 +24,10 @@ gem 'em-synchrony'
   gem "compass"
 #end
 
+gem "fabrication"
+
+
 group :test do
-  gem "fabrication"
 #  gem "minitest"
   gem "ruby-prof"
   gem "capybara", ">= 0.4.1.2"
@@ -52,4 +54,8 @@ end
 group :backend do
   gem 'activesupport', :require => 'active_support'
   gem "mongoid", ">= 2.0.1"
+end
+
+group :performance do
+  gem 'mechanize'
 end

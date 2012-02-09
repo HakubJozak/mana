@@ -31,3 +31,20 @@ Fabricator(:game_with_players, :from => :game) do
 end
 
 
+Fabricator(:game_with_bad_cards, :from => :game) do
+  cards = %{
+    1;Forest*
+    1;Mountain*
+    1;Island*
+    1;Swamp*
+    1;Plains*
+  }
+
+  deck = Fabricate(:deck, mainboard: cards)
+
+  after_create do |game|
+    game.players << Fabricate.build(:player, name: 'Player1', deck: deck)
+  end
+end
+
+
