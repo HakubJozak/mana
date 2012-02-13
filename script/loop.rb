@@ -14,10 +14,11 @@ Capybara.app_host = 'http://localhost:8080'
 Capybara.current_driver = :webkit
 
 #ready = Queue.new
-threads = []
+tasks = []
+
 
 3.times do |i|
-  threads << Thread.new do
+  tasks << fork do
     puts '1'
  #   ready.pop
     name = "Igra Thread #{i}"
@@ -37,6 +38,8 @@ threads = []
   end
 end
 
+tasks.each { |t| Process.waitpid(t) }
+
 #ready.push(true)
-threads.each { |t| t.join }
+# tasks.each { |t| t.join }
 
