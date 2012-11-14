@@ -40,6 +40,7 @@ group :test do
 end
 
 group :development do
+  gem 'newrelic_rpm'
   gem 'capistrano', '~> 2.9.0'
   gem 'capistrano_colors'
   gem "haml-rails", ">= 0.3.4"
