@@ -6,7 +6,7 @@
 # See also http://unicorn.bogomips.org/examples/unicorn.conf.rb for
 # a more verbose configuration using more features.
 
-listen 8080 # by default Unicorn listens on port 8080
+listen 8080
 worker_processes 2 # this should be >= nr_cpus
 pid "/home/ubuntu/mana/shared/pids/unicorn.pid"
 stderr_path "/home/ubuntu/mana/shared/log/unicorn.log"

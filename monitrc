@@ -1,0 +1,238 @@
+##############################################################################
+## Monit control file
+###############################################################################
+##
+## Comments begin with a '#' and extend through the end of the line. Keywords
+## are case insensitive. All path's MUST BE FULLY QUALIFIED, starting with '/'.
+##
+## Bellow is the example of some frequently used statements. For information
+## about the control file, a complete list of statements and options please
+## have a look in the monit manual.
+##
+##
+###############################################################################
+## Global section
+###############################################################################
+##
+## Start monit in background (run as daemon) and check the services at 2-minute
+## intervals.
+#
+set daemon  60
+#
+#
+## Set syslog logging with the 'daemon' facility. If the FACILITY option is
+## omited, monit will use 'user' facility by default. You can specify the
+## path to the file for monit native logging.
+#
+set logfile syslog facility log_daemon
+#
+#
+## Set list of mailservers for alert delivery. Multiple servers may be
+## specified using comma separator. By default monit uses port 25 - it is
+## possible to override it with the PORT option.
+#
+#set mailserver smtp.gmail.com port 587, username "system@3scale.net", password "madprof6721" using tlsv1
+
+set mailserver smtp.gmail.com port 587 username "monit@3scale.net" password "madprof6721" using tlsv1 with timeout 30 seconds
+
+#set mailserver smtp.gmail.com port 587      # primary mailserver
+#                backup.bar.baz port 10025,  # backup mailserver on port 10025
+#                localhost                   # fallback relay
+#
+#
+## By default monit will drop the event alert, in the case that there is no
+## mailserver available. In the case that you want to keep the events for
+## later delivery retry, you can use the EVENTQUEUE statement. The base
+## directory where undelivered events will be stored is specified by the
+## BASEDIR option. You can limit the maximal queue size using the SLOTS
+## option (if omited then the queue is limited just by the backend filesystem).
+#
+# set eventqueue
+#     basedir /var/monit  # set the base directory where events will be stored
+#     slots 100           # optionaly limit the queue size
+#
+#
+## Monit by default uses the following alert mail format:
+##
+
+##
+## You can override the alert message format or its parts such as subject
+## or sender using the MAIL-FORMAT statement. Macros such as $DATE, etc.
+## are expanded on runtime. For example to override the sender:
+#
+set mail-format { from: monit@3scale.net }
+#
+#
+## You can set the alert recipients here, which will receive the alert for
+## each service. The event alerts may be restricted using the list.
+#
+
+set alert alerts-list@3scale.net                       # receive all alerts
+
+# set alert manager@foo.bar only on { timeout }  # receive just service-
+#                                                # timeout alert
+#
+#
+## Monit has an embedded webserver, which can be used to view the
+## configuration, actual services parameters or manage the services using the
+## web interface.
+#
+ set httpd port 2812 and
+     use address localhost  # only accept connection from localhost
+     allow localhost        # allow localhost to connect to the server and
+#     allow admin:monit      # require user 'admin' with password 'monit'
+#
+#
+###############################################################################
+## Services
+###############################################################################
+##
+## Check the general system resources such as load average, cpu and memory
+## usage. Each rule specifies the tested resource, the limit and the action
+## which will be performed in the case that the test failed.
+#
+
+check system multitenant.3scale.net_A
+  if loadavg (15min) > 5 then alert
+  if loadavg (5min) > 15 then alert
+  if loadavg (1min) > 20 then alert
+  if memory usage > 80% then alert
+  if memory usage > 95% then alert
+
+check host master_global with address ec2-50-17-69-155.compute-1.amazonaws.com every 5 cycles
+  if failed port 80 protocol http
+  and request "/check.txt" with timeout 10 seconds for 2 cycles
+  then alert
+
+check host su1.3scale.net_backend_http with address su1.3scale.net every 2 cycles
+  if failed port 80 protocol http
+  and request "/transactions/authrep.xml?provider_key=b0929a0890b2f28d639ea9ad0fc4073b&app_id=5b520e35&app_key=e06ceaffda1c000d75792bc1a9d69453" with timeout 5 seconds for 2 cycles
+  then alert
+
+check host su1.3scale.net_backend_https with address su1.3scale.net every 2 cycles
+  if failed port 443 type TCPSSL protocol http
+  and request "/transactions/authrep.xml?provider_key=b0929a0890b2f28d639ea9ad0fc4073b&app_id=5b520e35&app_key=e06ceaffda1c000d75792bc1a9d69453" with timeout 5 seconds for 2 cycles
+  then alert
+
+check host api.2445579856672.proxy.3scale.net_http with address api.2445579856672.proxy.3scale.net every 5 cycles
+  if failed port 80 protocol http
+  and request "/v1/word/awesome.json?app_id=5b520e35&app_key=e06ceaffda1c000d75792bc1a9d69453" with timeout 10 seconds for 2 cycles
+  then alert
+
+check host proxy.3scale.net_http with address proxy.3scale.net every 2 cycles
+  if failed port 80 protocol http
+  and request "/check.txt" with timeout 5 seconds for 2 cycles
+  then alert
+
+check host www.3scale.net_http address www.3scale.net every 5 cycles
+  if failed port 80 protocol http
+  and request "/" with timeout 5 seconds for 2 cycles
+  then alert
+
+check host www.3scale.net_https address www.3scale.net every 5 cycles
+  if failed port 443 type TCPSSL protocol http
+  and request "/" with timeout 5 seconds for 2 cycles
+  then alert
+
+check device datafs with path /dev/sda1
+  if space usage > 50% then alert
+  if space usage > 70% then alert
+  if space usage > 90% then alert
+
+check process mysql with pidfile /var/run/mysqld/mysqld.pid
+   start program = "/etc/init.d/mysql start"
+   stop program = "/etc/init.d/mysql stop"
+   if failed host 127.0.0.1 port 3306 then restart
+   if 5 restarts within 5 cycles then timeout
+
+
+check file mysql_replication with path /var/run/replication_watchdog
+   if timestamp > 3 minutes then alert
+
+
+check process apache with pidfile /var/run/apache2.pid
+   start program = "/etc/init.d/apache2 start"
+   stop program  = "/etc/init.d/apache2 stop"
+   if failed host 127.0.0.1 port 8080 protocol http
+      and request "/check.txt" with timeout 30 seconds for 5 cycles then restart
+
+check process sshd with pidfile /var/run/sshd.pid
+   start program = "/etc/init.d/ssh start"
+   stop program  = "/etc/init.d/ssh stop"
+   if failed host 127.0.0.1 port 22 protocol ssh then restart
+
+check process haproxy with pidfile /var/run/haproxy.pid
+   start program = "/etc/init.d/haproxy start"
+   stop program  = "/etc/init.d/haproxy stop"
+
+check process cron with pidfile /var/run/crond.pid
+   start program = "/etc/init.d/cron start"
+   stop program  = "/etc/init.d/cron stop"
+
+check process memcached with pidfile /var/run/memcached.pid
+   start program = "/etc/init.d/memcached start"
+   stop program  = "/etc/init.d/memcached stop"
+
+check process fail2ban with pidfile /var/run/fail2ban/fail2ban.pid
+   start program = "/etc/init.d/fail2ban start"
+   stop program  = "/etc/init.d/fail2ban stop"
+
+check process munin-node with pidfile /var/run/munin/munin-node.pid
+   start program = "/etc/init.d/munin-node start"
+   stop program  = "/etc/init.d/munin-node stop"
+
+check process postfix with pidfile /var/spool/postfix/pid/master.pid
+   start program = "/etc/init.d/postfix start"
+   stop program  = "/etc/init.d/postfix stop"
+
+
+check process redis with pidfile /var/run/redis/redis-server.pid
+
+   start program = "/etc/init.d/redis-server start"
+   stop program = "/etc/init.d/redis-server stop"
+   if failed host 127.0.0.1 port 6379 then restart
+   if 5 restarts within 5 cycles then timeout
+
+check process resque_scheduler
+  with pidfile /home/bender/system_enterprise/current/tmp/pids/resque_scheduler.pid
+  start program = "/bin/bash -l -c 'cd /home/bender/system_enterprise/current; RAILS_ENV=enterprise VERBOSE=1 nohup /usr/local/bin/ruby /usr/local/bin/bundle exec /usr/local/bin/rake environment resque:scheduler& > /home/bender/system_enterprise/current/log/resque_scheduler.log && echo $! > /home/bender/system_enterprise/current/tmp/pids/resque_scheduler.pid'" as uid bender and gid bender
+  stop program = "/bin/sh -c 'cd /home/bender/system_enterprise/current && kill -s QUIT `cat tmp/pids/resque_scheduler.pid` && rm -f tmp/pids/resque_scheduler.pid; exit 0;'"
+  group resque_workers
+
+
+
+check process resque_worker_0
+  with pidfile /home/bender/system_enterprise/current/tmp/pids/resque_worker_0.pid
+  start program = "/bin/bash -l -c 'cd /home/bender/system_enterprise/current; RAILS_ENV=enterprise QUEUE=events VERBOSE=1 nohup /usr/local/bin/ruby /usr/local/bin/bundle exec /usr/local/bin/rake environment resque:work& > /home/bender/system_enterprise/current/log/resque_worker_0.log && echo $! > /home/bender/system_enterprise/current/tmp/pids/resque_worker_0.pid'" as uid bender and gid bender
+  stop program = "/bin/sh -c 'cd /home/bender/system_enterprise/current && kill -s QUIT `cat tmp/pids/resque_worker_0.pid` && rm -f tmp/pids/resque_worker_0.pid; exit 0;'"
+  if totalmem is greater than 500 MB for 10 cycles then restart # eating up memory?
+  group resque_workers
+
+
+check process resque_worker_1
+  with pidfile /home/bender/system_enterprise/current/tmp/pids/resque_worker_1.pid
+  start program = "/bin/bash -l -c 'cd /home/bender/system_enterprise/current; RAILS_ENV=enterprise QUEUE=messages,web_hooks,zoho VERBOSE=1 nohup /usr/local/bin/ruby /usr/local/bin/bundle exec /usr/local/bin/rake environment resque:work& > /home/bender/system_enterprise/current/log/resque_worker_1.log && echo $! > /home/bender/system_enterprise/current/tmp/pids/resque_worker_1.pid'" as uid bender and gid bender
+  stop program = "/bin/sh -c 'cd /home/bender/system_enterprise/current && kill -s QUIT `cat tmp/pids/resque_worker_1.pid` && rm -f tmp/pids/resque_worker_1.pid; exit 0;'"
+  if totalmem is greater than 500 MB for 10 cycles then restart # eating up memory?
+  group resque_workers
+
+
+check process resque_worker_2
+  with pidfile /home/bender/system_enterprise/current/tmp/pids/resque_worker_2.pid
+  start program = "/bin/bash -l -c 'cd /home/bender/system_enterprise/current; RAILS_ENV=enterprise QUEUE=messages,web_hooks,zoho VERBOSE=1 nohup /usr/local/bin/ruby /usr/local/bin/bundle exec /usr/local/bin/rake environment resque:work& > /home/bender/system_enterprise/current/log/resque_worker_2.log && echo $! > /home/bender/system_enterprise/current/tmp/pids/resque_worker_2.pid'" as uid bender and gid bender
+  stop program = "/bin/sh -c 'cd /home/bender/system_enterprise/current && kill -s QUIT `cat tmp/pids/resque_worker_2.pid` && rm -f tmp/pids/resque_worker_2.pid; exit 0;'"
+  if totalmem is greater than 500 MB for 10 cycles then restart # eating up memory?
+  group resque_workers
+
+
+
+check process sphinx
+  with pidfile /home/bender/system_enterprise/current/tmp/pids/searchd.pid
+  start program = "/bin/bash -l -c 'cd /home/bender/system_enterprise/current; PATH=$PATH:/usr/local/bin RAILS_ENV=enterprise /usr/local/bin/ruby /usr/local/bin/bundle exec /usr/local/bin/rake search:fix_account ts:index ts:restart'" as uid bender and gid bender with timeout 300 seconds
+  stop program = "/bin/sh -c 'cd /home/bender/system_enterprise/current && kill -s QUIT `cat tmp/pids/searchd.pid` && rm -f tmp/pids/searchd.pid; exit 0;'"
+
+check process api-docs-proxy
+  with pidfile /home/bender/api-docs-proxy/proxy.pid
+  start program = "/bin/bash -l -c 'cd /home/bender/api-docs-proxy; HOME=/home/bender GEM_HOME=/home/bender/.rvm/gems/ruby-1.9.3-p125/ /home/bender/.rvm/rubies/ruby-1.9.3-p125/bin/ruby /home/bender/.rvm/gems/ruby-1.9.3-p125/bin/bundle exec /home/bender/.rvm/rubies/ruby-1.9.3-p125/bin/ruby bin/proxy -l -d --debug --airbrake'" as uid bender and gid bender
+  stop program = "/bin/sh -c 'cd /home/bender/api-docs-proxy && kill `cat proxy.pid` && rm -f proxy.pid; exit 0;'"
+  group api-docs-proxy

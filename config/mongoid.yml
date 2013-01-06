@@ -1,5 +1,6 @@
 development:
   host: localhost
+  port: 27017
 #  database: mana_development
   database: mana_production
 #  database: mana_development_master
