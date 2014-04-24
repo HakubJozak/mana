@@ -116,9 +116,3 @@ class CardStamp
 
 
 end
-
-
-
-
-
-

@@ -7,7 +7,7 @@
 # a more verbose configuration using more features.
 
 listen 8080
-worker_processes 2 # this should be >= nr_cpus
+worker_processes 1 # this should be >= nr_cpus
 pid "/home/ubuntu/mana/shared/pids/unicorn.pid"
 stderr_path "/home/ubuntu/mana/shared/log/unicorn.log"
 stdout_path "/home/ubuntu/mana/shared/log/unicorn.log"

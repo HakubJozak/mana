@@ -9,6 +9,7 @@ gem "devise", ">= 1.3.3"
 gem 'jquery-rails'
 gem 'formtastic'
 gem 'unicorn'
+gem 'json', '~> 1.8.1'
 
 gem 'god', '~> 0.11.0', :require => false
 gem 'mechanize', :require => false
@@ -28,10 +29,9 @@ gem "fabrication"
 
 
 group :test do
-#  gem "minitest"
-  gem "ruby-prof"
-  gem "capybara", ">= 0.4.1.2"
-  gem "capybara-webkit"
+  # gem "minitest"
+  # gem "capybara", ">= 0.4.1.2"
+  # gem "capybara-webkit"
   gem "database_cleaner", ">= 0.6.7"
   gem "launchy", ">= 0.4.0"
   gem 'web-socket-ruby', :require => 'web_socket'
@@ -44,12 +44,10 @@ group :development do
   gem 'capistrano', '~> 2.9.0'
   gem 'capistrano_colors'
   gem "haml-rails", ">= 0.3.4"
-  gem 'ruby-debug-base19'
-  gem 'ruby-debug19'
   gem 'pry'
   gem 'pry-doc'
   gem 'guard-livereload'
-  gem 'rb-inotify', '>= 0.5.1', :require => false # for Guard
+#  gem 'rb-inotify', '>= 0.5.1', :require => false # for Guard
 end
 
 group :backend do
