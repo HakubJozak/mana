@@ -41,3 +41,6 @@ gem 'spring',        group: :development
 
 gem "devise", ">= 1.3.3"
 gem "haml"
+
+gem 'ember-rails'
+gem 'ember-source', '1.5.0'
