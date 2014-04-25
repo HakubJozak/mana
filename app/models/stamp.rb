@@ -18,10 +18,10 @@ class Stamp < ActiveRecord::Base
     page = goto_url("http://magiccards.info/query?q=!#{URI.escape(name)}&v=card&s=cname")
 
     stamp.url = page.scan(REAL_URL_REGEXP)[0][0] rescue nil
-    raise UnknownCard unless stamp.url
+    raise UnknownCard.new(name) unless stamp.url
 
     uri = page.scan(IMAGE_REGEXP)[0][0] rescue nil
-    raise UnknownCard unless uri
+    raise UnknownCard.new(name) unless uri
     stamp.frontside = "http://magiccards.info" + uri
 
     # Guess backside if the card is double-sided.
