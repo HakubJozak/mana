@@ -1,0 +1,38 @@
+#handview-template
+  %div{ :id => '{{id}}', :class => 'hand' }
+    %h2 {{user.name()}}'s {{title}}
+    .button-bar
+      %a.mulligan-button.button Mulligan
+    .button-bar.right
+      %a.close-button.button Close
+    .container
+
+#cardbrowser-template
+  %div{ :id => '{{id}}', :class => 'card-browser {{name}}' }
+    .container
+
+#message-template
+  %li
+    %span.message{ :class => "message user-{{user.id}}" }
+      {{user.name()}}
+    {{message}}
+
+#anonymous-message-template
+  %li
+    {{message}}
+
+
+#user-stylesheet-template
+  :css
+    .message.user-{{id}} { color: {{color}} }
+    .user-{{id}}.card:hover {
+     -moz-box-shadow: {{color}} 0px 0px 15px 0;
+     -webkit-box-shadow: {{color}} 0px 0px 15px 0;
+     -o-box-shadow: {{color}} 0px 0px 15px 0;
+     box-shadow: {{color}} 0px 0px 15px 0;
+    }
+
+
+#user-area-template
+  %div{ :class => 'user-area user-{{id}}' }
+    .name {{name()}}

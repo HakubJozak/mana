@@ -1,0 +1,13 @@
+%ul.hmenu
+  = render 'devise/menu/registration_items'
+  = render 'devise/menu/login_items'
+
+  - if current_user
+    -# %li= link_to 'My Games', decks_path
+    %li= link_to 'My Decks', decks_path
+
+  %li= link_to 'Join Game', games_path
+  %li= link_to 'New Game', new_game_path
+
+
+

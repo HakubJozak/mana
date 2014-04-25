@@ -1,0 +1,17 @@
+%h1
+  = @deck.name
+
+  %table.deck
+    %tbody
+      - [ :mainboard, :sideboard ].each do |part|
+        - @deck.card_stamps(part).each_slice(4) do |slice|
+          %tr
+            - slice.each do |count, stamp|
+              %td
+                %img{ :src => stamp.image_url, :title => "#{count}x #{stamp.name}" }
+            - slice.size.remainder(4).times do
+              %td
+
+= link_to 'Back', decks_path
+= link_to 'Edit', edit_deck_path(@deck)
+

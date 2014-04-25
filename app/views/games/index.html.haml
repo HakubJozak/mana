@@ -1,0 +1,27 @@
+#content.games
+  -#
+    #search-box
+      %label
+        %input{ :placeholder => 'Find a Game...',  :type => 'search' }
+
+  %table.games{ :title => 'Games' }
+    %tr
+      %th Started
+      %th Name
+      %th Players
+      %th= link_to 'Create', new_game_path
+
+    - @games.each do |game|
+      %tr
+        %td= "#{time_ago_in_words(game.created_at)} ago"
+        %td= game.name
+        %td= truncate(game.players.map(&:name).join(', '))
+        - if is_playing?(game)
+          %td= link_to "Continue as #{player_for(game).name}", game
+        - else
+          %td= link_to 'Join', new_game_player_path(game)
+        -# %td= link_to 'Edit', edit_game_path(game)
+
+%br
+
+

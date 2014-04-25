@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title Mana
+    = csrf_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = yield :head
+
+  %body
+    = render 'shared/menu'
+
+
+    %h1.hyper
+      = link_to root_path, :class => 'hyper' do
+        != "M<span class='orange'>&alpha;</span>n<span class='orange'>&alpha;</span>"
+
+  #content
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+    = yield

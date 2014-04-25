@@ -1,0 +1,46 @@
+- tokens = CardStamp.tokens
+
+#create-card-dialog{:title => "Create Token" }
+  %fieldset
+    %p
+      Create new token by either selecting one from the token list
+      or pasting any image URL to the box.
+
+    %label{:for => "token"} Tokens
+    %form
+      %select{ :name => 'token' }
+        - tokens.each do |token|
+          %option{ :value => token.id, 'data-image-url' => token.image_url } #{token.name}
+
+    %center
+      %img#token-preview{ :src => "#{tokens.first.image_url if tokens.first}" }
+
+
+    -# %br/
+    -# %label{:for => "custom_image_url"} Custom Image URL
+    -# %input.text.ui-widget-content.ui-corner-all{:name => "custom_image_url", :type => "text" }/
+
+:javascript
+  $(document).ready(function() {
+
+    $("#create-card-dialog").change(function(event) {
+      var src = $("#create-card-dialog").find(':selected').data('image-url')
+      $('#token-preview').attr('src', src);
+    });
+
+    $("#create-card-dialog").dialog({
+      autoOpen: false,
+      width: 350,
+      modal: false,
+
+      buttons: [
+          {
+           text: 'Create',
+           click: function() {
+                  var card_stamp_id =  $('#create-card-dialog select').val();
+                  Action.create_token(card_stamp_id).save();
+                  $('#create-card-dialog').dialog('close');
+                }},
+          { text: 'Cancel', click: function() { $('#create-card-dialog').dialog('close'); } }
+      ]});
+    });
