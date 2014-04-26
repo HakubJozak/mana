@@ -12,7 +12,7 @@ class Stamp < ActiveRecord::Base
     find_by! name: name
   end
 
-  def draw_hand
+  def self.draw_hand
     playable.order('random()').limit(7)
   end
 

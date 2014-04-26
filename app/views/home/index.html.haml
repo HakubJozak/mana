@@ -6,15 +6,15 @@
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
   %body
-    = render 'shared/menu'
+
   #outer
     #cards.inner
-      - CardStamp.random(7).each do |card|
-        - if card
-          = link_to image_tag(card.image_url), card.url, :target => '_blank'
+      - @stamps.each do |stamp|
+        - if stamp
+          = link_to image_tag(stamp.frontside_url), stamp.frontside_url, :target => '_blank'
         - else
           = link_to image_tag('/assets/back.jpg'), '/'
 
   %ul#button-bar
-    %li= link_to 'New Game', new_game_path, :class => 'button'
-    %li= link_to 'Join Game', games_path, :class => 'button'
+    %li=#link_to 'New Game', new_game_path, :class => 'button'
+    %li=# link_to 'Join Game', games_path, :class => 'button'
