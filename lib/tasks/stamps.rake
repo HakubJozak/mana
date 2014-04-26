@@ -1,16 +1,6 @@
 namespace :stamps do
   task :load => :environment do
 #    set = File.read(Rails.root + 'db/AllSets-x.json')
-    set = File.read(Rails.root + 'db/ISD-x.json')
-
-#    JSON.parse(set).each do |e|
-    JSON.parse(set)['cards'].each do |card|
-      card['card_type'] = card.delete('type')
-
-     stamp = Stamp.create!(card)
-        puts stamp.name
-    end
-#    end
   end
 
   task :fetch => :environment do

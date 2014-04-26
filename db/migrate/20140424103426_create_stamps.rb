@@ -3,9 +3,14 @@ class CreateStamps < ActiveRecord::Migration
     create_table :stamps do |t|
       t.string :name
       # double-faced cards have multiple names: i.e. ["Cloistered Youth", "Unholy Fiend"]
-      t.string :names
-      t.string :text
-      t.string :flavor
+      t.text :names
+      t.text :foreignNames
+      t.text :text
+      t.text :originalText
+      t.text :rulings
+      t.text :printings
+
+      t.text :flavor
       t.string :manaCost
       # converted mana cost
       t.string :cmc
@@ -16,8 +21,11 @@ class CreateStamps < ActiveRecord::Migration
       t.string :supertypes
       t.string :subtypes
       t.string :rarity
+
+      t.string :loyalty
       t.string :power
       t.string :toughness
+
       # 'normal' or 'double-faced'
       t.string :layout
       t.string :artist
@@ -26,13 +34,10 @@ class CreateStamps < ActiveRecord::Migration
       t.string :number
       t.string :multiverseid
       t.string :imageName
-
       t.string :originalType
-      t.string :originalText
-      t.string :rulings
-      t.string :foreignNames
-      t.string :printings
-      t.string :legalities
+
+      t.text :legalities
+      t.string :variations
 
       t.timestamps
     end
