@@ -14,6 +14,9 @@ module MtgJsonLoader
       arg['cards'].each do |attrs|
         attrs.delete 'foreignNames'
         attrs.delete 'printings'
+        attrs.delete 'hand'
+        attrs.delete 'life'
+
         attrs['card_type'] = attrs.delete('type')
 
         attrs.each_pair do |k,v|
