@@ -16,6 +16,8 @@ module MtgJsonLoader
         attrs.delete 'printings'
         attrs.delete 'hand'
         attrs.delete 'life'
+        attrs.delete 'border'
+        attrs.delete 'watermark'
 
         attrs['card_type'] = attrs.delete('type')
 
@@ -23,12 +25,8 @@ module MtgJsonLoader
           attrs[k] = v.to_s
         end
 
-        begin
-          Stamp.create!(attrs)
-        rescue => e
-          binding.pry
-          puts "Failed #{attrs['name']}: #{e}"
-        end
+
+        Stamp.create!(attrs)
       end
     else
       file = File.new(arg)

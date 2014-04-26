@@ -3,12 +3,12 @@ class CreateStamps < ActiveRecord::Migration
     create_table :stamps do |t|
       t.string :name
       t.text :names # double-faced cards have multiple names: i.e. ["Cloistered Youth", "Unholy Fiend"]
-      t.text :text
-      t.text :originalText
-      t.text :rulings, limit: 2048
-      t.text :printings, limit: 2048
-      t.text :legalities, limit: 2048
-      t.text :flavor
+      t.text :text, limit: 4096
+      t.text :originalText, limit: 4096
+      t.text :rulings, limit: 4096
+      t.text :printings, limit: 4096
+      t.text :legalities, limit: 4096
+      t.text :flavor, limit: 4096
 
       t.string :manaCost
       t.string :cmc # converted mana cost

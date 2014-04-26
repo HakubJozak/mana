@@ -13,4 +13,13 @@ class StampTest < ActiveSupport::TestCase
     refute @forest.double_faced?
   end
 
+  test "frontside_url" do
+    assert_equal 'http://mtgimage.com/multiverseid/245247.jpg', @forest.frontside_url
+    assert_equal 'http://mtgimage.com/multiverseid/221212.jpg', @cloistered_youth.frontside_url
+  end
+
+  test "backside_url" do
+    assert_equal 'http://mtgimage.com/multiverseid/221222.jpg', @cloistered_youth.backside_url
+  end
+
 end
