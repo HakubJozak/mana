@@ -1,6 +1,9 @@
+require 'mtg_json_loader'
+
 namespace :stamps do
   task :load => :environment do
-    sets = File.read(Rails.root + 'db/AllSets-x.json')
+    Stamp.delete_all
+    MtgJsonLoader.load_all
   end
 
   desc 'Remove all stamps'

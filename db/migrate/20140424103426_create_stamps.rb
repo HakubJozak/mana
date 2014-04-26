@@ -2,21 +2,18 @@ class CreateStamps < ActiveRecord::Migration
   def change
     create_table :stamps do |t|
       t.string :name
-      # double-faced cards have multiple names: i.e. ["Cloistered Youth", "Unholy Fiend"]
-      t.text :names
-      t.text :foreignNames
+      t.text :names # double-faced cards have multiple names: i.e. ["Cloistered Youth", "Unholy Fiend"]
       t.text :text
       t.text :originalText
-      t.text :rulings
-      t.text :printings
-
+      t.text :rulings, limit: 2048
+      t.text :printings, limit: 2048
+      t.text :legalities, limit: 2048
       t.text :flavor
+
       t.string :manaCost
-      # converted mana cost
-      t.string :cmc
+      t.string :cmc # converted mana cost
       t.string :colors
-      # 'type' in JSON - renamed because of Rails STI
-      t.string :card_type
+      t.string :card_type # 'type' in JSON - renamed because of Rails STI
       t.string :types
       t.string :supertypes
       t.string :subtypes
@@ -36,7 +33,6 @@ class CreateStamps < ActiveRecord::Migration
       t.string :imageName
       t.string :originalType
 
-      t.text :legalities
       t.string :variations
 
       t.timestamps
