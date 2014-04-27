@@ -1,0 +1,40 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass/css3";
+@import "constants";
+@import "components";
+
+#top-panel {
+  @include transparent;
+
+  position: fixed;
+  left: 0px + $side-panel-width;
+  // right: 0px + $side-panel-width;
+  top: 10px;
+  width: 60%;
+  padding: 7px 7px 7px 7px;
+  z-index: $chat-z-index;
+
+  .message-list {
+    @include border-radius;
+    @include transparent;
+    font-size: 17px;
+    padding: 3px;
+    margin: 5px;
+    font-weight: normal;
+    overflow-y: scroll;
+
+    a { color: gray; }
+  }
+
+  .button-bar {
+    input, a { display: inline; }
+  }
+
+  input.chat-input {
+    color: white;
+    width: 90%;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+}

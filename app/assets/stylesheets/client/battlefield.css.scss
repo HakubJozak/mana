@@ -1,0 +1,73 @@
+@import "compass/reset";
+@import "compass/css3";
+
+@import "constants";
+@import "components";
+
+
+
+#desk {
+  position: absolute;
+  left: $side-panel-width;
+  right: $side-panel-width;
+  top: 1em;
+  bottom: 1em;
+
+  #battlefield  {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    .battlefield-part {
+       position: relative;
+
+      .battlefield-menu {
+         position: absolute;
+         right: 0;
+         bottom: 0;
+
+         li {
+           float: right;
+           @include opaque;
+           min-width: 20px;
+           margin: 3px 3px 3px 3px;
+           color: $orange;
+           text-align: center;
+           font-size: 20px;
+           cursor: pointer;
+          }
+      }
+
+       height: 47%;
+       margin-bottom: 2em;
+
+
+      table {
+        @include no-text-select;
+        @include border-radius;
+
+        height: 100%;
+        float: left;
+        background-color: rgba(0, 0, 0, 0.24);
+        border: 1px solid rgba(0, 0, 0, 0.24);
+        border: collapse;
+
+        tbody.rotated {
+          .card img { @include rotate(180deg);  }
+        }
+
+      tr {
+        border: none; // 1px dashed gray;
+
+         td {
+            position: relative;
+            border: none; // 1px dashed gray;
+            // @include card-size;
+            &.card-over { @include focused; }
+            .card { position: absolute; }
+          }
+        }
+      }
+    }
+  }
+}

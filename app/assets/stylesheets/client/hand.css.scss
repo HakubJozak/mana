@@ -1,0 +1,57 @@
+// -*- mode: css; tab-width: 2; -*-
+
+
+@import "compass/css3";
+@import "constants";
+@import "components";
+
+.hand {
+  display: none;
+  left: 70%;
+  top: 60%;
+  //  right: $side-panel-width + 10;
+
+  position: fixed;
+  z-index: $hand-z-index;
+
+  border: 1px dashed $hand-border-color;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  min-width: 220px;
+  min-height: 195px;
+
+  padding: 15px;
+  padding-left: 10px;
+
+  h2 {
+      display: inline;
+      position: relative;
+      color: transparentize($highlight-color, 0.3);
+  }
+
+  .card {
+    position: relative;
+    float: left;
+    margin-top: 15px;
+    margin-right: 10px;
+  }
+
+ .button-bar {
+    display: inline;
+    font-size: 80%;
+    a {
+        margin-right: 5px;
+        display: inline;
+    }
+
+   &.right {
+     float: right;
+   }
+  }
+
+  &.card-over {
+     @include focused;
+  }
+
+  @include shadow;
+}

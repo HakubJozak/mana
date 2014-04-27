@@ -1,0 +1,48 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass/css3";
+@import 'components';
+@import 'constants';
+@import '../buttons';
+
+
+
+.box-container {
+  margin-bottom: 1em;
+
+  h4 {
+    margin: auto;
+    margin-bottom: 3px;
+    font-size: 14px;
+    padding: 5px;
+
+    .icon { float: right;  }
+  }
+}
+
+
+.box {
+  @include card-size;
+  @include border-radius;
+  padding: 5px;
+  background-color: rgba(0,0,0,0.25);
+
+  margin: auto;
+  &.card-over { @include focused; }
+  img { @include card-size; }
+
+//    border: 1px dashed #9D7C41;
+
+    .counter {
+      @include border-radius;
+      position: absolute;
+
+      left: 3px;
+      top: 3px;
+      background-color: rgba(0,0,0,0.4);
+      padding: 5px;
+      padding-top: 3px;
+      margin: 5px;
+      z-index: $dropbox-overlay-z-index;
+    }
+}

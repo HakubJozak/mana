@@ -1,0 +1,80 @@
+@import 'compass/css3';
+@import 'constants';
+@import 'modules';
+@import '../buttons';
+
+
+form.formtastic {
+
+  margin-top: 4em;
+  /* hide the 'required' asterisks */
+  abbr { display: none; }
+
+  li p.inline-errors {
+    @include single-text-shadow(black,1px,1px);
+  }
+
+  p.inline-hints {
+    @include single-text-shadow(black,1px,1px);
+    font-size: $input-height * 0.8;
+    color: $orange;
+    text-align: center;
+    a {
+        color: $orange;
+        font-weight: bold;
+      }
+  }
+
+  li.radio {
+     overflow: hidden;
+
+     ol { float: none; }
+
+     .choices {
+         height: 2em;
+
+         li {
+           display: inline;
+           margin-right: 4em;
+           label { width: inherit; display: inline; }
+         }
+     }
+  }
+
+  li.password input, li.string input, li.text textarea, select {
+   @include border-radius(10px);
+
+   font-size: $input-height - 1px;
+   border: 3px solid gray;
+   width: 60%;
+   max-height: 250pt;
+   padding: 0.3em;
+
+   &:focus { border: 3px solid $orange; }
+  }
+
+  fieldset.buttons {
+
+    li {
+      padding-left: none;
+      font-size: 120%;
+      overflow: visible;
+      float: left;
+      display: inline;
+      line-height: 2em;
+
+      input, a {
+        @include button($orange);
+        padding: 7px 10px 7px 10px;
+      }
+    }
+
+  }
+
+  label {
+   color: white;
+   font-size: 70%;
+   line-height: $input-height;
+   font-size: $input-height;
+  }
+}

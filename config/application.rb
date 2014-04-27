@@ -19,5 +19,19 @@ module Mana
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # config.autoload_paths += %W(#{config.root}/lib)
+    # config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
+    config.log_level = :debug
+
+    # config.assets.enabled = true
+    # config.assets.version = '1.0'
+    # config.assets.precompile += ['client.js', 'client.css']
+    # config.assets.compile = true
+
+    # config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
+    # config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/blueprint/stylesheets"
+
   end
 end

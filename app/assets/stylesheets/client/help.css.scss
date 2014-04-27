@@ -1,0 +1,68 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass/css3";
+@import "constants";
+@import "components";
+
+table { border-collapse: collapse; width: 100%; }
+table th, table td { border-bottom: 1px dashed gray; padding: 5px; text-align: left; }
+table thead th { color: $orange; }
+table thead th.keys_column { text-align: center; }
+table tbody th { color: white; font-weight: normal; text-align: center; }
+table tbody td { font-size: 18px; line-height: 1.25em; }
+
+
+
+#help {
+ @include shadow;
+ @include border-radius(10px);
+
+ position: absolute;
+ top: 40px;
+ width: 800px;
+ z-index: 9999;
+
+ border: 1px solid rgba(0, 0, 0, 0.5);
+ color: #999;
+ font-size: 16px;
+ height: 600px;
+ left: 50%;
+ margin-left: -400px;
+
+ h4 { font-size: 24px; font-weight: normal; color: #ccc; }
+ .close { position: absolute; right: 40px; top: 53px; }
+ strong { background: rgba(48, 0, 0, 0.5); color: #fafeb2; }
+}
+
+.margin {
+  background: url(/assets/hive.png);
+  height: 560px; padding: 20px 40px; position: relative;
+}
+
+#footer {
+ position: absolute;
+ bottom: 5px;
+
+ color: gray;
+ text-align: center;
+ font-size: small;
+
+ hr {
+   background-color: black;
+   height: 1px;
+   border: none;
+ }
+
+ a { color: #bdbdbd; text-decoration: none }
+ a:hover { color: $highlight-color }
+
+ p {
+   text-align: justify;
+   margin: 0 2em 0 2em;
+ }
+
+ .highlight { text-align: center; }
+}
+
+
+

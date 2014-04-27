@@ -1,0 +1,93 @@
+/*
+  Temporary design stolen from - http://www.css3maker.com/
+*/
+
+@import 'constants';
+@import 'compass/css3';
+
+
+a {
+ &:visited { color: white }
+}
+
+.notice { color: $orange; }
+
+body {
+  font-family: "Times New Roman", "Serif";
+  background-color: black;
+  background-image: url(/assets/fabric.png);
+  min-height: 2000px;
+  color: white;
+
+  #content { width: $content-width; margin: auto; }
+  #flash_notice { color: $orange; font-size: larger; }
+}
+
+h1.hyper {
+ width: 600pt;
+
+ text-align: center;
+ font-size: 110px;
+ margin: 30pt auto 20pt;
+ text-shadow: 0px 5px 3px black;
+
+ a { text-decoration: none; color: white; }
+ .orange { color: $orange; }
+
+ super {
+   position: relative;
+   left: 125px;
+   top: -110px;
+   text-shadow: 1px 1px 0px black;
+   color: transparentize($white, 0.6);
+   font-size: 20px;
+ }
+
+ sub {
+   position: relative;
+   left: -0.5em;
+   font-size: 55%;
+   color: $orange;
+ }
+}
+
+
+ul.hmenu {
+ @include border-radius;
+
+ right: 0;
+ top: 0;
+ width: 100%;
+ text-align: right;
+
+ background-color: rgba(0,0,0,0.6);
+ text-align: center;
+ position: fixed;
+ font-size: 14pt;
+
+ margin-top: 0;
+ margin-left: 1em;
+ padding: 0.4em;
+
+  li {
+    display: inline;
+    float: right;
+    margin-left: 1em;
+
+    a {
+      color: $white;
+      &:visited { color: white }
+      &:hover { color: $orange; }
+
+      @include text-shadow;
+      text-decoration: none;
+      color: $white;
+    }
+  }
+}
+
+
+
+
+
+

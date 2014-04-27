@@ -1,0 +1,31 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass/css3";
+@import "constants";
+@import "components";
+@import '../buttons';
+
+
+body {
+  font-family: Georgia;
+  color: white;
+  background-image: url(/assets/fabric.png);
+
+  .button {  @include button($orange);  }
+  .highlight { color: $highlight-color }
+  .warning   { color: red }
+
+  .handle {
+    @include opaque;
+    width: 100%;
+    min-height: 25px;
+  }
+
+  input {
+    @include transparent;
+    @include border-radius;
+    color: $orange;
+    border: 1px solid #424242;
+  }
+
+}
