@@ -31,8 +31,8 @@
           = d.input :mainboard, :as => :text, :label => 'Cards',
                     :hint => raw("<b>TIP</b>: #{link_to('Login', new_user_session_path)} to enable deck management and saving games!")
 
-    = f.buttons do
-      = f.commit_button "Join '#{@game.name}'"
+    = f.actions do
+      = f.action :submit, "Join '#{@game.name}'"
       %li= link_to 'Back', games_path
 
 :coffeescript

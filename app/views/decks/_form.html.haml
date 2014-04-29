@@ -5,6 +5,6 @@
     = f.input :mainboard, :as => :text
     = f.input :sideboard, :as => :text
 
-    = f.buttons do
-      = f.commit_button
+    = f.actions do
+      = f.action :submit
       %li= link_to 'Back', decks_path
