@@ -16,6 +16,20 @@ $step: $width / 7;
   z-index: -100;
 }
 
+#button-bar {
+  margin: 550px auto 0 auto;
+  width: 410px;
+
+  li {
+    display: inline;
+    list-style: none;
+    position: relative;
+    top: -5em;
+  }
+  a.button { @include big-button($orange);  }
+
+  a:last-child { margin-left: 15px }
+}
 
 
 #cards {
@@ -57,16 +71,4 @@ $step: $width / 7;
       }
     }
   }
-}
-
-
-// TODO: absolute positioning
-#button-bar {
-  margin: 600px auto 0 auto;
-  width: 510px;
-
-  li { display: inline; list-style: none; }
-  a.button { @include big-button($orange);  }
-
-  a:last-child { margin-left: 15px }
 }

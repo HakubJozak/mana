@@ -42,7 +42,7 @@ form.formtastic {
   }
 
   li.password input, li.string input, li.text textarea, select {
-   @include border-radius(10px);
+   @include border-radius(2px);
 
    font-size: $input-height - 1px;
    border: 3px solid gray;

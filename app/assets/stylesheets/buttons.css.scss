@@ -2,14 +2,13 @@ $button-border-color: rgba(1.0,1.0,1.0,0.3);
 $button-background-color: rgba(128, 128, 128, 0.7);
 
 @mixin button($color) {
-  @include single-text-shadow(black, 2px, 2px);
-  @include border-radius(6px);
+  @include border-radius(2px);
 
   padding: 4px 4px 4px 4px;
   border: 1px solid $button-border-color;
   text-decoration: none;
 
-  &:hover { background-color: $color; }
+  &:hover { background-color: $color; color: black; }
   cursor: pointer;
 
   color: white;
@@ -22,5 +21,5 @@ $button-background-color: rgba(128, 128, 128, 0.7);
   @include border-radius(10px);
   padding: 10px 10px 10px 10px;
   line-height: 38px;
-  font-size: 35px;
+  font-size: 20px;
 }

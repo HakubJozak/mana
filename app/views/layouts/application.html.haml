@@ -12,8 +12,9 @@
 
 
     %h1.hyper
-      = link_to root_path, :class => 'hyper' do
-        != "M<span class='orange'>&alpha;</span>n<span class='orange'>&alpha;</span>"
+      = link_to root_path, class: 'hyper' do
+        mana
+        %sup 2
 
   #content
     - flash.each do |name, msg|

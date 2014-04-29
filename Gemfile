@@ -46,8 +46,9 @@ gem 'pry', groups: [ :development, :test ]
 # gem 'debugger', group: [:development, :test]
 
 
-gem "devise", ">= 1.3.3"
+gem "devise", "~> 3.2.4"
 gem "haml"
+gem "formtastic"
 
 gem 'ember-rails'
 gem 'ember-source', '1.5.0'

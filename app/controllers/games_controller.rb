@@ -1,9 +1,7 @@
 class GamesController < ApplicationController
 
-  # GET /games
-  # GET /games.json
   def index
-    @games = Game.desc(:created_at)
+    @games = Game.order(created_at: :desc)
 
     respond_to do |format|
       format.html
@@ -11,8 +9,7 @@ class GamesController < ApplicationController
     end
   end
 
-  # GET /games/1
-  # GET /games/1.json
+
   def show
     @websocket_host = request.host
 
@@ -32,14 +29,11 @@ class GamesController < ApplicationController
     else
       redirect_to new_game_player_path(@game)
     end
-
   end
 
-  # GET /games/new
-  # GET /games/new.json
+
   def new
     @game = Game.new
-
     @game.name = if current_user
                    "#{current_user.name}'s game"
                  else
@@ -47,20 +41,19 @@ class GamesController < ApplicationController
                  end
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @game }
     end
   end
 
-  # GET /games/1/edit
+
   def edit
     @game = Game.find(params[:id])
   end
 
-  # POST /games
-  # POST /games.json
+
   def create
-    @game = Game.new(params[:game])
+    @game = Game.new(game_params)
 
     respond_to do |format|
       if @game.save
@@ -71,6 +64,12 @@ class GamesController < ApplicationController
         format.json { render json: @game.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  private
+
+  def game_params
+    params[:game].permit(:name)
   end
 
 end

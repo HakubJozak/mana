@@ -1,13 +1,11 @@
 class PlayersController < ApplicationController
 
-  DEFAULT_DECK = File.open("#{Rails.root}/db/decks/eldrazi").read
-
   before_filter :find_game
   before_filter :redirect_if_player_exists
 
   def new
     @player = @game.players.new(user: current_user)
-    @player.build_deck(mainboard: DEFAULT_DECK)
+    @player.build_deck(mainboard: "1\tForest\n")
     @player.spectator = false
   end
 
