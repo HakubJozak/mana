@@ -55,3 +55,4 @@ gem 'ember-source', '1.5.0'
 
 gem 'sass-rails'
 gem "compass-rails", "~> 1.1.2"
+gem 'foreigner'

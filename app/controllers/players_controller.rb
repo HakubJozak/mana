@@ -1,12 +1,12 @@
 class PlayersController < ApplicationController
 
-  before_filter :find_game
-  before_filter :redirect_if_player_exists
+  before_action :find_game
+  before_action :redirect_if_player_exists
 
   def new
     @player = @game.players.new(user: current_user)
-    @player.build_deck(mainboard: "1\tForest\n")
-    @player.spectator = false
+    # @player.build_deck(mainboard: "1\tForest\n")
+    # @player.spectator = false
   end
 
   def create
