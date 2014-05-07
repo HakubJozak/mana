@@ -10,20 +10,10 @@ class PlayersController < ApplicationController
   end
 
   def create
-    attrs = params[:player]
-    attrs.merge!(:user => current_user) if current_user
+    @player = @game.players.new(player_params)
 
-
-    if attrs[:spectator] == 'true'
-      attrs.delete :deck
-      @player = @game.players.build(attrs)
-    else
-      @player = @game.players.build(attrs)
-      @player.build_deck(attrs[:deck].merge(name: "#{@player.name}'s deck for #{@game.name}"))
-    end
-
-    if @player.save!
-      set_player_for( @game, @player)
+    if @player.save
+      set_player_for(@game, @player)
       redirect_to @game
     else
       render :new
@@ -42,6 +32,13 @@ class PlayersController < ApplicationController
 
   def find_game
     @game = Game.find(params[:game_id])
+  end
+
+  private
+
+  def player_params
+    params.require(:player).permit(:name)
+#    result.merge!(user: current_user) if current_user
   end
 
 end
