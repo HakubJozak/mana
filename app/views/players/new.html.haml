@@ -3,46 +3,23 @@
   = semantic_form_for @player, :url => game_players_path(@game) do |f|
 
     = f.inputs do
-      =# f.input :spectator, :label => 'Join as', :as => :radio, :collection => [ [ "Player", false ], [ "Spectator", true ]]
-      = f.input :name, label: 'Join as'
-      #color-picker{ :style => 'display:none;' }
-
-    -# = f.inputs :id => 'cards-form' do
-    -#   = f.semantic_fields_for @player.deck do |d|
-    -#     - if current_user
-    -#       -#
-    -#       -# Faked Formtastic Input
-    -#       -#
-    -#       %li#prepared_deck_input.select.input.optional
-    -#         %label{ :for => 'prepared_deck'} Deck
-    -#         %select#prepared_deck{ :name => 'prepared_deck' }
-    -#           %option{ :value => @player.deck.mainboard, "data-sideboard" => '' }
-    -#             Custom
-
-    -#           - current_user.decks.each do |deck|
-    -#             %option{ :value => deck.mainboard, "data-sideboard" => deck.sideboard }
-    -#               = deck.name
-
-    -#     - if current_user
-    -#       = d.input :mainboard, :as => :text, :label => 'Cards',
-    -#                 :hint => 'One card name and count per-line: 1;Black Lotus'
-    -#     - else
-    -#       = d.input :mainboard, :as => :text, :label => 'Cards',
-    -#                 :hint => raw("<b>TIP</b>: #{link_to('Login', new_user_session_path)} to enable deck management and saving games!")
+      = f.input :name, label: 'Player name'
+      = f.input :prepared_deck, as: :select, collection: { 'No cards, just watch the game.' => 'WATCH', 'All the cards below:' => 'ADHOC' }, include_blank: false, label: 'Deck'
+      = f.input :mainboard, :as => :text, :label => 'Cards', :hint => 'One card name and count per-line: 1;Black Lotus'
 
     = f.actions do
-      = f.action :submit, label: "Join '#{@game.name}'"
+      = f.action :submit, label: "Join the '#{@game.name}'"
       %li= link_to 'Back', games_path
 
 :coffeescript
-  $('#prepared_deck').change ->
-    txt = $('#prepared_deck option:selected').val()
-    $('#player_deck_mainboard').val(txt)
+  $ ->
+    $('#player_prepared_deck').change ->
+      val = $('#player_prepared_deck option:selected').val()
+      board = $('#player_mainboard_input')
 
-  $('input:radio[name=player[spectator]]').change ->
-    is_spectator = $('input:radio[name=player[spectator]]:checked').val()
-
-    if is_spectator == 'true'
-      $('#cards-form').fadeOut()
-    else
-      $('#cards-form').fadeIn()
+      if val == 'WATCH'
+        board.find('textarea').prop('disabled', true);
+        board.fadeOut()
+      else
+        board.find('textarea').prop('disabled', false);
+        board.fadeIn()

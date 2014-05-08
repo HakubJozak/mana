@@ -12,6 +12,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :lives, default: 20
       t.integer :poison_counters, default: 0
       t.string :settings
+      t.text :mainboard
 
       t.timestamps
     end

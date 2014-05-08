@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140505212414) do
     t.integer  "lives",           default: 20
     t.integer  "poison_counters", default: 0
     t.string   "settings"
+    t.text     "mainboard"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
