@@ -7,9 +7,15 @@ class ApplicationController < ActionController::Base
     session[:player_ids] ||= {}
   end
 
+
+
   protected
 
   helper_method :is_playing?, :player_for
+
+  def after_sign_in_path_for(user)
+    games_path
+  end
 
   def is_playing?(game)
     if player_id = session[:player_ids][game.id]

@@ -7,6 +7,12 @@
 form.formtastic {
 
   margin-top: 4em;
+
+  fieldset > ol {
+    overflow-y: hidden;
+  }
+
+
   /* hide the 'required' asterisks */
   abbr { display: none; }
 
@@ -41,7 +47,7 @@ form.formtastic {
      }
   }
 
-  li.password input, li.string input, li.text textarea, select {
+  li.password input, li.string input, li.text textarea, li.email input, select {
    @include border-radius(2px);
 
    font-size: $input-height - 1px;
@@ -53,15 +59,12 @@ form.formtastic {
    &:focus { border: 3px solid $orange; }
   }
 
-  fieldset.buttons {
+  fieldset.actions {
 
     li {
-      padding-left: none;
-      font-size: 120%;
-      overflow: visible;
-      float: left;
+      font-size: 110%;
       display: inline;
-      line-height: 2em;
+      margin-right: 0.5em;
 
       input, a {
         @include button($orange);

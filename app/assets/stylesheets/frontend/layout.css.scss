@@ -20,7 +20,11 @@ body {
   color: white;
 
   #content { width: $content-width; margin: auto; }
-  #flash_notice { color: $orange; font-size: larger; }
+
+  #flash_notice {
+    color: $orange;
+    margin: 1em 0 1em 0;
+  }
 }
 
 h1.hyper {
