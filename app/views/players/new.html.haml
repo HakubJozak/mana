@@ -4,7 +4,7 @@
 
     = f.inputs do
       = f.input :name, label: 'Player name'
-      = f.input :prepared_deck, as: :select, collection: { 'No cards, just watch the game.' => 'WATCH', 'All the cards below:' => 'ADHOC' }, include_blank: false, label: 'Deck'
+      = f.input :prepared_deck, as: :select, collection: { 'No cards. I will just watch the game.' => 'WATCH', 'All the cards below:' => 'ADHOC' }, include_blank: false, label: 'Deck'
       = f.input :mainboard, :as => :text, :label => 'Cards', :hint => 'One card name and count per-line: 1;Black Lotus'
 
     = f.actions do

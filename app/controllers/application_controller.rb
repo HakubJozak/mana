@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
     session[:player_ids] ||= {}
   end
 
-
-
   protected
 
   helper_method :is_playing?, :player_for
@@ -17,20 +15,12 @@ class ApplicationController < ActionController::Base
     games_path
   end
 
-  def is_playing?(game)
-    if player_id = session[:player_ids][game.id]
-      game.players.find_by(id: player_id)
-    end
-  end
-
-  alias :current_player :is_playing?
-
   def set_player_for(game, player)
-#    session[:player_ids][game.id] = player.id
+    session[:player_ids][game.id.to_s] = player.id
   end
 
   def player_for(game)
-    game.players.find_by(id: session[:player_ids][game.id])
+    game.players.find_by(id: session[:player_ids][game.id.to_s])
   end
 
 

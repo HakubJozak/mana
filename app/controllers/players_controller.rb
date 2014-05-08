@@ -27,7 +27,9 @@ class PlayersController < ApplicationController
   protected
 
   def redirect_if_player_exists
-    redirect_to @game if is_playing?(@game)
+    if player_for(@game)
+      redirect_to @game
+    end
   end
 
   def find_game
