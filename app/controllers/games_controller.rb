@@ -12,16 +12,9 @@ class GamesController < ApplicationController
 
   def show
     @websocket_host = request.host
-
-    # TODO: this has to go to app config!
-    if Rails.env.test?
-      @websocket_port = '9999'
-    else
-      @websocket_port = '9090'
-    end
+    @websocket_port = '9090'
 
     @game = Game.find(params[:id])
-    @debug = true if params[:debug].present?
 
     if @player = player_for(@game)
       render layout: false
@@ -33,7 +26,9 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
-    @game.name = if current_user
+
+
+    @game.name = if user_signed_in?
                    "#{current_user.name}'s game"
                  else
                    "Casual game"
