@@ -6,43 +6,21 @@
     = stylesheet_link_tag 'client'
     = javascript_include_tag 'client'
 
-    - unless @debug
-      :css
-        .debug { display: none; }
-
     :javascript
       $(document).ready(function() {
+        /*
         if (window.has_enough_mana()) {
-          var layout = new Layout({ model: User.all });
-          var exile_view = new Dropbox({ model: CardCollection.all.exile });
-
-          exile_view.el.appendTo($('#right-panel .commons'));
-
           console.env = '#{Rails.env}';
-
-          $(document).click(function(event) {
-            if ($('.card .menu:visible').length > 0) {
-              event.preventDefault();
-              event.stopPropagation()
-            }
-
-            $('.card .menu').hide();
-          });
-
           User.local_player_id = '#{@player.id}';
-
           Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}/games/#{@game.id}/players/#{@player.id}');
-
           Socket.instance.bind('socket:connected', function() {
             console.info('Connected to server');
           });
 
-          new OverlayView({ model: Socket.instance });
-          new ChatView({ model: Message.all });
-
-          #{ "$('#help').toggle()" unless Rails.env.development? }
+          "$('#help').toggle()" unless Rails.env.development? }
           Socket.instance.connect();
         }
+        */
       });
 
 
