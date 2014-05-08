@@ -4,7 +4,7 @@
 
     = f.inputs do
       =# f.input :spectator, :label => 'Join as', :as => :radio, :collection => [ [ "Player", false ], [ "Spectator", true ]]
-      = f.input :name
+      = f.input :name, label: 'Join as'
       #color-picker{ :style => 'display:none;' }
 
     -# = f.inputs :id => 'cards-form' do
