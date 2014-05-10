@@ -53,8 +53,10 @@ gem "formtastic"
 gem 'ember-rails'
 gem 'ember-source', '1.5.0'
 
-gem 'sass-rails'
-gem "compass-rails", "~> 1.1.2"
-gem 'foreigner'
+gem 'sass', '~> 3.3.0'
+gem 'sass-rails', git: 'git@github.com:rails/sass-rails.git'
 
-gem 'jquery-ui-sass-rails'
+gem 'compass','~> 1.0.0.alpha.19'
+gem "compass-rails"
+gem 'foreigner'
+gem 'susy'
