@@ -2,54 +2,13 @@
 %html{:lang => "en"}
   %head
     %title= "Mana - #{@game.name}"
-
     = stylesheet_link_tag 'client'
-    = javascript_include_tag 'application'
-
-    :javascript
-      $(document).ready(function() {
-        /*
-        if (window.has_enough_mana()) {
-          console.env = '#{Rails.env}';
-          User.local_player_id = '#{@player.id}';
-          Socket.instance = new Socket('ws://#{@websocket_host}:#{@websocket_port}/games/#{@game.id}/players/#{@player.id}');
-          Socket.instance.bind('socket:connected', function() {
-            console.info('Connected to server');
-          });
-
-          "$('#help').toggle()" unless Rails.env.development? }
-          Socket.instance.connect();
-        }
-        */
-      });
-
+    = javascript_include_tag 'client'
 
 %body
-  #left-panel.side-panel
-    .users
-
-  #desk
-    #top-panel
-      .handle
-      %ol.message-list
-
-      %form
-        %input.chat-input{ :name => 'message', :placeholder => 'Say...', }
-        %span.button-bar
-          %input.send-button.button{ :value => 'Send', :type => 'submit' }
-          %a.close-button.button{ :hint => 'Close chat (ESC)'} Close
-
-    #battlefield
-
-  #right-panel.side-panel
-    .commons
-    .users
-
-  = render('shared/footer', :layout => false)
-  = render('shared/help', :layout => false)
-
-  #coffin{:style => "display: none"}
-    = render('shared/templates', :layout => false)
-
-  - if Rails.env.production?
-    = render('shared/google_analytics', :layout => false)
+  #content
+    #control-panel
+    .right
+      #chat
+      #opponents
+      #me

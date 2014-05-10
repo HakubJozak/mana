@@ -1,0 +1,37 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass";
+@import "susy";
+
+
+
+#content {
+  @include container;
+  background-color: #fbeecb;
+}
+
+#control-panel {
+  background-color: #f09671;
+  @include span(2 wide of 9);
+}
+
+.right {
+  @include span(7 wide of 9 last);
+  background-color: #ee9e9c;
+}
+
+#battlefields {
+  background-color: #71dad2;
+}
+
+#chat {
+  background-color: #fae7b3;
+}
+
+#me {
+  background-color: #ee9e9c;
+}
+
+#opponents {
+  background-color: #f09671;
+}

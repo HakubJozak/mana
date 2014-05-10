@@ -8,7 +8,7 @@ $button-background-color: rgba(128, 128, 128, 0.7);
   border: 1px solid $button-border-color;
   text-decoration: none;
 
-  &:hover { background-color: $color; color: black; }
+  &:hover { background-color: red; color: black; }
   cursor: pointer;
 
   color: white;
