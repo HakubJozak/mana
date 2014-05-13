@@ -30,8 +30,9 @@ module Mana
     # config.assets.precompile += ['client.js', 'client.css']
     # config.assets.compile = true
 
-    # config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
-    # config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/blueprint/stylesheets"
+    # apparently 'config.sass.load_paths' is no longer used
+    config.assets.paths << "#{Gem.loaded_specs['compass-core'].full_gem_path}/stylesheets"
+    config.assets.paths << "#{Gem.loaded_specs['susy'].full_gem_path}/sass"
 
   end
 end
