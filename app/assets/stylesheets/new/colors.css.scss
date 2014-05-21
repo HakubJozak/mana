@@ -1,0 +1,40 @@
+body {
+ background-color: grey;
+}
+
+.desk {
+  background-color: #fff68f;
+}
+
+.controls {
+  background-color: #eeeee0;
+}
+
+.decks {
+}
+
+.status {
+ background-color: black;
+ color: white;
+}
+
+.slot{ background-color: #ffb90f; }
+
+.browser {
+  background-color: #fbeecb;
+}
+
+.chat {
+  background-color: #caff70;
+}
+
+
+.pile {
+  &:nth-child(2n+1) { background-color: #ea9; }
+  &:nth-child(2n) { background-color: #f6d784; }
+}
+
+.tables, .table {
+  background-color: #ff6;
+  &:nth-child(2n+1) { }
+}

@@ -30,9 +30,11 @@ module Mana
     # config.assets.precompile += ['client.js', 'client.css']
     # config.assets.compile = true
 
-    # apparently 'config.sass.load_paths' is no longer used
+    config.sass.cache = false
+
+    # 'config.sass.load_paths' is no longer used while loading SASS libs
+    # 'config.assets' is an instance of Sprockets::Environment
     config.assets.paths << "#{Gem.loaded_specs['compass-core'].full_gem_path}/stylesheets"
     config.assets.paths << "#{Gem.loaded_specs['susy'].full_gem_path}/sass"
-
   end
 end

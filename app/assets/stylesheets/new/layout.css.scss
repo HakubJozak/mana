@@ -1,0 +1,67 @@
+// -*- mode: css; tab-width: 2; -*-
+
+@import "compass";
+@import "susy";
+@import "compass/layout/stretching";
+
+// $cardw: 80px;
+// $cardh: 116px;
+
+
+$susy: (
+  columns: 12,
+  gutters: 0.1,
+  gutter-position: after,
+  math: float,
+);
+
+.desk {
+  @include container;
+  min-width: 960px;
+}
+
+.controls {
+  @include span(4 of 12);
+  @include clearfix;
+
+  .browser {
+  }
+
+  .slot, .pile  {
+     @include gallery(1 of 4);
+  }
+}
+
+.table {
+  @include span(8 of 12 last);
+
+  .status {
+    @include span(8 of 8 last);
+    @include clearfix;
+  }
+
+  .slot { @include gallery(1 of 8);  }
+}
+
+.decks, .chat, .browser {
+  @include span(4 of 4);
+}
+
+.slot, .pile {
+  img { width: 100%; height: 100%; }
+  margin-top: 5px;
+}
+
+.status {
+  height: 1.2em;
+  text-align: right;
+  padding: 0.2em;
+}
+
+.chat {
+  pre, input { width: span(4 of 4)  }
+  pre {
+  overflow-y: scroll;
+  max-height: 200px;
+  }
+}

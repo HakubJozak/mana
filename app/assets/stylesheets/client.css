@@ -5,6 +5,6 @@
  ** require ./themes/orange-black/jquery-ui-1.8.16.custom
  ** require ./themes/dark-hive/jquery-ui-1.8.16.custom
 
- *= require ./client/new_layout
- *
+ *= require ./new/layout
+ *= require ./new/colors
 */
