@@ -11,6 +11,11 @@ gem 'sass-rails', git: 'git@github.com:rails/sass-rails.git'
 gem 'compass','~> 1.0.0.alpha.19'
 gem 'susy'
 
+# gem "sass", "~> 3.3.0.rc.2"
+# gem "compass", "~> 0.13.alpha.12"
+# gem "compass-rails", "~> 2.0.alpha.0"
+# gem 'susy'
+
 
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
