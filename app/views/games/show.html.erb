@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+  <head>
+    <title>
+      <%= "Mana - #{@game.name} - ERB" %>
+    </title>
+    <%= stylesheet_link_tag 'client' %>
+    <%= javascript_include_tag 'client' %>
+  </head>
+</html>
+<body data-no-turbolink="<%= true %>">
+  <script type="text/x-handlebars">
+    <h1>Just playing: '<%= @game.name %>'</h1>
+    <nav>
+      {{#link-to 'stamps'}}stamps{{/link-to}}
+    </nav>
+    <hr>
+    {{outlet}}
+    <hr>
+  </script>
+
+  <script data-template-name="stamp" type="text/x-handlebars" id="stamp">
+    <h2>Dz Card: {{name}}</h2>
+    <img {{bind-attr src=frontside}} width="200">
+  </script>
+
+  <script type="text/x-handlebars" id="stamps">
+    {{#each}}
+      <li>
+      {{#link-to 'stamp' this }}
+        {{name}}
+      {{/link-to}}
+      </li>
+    {{/each}}
+    {{ outlet }}
+  </script}
+
+</body>
