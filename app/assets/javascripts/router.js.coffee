@@ -1,25 +1,21 @@
 # For more information see: http://emberjs.com/guides/routing/
 
 Mana.Router.map ()->
-  @resource('help')
-  @resource('card', path: '/card/:card_id')
-  @resource 'stamps', ->
-    @resource('stamp', path: ':stamp_id')
+  @resource 'help'
+  @resource 'cards', ->
+    @resource('card', path: '/:card_id')
 
-Mana.StampsRoute = Ember.Route.extend(
-  model: ->
-    Mana.Stamp.FIXTURES
 
+Mana.CardsRoute = Ember.Route.extend(
+  model: (params) ->
+    Mana.Card.FIXTURES
+  actions:
+    tap: ->
+      @set 'tapped', !@get('tapped')
+      false
 )
 
-Mana.StampRoute = Ember.Route.extend(
+Mana.CardRoute = Ember.Route.extend(
   model: (params) ->
-   {
-     id: '1'
-     name: "Forest"
-     frontside: "http://mtgimage.com/multiverseid/289.jpg"
-     backside: null
-   }
-#    Mana.Stamp.FIXTURES.findBy 'id',params.stamp_id
-
+    Mana.Card.FIXTURES.findBy 'id',params.card_id
 )

@@ -12,27 +12,21 @@
   <script type="text/x-handlebars">
     <h1>Just playing: '<%= @game.name %>'</h1>
     <nav>
-      {{#link-to 'stamps'}}stamps{{/link-to}}
+      {{#link-to 'cards'}}cards{{/link-to}}
     </nav>
     <hr>
     {{outlet}}
     <hr>
   </script>
 
-  <script data-template-name="stamp" type="text/x-handlebars" id="stamp">
-    <h2>Dz Card: {{name}}</h2>
-    <img {{bind-attr src=frontside}} width="200">
+  <script type="text/x-handlebars" id="cards">
+    <h2>Cards</h2>
+    {{#each}}
+      {{active-card card=this}}
+    {{else}}
+      No cards to render.
+    {{/each}}
   </script>
 
-  <script type="text/x-handlebars" id="stamps">
-    {{#each}}
-      <li>
-      {{#link-to 'stamp' this }}
-        {{name}}
-      {{/link-to}}
-      </li>
-    {{/each}}
-    {{ outlet }}
-  </script}
 
 </body>

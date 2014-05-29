@@ -99,7 +99,6 @@ body > .detail {
   &.tapped {
     @include rotate(90deg);
     .power, .counters, .menu { @include rotate(-90deg); }
-
   }
 
   .power { right: 0px;  bottom: 0px; }

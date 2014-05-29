@@ -1,0 +1,60 @@
+@import "compass/css3";
+
+$highlight-color: orange;
+$card-w : 120px;
+$card-h : 170px;
+
+@mixin no-text-select {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@mixin opaque {
+  @include border-radius;
+  background-color: rgba(128, 128, 128, 0.45);
+}
+
+@mixin transparent($alpha: 0.2) {
+  background-color: rgba(0, 0, 0, $alpha);
+}
+
+@mixin card-size {
+  height: $card-h;
+  width: $card-w;
+}
+
+.card {
+  @include card-size;
+  position: relative;
+
+  img { @include card-size; }
+
+  .counters { bottom: 0; left: 0; }
+  .power { bottom: 0; right: 0; }
+
+  .counters, .power {
+    position: absolute;
+
+    @include border-radius(3px);
+    @include transparent;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    padding-top: 3px;
+    margin: 5px;
+  }
+
+  @include transition("rotate", 0.4s, ease-out);
+
+  &.tapped {
+    @include rotate(90deg);
+    .power, .counters { @include rotate(-90deg); }
+  }
+
+  &:hover {
+    @include box-shadow($highlight-color 0px 0px 10px);
+  }
+}
