@@ -1,7 +1,10 @@
-# for more details see: http://emberjs.com/guides/components/
+# -*- tab-width: 2; -*-
 
 Mana.ActiveCardComponent = Ember.Component.extend({
   click: (event) ->
     card = @get('card')
-    card.set('tapped', !card.get('tapped'))
+    if event.button == 1
+      card.set('tapped', !card.get('tapped'))
+    else
+      card.set('flipped', !card.get('flipped'))
 })

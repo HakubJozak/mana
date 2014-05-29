@@ -1,5 +1,13 @@
 <div {{bind-attr class=":card card.tapped"}}>
-  <img {{bind-attr src=card.frontside}} width="200">
-  <span class="counters">{{card.counters}}</span>
-  <span class="power">{{card.power}}/{{card.toughness}}</span>
+  {{#if card.covered}}
+    <img src='/assets/back.jpg' width="200">
+  {{else}}
+    {{#if card.flipped}}
+      <img {{bind-attr src=card.backside}} width="200">
+    {{else}}
+      <img {{bind-attr src=card.frontside}} width="200">
+    {{/if}}
+    <span class="counters">{{card.counters}}</span>
+    <span class="power">{{card.power}}/{{card.toughness}}</span>
+  {{/if}}
 </div>

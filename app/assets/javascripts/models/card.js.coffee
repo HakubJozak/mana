@@ -33,4 +33,13 @@ Mana.Card.FIXTURES = [
     frontside: "http://mtgimage.com/multiverseid/221212.jpg"
     backside: "http://mtgimage.com/multiverseid/221222.jpg"
   }
+  {
+    id: 3
+    tapped: true,
+    covered: true,
+    name: "Mountain"
+    frontside: "http://mtgimage.com/multiverseid/221212.jpg"
+    backside: "http://mtgimage.com/multiverseid/221222.jpg"
+  }
+
 ]
