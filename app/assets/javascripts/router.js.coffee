@@ -8,14 +8,11 @@ Mana.Router.map ()->
 
 Mana.CardsRoute = Ember.Route.extend(
   model: (params) ->
-    Mana.Card.FIXTURES
-  actions:
-    tap: ->
-      @set 'tapped', !@get('tapped')
-      false
+    @store.find('card')
+
 )
 
 Mana.CardRoute = Ember.Route.extend(
   model: (params) ->
-    Mana.Card.FIXTURES.findBy 'id',params.card_id
+    @store.find('card',params.card_id)
 )

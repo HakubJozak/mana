@@ -15,7 +15,7 @@ Mana.Card = DS.Model.extend
 
 Mana.Card.FIXTURES = [
   {
-    id: '1'
+    id: 1
     power: 1
     toughness: 3
     counters: 0
@@ -25,7 +25,7 @@ Mana.Card.FIXTURES = [
     backside: null
   }
   {
-    id: '2'
+    id: 2
     power: 10
     toughness: 1
     tapped: true,

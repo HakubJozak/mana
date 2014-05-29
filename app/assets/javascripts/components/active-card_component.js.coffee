@@ -2,6 +2,6 @@
 
 Mana.ActiveCardComponent = Ember.Component.extend({
   click: (event) ->
-    card = @get('card').set('false')
-
+    card = @get('card')
+    card.set('tapped', !card.get('tapped'))
 })

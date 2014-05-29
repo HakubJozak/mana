@@ -16,3 +16,4 @@
 
 # for more details see: http://emberjs.com/guides/application/
 window.Mana = Ember.Application.create()
+Mana.ApplicationAdapter = DS.FixtureAdapter
