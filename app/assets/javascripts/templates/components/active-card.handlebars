@@ -7,7 +7,7 @@
     {{else}}
       <img {{bind-attr src=card.frontside}} width="200">
     {{/if}}
-    <span class="counters">{{card.counters}}</span>
-    <span class="power">{{card.power}}/{{card.toughness}}</span>
+    {{#if card.counters}}<span class="counters">{{card.counters}}</span>{{/if}}
+    {{#if card.power_and_toughness}}<span class="power">{{card.power_and_toughness}}</span>{{/if}}
   {{/if}}
 </div>

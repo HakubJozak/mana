@@ -13,12 +13,29 @@ Mana.Card = DS.Model.extend
   tapped: DS.attr 'boolean'
   flipped: DS.attr 'boolean'
 
+  power_and_toughness: (->
+    [ p,t ] = [ @get('power'), @get('toughness') ]
+    if p or t
+      "#{p || '-'}/#{t || '-'}"
+  ).property('power','toughness')
+
+  flip: ->
+    if @get('backside')
+      @set('flipped', !@get('flipped'))
+
+  tap: ->
+    @set('tapped', !@get('tapped'))
+
+  toggleCovered: ->
+    @set('covered', !@get('covered'))
+
+
 Mana.Card.FIXTURES = [
   {
     id: 1
     power: 1
     toughness: 3
-    counters: 0
+    counters: 1
     tapped: false,
     name: "Forest"
     frontside: "http://mtgimage.com/multiverseid/289.jpg"
@@ -27,7 +44,6 @@ Mana.Card.FIXTURES = [
   {
     id: 2
     power: 10
-    toughness: 1
     tapped: true,
     name: "Child of the Night"
     frontside: "http://mtgimage.com/multiverseid/221212.jpg"
