@@ -15,17 +15,21 @@
       {{#link-to 'cards'}}cards{{/link-to}}
     </nav>
     <hr>
+
+    <button {{action 'add_stuff'}}>Add!</button>
+
     {{outlet}}
     <hr>
   </script>
 
+  <script type="text/x-handlebars" id="slot">
+    <ul class='slot'>
+    </ul>
+  </script>
+
   <script type="text/x-handlebars" id="cards">
     <h2>Cards</h2>
-    {{#each}}
-      {{active-card card=this}}
-    {{else}}
-      No cards to render.
-    {{/each}}
+    <!-- active-card card=this -->
   </script>
 
 

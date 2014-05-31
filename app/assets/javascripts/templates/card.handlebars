@@ -1,0 +1,16 @@
+{{#with view.content}}
+
+<div {{bind-attr class=":card tapped"}}>
+  {{#if covered}}
+    <img src='/assets/back.jpg' width="200">
+  {{else}}
+    {{#if flipped}}
+      <img {{bind-attr src=backside}} width="200">
+    {{else}}
+      <img {{bind-attr src=frontside}} width="200">
+    {{/if}}
+    {{#if counters}}<span class="counters">{{counters}}</span>{{/if}}
+    {{#if power_and_toughness}}<span class="power">{{power_and_toughness}}</span>{{/if}}
+  {{/if}}
+</div>
+{{/with}}

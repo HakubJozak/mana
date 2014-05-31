@@ -1,8 +1,9 @@
 # -*- tab-width: 2; -*-
 
-Mana.ActiveCardComponent = Ember.Component.extend({
+Mana.CardView = Ember.View.extend({
+  templateName: 'card'
   contextMenu: (event) ->
-    card = @get('card')
+    card = @content
     card.toggleCovered()
     event.preventDefault()
 
@@ -11,9 +12,7 @@ Mana.ActiveCardComponent = Ember.Component.extend({
       console.info 'should show detail'
 
   click: (event) ->
-    card = @get('card')
-    console.info event.which
-
+    card = @content
     if event.which == 2
       card.flip()
     else

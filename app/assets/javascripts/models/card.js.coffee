@@ -15,8 +15,7 @@ Mana.Card = DS.Model.extend
 
   power_and_toughness: (->
     [ p,t ] = [ @get('power'), @get('toughness') ]
-    if p or t
-      "#{p || '-'}/#{t || '-'}"
+    "#{p || '-'}/#{t || '-'}" if p or t
   ).property('power','toughness')
 
   flip: ->
