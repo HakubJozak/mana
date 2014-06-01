@@ -2,22 +2,24 @@
 
 Mana.Router.map ()->
   @resource 'help'
-  @resource 'cards'
-#    @resource('card', path: '/:card_id')
 
+Mana.SlotView = Ember.CollectionView.extend({
+  tagName: 'ul'
+  itemViewClass: Mana.CardView
+})
 
-Mana.CardsRoute = Ember.Route.extend(
+Mana.IndexRoute = Ember.Route.extend(
+  id: 0
   actions:
-    add_stuff: ->
-      debugger
-      window.slot.addObject  @store.find('card',1)
+    remove_stuff: ->
+      @store.find('card',@id).then (value) ->
+        window.slot.removeObject(value)
+      @id -= 1;
       false
 
-  model: (params) ->
-    'there is no such thing as model'
-)
-
-Mana.CardRoute = Ember.Route.extend(
-  model: (params) ->
-    @store.find('card',params.card_id)
+    add_stuff: ->
+      @id += 1;
+      @store.find('card',@id).then (value) ->
+        window.slot.pushObject(value)
+      false
 )

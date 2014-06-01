@@ -1,5 +1,3 @@
-# for more details see: http://emberjs.com/guides/models/defining-models/
-
 Mana.Card = DS.Model.extend
   name: DS.attr 'string'
   frontside: DS.attr 'string'

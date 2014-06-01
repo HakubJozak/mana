@@ -2,8 +2,9 @@
 
 Mana.CardView = Ember.View.extend({
   templateName: 'card'
+
   contextMenu: (event) ->
-    card = @content
+    card = @get('content')
     card.toggleCovered()
     event.preventDefault()
 
@@ -12,7 +13,7 @@ Mana.CardView = Ember.View.extend({
       console.info 'should show detail'
 
   click: (event) ->
-    card = @content
+    card = @get('content')
     if event.which == 2
       card.flip()
     else

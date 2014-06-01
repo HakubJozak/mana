@@ -15,19 +15,15 @@
 #= require ./router
 
 # for more details see: http://emberjs.com/guides/application/
+
+
+
 window.Mana = Ember.Application.create {
   ready: ->
     window.slot = []
-    view = Ember.CollectionView.create
+    window.view = Mana.SlotView.create
       content: window.slot
-      tagName: 'ul'
-      itemViewClass: Mana.CardView
-
-
-    view.appendTo('body');
-    console.info slot
-    console.info 'Mana has started.'
-
+    window.view.appendTo('body')
 }
 
 Mana.ApplicationAdapter = DS.FixtureAdapter

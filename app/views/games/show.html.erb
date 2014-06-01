@@ -12,13 +12,14 @@
   <script type="text/x-handlebars">
     <h1>Just playing: '<%= @game.name %>'</h1>
     <nav>
-      {{#link-to 'cards'}}cards{{/link-to}}
     </nav>
     <hr>
 
     <button {{action 'add_stuff'}}>Add!</button>
-
+    <button {{action 'remove_stuff'}}>Remove!</button>
+    Size: {{number_of_cards}}
     {{outlet}}
+    <div id='slotty'></div>
     <hr>
   </script>
 
@@ -26,11 +27,5 @@
     <ul class='slot'>
     </ul>
   </script>
-
-  <script type="text/x-handlebars" id="cards">
-    <h2>Cards</h2>
-    <!-- active-card card=this -->
-  </script>
-
 
 </body>
