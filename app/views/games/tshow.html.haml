@@ -1,0 +1,109 @@
+<html lang="en">
+  <head>
+    <title>
+      <%= "Mana - #{@game.name}" %>
+    </title>
+    <%= stylesheet_link_tag 'client' %>
+    <%= javascript_include_tag 'client' %>
+  </head>
+</html>
+<body data-no-turbolink >
+  <script data-template-name="index" type="text/x-handlebars">
+  </script>
+
+    <div class="desk">
+      <div class="controls">
+        <div class="browser">
+          <div class="status">
+            <select id="browser_selector">
+              <option selected="selected" value="1">Kolohnat's</option>
+              <option value="2">Smrada's</option>
+              <option value="3">Pajda's</option>
+              <option value="4">Kokta's</option>
+            </select>
+            <select id="hand_1" name="hand">
+              <option value="hand">Hand</option>
+              <option value="graveyard">Graveyard</option>
+              <option value="library">Library</option>
+            </select>
+          </div>
+          <div class="cards">
+            <% 2.times do %>
+              <% 4.times do %>
+                <div class="slot">
+                  <%= image_tag 'empty.png' %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="decks">
+          <div class="status">
+            Decks
+          </div>
+          <div class="piles">
+            <div class="pile">
+              <%= image_tag 'back.jpg' %>
+              <button class="pile-label">Library: 53</button>
+            </div>
+            <div class="pile">
+              <%= image_tag 'back.jpg' %>
+              <button class="pile-label">Grave: 4</button>
+            </div>
+            <div class="pile">
+              <%= image_tag 'back.jpg' %>
+              <button class="pile-label">Exile: 4</button>
+            </div>
+            <div class="pile">
+              <button class="next-turn">
+                Next
+                Turn
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="chat">
+          <div class="status">
+            Chat
+          </div>
+          <input placeholder="Say...">/</input>
+          <br/>
+          <pre>
+            <preserve>
+
+
+              Kolohnat: let's play
+              Smrada: wait
+              Kolohnat: ok
+              Kolohnat: ok
+              Smrada has left the game.
+              Kolohnat: ok
+
+            </preserve>
+          </pre>
+        </div>
+      </div>
+      <div class="tables">
+        <div class="table">
+          <div class="status">
+            Player 1
+          </div>
+          <div class="slots">
+            <% 2.times do %>
+              <% 8.times do %>
+                <div class="slot">
+                  <%= image_tag 'empty.png' %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="table">
+          <div class="status">
+            Player 2 - Me
+          </div>
+          <div class="slots"></div>
+        </div>
+      </div>
+    </div>
+</body>

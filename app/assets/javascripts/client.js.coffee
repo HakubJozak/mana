@@ -19,7 +19,9 @@
 
 
 window.Mana = Ember.Application.create {
+  rootElement: '#ember-app'
   ready: ->
+    console.info 'Mana started.'
 }
 
 Mana.ApplicationAdapter = DS.FixtureAdapter
