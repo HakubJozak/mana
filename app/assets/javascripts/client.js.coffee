@@ -20,10 +20,6 @@
 
 window.Mana = Ember.Application.create {
   ready: ->
-    window.slot = []
-    window.view = Mana.SlotView.create
-      content: window.slot
-    window.view.appendTo('body')
 }
 
 Mana.ApplicationAdapter = DS.FixtureAdapter

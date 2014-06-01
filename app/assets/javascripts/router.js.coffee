@@ -10,6 +10,12 @@ Mana.SlotView = Ember.CollectionView.extend({
 
 Mana.IndexRoute = Ember.Route.extend(
   id: 0
+  setupController: ->
+    window.slot = []
+    window.view = Mana.SlotView.create
+      content: window.slot
+    window.view.appendTo('#slotty')
+
   actions:
     remove_stuff: ->
       @store.find('card',@id).then (value) ->
