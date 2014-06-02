@@ -2,6 +2,8 @@
 
 Mana.CardView = Ember.View.extend({
   templateName: 'card'
+  tagName: 'li'
+  classNameBindings: ['content.tapped',':card']
 
   contextMenu: (event) ->
     card = @get('content')

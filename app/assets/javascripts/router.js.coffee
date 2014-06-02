@@ -11,8 +11,8 @@ Mana.IndexRoute = Ember.Route.extend(
   id: 0
   setupController: (controller,_model_) ->
     game = []
-    for i in [1..16]
-      game.pushObject []
+    for i in [0..15]
+      game.pushObject @store.find('card')
     controller.set('model',game)
 
  # window.view = Mana.SlotView.create

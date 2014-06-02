@@ -28,7 +28,7 @@ $susy: (
   }
 
   .slot, .pile  {
-     @include gallery(1 of 4);
+     @include gallery(1 of 4,'of-type');
   }
 }
 
@@ -41,10 +41,26 @@ $susy: (
   }
 
   .slot {
-    @include gallery(1 of 8);
-    li {
+    // if the selector is not 'of-type' then the Ember <script> tags screw it
+    @include gallery(1 of 8,'of-type');
+    position: relative;
+    list-style: none;
+    padding: 0;
+
+    li:nth-child(n+2) {
+      position: absolute;
+      top: 20px;
+    }
+
+    @for $i from 2 through 10 {
+      li:nth-child(#{$i}) { top: 30px * ($i - 1); }
+    }
+
+
+    img {
       display: inline;
       position: relative;
+      left: 0;
     }
   }
 }

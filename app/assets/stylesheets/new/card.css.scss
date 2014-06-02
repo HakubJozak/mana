@@ -26,7 +26,7 @@ $card-h : 170px;
 }
 
 .card {
-  @include card-size;
+//  @include card-size;
   position: relative;
 
   img { @include card-size; }
