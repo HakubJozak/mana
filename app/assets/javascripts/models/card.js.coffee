@@ -1,4 +1,8 @@
 Mana.Card = DS.Model.extend
+  location: DS.attr 'string'
+  position: DS.attr 'number'
+  order: DS.attr 'number'
+
   name: DS.attr 'string'
   frontside: DS.attr 'string'
   backside: DS.attr 'string'

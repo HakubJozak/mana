@@ -17,7 +17,11 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
 
     if @player = player_for(@game)
-      render layout: false
+      respond_to  { |f|
+        f.html { render layout: false }
+        f.json { render json: @game }
+      }
+
     else
       redirect_to new_game_player_path(@game)
     end
