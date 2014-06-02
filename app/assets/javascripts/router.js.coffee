@@ -12,22 +12,21 @@ Mana.SlotView = Ember.CollectionView.extend({
    })
 })
 
-table = []
-for i in [1..10]
-  console.info i
-  table.pushObject Mana.Card.FIXTURES
-console.info table
-table
 
 
 Mana.IndexController = Ember.ArrayController.extend(
-  content: table
 )
 
 Mana.IndexRoute = Ember.Route.extend(
   id: 0
-  setupController: ->
-    window.slot = []
+  setupController: (controller,_model_) ->
+    table = []
+    for i in [1..10]
+      console.info i
+      table.pushObject @store.find('card')
+    controller.set('model',table)
+
+
  # window.view = Mana.SlotView.create
  #   content: window.slot
  #    window.view.appendTo('#ember-app')
