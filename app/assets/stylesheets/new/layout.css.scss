@@ -40,7 +40,13 @@ $susy: (
     @include clearfix;
   }
 
-  .slot { @include gallery(1 of 8);  }
+  .slot {
+    @include gallery(1 of 8);
+    li {
+      display: inline;
+      position: relative;
+    }
+  }
 }
 
 .decks, .chat, .browser {
