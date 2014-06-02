@@ -6,6 +6,7 @@ class Stamp < ActiveRecord::Base
 
   serialize :names, JSON
 
+  # not tokens and other garbage
   scope :playable, -> { where(layout: [ 'normal', 'double-face' ]) }
 
   def self.[](name)
@@ -13,7 +14,11 @@ class Stamp < ActiveRecord::Base
   end
 
   def self.draw_hand
-    playable.order('random()').limit(7)
+    playable.random(7)
+  end
+
+  def self.random(count = 1)
+    playable.order('random()').limit(count)
   end
 
   def double_faced?

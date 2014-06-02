@@ -1,6 +1,8 @@
-# for more details see: http://emberjs.com/guides/views/
-
-Mana.SlotView = Ember.CollectionView.extend
-  templateName: 'slot'
+Mana.SlotView = Ember.CollectionView.extend({
   tagName: 'ul'
-  itemViewClass: 'Mana.CardView'
+  classNames: [ 'slot' ]
+  itemViewClass: Mana.CardView
+  emptyView: Ember.View.extend({
+    template: Ember.Handlebars.compile("<img src='/assets/empty.png'>")
+   })
+})

@@ -3,16 +3,6 @@
 Mana.Router.map ()->
   @resource 'help'
 
-Mana.SlotView = Ember.CollectionView.extend({
-  tagName: 'ul'
-  classNames: [ 'slot' ]
-  itemViewClass: Mana.CardView
-  emptyView: Ember.View.extend({
-    template: Ember.Handlebars.compile("<img src='/assets/empty.png'>")
-   })
-})
-
-
 
 Mana.IndexController = Ember.ArrayController.extend(
 )
@@ -20,12 +10,10 @@ Mana.IndexController = Ember.ArrayController.extend(
 Mana.IndexRoute = Ember.Route.extend(
   id: 0
   setupController: (controller,_model_) ->
-    table = []
-    for i in [1..10]
-      console.info i
-      table.pushObject @store.find('card')
-    controller.set('model',table)
-
+    game = []
+    for i in [1..3]
+      game.pushObject @store.find('card')
+    controller.set('model',game)
 
  # window.view = Mana.SlotView.create
  #   content: window.slot

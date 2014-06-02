@@ -24,4 +24,9 @@ window.Mana = Ember.Application.create {
     console.info 'Mana started.'
 }
 
-Mana.ApplicationAdapter = DS.FixtureAdapter
+Mana.ApplicationAdapter = DS.ActiveModelAdapter
+# Mana.ApplicationAdapter = DS.FixtureAdapter
+
+DS.ActiveModelAdapter.reopen({
+  namespace: 'games/8'
+});

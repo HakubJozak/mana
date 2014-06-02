@@ -11,6 +11,9 @@ Mana.Card = DS.Model.extend
   tapped: DS.attr 'boolean'
   flipped: DS.attr 'boolean'
 
+  # player: DS.belongsTo('player')
+  # game: DS.belongsTo('game')
+
   power_and_toughness: (->
     [ p,t ] = [ @get('power'), @get('toughness') ]
     "#{p || '-'}/#{t || '-'}" if p or t

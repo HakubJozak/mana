@@ -186,6 +186,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   coffee-rails (~> 4.0.0)
   compass (~> 1.0.0.alpha.19)
   devise (~> 3.2.4)
