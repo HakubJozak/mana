@@ -1,5 +1,7 @@
 class PlayerSerializer < ActiveModel::Serializer
-  embed :ids, :include => true
-  attributes :id, :name
-  has_many :deck, :hand, :graveyard, :battlefield
+  attributes :id, :name, :deck_ids
+
+  def deck_ids
+    object.deck.map &:id
+  end
 end

@@ -20,7 +20,6 @@ Mana.IndexRoute = Ember.Route.extend(
     game = @store.find('game',9)
     game.then (g) ->
       console.info g.get('players').get('length')
-
       g.get('players').forEach (p) ->
         console.info p.get('name')
 
