@@ -1,12 +1,19 @@
 class Player < ActiveRecord::Base
 
-  serialize :settings
   belongs_to :user
+  belongs_to :game
+  has_many :cards
+
+  validates_presence_of :game
 
   attr_accessor :prepared_deck
 
 
   after_create do
+    10.times do
+      player.cards.create stamp: Stamp.random
+    end
+
     # TODO: compute order automatically or too much pain?
     # order = 0
 
@@ -20,7 +27,6 @@ class Player < ActiveRecord::Base
   end
 
   after_initialize do
-    self.settings ||= {}
     self.prepared_deck = 'ADHOC'
     self.mainboard = '10;Forest'
 
@@ -30,6 +36,10 @@ class Player < ActiveRecord::Base
       # TODO: take it from cookie
       self.name ||= "Guest"
     end
+  end
+
+  def deck
+    cards.where(location: "deck")
   end
 
 end

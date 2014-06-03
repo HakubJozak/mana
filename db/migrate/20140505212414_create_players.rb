@@ -4,8 +4,9 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :type, default: 'Player'
 
       t.integer :game_id
-      t.integer :user_id
       t.foreign_key :games
+
+      t.integer :user_id
       t.foreign_key :users
 
       t.string :name

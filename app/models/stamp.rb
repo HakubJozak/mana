@@ -18,7 +18,8 @@ class Stamp < ActiveRecord::Base
   end
 
   def self.random(count = 1)
-    playable.order('random()').limit(count)
+    stamps = playable.order('random()').limit(count)
+    count == 1 ? stamps.first : stamps
   end
 
   def double_faced?

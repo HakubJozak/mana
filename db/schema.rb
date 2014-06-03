@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140602211753) do
+ActiveRecord::Schema.define(version: 20140603100529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140602211753) do
     t.string   "location"
     t.integer  "position"
     t.integer  "order",      default: 0,     null: false
+    t.integer  "player_id"
   end
 
   create_table "games", force: true do |t|
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 20140602211753) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "cards", "games", name: "cards_game_id_fk"
+  add_foreign_key "cards", "players", name: "cards_player_id_fk"
   add_foreign_key "cards", "stamps", name: "cards_stamp_id_fk"
 
   add_foreign_key "players", "games", name: "players_game_id_fk"

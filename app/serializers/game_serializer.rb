@@ -1,9 +1,4 @@
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :name
-  has_many :battlefield, serializer: CardSerializer
-
-  def battlefield
-    object.cards.where(location: 'battlefield')
-  end
-
+  attributes :id, :name, :created_at
+  has_many :players
 end
