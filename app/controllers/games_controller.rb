@@ -19,7 +19,7 @@ class GamesController < ApplicationController
     if @player = player_for(@game)
       respond_to  { |f|
         f.html { render layout: false }
-        f.json { render json: @game }
+        f.json { render json: [ @game, @game.players ] }
       }
 
     else

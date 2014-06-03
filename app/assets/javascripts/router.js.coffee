@@ -11,15 +11,20 @@ Mana.IndexRoute = Ember.Route.extend(
   id: 0
   setupController: (controller,_model_) ->
     # prepare empty battlefield
-    battlefield = []
-    battlefield = for i in [0..15]
-      game.pushObject []
+    # battlefield = []
+    # battlefield = for i in [0..15]
+    #   game.pushObject []
+    # for card in @store.find('card')
+    #   battlefield[card.get('position')]
 
-    for card in @store.find('card')
-      battlefield[card.get('position')]
+    game = @store.find('game',9)
+    game.then (g) ->
+      console.info g.get('players').get('length')
 
+      g.get('players').forEach (p) ->
+        console.info p.get('name')
 
-    controller.set('model',battlefield)
+    controller.set('model', [])
 
  # window.view = Mana.SlotView.create
  #   content: window.slot

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resources :decks
 
+  resources :players, only: [ :show ]
+  resources :cards, only: [ :show ]
+
   resources :games, except: [ :destroy, :update ] do
     resources :cards, only: [ :index ]
     resources :players, only: [ :new, :create, :destroy ]

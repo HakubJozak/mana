@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
 
-  before_action :find_game
-  before_action :redirect_if_player_exists
+  before_action :find_game, except: :show
+  before_action :redirect_if_player_exists, except: :show
 
   def new
     @player = @game.players.new(user: current_user)
@@ -17,6 +17,12 @@ class PlayersController < ApplicationController
       redirect_to @game
     else
       render :new
+    end
+  end
+
+  def show
+    respond_to do |f|
+      f.json { render json: Player.find(params[:id]) }
     end
   end
 

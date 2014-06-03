@@ -2,7 +2,13 @@ class Player < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :game
+
   has_many :cards
+  has_many :deck, ->(o) { where(location: 'deck') }, class_name: 'Card'
+  has_many :graveyard, ->(o) { where(location: 'graveyard') }, class_name: 'Card'
+  has_many :battlefield, ->(o) { where(location: 'battlefield') }, class_name: 'Card'
+  has_many :hand, ->(o) { where(location: 'hand') }, class_name: 'Card'
+
 
   validates_presence_of :game
 
@@ -36,10 +42,6 @@ class Player < ActiveRecord::Base
       # TODO: take it from cookie
       self.name ||= "Guest"
     end
-  end
-
-  def deck
-    cards.where(location: "deck")
   end
 
 end

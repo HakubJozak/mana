@@ -28,5 +28,5 @@ Mana.ApplicationAdapter = DS.ActiveModelAdapter
 # Mana.ApplicationAdapter = DS.FixtureAdapter
 
 DS.ActiveModelAdapter.reopen({
-  namespace: 'games/8'
+#  namespace: 'games/9'
 });

@@ -4,6 +4,6 @@ class CardsController < ApplicationController
   end
 
   def show
-    render :json => Card.first
+    render :json => Card.find(params[:id])
   end
 end
