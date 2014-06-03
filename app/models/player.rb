@@ -10,8 +10,8 @@ class Player < ActiveRecord::Base
 
 
   after_create do
-    10.times do
-      player.cards.create stamp: Stamp.random
+    10.times do |i|
+      cards.create! stamp: Stamp.random, location: 'deck', game: game
     end
 
     # TODO: compute order automatically or too much pain?

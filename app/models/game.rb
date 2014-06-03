@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  has_many :players
-  has_many :cards
-  has_many :messages
+  has_many :players, dependent: :destroy
+  has_many :cards, dependent: :destroy
+  has_many :messages, dependent: :destroy
 end
