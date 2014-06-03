@@ -22,6 +22,9 @@ Mana.IndexRoute = Ember.Route.extend(
       console.info g.get('players').get('length')
       g.get('players').forEach (p) ->
         console.info p.get('name')
+        console.info p.get('deck').get('length')
+        p.get('deck').forEach (c) ->
+          console.info c.get('name')
 
     controller.set('model', [])
 

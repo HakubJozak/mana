@@ -39,8 +39,41 @@ forest:
   originalType: Land
   variations: '[288]'
 
+unholy_fiend:
+  name: Unholy Fiend
+  names: '["Cloistered Youth", "Unholy Fiend"]'
+  text: At the beginning of your end step, you lose 1 life.
+  originalText: At the beginning of your end step, you lose 1 life.
+  rulings:
+  printings:
+  legalities: '{"Modern"=>"Legal", "Extended"=>"Legal", "Innistrad Block"=>"Legal",
+    "Legacy"=>"Legal", "Vintage"=>"Legal", "Freeform"=>"Legal", "Prismatic"=>"Legal",
+    "Tribal Wars Legacy"=>"Legal", "Tribal Wars Standard"=>"Legal", "Classic"=>"Legal",
+    "Singleton 100"=>"Legal", "Commander"=>"Legal"}'
+  flavor: The fiend tormented them by recounting the girl's memories, as if some part
+    of her remained inside that twisted shell.
+  manaCost:
+  cmc:
+  colors: '["Black"]'
+  card_type: Creature — Horror
+  types: '["Creature"]'
+  supertypes:
+  subtypes: '["Horror"]'
+  rarity: Uncommon
+  loyalty:
+  power: '3'
+  toughness: '3'
+  layout: double-faced
+  artist: Igor Kieryluk
+  edition:
+  number: 8b
+  multiverseid: '221222'
+  imageName: unholy fiend
+  originalType: Creature — Horror
+  variations:
+
+
 cloistered_youth:
-  id: 20507
   name: Cloistered Youth
   names: '["Cloistered Youth", "Unholy Fiend"]'
   text: At the beginning of your upkeep, you may transform Cloistered Youth.

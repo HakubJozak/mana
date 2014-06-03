@@ -26,14 +26,14 @@ class Stamp < ActiveRecord::Base
     self.layout == 'double-faced'
   end
 
-  def frontside_url
+  def frontside
     "http://mtgimage.com/multiverseid/#{self.multiverseid}.jpg"
   end
 
-  def backside_url
+  def backside
     if double_faced?
-      the_dark_side = JSON.parse(self.names).reject { |n| n == name }.first
-      Stamp[the_dark_side].frontside_url
+      the_dark_side = JSON.parse(names.to_s).reject { |n| n == name }.first
+      Stamp[the_dark_side].frontside
     else
       nil
     end
