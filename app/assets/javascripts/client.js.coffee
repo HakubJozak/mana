@@ -27,6 +27,13 @@ window.Mana = Ember.Application.create {
 Mana.ApplicationAdapter = DS.ActiveModelAdapter
 # Mana.ApplicationAdapter = DS.FixtureAdapter
 
+
+# just for now
+Mana.message_store = DS.Store.create({
+#  revision: 12,
+  adapter: DS.FixtureAdapter.create()
+});
+
 DS.ActiveModelAdapter.reopen({
 #  namespace: 'games/9'
 });
