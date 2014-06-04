@@ -1,6 +1,6 @@
 Mana.IndexRoute = Ember.Route.extend({
-  setupController: (controller,_model_) ->
-    controller.set('model', @store.find('game',9))
+  model: ->
+    @store.find('game',9)
 
   actions:
     remove_stuff: ->
