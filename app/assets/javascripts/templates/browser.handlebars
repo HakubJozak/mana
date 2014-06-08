@@ -1,9 +1,6 @@
 <div class='status'>
-
   Names:
-  {{#each player in players}}
-    {{player.name}} /     {{player.hand.length}}
-  {{/each}}
+  {{current_player.name}} / {{current_player.hand.length}}
   <select id='browser_selector' name=''>
     <option selected='selected' value='1'>Kolohnat</option>
   </select>
@@ -14,8 +11,8 @@
   </select>
 </div>
 <div class='cards'>
-    {{#each card in players.firstObject.hand }}
-      <div class='slot'>
+    {{#each card in current_player.hand }}
+      <div draggable="true" class='slot'>
         <img {{bind-attr src=card.frontside }} />
       </div>
     {{/each}}

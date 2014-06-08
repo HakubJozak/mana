@@ -1,5 +1,9 @@
 class GamesController < ApplicationController
 
+  # settings for Active Model Serializers
+  serialization_scope :current_player
+
+
   def index
     @games = Game.order(created_at: :desc)
 
@@ -65,6 +69,14 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def current_player
+    if @game
+      player_for(@game)
+    else
+      raise 'No current game set but current_player demanded.'
+    end
+  end
 
   def game_params
     params[:game].permit(:name)

@@ -12,7 +12,7 @@
     #cards.inner
       - @stamps.each do |stamp|
         - if stamp
-          = link_to image_tag(stamp.frontside_url), stamp.frontside_url, :target => '_blank'
+          = link_to image_tag(stamp.frontside), stamp.frontside, :target => '_blank'
         - else
           = link_to image_tag('/assets/back.jpg'), '/'
 
