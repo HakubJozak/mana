@@ -104,6 +104,9 @@ GEM
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.0.3)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.8.1)
     listen (1.1.6)
       rb-fsevent (>= 0.9.3)
@@ -197,6 +200,7 @@ DEPENDENCIES
   haml
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-ui-rails
   pg
   pry
   rails (= 4.1.0)

@@ -1,8 +1,12 @@
 #= require jquery
+#= require jquery.ui.draggable
+#= require jquery.ui.droppable
 #= require handlebars
 #= require ember
 #= require ember-data
 #= require_self
+
+#= require ./draggable
 
 #= require ./store
 #= require_tree ./models

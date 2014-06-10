@@ -1,6 +1,6 @@
 <div class='status'>
   Names:
-  {{current_player.name}} / {{current_player.hand.length}}
+  {{current_player.name}}({{current_player.id}})
   <select id='browser_selector' name=''>
     <option selected='selected' value='1'>Kolohnat</option>
   </select>
@@ -12,8 +12,8 @@
 </div>
 <div class='cards'>
     {{#each card in current_player.hand }}
-      <div draggable="true" class='slot'>
-        <img {{bind-attr src=card.frontside }} />
-      </div>
+      {{view Mana.BrowserCardView content=card }}
+    {{else}}
+      <div class='spaceholder'>There are no cards.</div>
     {{/each}}
 </div>
