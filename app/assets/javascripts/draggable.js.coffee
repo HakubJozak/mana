@@ -70,6 +70,8 @@ Mana.JQueryUIBase = Ember.Mixin.create(
     options
 
 
+  _setOption: ->
+
   # Each jQuery UI widget has a number of custom events that they can
   # trigger. For instance, the progressbar widget triggers a `complete`
   # event when the progress bar finishes. Make these events behave like

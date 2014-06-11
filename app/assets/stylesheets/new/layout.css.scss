@@ -30,6 +30,9 @@ $susy: (
   .slot, .pile  {
      @include gallery(1 of 4,'of-type');
   }
+
+  // makes dragged cards visible
+  overflow: visible;
 }
 
 .table {
@@ -63,6 +66,9 @@ $susy: (
       left: 0;
     }
   }
+
+  // makes dragged cards visible
+  overflow: visible;
 }
 
 .decks, .chat, .browser {

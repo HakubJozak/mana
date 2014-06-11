@@ -6,14 +6,27 @@ Mana.BrowserView = Ember.View.extend
 
 Mana.BrowserView.CardView = Ember.View.extend Mana.Draggable, {
   tagName: 'div'
-  classNames: [ 'slot browser-card' ]
+  classNames: [ 'slot browser-card card' ]
 
-  create: ->
-    @set 'stack', '.slot'
-    @set 'revert','invalid'
+  didInsertElement: ->
+    @_super()
+
+    settings = {
+      scope: 'cards'
+      stack: '.card'
+      scroll: false
+      revert: 'invalid'
+      zIndex: 1000
+      snapMode: 'inner'
+     }
+
+    for k,v of settings
+      @get('ui').option(k,v)
+
+
 
   start: ->
-    console.info @get('content.frontside')
+    console.info 'started'
 
   stop: ->
     console.info @get('content.frontside')
