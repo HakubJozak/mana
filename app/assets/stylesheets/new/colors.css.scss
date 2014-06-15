@@ -18,7 +18,10 @@ body {
  color: white;
 }
 
-.slot{ background-color: #ffb90f; }
+.slot{
+  background-color: #ffb90f;
+  &.card-over { background-color: red; }
+}
 
 .browser {
   background-color: #fbeecb;

@@ -1,5 +1,6 @@
 class CardSerializer < ActiveModel::Serializer
-  attributes :id, :counters, :power, :toughness, :covered,
+  attributes :id, :position, :location,
+             :counters, :power, :toughness, :covered,
              :flipped, :tapped,
              :frontside, :backside,
              :name, :manaCost, :text

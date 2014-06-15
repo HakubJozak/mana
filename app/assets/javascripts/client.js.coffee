@@ -6,7 +6,9 @@
 #= require ember-data
 #= require_self
 
-#= require ./draggable
+#= require ./lib/jquery_ui_base
+#= require ./lib/draggable
+#= require ./lib/droppable
 
 #= require ./store
 #= require_tree ./models

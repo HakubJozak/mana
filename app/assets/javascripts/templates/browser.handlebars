@@ -12,7 +12,7 @@
 </div>
 <div class='cards'>
     {{#each card in current_player.hand }}
-      {{#view Mana.BrowserView.CardView }}
+      {{#view Mana.BrowserView.CardView content=card }}
         <img {{bind-attr src=card.frontside }} />
       {{/view}}
     {{else}}

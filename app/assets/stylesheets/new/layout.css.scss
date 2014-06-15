@@ -44,7 +44,7 @@ $susy: (
   }
 
   .slot {
-    // if the selector is not 'of-type' then the Ember <script> tags screw it
+    // if the selector is not 'of-type' then the Ember <script> tags screw the layout
     @include gallery(1 of 8,'of-type');
     position: relative;
     list-style: none;

@@ -69,8 +69,10 @@ Mana.JQueryUIBase = Ember.Mixin.create(
     ), this
     options
 
-
-  _setOption: ->
+  # call in didInsertElement to set initial options of the jQuery plugin
+  setup_ui: (settings) ->
+    for k,v of settings
+      @get('ui').option(k,v)
 
   # Each jQuery UI widget has a number of custom events that they can
   # trigger. For instance, the progressbar widget triggers a `complete`
@@ -94,31 +96,4 @@ Mana.JQueryUIBase = Ember.Mixin.create(
       return
 
     return
-)
-
-Mana.Draggable = Ember.Mixin.create(Mana.JQueryUIBase,
-  uiType: "draggable"
-  uiOptions: [
-    "disabled"
-    "addClasses"
-    "appendTo"
-    "axis"
-    "cancel"
-    "connectToSortable"
-    "containment"
-    "cursor"
-    "delay"
-    "distance"
-    "grid"
-    "handle"
-    "snap"
-    "snapMode"
-    "stack"
-  ]
-  uiEvents: [
-    "create"
-    "start"
-    "drag"
-    "stop"
-  ]
 )
