@@ -10,6 +10,21 @@ Mana.BrowserView = Ember.View.extend  Mana.Droppable, {
   # intersect does not work because absolute position of the draggable
   # is not really absolute, but relative to it's starting point (?)
   tolerance: 'pointer'
+
+  drop: (event,ui) ->
+    if ui
+      card = ui.draggable.data('card')
+      before = ui.draggable.data('container')
+      now = @get('holder')
+
+      card.set('covered',true)
+      card.set('location','hand')
+      card.set('position',@position)
+
+      before.removeObject(card)
+      now.pushObject(card)
+
+
 }
 
 
