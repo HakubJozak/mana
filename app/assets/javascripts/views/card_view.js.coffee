@@ -1,9 +1,22 @@
 # -*- tab-width: 2; -*-
 
-Mana.CardView = Ember.View.extend({
+Mana.CardView = Ember.View.extend Mana.Draggable, {
   templateName: 'card'
   tagName: 'li'
   classNameBindings: ['content.tapped',':card']
+
+  didInsertElement: ->
+    @_super()
+    @setup_ui ({
+      scope: 'cards'
+      stack: '.card'
+      scroll: false
+      revert: 'invalid'
+      zIndex: 1000
+      snapMode: 'inner'
+     })
+    @$().data('card',@get('content'))
+    @$().data('container',@get('holder'))
 
   contextMenu: (event) ->
     card = @get('content')
@@ -20,4 +33,4 @@ Mana.CardView = Ember.View.extend({
       card.flip()
     else
       card.tap()
-})
+}
