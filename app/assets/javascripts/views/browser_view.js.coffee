@@ -28,7 +28,11 @@ Mana.BrowserView.CardView = Ember.View.extend Mana.Draggable, {
       snapMode: 'inner'
      })
     @$().data('card',@get('content'))
+    @$().data('container',@get('container'))
 
   # start: ->
-  # stop: ->
+  accepted: (slot) ->
+    console.info "accepted in #{slot}"
+
+  stop: ->
 }

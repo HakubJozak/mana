@@ -1,4 +1,8 @@
+@import "compass/css3";
+
 $card-over-color: #fff;
+$highlight-color: #fff68f;
+
 
 body {
  background-color: #fff;
@@ -19,6 +23,13 @@ body {
  background-color: black;
  color: white;
 }
+
+.card {
+  &:hover {
+    @include box-shadow($highlight-color 0px 0px 10px);
+  }
+}
+
 
 .slot{
   background-color: #ffb90f;

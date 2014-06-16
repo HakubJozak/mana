@@ -1,6 +1,6 @@
 @import "compass/css3";
 
-$highlight-color: orange;
+
 $card-w : 120px;
 $card-h : 170px;
 
@@ -52,9 +52,5 @@ $card-h : 170px;
   &.tapped {
     @include rotate(90deg);
     .power, .counters { @include rotate(-90deg); }
-  }
-
-  &:hover {
-    @include box-shadow($highlight-color 0px 0px 10px);
   }
 }

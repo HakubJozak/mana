@@ -18,16 +18,18 @@ Mana.SlotView = Ember.CollectionView.extend Mana.Droppable, {
   drop: (event,ui) ->
     if ui
       card = ui.draggable.data('card')
-      slot = @get('game.current_player.battlefield')
+      old_slot = ui.draggable.data('container')
+      slot = @get('content')
 
-      content = @get('content')
+      if card.get('location') == 'hand'
+        card.set('covered',false)
 
       card.set('location','battlefield')
       card.set('position',@position)
+      slot.pushObject(card)
+      old_slot.removeObject(card)
 
-      console.debug card.get('position')
-      console.debug card.get('location')
-
+      console.debug card.player_id
 
       # card.save();
       # card.save().then(transitionToPost).catch(failure);

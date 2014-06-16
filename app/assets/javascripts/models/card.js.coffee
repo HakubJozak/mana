@@ -34,7 +34,6 @@ Mana.Card = DS.Model.extend
     @set('location',location)
     @set('position',position)
 
-
   toggleCovered: ->
     @set('covered', !@get('covered'))
 
