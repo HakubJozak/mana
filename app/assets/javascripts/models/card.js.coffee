@@ -30,6 +30,11 @@ Mana.Card = DS.Model.extend
   tap: ->
     @set('tapped', !@get('tapped'))
 
+  move_to: (location,position = 0) ->
+    @set('location',location)
+    @set('position',position)
+
+
   toggleCovered: ->
     @set('covered', !@get('covered'))
 

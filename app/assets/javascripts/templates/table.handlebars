@@ -1,8 +1,8 @@
 <div class="status">
-  Player 1
+  {{ player.name }}
 </div>
 <div class="slots">
-  {{#each slot in battlefield}}
-   {{view Mana.SlotView content=slot }}
+  {{#each slot in player.slots}}
+   {{view Mana.SlotView content=slot position=_view.contentIndex}}
   {{/each}}
 </div>

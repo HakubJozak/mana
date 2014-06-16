@@ -1,3 +1,5 @@
+$card-over-color: #fff;
+
 body {
  background-color: #fff;
 }
@@ -20,11 +22,12 @@ body {
 
 .slot{
   background-color: #ffb90f;
-  &.card-over { background-color: red; }
+  &.card-over { background-color: $card-over-color; }
 }
 
 .browser {
   background-color: #fbeecb;
+  &.card-over { background-color: $card-over-color; }
 }
 
 .chat {

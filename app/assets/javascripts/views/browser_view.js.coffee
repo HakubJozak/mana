@@ -1,7 +1,16 @@
-Mana.BrowserView = Ember.View.extend
+Mana.BrowserView = Ember.View.extend  Mana.Droppable, {
   templateName: 'browser'
   tagName: 'div'
   classNames: [ 'browser' ]
+
+  scope: 'cards'
+  hoverClass: 'card-over'
+  greedy: true
+  addClasses: true
+  # intersect does not work because absolute position of the draggable
+  # is not really absolute, but relative to it's starting point (?)
+  tolerance: 'pointer'
+}
 
 
 Mana.BrowserView.CardView = Ember.View.extend Mana.Draggable, {
@@ -20,9 +29,6 @@ Mana.BrowserView.CardView = Ember.View.extend Mana.Draggable, {
      })
     @$().data('card',@get('content'))
 
-  start: ->
-
-
-  stop: ->
-    console.info @get('content.frontside')
+  # start: ->
+  # stop: ->
 }

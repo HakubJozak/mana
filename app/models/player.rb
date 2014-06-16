@@ -3,7 +3,8 @@ class Player < ActiveRecord::Base
   belongs_to :user
   belongs_to :game
 
-  has_many :cards
+  has_many :cards, dependent: :destroy
+
   has_many :deck, ->(o) { where(location: 'deck') }, class_name: 'Card'
   has_many :graveyard, ->(o) { where(location: 'graveyard') }, class_name: 'Card'
   has_many :battlefield, ->(o) { where(location: 'battlefield') }, class_name: 'Card'

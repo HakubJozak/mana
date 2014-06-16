@@ -4,5 +4,7 @@
   {{view Mana.ChatView}}
 </div>
 <div class='tables'>
-  {{view Mana.TableView}}
+  {{#each player in players}}
+    {{view Mana.TableView player=player}}
+  {{/each}}
 </div>

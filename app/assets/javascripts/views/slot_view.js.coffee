@@ -18,9 +18,20 @@ Mana.SlotView = Ember.CollectionView.extend Mana.Droppable, {
   drop: (event,ui) ->
     if ui
       card = ui.draggable.data('card')
-      console.debug card.get('id')
+      slot = @get('game.current_player.battlefield')
+
+      content = @get('content')
+
+      card.set('location','battlefield')
+      card.set('position',@position)
+
       console.debug card.get('position')
       console.debug card.get('location')
+
+
+      # card.save();
+      # card.save().then(transitionToPost).catch(failure);
+
     # else
     #   console.debug 'drop fired without UI'
 
