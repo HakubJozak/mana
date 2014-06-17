@@ -43,3 +43,14 @@ Mana.message_store = DS.Store.create({
 DS.ActiveModelAdapter.reopen({
 #  namespace: 'games/9'
 });
+
+ws = new WebSocket('ws://localhost:3000/');
+ws.onopen = ->
+  console.debug "connected"
+
+ws.onerror = (e) ->
+  console.debug "error occured"
+
+ws.onmessage = (data) ->
+  data = JSON.parse(message.data)
+  console.debug "received: #{data}"

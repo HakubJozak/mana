@@ -45,5 +45,7 @@ gem "formtastic"
 gem 'ember-rails'
 gem 'ember-source', '1.5.0'
 gem 'foreigner'
-
 gem "active_model_serializers"
+
+gem "faye-websocket"
+gem "puma"

@@ -87,7 +87,11 @@ GEM
     ember-source (1.5.0)
       handlebars-source (~> 1.0)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (2.0.2)
+    faye-websocket (0.7.0)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.3.0)
     ffi (1.9.3)
     foreigner (1.6.1)
       activerecord (>= 3.0.0)
@@ -126,6 +130,8 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    puma (2.6.0)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -184,6 +190,7 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    websocket-driver (0.3.0)
 
 PLATFORMS
   ruby
@@ -195,6 +202,7 @@ DEPENDENCIES
   devise (~> 3.2.4)
   ember-rails
   ember-source (= 1.5.0)
+  faye-websocket
   foreigner
   formtastic
   haml
@@ -203,6 +211,7 @@ DEPENDENCIES
   jquery-ui-rails
   pg
   pry
+  puma
   rails (= 4.1.0)
   sass (~> 3.3.0)
   sass-rails!

@@ -25,6 +25,7 @@ module Mana
 
     config.log_level = :debug
 
+
     # config.assets.enabled = true
     # config.assets.version = '1.0'
     # config.assets.precompile += ['client.js', 'client.css']
@@ -36,5 +37,8 @@ module Mana
     # 'config.assets' is an instance of Sprockets::Environment
     config.assets.paths << "#{Gem.loaded_specs['compass-core'].full_gem_path}/stylesheets"
     config.assets.paths << "#{Gem.loaded_specs['susy'].full_gem_path}/sass"
+
+    require 'mana/backend'
+    config.middleware.use Mana::Backend
   end
 end
