@@ -1,5 +1,7 @@
 Mana.IndexRoute = Ember.Route.extend({
   model: ->
+    # move elsewhere
+    @socket = new Mana.WebSocketHandler(@store)
     @store.find('game',9)
 
   actions:

@@ -6,7 +6,7 @@ module Mana
     def initialize(app)
       @app = app
       @clients = []
-      i = 0
+      tapped = true
 
       Thread.new do
 
@@ -14,11 +14,14 @@ module Mana
 #        redis_sub.subscribe(CHANNEL) do |on|
 #          on.message do |channel, msg|
         loop do
-          sleep(2)
-          puts 'Sending'
-          # i += 1
-          card =  { position: 1 }
-          @clients.each {|ws| ws.send(card.to_json) }
+          sleep(3)
+          tapped = !tapped
+
+          card =  { cards: { id: 56, tapped: tapped }}
+          @clients.each {|ws|
+            puts 'Sending'
+            ws.send(card.to_json)
+          }
         end
 #          end
 #        end

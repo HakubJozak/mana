@@ -33,7 +33,6 @@ window.Mana = Ember.Application.create {
 Mana.ApplicationAdapter = DS.ActiveModelAdapter
 # Mana.ApplicationAdapter = DS.FixtureAdapter
 
-
 # just for now
 Mana.message_store = DS.Store.create({
 #  revision: 12,
@@ -44,13 +43,53 @@ DS.ActiveModelAdapter.reopen({
 #  namespace: 'games/9'
 });
 
-ws = new WebSocket('ws://localhost:3000/');
-ws.onopen = ->
-  console.debug "connected"
 
-ws.onerror = (e) ->
-  console.debug "error occured"
+Mana.WebSocketHandler = Ember.Object.extend(
+  uri: "ws://localhost:3000/"
+  init: (store) ->
+    @_super()
+    @store = store
+    @ws = new WebSocket(@uri)
 
-ws.onmessage = (data) ->
-  data = JSON.parse(message.data)
-  console.debug "received: #{data}"
+    # callbacks
+    @ws.onopen = ->
+      console.log "Websocket connected"
+
+    @ws.onclose = ->
+      console.log "Websocket closed"
+
+    @ws.onmessage = (msg) =>
+      json =  JSON.parse(msg.data)
+      @store.update('card',json.cards)
+)
+
+
+# Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
+#   socket: undefined
+
+#   init: ->
+#     @socket = new Mana.WebSocketHandler('ws://localhost:3000/')
+#     @_super()
+
+#   find: (store,type,id) ->
+#     @_super(store,type,id)
+
+#   findAll: (store,type) ->
+#     @_super(store,type)
+
+#   createRecord: (store,type,record) ->
+#     @_super(store,type,record)
+# })
+# Mana.ApplicationAdapter = Mana.WebSocketAdapter
+
+
+
+# ws = new WebSocket('ws://localhost:3000/');
+# ws.onopen = ->
+#   console.debug "connected"
+
+# ws.onerror = (e) ->
+#   console.debug "error occured"
+
+# ws.onmessage = (msg) ->
+#   console.debug JSON.parse(msg.data)

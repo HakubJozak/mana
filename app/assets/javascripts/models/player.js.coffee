@@ -17,7 +17,6 @@ Mana.Player = DS.Model.extend
     for i in [0..15]
       slot = field.filter (card, index, self) ->
                true if card.get('position') == i
-      console.info slot.length
       result.pushObject(slot)
 
     result
