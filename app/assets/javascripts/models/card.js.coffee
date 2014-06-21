@@ -26,17 +26,15 @@ Mana.Card = DS.Model.extend
   flip: ->
     if @get('backside')
       @set('flipped', !@get('flipped'))
+      @save()
 
   tap: ->
     @set('tapped', !@get('tapped'))
-
-  move_to: (location,position = 0) ->
-    @set('location',location)
-    @set('position',position)
+    @save()
 
   toggleCovered: ->
     @set('covered', !@get('covered'))
-
+    @save()
 
 Mana.Card.FIXTURES = [
   {
