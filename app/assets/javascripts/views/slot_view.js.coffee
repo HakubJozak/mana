@@ -35,7 +35,7 @@ Mana.SlotView = Ember.CollectionView.extend Mana.Droppable, {
       before.removeObject(card)
       now.pushObject(card)
 
-      # card.save();
+      card.save();
       # card.save().then(transitionToPost).catch(failure);
 
     # else

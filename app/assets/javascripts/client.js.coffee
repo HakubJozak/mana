@@ -49,7 +49,19 @@ Mana.WebSocketHandler = Ember.Object.extend(
   init: (store) ->
     @_super()
     @store = store
-    @ws = new WebSocket(@uri)
+)
+
+
+
+
+
+
+Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
+
+  init: ->
+    # HACK is there some better way to get the default store?
+    @store = Mana.__container__.lookup('store:main')
+    @ws = new WebSocket("ws://localhost:3000/")
 
     # callbacks
     @ws.onopen = ->
@@ -60,36 +72,21 @@ Mana.WebSocketHandler = Ember.Object.extend(
 
     @ws.onmessage = (msg) =>
       json =  JSON.parse(msg.data)
-      @store.update('card',json.cards)
-)
+      @store.update('card',json.card)
 
+  updateRecord: (store,type,record) ->
+    attrs = {}
+    #  type == Mana.Card
+    # @serialize(record, { includeId: true })
+    attrs['card'] =  record.toJSON(includeId: true)
+    @ws.send(JSON.stringify(attrs))
 
-# Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
-#   socket: undefined
-
-#   init: ->
-#     @socket = new Mana.WebSocketHandler('ws://localhost:3000/')
-#     @_super()
-
-#   find: (store,type,id) ->
-#     @_super(store,type,id)
-
-#   findAll: (store,type) ->
-#     @_super(store,type)
-
-#   createRecord: (store,type,record) ->
-#     @_super(store,type,record)
-# })
-# Mana.ApplicationAdapter = Mana.WebSocketAdapter
+    # fake promise as it happens synchronously :/
+    new Ember.RSVP.Promise((resolve, reject) ->
+      resolve(null)
+    )
+})
 
 
 
-# ws = new WebSocket('ws://localhost:3000/');
-# ws.onopen = ->
-#   console.debug "connected"
-
-# ws.onerror = (e) ->
-#   console.debug "error occured"
-
-# ws.onmessage = (msg) ->
-#   console.debug JSON.parse(msg.data)
+Mana.ApplicationAdapter = Mana.WebSocketAdapter
