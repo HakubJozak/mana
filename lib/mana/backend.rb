@@ -58,14 +58,15 @@ module Mana
               attrs.symbolize_keys!
               card = Card.find(attrs.delete(:id))
               attrs.slice!(:tapped, :position, :location, :flipped,
-                          :covered, :toughness, :power, :counters)
+                           :covered, :toughness, :power, :counters)
               card.update_attributes(attrs)
             rescue => e
-              log.error e.message
               log.error "Failed to save card: #{attrs.inspect}"
+              log.error $!
+              log.error $@
             end
           else
-            log.error "Unknown data #{event.data}"
+            log.error "Unknown data received via websocket: #{event.data}"
           end
 
           # begin

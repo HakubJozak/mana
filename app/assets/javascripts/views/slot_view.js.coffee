@@ -1,4 +1,4 @@
-Mana.SlotView = Ember.CollectionView.extend Mana.Droppable, {
+Mana.SlotView = Ember.CollectionView.extend Mana.DroppableForCard, {
   tagName: 'ul'
   classNames: [ 'slot' ]
   itemViewClass: Mana.CardView
@@ -15,31 +15,17 @@ Mana.SlotView = Ember.CollectionView.extend Mana.Droppable, {
   # is not really absolute, but relative to it's starting point (?)
   tolerance: 'pointer'
 
+  location_prefix: "battlefield"
+
 
   createChildView: (viewClass,attrs) ->
     attrs ||= {}
     attrs.holder = @get('content')
     return @_super(viewClass, attrs);
 
-  drop: (event,ui) ->
-    if ui
-      card = ui.draggable.data('card')
-      before = ui.draggable.data('container')
-      now = @get('content')
-
-      if card.get('location') == 'hand'
-        card.set('covered',false)
-
-      card.set('location','battlefield')
-      card.set('position',@position)
-      before.removeObject(card)
-      now.pushObject(card)
-
-      card.save();
-      # card.save().then(transitionToPost).catch(failure);
-
-    # else
-    #   console.debug 'drop fired without UI'
-
+  after_drop: (card) ->
+    # if it comes from hand, uncover it
+    if card.get('location').indexOf('hand') == 0
+      card.set('covered',false)
 
 }

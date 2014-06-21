@@ -6,9 +6,8 @@
 #= require ember-data
 #= require_self
 
-#= require ./lib/jquery_ui_base
-#= require ./lib/draggable
-#= require ./lib/droppable
+#= require ./mixins/jquery_ui_base
+#= require_tree ./mixins
 
 #= require ./store
 #= require_tree ./models
@@ -76,10 +75,11 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
 
   updateRecord: (store,type,record) ->
     attrs = {}
-    #  type == Mana.Card
-    # @serialize(record, { includeId: true })
-    attrs['card'] =  record.toJSON(includeId: true)
-    @ws.send(JSON.stringify(attrs))
+    if type == Mana.Card
+      attrs['card'] =  record.toJSON(includeId: true)
+      @ws.send(JSON.stringify(attrs))
+    else
+      throw "Don't know how to send #{type} via Websocket"
 
     # fake promise as it happens synchronously :/
     new Ember.RSVP.Promise((resolve, reject) ->

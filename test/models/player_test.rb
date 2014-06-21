@@ -9,6 +9,6 @@ class PlayerTest < ActiveSupport::TestCase
 
   test 'has deck on create' do
     p = @game.players.create!
-    assert_equal 10, p.deck.size
+    assert_equal 10, p.hand.size
   end
 end

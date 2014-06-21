@@ -5,10 +5,10 @@ class Player < ActiveRecord::Base
 
   has_many :cards, dependent: :destroy
 
-  has_many :deck, ->(o) { where(location: 'deck') }, class_name: 'Card'
-  has_many :graveyard, ->(o) { where(location: 'graveyard') }, class_name: 'Card'
-  has_many :battlefield, ->(o) { where(location: 'battlefield') }, class_name: 'Card'
-  has_many :hand, ->(o) { where(location: 'hand') }, class_name: 'Card'
+  has_many :deck, ->(p) { where(location: "deck_#{p.id}") }, class_name: 'Card'
+  has_many :graveyard, ->(p) { where(location: "graveyard_#{p.id}") }, class_name: 'Card'
+  has_many :battlefield, ->(p) { where(location: "battlefield_#{p.id}") }, class_name: 'Card'
+  has_many :hand, ->(p) { where(location: "hand_#{p.id}") }, class_name: 'Card'
 
 
   validates_presence_of :game
@@ -18,7 +18,7 @@ class Player < ActiveRecord::Base
 
   after_create do
     10.times do |i|
-      cards.create! stamp: Stamp.random, location: 'deck', game: game
+      cards.create! stamp: Stamp.random, location: "hand_#{id}", game: game
     end
 
     # TODO: compute order automatically or too much pain?
@@ -40,7 +40,7 @@ class Player < ActiveRecord::Base
     if self.user
       self.name ||= self.user.name
     else
-      # TODO: take it from cookie
+      # TODO: take it from a cookie
       self.name ||= "Guest"
     end
   end
