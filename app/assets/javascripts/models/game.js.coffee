@@ -1,5 +1,4 @@
 # -*- tab-width: 2; -*-
-# for more details see: http://emberjs.com/guides/models/defining-models/
 
 Mana.Game = DS.Model.extend
   name: DS.attr 'string'
@@ -7,7 +6,7 @@ Mana.Game = DS.Model.extend
 
   cards: DS.hasMany('card')
   players: DS.hasMany('player')
-#  exile: DS.hasMany('card')
+  slots: DS.hasMany('slot')
 
   first_player: (->
     @get('players.firstObject')

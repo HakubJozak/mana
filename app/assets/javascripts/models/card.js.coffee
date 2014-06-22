@@ -1,5 +1,4 @@
 Mana.Card = DS.Model.extend
-  location: DS.attr 'string'
   position: DS.attr 'number'
   order: DS.attr 'number'
 
@@ -15,7 +14,7 @@ Mana.Card = DS.Model.extend
   tapped: DS.attr 'boolean'
   flipped: DS.attr 'boolean'
 
-  # player: DS.belongsTo('player')
+#  slot: DS.belongsTo('slot')
   # game: DS.belongsTo('game')
 
   power_and_toughness: (->

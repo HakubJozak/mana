@@ -1,6 +1,10 @@
 Mana.IndexRoute = Ember.Route.extend({
   model: ->
-    @store.find('game',10)
+    # Getting game ID from the URL
+    # not really an Ember.js showcase, but it works
+    atoms = window.location.pathname.split('/')
+    game_id = atoms[atoms.length - 1]
+    @store.find('game',game_id)
 
   actions:
     remove_stuff: ->

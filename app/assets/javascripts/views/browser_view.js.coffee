@@ -11,8 +11,6 @@ Mana.BrowserView = Ember.View.extend  Mana.DroppableForCard, {
   # is not really absolute, but relative to it's starting point (?ORLY)
   tolerance: 'pointer'
 
-  location_prefix: "hand"
-
   after_drop: (card) ->
     card.set('covered',true)
 
@@ -38,7 +36,7 @@ Mana.BrowserView.CardView = Ember.View.extend Mana.Draggable, {
 
   # start: ->
   accepted: (slot) ->
-    console.info "accepted in #{slot}"
+    console.debug "accepted in #{slot}"
 
   stop: ->
 }
