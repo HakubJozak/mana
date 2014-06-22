@@ -68,12 +68,20 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
 
     @ws.onmessage = (msg) =>
       json =  JSON.parse(msg.data)
-      @store.update('card',json.card)
+      if json.card
+        @store.update('card',json.card)
+      else if json.slot
+        @store.update('slot',json.slot)
+      else
+        console.info "unknown type: #{json}"
 
   updateRecord: (store,type,record) ->
     attrs = {}
     if type == Mana.Card
       attrs['card'] =  record.toJSON(includeId: true)
+      @ws.send(JSON.stringify(attrs))
+    else if type == Mana.Slot
+      attrs['slot'] = record.toJSON(includeId: true)
       @ws.send(JSON.stringify(attrs))
     else
       throw "Don't know how to send #{type} via Websocket"

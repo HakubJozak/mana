@@ -7,12 +7,11 @@ Mana.DroppableForCard = Ember.Mixin.create Mana.Droppable,
 
       @after_drop(card)
 
-      card.set('location',"#{@location_prefix}_#{@player_id}")
       card.set('position',@position)
 
-      console.info card.get('location')
+      before.get('cards').removeObject(card)
+      now.get('cards').pushObject(card)
 
-      before.removeObject(card)
-      now.pushObject(card)
-
+      before.save()
+      now.save()
       card.save()

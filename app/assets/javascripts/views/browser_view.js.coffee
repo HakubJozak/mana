@@ -13,7 +13,6 @@ Mana.BrowserView = Ember.View.extend  Mana.DroppableForCard, {
 
   after_drop: (card) ->
     card.set('covered',true)
-
 }
 
 

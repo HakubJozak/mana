@@ -15,17 +15,10 @@ Mana.SlotView = Ember.CollectionView.extend Mana.DroppableForCard, {
   # is not really absolute, but relative to it's starting point (?)
   tolerance: 'pointer'
 
-  location_prefix: "battlefield"
-
-
   createChildView: (viewClass,attrs) ->
     attrs ||= {}
     attrs.holder = @get('content')
     return @_super(viewClass, attrs);
 
   after_drop: (card) ->
-    # if it comes from hand, uncover it
-    if card.get('location').indexOf('hand') == 0
-      card.set('covered',false)
-
 }

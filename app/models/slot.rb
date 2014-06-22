@@ -1,7 +1,7 @@
 class Slot < ActiveRecord::Base
   belongs_to :player
   belongs_to :game
-  has_many :cards, dependent: :destroy
+  has_many :cards
 
   # proxy_association.owner
   # proxy_association.reflection

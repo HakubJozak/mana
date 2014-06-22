@@ -49,24 +49,28 @@ module Mana
         end
 
         ws.on :message do |event|
-          @clients.each { |ws| ws.send(event.data) }
-          parsed = JSON.parse(event.data).symbolize_keys
+          begin
+            @clients.each { |ws| ws.send(event.data) }
+            parsed = JSON.parse(event.data).symbolize_keys
 
-          if attrs = parsed[:card]
-            begin
-              log.debug 'Saving card changes'
+            if attrs = parsed[:card]
               attrs.symbolize_keys!
+              log.debug "Saving card changes: #{attrs.inspect}"
               card = Card.find(attrs.delete(:id))
-              attrs.slice!(:tapped, :position, :location, :flipped,
+              attrs.slice!(:tapped, :position, :slot_id, :flipped,
                            :covered, :toughness, :power, :counters)
               card.update_attributes(attrs)
-            rescue => e
-              log.error "Failed to save card: #{attrs.inspect}"
-              log.error $!
-              log.error $@
+            elsif attrs = parsed[:slot]
+              attrs.symbolize_keys!
+ #             slot = Slot.find(attrs.delete(:id))
+#              slot.card_ids = attrs[:cards]
+            else
+              log.error "Unknown data received via websocket: #{event.data}"
             end
-          else
-            log.error "Unknown data received via websocket: #{event.data}"
+          rescue => e
+            log.error "Failed to save card: #{attrs.inspect}"
+            log.error $!
+            log.error $@
           end
 
           # begin
