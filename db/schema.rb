@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603100529) do
+ActiveRecord::Schema.define(version: 20140622114527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140603100529) do
     t.integer  "position"
     t.integer  "order",      default: 0,     null: false
     t.integer  "player_id"
+    t.integer  "slot_id",                    null: false
   end
 
   create_table "games", force: true do |t|
@@ -48,6 +49,14 @@ ActiveRecord::Schema.define(version: 20140603100529) do
     t.integer  "poison_counters", default: 0
     t.string   "settings"
     t.text     "mainboard"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "slots", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "position"
+    t.integer  "player_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -107,7 +116,8 @@ ActiveRecord::Schema.define(version: 20140603100529) do
   add_foreign_key "cards", "players", name: "cards_player_id_fk"
   add_foreign_key "cards", "stamps", name: "cards_stamp_id_fk"
 
-  add_foreign_key "players", "games", name: "players_game_id_fk"
   add_foreign_key "players", "users", name: "players_user_id_fk"
+
+  add_foreign_key "slots", "players", name: "slots_player_id_fk"
 
 end

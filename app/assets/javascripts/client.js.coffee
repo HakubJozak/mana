@@ -52,9 +52,6 @@ Mana.WebSocketHandler = Ember.Object.extend(
 
 
 
-
-
-
 Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
 
   init: ->

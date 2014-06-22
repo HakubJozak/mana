@@ -4,11 +4,13 @@ class Player < ActiveRecord::Base
   belongs_to :game
 
   has_many :cards, dependent: :destroy
+  has_many :slots, dependent: :destroy
 
-  has_many :deck, ->(p) { where(location: "deck_#{p.id}") }, class_name: 'Card'
-  has_many :graveyard, ->(p) { where(location: "graveyard_#{p.id}") }, class_name: 'Card'
-  has_many :battlefield, ->(p) { where(location: "battlefield_#{p.id}") }, class_name: 'Card'
-  has_many :hand, ->(p) { where(location: "hand_#{p.id}") }, class_name: 'Card'
+  has_one :hand, ->(p) { where(name: "hand") }, class_name: 'Slot'
+  has_one :deck, ->(p) { where(name: 'deck') }, class_name: 'Slot'
+  has_one :graveyard, ->(p) { where(name: "graveyard") }, class_name: 'Slot'
+  has_one :exile, ->(p) { where(name: "exile") }, class_name: 'Slot'
+  has_many :battlefield_slots, ->(p) { where(name: "battlefield").order(:position) }, class_name: 'Slot'
 
 
   validates_presence_of :game
@@ -16,21 +18,19 @@ class Player < ActiveRecord::Base
   attr_accessor :prepared_deck
 
 
+
   after_create do
-    10.times do |i|
-      cards.create! stamp: Stamp.random, location: "hand_#{id}", game: game
+    %w( hand deck graveyard exile ).each do |name|
+      slots.create(name: name)
     end
 
-    # TODO: compute order automatically or too much pain?
-    # order = 0
+    (0..15).each do |pos|
+      slots.create(name: 'battlefield', position: pos)
+    end
 
-    # Deck.build_cards(deck.mainboard) do |card|
-    #   card.player = self
-    #   card.game = game
-    #   card.order = (order += 1)
-    #   card.collection_id = "library-#{self.id}"
-    #   card.save!
-    # end
+    10.times do |i|
+      cards.create! stamp: Stamp.random, slot: self.hand, game: game
+    end
   end
 
   after_initialize do
