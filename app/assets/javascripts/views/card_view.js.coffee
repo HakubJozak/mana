@@ -15,8 +15,10 @@ Mana.CardView = Ember.View.extend Mana.Draggable, {
       zIndex: 1000
       snapMode: 'inner'
      })
+
     @$().data('card',@get('content'))
     @$().data('container',@get('holder'))
+
 
   contextMenu: (event) ->
     card = @get('content')

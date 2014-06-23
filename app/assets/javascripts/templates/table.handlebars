@@ -3,6 +3,6 @@
 </div>
 <div class="slots">
   {{#each slot in player.battlefield_slots}}
-   {{view Mana.SlotView content=slot.cards holder=slot position=_view.contentIndex player_id=player.id }}
+   {{view Mana.SlotView content=slot.cards holder=slot position=_view.contentIndex }}
   {{/each}}
 </div>

@@ -52,10 +52,11 @@ Mana.WebSocketHandler = Ember.Object.extend(
 
 
 
+
 Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
 
   init: ->
-    # HACK is there some better way to get the default store?
+    # TODO: Mana.inject('data-adapter', 'store', 'store:main')
     @store = Mana.__container__.lookup('store:main')
     @ws = new WebSocket("ws://localhost:3000/")
 

@@ -1,6 +1,7 @@
 Mana.Card = DS.Model.extend
   position: DS.attr 'number'
   order: DS.attr 'number'
+  slot_id: DS.attr 'number'
 
   name: DS.attr 'string'
   frontside: DS.attr 'string'
