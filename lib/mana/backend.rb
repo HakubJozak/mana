@@ -55,20 +55,25 @@ module Mana
 
             if attrs = parsed[:card]
               attrs.symbolize_keys!
-              log.debug "Saving card changes: #{attrs.inspect}"
               card = Card.find(attrs.delete(:id))
               attrs.slice!(:tapped, :position, :slot_id, :flipped,
                            :covered, :toughness, :power, :counters)
               card.update_attributes(attrs)
-            elsif attrs = parsed[:slot]
+              log.debug "Saved card changes: #{attrs.inspect}"
+            elsif attrs = parsed[:player]
               attrs.symbolize_keys!
- #             slot = Slot.find(attrs.delete(:id))
-#              slot.card_ids = attrs[:cards]
+              player = Player.find(attrs.delete(:id))
+              attrs.slice!(:lives, :poison_counters)
+              player.update_attributes(attrs)
+              log.debug "Saved player changes: #{attrs.inspect}"
+            elsif attrs = parsed[:slot]
+              # there is nothing we have to do - card update of the `slot_id` handles
+              # it all on the server side
             else
               log.error "Unknown data received via websocket: #{event.data}"
             end
           rescue => e
-            log.error "Failed to save card: #{attrs.inspect}"
+            log.error "Failed to save a record: #{attrs.inspect}"
             log.error $!
             log.error $@
           end

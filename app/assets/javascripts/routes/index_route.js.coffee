@@ -7,15 +7,12 @@ Mana.IndexRoute = Ember.Route.extend({
     @store.find('game',game_id)
 
   actions:
-    remove_stuff: ->
-      @store.find('card',@id).then (value) ->
-        window.slot.removeObject(value)
-      @id -= 1;
+    add_live: (player) ->
+      player.adjust_lives(1)
       false
 
-    add_stuff: ->
-      @id += 1;
-      @store.find('card',@id).then (value) ->
-        window.slot.pushObject(value)
+    subtract_live: (player) ->
+      player.adjust_lives(-1)
       false
+
 })

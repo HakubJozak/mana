@@ -1,5 +1,9 @@
 <div class="status">
-  {{ player.name }}({{ player.id }})
+  {{ player.name }} |
+  Hand: {{ player.hand.size }} |
+  Lives: {{ player.lives }}
+  <button {{action 'add_live' player}}>+</button>
+  <button {{action 'subtract_live' player}}>-</button>
 </div>
 <div class="slots">
   {{#each slot in player.battlefield_slots}}

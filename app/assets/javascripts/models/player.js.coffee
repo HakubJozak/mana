@@ -1,11 +1,16 @@
-# for more details see: http://emberjs.com/guides/models/defining-models/
-
 Mana.Player = DS.Model.extend
-  name: DS.attr 'string'
   current: DS.attr 'boolean'
+
+  name: DS.attr 'string'
+  lives: DS.attr 'number'
+  poison_counters: DS.attr 'number'
 
   game: DS.belongsTo('game')
   deck: DS.belongsTo('slot')
   hand: DS.belongsTo('slot')
   graveyard: DS.belongsTo('slot')
   battlefield_slots: DS.hasMany('slot')
+
+  adjust_lives: (delta) ->
+    @set('lives', @get('lives') + delta)
+    @save()

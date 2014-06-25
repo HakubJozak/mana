@@ -73,6 +73,10 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
         @store.update('card',json.card)
       else if json.slot
         @store.update('slot',json.slot)
+      else if json.player
+        @store.update('player',json.player)
+      else if json.message
+        @store.update('message',json.message)
       else
         console.info "unknown type: #{json}"
 
@@ -80,15 +84,17 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
     attrs = {}
     if type == Mana.Card
       attrs['card'] =  record.toJSON(includeId: true)
-      @ws.send(JSON.stringify(attrs))
     else if type == Mana.Slot
       attrs['slot'] = record.toJSON(includeId: true)
-      @ws.send(JSON.stringify(attrs))
+    else if type == Mana.Player
+      attrs['player'] = record.toJSON(includeId: true)
     else
       throw "Don't know how to send #{type} via Websocket"
 
+
     # fake promise as it happens synchronously :/
-    new Ember.RSVP.Promise((resolve, reject) ->
+    new Ember.RSVP.Promise((resolve, reject) =>
+      @ws.send(JSON.stringify(attrs))
       resolve(null)
     )
 })
