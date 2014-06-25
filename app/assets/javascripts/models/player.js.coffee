@@ -12,5 +12,5 @@ Mana.Player = DS.Model.extend
   battlefield_slots: DS.hasMany('slot')
 
   adjust_lives: (delta) ->
-    @set('lives', @get('lives') + delta)
+    @incrementProperty('lives', delta)
     @save()
