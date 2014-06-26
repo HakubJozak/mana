@@ -42,8 +42,14 @@ body {
 }
 
 .pile {
-  background-color: #f6d784;
-  &.card-over { background-color: $card-over-color; }
+  h2 {
+    margin: 2px;
+    font-size: small;
+    text-align: center;
+  }
+
+  .pile-top { background-color: #f6d784; }
+  &.card-over { .pile-top { background-color: $card-over-color; }}
 }
 
 

@@ -7,9 +7,10 @@
     </div>
 
     <div class="piles">
-      {{view Mana.PileView holder=current_player.deck }}
-      {{view Mana.PileView holder=current_player.graveyard }}
-      {{view Mana.PileView holder=current_player.exile }}
+      {{#with current_player.deck }}
+        {{partial "pile_with_title" }}
+      {{/with}}
+
       <div class="pile">
         <button class="next-turn">
           Next
