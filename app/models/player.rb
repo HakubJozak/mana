@@ -24,12 +24,12 @@ class Player < ActiveRecord::Base
       slots.create(name: name)
     end
 
-    (0..15).each do |pos|
-      slots.create(name: 'battlefield', position: pos)
+    (0..15).each do |i|
+      slots.create(name: 'battlefield', position: i)
     end
 
     10.times do |i|
-      cards.create! stamp: Stamp.random, slot: self.hand, game: game
+      cards.create! stamp: Stamp.random, slot: self.hand, game: game, position: i
     end
   end
 

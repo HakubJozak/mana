@@ -5,10 +5,10 @@ Mana.DroppableForCard = Ember.Mixin.create Mana.Droppable,
       before = ui.draggable.data('container')
       now = @get('holder')
 
-      @after_drop(card)
-
-      card.set('position',@position)
+      card.set 'position', now.get('length')
       card.set('slot_id',now.get('id'))
+
+      @after_drop(card)
 
       before.get('cards').removeObject(card)
       now.get('cards').pushObject(card)

@@ -1,6 +1,6 @@
 <div class="status">
   {{ player.name }} |
-  Hand: {{ player.hand.size }} |
+  Hand: {{ player.hand.length }} |
   Lives: {{ player.lives }}
   <button {{action 'add_live' player}}>+</button>
   <button {{action 'subtract_live' player}}>-</button>

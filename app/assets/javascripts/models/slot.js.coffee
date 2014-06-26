@@ -3,6 +3,6 @@ Mana.Slot = DS.Model.extend
   game: DS.belongsTo('game')
   cards: DS.hasMany('card')
 
-  size: ( ->
+  length: ( ->
     @get('cards.length')
   ).property('cards.@each')
