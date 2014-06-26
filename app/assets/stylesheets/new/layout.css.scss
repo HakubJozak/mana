@@ -27,7 +27,7 @@ $susy: (
   .browser {
   }
 
-  .slot, .pile  {
+  .slot, .pile-container  {
      @include gallery(1 of 4,'of-type');
   }
 

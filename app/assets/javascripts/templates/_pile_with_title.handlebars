@@ -1,6 +1,6 @@
-<header>
-  <h2>{{ capitalize name }}</h2>
-</header>
-<div class="pile-top">
+<div class="pile-container">
+  <header>
+    <h2>{{ capitalize name }}({{ length }})</h2>
+  </header>
   {{view Mana.PileView holder=this }}
 </div>

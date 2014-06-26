@@ -8,13 +8,12 @@
 
     <div class="piles">
       {{#with current_player.deck }}
-        {{partial "pile_with_title" }}
+        {{ partial "pile_with_title" }}
       {{/with}}
 
-      <div class="pile">
+      <div class="pile-container">
         <button class="next-turn">
-          Next
-           Turn
+          Next  Turn
         </button>
       </div>
     </div>
