@@ -19,9 +19,6 @@
 #= require_tree ./routes
 #= require ./router
 
-# for more details see: http://emberjs.com/guides/application/
-
-
 
 window.Mana = Ember.Application.create {
   rootElement: '#ember-app'
@@ -29,15 +26,6 @@ window.Mana = Ember.Application.create {
     console.info 'Mana started.'
 }
 
-Mana.ApplicationAdapter = DS.ActiveModelAdapter
-
-
-Mana.WebSocketHandler = Ember.Object.extend(
-  uri: "ws://localhost:3000/"
-  init: (store) ->
-    @_super()
-    @store = store
-)
 
 Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
 
