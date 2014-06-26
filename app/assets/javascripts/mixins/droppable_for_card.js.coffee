@@ -8,7 +8,7 @@ Mana.DroppableForCard = Ember.Mixin.create Mana.Droppable,
       card.set 'position', now.next_position()
       card.set('slot_id',now.get('id'))
 
-      @after_drop(card)
+      @after_drop(card) if @after_drop
 
       before.get('cards').removeObject(card)
       now.get('cards').pushObject(card)
@@ -16,3 +16,5 @@ Mana.DroppableForCard = Ember.Mixin.create Mana.Droppable,
       before.save()
       now.save()
       card.save()
+
+      console.debug "Card #{card.get('id')} dropped from #{before.get('id')} to #{now.get('id')}"

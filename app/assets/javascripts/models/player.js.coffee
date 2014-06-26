@@ -7,6 +7,7 @@ Mana.Player = DS.Model.extend
 
   game: DS.belongsTo('game')
   deck: DS.belongsTo('slot')
+  exile: DS.belongsTo('slot')
   hand: DS.belongsTo('slot')
   graveyard: DS.belongsTo('slot')
   battlefield_slots: DS.hasMany('slot')

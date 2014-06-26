@@ -29,7 +29,7 @@ class Player < ActiveRecord::Base
     end
 
     10.times do |i|
-      cards.create! stamp: Stamp.random, slot: self.hand, game: game, position: i
+      cards.create! stamp: Stamp.random, slot: self.hand, game: game, position: i, covered: false
     end
   end
 

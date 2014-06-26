@@ -31,7 +31,7 @@ body {
 }
 
 
-.slot{
+.slot {
   background-color: #ffb90f;
   &.card-over { background-color: $card-over-color; }
 }
@@ -41,15 +41,16 @@ body {
   &.card-over { background-color: $card-over-color; }
 }
 
+.pile {
+  background-color: #f6d784;
+  &.card-over { background-color: $card-over-color; }
+}
+
+
 .chat {
   background-color: #caff70;
 }
 
-
-.pile {
-  &:nth-child(2n+1) { background-color: #ea9; }
-  &:nth-child(2n) { background-color: #f6d784; }
-}
 
 .tables, .table {
   background-color: #ff6;

@@ -1,0 +1,15 @@
+{{#if view.holder.empty }}
+   <img src='/assets/empty.png'>
+{{ else }}
+  {{#with view.holder.top }}
+    {{#if covered }}
+      <img src='/assets/back.jpg' width="200">
+    {{else}}
+      {{#if flipped}}
+        <img {{bind-attr src=backside}}>
+      {{else}}
+        <img {{bind-attr src=frontside}}>
+      {{/if}}
+    {{/if}}
+  {{/with}}
+{{/if}}

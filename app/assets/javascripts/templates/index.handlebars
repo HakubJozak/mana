@@ -1,6 +1,24 @@
 <div class='controls'>
   {{view Mana.BrowserView holder=current_player.hand }}
-  {{view Mana.DecksView}}
+
+  <div class="decks">
+    <div class="status">
+      Decks
+    </div>
+
+    <div class="piles">
+      {{view Mana.PileView holder=current_player.deck }}
+      {{view Mana.PileView holder=current_player.graveyard }}
+      {{view Mana.PileView holder=current_player.exile }}
+      <div class="pile">
+        <button class="next-turn">
+          Next
+           Turn
+        </button>
+      </div>
+    </div>
+  </div>
+
   {{view Mana.ChatView}}
 </div>
 <div class='tables'>
