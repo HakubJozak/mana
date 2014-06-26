@@ -1,0 +1,2 @@
+# set position for all cards
+Slot.all.each { |s| s.cards.each_with_index { |c,i| c.position = i; c.save }}
