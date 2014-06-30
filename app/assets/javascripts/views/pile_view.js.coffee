@@ -1,13 +1,7 @@
-Mana.PileView = Ember.View.extend Mana.DroppableForCard, {
+Mana.PileView = Ember.View.extend Mana.Draggable, {
   tagName: 'div'
   classNames: [ 'pile' ]
   templateName: 'pile'
-
-  scope: 'cards'
-  hoverClass: 'card-over'
-  greedy: true
-  addClasses: true
-  tolerance: 'pointer'
 
   didInsertElement: ->
     @_super()
@@ -23,8 +17,4 @@ Mana.PileView = Ember.View.extend Mana.DroppableForCard, {
 
     @$().data('card',@get('holder.top'))
     @$().data('container',@get('holder'))
-
-  after_drop: (card) ->
-    if @get('name') == 'deck'
-      card.set('covered',true)
 }

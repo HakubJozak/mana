@@ -48,11 +48,10 @@ body {
     text-align: center;
   }
 
-  .pile {
-    background-color: #f6d784;
-    border: 2px solid red;
-    &.card-over { border: 2px dashed $card-over-color; }
-  }
+  background-color: #f6d784;
+  &.card-over { background-color: $card-over-color; }
+
+  .pile {  }
 }
 
 

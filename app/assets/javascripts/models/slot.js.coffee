@@ -7,19 +7,15 @@ Mana.Slot = DS.Model.extend
 
   length: ( ->
     @get('cards.length')
-  ).property('cards.@each')
-
-  empty: ( ->
-    @get('cards.length') == 0
-  ).property('cards.@each')
+  ).property('cards')
 
   top: ( ->
     @get('cards.lastObject')
-  ).property('cards.@each')
+  ).property('length')
 
   bottom: ( ->
     @get('cards.firstObject')
-  ).property('cards.@each')
+  ).property('length')
 
   next_position: ->
     if last = @get('cards.lastObject')
