@@ -80,6 +80,15 @@ $susy: (
   margin-top: 5px;
 }
 
+.pile {
+  position: relative;
+  img:nth-of-type(2) {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+}
+
 .status {
   height: 1.2em;
   text-align: right;
