@@ -1,3 +1,8 @@
-{{#each card in view.holder.cards }}
-  <img {{bind-attr src=card.frontside }} />
-{{/each}}
+{{#if view.holder.top}}
+  {{#with view.holder.top }} {{partial "card_image" }} {{/with}}
+  {{#if view.holder.below_top}}
+    {{#with view.holder.below_top }} {{partial "card_image" }} {{/with}}
+  {{/if}}
+{{else}}
+  <img src='/assets/empty.png'>
+{{/if}}

@@ -11,7 +11,14 @@ Mana.Slot = DS.Model.extend
 
   top: ( ->
     @get('cards.lastObject')
-  ).property('length')
+  ).property('cards')
+
+  below_top: ( ->
+    if (l = @get('cards.length')) > 1
+      @get('cards').objectAt(l - 2)
+    else
+      undefined
+  ).property('cards')
 
   bottom: ( ->
     @get('cards.firstObject')

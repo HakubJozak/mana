@@ -11,8 +11,9 @@ Mana.PackView = Ember.View.extend Mana.DroppableForCard, {
   tolerance: 'pointer'
 
   init: ->
-    console.info 'i got called'
     @_super()
+    @get('holder').addObserver 'top', =>
+      @rerender()
 
   after_drop: (card) ->
     if @get('name') == 'deck'
