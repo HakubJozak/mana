@@ -1,10 +1,3 @@
 {{#if view.holder.top}}
-  {{! the lower card has to go first }}
-  {{#if view.holder.below_top}}
-    {{#with view.holder.below_top }} {{partial "card_image" }} {{/with}}
-  {{/if}}
-
   {{#with view.holder.top }} {{partial "card_image" }} {{/with}}
-{{else}}
-  <img src='/assets/empty.png'>
 {{/if}}

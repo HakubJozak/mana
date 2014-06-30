@@ -27,7 +27,7 @@ $susy: (
   .browser {
   }
 
-  .slot, .pile-container  {
+  .slot  {
      @include gallery(1 of 4,'of-type');
   }
 
@@ -75,18 +75,29 @@ $susy: (
   @include span(4 of 4);
 }
 
-.slot, .pile {
+.slot {
   img { width: 100%; height: 100%; }
   margin-top: 5px;
 }
 
-.pile {
-  position: relative;
-  img:nth-of-type(2) {
-      position: absolute;
-      top: 0;
+.pile-container {
+   @include gallery(1 of 4,'of-type');
+
+  .bottom {
+    position: relative;
+    img {
+       top: 0;
       left: 0;
+      width: 100%; height: 100%;
     }
+  }
+
+  .pile {
+    img { width: 100%; height: 100%; }
+    margin-top: 5px;
+    position: absolute;
+    top: 0;
+  }
 }
 
 .status {

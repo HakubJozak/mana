@@ -1,4 +1,11 @@
 <header>
   <h2>{{ capitalize view.holder.name }} ({{ view.holder.length }})</h2>
 </header>
-{{view Mana.PileView holder=view.holder }}
+<div class="bottom">
+  {{#if view.holder.below_top}}
+    {{#with view.holder.below_top }} {{partial "card_image" }} {{/with}}
+  {{else}}
+    <img src='/assets/empty.png'>
+  {{/if}}
+  {{view Mana.PileView holder=view.holder }}
+</div>

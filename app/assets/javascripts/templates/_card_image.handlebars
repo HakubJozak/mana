@@ -1,9 +1,9 @@
-  {{#if covered}}
-    <img src='/assets/back.jpg' width="200">
+{{#if covered}}
+  <img src='/assets/back.jpg' width="200">
+{{else}}
+  {{#if flipped}}
+    <img {{bind-attr src=backside}} width="200">
   {{else}}
-    {{#if flipped}}
-      <img {{bind-attr src=backside}} width="200">
-    {{else}}
-      <img {{bind-attr src=frontside}} width="200">
-    {{/if}}
+    <img {{bind-attr src=frontside}} width="200">
   {{/if}}
+{{/if}}
