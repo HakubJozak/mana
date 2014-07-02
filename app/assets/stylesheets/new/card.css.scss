@@ -26,7 +26,15 @@ $card-h : 170px;
 }
 
 .card {
-//  @include card-size;
+  // fixes weird card zooming when dragging
+  width: 100%;
+
+  &.ui-draggable-dragging {
+    // fixes weird card zooming when dragging
+    width: 100%;
+    @include transition-property(none);
+  }
+
   position: relative;
 
   img { @include card-size; }

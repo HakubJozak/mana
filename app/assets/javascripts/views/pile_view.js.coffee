@@ -1,6 +1,6 @@
 Mana.PileView = Ember.View.extend Mana.Draggable, {
   tagName: 'div'
-  classNames: [ 'pile' ]
+  classNames: [ 'pile','card' ]
   templateName: 'pile'
 
   didInsertElement: ->
@@ -11,7 +11,6 @@ Mana.PileView = Ember.View.extend Mana.Draggable, {
       scroll: false
       revert: 'invalid'
       zIndex: 1000
-      snapMode: 'inner'
       disabled: !@get('holder.top')
      })
 
