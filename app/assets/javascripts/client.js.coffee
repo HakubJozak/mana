@@ -54,6 +54,18 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
       else
         console.info "unknown type: #{json}"
 
+  createRecord: (store,type,record) ->
+    debugger
+    if type == Mana.Message
+      attrs = {}
+      attrs['message'] =  record.toJSON(includeId: true)
+    # fake promise as it happens synchronously :/
+      new Ember.RSVP.Promise((resolve, reject) =>
+        @ws.send(JSON.stringify(attrs))
+        resolve(null)
+      )
+
+
   updateRecord: (store,type,record) ->
     attrs = {}
     if type == Mana.Card
@@ -64,7 +76,6 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
       attrs['player'] = record.toJSON(includeId: true)
     else
       throw "Don't know how to send #{type} via Websocket"
-
 
     # fake promise as it happens synchronously :/
     new Ember.RSVP.Promise((resolve, reject) =>

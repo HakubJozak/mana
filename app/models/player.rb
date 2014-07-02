@@ -5,6 +5,7 @@ class Player < ActiveRecord::Base
 
   has_many :cards, dependent: :destroy
   has_many :slots, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   has_one :hand, ->(p) { where(name: "hand") }, class_name: 'Slot'
   has_one :deck, ->(p) { where(name: 'deck') }, class_name: 'Slot'

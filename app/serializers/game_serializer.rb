@@ -3,4 +3,5 @@ class GameSerializer < ActiveModel::Serializer
   has_many :players, embed: :ids, include: true
   has_many :cards, embed: :ids, include: true
   has_many :slots, embed: :ids, include: true
+  has_many :messages, embed: :ids, include: true
 end

@@ -50,10 +50,10 @@ module Mana
 
         ws.on :message do |event|
           begin
-            @clients.each { |ws| ws.send(event.data) }
             parsed = JSON.parse(event.data).symbolize_keys
 
             if attrs = parsed[:card]
+              @clients.each { |ws| ws.send(event.data) }
               attrs.symbolize_keys!
               card = Card.find(attrs.delete(:id))
               attrs.slice!(:tapped, :position, :slot_id, :flipped,
@@ -61,11 +61,19 @@ module Mana
               card.update_attributes(attrs)
               log.debug "Saved card changes: #{attrs.inspect}"
             elsif attrs = parsed[:player]
+              @clients.each { |ws| ws.send(event.data) }
               attrs.symbolize_keys!
               player = Player.find(attrs.delete(:id))
               attrs.slice!(:lives, :poison_counters)
               player.update_attributes(attrs)
               log.debug "Saved player changes: #{attrs.inspect}"
+            elsif attrs = parsed[:message]
+              attrs.symbolize_keys!
+              # TODO - inject player_id on the server side
+              msg.slice(:text, :player_id)
+              msg = Message.create(attrs)
+              @clients.each { |ws| ws.send(msg.to_json) }
+              log.debug "Saved message changes: #{attrs.inspect}"
             elsif attrs = parsed[:slot]
               # there is nothing we have to do - card update of the `slot_id` handles
               # it all on the server side
