@@ -7,11 +7,6 @@ Mana.IndexRoute = Ember.Route.extend({
     @store.find('game',game_id)
 
   actions:
-    send_message: ->
-      console.info 'done' + @get('newMessage')
-      @store.createRecord('message',text: 'blah')
-      false
-
     add_live: (player) ->
       player.adjust_lives(1)
       false

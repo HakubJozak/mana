@@ -1,4 +1,5 @@
 <div class='controls'>
+  {{view Mana.ChatView}}
   {{view Mana.BrowserView holder=current_player.hand }}
 
   <div class="decks">
@@ -17,8 +18,6 @@
       </div>
     </div>
   </div>
-
-  {{view Mana.ChatView}}
 </div>
 <div class='tables'>
   {{#each player in players}}

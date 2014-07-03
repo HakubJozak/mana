@@ -20,6 +20,12 @@
 #= require ./router
 
 
+# Monkey patching -  won't be needed in newer versions
+#  http://stackoverflow.com/questions/12557584/how-to-use-autofocus-with-ember-js-templates
+Ember.TextField.reopen({
+  attributeBindings: ['autofocus']
+});
+
 window.Mana = Ember.Application.create {
   rootElement: '#ember-app'
   ready: ->
@@ -50,21 +56,19 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
       else if json.player
         @store.update('player',json.player)
       else if json.message
-        @store.update('message',json.message)
+        @store.push('message',json.message)
       else
         console.info "unknown type: #{json}"
 
   createRecord: (store,type,record) ->
-    debugger
     if type == Mana.Message
       attrs = {}
       attrs['message'] =  record.toJSON(includeId: true)
-    # fake promise as it happens synchronously :/
+      # fake promise as it happens synchronously :/
       new Ember.RSVP.Promise((resolve, reject) =>
         @ws.send(JSON.stringify(attrs))
         resolve(null)
       )
-
 
   updateRecord: (store,type,record) ->
     attrs = {}

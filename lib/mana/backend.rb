@@ -51,9 +51,9 @@ module Mana
         ws.on :message do |event|
           begin
             parsed = JSON.parse(event.data).symbolize_keys
+            payload = event.data
 
             if attrs = parsed[:card]
-              @clients.each { |ws| ws.send(event.data) }
               attrs.symbolize_keys!
               card = Card.find(attrs.delete(:id))
               attrs.slice!(:tapped, :position, :slot_id, :flipped,
@@ -61,18 +61,18 @@ module Mana
               card.update_attributes(attrs)
               log.debug "Saved card changes: #{attrs.inspect}"
             elsif attrs = parsed[:player]
-              @clients.each { |ws| ws.send(event.data) }
               attrs.symbolize_keys!
               player = Player.find(attrs.delete(:id))
               attrs.slice!(:lives, :poison_counters)
               player.update_attributes(attrs)
               log.debug "Saved player changes: #{attrs.inspect}"
             elsif attrs = parsed[:message]
-              attrs.symbolize_keys!
               # TODO - inject player_id on the server side
-              msg.slice(:text, :player_id)
-              msg = Message.create(attrs)
-              @clients.each { |ws| ws.send(msg.to_json) }
+              attrs.symbolize_keys!
+              player = Player.find(attrs.delete(:player))
+              attrs.slice(:text)
+              msg = player.messages.create(attrs)
+              payload = { message: msg.to_json }
               log.debug "Saved message changes: #{attrs.inspect}"
             elsif attrs = parsed[:slot]
               # there is nothing we have to do - card update of the `slot_id` handles
@@ -80,8 +80,10 @@ module Mana
             else
               log.error "Unknown data received via websocket: #{event.data}"
             end
+
+            @clients.each { |ws| ws.send(payload) }
           rescue => e
-            log.error "Failed to save a record: #{attrs.inspect}"
+            log.error "Failed to save a record: #{attrs.inspect} and #{payload}"
             log.error $!
             log.error $@
           end

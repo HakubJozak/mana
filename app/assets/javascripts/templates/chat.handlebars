@@ -1,16 +1,15 @@
 <div class="status">Chat</div>
 <form {{action "send_message" on="submit"}} >
-  <input type='hidden' name="player_id" value="{{current_player.id}}">
-  {{input type="text" placeholder="Say.."  value=newMessage }}
+  {{input type="text" placeholder="Say.."  value=new_chat_message autofocus='autofocus'}}
   {{input type="submit" value="Send"}}
 </form>
 <table>
+  <tbody>
   {{#each messages}}
     <tr>
       <th>{{player.name}}</th>
       <td>{{text}}</td>
     </tr>
-  {{else}}
-    <tr><td colspan="2">No messages.</td></tr>
   {{/each}}
+  </tbody>
 </table>
