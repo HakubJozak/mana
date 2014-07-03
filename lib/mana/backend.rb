@@ -72,7 +72,14 @@ module Mana
               player = Player.find(attrs.delete(:player))
               attrs.slice(:text)
               msg = player.messages.create(attrs)
-              payload = { message: msg.to_json }
+
+              payload = { message: {
+                  id: msg.id,
+                  text: msg.text,
+                  player_id: msg.player.id,
+                  game_id: msg.player.game.id
+              }}.to_json
+
               log.debug "Saved message changes: #{attrs.inspect}"
             elsif attrs = parsed[:slot]
               # there is nothing we have to do - card update of the `slot_id` handles

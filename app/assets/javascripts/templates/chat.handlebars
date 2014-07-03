@@ -4,12 +4,5 @@
   {{input type="submit" value="Send"}}
 </form>
 <table>
-  <tbody>
-  {{#each messages}}
-    <tr>
-      <th>{{player.name}}</th>
-      <td>{{text}}</td>
-    </tr>
-  {{/each}}
-  </tbody>
+  {{view Ember.CollectionView content=messages tagName=tbody itemViewClass=Mana.MessageView }}
 </table>
