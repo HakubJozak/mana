@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 
+
 group :development do
   gem 'spring'
 end
@@ -51,3 +52,4 @@ gem "active_model_serializers"
 
 gem "faye-websocket"
 gem "puma"
+gem 'rails_12factor' # Heroku goodies
