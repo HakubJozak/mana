@@ -1,15 +1,15 @@
 @import "compass/css3";
 
-$card-over-color: #fff;
+$card-over-color: rgba(0,0,0,0.4);
 $highlight-color: #fff68f;
 
 
 body {
- background-color: #fff;
+ background-color: white;
 }
 
 .desk {
-  background-color: #fff68f;
+  background-color: white;
 }
 
 .controls {
@@ -20,7 +20,7 @@ body {
 }
 
 .status {
- background-color: black;
+ background-color: #800028;
  color: white;
 }
 
@@ -32,7 +32,6 @@ body {
 
 
 .slot {
-  background-color: #ffb90f;
   &.card-over { background-color: $card-over-color; }
 }
 
@@ -56,11 +55,10 @@ body {
 
 
 .chat {
-  background-color: #caff70;
+  background-color: #eee;
 }
 
 
 .tables, .table {
-  background-color: #ff6;
-  &:nth-child(2n+1) { }
+  background-color: #ffc;
 }
