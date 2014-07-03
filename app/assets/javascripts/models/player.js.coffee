@@ -10,7 +10,9 @@ Mana.Player = DS.Model.extend
   exile: DS.belongsTo('slot')
   hand: DS.belongsTo('slot')
   graveyard: DS.belongsTo('slot')
+
   battlefield_slots: DS.hasMany('slot')
+  messages: DS.hasMany('message')
 
   adjust_lives: (delta) ->
     @incrementProperty('lives', delta)

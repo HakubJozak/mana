@@ -3,6 +3,15 @@
   {{input type="text" placeholder="Say.."  value=new_chat_message autofocus='autofocus'}}
   {{input type="submit" value="Send"}}
 </form>
-<table>
-  {{view Ember.CollectionView content=messages tagName=tbody itemViewClass=Mana.MessageView }}
-</table>
+<div class='messages-container'>
+  <table>
+    <tbody class='messages'>
+    {{#each messages}}
+      <tr>
+        <th>{{player.name}}:</th>
+        <td>{{text}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>

@@ -60,6 +60,9 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
         msg = @store.push('message',json.message)
         @store.find('game',json.message.game_id).then (game) ->
           game.get('messages').unshiftObject(msg)
+        @store.find('player',json.message.player_id).then (player) ->
+          player.get('messages').unshiftObject(msg)
+
       else
         console.info "unknown type: #{json}"
 
