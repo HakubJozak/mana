@@ -9,7 +9,7 @@ gem 'pg'
 
 
 gem 'sass', '~> 3.3.0'
-gem 'sass-rails', github: 'rails/sass-rails.git'
+gem 'sass-rails', github: 'rails/sass-rails'
 gem 'compass','~> 1.0.0.alpha.19'
 gem 'susy'
 
