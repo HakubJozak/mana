@@ -1,6 +1,4 @@
 Mana.IndexController = Ember.ObjectController.extend({
-  images: { back: '/assets/back.jpg' }
-
   actions:
     send_message: ->
       text = @get('new_chat_message')
