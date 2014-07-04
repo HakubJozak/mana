@@ -5,7 +5,7 @@
   {{#if view.holder.below_top}}
     {{#with view.holder.below_top }} {{partial "card_image" }} {{/with}}
   {{else}}
-    <img src='/assets/empty.png'>
+    <img {{bind-attr src=view.emptyImage}}>
   {{/if}}
   {{view Mana.PileView holder=view.holder }}
 </div>
