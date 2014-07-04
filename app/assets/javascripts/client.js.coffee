@@ -6,6 +6,7 @@
 #= require ember-data
 #= require_self
 
+#= require ./images
 #= require ./mixins/jquery_ui_base
 #= require_tree ./mixins
 

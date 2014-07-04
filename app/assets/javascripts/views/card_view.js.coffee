@@ -4,6 +4,7 @@ Mana.CardView = Ember.View.extend Mana.Draggable, {
   templateName: 'card'
   tagName: 'li'
   classNameBindings: ['content.tapped',':card']
+  backImage: window.image_path('back.jpg')
 
   didInsertElement: ->
     @_super()

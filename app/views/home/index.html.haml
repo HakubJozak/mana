@@ -14,7 +14,7 @@
         - if stamp
           = link_to image_tag(stamp.frontside), stamp.frontside, :target => '_blank'
         - else
-          = link_to image_tag('/assets/back.jpg'), '/'
+          = link_to image_tag('back.jpg'), '/'
 
   %ul#button-bar
     %li= link_to 'New game', new_game_path, :class => 'button'
