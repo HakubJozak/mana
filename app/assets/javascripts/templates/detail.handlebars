@@ -1,0 +1,25 @@
+<div class="card-image">
+  <img {{bind-attr src=frontside}} {{bind-attr alt=name}}>
+</div>
+<div class="info">
+  <h1>{{name}}</h1>
+  <table class="pure-table">
+    <thead>
+    <tr>
+      <th>Power</th>
+      <th>Toughness</th>
+      <th>Counters</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{ card_stat power }}
+        <button {{action 'add_power' this}}>-</button>
+        <button {{action 'remove_power' this}}>-</button>
+      </td>
+      <td>{{ card_stat toughness }}</td>
+      <td>{{ card_stat counters }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

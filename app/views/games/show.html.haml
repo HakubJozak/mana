@@ -3,5 +3,6 @@
   %head
     %title= "Mana - #{@game.name} - haml"
     = stylesheet_link_tag 'client'
+    = stylesheet_link_tag 'http://yui.yahooapis.com/pure/0.5.0/pure-min.css'
     = javascript_include_tag 'client'
-%body#ember-app{ 'data-no-turbolink' => true }
+  %body#ember-app{ 'data-no-turbolink' => true }

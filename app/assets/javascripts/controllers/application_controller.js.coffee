@@ -1,4 +1,4 @@
-Mana.IndexController = Ember.ObjectController.extend({
+Mana.ApplicationController = Ember.ObjectController.extend({
   actions:
     send_message: ->
       text = @get('new_chat_message')

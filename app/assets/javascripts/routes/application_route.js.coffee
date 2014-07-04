@@ -1,4 +1,4 @@
-Mana.IndexRoute = Ember.Route.extend({
+Mana.ApplicationRoute = Ember.Route.extend({
   model: ->
     # Getting game ID from the URL
     # not really an Ember.js showcase, but it works

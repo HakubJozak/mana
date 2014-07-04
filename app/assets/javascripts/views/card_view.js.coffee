@@ -28,12 +28,12 @@ Mana.CardView = Ember.View.extend Mana.Draggable, {
 
   doubleClick: (event) ->
     if event.which == 1
-      console.info 'should show detail'
+      card.flip()
 
   click: (event) ->
     card = @get('content')
     if event.which == 2
-      card.flip()
-    else
       card.tap()
+    else
+      @get('controller').transitionToRoute("detail", card)
 }

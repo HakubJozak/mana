@@ -2,9 +2,17 @@
 
 Mana.Router.map ()->
   @resource 'help'
+  @resource 'detail', path: '/cards/:card_id'
 
 
-# Handlebars.registerHelper("last", (property) ->
-#   arr = @get('property')
-#   arr[arr.length-1]
-# )
+
+Mana.DetailRoute = Ember.Route.extend({
+  model: (params) ->
+    @store.find('card',params.card_id)
+
+  actions:
+    close: ->
+      @get('controller').transitionToRoute("application")
+      false
+
+})

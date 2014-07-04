@@ -9,8 +9,6 @@
 
     <div class="piles">
       {{view Mana.PackView holder=current_player.deck }}
-      {{view Mana.PackView holder=current_player.graveyard }}
-      {{view Mana.PackView holder=current_player.exile }}
       <div class="pile-container">
         <button class="next-turn">
           Next  Turn
@@ -24,3 +22,5 @@
     {{view Mana.TableView player=player}}
   {{/each}}
 </div>
+
+{{outlet}}

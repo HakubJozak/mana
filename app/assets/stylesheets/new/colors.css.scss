@@ -1,11 +1,9 @@
 @import "compass/css3";
 
-$card-over-color: rgba(0,0,0,0.4);
 $highlight-color: #fff68f;
-
-a {
-  color: white;
-}
+$bars-color: #800028;
+$card-over-color: rgba(0,0,0,0.1);
+$card-over-border: $bars-color;
 
 
 body {
@@ -24,8 +22,9 @@ body {
 }
 
 .status {
- background-color: #800028;
+ background-color: $bars-color;
  color: white;
+ a { color: white; }
 }
 
 .card {
@@ -36,7 +35,11 @@ body {
 
 
 .slot {
-  &.card-over { background-color: $card-over-color; }
+//  border: 1px dashed rgba(0,0,0,0);
+  &.card-over {
+//    border: 1px dashed $card-over-border;
+    background-color: $card-over-color;
+  }
 }
 
 .browser {
@@ -65,4 +68,15 @@ body {
 
 .tables, .table {
   background-color: #ffc;
+}
+
+#popup {
+  background-color: rgba(0,0,0,0.3);
+
+  h1 { color: $bars-color; }
+
+  .content {
+    background-color: white;
+    border: 3px solid $bars-color;
+  }
 }

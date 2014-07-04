@@ -1,3 +1,8 @@
-<h1>Popup</h1>
-
-{{ yield }}
+<div id="popup">
+  <div class="content">
+    <div class="topbar">
+      <button {{ action 'close' }} >Close</button>
+    </div>
+    {{ yield }}
+  </div>
+</div>
