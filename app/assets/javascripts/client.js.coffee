@@ -38,7 +38,7 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
   init: ->
     # TODO: Mana.inject('data-adapter', 'store', 'store:main')
     @store = Mana.__container__.lookup('store:main')
-    @ws = new WebSocket("ws://localhost:3000/")
+    @ws = new WebSocket("ws://#{window.location.host}/#{window.location.pathname}")
 
     # callbacks
     @ws.onopen = ->
