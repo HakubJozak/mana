@@ -3,6 +3,7 @@ Mana.PileView = Ember.View.extend Mana.Draggable, {
   classNames: [ 'pile','card' ]
   templateName: 'pile'
   backImage: window.image_path('back.jpg')
+  emptyImage: window.image_path('empty.png')
 
   didInsertElement: ->
     @_super()
