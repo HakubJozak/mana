@@ -7,17 +7,15 @@
     <thead>
     <tr>
       <th>Counters</th>
-      <th>Power / Toughness</th>
+      <th>Power</th>
+      <th>Toughness</th>
     </tr>
     </thead>
     <tbody>
     <tr>
       {{ view Mana.PlusMinusView content=counters tagName="td"}}
-      <td>
-        {{ view Mana.PlusMinusView content=power tagName="span"}}
-        /
-        {{ view Mana.PlusMinusView content=toughness tagName="span"}}
-      </td>
+      {{ view Mana.PlusMinusView content=power tagName="td"}}
+      {{ view Mana.PlusMinusView content=toughness tagName="td"}}
     </tr>
     </tbody>
   </table>
