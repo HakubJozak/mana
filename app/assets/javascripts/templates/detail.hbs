@@ -21,8 +21,21 @@
     </tbody>
   </table>
 
+  Actions:
+  <ul>
+    <li><button {{ action 'toggleCovered' this target="view" }}>Face Up/Down</button></li>
+    <li><button {{ action 'tap' this target="view" }}>Tap</button></li>
+    {{#if backside }}
+      <li><button {{ action 'flip' this target="view" }}>Flip</button></li>
+    {{/if}}
+  </ul>
+
   Move To:
   <ul>
+    <li><button {{ action 'move_card_to' this 'hand' }}>Hand</button></li>
     <li><button {{ action 'move_card_to' this 'graveyard' }}>Graveyard</button></li>
+    <li><button {{ action 'move_card_to' this 'exile' }}>Exile</button></li>
+    <li><button {{ action 'move_card_to' this 'deck' }}>Top of the Deck</button></li>
+    <li><button {{ action 'move_card_to' this 'deck' true}}>Bottom of the Deck</button></li>
   </ul>
 </div>

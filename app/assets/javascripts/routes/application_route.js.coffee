@@ -7,11 +7,18 @@ Mana.ApplicationRoute = Ember.Route.extend({
     @store.find('game',game_id)
 
   actions:
-    move_card_to: (card,target_name) ->
-      now = @modelFor('application').get('current_player.hand')
+    move_card_to: (card,target_name,unshift = false) ->
+      now = @modelFor('application').get("current_player.#{target_name}")
       before = card.get('slot')
       before.get('cards').removeObject(card)
-      now.get('cards').pushObject(card)
+
+      if unshift
+        now.get('cards').unshiftObject(card)
+      else
+        now.get('cards').pushObject(card)
+
+      before.save()
+      now.save()
       card.set('slot_id',now.get('id'))
       false
 
