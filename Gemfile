@@ -39,9 +39,12 @@ group :development do
   gem 'guard-livereload'
 end
 
+group :test do
+  gem 'minitest-reporters'
+end
+
 gem 'pry', groups: [ :development, :test ]
 # gem 'debugger', group: [:development, :test]
-
 
 gem "devise", "~> 3.2.4"
 gem "haml"
