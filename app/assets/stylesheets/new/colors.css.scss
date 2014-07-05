@@ -73,7 +73,7 @@ body {
 #popup {
   background-color: rgba(0,0,0,0.3);
 
-  h1 { color: $bars-color; }
+  h1,h3 { color: $bars-color; }
 
   .content {
     background-color: white;
