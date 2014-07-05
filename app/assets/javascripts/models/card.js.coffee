@@ -25,12 +25,15 @@ Mana.Card = DS.Model.extend
   flip: ->
     if @get('backside')
       @toggleProperty 'flipped'
-      @save()
 
   tap: ->
     @toggleProperty 'tapped'
-    @save()
 
   toggleCovered: ->
     @toggleProperty 'covered'
-    @save()
+
+  statsChanged: ( ->
+    if @get('isDirty')
+      console.debug "Saving card #{@get('id')}"
+      Ember.run.once this, 'save'
+  ).observes('counters','power','toughness','tapped','covered','flipped','slot_id')

@@ -7,8 +7,6 @@ Mana.PlusMinusView = Ember.View.extend
   classNames: [ "plus-minus" ]
   tooltip: 'Left click to raise, right click to lower.'
 
-
-
   click: (event) ->
     @incrementProperty('content', +1)
     event.preventDefault()

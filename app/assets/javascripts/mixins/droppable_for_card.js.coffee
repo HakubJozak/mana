@@ -15,6 +15,5 @@ Mana.DroppableForCard = Ember.Mixin.create Mana.Droppable,
 
       before.save()
       now.save()
-      card.save()
 
       console.debug "Card #{card.get('id')} dropped from #{before.get('id')} to #{now.get('id')}"
