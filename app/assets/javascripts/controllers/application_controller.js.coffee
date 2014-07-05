@@ -6,6 +6,6 @@ Mana.ApplicationController = Ember.ObjectController.extend({
         player_id = @get('current_player.id')
         @store.createRecord('message',text: text, player: @get('current_player')).save()
         @set('new_chat_message')
-        false
+      false
 
 })

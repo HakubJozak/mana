@@ -1,5 +1,6 @@
 <div class="card-image">
   <img {{bind-attr src=frontside}} {{bind-attr alt=name}}>
+  <h1>{{src}}</h1>
 </div>
 <div class="info">
   <h1>{{name}}</h1>
@@ -12,11 +13,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
+      <tr>
       {{ view Mana.PlusMinusView content=counters tagName="td"}}
       {{ view Mana.PlusMinusView content=power tagName="td"}}
       {{ view Mana.PlusMinusView content=toughness tagName="td"}}
     </tr>
     </tbody>
   </table>
+
+  Move To:
+  <ul>
+    <li><button {{ action 'move_card_to' this 'graveyard' }}>Graveyard</button></li>
+  </ul>
 </div>

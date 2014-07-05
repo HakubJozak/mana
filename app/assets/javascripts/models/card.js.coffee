@@ -14,7 +14,7 @@ Mana.Card = DS.Model.extend
   tapped: DS.attr 'boolean'
   flipped: DS.attr 'boolean'
 
-#  slot: DS.belongsTo('slot')
+  slot: DS.belongsTo('slot')
   # game: DS.belongsTo('game')
 
   power_and_toughness: (->
