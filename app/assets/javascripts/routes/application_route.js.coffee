@@ -22,12 +22,4 @@ Mana.ApplicationRoute = Ember.Route.extend({
       card.set('slot_id',now.get('id'))
       false
 
-    add_live: (player) ->
-      player.adjust_lives(1)
-      false
-
-    subtract_live: (player) ->
-      player.adjust_lives(-1)
-      false
-
 })

@@ -3,9 +3,7 @@
   Hand: {{ player.hand.length }} |
   Graveyard: {{ player.deck.length }} |
   Deck: {{ player.deck.length }} |
-  Lives: {{ player.lives }}
-  <button {{action 'add_live' player}}>+</button>
-  <button {{action 'subtract_live' player}}>-</button>
+  Lives: {{ view Mana.PlusMinusView content=player.lives tagName="span"}}
 </div>
 <div class="slots">
   {{#each slot in player.battlefield_slots}}

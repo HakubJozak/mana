@@ -14,6 +14,8 @@ Mana.Player = DS.Model.extend
   battlefield_slots: DS.hasMany('slot')
   messages: DS.hasMany('message')
 
-  adjust_lives: (delta) ->
-    @incrementProperty('lives', delta)
-    @save()
+  statsChanged: ( ->
+    if @get('isDirty')
+      console.debug "Saving player #{@get('id')}"
+      Ember.run.once this, 'save'
+  ).observes('lives','poison_counters')
