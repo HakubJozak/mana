@@ -45,7 +45,7 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:name)
+    params.require(:player).permit(:name, :prepared_deck, :mainboard)
 #    result.merge!(user: current_user) if current_user
   end
 
