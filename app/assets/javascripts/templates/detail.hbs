@@ -23,10 +23,34 @@
 
   <h3>Actions</h3>
   <ul>
-    <li><button {{ action 'toggleCovered' this target="view" }}>Face Up/Down</button></li>
-    <li><button {{ action 'tap' this target="view" }}>Tap</button></li>
+    <li>
+      <button {{ action 'toggleCovered' this target="view" }}>
+        {{#if covered }}
+          Turn Face Up
+        {{else}}
+          Turn Face Down
+        {{/if}}
+      </button>
+    </li>
+    <li>
+      <button {{ action 'tap' this target="view" }}>
+        {{#if tapped }}
+          Untap
+        {{else}}
+          Tap
+        {{/if}}
+      </button>
+    </li>
     {{#if backside }}
-      <li><button {{ action 'flip' this target="view" }}>Flip</button></li>
+      <li>
+        <button {{ action 'flip' this target="view" }}>
+        {{#if flipped }}
+          Flip To Frontside Up
+        {{else}}
+          Flip To Backside
+        {{/if}}
+        </button>
+      </li>
     {{/if}}
   </ul>
 

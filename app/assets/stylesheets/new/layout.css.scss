@@ -7,11 +7,12 @@
 // $cardw: 80px;
 // $cardh: 116px;
 $chat-height: 150px;
+// $components-margin: 0.2em;
 
 $susy: (
   columns: 12,
   gutters: 0.1,
-  gutter-position: after,
+  gutter-position: inside,
   math: float,
 );
 

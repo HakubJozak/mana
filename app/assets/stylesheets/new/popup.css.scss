@@ -1,5 +1,7 @@
 @import 'compass/css3';
 
+$popup-top: 3em;
+
 #popup {
   position: fixed;
   left: 0;
@@ -12,7 +14,7 @@
 
      position: relative;
      padding: $padding;
-     margin: 5em auto 0;
+     margin: $popup-top auto 0;
      width: 50%;
 
      .topbar {
