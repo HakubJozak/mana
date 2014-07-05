@@ -1,12 +1,7 @@
 <div class='controls'>
   {{view Mana.BrowserView holder=current_player.hand }}
-  {{view Mana.ChatView}}
 
   <div class="decks">
-    <div class="status">
-      Decks
-    </div>
-
     <div class="piles">
       {{view Mana.PackView holder=current_player.deck }}
       {{view Mana.PackView holder=current_player.graveyard }}
@@ -18,7 +13,10 @@
       </div>
     </div>
   </div>
+
+  {{view Mana.ChatView}}
 </div>
+
 <div class='tables'>
   {{#each player in players}}
     {{view Mana.TableView player=player}}
