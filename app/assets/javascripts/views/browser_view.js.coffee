@@ -34,6 +34,11 @@ Mana.BrowserView.CardView = Ember.View.extend Mana.Draggable, {
     @$().data('card',@get('content'))
     @$().data('container',@get('container'))
 
+  contextMenu: (event) ->
+    card = @get('content')
+    @get('controller').transitionToRoute("detail", card)
+    event.preventDefault()
+
   # start: ->
   accepted: (slot) ->
     console.debug "accepted in #{slot}"
