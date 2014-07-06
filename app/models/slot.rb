@@ -2,16 +2,13 @@ class Slot < ActiveRecord::Base
   belongs_to :player
   has_many :cards
 
-  # proxy_association.owner
-  # proxy_association.reflection
-  # proxy_association.target
-  # module Extension
-  #   def size
-  #     proxy_association.owner.cards.size
-  #   end
-  # end
-
   delegate :size, to: :cards
+
+  def shuffle
+    cards.shuffle.each_with_index do |card,i|
+      card.update_attribute(:position, i)
+    end
+  end
 
   def add_cards(card_list)
     card_list.each_line.with_index do |line,i|
@@ -29,5 +26,7 @@ class Slot < ActiveRecord::Base
         # TODO: add errors to the slot model
       end
     end
+
+    self
   end
 end

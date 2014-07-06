@@ -27,7 +27,7 @@ class Player < ActiveRecord::Base
       slots.create(name: 'battlefield', position: i)
     end
 
-    self.deck.add_cards(mainboard)
+    self.deck.add_cards(mainboard).shuffle
   end
 
   after_initialize do
