@@ -27,11 +27,7 @@ class Player < ActiveRecord::Base
       slots.create(name: 'battlefield', position: i)
     end
 
-    each_mainboard_line_with_index do |count,stamp,i|
-      count.times do
-        cards.create! stamp: stamp, slot: self.deck, game: game, position: i, covered: true
-      end
-    end
+    self.deck.add_cards(mainboard)
   end
 
   after_initialize do
@@ -43,20 +39,6 @@ class Player < ActiveRecord::Base
     else
       # TODO: take it from a cookie
       self.name ||= "Guest"
-    end
-  end
-
-  def each_mainboard_line_with_index
-    mainboard.each_line.with_index do |line,i|
-      count, name = line.split(';')
-      next if name.blank?
-
-      if stamp = Stamp.find_by_name(name.strip)
-        yield(count.to_i, stamp, i)
-      else
-        Rails.logger.warn("#{name} not found")
-        # TODO: add errors
-      end
     end
   end
 
