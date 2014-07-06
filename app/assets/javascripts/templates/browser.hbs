@@ -11,11 +11,13 @@
   </select>
 </div>
 <div class='cards'>
-    {{#each card in current_player.hand.cards }}
-      {{#view Mana.BrowserView.CardView content=card container=current_player.hand }}
-        <img {{bind-attr src=card.frontside }} />
-      {{/view}}
-    {{else}}
-      <div class='spaceholder'>There are no cards.</div>
-    {{/each}}
+  {{#each card in current_player.hand.cards }}
+    {{#view Mana.BrowserView.CardView content=card container=current_player.hand }}
+      <img {{bind-attr src=card.frontside }} />
+    {{/view}}
+  {{else}}
+    <div class='empty'>
+      <button {{ action 'draw_initial_hand' }}>Draw 7 Cards</button>
+    </div>
+  {{/each}}
 </div>

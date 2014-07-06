@@ -25,11 +25,8 @@ $susy: (
   @include span(4 of 12);
   @include clearfix;
 
-  .browser {
-  }
-
   .slot  {
-     @include gallery(1 of 4,'of-type');
+    @include gallery(1 of 4,'of-type');
   }
 
   // makes dragged cards visible

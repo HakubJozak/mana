@@ -32,6 +32,14 @@ Mana.Card = DS.Model.extend
   toggleCovered: ->
     @toggleProperty 'covered'
 
+  moveTo: (new_slot) ->
+    old_slot = @get('slot')
+    old_slot.get('cards').removeObject(this)
+    new_slot.get('cards').pushObject(this)
+    old_slot.save()
+    new_slot.save()
+    @set('slot_id',new_slot.get('id'))
+
   statsChanged: ( ->
     if @get('isDirty')
       console.debug "Saving card #{@get('id')}"

@@ -8,4 +8,5 @@ Mana.ApplicationController = Ember.ObjectController.extend({
         @set('new_chat_message')
       false
 
+
 })
