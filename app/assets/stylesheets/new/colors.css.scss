@@ -1,13 +1,19 @@
 @import "compass/css3";
 
 $highlight-color: #fff68f;
-$bars-color: #800028;
+$bars-color: #EDCA3A;
 $card-over-color: rgba(0,0,0,0.1);
 $card-over-border: $bars-color;
 
+$pile-color: none;
+$chat-color: none;
+
+$controls-color: rgba(0,0,0,0.2);
+
+$table-color: none;
 
 body {
- background-color: white;
+ background-color: #eee;
 }
 
 .desk {
@@ -15,14 +21,16 @@ body {
 }
 
 .controls {
-  background-color: #eeeee0;
+  background-color: $controls-color;
 }
 
 
 .status {
+ $text-color: black;
+ padding-bottom: 5px;
  background-color: $bars-color;
- color: white;
- a { color: white; }
+ color:  $text-color;
+ a { color:  $text-color; }
 }
 
 .card {
@@ -52,20 +60,18 @@ body {
     text-align: center;
   }
 
-  background-color: #f6d784;
+  background-color: $pile-color;
   &.card-over { background-color: $card-over-color; }
-
-  .pile {  }
 }
 
 
 .chat {
-  background-color: #eee;
+  background-color: $chat-color;
 }
 
 
 .tables, .table {
-  background-color: #ffc;
+  background-color: $table-color;
 }
 
 #popup {
