@@ -7,6 +7,15 @@ Mana.ApplicationRoute = Ember.Route.extend({
     @store.find('game',game_id)
 
   actions:
+    tap: (card) ->
+      card.tap()
+
+    flip: (card) ->
+      card.flip()
+
+    toggleCovered: (card) ->
+      card.toggleCovered()
+
     draw_initial_hand: ->
       player = @modelFor('application').get("current_player")
       hand = player.get('hand')

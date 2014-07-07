@@ -24,7 +24,7 @@
   <h3>Actions</h3>
   <ul>
     <li>
-      <button {{ action 'toggleCovered' this target="view" }}>
+      <button {{ action 'toggleCovered' this }}>
         {{#if covered }}
           Turn Face Up
         {{else}}
@@ -33,7 +33,7 @@
       </button>
     </li>
     <li>
-      <button {{ action 'tap' this target="view" }}>
+      <button {{ action 'tap' this }}>
         {{#if tapped }}
           Untap
         {{else}}
@@ -43,7 +43,7 @@
     </li>
     {{#if backside }}
       <li>
-        <button {{ action 'flip' this target="view" }}>
+        <button {{ action 'flip' this }}>
         {{#if flipped }}
           Flip To Frontside Up
         {{else}}
