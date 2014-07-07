@@ -69,7 +69,7 @@ $susy: (
   overflow: visible;
 }
 
-.decks, .chat, .hand {
+.libraries, .chat, .hand {
   @include span(4 of 4);
 }
 

@@ -6,7 +6,7 @@ Mana.Player = DS.Model.extend
   poison_counters: DS.attr 'number'
 
   game: DS.belongsTo('game')
-  deck: DS.belongsTo('slot')
+  library: DS.belongsTo('slot')
   exile: DS.belongsTo('slot')
   hand: DS.belongsTo('slot')
   graveyard: DS.belongsTo('slot')

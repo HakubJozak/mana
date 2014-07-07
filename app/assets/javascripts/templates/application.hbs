@@ -1,9 +1,9 @@
 <div class='controls'>
   {{view Mana.HandView holder=current_player.hand }}
 
-  <div class="decks">
+  <div class="libraries">
     <div class="piles">
-      {{view Mana.PackView holder=current_player.deck }}
+      {{view Mana.PackView holder=current_player.library }}
       {{view Mana.PackView holder=current_player.graveyard }}
       {{view Mana.PackView holder=current_player.exile }}
       <div class="pile-container">

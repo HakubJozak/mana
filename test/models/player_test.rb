@@ -15,7 +15,7 @@ class PlayerTest < ActiveSupport::TestCase
   #   assert_not_nil p.exile
   # end
 
-  test 'has deck on create' do
+  test 'has a library on create' do
     txt = """
     3;Forest
     5;Cloistered Youth
@@ -23,6 +23,6 @@ class PlayerTest < ActiveSupport::TestCase
 
     p = @game.players.create!(mainboard: txt)
     assert_equal 0, p.hand.size
-    assert_equal 8, p.deck.size
+    assert_equal 8, p.library.size
   end
 end

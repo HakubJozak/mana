@@ -8,7 +8,7 @@ class Player < ActiveRecord::Base
   has_many :messages, dependent: :destroy
 
   has_one :hand, ->(p) { where(name: "hand") }, class_name: 'Slot'
-  has_one :deck, ->(p) { where(name: 'deck') }, class_name: 'Slot'
+  has_one :library, ->(p) { where(name: 'library') }, class_name: 'Slot'
   has_one :graveyard, ->(p) { where(name: "graveyard") }, class_name: 'Slot'
   has_one :exile, ->(p) { where(name: "exile") }, class_name: 'Slot'
   has_many :battlefield_slots, ->(p) { where(name: "battlefield").order(:position) }, class_name: 'Slot'
@@ -19,7 +19,7 @@ class Player < ActiveRecord::Base
   attr_accessor :prepared_deck
 
   after_create do
-    %w( hand deck graveyard exile ).each do |name|
+    %w( hand library graveyard exile ).each do |name|
       slots.create(name: name)
     end
 
@@ -27,7 +27,7 @@ class Player < ActiveRecord::Base
       slots.create(name: 'battlefield', position: i)
     end
 
-    self.deck.add_cards(mainboard).shuffle
+    self.library.add_cards(mainboard).shuffle
   end
 
   after_initialize do

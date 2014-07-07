@@ -32,8 +32,8 @@ Mana.ApplicationRoute = Ember.Route.extend({
     draw_initial_hand: ->
       player = @modelFor('application').get("current_player")
       hand = player.get('hand')
-      deck = player.get('deck')
-      deck.get('top').moveTo(hand) for i in [0..6]
+      library = player.get('library')
+      library.get('top').moveTo(hand) for i in [0..6]
 
     # TODO: replace with moveTo on card as above ^
     move_card_to: (card,target_name,unshift = false) ->

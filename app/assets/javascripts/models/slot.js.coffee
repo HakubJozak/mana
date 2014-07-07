@@ -35,7 +35,7 @@ Mana.Slot = DS.Model.extend
       when 'hand'
         card.set('covered',false)
         card.set('tapped',false)
-      when 'deck'
+      when 'library'
         card.set('covered',true)
       else
         card.set('covered',false)
