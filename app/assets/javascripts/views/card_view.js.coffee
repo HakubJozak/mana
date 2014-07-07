@@ -23,7 +23,7 @@ Mana.CardView = Ember.View.extend Mana.Draggable, {
 
   contextMenu: (event) ->
     card = @get('content')
-    @get('controller').transitionToRoute("detail", card)
+    card.tap()
     event.preventDefault()
 
   doubleClick: (event) ->
@@ -35,6 +35,7 @@ Mana.CardView = Ember.View.extend Mana.Draggable, {
     if event.which == 2
       card.toggleCovered()
     else
-      card.tap()
+      @get('controller').transitionToRoute("detail", card)
+
 
 }

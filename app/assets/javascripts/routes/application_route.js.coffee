@@ -7,19 +7,26 @@ Mana.ApplicationRoute = Ember.Route.extend({
     @store.find('game',game_id)
 
   actions:
+    close: ->
+      @get('controller').transitionToRoute("application")
+      false
+
     tap: (card) ->
       card.tap()
+      true
 
     flip: (card) ->
       card.flip()
+      true
 
     toggleCovered: (card) ->
       card.toggleCovered()
       true
 
     shuffle: (slot) ->
-      console.debug "Shuffling #{slot.get('name')}"
-      slot.shuffle()
+      @get('controller').transitionToRoute("browser", slot)
+      # console.debug "Shuffling #{slot.get('name')}"
+      # slot.shuffle()
       false
 
     draw_initial_hand: ->

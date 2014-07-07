@@ -13,6 +13,8 @@
 #= require ./store
 #= require_tree ./models
 #= require_tree ./controllers
+#= require ./views/hand_view
+#= require ./views/popup_view
 #= require_tree ./views
 #= require_tree ./helpers
 #= require_tree ./components

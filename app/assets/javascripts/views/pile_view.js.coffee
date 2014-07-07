@@ -19,7 +19,7 @@ Mana.PileView = Ember.View.extend Mana.Draggable, {
     @$().data('card',@get('holder.top'))
     @$().data('container',@get('holder'))
 
-  contextMenu: (event) ->
+  click: (event) ->
     card = @get('holder.top')
     #  unless card.get('covered')
     @get('controller').transitionToRoute("detail", card)

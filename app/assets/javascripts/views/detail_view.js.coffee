@@ -1,6 +1,5 @@
-Mana.DetailView = Ember.View.extend
+Mana.DetailView = Mana.PopupView.extend
   templateName: 'detail'
-  layoutName: 'popup'
 
   click: ->
     @get('controller').transitionToRoute('application')
