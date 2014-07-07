@@ -54,12 +54,12 @@
     {{/if}}
   </ul>
 
-  <h3>Move To</h3>
+  <h3>Move from {{ capitalize slot.name }} To</h3>
   <ul>
     <li><button {{ action 'move_card_to' this 'hand' bubbles=false }}>Hand</button></li>
     <li><button {{ action 'move_card_to' this 'graveyard' bubbles=false}}>Graveyard</button></li>
     <li><button {{ action 'move_card_to' this 'exile' bubbles=false}}>Exile</button></li>
-    <li><button {{ action 'move_card_to' this 'deck' bubbles=false }}>Top of the Deck</button></li>
-    <li><button {{ action 'move_card_to' this 'deck' true bubbles=false}}>Bottom of the Deck</button></li>
+    <li><button {{ action 'move_card_to' this 'deck' bubbles=false }}>Top of the Library</button></li>
+    <li><button {{ action 'move_card_to' this 'deck' true bubbles=false}}>Bottom of the Library</button></li>
   </ul>
 </div>
