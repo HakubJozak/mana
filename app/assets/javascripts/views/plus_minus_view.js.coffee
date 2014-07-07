@@ -10,7 +10,9 @@ Mana.PlusMinusView = Ember.View.extend
   click: (event) ->
     @incrementProperty('content', +1)
     event.preventDefault()
+    false
 
   contextMenu: (event) ->
     @incrementProperty('content', -1)
     event.preventDefault()
+    false

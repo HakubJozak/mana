@@ -24,7 +24,7 @@
   <h3>Actions</h3>
   <ul>
     <li>
-      <button {{ action 'toggleCovered' this }}>
+      <button {{ action 'toggleCovered' this bubbles=false}}>
         {{#if covered }}
           Turn Face Up
         {{else}}
@@ -33,7 +33,7 @@
       </button>
     </li>
     <li>
-      <button {{ action 'tap' this }}>
+      <button {{ action 'tap' this bubbles=false }}>
         {{#if tapped }}
           Untap
         {{else}}
@@ -43,7 +43,7 @@
     </li>
     {{#if backside }}
       <li>
-        <button {{ action 'flip' this }}>
+        <button {{ action 'flip' this bubbles=false}}>
         {{#if flipped }}
           Flip To Frontside Up
         {{else}}
@@ -56,10 +56,10 @@
 
   <h3>Move To</h3>
   <ul>
-    <li><button {{ action 'move_card_to' this 'hand' }}>Hand</button></li>
-    <li><button {{ action 'move_card_to' this 'graveyard' }}>Graveyard</button></li>
-    <li><button {{ action 'move_card_to' this 'exile' }}>Exile</button></li>
-    <li><button {{ action 'move_card_to' this 'deck' }}>Top of the Deck</button></li>
-    <li><button {{ action 'move_card_to' this 'deck' true}}>Bottom of the Deck</button></li>
+    <li><button {{ action 'move_card_to' this 'hand' bubbles=false }}>Hand</button></li>
+    <li><button {{ action 'move_card_to' this 'graveyard' bubbles=false}}>Graveyard</button></li>
+    <li><button {{ action 'move_card_to' this 'exile' bubbles=false}}>Exile</button></li>
+    <li><button {{ action 'move_card_to' this 'deck' bubbles=false }}>Top of the Deck</button></li>
+    <li><button {{ action 'move_card_to' this 'deck' true bubbles=false}}>Bottom of the Deck</button></li>
   </ul>
 </div>

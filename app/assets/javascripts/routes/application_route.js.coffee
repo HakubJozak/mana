@@ -15,6 +15,7 @@ Mana.ApplicationRoute = Ember.Route.extend({
 
     toggleCovered: (card) ->
       card.toggleCovered()
+      true
 
     draw_initial_hand: ->
       player = @modelFor('application').get("current_player")
