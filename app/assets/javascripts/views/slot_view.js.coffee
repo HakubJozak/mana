@@ -20,5 +20,4 @@ Mana.SlotView = Ember.CollectionView.extend Mana.DroppableForCard, {
     attrs.holder = @get('holder')
     return @_super(viewClass, attrs);
 
-  after_drop: (card) ->
 }

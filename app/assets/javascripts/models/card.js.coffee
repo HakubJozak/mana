@@ -38,7 +38,8 @@ Mana.Card = DS.Model.extend
     new_slot.get('cards').pushObject(this)
     old_slot.save()
     new_slot.save()
-    @set('slot_id',new_slot.get('id'))
+    @set 'position', new_slot.get('bottom.position') - 1
+    @set 'slot_id',new_slot.get('id')
 
   statsChanged: ( ->
     if @get('isDirty')

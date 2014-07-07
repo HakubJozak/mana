@@ -17,10 +17,4 @@ Mana.PackView = Ember.View.extend Mana.DroppableForCard, {
     @_super()
     @get('holder').addObserver 'top', =>
       @rerender()
-
-  after_drop: (card) ->
-    if @get('holder.name') == 'deck'
-      card.set('covered',true)
-    else
-      card.set('covered',false)
 }

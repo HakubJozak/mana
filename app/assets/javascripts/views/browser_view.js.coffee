@@ -11,9 +11,6 @@ Mana.BrowserView = Ember.View.extend  Mana.DroppableForCard, {
   # is not really absolute, but relative to it's starting point (?ORLY)
   tolerance: 'pointer'
 
-  after_drop: (card) ->
-    card.set('covered',false)
-    card.set('tapped',false)
 }
 
 

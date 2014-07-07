@@ -17,12 +17,18 @@ Mana.ApplicationRoute = Ember.Route.extend({
       card.toggleCovered()
       true
 
+    shuffle: (slot) ->
+      console.debug "Shuffling #{slot.get('name')}"
+      slot.shuffle()
+      false
+
     draw_initial_hand: ->
       player = @modelFor('application').get("current_player")
       hand = player.get('hand')
       deck = player.get('deck')
       deck.get('top').moveTo(hand) for i in [0..6]
 
+    # TODO: replace with moveTo on card as above ^
     move_card_to: (card,target_name,unshift = false) ->
       now = @modelFor('application').get("current_player.#{target_name}")
       before = card.get('slot')
