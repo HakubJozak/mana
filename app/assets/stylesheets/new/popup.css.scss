@@ -1,8 +1,10 @@
 @import 'compass/css3';
+@import "susy";
 
-$popup-top: 3em;
 
 #popup {
+  $padding: 1em;
+
   position: absolute;
   left: 0;
   top: 0;
@@ -10,18 +12,31 @@ $popup-top: 3em;
   bottom: 0;
 
   .content {
-    $padding: 1em;
+    position: relative;
+    padding: $padding;
 
-     position: relative;
-     padding: $padding;
-     margin: $popup-top auto 0;
-     width: 50%;
+   .topbar {
+     position: absolute;
+     top: $padding;
+     right: $padding;
+    }
 
-     .topbar {
-       position: absolute;
-       top: $padding;
-       right: $padding;
-     }
+   h1 { margin-top: 0; }
+  }
+
+  .content.browser {
+    width: 85%;
+    margin: 1em auto 0;
+    img {
+      padding: 0.2em;
+      width: 10%;
+    }
+  }
+
+  .content.detail {
+    margin: 3em auto 0;
+    width: 50%;
+
 
      .card-image {
        @include inline-block;
@@ -34,7 +49,6 @@ $popup-top: 3em;
        font-size: 18px;
        padding-left: 2em;
 
-       h1 { margin-top: 0; }
        h3 { margin-bottom: 0.1em; }
        table {
          width: 100%; text-align: center;

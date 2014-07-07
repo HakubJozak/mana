@@ -1,4 +1,3 @@
-# for more details see: http://emberjs.com/guides/views/
-
-Mana.BrowserView = Ember.View.extend
+Mana.BrowserView = Mana.PopupView.extend
   templateName: 'browser'
+  contentClass: 'browser'

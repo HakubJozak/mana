@@ -1,0 +1,7 @@
+<h1>{{ capitalize name }}</h1>
+
+<div class="cards">
+  {{#each cards }}
+     <img {{bind-attr src=frontside }} />
+  {{/each}}
+</div>

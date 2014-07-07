@@ -1,5 +1,5 @@
 <div id="popup">
-  <div class="content">
+  <div {{ bind-attr class="view.contentClass :content" }}>
     <div class="topbar">
       <button {{ action 'close' }} >Close</button>
     </div>
