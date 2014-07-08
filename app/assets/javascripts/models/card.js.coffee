@@ -36,10 +36,8 @@ Mana.Card = DS.Model.extend
     old_slot = @get('slot')
     old_slot.get('cards').removeObject(this)
     new_slot.get('cards').pushObject(this)
-    old_slot.save()
-    new_slot.save()
     @set 'position', new_slot.next_position() # new_slot.get('bottom.position') - 1
-    @set 'slot_id',new_slot.get('id')
+    @set 'slot', new_slot
     new_slot.after_drop(this)
 
   statsChanged: ( ->

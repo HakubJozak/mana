@@ -34,8 +34,6 @@ module Mana
 #             ActiveRecord::Base.connection_pool.checkin(connection)
 #           end
 #       end
-
-
     end
 
     def call(env)
@@ -56,22 +54,23 @@ module Mana
             if attrs = parsed[:card]
               attrs.symbolize_keys!
               card = Card.find(attrs.delete(:id))
-              attrs.slice!(:tapped, :position, :slot_id, :flipped,
+              attrs.slice!(:tapped, :position, :slot, :flipped,
                            :covered, :toughness, :power, :counters)
-              card.update_attributes(attrs)
+              attrs[:slot_id] = attrs.delete(:slot)
+              card.update_attributes!(attrs)
               log.debug "Saved card changes: #{attrs.inspect}"
             elsif attrs = parsed[:player]
               attrs.symbolize_keys!
               player = Player.find(attrs.delete(:id))
               attrs.slice!(:lives, :poison_counters)
-              player.update_attributes(attrs)
+              player.update_attributes!(attrs)
               log.debug "Saved player changes: #{attrs.inspect}"
             elsif attrs = parsed[:message]
               # TODO - inject player_id on the server side
               attrs.symbolize_keys!
               player = Player.find(attrs.delete(:player))
               attrs.slice(:text)
-              msg = player.messages.create(attrs)
+              msg = player.messages.create!(attrs)
 
               payload = { message: {
                   id: msg.id,
@@ -82,6 +81,7 @@ module Mana
 
               log.debug "Saved message changes: #{attrs.inspect}"
             elsif attrs = parsed[:slot]
+              log.debug "Passing slot to the clients: #{attrs.inspect}"
               # there is nothing we have to do - card update of the `slot_id` handles
               # it all on the server side
             else

@@ -41,7 +41,10 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
   init: ->
     # TODO: Mana.inject('data-adapter', 'store', 'store:main')
     @store = Mana.__container__.lookup('store:main')
-    @ws = new WebSocket("ws://#{window.location.host}/#{window.location.pathname}")
+
+    path = "ws://#{window.location.host}#{window.location.pathname}"
+    @ws = new WebSocket(path)
+    console.debug "Mana.WebsocketAdapter initialized with #{path}"
 
     # callbacks
     @ws.onopen = ->
@@ -52,8 +55,13 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
 
     @ws.onmessage = (msg) =>
       json =  JSON.parse(msg.data)
+      console.debug "Received payload", json
+
       if json.card
-        @store.update('card',json.card)
+        @store.find('card',json.card.id).then (card) =>
+          card.get('slot.cards').removeObject(card)
+          @store.update('card',json.card)
+          card.get('slot.cards').pushObject(card)
       else if json.slot
         @store.update('slot',json.slot)
       else if json.player
@@ -80,6 +88,7 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
       )
 
   updateRecord: (store,type,record) ->
+
     attrs = {}
     if type == Mana.Card
       attrs['card'] =  record.toJSON(includeId: true)
@@ -93,6 +102,7 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
     # fake promise as it happens synchronously :/
     new Ember.RSVP.Promise((resolve, reject) =>
       @ws.send(JSON.stringify(attrs))
+      console.debug "Updated #{type}", record
       resolve(null)
     )
 })
