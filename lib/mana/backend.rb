@@ -38,11 +38,14 @@ module Mana
 
     def call(env)
       if Faye::WebSocket.websocket?(env)
-        ws = Faye::WebSocket.new(env, nil, {ping: KEEPALIVE_TIME })
+        ws = PlayerConnection.new(env, nil, {ping: KEEPALIVE_TIME })
         log = Rails.logger
 
         ws.on :open do |event|
-          p [:open, ws.object_id]
+          p [:open, ws.object_id ]
+          payload = ::SeparatePlayerSerializer.new(ws.current_player, root: 'player').to_json
+          p payload
+          @clients.each { |other| other.send(payload) }
           @clients << ws
         end
 

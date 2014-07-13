@@ -6,6 +6,6 @@ class PlayerSerializer < ActiveModel::Serializer
   has_many :messages, embed: :ids
 
   def current
-    object == current_player
+    object == scope
   end
 end

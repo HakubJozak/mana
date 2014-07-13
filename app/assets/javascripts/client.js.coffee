@@ -73,9 +73,9 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
           game.get('messages').unshiftObject(msg)
         @store.find('player',json.message.player_id).then (player) ->
           player.get('messages').unshiftObject(msg)
-
       else
-        console.info "unknown type: #{json}"
+        @store.pushPayload(json)
+#        console.info "unknown type: #{json}"
 
   createRecord: (store,type,record) ->
     if type == Mana.Message
@@ -110,3 +110,4 @@ Mana.WebSocketAdapter = DS.ActiveModelAdapter.extend({
 
 
 Mana.ApplicationAdapter = Mana.WebSocketAdapter
+Mana.ApplicationSerializer = DS.ActiveModelSerializer
