@@ -1,3 +1,20 @@
+# While Doing Stuff
+
+## General HTML Yasnippet
+
+TIL: Using YASnippets 'mirror' functionality (http://capitaomorte.github.io/yasnippet/snippet-development.html), it is very easy to make a general HTML snippet that will create both opening and closing tag and end up in the middle. Like this:
+
+```yasnippet
+    # -*- mode: snippet; require-final-newline: nil -*-
+    # name: <
+    # key: <
+    # --
+    <${1:div}>
+      $0
+    </$1>
+
+As you can see it will default to `div`
+
 # Walls I Hit When Driving through Ember.js
 
 ## Rails Assets Helpers in Handlebars
