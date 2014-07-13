@@ -1,0 +1,85 @@
+@import "compass/css3";
+
+$highlight-color: #fff68f;
+$bars-color: #EDCA3A;
+$card-over-color: rgba(0,0,0,0.1);
+$card-over-border: $bars-color;
+
+$pile-color: none;
+$chat-color: none;
+
+$controls-color: rgba(0,0,0,0.2);
+
+$table-color: none;
+
+body {
+ background-color: #eee;
+}
+
+.desk {
+  background-color: white;
+}
+
+.controls {
+  background-color: $controls-color;
+}
+
+
+.status {
+ $text-color: black;
+ padding-bottom: 5px;
+ background-color: $bars-color;
+ color:  $text-color;
+ a { color:  $text-color; }
+}
+
+.card {
+  &:hover {
+    @include box-shadow($highlight-color 0px 0px 10px);
+  }
+}
+
+
+.slot {
+//  border: 1px dashed rgba(0,0,0,0);
+  &.card-over {
+//    border: 1px dashed $card-over-border;
+    background-color: $card-over-color;
+  }
+}
+
+.hand {
+  &.card-over { background-color: $card-over-color; }
+}
+
+.pile-container {
+  h2 {
+    margin: 2px;
+    font-size: small;
+    text-align: center;
+  }
+
+  background-color: $pile-color;
+  &.card-over { background-color: $card-over-color; }
+}
+
+
+.chat {
+  background-color: $chat-color;
+}
+
+
+.tables, .table {
+  background-color: $table-color;
+}
+
+#popup {
+  background-color: rgba(0,0,0,0.3);
+
+  h1,h3 { color: $bars-color; }
+
+  .content {
+    background-color: white;
+    border: 3px solid $bars-color;
+  }
+}
