@@ -1,6 +1,10 @@
 {{#with view.content as player}}
 <div class="status">
-  {{ player.name }} |
+  {{ player.name }}
+  {{#if view.current}}
+    (You)
+  {{/if}}
+  |
   Hand: {{ player.hand.length }} |
   Graveyard: {{ player.graveyard.length }} |
   Library: {{ player.library.length }} |
