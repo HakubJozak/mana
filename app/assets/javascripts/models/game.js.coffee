@@ -14,5 +14,5 @@ Mana.Game = DS.Model.extend
     ).property()
 
   current_player: (->
-    p = @get('players').findBy('current', true)
-    ).property('players')
+    @get('players').findBy('id', Mana.current_player_id)
+   ).property()

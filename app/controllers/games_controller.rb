@@ -1,8 +1,6 @@
 class GamesController < ApplicationController
 
-  # settings for Active Model Serializers
-  serialization_scope :current_player
-
+  helper_method :current_player
 
   def index
     @games = Game.order(created_at: :desc)
