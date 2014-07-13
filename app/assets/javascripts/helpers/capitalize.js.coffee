@@ -1,5 +1,8 @@
 Ember.Handlebars.helper 'capitalize', (str,options) ->
-  str.capitalize()
+  if str
+    str.capitalize()
+  else
+    ''
 
 Ember.Handlebars.helper 'card_stat', (value, options) ->
    if value?

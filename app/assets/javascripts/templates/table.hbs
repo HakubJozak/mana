@@ -1,7 +1,8 @@
+{{#with view.content as player}}
 <div class="status">
   {{ player.name }} |
   Hand: {{ player.hand.length }} |
-  Graveyard: {{ player.library.length }} |
+  Graveyard: {{ player.graveyard.length }} |
   Library: {{ player.library.length }} |
   Lives: {{ view Mana.PlusMinusView content=player.lives tagName="span"}}
 </div>
@@ -10,3 +11,4 @@
    {{view Mana.SlotView content=slot.cards holder=slot position=_view.contentIndex }}
   {{/each}}
 </div>
+{{/with}}

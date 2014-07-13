@@ -1,4 +1,8 @@
 <div class='controls'>
+  {{name}}
+  {{#each players}}
+    {{id}}
+  {{/each}}
   {{view Mana.HandView holder=current_player.hand }}
 
   <div class="libraries">
@@ -17,10 +21,6 @@
   {{view Mana.ChatView}}
 </div>
 
-<div class='tables'>
-  {{#each player in players}}
-    {{view Mana.TableView player=player}}
-  {{/each}}
-</div>
+{{view Mana.TablesView content=players }}
 
 {{outlet}}

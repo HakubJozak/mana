@@ -43,7 +43,8 @@ module Mana
 
         ws.on :open do |event|
           p [:open, ws.object_id ]
-          payload = ::SeparatePlayerSerializer.new(ws.current_player, root: 'player').to_json
+#          payload = ::SeparatePlayerSerializer.new(ws.current_player, root: 'players').to_json
+          payload = ::GameSerializer.new(ws.current_player.game, root: 'games').to_json
           p payload
           @clients.each { |other| other.send(payload) }
           @clients << ws
