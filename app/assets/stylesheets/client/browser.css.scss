@@ -1,0 +1,9 @@
+@import "compass/utilities/lists/horizontal-list";
+
+.browser {
+
+  ul {
+    @include horizontal-list;
+    margin-bottom: 1em;
+  }
+}

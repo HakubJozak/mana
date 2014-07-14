@@ -23,10 +23,8 @@ Mana.ApplicationRoute = Ember.Route.extend({
       card.toggleCovered()
       true
 
-    shuffle: (slot) ->
+    browse: (slot) ->
       @get('controller').transitionToRoute("browser", slot)
-      # console.debug "Shuffling #{slot.get('name')}"
-      # slot.shuffle()
       false
 
     draw_initial_hand: ->

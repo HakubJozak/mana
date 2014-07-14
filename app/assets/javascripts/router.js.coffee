@@ -9,8 +9,3 @@ Mana.DetailRoute = Ember.Route.extend({
     @store.find('card',params.card_id)
 
 })
-
-Mana.BrowserRoute = Ember.Route.extend({
-  model: (params) ->
-    @store.find('slot',params.slot_id)
-})

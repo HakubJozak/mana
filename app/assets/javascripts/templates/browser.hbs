@@ -1,7 +1,25 @@
 <h1>{{ capitalize name }}</h1>
 
+<ul>
+  <li>
+    <button {{ action 'shuffle' bubbles=false}}>Shuffle</button>
+  </li>
+  <li>
+    <button {{ action 'show_all' bubbles=false}}>Show All</button>
+  </li>
+  <li>
+    <!--
+    <button {{ action 'show_next' bubbles=false}}>Show One More</button>
+    -->
+  </li>
+</ul>
+
 <div class="cards">
-  {{#each cards }}
-     <img {{bind-attr src=frontside }} />
+  {{#each card in cards }}
+    {{#if all_visible}}
+      <img {{bind-attr src=card.frontside }} />
+    {{else}}
+      <img {{bind-attr src=view.backImage}} width="200">
+    {{/if}}
   {{/each}}
 </div>
