@@ -1,11 +1,18 @@
 {{outlet}}
 
+<ul>
+  <li>
+    <button {{ action 'show_all' bubbles=false}}>Show All
+    </button>
+  </li>
+</ul>
+
 <div class="cards">
-  {{#each }}
-    {{#if all_visible}}
-      <img {{bind-attr src=frontside }} />
-    {{else}}
-      <img {{bind-attr src=view.backImage}} width="200">
-    {{/if}}
+  {{#each card in this}}
+      {{#if all_visible}}
+        <img {{bind-attr src=card.frontside }} />
+      {{else}}
+        <img {{bind-attr src=view.backImage}} width="200">
+      {{/if}}
   {{/each}}
 </div>
