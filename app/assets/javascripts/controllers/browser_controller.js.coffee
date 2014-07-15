@@ -8,7 +8,6 @@ Mana.BrowserController = Ember.ObjectController.extend({
   #     @get('visible_cards').has(card)
   #   arr.toArray()
   # ).property('cards.@each','visible_cards.@each')
-  all_visible: false
 
 
   actions:

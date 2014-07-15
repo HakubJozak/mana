@@ -14,12 +14,4 @@
   </li>
 </ul>
 
-<div class="cards">
-  {{#each card in cards }}
-    {{#if all_visible}}
-      <img {{bind-attr src=card.frontside }} />
-    {{else}}
-      <img {{bind-attr src=view.backImage}} width="200">
-    {{/if}}
-  {{/each}}
-</div>
+{{outlet}}
