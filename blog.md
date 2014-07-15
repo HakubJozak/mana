@@ -77,3 +77,11 @@ It worked but it was more like a shin than shining. There had to be a simple way
 
 This is where the model is buried. Please ignore all the code samples above. This is the right one and you don't need anything else.
 __Those who know more about Ember please don't hesitate to point out that this is not the right way and tell me which one is in the comments! __
+
+
+# Ember's Controller and ObjectController
+
+TODO: describe confusion coming from this intro, expecting
+every controller to act like ObjectController:
+
+http://emberjs.com/guides/controllers/
