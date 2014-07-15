@@ -7,7 +7,7 @@ Mana.Router.map ()->
 
 Mana.CardsListController = Ember.ArrayController.extend({
   sortProperties: [ 'position' ]
-  sortAscending: true
+  sortAscending: false
 
   needs: 'browser'
   all_visible: false
