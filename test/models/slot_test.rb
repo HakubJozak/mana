@@ -2,7 +2,7 @@ require 'test_helper'
 require 'minitest/mock'
 
 class SlotTest < ActiveSupport::TestCase
-  fixtures :stamps
+  fixtures :stamps, :users
 
 
   # TODO: the slot should be more independent

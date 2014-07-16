@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class GamesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
 
   test 'index' do
     get :index

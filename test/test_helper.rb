@@ -8,12 +8,13 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 
 class ActiveSupport::TestCase
+
   def john
-    @john ||= User.create!(email: 'me@there.net', name: 'John', password: 'test1234')
+    users(:john)
   end
 
   def player_john
-    @player_john ||= Player.create!(name: 'John', user: john, game: johns_game)
+    @player_john ||= Player.create!(name: 'John', user: john , game: johns_game)
   end
 
   def johns_game

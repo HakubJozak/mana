@@ -39,4 +39,8 @@ Rails.application.configure do
 
   # TODO - adjust this
   config.log_level = :info
+
+  # doesn't work with foreign keys
+  config.active_record.maintain_test_schema = false
+
 end
