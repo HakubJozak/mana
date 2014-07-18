@@ -5,7 +5,8 @@
     = f.inputs do
       = f.input :name, label: 'Player name'
       = f.input :prepared_deck, as: :select, collection: { 'No cards. I will just watch the game.' => 'WATCH', 'All the cards below:' => 'ADHOC' }, include_blank: false, label: 'Deck'
-      = f.input :mainboard, :as => :text, :label => 'Cards', :hint => 'One card name and count per-line: 1;Black Lotus'
+      = f.semantic_fields_for :deck do |d|
+        = d.input :mainboard, :as => :text, :hint => 'One card name and count per-line: 1;Black Lotus'
 
     = f.actions do
       = f.action :submit, label: "Join the '#{@game.name}'"

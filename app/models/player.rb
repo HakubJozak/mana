@@ -2,6 +2,7 @@ class Player < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :game
+  belongs_to :deck
 
   has_many :cards, dependent: :destroy
   has_many :slots, dependent: :destroy
@@ -14,9 +15,10 @@ class Player < ActiveRecord::Base
   has_many :battlefield_slots, ->(p) { where(name: "battlefield").order(:position) }, class_name: 'Slot'
 
 
-  validates_presence_of :game
+  validates_presence_of :game, :deck
 
   attr_accessor :prepared_deck
+  accepts_nested_attributes_for :deck
 
   after_create do
     %w( hand library graveyard exile ).each do |name|
@@ -27,12 +29,11 @@ class Player < ActiveRecord::Base
       slots.create(name: 'battlefield', position: i)
     end
 
-    self.library.add_cards(mainboard).shuffle
+    # self.library.add_cards(mainboard).shuffle
   end
 
   after_initialize do
-    self.prepared_deck = 'ADHOC'
-    self.mainboard ||= '10;Forest'
+    self.deck = Deck.new(mainboard: "10;Forest", name: "Adhoc deck for #{game.name}")
 
     if self.user
       self.name ||= self.user.name

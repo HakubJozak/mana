@@ -12,6 +12,8 @@ class PlayersController < ApplicationController
   def create
     @player = @game.players.new(player_params)
 
+    binding.pry
+
     if @player.save
       set_player_for(@game, @player)
       redirect_to @game
@@ -45,7 +47,7 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:name, :prepared_deck, :mainboard)
+    params.require(:player).permit(:name, :prepared_deck, :mainboard, :deck_attributes)
 #    result.merge!(user: current_user) if current_user
   end
 
