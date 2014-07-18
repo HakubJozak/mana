@@ -29,11 +29,12 @@ class Player < ActiveRecord::Base
       slots.create(name: 'battlefield', position: i)
     end
 
-    # self.library.add_cards(mainboard).shuffle
+    self.library.add_deck(self.deck)
+    self.library.shuffle
   end
 
   after_initialize do
-    self.deck = Deck.new(mainboard: "10;Forest", name: "Adhoc deck for #{game.name}")
+    self.deck ||= Deck.new(mainboard: "10;Forest")
 
     if self.user
       self.name ||= self.user.name

@@ -10,23 +10,14 @@ class Slot < ActiveRecord::Base
     end
   end
 
-  def add_cards(card_list)
-    card_list.each_line.with_index do |line,i|
-      count, name = line.split(';')
-      next if name.blank?
-
-      if stamp = Stamp.find_by_name(name.strip)
-        count.to_i.times do
-          cards.create! stamp: stamp,
-                        slot: self, position: i, covered: true,
-                        game: player.game, player: player
-        end
-      else
-        Rails.logger.warn("#{name} not found")
-        # TODO: add errors to the slot model
-      end
+  def add_deck(deck)
+    position = 0
+    deck.parse_mainboard do |stamp|
+      cards.create! stamp: stamp,
+                    slot: self, position: position, covered: true,
+                    game: player.game, player: player
+      position += 1
     end
-
-    self
   end
+
 end

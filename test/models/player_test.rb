@@ -17,8 +17,8 @@ class PlayerTest < ActiveSupport::TestCase
 
   test 'has a deck when created' do
     cards = """
-    3;Forest
-    5;Cloistered Youth
+3;Forest
+5;Cloistered Youth
     """
 
     p = @game.players.create!(deck_attributes: { mainboard: cards })

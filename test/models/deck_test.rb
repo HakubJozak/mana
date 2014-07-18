@@ -8,6 +8,10 @@ class DeckTest < ActiveSupport::TestCase
     valid = Deck.create(mainboard: "2;Forest\n39;Cloistered Youth\n")
     assert valid.errors[:mainboard].empty?, valid.errors.inspect
 
+    # skip blank lines
+    valid = Deck.create(mainboard: "2;Forest\n\n\n3;Cloistered Youth\n\n")
+    assert valid.errors[:mainboard].empty?, valid.errors.inspect
+
     bad = Deck.create(mainboard: "bad_format2;Forest\n39;Cloistered Youth")
     assert_equal bad.errors[:mainboard].first, "wrong line: 'bad_format2;Forest'"
 
