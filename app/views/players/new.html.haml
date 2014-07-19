@@ -4,7 +4,7 @@
 
     = f.inputs do
       = f.input :name, label: 'Player name'
-      = f.input :prepared_deck, as: :select, collection: { 'No cards. I will just watch the game.' => 'WATCH', 'All the cards below:' => 'ADHOC' }, include_blank: false, label: 'Deck'
+      = f.input :deck, as: :select, collection: @decks, include_blank: false
       = f.semantic_fields_for :deck do |d|
         = d.input :mainboard, :as => :text, :hint => 'One card name and count per-line: 1;Black Lotus'
 
@@ -13,10 +13,10 @@
       %li= link_to 'Back', games_path
 
 :coffeescript
-  $ ->
-    $('#player_prepared_deck').change ->
-      val = $('#player_prepared_deck option:selected').val()
-      board = $('#player_mainboard_input')
+  $(document).on 'ready page:load', ->
+    $('#player_deck_id').change ->
+      val = $('#player_deck_id option:selected').val()
+      board = $('#player_deck_attributes_mainboard_input')
 
       if val == 'WATCH'
         board.find('textarea').prop('disabled', true);

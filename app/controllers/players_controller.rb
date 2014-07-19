@@ -5,14 +5,17 @@ class PlayersController < ApplicationController
 
   def new
     @player = @game.players.new(user: current_user)
-    # @player.build_deck(mainboard: "1\tForest\n")
-    # @player.spectator = false
+    @decks = { 'None. I will just watch the game.' => 'WATCH', 'All the cards below:' => 'ADHOC' }
+
+    if current_user
+      current_user.decks.each do |d|
+	@decks[d.name] = d.id
+      end
+    end
   end
 
   def create
     @player = @game.players.new(player_params)
-
-    binding.pry
 
     if @player.save
       set_player_for(@game, @player)

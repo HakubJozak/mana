@@ -5,7 +5,7 @@
 1;Graveyard Shovel
 1;Blazing Torch
 1;Make a Wish
-1;Doomed Traveller
+1;Doomed Traveler
 1;Prey Upon
 1;Chapel Geist
 2;Somberwald Spider

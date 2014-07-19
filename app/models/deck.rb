@@ -11,6 +11,11 @@ class Deck < ActiveRecord::Base
   LINE_REGEXP = /^(\d+);(.*)$/
   validate :parse_mainboard
 
+  # TODO - type, sideboard
+  def each_card(&block)
+    parse_mainboard(&block)
+  end
+
   def parse_mainboard
     mainboard.each_line.with_index do |line,i|
       next if line.blank?
@@ -19,9 +24,7 @@ class Deck < ActiveRecord::Base
         _, count, name = match.to_a
 
         if stamp = Stamp.find_by_name(name.strip)
-          count.to_i.times do
-            yield(stamp) if block_given?
-          end
+          yield(stamp,count) if block_given?
         else
           errors.add :mainboard, "card '#{name}' is unknown"
           false

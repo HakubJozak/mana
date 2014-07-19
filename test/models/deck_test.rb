@@ -19,4 +19,9 @@ class DeckTest < ActiveSupport::TestCase
     assert_equal unknown.errors[:mainboard].first, "card 'MY_AWESOME_CARD' is unknown"
   end
 
+  test 'stamps' do
+    valid = Deck.create(mainboard: "2;Forest\n39;Cloistered Youth\n")
+    assert valid.errors[:mainboard].empty?, valid.errors.inspect
+  end
+
 end
