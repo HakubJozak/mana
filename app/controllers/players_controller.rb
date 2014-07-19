@@ -3,19 +3,18 @@ class PlayersController < ApplicationController
   before_action :find_game, except: :show
   before_action :redirect_if_player_exists, except: :show
 
+  helper_method :available_decks
+
   def new
     @player = @game.players.new(user: current_user)
-    @decks = { 'None. I will just watch the game.' => 'WATCH', 'All the cards below:' => 'ADHOC' }
-
-    if current_user
-      current_user.decks.each do |d|
-	@decks[d.name] = d.id
-      end
-    end
   end
 
   def create
     @player = @game.players.new(player_params)
+
+    if (id = params[:player][:deck_id]) =~ /\d+/
+      @player.deck = Deck.find(id)
+    end
 
     if @player.save
       set_player_for(@game, @player)
@@ -48,6 +47,18 @@ class PlayersController < ApplicationController
   end
 
   private
+
+  def available_decks
+    decks = { 'All the cards below:' => 'ADHOC', 'None. I will just watch the game.' => 'WATCH' }
+
+    if current_user
+      current_user.decks.each do |d|
+	decks[d.name] = d.id
+      end
+    end
+
+    decks
+  end
 
   def player_params
     params.require(:player).permit(:name, :prepared_deck, :mainboard, :deck_attributes)

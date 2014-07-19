@@ -7,6 +7,7 @@
 .deck
   - @deck.each_card do |stamp,count|
     %div.deck_card
-      %span.count
-        = count
+      .count
+        %span
+          = count
       %img{ src: stamp.frontside, title: "#{count}x #{stamp.name}" }

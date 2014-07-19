@@ -4,7 +4,7 @@
 
     = f.inputs do
       = f.input :name, label: 'Player name'
-      = f.input :deck, as: :select, collection: @decks, include_blank: false
+      = f.input :deck, as: :select, collection: available_decks, include_blank: false
       = f.semantic_fields_for :deck do |d|
         = d.input :mainboard, :as => :text, :hint => 'One card name and count per-line: 1;Black Lotus'
 
@@ -18,9 +18,9 @@
       val = $('#player_deck_id option:selected').val()
       board = $('#player_deck_attributes_mainboard_input')
 
-      if val == 'WATCH'
-        board.find('textarea').prop('disabled', true);
-        board.fadeOut()
-      else
+      if val == 'ADHOC'
         board.find('textarea').prop('disabled', false);
         board.fadeIn()
+      else
+        board.find('textarea').prop('disabled', true);
+        board.fadeOut()
