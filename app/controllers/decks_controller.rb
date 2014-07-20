@@ -1,5 +1,7 @@
 class DecksController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @decks = current_user.decks
   end
@@ -32,7 +34,7 @@ class DecksController < ApplicationController
   def update
     @deck = current_user.decks.find(params[:id])
 
-    if @deck.update_attributes(params[:deck])
+    if @deck.update_attributes(deck_params)
       redirect_to @deck, notice: 'Deck was successfully updated.'
     else
       render action: "edit"
