@@ -1,0 +1,15 @@
+<header>
+  <h2>
+    <button {{ action "browse" view.holder}} >
+    {{ capitalize view.holder.name }} ({{ view.holder.length }})
+    </button>
+  </h2>
+</header>
+<div class="bottom">
+  {{#if view.holder.below_top}}
+    {{#with view.holder.below_top }} {{partial "card_image" }} {{/with}}
+  {{else}}
+    <img {{bind-attr src=view.emptyImage}}>
+  {{/if}}
+  {{view Mana.PileView holder=view.holder }}
+</div>

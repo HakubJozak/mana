@@ -1,0 +1,107 @@
+forest:
+  name: Forest
+  names:
+  text: G
+  originalText: "Tap to add {G} to your mana pool."
+  rulings:
+  printings:
+  legalities: '{"Standard"=>"Legal", "Modern"=>"Legal", "Extended"=>"Legal", "Theros
+    Block"=>"Legal", "Return to Ravnica Block"=>"Legal", "Innistrad Block"=>"Legal",
+    "Scars of Mirrodin Block"=>"Legal", "Zendikar Block"=>"Legal", "Shards of Alara
+    Block"=>"Legal", "Lorwyn-Shadowmoor Block"=>"Legal", "Time Spiral Block"=>"Legal",
+    "Ravnica Block"=>"Legal", "Kamigawa Block"=>"Legal", "Mirrodin Block"=>"Legal",
+    "Onslaught Block"=>"Legal", "Odyssey Block"=>"Legal", "Invasion Block"=>"Legal",
+    "Masques Block"=>"Legal", "Urza Block"=>"Legal", "Tempest Block"=>"Legal", "Mirage
+    Block"=>"Legal", "Ice Age Block"=>"Legal", "Un-Sets"=>"Legal", "Legacy"=>"Legal",
+    "Vintage"=>"Legal", "Freeform"=>"Legal", "Prismatic"=>"Legal", "Tribal Wars Legacy"=>"Legal",
+    "Tribal Wars Standard"=>"Legal", "Classic"=>"Legal", "Singleton 100"=>"Legal",
+    "Commander"=>"Legal"}'
+  flavor:
+  manaCost:
+  cmc:
+  colors:
+  card_type: Basic Land — Forest
+  types: '["Land"]'
+  supertypes: '["Basic"]'
+  subtypes: '["Forest"]'
+  rarity: Basic Land
+  loyalty:
+  power:
+  toughness:
+  layout: normal
+  artist: Christopher Rush
+  edition:
+  number:
+  multiverseid: '289'
+  imageName: forest1
+  originalType: Land
+  variations: '[288]'
+
+unholy_fiend:
+  name: Unholy Fiend
+  names: '["Cloistered Youth", "Unholy Fiend"]'
+  text: At the beginning of your end step, you lose 1 life.
+  originalText: At the beginning of your end step, you lose 1 life.
+  rulings:
+  printings:
+  legalities: '{"Modern"=>"Legal", "Extended"=>"Legal", "Innistrad Block"=>"Legal",
+    "Legacy"=>"Legal", "Vintage"=>"Legal", "Freeform"=>"Legal", "Prismatic"=>"Legal",
+    "Tribal Wars Legacy"=>"Legal", "Tribal Wars Standard"=>"Legal", "Classic"=>"Legal",
+    "Singleton 100"=>"Legal", "Commander"=>"Legal"}'
+  flavor: The fiend tormented them by recounting the girl's memories, as if some part
+    of her remained inside that twisted shell.
+  manaCost:
+  cmc:
+  colors: '["Black"]'
+  card_type: Creature — Horror
+  types: '["Creature"]'
+  supertypes:
+  subtypes: '["Horror"]'
+  rarity: Uncommon
+  loyalty:
+  power: '3'
+  toughness: '3'
+  layout: double-faced
+  artist: Igor Kieryluk
+  edition:
+  number: 8b
+  multiverseid: '221222'
+  imageName: unholy fiend
+  originalType: Creature — Horror
+  variations:
+
+
+cloistered_youth:
+  name: Cloistered Youth
+  names: '["Cloistered Youth", "Unholy Fiend"]'
+  text: At the beginning of your upkeep, you may transform Cloistered Youth.
+  originalText: At the beginning of your upkeep, you may transform Cloistered Youth.
+  rulings:
+  printings:
+  legalities: '{"Modern"=>"Legal", "Extended"=>"Legal", "Innistrad Block"=>"Legal",
+    "Legacy"=>"Legal", "Vintage"=>"Legal", "Freeform"=>"Legal", "Prismatic"=>"Legal",
+    "Tribal Wars Legacy"=>"Legal", "Tribal Wars Standard"=>"Legal", "Classic"=>"Legal",
+    "Singleton 100"=>"Legal", "Commander"=>"Legal"}'
+  flavor: |-
+    "I heard her talking in her sleep—pleading, shrieking, snarling. It was not my daughter's voice. That is not my daughter."
+
+    —Ekatrin, elder of Hanweir
+  manaCost: '{1}{W}'
+  cmc: '2'
+  colors: '["White"]'
+  card_type: Creature — Human
+  types: '["Creature"]'
+  supertypes:
+  subtypes: '["Human"]'
+  rarity: Uncommon
+  loyalty:
+  power: '1'
+  toughness: '1'
+  layout: double-faced
+  artist: Igor Kieryluk
+  edition:
+  number: 8a
+  multiverseid: '221212'
+  imageName: cloistered youth
+  originalType: Creature — Human
+  variations:

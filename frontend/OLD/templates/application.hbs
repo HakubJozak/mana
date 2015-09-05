@@ -1,0 +1,28 @@
+<div class='controls'>
+  {{view Mana.HandView holder=current_player.hand }}
+
+  <div class="libraries">
+    <div class="piles">
+      {{view Mana.PackView holder=current_player.library }}
+      {{view Mana.PackView holder=current_player.graveyard }}
+      {{view Mana.PackView holder=current_player.exile }}
+      <div class="pile-container">
+        <button class="next-turn">
+          Next  Turn
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {{view Mana.ChatView}}
+</div>
+
+
+<div class='tables'>
+  {{view Mana.TableView content=current_player current=true}}
+  {{#each player in all_but_current_players }}
+    {{view Mana.TableView content=player}}
+  {{/each}}
+</div>
+
+{{outlet}}

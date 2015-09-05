@@ -1,0 +1,16 @@
+<form {{action "send_message" on="submit"}} >
+  {{input type="text" placeholder="Say.."  value=new_chat_message autofocus='autofocus'}}
+  {{input type="submit" value="Send"}}
+</form>
+<div class='messages-container'>
+  <table>
+    <tbody class='messages'>
+    {{#each messages}}
+      <tr>
+        <th>{{player.name}}:</th>
+        <td>{{text}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>

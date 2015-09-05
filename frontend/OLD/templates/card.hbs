@@ -1,0 +1,13 @@
+{{#with view.content}}
+  {{#if covered}}
+    <img {{bind-attr src=view.backImage}} width="200">
+  {{else}}
+    {{#if flipped}}
+      <img {{bind-attr src=backside}} width="200">
+    {{else}}
+      <img {{bind-attr src=frontside}} width="200">
+    {{/if}}
+    {{#if counters}}<span class="counters">{{counters}}</span>{{/if}}
+    {{#if power_and_toughness}}<span class="power">{{power_and_toughness}}</span>{{/if}}
+  {{/if}}
+{{/with}}

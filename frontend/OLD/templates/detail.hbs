@@ -1,0 +1,65 @@
+<div class="card-image">
+  <img {{bind-attr src=frontside}} {{bind-attr alt=name}}>
+  <h1>{{src}}</h1>
+</div>
+<div class="info">
+  <h1>{{name}}</h1>
+  <table class="pure-table">
+    <thead>
+    <tr>
+      <th>Counters</th>
+      <th>Power</th>
+      <th>Toughness</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+      {{ view Mana.PlusMinusView content=counters tagName="td"}}
+      {{ view Mana.PlusMinusView content=power tagName="td"}}
+      {{ view Mana.PlusMinusView content=toughness tagName="td"}}
+    </tr>
+    </tbody>
+  </table>
+
+  <h3>Actions</h3>
+  <ul>
+    <li>
+      <button {{ action 'toggleCovered' this bubbles=false}}>
+        {{#if covered }}
+          Turn Face Up
+        {{else}}
+          Turn Face Down
+        {{/if}}
+      </button>
+    </li>
+    <li>
+      <button {{ action 'tap' this bubbles=false }}>
+        {{#if tapped }}
+          Untap
+        {{else}}
+          Tap
+        {{/if}}
+      </button>
+    </li>
+    {{#if backside }}
+      <li>
+        <button {{ action 'flip' this bubbles=false}}>
+        {{#if flipped }}
+          Flip To Frontside Up
+        {{else}}
+          Flip To Backside
+        {{/if}}
+        </button>
+      </li>
+    {{/if}}
+  </ul>
+
+  <h3>Move from {{ capitalize slot.name }} To</h3>
+  <ul>
+    <li><button {{ action 'move_card_to' this 'hand' bubbles=false }}>Hand</button></li>
+    <li><button {{ action 'move_card_to' this 'graveyard' bubbles=false}}>Graveyard</button></li>
+    <li><button {{ action 'move_card_to' this 'exile' bubbles=false}}>Exile</button></li>
+    <li><button {{ action 'move_card_to' this 'library' bubbles=false }}>Top of the Library</button></li>
+    <li><button {{ action 'move_card_to' this 'library' true bubbles=false}}>Bottom of the Library</button></li>
+  </ul>
+</div>
